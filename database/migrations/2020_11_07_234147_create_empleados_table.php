@@ -22,12 +22,8 @@ class CreateEmpleadosTable extends Migration
             $table->date('fechaAlta');
             $table->date('fechaBaja');
             $table->string('direccion');
-
-            $table->unsignedBigInteger('puesto_id');
-            $table->foreign('puesto_id')->references('id')->on('puestos');
-            $table->unsignedBigInteger('convenio_id');
-            $table->foreign('convenio_id')->references('id')->on('convenios');
-            
+            //camino del archivo donde esta el curriculum
+            $table->string('curriculum');
 
             $table->timestamps();
         });
