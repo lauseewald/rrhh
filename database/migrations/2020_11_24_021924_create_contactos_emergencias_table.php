@@ -19,7 +19,7 @@ class CreateContactosEmergenciasTable extends Migration
             $table->string('telefono1');
             $table->string('telefono2');
             $table->string('correo');
-            $table->unsignedBigInteger('empleado_id')->nullable();
+            $table->unsignedinteger('empleado_id')->nullable();
             $table->foreign('empleado_id')->references('id')->on('empleados');
             $table->timestamps();
         });

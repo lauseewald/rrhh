@@ -16,9 +16,9 @@ class CreatePuestosTable extends Migration
         Schema::create('puestos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->string('descripcion')->nulleable();
+            $table->string('descripcion')->nullable();
             $table->float('sueldoBasico');
-            $table->unsignedBigInteger('departamento_id');
+            $table->unsignedinteger('departamento_id');
             $table->foreign('departamento_id')->references('id')->on('departamentos');
             
             $table->timestamps();

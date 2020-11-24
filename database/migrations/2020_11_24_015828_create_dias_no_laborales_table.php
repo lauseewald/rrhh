@@ -15,14 +15,14 @@ class CreateDiasNoLaboralesTable extends Migration
     {
         Schema::create('dias_no_laborales', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('dia');
-            $table->unsignedInteger('mes');
+            $table->unsignedinteger('dia');
+            $table->unsignedinteger('mes');
             $table->string('descripcion');
             // 25 de mayo siempre es feriado. entonces deberia ser fijo = TRUE.
             // Un dia del mes se tiene que fumigar entonces no se trabaja. fijo = False
             $table->boolean('fijo');
 
-            $table->unsignedBigInteger('empresa_id')->nullable();
+            $table->unsignedinteger('empresa_id')->nullable();
             $table->foreign('empresa_id')->references('id')->on('empresas');
 
             $table->timestamps();

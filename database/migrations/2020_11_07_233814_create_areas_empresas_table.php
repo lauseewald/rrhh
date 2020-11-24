@@ -16,12 +16,10 @@ class CreateAreasEmpresasTable extends Migration
         Schema::create('areas_empresas', function (Blueprint $table) {
             $table->increments('id');
             
-            $table->unsignedBigInteger('area_id');
+            $table->unsignedinteger('area_id');
             $table->foreign('area_id')->references('id')->on('areas');
             
-            $table->unsignedBigInteger('empresa_id');
-            $table->foreign('empresa_id')->references('id')->on('empresas');
-
+            
 
             $table->timestamps();
         });

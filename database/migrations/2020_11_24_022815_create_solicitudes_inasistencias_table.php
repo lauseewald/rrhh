@@ -18,10 +18,10 @@ class CreateSolicitudesInasistenciasTable extends Migration
             $table->date('desde');
             $table->date('hasta');
             $table->string('motivo');
-            $table->unsignedBigInteger('incidencia_id')->nullable();
+            $table->unsignedinteger('incidencia_id')->nullable();
             $table->foreign('incidencia_id')->references('id')->on('incidencias');
             //verificar en el mes si la cantidad de dias faltados corresponde a los dias de licencias
-            $table->unsignedBigInteger('empleado_id')->nullable();
+            $table->unsignedinteger('empleado_id')->nullable();
             $table->foreign('empleado_id')->references('id')->on('empleados');
 
             $table->timestamps();

@@ -16,9 +16,9 @@ class CreateDepartamentosTable extends Migration
         Schema::create('departamentos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->string('descripcion')->nulleable();
+            $table->string('descripcion')->nullable();
 
-            $table->unsignedBigInteger('area_id');
+            $table->unsignedinteger('area_id');
             $table->foreign('area_id')->references('id')->on('areas');
             
             $table->timestamps();

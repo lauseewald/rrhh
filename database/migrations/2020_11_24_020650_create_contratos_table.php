@@ -24,10 +24,10 @@ class CreateContratosTable extends Migration
             $table->string('descripcion');
             $table->float('salario');
 
-            $table->unsignedBigInteger('puesto_id')->nullable();
+            $table->unsignedinteger('puesto_id')->nullable();
             $table->foreign('puesto_id')->references('id')->on('puestos');
             //el modelo contrato tiene que tener un metodo que devuelva el puesto del empleado
-            $table->unsignedBigInteger('empleado_id')->nullable();
+            $table->unsignedinteger('empleado_id')->nullable();
             $table->foreign('empleado_id')->references('id')->on('empleados');
             
             $table->timestamps();

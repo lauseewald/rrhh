@@ -16,13 +16,13 @@ class CreateEventosTable extends Migration
         Schema::create('eventos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('titulo');
-            $table->string('descripcion')->nulleable();
+            $table->string('descripcion')->nullable();
             $table->date('fecha');
             
-            $table->unsignedBigInteger('departamento_id')->nullable();
+            $table->unsignedinteger('departamento_id')->nullable();
             $table->foreign('departamento_id')->references('id')->on('departamentos');
 
-            $table->unsignedBigInteger('empresa_id')->nullable();
+            $table->unsignedinteger('empresa_id')->nullable();
             $table->foreign('empresa_id')->references('id')->on('empresas');
 
             $table->timestamps();

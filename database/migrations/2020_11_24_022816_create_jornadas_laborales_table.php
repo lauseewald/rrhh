@@ -19,11 +19,11 @@ class CreateJornadasLaboralesTable extends Migration
             //08:00,12:00,14:00,17:00
             $table->string('horasTrabajos');
             
-            $table->unsignedBigInteger('empleado_id')->nullable();
+            $table->unsignedinteger('empleado_id')->nullable();
             $table->foreign('empleado_id')->references('id')->on('empleados');
 
-            $table->unsignedBigInteger('solicitudInacistencia_id')->nullable();
-            $table->foreign('solicitudInacistencia_id')->references('id')->on('solicitudes_inacistencias');
+            $table->unsignedinteger('solicitudInasistencia_id')->nullable();
+            $table->foreign('solicitudInasistencia_id')->references('id')->on('solicitudes_inasistencias');
 
             $table->timestamps();
         });
