@@ -14,13 +14,9 @@ class CreateAreasEmpresasTable extends Migration
     public function up()
     {
         Schema::create('areas_empresas', function (Blueprint $table) {
-            $table->increments('id');
-            
+            $table->increments('id');       
             $table->unsignedinteger('area_id');
             $table->foreign('area_id')->references('id')->on('areas');
-            
-            
-
             $table->timestamps();
         });
     }

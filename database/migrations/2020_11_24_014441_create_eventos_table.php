@@ -17,7 +17,7 @@ class CreateEventosTable extends Migration
             $table->increments('id');
             $table->string('titulo');
             $table->string('descripcion')->nullable();
-            $table->date('fecha');
+            $table->dateTime('fecha');
             
             $table->unsignedinteger('departamento_id')->nullable();
             $table->foreign('departamento_id')->references('id')->on('departamentos');
