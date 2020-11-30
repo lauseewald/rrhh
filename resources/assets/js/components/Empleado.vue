@@ -58,7 +58,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <button type="button" @click="modificar(empleado)" class="btn btn-warning btn-sm">
+                                        <button type="button" @click="modificarEmpleado(empleado)" class="btn btn-warning btn-sm">
                                           <i class="icon-pencil"></i>
                                         </button> &nbsp;
                                         <template v-if="empleado.condicion">
@@ -178,7 +178,8 @@
                         <div class="form-group row">
                             <div class="col-md-12">
                                 <button type="button" @click="ocultarDetalle()" class="btn btn-secondary">Cerrar</button>
-                                <button type="button" class="btn btn-primary" @click="registrarEmpleado()">Registrar Empleado</button>
+                                <button type="button"  v-if="modificar==0"  class="btn btn-primary" @click="registrarEmpleado()">Registrar Empleado</button>
+                                <button type="button"  v-if="modificar==1"  class="btn btn-primary" @click="actualizarEmpleado()">Actualizar Empleado</button>
                             </div>
                         </div>
                     </div>
@@ -243,7 +244,7 @@
     export default {
         data (){
             return {
-                venta_id: 0,
+                empleado_id: 0,
                 idincidencia:0,
                 cliente:'',
                 nombre:'',
@@ -258,6 +259,7 @@
                 arrayIncidencia: [],
                 arrayDetalle : [],
                 listado:1,
+                modificar: 0,
                 modal : 0,
                 tituloModal : '',
                 tipoAccion : 0,
@@ -643,6 +645,7 @@
             },
             ocultarDetalle(){
                 this.listado=1;
+                this.modificar=0;
                 this.nombre = '';
                 this.apellido= '';
                 this.cuil= '';
@@ -653,7 +656,7 @@
                 this.empleado_id = '';
             },
             verEmpleado(id){
-                let me=this;
+                /*let me=this;
                 me.listado=2;
                 
                 //Obtener los datos del ingreso
@@ -663,12 +666,8 @@
                 axios.get(url).then(function (response) {
                     var respuesta= response.data;
                     arrayEmpleadoT = respuesta.venta;
-                    me.cliente = arrayEmpleadoT[0]['nombre'];
-                    me.tipo_comprobante=arrayEmpleadoT[0]['tipo_comprobante'];
-                    me.serie_comprobante=arrayEmpleadoT[0]['serie_comprobante'];
-                    me.num_comprobante=arrayEmpleadoT[0]['num_comprobante'];
-                    me.impuesto=arrayEmpleadoT[0]['impuesto'];
-                    me.total=arrayEmpleadoT[0]['total'];
+                    me.nombre = arrayEmpleadoT[0]['nombre'];
+                    
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -684,16 +683,18 @@
                 })
                 .catch(function (error) {
                     console.log(error);
-                });               
+                });  */             
             },
             cerrarModal(){
                 this.modal=0;
                 this.tituloModal='';
             }, 
-            modificar(data = []){
+            modificarEmpleado(data = []){
                 let me = this;
                 me.listado=0;
-                me.errorMostrarMsjEmpleado=[];               
+                me.modificar=1;
+                me.errorMostrarMsjEmpleado=[]; 
+                me.id=data['empleado_id'];              
                 me.nombre = data['nombre'];
                 me.apellido=data['apellido'];
                 me.cuil=data['cuil'];
@@ -702,6 +703,7 @@
                 me.fechaAlta=data['fechaAlta'];
                 me.fechaBaja=data['fechaBaja'];
                 me.curriculum=data['curriculum'];
+                
             },
 
         },

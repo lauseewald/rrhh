@@ -90,20 +90,21 @@ class EmpleadoController extends Controller
             $rules = [
                 'apellido' => 'required|max:100',
                 'nombre' => 'required|max:100',
-                'cuil' => 'required|unique:empleados|max:11'
+                'cuil' => 'required|max:11'
                 
             ];
             $messages = [
-                'cuil.unique' => 'Ya se registro un empleado con el :attribute que ingresó.',
+                'nombre.required' => 'Debe ingresar el :attribute .',
+                'apellido.required' => 'Debe ingresar el :attribute .',
             
             ];
             $this->validate($request, $rules, $messages);
             try{
-                
+                if (!$request->ajax()) return redirect('/');
             $empleado = Empleado::findOrFail($request->id);
             $empleado->nombre = $request->nombre;
             $empleado->apellido = $request->apellido;
-            $empleado->id = $request->id;
+            //$empleado->id = $request->id;
             $empleado->fechaAlta = $request->fechaAlta;
             $empleado->fechaNacimiento = $request->fechaNacimiento;
             $empleado->direccion = $request->direccion;
