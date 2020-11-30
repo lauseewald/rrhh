@@ -17,7 +17,7 @@ class CreateDepartamentosTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('descripcion')->nullable();
-
+            $table->boolean('condicion')->default(1);
             $table->unsignedinteger('area_id');
             $table->foreign('area_id')->references('id')->on('areas');
             

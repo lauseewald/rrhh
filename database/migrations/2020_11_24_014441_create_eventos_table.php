@@ -18,13 +18,11 @@ class CreateEventosTable extends Migration
             $table->string('titulo');
             $table->string('descripcion')->nullable();
             $table->dateTime('fecha');
-            
             $table->unsignedinteger('departamento_id')->nullable();
             $table->foreign('departamento_id')->references('id')->on('departamentos');
-
             $table->unsignedinteger('empresa_id')->nullable();
             $table->foreign('empresa_id')->references('id')->on('empresas');
-
+            $table->boolean('condicion')->default(1);
             $table->timestamps();
         });
     }

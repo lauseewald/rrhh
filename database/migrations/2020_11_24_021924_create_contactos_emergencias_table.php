@@ -21,6 +21,7 @@ class CreateContactosEmergenciasTable extends Migration
             $table->string('correo');
             $table->unsignedinteger('empleado_id')->nullable();
             $table->foreign('empleado_id')->references('id')->on('empleados');
+            $table->boolean('condicion')->default(1);
             $table->timestamps();
         });
     }

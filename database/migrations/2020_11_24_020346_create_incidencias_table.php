@@ -18,6 +18,7 @@ class CreateIncidenciasTable extends Migration
             $table->string('nombre');
             $table->integer('diasMaximo');
             $table->integer('diasMinimo');
+            $table->boolean('condicion')->default(1);
             $table->timestamps();
         });
     }

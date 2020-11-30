@@ -20,6 +20,7 @@ class CreateEmpresasTable extends Migration
             $table->string('cuit');
             $table->string('direccion');
             $table->date('inicioActividad');
+            $table->boolean('condicion')->default(1);
             $table->timestamps();
         });
     }

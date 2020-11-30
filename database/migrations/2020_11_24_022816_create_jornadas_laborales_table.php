@@ -24,7 +24,7 @@ class CreateJornadasLaboralesTable extends Migration
 
             $table->unsignedinteger('solicitudInasistencia_id')->nullable();
             $table->foreign('solicitudInasistencia_id')->references('id')->on('solicitudes_inasistencias');
-
+            
             $table->timestamps();
         });
     }

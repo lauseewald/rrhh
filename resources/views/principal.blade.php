@@ -5,11 +5,16 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Sistema Ventas Laravel Vue Js">
+    <meta name="description" content="Sistema Laravel Vue Js">
     <meta name="author" content="Incanatoit.com">
-    <meta name="keyword" content="Sistema ventas Laravel Vue Js, Sistema compras Laravel Vue Js">
+    <meta name="keyword" content="Sistema Laravel Vue Js">
     <link rel="shortcut icon" href="img/Unam-Logo.jpg">
-    <title>Sistema de liquidación de remuneraciones</title>
+    <title>Sistema de nóminas de empleados</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script src="https://unpkg.com/vue-select@latest"></script>
+    <link rel="stylesheet" href="https://unpkg.com/vue-select@latest/dist/vue-select.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <!-- Icons -->
     <link href="css/plantilla.css" rel="stylesheet">
 

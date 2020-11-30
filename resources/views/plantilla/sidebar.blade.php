@@ -8,7 +8,7 @@
                 Mantenimiento
             </li>
             <li class="nav-item nav-dropdown">
-                <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-bag"></i> Gestión de Empleados</a>
+                <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-bag"></i> Empleados</a>
                 <ul class="nav-dropdown-items">
                     <li @click="menu=1" class="nav-item">
                         <a class="nav-link" href="#"><i class="icon-bag"></i> Empleados</a>
@@ -16,11 +16,14 @@
                     <li @click="menu=2" class="nav-item">
                         <a class="nav-link" href="#"><i class="icon-bag"></i> Contratos</a>
                     </li>
+                    <li @click="menu=3" class="nav-item">
+                        <a class="nav-link" href="#"><i class="icon-bag"></i> Incidencias</a>
+                    </li>
                 </ul>
             </li>
 
             <li class="nav-item nav-dropdown">
-                <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-basket"></i> Empleados</a>
+                <a class="nav-link nav-dropdown-toggle" href="#"><i class="cis-calendar"></i> Inasistencias</a>
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
                         <a class="nav-link" href="i#"><i class="icon-basket-loaded"></i> Areas</a>

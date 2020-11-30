@@ -20,7 +20,7 @@ class CreatePuestosTable extends Migration
             $table->float('sueldoBasico');
             $table->unsignedinteger('departamento_id');
             $table->foreign('departamento_id')->references('id')->on('departamentos');
-            
+            $table->boolean('condicion')->default(1);
             $table->timestamps();
         });
     }

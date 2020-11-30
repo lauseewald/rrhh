@@ -22,5 +22,6 @@ class Contrato extends Model
     {
         return $this->belongsTo('App\Puesto');
     }
+  
    
 }

@@ -20,8 +20,9 @@ class CreateEmpleadosTable extends Migration
             $table->string('cuil');
             $table->date('fechaNacimiento');
             $table->date('fechaAlta');
-            $table->date('fechaBaja');
+            $table->date('fechaBaja')->nullable();
             $table->string('direccion');
+            $table->boolean('condicion')->default(1);
             //camino del archivo donde esta el curriculum
             $table->string('curriculum');
 
