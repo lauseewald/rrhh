@@ -9,6 +9,6 @@ class CompetenciaEmpleado extends Model
     protected $table = 'competencias_empleados';
     protected $fillable = [
         'empleado_id',
-        'competencia_id'
+        'competencia_id','condicion'
     ];
 }

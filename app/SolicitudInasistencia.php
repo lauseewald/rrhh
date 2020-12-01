@@ -12,7 +12,6 @@ class SolicitudInasistencia extends Model
         'hasta',
         'motivo',
         'empleado_id',
-        'empleado_id',
-        'incidencia_id'
+        'incidencia_id','condicion'
     ];
 }

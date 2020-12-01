@@ -9,7 +9,7 @@ class Departamento extends Model
     protected $fillable = [
         'nombre',
         'descripcion',
-        'area_id'
+        'area_id','condicion'
     ];
    
 }

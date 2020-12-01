@@ -14,4 +14,13 @@ class Empleado extends Model
     {
         return $this->hasMany('App\CompetenciaEmpleado');
     }
+    public function contratos()
+    {
+        return $this->hasMany(Contrato::class,'empleado_id');
+    }
+    public function solicitudInasistencia()
+    {
+        return $this->hasMany(SolicitudInasistencia::class,'solicitud_inasistencia_id');
+    }
+   
 }

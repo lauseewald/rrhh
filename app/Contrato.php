@@ -16,11 +16,15 @@ class Contrato extends Model
         'puesto_id',
         'contrato',
         'descripcion',
-        'salario'
+        'salario','condicion'
     ];
     public function puesto()
     {
-        return $this->belongsTo('App\Puesto');
+        return $this->belongsTo(Puesto::class,'puesto_id');
+    }
+    public function empleado()
+    {
+        return $this->belongsTo(Empleado::class,'empleado_id');
     }
   
    

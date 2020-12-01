@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Incidencia;
+use Exception;
 
 class IncidenciaController extends Controller
 {
@@ -24,7 +25,6 @@ class IncidenciaController extends Controller
             ->orderBy('nombre', 'desc')->paginate(3);
         }
          
- 
         return [
             'pagination' => [
                 'total'        => $incidencias->total(),
@@ -56,7 +56,7 @@ class IncidenciaController extends Controller
                     $incidencia->diasMinimo = $request->diasMinimo;
                     $incidencia->save();
                 } catch (Exception $e){
-                   
+                    return redirect()->withErrors('Error'); 
                 }        
     }
     public function selectIncidencia(Request $request)
@@ -67,12 +67,12 @@ class IncidenciaController extends Controller
         if ($filtro==''){
             $incidencias = Incidencia::where('condicion', '=', 1)
             ->select('id', 'nombre')
-            ->orderBy('nombre', 'asc')->get();
+            ->orderBy('nombre', 'asc');
         } else {
             $incidencias = Incidencia::where('nombre', 'like', '%'. $filtro . '%')
             ->where('condicion', '=', 1)
             ->select('id', 'nombre')
-            ->orderBy('nombre', 'asc')->get();
+            ->orderBy('nombre', 'asc');
         }
        
         
@@ -92,8 +92,8 @@ class IncidenciaController extends Controller
             $this->validate($request, $rules, $messages);
             try{
                 
-            $incidencia = Incidencia::findOrFail($request->id);
-            $incidencia->nombre = $request->nombre;
+             $incidencia = Incidencia::findOrFail($request->id);
+             $incidencia->nombre = $request->nombre;
             $incidencia->diasMinimo = $request->diasMinimo;
             $incidencia->diasMaximo = $request->diasMaximo;
             $incidencia->condicion = '1';
@@ -101,7 +101,7 @@ class IncidenciaController extends Controller
             
             
         } catch (Exception $e){
-           
+            return redirect()->withErrors('Error');
         }
     }
     public function desactivar(Request $request)

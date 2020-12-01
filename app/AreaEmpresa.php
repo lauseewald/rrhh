@@ -8,7 +8,7 @@ class AreaEmpresa extends Model
 {
     protected $table = 'areas_empresas';
     protected $fillable = [
-        'area_id'
+        'area_id','condicion'
     ];
 
    

@@ -15,11 +15,13 @@ class CreateCompetenciasEmpleadosTable extends Migration
     {
         Schema::create('competencias_empleados', function (Blueprint $table) {
             $table->increments('id');
-
+            
             $table->unsignedinteger('empleado_id')->nullable();
             $table->foreign('empleado_id')->references('id')->on('empleados');
             $table->unsignedinteger('competencia_id')->nullable();
             $table->foreign('competencia_id')->references('id')->on('competencias');
+            $table->boolean('condicion')->default(1);
+
             $table->timestamps();
         });
     }

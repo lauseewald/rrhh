@@ -8,5 +8,5 @@ class Empresa extends Model
 {
     //protected $table = 'empresas';
 
-    protected $fillable = ['nombre', 'razonSocial', 'cuit', 'direccion', 'inicioActividad'];
+    protected $fillable = ['nombre', 'razonSocial', 'cuit', 'direccion', 'inicioActividad','condicion'];
 }

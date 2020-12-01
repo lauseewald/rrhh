@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Incidencia extends Model
 {
-    protected $fillable = ['nombre', 'diasMaximo', 'diasMinimo'];
+    protected $fillable = ['nombre', 'diasMaximo', 'diasMinimo','condicion'];
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Empleado;
+use Exception;
 use Illuminate\Support\Facades\DB;
 class EmpleadoController extends Controller
 {
@@ -80,7 +81,7 @@ class EmpleadoController extends Controller
                     //$empleado->curriculum = $fileName;
                     $empleado->save();
                 } catch (Exception $e){
-                   
+                    return redirect()->withErrors('Error');
                 }
                
     }
@@ -115,7 +116,7 @@ class EmpleadoController extends Controller
             
             
         } catch (Exception $e){
-           
+            return redirect()->withErrors('Error');
         }
     }
     public function desactivar(Request $request)

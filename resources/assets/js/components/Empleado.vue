@@ -354,7 +354,6 @@
                 console.log("en select");
                 let me=this;
                 loading(true)
-                console.log("en select");
                 var url= '/incidencia/selectIncidencia?filtro='+search;
                 axios.get(url).then(function (response) {
                     let respuesta = response.data;

@@ -23,6 +23,7 @@ class CreateSolicitudesInasistenciasTable extends Migration
             //verificar en el mes si la cantidad de dias faltados corresponde a los dias de licencias
             $table->unsignedinteger('empleado_id')->nullable();
             $table->foreign('empleado_id')->references('id')->on('empleados');
+            $table->boolean('condicion')->default(1);
 
             $table->timestamps();
         });

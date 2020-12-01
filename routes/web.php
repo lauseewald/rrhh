@@ -21,6 +21,34 @@ Route::put('/empleado/actualizar', 'EmpleadoController@update');
 Route::put('/empleado/desactivar', 'EmpleadoController@desactivar');
 Route::put('/empleado/activar', 'EmpleadoController@activar');
 
+//Contrato
+Route::get('/contrato', 'ContratoController@index');
+Route::post('/contrato/registrar', 'ContratoController@store');
+Route::put('/contrato/actualizar', 'ContratoController@update');
+Route::put('/contrato/desactivar', 'ContratoController@desactivar');
+Route::put('/contrato/activar', 'ContratoController@activar');
+
+//Empresa
+Route::get('/empresa', 'EmpresaController@index');
+Route::post('/empresa/registrar', 'EmpresaController@store');
+Route::put('/empresa/actualizar', 'EmpresaController@update');
+Route::put('/empresa/desactivar', 'EmpresaController@desactivar');
+Route::put('/empresa/activar', 'EmpresaController@activar');
+
+//Area
+Route::get('/area', 'AreaController@index');
+Route::post('/area/registrar', 'AreaController@store');
+Route::put('/area/actualizar', 'AreaController@update');
+Route::put('/area/desactivar', 'AreaController@desactivar');
+Route::put('/area/activar', 'AreaController@activar');
+
+//Area
+Route::get('/area', 'AreaController@index');
+Route::post('/area/registrar', 'AreaController@store');
+Route::put('/area/actualizar', 'AreaController@update');
+Route::put('/area/desactivar', 'AreaController@desactivar');
+Route::put('/area/activar', 'AreaController@activar');
+
 //Incidencia
 Route::get('/incidencia', 'IncidenciaController@index');
 Route::post('/incidencia/registrar', 'IncidenciaController@store');

@@ -12,6 +12,6 @@ class ContactoEmergencia extends Model
         'telefono1',
         'telefono2',
         'correo',
-        'empleado_id'
+        'empleado_id','condicion'
     ];
 }

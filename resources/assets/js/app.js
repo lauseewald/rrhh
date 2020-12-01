@@ -18,6 +18,7 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('empleado', require('./components/Empleado.vue'));
 Vue.component('incidencia', require('./components/Incidencia.vue'));
+Vue.component('contrato', require('./components/Contrato.vue'));
 const app = new Vue({
     el: '#app',
     data: {

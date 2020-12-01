@@ -8,8 +8,8 @@
                 <!-- Ejemplo de tabla Listado -->
                 <div class="card">
                     <div class="card-header">
-                        <i class="fa fa-align-justify"></i> Incidencias
-                        <button type="button" @click="abrirModal('incidencia','registrar')" class="btn btn-secondary">
+                        <i class="fa fa-align-justify"></i> Contrato
+                        <button type="button" @click="abrirModal('contrato','registrar')" class="btn btn-secondary">
                             <i class="icon-plus"></i>&nbsp;Nuevo
                         </button>
                     </div>
@@ -22,30 +22,39 @@
                                     <option value="nombre">Nombre</option>
                                    
                                     </select>
-                                    <input type="text" v-model="buscar" @keyup.enter="listarIncidencia(1,buscar,criterio)" class="form-control" placeholder="Texto a buscar">
-                                    <button type="submit" @click="listarIncidencia(1,buscar,criterio)" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
+                                    <input type="text" v-model="buscar" @keyup.enter="listarTabla(1,buscar,criterio)" class="form-control" placeholder="Texto a buscar">
+                                    <button type="submit" @click="listarTabla(1,buscar,criterio)" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
                                 </div>
                             </div>
                         </div>
                         <table class="table table-bordered table-striped table-sm">
                             <thead>
                                 <tr>
+                                    <th>Empleado</th>
                                     <th>Nombre</th>
-                                    <th>Días Mínimo</th>
-                                    <th>Días máximo</th>
-                                    <th>Estado</th>
+                                    <th>Puesto</th>
+                                    <th>Horas Laborales</th>
+                                    <th>Salario</th>
+                                    <th>Inicio Laboral</th>
+                                    <th>Exitinción de Contrato</th>
+                                    <th>Contrato</th>
+                                    <th>Condición</th>
                                     <th>Opciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="incidencia in arrayIncidencia" :key="incidencia.id">
+                                <tr v-for="contrato in arrayContrato" :key="contrato.id">
                                    
-                                    <td v-text="incidencia.nombre"></td>
-                                    <td v-text="incidencia.diasMinimo"></td>
-                                    <td v-text="incidencia.diasMaximo"></td>
+                                    <td v-text="contrato.empleado.apellido+ ' ' + contrato.empleado.nombre"></td>
+                                    <td v-text="contrato.nombre"></td>
+                                    <td v-text="contrato.puesto.nombre"></td>
+                                    <td v-text="contrato.cantidadHorasDiarias"></td>
+                                    <td v-text="contrato.salario"></td>
+                                    <td v-text="contrato.inicioLaboral"></td>
+                                    <td v-text="contrato.finLaboral"></td>
                                  
                                     <td>
-                                        <div v-if="incidencia.condicion">
+                                        <div v-if="contrato.condicion">
                                             <span class="badge badge-success">Activo</span>
                                         </div>
                                         <div v-else>
@@ -53,16 +62,16 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <button type="button" @click="abrirModal('incidencia','actualizar',incidencia)" class="btn btn-warning btn-sm">
+                                        <button type="button" @click="abrirModal('contrato','actualizar',contrato)" class="btn btn-warning btn-sm">
                                           <i class="icon-pencil"></i>
                                         </button> &nbsp;
-                                        <template v-if="incidencia.condicion">
-                                            <button type="button" class="btn btn-danger btn-sm" @click="desactivarIncidencia(incidencia.id)">
+                                        <template v-if="contrato.condicion">
+                                            <button type="button" class="btn btn-danger btn-sm" @click="desactivarContrato(contrato.id)">
                                                 <i class="icon-trash"></i>
                                             </button>
                                         </template>
                                         <template v-else>
-                                            <button type="button" class="btn btn-info btn-sm" @click="activarIncidencia(incidencia.id)">
+                                            <button type="button" class="btn btn-info btn-sm" @click="activarContrato(contrato.id)">
                                                 <i class="icon-check"></i>
                                             </button>
                                         </template>
@@ -99,37 +108,60 @@
                         </div>
                         <div class="modal-body">
                             <form id="modal-form" action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                 <select class="form-control" v-model="idempleado">
+                                    <option value="0" disabled>Seleccione</option>
+                                    <option v-for="empleado in arrayEmpleado" :key="empleado.id" :value="empleado.id" v-text="empleado.apellido + ' ' + empleado.nombre"></option>
+                                </select>   
                                 <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="text-input">Nombre (*)</label>
                                     <div class="col-md-9">
-                                        <input type="text" v-model="nombre" class="form-control" placeholder="Nombre de la incidencia">
+                                        <input type="text" v-model="nombre" class="form-control" placeholder="Nombre del contrato">
                                         
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="text-input">Días Mínimo (*)</label>
+                                    
+                                <select class="form-control" v-model="idpuesto">
+                                    <option value="0" disabled>Seleccione</option>
+                                    <option v-for="puesto in arraypuesto" :key="puesto.id" :value="puesto.id" v-text="empleado.nombre"></option>
+                                </select>
+                                 <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="text-input">Horas Laborales (*)</label>
                                     <div class="col-md-9">
-                                        <input type="text" v-model="diasMinimo" class="form-control" placeholder="Ingrese la cantidad de días mínimos que  incidencia">
+                                        <input type="text" v-model="cantidadHorasLaborales" class="form-control" placeholder="Cantidad de horas laborales">
+                                        
                                     </div>
                                 </div>
-                               
-                                <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="text-input">Días Máximo (*)</label>
+                                 <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="text-input">Salario (*)</label>
                                     <div class="col-md-9">
-                                        <input type="text" v-model="diasMaximo" class="form-control" placeholder="Ingrese la cantidad de días máximo que puede tener la incidencia">
+                                        <input type="text" v-model="salario" class="form-control" placeholder="Salario laboral">
+                                        
                                     </div>
                                 </div>
-                               
+                            <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label >Fecha Inicio Laboral (*)</label>
+                                        <input type="date" class="form-control" v-model="inicioLaboral" >
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label >Fecha final del contrato (*)</label>
+                                        <input type="date" class="form-control" v-model="finLaboral" >
+                                </div>
+                            </div>
+                                 <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="text-input">Contrato </label>
+                                    <div class="col-md-9">
+                                        <input type="text" v-model="contrato" class="form-control" placeholder="Contrato">
+                                        
+                                    </div>
+                                </div>
                                 
-                                <!-- <div class="col-md-7">
-                                    <div class="form-group">
-                                        <label for="data" form action="/data" method="POST" enctype="multipart/form-data">Curriculum (*) </label>
-                                        <input type="file" @change="getImage" id="data" name="data" >            
-                                    </div>
-                                </div> -->
-                                <div v-show="errorIncidencia" class="form-group row div-error">
+                               
+                                <div v-show="errorComponente" class="form-group row div-error">
                                     <div class="text-center text-error">
-                                        <div v-for="error in errorMostrarMsjIncidencia" :key="error" v-text="error">
+                                        <div v-for="error in errorMostrarMsjForm" :key="error" v-text="error">
 
                                         </div>
                                     </div>
@@ -139,8 +171,8 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" @click="cerrarModal()">Cerrar</button>
-                            <button type="button" v-if="tipoAccion==1" class="btn btn-primary" @click="registrarIncidencia()">Guardar</button>
-                            <button type="button" v-if="tipoAccion==2" class="btn btn-primary" @click="actualizarIncidencia()">Actualizar</button>
+                            <button type="button" v-if="tipoAccion==1" class="btn btn-primary" @click="registrarContrato()">Guardar</button>
+                            <button type="button" v-if="tipoAccion==2" class="btn btn-primary" @click="actualizarContrato()">Actualizar</button>
                         </div>
                     </div>
                     <!-- /.modal-content -->
@@ -156,16 +188,23 @@ import toastr from 'toastr';
     export default {
         data (){
             return {
-                incidencia_id: 0,
+                contrato_id: 0,
                 nombre : '',
-                diasMinimo : '',
-                diasMaximo : '',
-                arrayIncidencia : [],
+                arrayPuesto : [],
+                arrayEmpleado : [],
+                arrayContrato : [],
+                cantidadHorasLaborales : 0,
+                salario : 0.0,
+                inicioLaboral : new Date(),
+                finLaboral : new Date(),
+                contrato : '',
+                idpuesto : 0,
+                idempleado : 0,
                 modal : 0,
                 tituloModal : '',
                 tipoAccion : 0,
-                errorIncidencia : 0,
-                errorMostrarMsjIncidencia : [],
+                errorComponente : 0,
+                errorMostrarMsjForm : [],
                 pagination : {
                     'total' : 0,
                     'current_page' : 0,
@@ -209,12 +248,15 @@ import toastr from 'toastr';
             }
         },
         methods : {
-            listarIncidencia (page,buscar,criterio){
+            listarTabla (page,buscar,criterio){
+                this.listarContrato(page,buscar,criterio);
+            },
+            listarContrato (page,buscar,criterio){
                 let me=this;
-                var url= '/incidencia?page=' + page + '&buscar='+ buscar + '&criterio='+ criterio;
+                var url= '/contrato?page=' + page + '&buscar='+ buscar + '&criterio='+ criterio;
                 axios.get(url).then(function (response) {
                     var respuesta= response.data;
-                    me.arrayIncidencia = respuesta.incidencias.data;
+                    me.arrayContrato = respuesta.contratos.data;
                     me.pagination= respuesta.pagination;
                 })
                 .catch(function (error) {
@@ -226,51 +268,61 @@ import toastr from 'toastr';
                 //Actualiza la página actual
                 me.pagination.current_page = page;
                 //Envia la petición para visualizar la data de esa página
-                me.listarIncidencia(page,buscar,criterio);
+                me.listarTabla(page,buscar,criterio);
             },
-            registrarIncidencia(){
+            registrarContrato(){
                 let me = this;
-                if (this.validarIncidencia()){
+                if (this.validarForm()){
                     return;
                 }
-                axios.post('/incidencia/registrar',{
-                    'nombre': this.nombre,
-                    'diasMinimo': this.diasMinimo,
-                    'diasMaximo': this.diasMaximo
+                axios.post('/contrato/registrar',{
+                'nombre': this.nombre,
+                'idpuesto': this.idpuesto,
+                'idempleado ': this.idempleado,
+                'cantidadHorasLaborales ': this.cantidadHorasLaborales,
+                'salario ': this.salario,
+                'inicioLaboral ': this.inicioLaboral,
+                'finLaboral ': this.finLaboral,
+                'contrato ': this.contrato
                 }).then(function (response) {
                     me.cerrarModal();
-                    me.listarIncidencia(1,'','nombre');
-                    toastr.success('Se ha registrado la incidencia', 'Actualizado', {timeOut: 5000})
+                    me.listarTabla(1,'','nombre');
+                    toastr.success('Se ha registrado el contrato', 'Actualizado', {timeOut: 5000})
                 }).catch(function (error) {
                     console.log(error);
                     toastr.error('Ha ocurrido un error', 'Error', {timeOut: 5000})
                 });
             },
-            actualizarIncidencia(){
+            actualizarContrato(){
 
                 console.log('prueba');
-               if (this.validarIncidencia()){
+               if (this.validarForm()){
                     return;
                 }
                 
                 let me = this;
-                axios.put('/incidencia/actualizar',{
-                    'nombre': this.nombre,
-                    'diasMinimo': this.diasMinimo,
-                    'diasMaximo': this.diasMaximo,
-                    'id': this.incidencia_id
+                axios.put('/contrato/actualizar',{
+                'nombre': this.nombre,
+                'idpuesto': this.idpuesto,
+                'idempleado ': this.idempleado,
+                'cantidadHorasLaborales ': this.cantidadHorasLaborales,
+                'salario ': this.salario,
+                'inicioLaboral ': this.inicioLaboral,
+                'finLaboral ': this.finLaboral,
+                'contrato ': this.contrato,
+                'id': this.contrato_id
                 }).then(function (response) {
                     me.cerrarModal();
-                    me.listarIncidencia(1,'','nombre');
+                    me.listarTabla(1,'','nombre');
                     toastr.success('Se ha actualizado con exito', 'Actualizado', {timeOut: 5000})
                 }).catch(function (error) {
                     console.log(error);
                     toastr.error('Ha ocurrido un error', 'Error', {timeOut: 5000})
                 }); 
             },
-            desactivarIncidencia(id){
+            desactivarContrato(id){
                swal({
-                title: 'Esta seguro de desactivar esta incidencia?',
+                title: 'Esta seguro de desactivar este Contrato?',
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -285,13 +337,13 @@ import toastr from 'toastr';
                 if (result.value) {
                     let me = this;
 
-                    axios.put('/incidencia/desactivar',{
+                    axios.put('/contrato/desactivar',{
                         'id': id
                     }).then(function (response) {
-                        me.listarIncidencia(1,'','nombre');
+                        me.listarTabla(1,'','nombre');
                         swal(
                         'Desactivado!',
-                        'La incidencia se ha desactivado con éxito.',
+                        'El contrato se ha desactivado con éxito.',
                         'success'
                         )
                     }).catch(function (error) {
@@ -307,9 +359,9 @@ import toastr from 'toastr';
                 }
                 }) 
             },
-            activarIncidencia(id){
+            activarContrato(id){
                swal({
-                title: 'Esta seguro de activar este incidencia?',
+                title: 'Esta seguro de activar este contrato?',
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -324,13 +376,13 @@ import toastr from 'toastr';
                 if (result.value) {
                     let me = this;
 
-                    axios.put('/incidencia/activar',{
+                    axios.put('/contrato/activar',{
                         'id': id
                     }).then(function (response) {
-                        me.listarIncidencia(1,'','nombre');
+                        me.listarTabla(1,'','nombre');
                         swal(
                         'Activado!',
-                        'La incidencia se ha activado con éxito.',
+                        'El Contrato se ha activado con éxito.',
                         'success'
                         )
                     }).catch(function (error) {
@@ -348,48 +400,69 @@ import toastr from 'toastr';
             },
             
             
-            validarIncidencia(){
-                this.errorIncidencia=0;
-                this.errorMostrarMsjIncidencia =[];
-
-                if (!this.nombre) this.errorMostrarMsjIncidencia.push("Debe ingresar el nombre de la incidencia");
-                if (!this.diasMinimo) this.errorMostrarMsjIncidencia.push("Debe ingresar la cantidad de días mínimos");
-                if (!this.diasMaximo) this.errorMostrarMsjIncidencia.push("Debe ingresar la cantidad de días máximos");
-                if (this.errorMostrarMsjIncidencia.length) this.errorIncidencia = 1;
-                return this.errorIncidencia;
+            validarForm(){
+                this.errorComponente=0;
+                this.errorMostrarMsjForm =[];
+                if (!this.nombre) this.errorMostrarMsjForm.push("Debe ingresar el nombre del Contrato");
+                if (this.cantidadHorasLaborales>0) this.errorMostrarMsjForm.push("Debe ingresar una cantidad de horas de trabajo");
+                if (this.salario> 0.0) this.errorMostrarMsjForm.push("Debe ingresar un salario mayor a 0.0");
+                if (this.idpuesto> 0) this.errorMostrarMsjForm.push("Debe seleccionar un puesto");
+                if (this.idempleado> 0) this.errorMostrarMsjForm.push("Debe seleccionar un empleado");
+                if (this.inicioLaboral === null) this.errorMostrarMsjForm.push("Debe seleccionar una fecha inicial");
+                if (this.finLaboral === null) this.errorMostrarMsjForm.push("Debe seleccionar una fecha final del contrato");
+                if (this.inicioLaboral.getTime() > Date().getTime()) this.errorMostrarMsjForm.push("La fecha del contrato debe ser mayor a hoy");
+                if (this.finLaboral.getTime() > this.inicioLaboral.getTime()) this.errorMostrarMsjForm.push("La fecha de expirasión del contrato tiene que ser mayor al dia Inicial");
+                if (this.errorMostrarMsjForm.length) this.errorComponente = 1;
+                return this.errorComponente;
             },
             cerrarModal(){
                 this.modal=0;
                 this.tituloModal='';
                 this.nombre='';
-                this.diasMinimo='';
-                this.diasMaximo='';
+                this.idpuesto=0;
+                this.idempleado=0;
+                this.cantidadHorasLaborales=0;
+                this.salario=0.0;
+                this.inicioLaboral= new Date();
+                this.finLaboral= new Date();
+                this.contrato = '';
             },
             
             abrirModal(modelo, accion, data = []){
                 switch(modelo){
-                    case "incidencia":
+                    case "contrato":
                     {
                         switch(accion){
                             case 'registrar':
                             {
                                 this.modal = 1;
-                                this.tituloModal = 'Registrar incidencia';
-                                this.nombre= '';
-                                this.diasMinimo='';
-                                this.diasMaximo='';
+                                this.tituloModal = 'Registrar Contrato';
+                                this.nombre='';
+                                this.idpuesto=0;
+                                this.idempleado=0;
+                                this.cantidadHorasLaborales=0;
+                                this.salario=0.0;
+                                this.inicioLaboral= new Date();
+                                this.finLaboral= new Date();
+                                this.contrato = '';
                                 this.tipoAccion = 1;
                                 break;
                             }
                             case 'actualizar':
                             {
                                 this.modal=1;
-                                this.tituloModal='Actualizar incidencia';
+                                this.tituloModal='Actualizar contrato';
                                 this.tipoAccion=2;
-                                this.incidencia_id=data['id'];
-                                this.nombre = data['nombre'];
-                                this.diasMinimo= data['diasMinimo'];
-                                this.diasMaximo= data['diasMaximo'];
+
+                                this.contrato_id=data['id'];
+                                this.nombre = data['nombre'];  
+                                this.idpuesto=data['puesto_id'];
+                                this.idempleado=data['empleado_id'];
+                                this.cantidadHorasLaborales=data['cantidadHorasLaborales'];
+                                this.salario=data['salario'];
+                                this.inicioLaboral= data['inicioLaboral'];
+                                this.finLaboral= data['finLaboral'];
+                                this.contrato = data['contrato'];
                                 break;
                             }
                         }
@@ -399,7 +472,7 @@ import toastr from 'toastr';
             
         },
         mounted() {
-            this.listarIncidencia(1,this.buscar,this.criterio);
+            this.listarTabla(1,this.buscar,this.criterio);
         }
     }
 </script>

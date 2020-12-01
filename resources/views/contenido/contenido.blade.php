@@ -7,7 +7,7 @@
     <empleado></empleado>
 </template>
 <template v-if="menu==2">
-    contratos
+    {{-- <contrato></contrato> --}}
 </template>
 <template v-if="menu==3">
     <incidencia></incidencia>
