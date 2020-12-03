@@ -28,7 +28,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="i#"><i class="icon-basket-loaded"></i> Areas</a>
                     </li>
-                    <li @click="menu=puesto" class="nav-item">
+                    <li @click="menu='puesto'" class="nav-item">
                         <a class="nav-link" href="#"><i class="icon-notebook"></i> Puestos</a>
                     </li>
                 </ul>
