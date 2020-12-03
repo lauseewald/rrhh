@@ -23,10 +23,21 @@ class ContratoController extends Controller
         $criterio = $request->criterio;
          
         if ($buscar=='') {
-            $contratos = Contrato::orderBy('nombre', 'desc')->paginate(3);
+            $contratos = Contrato::join('empleados','contratos.empleado_id','=','empleados.id')
+            ->join('puestos','contratos.puesto_id','=','puestos.id')
+            ->select('contratos.nombre as nombreContrato', 'puestos.nombre as nombrePuesto', 'empleados.nombre as nombreEmpleado',
+             'empleados.apellido as apellidoEmpleado', 'contratos.inicioLaboral', 'contratos.finLaboral', 'contratos.cantidadHorasDiarias',
+              'contratos.descripcion as descripcion contratos', 'contratos.salario')
+            ->orderBy('contratos.nombre', 'desc')->paginate(3);
+            
         } else {
-            $contratos = Contrato::where($criterio, 'like', '%'. $buscar . '%')
-            ->orderBy('nombre', 'desc')->paginate(3);
+            $contratos = Contrato::join('empleados','contratos.empleado_id','=','empleados.id')
+            ->join('puestos','contratos.puesto_id','=','puestos.id')
+            ->select('contratos.nombre as nombreContrato', 'puestos.nombre as nombrePuesto', 'empleados.nombre as nombreEmpleado',
+             'empleados.apellido as apellidoEmpleado', 'contratos.inicioLaboral', 'contratos.finLaboral', 'contratos.cantidadHorasDiarias',
+              'contratos.descripcion as descripcion contratos', 'contratos.salario')
+            ->where('contratos.'.$criterio, 'like', '%'. $buscar . '%')
+            ->orderBy('contratos.nombre', 'desc')->paginate(3);
         }
          
         return [

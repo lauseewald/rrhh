@@ -55436,7 +55436,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var respuesta = response.data;
                 me.arrayContrato = respuesta.contratos.data;
                 me.pagination = respuesta.pagination;
-                console.log(response.data);
+                console.log("zrray contrato" + me.arrayContrato);
             }).catch(function (error) {
                 console.log(error);
             });
@@ -55789,19 +55789,19 @@ var render = function() {
                     _c("td", {
                       domProps: {
                         textContent: _vm._s(
-                          contrato.empleado.apellido +
+                          contrato.apellidoEmpleado +
                             " " +
-                            contrato.empleado.nombre
+                            contrato.nombreEmpleado
                         )
                       }
                     }),
                     _vm._v(" "),
                     _c("td", {
-                      domProps: { textContent: _vm._s(contrato.nombre) }
+                      domProps: { textContent: _vm._s(contrato.nombreContrato) }
                     }),
                     _vm._v(" "),
                     _c("td", {
-                      domProps: { textContent: _vm._s(contrato.nombre) }
+                      domProps: { textContent: _vm._s(contrato.nombrePuesto) }
                     }),
                     _vm._v(" "),
                     _c("td", {
@@ -56484,8 +56484,6 @@ var staticRenderFns = [
         _c("th", [_vm._v("Inicio Laboral")]),
         _vm._v(" "),
         _c("th", [_vm._v("Exitinción de Contrato")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Contrato")]),
         _vm._v(" "),
         _c("th", [_vm._v("Condición")]),
         _vm._v(" "),

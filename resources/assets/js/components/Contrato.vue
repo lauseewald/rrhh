@@ -37,7 +37,7 @@
                                     <th>Salario</th>
                                     <th>Inicio Laboral</th>
                                     <th>Exitinción de Contrato</th>
-                                    <th>Contrato</th>
+                                    
                                     <th>Condición</th>
                                     <th>Opciones</th>
                                 </tr>
@@ -45,9 +45,9 @@
                             <tbody>
                                 <tr v-for="contrato in arrayContrato" :key="contrato.id">
                                    
-                                    <td v-text="contrato.empleado.apellido+ ' ' + contrato.empleado.nombre"></td>
-                                    <td v-text="contrato.nombre"></td>
-                                    <td v-text="contrato.nombre"></td>
+                                    <td v-text="contrato.apellidoEmpleado+ ' ' + contrato.nombreEmpleado"></td>
+                                    <td v-text="contrato.nombreContrato"></td>
+                                    <td v-text="contrato.nombrePuesto"></td>
                                     <td v-text="contrato.cantidadHorasDiarias"></td>
                                     <td v-text="contrato.salario"></td>
                                     <td v-text="contrato.inicioLaboral"></td>
@@ -264,7 +264,7 @@ import toastr from 'toastr';
                     var respuesta= response.data;
                     me.arrayContrato = respuesta.contratos.data;
                     me.pagination= respuesta.pagination;
-                    console.log(response.data)
+                    console.log("zrray contrato" + me.arrayContrato)
                 })
                 .catch(function (error) {
                     console.log(error);
