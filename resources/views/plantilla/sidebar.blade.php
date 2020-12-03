@@ -23,12 +23,12 @@
             </li>
 
             <li class="nav-item nav-dropdown">
-                <a class="nav-link nav-dropdown-toggle" href="#"><i class="cis-calendar"></i> Inasistencias</a>
+                <a class="nav-link nav-dropdown-toggle" href="#"><i class="cis-calendar"></i> Estructura</a>
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
                         <a class="nav-link" href="i#"><i class="icon-basket-loaded"></i> Areas</a>
                     </li>
-                    <li class="nav-item">
+                    <li @click="menu=puesto" class="nav-item">
                         <a class="nav-link" href="#"><i class="icon-notebook"></i> Puestos</a>
                     </li>
                 </ul>
@@ -56,10 +56,12 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="main.html"><i class="icon-book-open"></i> Ayuda <span class="badge badge-danger">PDF</span></a>
+                <a class="nav-link" href="main.html"><i class="icon-book-open"></i> Ayuda <span
+                        class="badge badge-danger">PDF</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="main.html"><i class="icon-info"></i> Acerca de...<span class="badge badge-info">IT</span></a>
+                <a class="nav-link" href="main.html"><i class="icon-info"></i> Acerca de...<span
+                        class="badge badge-info">IT</span></a>
             </li>
         </ul>
     </nav>

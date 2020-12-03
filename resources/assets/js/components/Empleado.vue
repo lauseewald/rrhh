@@ -97,7 +97,7 @@
                     <div class="card-body">
                         <div class="form-group row border">
                             <div class="col-md-9">
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="">Prueba(*)</label>
                                     <v-select
                                         :on-search="listarIncidencia"
@@ -107,7 +107,7 @@
                                         :onChange="getDatosIncidencia"                                        
                                     >
                                     </v-select>
-                                </div>
+                                </div> -->
                             </div>
                             <div  class="col-md-9">
                              <label>Incidencia</label>
@@ -343,29 +343,29 @@
                     let respuesta = response.data;
                     //q: search
                     me.arrayIncidencia=respuesta.incidencias;
-                    console.log(respuesta.incidencias);
+                    console.log(response.data.incidencias[0].nombre);
                     //loading(false)
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
             },
-            listarIncidencia (search,loading){
-                console.log("en select");
-                let me=this;
-                loading(true)
-                var url= '/incidencia/selectIncidencia?filtro='+search;
-                axios.get(url).then(function (response) {
-                    let respuesta = response.data;
-                    q: search
-                    me.arrayIncidencia=respuesta.incidencias;
-                    console.log(respuesta.incidencias);
-                    loading(false)
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-            },
+            // listarIncidencia (search,loading){
+            //     console.log("en select");
+            //     let me=this;
+            //     loading(true)
+            //     var url= '/incidencia/selectIncidencia?filtro='+search;
+            //     axios.get(url).then(function (response) {
+            //         let respuesta = response.data;
+            //         q: search
+            //         me.arrayIncidencia=respuesta.incidencias;
+            //         console.log(respuesta.incidencias);
+            //         loading(false)
+            //     })
+            //     .catch(function (error) {
+            //         console.log(error);
+            //     });
+            // },
             getDatosIncidencia(val1){
                 let me = this;
                 me.loading = true;

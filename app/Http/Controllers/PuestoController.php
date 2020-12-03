@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Contrato;
+use App\Puesto;
 use Exception;
 use Illuminate\Http\Request;
 
-class ContratoController extends Controller
+class PuestoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,22 +23,22 @@ class ContratoController extends Controller
         $criterio = $request->criterio;
          
         if ($buscar=='') {
-            $contratos = Contrato::orderBy('nombre', 'desc')->paginate(3);
+            $puestos = Puesto::orderBy('nombre', 'desc')->paginate(3);
         } else {
-            $contratos = Contrato::where($criterio, 'like', '%'. $buscar . '%')
+            $puestos = Puesto::where($criterio, 'like', '%'. $buscar . '%')
             ->orderBy('nombre', 'desc')->paginate(3);
         }
          
         return [
             'pagination' => [
-                'total'        => $contratos->total(),
-                'current_page' => $contratos->currentPage(),
-                'per_page'     => $contratos->perPage(),
-                'last_page'    => $contratos->lastPage(),
-                'from'         => $contratos->firstItem(),
-                'to'           => $contratos->lastItem(),
+                'total'        => $puestos->total(),
+                'current_page' => $puestos->currentPage(),
+                'per_page'     => $puestos->perPage(),
+                'last_page'    => $puestos->lastPage(),
+                'from'         => $puestos->firstItem(),
+                'to'           => $puestos->lastItem(),
             ],
-            'contratos' => $contratos
+            'puestos' => $puestos
         ];
     }
 
@@ -60,11 +60,12 @@ class ContratoController extends Controller
      */
     public function store(Request $request)
     {
+        
         if (!$request->ajax()) {
             return redirect('/');
         }
         $rules = [
-                  'nombre' => 'required|unique:contratos|max:50'
+                  'nombre' => 'required|unique:puestos|max:50'
             ];
         $messages = [
                 'nombre.unique' => 'Ya se registro  con el :attribute que ingresó.',
@@ -74,22 +75,19 @@ class ContratoController extends Controller
             if (!$request->ajax()) {
                 return redirect('/');
             }
-            $contrato = new Contrato();
-            $contrato->nombre = $request->nombre;
-            $contrato->idpuesto=$request->idpuesto;
-            $contrato->idempleado=$request->idempleado;
-            $contrato->cantidadHorasLaborales=$request->cantidadHorasLaborales;
-            $contrato->salario=$request->salario;
-            $contrato->inicioLaboral= $request->inicioLaboral;
-            $contrato->finLaboral= $request->finLaboral;
-            $contrato->contrato = $request->contrato;
-            $contrato->save();
+            $puesto = new Puesto();
+            $puesto->nombre = $request->nombre;
+            $puesto->descipcion = $request->descipcion;
+            $puesto->sueldoBasico = $request->sueldoBasico;
+            $puesto->departamento_id = $request->departamento_id;
+            
+            $puesto->save();
         } catch (Exception $e) {
             return redirect()->withErrors('Error');
         }
     }
 
-    public function selectContrato(Request $request)
+    public function selectPuesto(Request $request)
     {
         if (!$request->ajax()) {
             return redirect('/');
@@ -97,25 +95,24 @@ class ContratoController extends Controller
  
         $filtro = $request->filtro;
         if ($filtro=='') {
-            $contratos = Contrato::where('condicion', '=', 1)
+            $puestos = Puesto::where('condicion', '=', 1)
             ->orderBy('nombre', 'asc')->get();
         } else {
-            $contratos = Contrato::where('nombre', 'like', '%'. $filtro . '%')
+            $puestos = Puesto::where('nombre', 'like', '%'. $filtro . '%')
             ->where('condicion', '=', 1)
             ->orderBy('nombre', 'asc')->get();
         }
        
         
-        return ['contratos' => $contratos];
+        return ['puestos' => $puestos];
     }
-
     /**
      * Display the specified resource.
      *
-     * @param  \App\Contrato  $contrato
+     * @param  \App\Puesto  $puesto
      * @return \Illuminate\Http\Response
      */
-    public function show(Contrato $contrato)
+    public function show(Puesto $puesto)
     {
         //
     }
@@ -123,10 +120,10 @@ class ContratoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Contrato  $contrato
+     * @param  \App\Puesto  $puesto
      * @return \Illuminate\Http\Response
      */
-    public function edit(Contrato $contrato)
+    public function edit(Puesto $puesto)
     {
         //
     }
@@ -135,11 +132,12 @@ class ContratoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Contrato  $contrato
+     * @param  \App\Puesto  $puesto
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
     {
+        
         if (!$request->ajax()) {
             return redirect('/');
         }
@@ -153,17 +151,12 @@ class ContratoController extends Controller
         ];
         $this->validate($request, $rules, $messages);
         try {
-            $contrato = Contrato::findOrFail($request->id);
-            $contrato->nombre = $request->nombre;
-            $contrato->nombre = $request->nombre;
-            $contrato->idpuesto=$request->idpuesto;
-            $contrato->idempleado=$request->idempleado;
-            $contrato->cantidadHorasLaborales=$request->cantidadHorasLaborales;
-            $contrato->salario=$request->salario;
-            $contrato->inicioLaboral= $request->inicioLaboral;
-            $contrato->finLaboral= $request->finLaboral;
-            $contrato->contrato = $request->contrato;
-            $contrato->save();
+            $puesto = Puesto::findOrFail($request->id);
+            $puesto->nombre = $request->nombre;
+            $puesto->descipcion = $request->descipcion;
+            $puesto->sueldoBasico = $request->sueldoBasico;
+            $puesto->departamento_id = $request->departamento_id;
+            $puesto->save();
         } catch (Exception $e) {
             return redirect()->withErrors('Error');
         }
@@ -171,25 +164,26 @@ class ContratoController extends Controller
     public function desactivar(Request $request)
     {
         if (!$request->ajax()) return redirect('/');
-        $contrato = Contrato::findOrFail($request->id);
-        $contrato->condicion = '0';
-        $contrato->save();
+        $puesto = Puesto::findOrFail($request->id);
+        $puesto->condicion = '0';
+        $puesto->save();
     }
  
     public function activar(Request $request)
     {
         if (!$request->ajax()) return redirect('/');
-        $contrato = Contrato::findOrFail($request->id);
-        $contrato->condicion = '1';
-        $contrato->save();
+        $puesto = Puesto::findOrFail($request->id);
+        $puesto->condicion = '1';
+        $puesto->save();
     }
+
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Contrato  $contrato
+     * @param  \App\Puesto  $puesto
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contrato $contrato)
+    public function destroy(Puesto $puesto)
     {
         //
     }

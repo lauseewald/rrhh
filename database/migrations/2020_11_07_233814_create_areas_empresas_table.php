@@ -17,6 +17,8 @@ class CreateAreasEmpresasTable extends Migration
             $table->increments('id');       
             $table->unsignedinteger('area_id');
             $table->foreign('area_id')->references('id')->on('areas');
+            
+            
             $table->boolean('condicion')->default(1);
 
             $table->timestamps();

@@ -18,6 +18,10 @@ class CreateAreasTable extends Migration
             $table->string('nombre');
             $table->string('descripcion')->nullable();
             $table->boolean('condicion')->default(1);
+            
+            $table->unsignedinteger('empresa_id')->nullable();
+            $table->foreign('empresa_id')->references('id')->on('empresas');
+            
             $table->timestamps();
         });
     }

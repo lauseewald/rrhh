@@ -24,7 +24,7 @@ class CreateEmpleadosTable extends Migration
             $table->string('direccion');
             $table->boolean('condicion')->default(1);
             //camino del archivo donde esta el curriculum
-            $table->string('curriculum');
+            $table->string('curriculum')->nullable();
 
             $table->timestamps();
         });

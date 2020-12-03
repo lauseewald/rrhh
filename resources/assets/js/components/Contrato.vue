@@ -47,7 +47,8 @@
                                    
                                     <td v-text="contrato.empleado.apellido+ ' ' + contrato.empleado.nombre"></td>
                                     <td v-text="contrato.nombre"></td>
-                                    <td v-text="contrato.puesto.nombre"></td>
+                                    <td v-text="contrato.nombre"></td>
+                                    <!-- <td v-text="contrato.puesto.nombre"></td> -->
                                     <td v-text="contrato.cantidadHorasDiarias"></td>
                                     <td v-text="contrato.salario"></td>
                                     <td v-text="contrato.inicioLaboral"></td>
@@ -108,10 +109,13 @@
                         </div>
                         <div class="modal-body">
                             <form id="modal-form" action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="text-input">Empleados (*)</label>
                                  <select class="form-control" v-model="idempleado">
                                     <option value="0" disabled>Seleccione</option>
                                     <option v-for="empleado in arrayEmpleado" :key="empleado.id" :value="empleado.id" v-text="empleado.apellido + ' ' + empleado.nombre"></option>
                                 </select>   
+                                    </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="text-input">Nombre (*)</label>
                                     <div class="col-md-9">
@@ -120,10 +124,13 @@
                                     </div>
                                 </div>
                                     
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="text-input">Puestos (*)</label>
                                 <select class="form-control" v-model="idpuesto">
                                     <option value="0" disabled>Seleccione</option>
-                                    <option v-for="puesto in arraypuesto" :key="puesto.id" :value="puesto.id" v-text="empleado.nombre"></option>
+                                    <option v-for="puesto in arraypuesto" :key="puesto.id" :value="puesto.id" v-text="puesto.nombre"></option>
                                 </select>
+                                </div>
                                  <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="text-input">Horas Laborales (*)</label>
                                     <div class="col-md-9">
@@ -258,6 +265,23 @@ import toastr from 'toastr';
                     var respuesta= response.data;
                     me.arrayContrato = respuesta.contratos.data;
                     me.pagination= respuesta.pagination;
+                    console.log(response.data)
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            }, selectPuesto(){
+                console.log("en select");
+                let me=this;
+                //loading(true)
+                console.log("en select");
+                var url= '/puesto/selectPuesto';
+                axios.get(url).then(function (response) {
+                    let respuesta = response.data;
+                    //q: search
+                    me.arrayPuesto=respuesta.puestos;
+                    console.log(response.data.puestos);
+                    //loading(false)
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -473,6 +497,7 @@ import toastr from 'toastr';
         },
         mounted() {
             this.listarTabla(1,this.buscar,this.criterio);
+            this.selectPuesto();
         }
     }
 </script>
