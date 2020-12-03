@@ -48,7 +48,6 @@
                                     <td v-text="contrato.empleado.apellido+ ' ' + contrato.empleado.nombre"></td>
                                     <td v-text="contrato.nombre"></td>
                                     <td v-text="contrato.nombre"></td>
-                                    <!-- <td v-text="contrato.puesto.nombre"></td> -->
                                     <td v-text="contrato.cantidadHorasDiarias"></td>
                                     <td v-text="contrato.salario"></td>
                                     <td v-text="contrato.inicioLaboral"></td>
@@ -128,7 +127,7 @@
                                     <label class="col-md-3 form-control-label" for="text-input">Puestos (*)</label>
                                 <select class="form-control" v-model="idpuesto">
                                     <option value="0" disabled>Seleccione</option>
-                                    <option v-for="puesto in arraypuesto" :key="puesto.id" :value="puesto.id" v-text="puesto.nombre"></option>
+                                    <option v-for="puesto in arrayPuesto" :key="puesto.id" :value="puesto.id" v-text="puesto.nombre"></option>
                                 </select>
                                 </div>
                                  <div class="form-group row">
