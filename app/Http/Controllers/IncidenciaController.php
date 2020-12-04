@@ -66,11 +66,13 @@ class IncidenciaController extends Controller
         $filtro = $request->filtro;
         if ($filtro==''){
             $incidencias = Incidencia::where('condicion', '=', 1)
+            ->select('id','nombre')
             ->orderBy('nombre', 'asc')->get();
             
         } else {
             $incidencias = Incidencia::where('nombre', 'like', '%'. $filtro . '%')
             ->where('condicion', '=', 1)
+            ->select('id','nombre')
             ->orderBy('nombre', 'asc')->get();
         }
         

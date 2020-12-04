@@ -50441,7 +50441,7 @@ var staticRenderFns = [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header" }, [
             _c("i", { staticClass: "fa fa-align-justify" }),
-            _vm._v(" Categorías\n                "),
+            _vm._v(" Categorías\r\n                "),
             _c(
               "button",
               {
@@ -50454,7 +50454,7 @@ var staticRenderFns = [
               },
               [
                 _c("i", { staticClass: "icon-plus" }),
-                _vm._v(" Nuevo\n                ")
+                _vm._v(" Nuevo\r\n                ")
               ]
             )
           ]),
@@ -50536,7 +50536,7 @@ var staticRenderFns = [
                         },
                         [_c("i", { staticClass: "icon-pencil" })]
                       ),
-                      _vm._v("  \n                                "),
+                      _vm._v("  \r\n                                "),
                       _c(
                         "button",
                         {
@@ -50576,7 +50576,7 @@ var staticRenderFns = [
                         },
                         [_c("i", { staticClass: "icon-pencil" })]
                       ),
-                      _vm._v("  \n                                "),
+                      _vm._v("  \r\n                                "),
                       _c(
                         "button",
                         {
@@ -50616,7 +50616,7 @@ var staticRenderFns = [
                         },
                         [_c("i", { staticClass: "icon-pencil" })]
                       ),
-                      _vm._v("  \n                                "),
+                      _vm._v("  \r\n                                "),
                       _c(
                         "button",
                         {
@@ -50656,7 +50656,7 @@ var staticRenderFns = [
                         },
                         [_c("i", { staticClass: "icon-pencil" })]
                       ),
-                      _vm._v("  \n                                "),
+                      _vm._v("  \r\n                                "),
                       _c(
                         "button",
                         {
@@ -50696,7 +50696,7 @@ var staticRenderFns = [
                         },
                         [_c("i", { staticClass: "icon-pencil" })]
                       ),
-                      _vm._v(" \n                                "),
+                      _vm._v(" \r\n                                "),
                       _c(
                         "button",
                         {
@@ -55361,6 +55361,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -55368,10 +55374,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             contrato_id: 0,
             nombre: '',
+            descripcion: '',
             arrayPuesto: [],
             arrayEmpleado: [],
             arrayContrato: [],
-            cantidadHorasLaborales: 0,
+            cantidadHorasDiarias: 0,
             salario: 0.0,
             inicioLaboral: new Date(),
             finLaboral: new Date(),
@@ -55442,16 +55449,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         selectPuesto: function selectPuesto() {
-            console.log("en select");
+
             var me = this;
             //loading(true)
-            console.log("en select");
+
             var url = '/puesto/selectPuesto';
             axios.get(url).then(function (response) {
                 var respuesta = response.data;
                 //q: search
                 me.arrayPuesto = respuesta.puestos;
-                console.log(response.data.puestos);
+                console.log('select Puesto');
+                //loading(false)
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        selectEmpleado: function selectEmpleado() {
+            var me = this;
+            //loading(true)
+            var url = '/empleado/selectEmpleado';
+            axios.get(url).then(function (response) {
+                var respuesta = response.data;
+                //q: search
+                me.arrayEmpleado = respuesta.empleados;
+                console.log('select Empleado');
                 //loading(false)
             }).catch(function (error) {
                 console.log(error);
@@ -55469,19 +55490,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.validarForm()) {
                 return;
             }
+            console.log(this.nombre);
+            console.log(this.idpuesto);
+            console.log(this.idempleado);
+            console.log(this.cantidadHorasDiarias);
+            console.log(this.salario);
+            console.log(this.inicioLaboral);
+            console.log(this.finLaboral);
+            console.log(this.contrato);
             axios.post('/contrato/registrar', {
                 'nombre': this.nombre,
+                'descripcion': this.descripcion,
                 'idpuesto': this.idpuesto,
                 'idempleado ': this.idempleado,
-                'cantidadHorasLaborales ': this.cantidadHorasLaborales,
+                'cantidadHorasDiarias ': this.cantidadHorasDiarias,
                 'salario ': this.salario,
                 'inicioLaboral ': this.inicioLaboral,
                 'finLaboral ': this.finLaboral,
                 'contrato ': this.contrato
             }).then(function (response) {
+                console.log(response);
                 me.cerrarModal();
                 me.listarTabla(1, '', 'nombre');
-                __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.success('Se ha registrado el contrato', 'Actualizado', { timeOut: 5000 });
+                __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.success('Se ha registrado el contrato', 'Registrado', { timeOut: 5000 });
             }).catch(function (error) {
                 console.log(error);
                 __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.error('Ha ocurrido un error', 'Error', { timeOut: 5000 });
@@ -55497,9 +55528,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var me = this;
             axios.put('/contrato/actualizar', {
                 'nombre': this.nombre,
+                'descripcion': this.descripcion,
                 'idpuesto': this.idpuesto,
                 'idempleado ': this.idempleado,
-                'cantidadHorasLaborales ': this.cantidadHorasLaborales,
+                'cantidadHorasDiarias ': this.cantidadHorasDiarias,
                 'salario ': this.salario,
                 'inicioLaboral ': this.inicioLaboral,
                 'finLaboral ': this.finLaboral,
@@ -55581,15 +55613,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         validarForm: function validarForm() {
             this.errorComponente = 0;
             this.errorMostrarMsjForm = [];
-            if (!this.nombre) this.errorMostrarMsjForm.push("Debe ingresar el nombre del Contrato");
-            if (this.cantidadHorasLaborales > 0) this.errorMostrarMsjForm.push("Debe ingresar una cantidad de horas de trabajo");
-            if (this.salario > 0.0) this.errorMostrarMsjForm.push("Debe ingresar un salario mayor a 0.0");
-            if (this.idpuesto > 0) this.errorMostrarMsjForm.push("Debe seleccionar un puesto");
-            if (this.idempleado > 0) this.errorMostrarMsjForm.push("Debe seleccionar un empleado");
-            if (this.inicioLaboral === null) this.errorMostrarMsjForm.push("Debe seleccionar una fecha inicial");
-            if (this.finLaboral === null) this.errorMostrarMsjForm.push("Debe seleccionar una fecha final del contrato");
-            if (this.inicioLaboral.getTime() > Date().getTime()) this.errorMostrarMsjForm.push("La fecha del contrato debe ser mayor a hoy");
-            if (this.finLaboral.getTime() > this.inicioLaboral.getTime()) this.errorMostrarMsjForm.push("La fecha de expirasión del contrato tiene que ser mayor al dia Inicial");
+            // if (!this.nombre) this.errorMostrarMsjForm.push("Debe ingresar el nombre del Contrato");
+            // if (!this.cantidadHorasDiarias) this.errorMostrarMsjForm.push("Debe ingresar una cantidad de horas de trabajo");
+            // if (!this.salario) this.errorMostrarMsjForm.push("Debe ingresar un salario mayor a 0.0");
+            // if (!this.idpuesto) this.errorMostrarMsjForm.push("Debe seleccionar un puesto");
+            // if (!this.idempleado) this.errorMostrarMsjForm.push("Debe seleccionar un empleado");
+            // if (!this.inicioLaboral) this.errorMostrarMsjForm.push("Debe seleccionar una fecha inicial");
+            // if (!this.finLaboral) this.errorMostrarMsjForm.push("Debe seleccionar una fecha final del contrato");
+            // if (!this.fechaAlta) this.errorMostrarMsjEmpleado.push("La fecha de ingreso del empleado no puede estar vacía.");
+
+            // if (this.inicioLaboral.getTime() > Date().getTime()) this.errorMostrarMsjForm.push("La fecha del contrato debe ser mayor a hoy");
+            // if (this.finLaboral.getTime() > this.inicioLaboral.getTime()) this.errorMostrarMsjForm.push("La fecha de expirasión del contrato tiene que ser mayor al dia Inicial");
             if (this.errorMostrarMsjForm.length) this.errorComponente = 1;
             return this.errorComponente;
         },
@@ -55597,9 +55631,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.modal = 0;
             this.tituloModal = '';
             this.nombre = '';
+            this.descripcion = '';
             this.idpuesto = 0;
             this.idempleado = 0;
-            this.cantidadHorasLaborales = 0;
+            this.cantidadHorasDiarias = 0;
             this.salario = 0.0;
             this.inicioLaboral = new Date();
             this.finLaboral = new Date();
@@ -55617,9 +55652,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                     this.modal = 1;
                                     this.tituloModal = 'Registrar Contrato';
                                     this.nombre = '';
+                                    this.descripcion = '';
                                     this.idpuesto = 0;
                                     this.idempleado = 0;
-                                    this.cantidadHorasLaborales = 0;
+                                    this.cantidadHorasDiarias = 0;
                                     this.salario = 0.0;
                                     this.inicioLaboral = new Date();
                                     this.finLaboral = new Date();
@@ -55635,13 +55671,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                                     this.contrato_id = data['id'];
                                     this.nombre = data['nombre'];
+                                    this.descripcion = data['descripcion'];
                                     this.idpuesto = data['puesto_id'];
                                     this.idempleado = data['empleado_id'];
-                                    this.cantidadHorasLaborales = data['cantidadHorasLaborales'];
+                                    this.cantidadHorasDiarias = data['cantidadHorasDiarias'];
                                     this.salario = data['salario'];
                                     this.inicioLaboral = data['inicioLaboral'];
                                     this.finLaboral = data['finLaboral'];
                                     this.contrato = data['contrato'];
+
                                     break;
                                 }
                         }
@@ -55652,6 +55690,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         this.listarTabla(1, this.buscar, this.criterio);
         this.selectPuesto();
+        this.selectEmpleado();
     }
 });
 
@@ -56150,6 +56189,44 @@ var render = function() {
                           staticClass: "col-md-3 form-control-label",
                           attrs: { for: "text-input" }
                         },
+                        [_vm._v("Descripcion (*)")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-9" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.descripcion,
+                              expression: "descripcion"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            placeholder: "Descripcion del contrato"
+                          },
+                          domProps: { value: _vm.descripcion },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.descripcion = $event.target.value
+                            }
+                          }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-md-3 form-control-label",
+                          attrs: { for: "text-input" }
+                        },
                         [_vm._v("Puestos (*)")]
                       ),
                       _vm._v(" "),
@@ -56218,22 +56295,22 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.cantidadHorasLaborales,
-                              expression: "cantidadHorasLaborales"
+                              value: _vm.cantidadHorasDiarias,
+                              expression: "cantidadHorasDiarias"
                             }
                           ],
                           staticClass: "form-control",
                           attrs: {
-                            type: "text",
+                            type: "number",
                             placeholder: "Cantidad de horas laborales"
                           },
-                          domProps: { value: _vm.cantidadHorasLaborales },
+                          domProps: { value: _vm.cantidadHorasDiarias },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
                                 return
                               }
-                              _vm.cantidadHorasLaborales = $event.target.value
+                              _vm.cantidadHorasDiarias = $event.target.value
                             }
                           }
                         })

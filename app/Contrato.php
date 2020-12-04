@@ -16,7 +16,8 @@ class Contrato extends Model
         'puesto_id',
         'contrato',
         'descripcion',
-        'salario','condicion'
+        'salario',
+        'condicion'
     ];
     public function puesto()
     {

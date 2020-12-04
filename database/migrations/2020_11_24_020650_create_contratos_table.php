@@ -16,12 +16,12 @@ class CreateContratosTable extends Migration
         Schema::create('contratos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
+            $table->string('descripcion');
             $table->date('inicioLaboral');
             $table->date('finLaboral');
             //maxima
-            $table->string('cantidadHorasDiarias');
+            $table->integer('cantidadHorasDiarias');
             $table->string('contrato');
-            $table->string('descripcion');
             $table->float('salario');
 
             $table->unsignedinteger('puesto_id')->nullable();

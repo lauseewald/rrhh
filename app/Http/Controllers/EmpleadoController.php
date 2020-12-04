@@ -85,6 +85,27 @@ class EmpleadoController extends Controller
                 }
                
     }
+
+    public function selectEmpleado(Request $request)
+    {
+        if (!$request->ajax()) return redirect('/');
+ 
+        $filtro = $request->filtro;
+        if ($filtro==''){
+            $empleados = Empleado::where('condicion', '=', 1)
+            // ->select('id','nombre')
+            ->orderBy('nombre', 'asc')->get();
+            
+        } else {
+            $empleados = Empleado::where('nombre', 'like', '%'. $filtro . '%')
+            ->where('condicion', '=', 1)
+            // ->select('id','nombre')
+            ->orderBy('nombre', 'asc')->get();
+        }
+        
+        return ['empleados' => $empleados];
+    }
+
     public function update(Request $request)
     {
         if (!$request->ajax()) return redirect('/');

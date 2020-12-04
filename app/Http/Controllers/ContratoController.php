@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contrato;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -71,6 +72,7 @@ class ContratoController extends Controller
      */
     public function store(Request $request)
     {
+            return $request;
         if (!$request->ajax()) {
             return redirect('/');
         }
@@ -85,16 +87,22 @@ class ContratoController extends Controller
             if (!$request->ajax()) {
                 return redirect('/');
             }
+            
             $contrato = new Contrato();
             $contrato->nombre = $request->nombre;
-            $contrato->idpuesto=$request->idpuesto;
-            $contrato->idempleado=$request->idempleado;
-            $contrato->cantidadHorasLaborales=$request->cantidadHorasLaborales;
-            $contrato->salario=$request->salario;
-            $contrato->inicioLaboral= $request->inicioLaboral;
-            $contrato->finLaboral= $request->finLaboral;
-            $contrato->contrato = $request->contrato;
+            
+            $contrato->descripcion = $request->descripcion;
+            $contrato->inicioLaboral= Carbon::parse($request->inicioLaboral);
+            $contrato->finLaboral= Carbon::parse($request->finLaboral);;
+            $contrato->cantidadHorasDiarias= (int)($request->cantidadHorasDiarias);
+            $contrato->salario=(float) ($request->salario);
+            $contrato->contrato = 'asdas';
+            // $contrato->puesto_id=1;
+            // $contrato->empleado_id=1;
+            $contrato->puesto_id=(int)($request->idpuesto);
+            $contrato->empleado_id=(int) ($request->idempleado);
             $contrato->save();
+
         } catch (Exception $e) {
             return redirect()->withErrors('Error');
         }
@@ -167,8 +175,8 @@ class ContratoController extends Controller
             $contrato = Contrato::findOrFail($request->id);
             $contrato->nombre = $request->nombre;
             $contrato->nombre = $request->nombre;
-            $contrato->idpuesto=$request->idpuesto;
-            $contrato->idempleado=$request->idempleado;
+            $contrato->puesto_id=$request->idpuesto;
+            $contrato->empleado_id=$request->idempleado;
             $contrato->cantidadHorasLaborales=$request->cantidadHorasLaborales;
             $contrato->salario=$request->salario;
             $contrato->inicioLaboral= $request->inicioLaboral;
