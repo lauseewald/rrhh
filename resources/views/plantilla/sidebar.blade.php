@@ -31,6 +31,9 @@
                     <li @click="menu='puesto'" class="nav-item">
                         <a class="nav-link" href="#"><i class="icon-notebook"></i> Puestos</a>
                     </li>
+                    <li @click="menu='evento'" class="nav-item">
+                        <a class="nav-link" href="#"><i class="icon-bag"></i> Evento</a>
+                    </li>
                 </ul>
             </li>
             <li class="nav-item nav-dropdown">

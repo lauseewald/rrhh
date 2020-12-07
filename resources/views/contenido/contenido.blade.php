@@ -15,5 +15,8 @@
 <template v-if="menu=='puesto'">
     <puesto></puesto>
 </template>
+<template v-if="menu=='evento'">
+    <evento></evento>
+</template>
 
 @endsection

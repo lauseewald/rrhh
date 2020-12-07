@@ -20,6 +20,7 @@ Vue.component('empleado', require('./components/Empleado.vue'));
 Vue.component('incidencia', require('./components/Incidencia.vue'));
 Vue.component('puesto', require('./components/Puesto.vue'));
 Vue.component('contrato', require('./components/Contrato.vue'));
+Vue.component('evento', require('./components/Evento.vue'));
 const app = new Vue({
     el: '#app',
     data: {

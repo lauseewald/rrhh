@@ -471,7 +471,7 @@
                 }
                 
                 let me = this;
-
+                console.log(me.id);
                 axios.put('/empleado/actualizar',{
                     'nombre': this.nombre,
                     'apellido': this.apellido,
@@ -480,7 +480,7 @@
                     'fechaNacimiento': this.fechaNacimiento,
                     'fechaAlta': this.fechaAlta,
                     'curriculum': this.curriculum,
-                    'id': this.empleado_id
+                    'id': this.id
                 }).then(function (response) {
                     me.cerrarModal();
                     me.listarEmpleado(1,'','nombre');
@@ -693,7 +693,7 @@
                 me.listado=0;
                 me.modificar=1;
                 me.errorMostrarMsjEmpleado=[]; 
-                me.id=data['empleado_id'];              
+                me.id=data['id'];              
                 me.nombre = data['nombre'];
                 me.apellido=data['apellido'];
                 me.cuil=data['cuil'];
