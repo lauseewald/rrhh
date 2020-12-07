@@ -55441,9 +55441,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var url = '/contrato?page=' + page + '&buscar=' + buscar + '&criterio=' + criterio;
             axios.get(url).then(function (response) {
                 var respuesta = response.data;
+
                 me.arrayContrato = respuesta.contratos.data;
                 me.pagination = respuesta.pagination;
-                console.log("zrray contrato" + me.arrayContrato);
+                console.log(response);
             }).catch(function (error) {
                 console.log(error);
             });
@@ -55670,8 +55671,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                     this.tipoAccion = 2;
 
                                     this.contrato_id = data['id'];
-                                    this.nombre = data['nombre'];
-                                    this.descripcion = data['descripcion'];
+                                    this.nombre = data['nombreContrato'];
+                                    this.descripcion = data['descripcionContratos'];
                                     this.idpuesto = data['puesto_id'];
                                     this.idempleado = data['empleado_id'];
                                     this.cantidadHorasDiarias = data['cantidadHorasDiarias'];
