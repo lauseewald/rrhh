@@ -46,7 +46,7 @@
                                 <tr v-for="contrato in arrayContrato" :key="contrato.id">
                                    
                                     <td v-text="contrato.apellidoEmpleado+ ' ' + contrato.nombreEmpleado"></td>
-                                    <td v-text="contrato.nombreContrato"></td>
+                                    <td v-text="contrato.nombre"></td>
                                     <td v-text="contrato.nombrePuesto"></td>
                                     <td v-text="contrato.cantidadHorasDiarias"></td>
                                     <td v-text="contrato.salario"></td>
@@ -320,14 +320,6 @@ import toastr from 'toastr';
                 if (this.validarForm()){
                     return;
                 }
-                console.log(this.nombre);
-                console.log(this.idpuesto);
-                console.log(this.idempleado);
-                console.log(this.cantidadHorasDiarias);
-                console.log(this.salario);
-                console.log(this.inicioLaboral);
-                console.log(this.finLaboral);
-                console.log(this.contrato);
                 axios.post('/contrato/registrar',{
                 'nombre': this.nombre,
                 'descripcion': this.descripcion,
@@ -515,8 +507,8 @@ import toastr from 'toastr';
                                 this.tipoAccion=2;
 
                                 this.contrato_id=data['id'];
-                                this.nombre = data['nombreEmpleado'];  
-                                this.descripcion = data['descripcionContrato'];  
+                                this.nombre = data['nombre'];  
+                                this.descripcion = data['descripcion'];  
                                 this.idpuesto=data['puesto_id'];
                                 this.idempleado=data['empleado_id'];
                                 this.cantidadHorasDiarias=data['cantidadHorasDiarias'];

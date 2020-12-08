@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Departamento;
+use Exception;
+
 class DepartamentoController extends Controller
 {
     public function index(Request $request)
@@ -14,13 +16,17 @@ class DepartamentoController extends Controller
         $criterio = $request->criterio;
          
         if ($buscar=='') {
-            $departamentos = Departamento::join('areas','departamento.area_id','=','areas.id')
-            ->select('departamentos.nombre as nombreDepartamento', 'areas.nombre as nombreArea')
-            ->orderBy('departamentos.nombre', 'desc')->paginate(3);
-            
+        
+            $departamentos = Departamento::join('areas', 'areas.id', '=', 'departamentos.area_id')
+            ->select(
+                'departamentos.*',
+                'areas.nombre as nombreArea'
+            )->orderBy('departamentos.nombre', 'desc')->paginate(3);
         } else {
-            $departamentos = Departamento::join('areas','departamento.area_id','=','areas.id')
-            ->select('departamentos.nombre as nombreDepartamento', 'areas.nombre as nombreArea')
+            $departamentos = Departamento::join('areas', 'areas.id', '=', 'departamentos.area_id')
+            ->select(
+                'departamentos.*',
+                'areas.nombre as nombreArea')
             ->where('departamentos.'.$criterio, 'like', '%'. $buscar . '%')
             ->orderBy('departamentos.nombre', 'desc')->paginate(3);
         }
@@ -40,68 +46,72 @@ class DepartamentoController extends Controller
     
     public function store(Request $request)
     {
-        if (!$request->ajax()) return redirect('/');
-           $rules = [
-                  'titulo' => 'required|max:100'  
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+        $rules = [
+                  'nombre' => 'required|unique:departamentos|max:50'
             ];
-            $messages = [
-                'nombre.max' => 'La longitud maxima del :attribute es 100 caracteres.',
+        $messages = [
+                'nombre.unique' => 'Ya se registro  con el :attribute que ingresó.',
             ];
-            $this->validate($request, $rules, $messages);            
-                try{
-                    if (!$request->ajax()) return redirect('/');
-                    $evento = new Evento();
-                    $evento->titulo = $request->titulo;
-                    $evento->descripcion = $request->descripcion;
-                    $evento->fecha = $request->fecha;
-                    $evento->departamento_id=$request->iddepartamento;
-                    $evento->empresa_id=$request->idempresa;
-                    $evento->save();
-                } catch (Exception $e){
-                    return redirect()->withErrors('Error'); 
-                }        
+        $this->validate($request, $rules, $messages);
+        try {
+            if (!$request->ajax()) {
+                return redirect('/');
+            }
+            
+            $departamento = new Departamento();
+            $departamento->nombre = $request->nombre;
+            $departamento->descripcion = $request->descripcion;
+            $departamento->area_id=(int) ($request->departamento_id);
+            $departamento->save();
+
+        } catch (Exception $e) {
+            return redirect()->withErrors('Error');
+        }
     }
+
 
     public function update(Request $request)
     {
-        if (!$request->ajax()) return redirect('/');
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
         $rules = [
-            'titulo' => 'required|max:100'  
+            'nombre' => 'required|max:50'
+            
         ];
         $messages = [
-            'nombre.max' => 'La longitud maxima del :attribute es 100 caracteres.',
+            'nombre.required' => 'Debe ingresar el :attribute .',
+        
         ];
-            $this->validate($request, $rules, $messages);
-            try{
-                
-            $evento = Evento::findOrFail($request->id);
-            $evento->titulo = $request->titulo;
-            $evento->descripcion = $request->descripcion;
-            $evento->fecha = $request->fecha;
-            $evento->departamento_id=$request->iddepartamento;
-            $evento->empresa_id=$request->idempresa;
-            $evento->condicion = '1';
-            $evento->save();
-            
-            
-        } catch (Exception $e){
+        $this->validate($request, $rules, $messages);
+        try {
+            $departamento = Departamento::findOrFail($request->id);
+            $departamento->nombre = $request->nombre;
+            $departamento->descripcion = $request->descripcion;
+            $departamento->area_id=(int) ($request->area_id);
+
+            $departamento->save();
+        } catch (Exception $e) {
             return redirect()->withErrors('Error');
         }
     }
     public function desactivar(Request $request)
     {
         if (!$request->ajax()) return redirect('/');
-        $evento = Evento::findOrFail($request->id);
-        $evento->condicion = '0';
-        $evento->save();
+        $departamento = Departamento::findOrFail($request->id);
+        $departamento->condicion = '0';
+        $departamento->save();
     }
  
     public function activar(Request $request)
     {
         if (!$request->ajax()) return redirect('/');
-        $evento = Evento::findOrFail($request->id);
-        $evento->condicion = '1';
-        $evento->save();
+        $departamento = Departamento::findOrFail($request->id);
+        $departamento->condicion = '1';
+        $departamento->save();
     }
 
     public function selectDepartamento(Request $request)

@@ -24,21 +24,24 @@ class ContratoController extends Controller
         $criterio = $request->criterio;
          
         if ($buscar=='') {
-            $contratos = Contrato::join('empleados','contratos.empleado_id','=','empleados.id')
-            ->join('puestos','contratos.puesto_id','=','puestos.id')
-            ->select('contratos.nombre as nombreContrato', 'puestos.nombre as nombrePuesto', 'empleados.nombre as nombreEmpleado',
-             'empleados.apellido as apellidoEmpleado', 'contratos.inicioLaboral', 'contratos.finLaboral', 'contratos.cantidadHorasDiarias',
-              'contratos.descripcion as descripcionContrato', 'contratos.salario', 'contratos.condicion as condicion')
-            ->orderBy('contratos.nombre', 'desc')->paginate(3);
-            
+            $contratos = Contrato::join('empleados', 'contratos.empleado_id', '=', 'empleados.id')
+            ->join('puestos', 'contratos.puesto_id', '=', 'puestos.id')
+            ->select(
+                'contratos.*',
+                'puestos.nombre as nombrePuesto',
+                'empleados.nombre as nombreEmpleado',
+                'empleados.apellido as apellidoEmpleado'
+            )->orderBy('contratos.nombre', 'desc')->paginate(3);
         } else {
-            $contratos = Contrato::join('empleados','contratos.empleado_id','=','empleados.id')
-            ->join('puestos','contratos.puesto_id','=','puestos.id')
-            ->select('contratos.nombre as nombreContrato', 'puestos.nombre as nombrePuesto', 'empleados.nombre as nombreEmpleado',
-             'empleados.apellido as apellidoEmpleado', 'contratos.inicioLaboral', 'contratos.finLaboral', 'contratos.cantidadHorasDiarias',
-              'contratos.descripcion as descripcionContrato', 'contratos.salario', 'contratos.condicion as condicion')
-            ->where('contratos.'.$criterio, 'like', '%'. $buscar . '%')
-            ->orderBy('contratos.nombre', 'desc')->paginate(3);
+            $contratos = Contrato::join('empleados', 'contratos.empleado_id', '=', 'empleados.id')
+            ->join('puestos', 'contratos.puesto_id', '=', 'puestos.id')
+            ->select(
+                'contratos.*',
+                'puestos.nombre as nombrePuesto',
+                'empleados.nombre as nombreEmpleado',
+                'empleados.apellido as apellidoEmpleado'
+            )->where('contratos.'.$criterio, 'like', '%'. $buscar . '%')
+           ->orderBy('contratos.nombre', 'desc')->paginate(3);
         }
          
         return [
@@ -52,6 +55,7 @@ class ContratoController extends Controller
             ],
             'contratos' => $contratos
         ];
+        
     }
 
     /**
@@ -72,7 +76,6 @@ class ContratoController extends Controller
      */
     public function store(Request $request)
     {
-            return $request;
         if (!$request->ajax()) {
             return redirect('/');
         }
@@ -93,7 +96,8 @@ class ContratoController extends Controller
             
             $contrato->descripcion = $request->descripcion;
             $contrato->inicioLaboral= Carbon::parse($request->inicioLaboral);
-            $contrato->finLaboral= Carbon::parse($request->finLaboral);;
+            $contrato->finLaboral= Carbon::parse($request->finLaboral);
+            ;
             $contrato->cantidadHorasDiarias= (int)($request->cantidadHorasDiarias);
             $contrato->salario=(float) ($request->salario);
             $contrato->contrato = 'asdas';
@@ -102,7 +106,6 @@ class ContratoController extends Controller
             $contrato->puesto_id=(int)($request->idpuesto);
             $contrato->empleado_id=(int) ($request->idempleado);
             $contrato->save();
-
         } catch (Exception $e) {
             return redirect()->withErrors('Error');
         }
@@ -189,7 +192,9 @@ class ContratoController extends Controller
     }
     public function desactivar(Request $request)
     {
-        if (!$request->ajax()) return redirect('/');
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
         $contrato = Contrato::findOrFail($request->id);
         $contrato->condicion = '0';
         $contrato->save();
@@ -197,7 +202,9 @@ class ContratoController extends Controller
  
     public function activar(Request $request)
     {
-        if (!$request->ajax()) return redirect('/');
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
         $contrato = Contrato::findOrFail($request->id);
         $contrato->condicion = '1';
         $contrato->save();

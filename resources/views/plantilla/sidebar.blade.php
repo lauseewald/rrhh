@@ -25,8 +25,11 @@
             <li class="nav-item nav-dropdown">
                 <a class="nav-link nav-dropdown-toggle" href="#"><i class="cis-calendar"></i> Estructura</a>
                 <ul class="nav-dropdown-items">
-                    <li class="nav-item">
+                    <li @click="menu='area'" class="nav-item">
                         <a class="nav-link" href="i#"><i class="icon-basket-loaded"></i> Areas</a>
+                    </li>
+                    <li @click="menu='departamento'" class="nav-item">
+                        <a class="nav-link" href="i#"><i class="icon-basket-loaded"></i> Departamentos</a>
                     </li>
                     <li @click="menu='puesto'" class="nav-item">
                         <a class="nav-link" href="#"><i class="icon-notebook"></i> Puestos</a>
