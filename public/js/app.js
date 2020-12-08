@@ -55603,9 +55603,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var url = '/contrato?page=' + page + '&buscar=' + buscar + '&criterio=' + criterio;
             axios.get(url).then(function (response) {
                 var respuesta = response.data;
+
                 me.arrayContrato = respuesta.contratos.data;
                 me.pagination = respuesta.pagination;
-                console.log("zrray contrato" + me.arrayContrato);
+                console.log(response);
             }).catch(function (error) {
                 console.log(error);
             });
