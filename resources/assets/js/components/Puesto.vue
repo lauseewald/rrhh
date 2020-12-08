@@ -53,14 +53,10 @@
             </thead>
             <tbody>
               <tr v-for="puesto in arrayPuestos" :key="puesto.id">
-                <td
-                  v-text="
-                    puesto.empleado.apellido + ' ' + puesto.empleado.nombre
-                  "
-                ></td>
-                <td v-text="puesto.nombre"></td>
+               
+                <td v-text="puesto.nombrePuesto"></td>
                 <td v-text="puesto.sueldoBasico"></td>
-                <td v-text="puesto.departamento.nombre"></td>
+                <td v-text="puesto.nombreDepartamento"></td>
                 <td>
                   <div v-if="puesto.condicion">
                     <span class="badge badge-success">Activo</span>

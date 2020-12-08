@@ -515,8 +515,8 @@ import toastr from 'toastr';
                                 this.tipoAccion=2;
 
                                 this.contrato_id=data['id'];
-                                this.nombre = data['nombreContrato'];  
-                                this.descripcion = data['descripcionContratos'];  
+                                this.nombre = data['nombreEmpleado'];  
+                                this.descripcion = data['descripcionContrato'];  
                                 this.idpuesto=data['puesto_id'];
                                 this.idempleado=data['empleado_id'];
                                 this.cantidadHorasDiarias=data['cantidadHorasDiarias'];

@@ -23,10 +23,17 @@ class PuestoController extends Controller
         $criterio = $request->criterio;
          
         if ($buscar=='') {
-            $puestos = Puesto::orderBy('nombre', 'desc')->paginate(3);
+            $puestos = Puesto::join('departamentos','puestos.departamento_id','=','departamentos.id')
+            ->select('puestos.nombre as nombrePuesto', 'departamentos.nombre as nombreDepartamento', 'sueldoBasico',
+             'puestos.descripcion as descripcionPuesto', 'puestos.condicion as condicion')
+              ->orderBy('puestos.nombre', 'desc')->paginate(3);
+           
         } else {
-            $puestos = Puesto::where($criterio, 'like', '%'. $buscar . '%')
-            ->orderBy('nombre', 'desc')->paginate(3);
+            $puestos = Puesto::join('departamentos','puestos.departamento_id','=','departamentos.id')
+            ->select('puestos.nombre as nombrePuesto', 'departamentos.nombre as nombreDepartamento', 'sueldoBasico',
+             'puestos.descripcion as descripcionPuesto', 'puestos.condicion as condicion')
+             ->where('puestos.'.$criterio, 'like', '%'. $buscar . '%')
+            ->orderBy('puestos.nombre', 'desc')->paginate(3);
         }
          
         return [
