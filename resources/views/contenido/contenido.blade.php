@@ -21,5 +21,8 @@
 <template v-if="menu=='departamento'">
     <departamento></departamento>
 </template>
+<template v-if="menu=='area'">
+    <areal></areal>
+</template>
 
 @endsection
