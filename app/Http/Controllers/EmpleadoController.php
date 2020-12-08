@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Empleado;
 use App\CompetenciaEmpleado;
+use App\ContactoEmergencia;
 use Exception;
 use Illuminate\Support\Facades\DB;
+
 class EmpleadoController extends Controller
 {
    
@@ -88,6 +90,7 @@ class EmpleadoController extends Controller
                     $empleado->curriculum = $fileName;
                     $empleado->save();
                     $competencias = $request->data;//Array de competencias
+                    $contactos = $request->contactos;//Array de contactos
                     //Recorro todos los elementos
         
                     foreach($competencias as $ep=>$det)
@@ -96,7 +99,17 @@ class EmpleadoController extends Controller
                         $competencia->empleado_id = $empleado->id;
                         $competencia->competencia_id = $det['id'];
                         $competencia->save();
-                    }    
+                    }
+                    foreach($contactos as $ep=>$det)
+                    {
+                        $contacto = new ContactoEmergencia();
+                        $contacto->empleado_id = $empleado->id;
+                        $contacto->nombre = $det['nombre'];
+                        $contacto->telefono1 = $det['tel1'];
+                        $contacto->telefono2 = $det['tel2'];
+                        $contacto->correo = "este es un correo";
+                        $contacto->save();
+                    }       
                 } catch (Exception $e){
                     //return redirect()->withErrors('Error');
                 }
@@ -140,6 +153,7 @@ class EmpleadoController extends Controller
             $this->validate($request, $rules, $messages);
             try{
                 if (!$request->ajax()) return redirect('/');
+                DB::beginTransaction();  
             $empleado = Empleado::findOrFail($request->id);
             $empleado->nombre = $request->nombre;
             $empleado->apellido = $request->apellido;
@@ -152,9 +166,50 @@ class EmpleadoController extends Controller
             $empleado->condicion = '1';
             $empleado->save();
             
+            $competencias = $request->data;//Array de competencias
+            $contactos = $request->contactos;//Array de contactos
             
-        } catch (Exception $e){
+            //Recorro todos los elementos
+            $idempleado = $request->id;    
+                    /*foreach($competencias as $ep=>$det)
+                    {
+                        $idcompetencia = $det['id'];
+                        if($this->encontrarEliminar($idempleado, $idcompetencia)==1){
+                                $competencia = new CompetenciaEmpleado();
+                                $competencia->empleado_id = $empleado->id;
+                                $competencia->competencia_id = $det['id'];
+                                $competencia->save();
+                        }
+                                
+                    }*/
+                    foreach($contactos as $ep=>$det)
+                    {
+                        
+                        if (!empty($det['id'])){
+                            $idcontacto = $det['id'];
+                            $contacto = ContactoEmergencia::findOrFail($idcontacto);
+                            $contacto->nombre = $det['nombre'];
+                            $contacto->telefono1 = $det['telefono1'];
+                            $contacto->telefono2 = $det['telefono2'];
+                            $contacto->correo = $det['correo'];
+                            $contacto->save();
+                        } else{
+                            $contacto = new ContactoEmergencia();
+                            $contacto->empleado_id = $empleado->id;
+                            $contacto->nombre = $det['nombre'];
+                            $contacto->telefono1 = $det['telefono1'];
+                            $contacto->telefono2 = $det['telefono2'];
+                            $contacto->correo = $det['correo'];
+                            $contacto->save();
+                        }
+                        
+                    }   
+                        
+                    DB::commit();
+        } catch (PDOException $e){
             //return redirect()->withErrors('Error');
+            return 'error' + $e;
+            DB::rollBack();
         }
     }
     public function desactivar(Request $request)
@@ -182,6 +237,28 @@ class EmpleadoController extends Controller
         ->orderBy('competencias.nombre', 'asc')->get();
         
         return ['competencias' => $competencias];
+    }
+    public function findContactos(Request $request)
+    {
+       $id = $request->id;
+        $contactos = ContactoEmergencia::join('empleados','contactos_emergencias.empleado_id','=','empleados.id')
+        ->select('contactos_emergencias.id as id', 'contactos_emergencias.nombre as nombre', 'telefono1', 'telefono2', 'correo')
+        ->where('empleados.id', '=', $id)
+        ->orderBy('contactos_emergencias.nombre', 'asc')->get();
+        
+        return ['contactos' => $contactos];
+    }
+    public function encontrar($idempleado, $idcompetencia)
+    {
+        
+        $comp = CompetenciaEmpleado::where('empleado_id', '=', $idempleado)
+        ->where('competencia_id', '=', $idcompetencia)
+        ->select('id')->get();
+        if (count($comp)==0){
+            return '1';
+        } else{
+            return '0';
+        }
     }
    
 }
