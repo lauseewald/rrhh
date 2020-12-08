@@ -76,3 +76,12 @@ Route::put('/departamento/actualizar', 'DepartamentoController@update');
 Route::put('/departamento/desactivar', 'DepartamentoController@desactivar');
 Route::put('/departamento/activar', 'DepartamentoController@activar');
 Route::get('/departamento/selectDepartamento', 'DepartamentoController@selectDepartamento');
+
+//Departamento
+Route::get('/competencia', 'CompetenciaController@index');
+Route::post('/competencia/registrar', 'CompetenciaController@store');
+Route::put('/competencia/actualizar', 'CompetenciaController@update');
+Route::put('/competencia/desactivar', 'CompetenciaController@desactivar');
+Route::put('/competencia/activar', 'CompetenciaController@activar');
+Route::get('/competencia/selectCompetencia', 'CompetenciaController@selectCompetencia');
+
