@@ -22,6 +22,7 @@ Route::put('/empleado/desactivar', 'EmpleadoController@desactivar');
 Route::put('/empleado/activar', 'EmpleadoController@activar');
 Route::get('/empleado/selectEmpleado', 'EmpleadoController@selectEmpleado');
 Route::get('/empleado/findCompetencias', 'EmpleadoController@findCompetencias');
+Route::get('/empleado/findContactos', 'EmpleadoController@findContactos');
 
 //Contrato
 Route::get('/contrato', 'ContratoController@index');
@@ -78,7 +79,7 @@ Route::put('/departamento/desactivar', 'DepartamentoController@desactivar');
 Route::put('/departamento/activar', 'DepartamentoController@activar');
 Route::get('/departamento/selectDepartamento', 'DepartamentoController@selectDepartamento');
 
-//Departamento
+//Competencia
 Route::get('/competencia', 'CompetenciaController@index');
 Route::post('/competencia/registrar', 'CompetenciaController@store');
 Route::put('/competencia/actualizar', 'CompetenciaController@update');
