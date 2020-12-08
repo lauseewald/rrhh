@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Empleado;
+use App\CompetenciaEmpleado;
 use Exception;
 use Illuminate\Support\Facades\DB;
 class EmpleadoController extends Controller
@@ -80,6 +81,16 @@ class EmpleadoController extends Controller
                     $empleado->curriculum = $request->curriculum;
                     //$empleado->curriculum = $fileName;
                     $empleado->save();
+                    $competencias = $request->data;//Array de competencias
+                    //Recorro todos los elementos
+        
+                    foreach($competencias as $ep=>$det)
+                    {
+                        $competencia = new CompetenciaEmpleado();
+                        $competencia->idempleado = $empleado->id;
+                        $competencia->competencia_id = $det['competencia_id'];
+                        $competencia->save();
+                    }    
                 } catch (Exception $e){
                     return redirect()->withErrors('Error');
                 }

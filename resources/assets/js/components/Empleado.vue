@@ -157,7 +157,13 @@
                                     <input type="text" class="form-control" v-model="curriculum" >
                                 </div>
                                 </div>
-                               
+                            <div  class="col-md-9">
+                             <label>Competencias</label>
+                                <select class="form-control" v-model="competenciasId">
+                                    <option value="0" disabled>Seleccione</option>
+                                    <option v-for="competencia in arrayCompetencias" :key="competencia.id" :value="competencia.id" v-text="competencia.nombre"></option>
+                                </select>                                        
+                            </div>
                                  <!-- <div class="col-md-7">
                                     <div class="form-group">
                                         <label for="data" form action="/data" method="POST" enctype="multipart/form-data">Curriculum (*) </label>
@@ -246,6 +252,8 @@
             return {
                 empleado_id: 0,
                 idincidencia:0,
+                arrayCompetencias: [],
+                competenciasId:[],
                 cliente:'',
                 nombre:'',
                 apellido:'',
@@ -344,6 +352,20 @@
                     //q: search
                     me.arrayIncidencia=respuesta.incidencias;
                     console.log(response.data.incidencias[0].nombre);
+                    //loading(false)
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            },
+            selectCompetencia(){
+                let me=this;
+                //loading(true)
+                var url= '/competencia/selectCompetencia';
+                axios.get(url).then(function (response) {
+                    let respuesta = response.data;
+                    //q: search
+                    me.arrayCompetencias=respuesta.competencias;
                     //loading(false)
                 })
                 .catch(function (error) {

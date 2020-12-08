@@ -51462,6 +51462,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -51473,6 +51479,8 @@ Vue.component('v-select', VueSelect.VueSelect);
         return {
             empleado_id: 0,
             idincidencia: 0,
+            arrayCompetencias: [],
+            competenciasId: [],
             cliente: '',
             nombre: '',
             apellido: '',
@@ -51571,6 +51579,19 @@ Vue.component('v-select', VueSelect.VueSelect);
                 //q: search
                 me.arrayIncidencia = respuesta.incidencias;
                 console.log(response.data.incidencias[0].nombre);
+                //loading(false)
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        selectCompetencia: function selectCompetencia() {
+            var me = this;
+            //loading(true)
+            var url = '/competencia/selectCompetencia';
+            axios.get(url).then(function (response) {
+                var respuesta = response.data;
+                //q: search
+                me.arrayCompetencias = respuesta.competencias;
                 //loading(false)
             }).catch(function (error) {
                 console.log(error);
@@ -52552,6 +52573,58 @@ var render = function() {
                           }
                         })
                       ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-9" }, [
+                      _c("label", [_vm._v("Competencias")]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.competenciasId,
+                              expression: "competenciasId"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.competenciasId = $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            }
+                          }
+                        },
+                        [
+                          _c(
+                            "option",
+                            { attrs: { value: "0", disabled: "" } },
+                            [_vm._v("Seleccione")]
+                          ),
+                          _vm._v(" "),
+                          _vm._l(_vm.arrayCompetencias, function(competencia) {
+                            return _c("option", {
+                              key: competencia.id,
+                              domProps: {
+                                value: competencia.id,
+                                textContent: _vm._s(competencia.nombre)
+                              }
+                            })
+                          })
+                        ],
+                        2
+                      )
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-md-12" }, [
