@@ -68,10 +68,10 @@ class EmpleadoController extends Controller
                     if (!$request->ajax()) return redirect('/');
                     $exploded = explode(',', $request->curriculum);
                     $decoded = base64_decode($exploded[1]);
-                    if(str_contains($exploded[0], 'jpeg'))
-                        $extension = 'jpg';
+                    if(str_contains($exploded[0], 'pdf'))
+                        $extension = 'pdf';
                     else
-                        $extension = 'png';
+                        $extension = 'pdf';
                     $fileName = str_random().'.'.$extension;
                     $path = public_path().'/'.$fileName;
                     file_put_contents($path, $decoded);
@@ -172,16 +172,16 @@ class EmpleadoController extends Controller
         $empleado->condicion = '1';
         $empleado->save();
     }
-    public function findCompetencias($id)
+    public function findCompetencias(Request $request)
     {
-       
+       $id = $request->id;
         $competencias = CompetenciaEmpleado::join('competencias','competencias_empleados.competencia_id','=','competencias.id')
         ->join('empleados','competencias_empleados.empleado_id','=','empleados.id')
-        ->select('competencias.id', 'competencias.nombre')
+        ->select('competencias.id as id', 'competencias.nombre as nombre')
         ->where('empleados.id', '=', $id)
         ->orderBy('competencias.nombre', 'asc')->get();
         
-    return $competencias;
+        return ['competencias' => $competencias];
     }
    
 }

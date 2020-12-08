@@ -168,8 +168,9 @@
                                     <div class="form-group">
                                         <label for="data" form action="/data" method="POST" enctype="multipart/form-data">Curriculum (*) </label>
                                         <input type="file"  @change="getImage" id="data" name="data" > 
-                                        <img :src="curriculum" class="img-responsive" height="70" width="90">           
+                                                
                                     </div>
+                                   <a :href="curriculum" target="_blank">Ver</a>
                                 </div>
                             
                             <div class="col-md-12">
@@ -243,12 +244,12 @@
 </template>
 
 <script>
-    import vSelect from 'vue-select';
+    /*import vSelect from 'vue-select';*/
     import Multiselect from 'vue-multiselect';
     import toastr from 'toastr'; 
    // import 'vue-select/dist/vue-select.css';
     //Vue.component("v-select", vSelect);
-    Vue.component('v-select', VueSelect.VueSelect);
+   // Vue.component('v-select', VueSelect.VueSelect);
     export default {
         data (){
             return {
@@ -257,6 +258,8 @@
                 arrayCompetencias: [],
                 competenciasId:[],
                 cliente:'',
+                url: '',
+                label: '',
                 nombre:'',
                 apellido:'',
                 cuil:'',
@@ -292,7 +295,7 @@
             }
         },
         components: {
-            vSelect,
+            //vSelect,
             Multiselect
         },
 
@@ -386,6 +389,7 @@
                 }
                 console.log(this.curriculum)
             },
+            
             // listarIncidencia (search,loading){
             //     console.log("en select");
             //     let me=this;
@@ -471,6 +475,7 @@
                     console.log(error);
                 });
             },
+ 
             registrarEmpleado(){
                 let me = this;
                 if (this.validarEmpleado()){
@@ -743,8 +748,11 @@
                 var url= '/empleado/findCompetencias?id='+ data['id'];
                 axios.get(url).then(function (response) {
                     var respuesta= response.data;
+                    
                     //me.arrayCompetencias = respuesta.competencias.data;
-                    me.competenciasId=me.arrayCompetencias['id'];
+                    console.log(respuesta.competencias);
+
+                    me.competenciasId=respuesta.competencias;
                 })
                 .catch(function (error) {
                     console.log(error);
