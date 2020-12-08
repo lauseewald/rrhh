@@ -151,25 +151,26 @@
                                         <input type="date" class="form-control" v-model="fechaAlta"   >
                                 </div>    
                             </div>
-                                <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Curriculum (*)</label>
-                                    <input type="text" class="form-control" v-model="curriculum" >
-                                </div>
-                                </div>
+                                
                             <div  class="col-md-9">
                              <label>Competencias</label>
-                                <select class="form-control"  v-model="competenciasId" multiple>
-                                    <option value="0" disabled>Seleccione</option>
-                                    <option v-for="competencia in arrayCompetencias" :key="competencia.id" :value="competencia.id" v-text="competencia.nombre"></option>
-                                </select>                                        
+                                
+                                <multiselect
+                                    v-model="competenciasId"
+                                    :options="arrayCompetencias"
+                                    :multiple="true"
+                                    label="nombre" 
+                                    track-by="id"
+                                    placeholder="Seleccione una o más competencias">
+                                </multiselect>                                       
                             </div>
-                                 <!-- <div class="col-md-7">
+                                 <div class="col-md-7">
                                     <div class="form-group">
                                         <label for="data" form action="/data" method="POST" enctype="multipart/form-data">Curriculum (*) </label>
-                                        <input type="file" @change="getImage" id="data" name="data" >            
+                                        <input type="file"  @change="getImage" id="data" name="data" > 
+                                        <img :src="curriculum" class="img-responsive" height="70" width="90">           
                                     </div>
-                                </div> -->
+                                </div>
                             
                             <div class="col-md-12">
                                 <div v-show="errorEmpleado" class="form-group row div-error">
@@ -243,6 +244,7 @@
 
 <script>
     import vSelect from 'vue-select';
+    import Multiselect from 'vue-multiselect';
     import toastr from 'toastr'; 
    // import 'vue-select/dist/vue-select.css';
     //Vue.component("v-select", vSelect);
@@ -290,8 +292,10 @@
             }
         },
         components: {
-            vSelect
+            vSelect,
+            Multiselect
         },
+
         computed:{
             isActived: function(){
                 return this.pagination.current_page;
@@ -371,6 +375,16 @@
                 .catch(function (error) {
                     console.log(error);
                 });
+            },
+            getImage(event){
+                //Asignamos la imagen a  nuestra data
+                //this.imagen = event.target.files[0];
+                var fileReader = new FileReader();
+                fileReader.readAsDataURL(event.target.files[0]);
+                fileReader.onload = (event) => {
+                    this.curriculum = event.target.result
+                }
+                console.log(this.curriculum)
             },
             // listarIncidencia (search,loading){
             //     console.log("en select");
@@ -468,6 +482,7 @@
                         me.errorEmpleado=1;
                     return;
                 }
+                console.log(this.competenciasId);
                 axios.post('/empleado/registrar',{
                     'nombre': this.nombre,
                     'apellido': this.apellido,
@@ -476,7 +491,7 @@
                     'fechaNacimiento': this.fechaNacimiento,
                     'fechaAlta': this.fechaAlta,
                     'curriculum': this.curriculum,
-                    //'empleado': this.empleado
+                    'data': this.competenciasId
                 }).then(function (response) {
                     me.cerrarModal();
                     me.listarEmpleado(1,'','nombre');
@@ -502,6 +517,7 @@
                     'fechaNacimiento': this.fechaNacimiento,
                     'fechaAlta': this.fechaAlta,
                     'curriculum': this.curriculum,
+                    'data': this.competenciasId,
                     'id': this.id
                 }).then(function (response) {
                     me.cerrarModal();
@@ -652,17 +668,16 @@
                 let me=this;
                 me.listado=0;
 
-                me.idproveedor=0;
-                me.tipo_comprobante='BOLETA';
-                me.serie_comprobante='';
-                me.num_comprobante='';
-                me.impuesto=0.18;
-                me.total=0.0;
-                me.idarticulo=0;
-                me.articulo='';
-                me.cantidad=0;
-                me.precio=0;
-                me.arrayDetalle=[];
+                this.modificar=0;
+                this.nombre = '';
+                this.apellido= '';
+                this.cuil= '';
+                this.direccion= '';
+                this.fechaNacimiento= null;
+                this.fechaAlta= null;
+                this.curriculum= '';
+                this.empleado_id = '';
+                this.competenciasId=[];
             },
             ocultarDetalle(){
                 this.listado=1;
@@ -675,6 +690,7 @@
                 this.fechaAlta= null;
                 this.curriculum= '';
                 this.empleado_id = '';
+                this.competenciasId=[];
             },
             verEmpleado(id){
                 /*let me=this;
@@ -724,6 +740,15 @@
                 me.fechaAlta=data['fechaAlta'];
                 me.fechaBaja=data['fechaBaja'];
                 me.curriculum=data['curriculum'];
+                var url= '/empleado/findCompetencias?id='+ data['id'];
+                axios.get(url).then(function (response) {
+                    var respuesta= response.data;
+                    //me.arrayCompetencias = respuesta.competencias.data;
+                    me.competenciasId=me.arrayCompetencias['id'];
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
                 
             },
 

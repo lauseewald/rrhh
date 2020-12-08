@@ -17,6 +17,7 @@
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"> --}}
     <link rel="stylesheet" href="{{ asset('import/toastr.min.css') }}">
     <link rel="stylesheet" href="{{ asset('import/vue-select.css') }}">
+    <link rel="stylesheet" href="{{ asset('import/vue-multiselect.min.css') }}">
     
     {{-- <script src="{{ asset('import/vue-select@latest') }}"></script> --}}
     <script src="{{ asset('import/toastr.min.js') }}"></script>

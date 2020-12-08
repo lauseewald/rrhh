@@ -19,7 +19,13 @@ class EmpleadoController extends Controller
          
         if ($buscar==''){
             
-            $empleados = Empleado::orderBy('nombre', 'desc')->paginate(3);
+            /*$empleados = Empleado::join('competencias_empleados','empleados.id','=','competencias_empleados.empleado_id')
+            //->join('competencias','competencias_empleados.competencia_id','=','competencias.id')
+            ->select('cuil', 'direccion', 'empleados.nombre as nombreEmpleado',
+             'empleados.apellido as apellidoEmpleado', 'fechaAlta', 'fechaBaja',
+              'curriculum', 'fechaNacimiento', 'empleados.condicion as condicion', '')
+              ->orderBy('empleados.nombre', 'desc')->paginate(3);*/
+              $empleados = Empleado::orderBy('nombre', 'desc')->paginate(3);
         }
         else{
            
@@ -60,7 +66,7 @@ class EmpleadoController extends Controller
             
                 try{
                     if (!$request->ajax()) return redirect('/');
-                    /*$exploded = explode(',', $request->image);
+                    $exploded = explode(',', $request->curriculum);
                     $decoded = base64_decode($exploded[1]);
                     if(str_contains($exploded[0], 'jpeg'))
                         $extension = 'jpg';
@@ -68,7 +74,7 @@ class EmpleadoController extends Controller
                         $extension = 'png';
                     $fileName = str_random().'.'.$extension;
                     $path = public_path().'/'.$fileName;
-                    file_put_contents($path, $decoded);*/
+                    file_put_contents($path, $decoded);
                    
 
                     $empleado = new Empleado();
@@ -78,8 +84,8 @@ class EmpleadoController extends Controller
                     $empleado->fechaNacimiento = $request->fechaNacimiento;
                     $empleado->fechaAlta = $request->fechaAlta;
                     $empleado->direccion = $request->direccion;
-                    $empleado->curriculum = $request->curriculum;
-                    //$empleado->curriculum = $fileName;
+                    //$empleado->curriculum = $request->curriculum;
+                    $empleado->curriculum = $fileName;
                     $empleado->save();
                     $competencias = $request->data;//Array de competencias
                     //Recorro todos los elementos
@@ -87,12 +93,12 @@ class EmpleadoController extends Controller
                     foreach($competencias as $ep=>$det)
                     {
                         $competencia = new CompetenciaEmpleado();
-                        $competencia->idempleado = $empleado->id;
-                        $competencia->competencia_id = $det['competencia_id'];
+                        $competencia->empleado_id = $empleado->id;
+                        $competencia->competencia_id = $det['id'];
                         $competencia->save();
                     }    
                 } catch (Exception $e){
-                    return redirect()->withErrors('Error');
+                    //return redirect()->withErrors('Error');
                 }
                
     }
@@ -165,6 +171,17 @@ class EmpleadoController extends Controller
         $empleado = Empleado::findOrFail($request->id);
         $empleado->condicion = '1';
         $empleado->save();
+    }
+    public function findCompetencias($id)
+    {
+       
+        $competencias = CompetenciaEmpleado::join('competencias','competencias_empleados.competencia_id','=','competencias.id')
+        ->join('empleados','competencias_empleados.empleado_id','=','empleados.id')
+        ->select('competencias.id', 'competencias.nombre')
+        ->where('empleados.id', '=', $id)
+        ->orderBy('competencias.nombre', 'asc')->get();
+        
+    return $competencias;
     }
    
 }
