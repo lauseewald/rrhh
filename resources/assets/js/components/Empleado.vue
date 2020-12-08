@@ -159,7 +159,7 @@
                                 </div>
                             <div  class="col-md-9">
                              <label>Competencias</label>
-                                <select class="form-control" v-model="competenciasId">
+                                <select class="form-control"  v-model="competenciasId" multiple>
                                     <option value="0" disabled>Seleccione</option>
                                     <option v-for="competencia in arrayCompetencias" :key="competencia.id" :value="competencia.id" v-text="competencia.nombre"></option>
                                 </select>                                        
@@ -731,6 +731,8 @@
         mounted() {
             this.listarEmpleado(1,this.buscar,this.criterio);
             this.selectIncidencia();
+            this.selectCompetencia();
+        
         }
     }
 </script>

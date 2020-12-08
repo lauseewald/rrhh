@@ -25,6 +25,7 @@ class ContratoController extends Controller
          
         if ($buscar=='') {
             $contratos = Contrato::join('empleados','contratos.empleado_id','=','empleados.id')
+            ->join('puestos','contratos.puesto_id','=','puestos.id')
             ->select('contratos.nombre as nombreContrato', 'puestos.nombre as nombrePuesto', 'empleados.nombre as nombreEmpleado',
              'empleados.apellido as apellidoEmpleado', 'contratos.inicioLaboral', 'contratos.finLaboral', 'contratos.cantidadHorasDiarias',
               'contratos.descripcion as descripcionContrato', 'contratos.salario', 'contratos.condicion as condicion')
@@ -32,9 +33,10 @@ class ContratoController extends Controller
             
         } else {
             $contratos = Contrato::join('empleados','contratos.empleado_id','=','empleados.id')
+            ->join('puestos','contratos.puesto_id','=','puestos.id')
             ->select('contratos.nombre as nombreContrato', 'puestos.nombre as nombrePuesto', 'empleados.nombre as nombreEmpleado',
              'empleados.apellido as apellidoEmpleado', 'contratos.inicioLaboral', 'contratos.finLaboral', 'contratos.cantidadHorasDiarias',
-              'contratos.descripcion as descripcion contratos', 'contratos.salario')
+              'contratos.descripcion as descripcionContrato', 'contratos.salario', 'contratos.condicion as condicion')
             ->where('contratos.'.$criterio, 'like', '%'. $buscar . '%')
             ->orderBy('contratos.nombre', 'desc')->paginate(3);
         }
@@ -70,6 +72,7 @@ class ContratoController extends Controller
      */
     public function store(Request $request)
     {
+            return $request;
         if (!$request->ajax()) {
             return redirect('/');
         }
@@ -89,19 +92,15 @@ class ContratoController extends Controller
             $contrato->nombre = $request->nombre;
             
             $contrato->descripcion = $request->descripcion;
-            // $contrato->inicioLaboral= Carbon::now();
-            // $contrato->finLaboral= Carbon::now();;
             $contrato->inicioLaboral= Carbon::parse($request->inicioLaboral);
             $contrato->finLaboral= Carbon::parse($request->finLaboral);;
             $contrato->cantidadHorasDiarias= (int)($request->cantidadHorasDiarias);
-            // $contrato->cantidadHorasDiarias= 8;
             $contrato->salario=(float) ($request->salario);
-            $contrato->contrato = 'xx';
-            // $contrato->contrato = $request->contrato;
+            $contrato->contrato = 'asdas';
             // $contrato->puesto_id=1;
             // $contrato->empleado_id=1;
-            $contrato->puesto_id=($request->idpuesto);
-            $contrato->empleado_id=($request->idempleado);
+            $contrato->puesto_id=(int)($request->idpuesto);
+            $contrato->empleado_id=(int) ($request->idempleado);
             $contrato->save();
 
         } catch (Exception $e) {
@@ -175,17 +174,14 @@ class ContratoController extends Controller
         try {
             $contrato = Contrato::findOrFail($request->id);
             $contrato->nombre = $request->nombre;
-            
-            $contrato->descripcion = $request->descripcion;
-            $contrato->inicioLaboral= Carbon::parse($request->inicioLaboral);
-            $contrato->finLaboral= Carbon::parse($request->finLaboral);;
-            $contrato->cantidadHorasDiarias= (int)($request->cantidadHorasDiarias);
-            $contrato->salario=(float) ($request->salario);
+            $contrato->nombre = $request->nombre;
+            $contrato->puesto_id=$request->idpuesto;
+            $contrato->empleado_id=$request->idempleado;
+            $contrato->cantidadHorasLaborales=$request->cantidadHorasLaborales;
+            $contrato->salario=$request->salario;
+            $contrato->inicioLaboral= $request->inicioLaboral;
+            $contrato->finLaboral= $request->finLaboral;
             $contrato->contrato = $request->contrato;
-            // $contrato->puesto_id=1;
-            // $contrato->empleado_id=1;
-            $contrato->puesto_id=(int)($request->idpuesto);
-            $contrato->empleado_id=(int) ($request->idempleado);
             $contrato->save();
         } catch (Exception $e) {
             return redirect()->withErrors('Error');

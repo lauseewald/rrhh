@@ -51925,6 +51925,7 @@ Vue.component('v-select', VueSelect.VueSelect);
     mounted: function mounted() {
         this.listarEmpleado(1, this.buscar, this.criterio);
         this.selectIncidencia();
+        this.selectCompetencia();
     }
 });
 
@@ -52590,6 +52591,7 @@ var render = function() {
                             }
                           ],
                           staticClass: "form-control",
+                          attrs: { multiple: "" },
                           on: {
                             change: function($event) {
                               var $$selectedVal = Array.prototype.filter
