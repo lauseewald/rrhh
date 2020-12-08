@@ -21,6 +21,7 @@ Route::put('/empleado/actualizar', 'EmpleadoController@update');
 Route::put('/empleado/desactivar', 'EmpleadoController@desactivar');
 Route::put('/empleado/activar', 'EmpleadoController@activar');
 Route::get('/empleado/selectEmpleado', 'EmpleadoController@selectEmpleado');
+Route::get('/empleado/findCompetencias', 'EmpleadoController@findCompetencias');
 
 //Contrato
 Route::get('/contrato', 'ContratoController@index');
