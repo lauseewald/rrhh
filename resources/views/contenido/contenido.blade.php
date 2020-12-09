@@ -30,5 +30,8 @@
 <template v-if="menu=='dianolaboral'">
     <dianolaboral></dianolaboral>
 </template>
+<template v-if="menu=='inasistencia'">
+    <inasistencia></inasistencia>
+</template>
 
 @endsection

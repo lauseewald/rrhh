@@ -94,3 +94,11 @@ Route::put('/diaNoLaboral/actualizar', 'DiaNoLaboralController@update');
 Route::put('/diaNoLaboral/desactivar', 'DiaNoLaboralController@desactivar');
 Route::put('/diaNoLaboral/activar', 'DiaNoLaboralController@activar');
 Route::get('/diaNoLaboral/selectDiaNoLaboral', 'DiaNoLaboralController@selectDiaNoLaboral');
+
+//DiaNoLaboral
+Route::get('/solicitudInasistencia', 'SolicitudInasistenciaController@index');
+Route::post('/solicitudInasistencia/registrar', 'SolicitudInasistenciaController@store');
+Route::put('/solicitudInasistencia/actualizar', 'SolicitudInasistenciaController@update');
+Route::put('/solicitudInasistencia/desactivar', 'SolicitudInasistenciaController@desactivar');
+Route::put('/solicitudInasistencia/activar', 'SolicitudInasistenciaController@activar');
+Route::get('/solicitudInasistencia/selectSolicitudInasistencia', 'SolicitudInasistenciaController@selectSolicitudInasistencia');

@@ -19,6 +19,9 @@
                     <li @click="menu=3" class="nav-item">
                         <a class="nav-link" href="#"><i class="icon-bag"></i> Incidencias</a>
                     </li>
+                    <li @click="menu='inasistencia'" class="nav-item">
+                        <a class="nav-link" href="i#"><i class="icon-basket-loaded"></i> Solicitudes</a>
+                    </li>
                 </ul>
             </li>
 
