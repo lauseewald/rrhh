@@ -21,7 +21,8 @@ Vue.component('incidencia', require('./components/Incidencia.vue'));
 Vue.component('puesto', require('./components/Puesto.vue'));
 Vue.component('contrato', require('./components/Contrato.vue'));
 Vue.component('evento', require('./components/Evento.vue'));
-Vue.component('Departamento', require('./components/Departamento.vue'));
+Vue.component('departamento', require('./components/Departamento.vue'));
+Vue.component('areal', require('./components/Area.vue'));
 const app = new Vue({
     el: '#app',
     data: {

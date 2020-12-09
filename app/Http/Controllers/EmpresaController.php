@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Area;
+use App\Empresa;
 use Exception;
 use Illuminate\Http\Request;
 
-class AreaController extends Controller
+class EmpresaController extends Controller
 {
     public function index(Request $request)
     {
@@ -18,31 +18,23 @@ class AreaController extends Controller
         $criterio = $request->criterio;
          
         if ($buscar=='') {
-            $areas = Area::join('empresas', 'areas.empresa_id', '=', 'empresas.id')
-            ->select(
-                'areas.*',
-                'empresas.nombre as nombreEmpresa'
-            )->where('areas.'.$criterio, 'like', '%'. $buscar . '%')
-            ->orderBy('areas.nombre', 'desc')->paginate(3);
+            $empresas = Empresa::all()->orderBy('empresas.nombre', 'desc')->paginate(3);
         } else {
-            $areas = Area::join('empresas', 'areas.empresa_id', '=', 'empresas.id')
-            ->select(
-                'areas.*',
-                'empresas.nombre as nombreEmpresa'
-            )->where('areas.'.$criterio, 'like', '%'. $buscar . '%')
-            ->orderBy('areas.nombre', 'desc')->paginate(3);
+            $empresas = Empresa::all()
+            ->where('empresas.'.$criterio, 'like', '%'. $buscar . '%')
+            ->orderBy('empresas.nombre', 'desc')->paginate(3);
         }
          
         return [
             'pagination' => [
-                'total'        => $areas->total(),
-                'current_page' => $areas->currentPage(),
-                'per_page'     => $areas->perPage(),
-                'last_page'    => $areas->lastPage(),
-                'from'         => $areas->firstItem(),
-                'to'           => $areas->lastItem(),
+                'total'        => $empresas->total(),
+                'current_page' => $empresas->currentPage(),
+                'per_page'     => $empresas->perPage(),
+                'last_page'    => $empresas->lastPage(),
+                'from'         => $empresas->firstItem(),
+                'to'           => $empresas->lastItem(),
             ],
-            'areas' => $areas
+            'empresas' => $empresas
         ];
         
     }
@@ -53,7 +45,7 @@ class AreaController extends Controller
             return redirect('/');
         }
         $rules = [
-                  'nombre' => 'required|unique:areas|max:50'
+                  'nombre' => 'required|unique:empresas|max:50'
             ];
         $messages = [
                 'nombre.unique' => 'Ya se registro  con el :attribute que ingresó.',
@@ -63,19 +55,22 @@ class AreaController extends Controller
             if (!$request->ajax()) {
                 return redirect('/');
             }
-            
-            $area = new Area();
-            $area->nombre = $request->nombre;
-            $area->descripcion = $request->descripcion;
-            $area->empresa_id=(int) ($request->empresa_id);
-            $area->save();
+           
+
+            $empresa = new Empresa();
+            $empresa->nombre = $request->nombre;
+            $empresa->razonSocial = $request->razonSocial;
+            $empresa->cuit = $request->cuit;
+            $empresa->direccion=($request->direccion);
+            $empresa->inicioActividad=($request->inicioActividad);
+            $empresa->save();
 
         } catch (Exception $e) {
             return redirect()->withErrors('Error');
         }
     }
 
-    public function selectArea(Request $request)
+    public function selectEmpresa(Request $request)
     {
         if (!$request->ajax()) {
             return redirect('/');
@@ -83,16 +78,16 @@ class AreaController extends Controller
  
         $filtro = $request->filtro;
         if ($filtro=='') {
-            $areas = Area::where('condicion', '=', 1)
+            $empresas = Empresa::where('condicion', '=', 1)
             ->orderBy('nombre', 'asc')->get();
         } else {
-            $areas = Area::where('nombre', 'like', '%'. $filtro . '%')
+            $empresas = Empresa::where('nombre', 'like', '%'. $filtro . '%')
             ->where('condicion', '=', 1)
             ->orderBy('nombre', 'asc')->get();
         }
        
         
-        return ['areas' => $areas];
+        return ['empresas' => $empresas];
     }
 
     public function update(Request $request)
@@ -110,25 +105,27 @@ class AreaController extends Controller
         ];
         $this->validate($request, $rules, $messages);
         try {
-            $area = Area::findOrFail($request->id);
-            $area->nombre = $request->nombre;
-            $area->descripcion = $request->descripcion;
-            $area->empresa_id=(int) ($request->empresa_id);
+            $empresa = Empresa::findOrFail($request->id);
+            $empresa->nombre = $request->nombre;
+            $empresa->razonSocial = $request->razonSocial;
+            $empresa->cuit = $request->cuit;
+            $empresa->direccion=($request->direccion);
+            $empresa->inicioActividad=($request->inicioActividad);
+            $empresa->save();
 
-            $area->save();
         } catch (Exception $e) {
             return redirect()->withErrors('Error');
         }
     }
-    
+
     public function desactivar(Request $request)
     {
         if (!$request->ajax()) {
             return redirect('/');
         }
-        $area = Area::findOrFail($request->id);
-        $area->condicion = '0';
-        $area->save();
+        $empresa = Empresa::findOrFail($request->id);
+        $empresa->condicion = '0';
+        $empresa->save();
     }
  
     public function activar(Request $request)
@@ -136,9 +133,8 @@ class AreaController extends Controller
         if (!$request->ajax()) {
             return redirect('/');
         }
-        $area = Area::findOrFail($request->id);
-        $area->condicion = '1';
-        $area->save();
+        $empresa = Empresa::findOrFail($request->id);
+        $empresa->condicion = '1';
+        $empresa->save();
     }
-
 }
