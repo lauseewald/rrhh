@@ -37,6 +37,19 @@
                     <li @click="menu='evento'" class="nav-item">
                         <a class="nav-link" href="#"><i class="icon-bag"></i> Evento</a>
                     </li>
+                    <li @click="menu='empresa'" class="nav-item">
+                        <a class="nav-link" href="#"><i class="icon-bag"></i> Empresas</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#"><i class="cis-calendar"></i> Parametros</a>
+                <ul class="nav-dropdown-items">
+                    <li @click="menu='dianolaboral'" class="nav-item">
+                        <a class="nav-link" href="i#"><i class="icon-basket-loaded"></i> Dias No Laborables</a>
+                    </li>
+
                 </ul>
             </li>
             <li class="nav-item nav-dropdown">

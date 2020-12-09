@@ -87,3 +87,10 @@ Route::put('/competencia/desactivar', 'CompetenciaController@desactivar');
 Route::put('/competencia/activar', 'CompetenciaController@activar');
 Route::get('/competencia/selectCompetencia', 'CompetenciaController@selectCompetencia');
 
+//DiaNoLaboral
+Route::get('/diaNoLaboral', 'DiaNoLaboralController@index');
+Route::post('/diaNoLaboral/registrar', 'DiaNoLaboralController@store');
+Route::put('/diaNoLaboral/actualizar', 'DiaNoLaboralController@update');
+Route::put('/diaNoLaboral/desactivar', 'DiaNoLaboralController@desactivar');
+Route::put('/diaNoLaboral/activar', 'DiaNoLaboralController@activar');
+Route::get('/diaNoLaboral/selectDiaNoLaboral', 'DiaNoLaboralController@selectDiaNoLaboral');

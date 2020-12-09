@@ -52,7 +52,6 @@
             </thead>
             <tbody>
               <tr v-for="area in arrayareas" :key="area.id">
-               
                 <td v-text="area.nombre"></td>
                 <td v-text="area.nombreEmpresa"></td>
                 <td>

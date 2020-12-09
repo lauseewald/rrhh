@@ -24,5 +24,11 @@
 <template v-if="menu=='area'">
     <areal></areal>
 </template>
+<template v-if="menu=='empresa'">
+    <empresa></empresa>
+</template>
+<template v-if="menu=='dianolaboral'">
+    <dianolaboral></dianolaboral>
+</template>
 
 @endsection

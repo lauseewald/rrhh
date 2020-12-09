@@ -24,14 +24,12 @@ class PuestoController extends Controller
          
         if ($buscar=='') {
             $puestos = Puesto::join('departamentos','puestos.departamento_id','=','departamentos.id')
-            ->select('puestos.nombre as nombrePuesto', 'departamentos.nombre as nombreDepartamento', 'sueldoBasico',
-             'puestos.descripcion as descripcionPuesto', 'puestos.condicion as condicion')
+            ->select('puestos.*', 'departamentos.nombre as nombreDepartamento')
               ->orderBy('puestos.nombre', 'desc')->paginate(3);
            
         } else {
             $puestos = Puesto::join('departamentos','puestos.departamento_id','=','departamentos.id')
-            ->select('puestos.nombre as nombrePuesto', 'departamentos.nombre as nombreDepartamento', 'sueldoBasico',
-             'puestos.descripcion as descripcionPuesto', 'puestos.condicion as condicion')
+            ->select('puestos.*', 'departamentos.nombre as nombreDepartamento')
              ->where('puestos.'.$criterio, 'like', '%'. $buscar . '%')
             ->orderBy('puestos.nombre', 'desc')->paginate(3);
         }
@@ -67,7 +65,7 @@ class PuestoController extends Controller
      */
     public function store(Request $request)
     {
-        
+        // return $request;
         if (!$request->ajax()) {
             return redirect('/');
         }
@@ -84,8 +82,8 @@ class PuestoController extends Controller
             }
             $puesto = new Puesto();
             $puesto->nombre = $request->nombre;
-            $puesto->descipcion = $request->descipcion;
-            $puesto->sueldoBasico = $request->sueldoBasico;
+            $puesto->descripcion = $request->descripcion;
+            $puesto->sueldoBasico = floatval($request->sueldoBasico);
             $puesto->departamento_id = $request->departamento_id;
             
             $puesto->save();

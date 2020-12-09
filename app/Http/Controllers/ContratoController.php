@@ -76,6 +76,7 @@ class ContratoController extends Controller
      */
     public function store(Request $request)
     {
+    //   return $request;
         if (!$request->ajax()) {
             return redirect('/');
         }
@@ -93,18 +94,17 @@ class ContratoController extends Controller
             
             $contrato = new Contrato();
             $contrato->nombre = $request->nombre;
-            
             $contrato->descripcion = $request->descripcion;
-            $contrato->inicioLaboral= Carbon::parse($request->inicioLaboral);
-            $contrato->finLaboral= Carbon::parse($request->finLaboral);
-            ;
-            $contrato->cantidadHorasDiarias= (int)($request->cantidadHorasDiarias);
-            $contrato->salario=(float) ($request->salario);
-            $contrato->contrato = 'asdas';
-            // $contrato->puesto_id=1;
-            // $contrato->empleado_id=1;
-            $contrato->puesto_id=(int)($request->idpuesto);
-            $contrato->empleado_id=(int) ($request->idempleado);
+            $contrato->inicioLaboral= $request->inicioLaboral;
+            $contrato->finLaboral= $request->finLaboral;
+            // $contrato->inicioLaboral= Carbon::now();
+            // $contrato->finLaboral= Carbon::now();
+            $contrato->cantidadHorasDiarias= intval($request->cantidadHorasDiarias);
+            $contrato->salario= floatval($request->salario);
+            $contrato->contrato = $request->contrato;
+            $contrato->puesto_id=($request->idpuesto);
+            $contrato->empleado_id=($request->idempleado);
+
             $contrato->save();
         } catch (Exception $e) {
             return redirect()->withErrors('Error');

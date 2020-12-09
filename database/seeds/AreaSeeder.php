@@ -72,10 +72,7 @@ class AreaSeeder extends Seeder
         $contrato->empleado_id=$empleado->id;
         $contrato->save();
         
-        $diaNoLaboral = new DiaNoLaboral();
-        $diaNoLaboral->dia=Carbon::createFromFormat('Y-m-d','2020-05-25');
-        $diaNoLaboral->descripcion='Dia de ';
-        $diaNoLaboral->save();
+    
         
         $empresa = new Empresa();
         $empresa->nombre='Angaus Producciones ';
@@ -87,6 +84,12 @@ class AreaSeeder extends Seeder
         $nuevaArea->empresa_id=$empresa->id;
         $nuevaArea->update();
         
+        $diaNoLaboral = new DiaNoLaboral();
+        $diaNoLaboral->dia=Carbon::createFromFormat('Y-m-d','2020-05-25');
+        $diaNoLaboral->descripcion='Dia de ';
+        $diaNoLaboral->empresa_id= $empresa->id;
+        $diaNoLaboral->save();
+
         $evento = new Evento();
         $evento->titulo='Evento 1';
         $evento->descripcion='Un evento';
@@ -118,16 +121,6 @@ class AreaSeeder extends Seeder
         $contactoEmergencia->correo='agus@agus.com';
         $contactoEmergencia->empleado_id=$empleado->id;
         $contactoEmergencia->save();
-        
-
-        
-        
-        
-        
-        
-        
-        
-
 
     }
 }

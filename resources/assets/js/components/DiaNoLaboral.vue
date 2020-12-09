@@ -8,10 +8,10 @@
       <!-- Ejemplo de tabla Listado -->
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-align-justify"></i> Puesto
+          <i class="fa fa-align-justify"></i> Dias No Laborales
           <button
             type="button"
-            @click="abrirModal('puesto', 'registrar')"
+            @click="abrirModal('diaNoLaboral', 'registrar')"
             class="btn btn-secondary"
           >
             <i class="icon-plus"></i>&nbsp;Nuevo
@@ -44,21 +44,18 @@
           <table class="table table-bordered table-striped table-sm">
             <thead>
               <tr>
-                <th>Nombre</th>
-                <th>Sueldo Basico</th>
-                <th>Departamento</th>
+                <th>Dia</th>
+                <th>Empresa</th>
                 <th>Condición</th>
                 <th>Opciones</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="puesto in arrayPuestos" :key="puesto.id">
-               
-                <td v-text="puesto.nombre"></td>
-                <td v-text="puesto.sueldoBasico"></td>
-                <td v-text="puesto.nombreDepartamento"></td>
+              <tr v-for="diaNoLaboral in arraydianolaboral" :key="diaNoLaboral.id">
+                <td v-text="diaNoLaboral.dia"></td>
+                <td v-text="diaNoLaboral.nombreEmpresa"></td>
                 <td>
-                  <div v-if="puesto.condicion">
+                  <div v-if="diaNoLaboral.condicion">
                     <span class="badge badge-success">Activo</span>
                   </div>
                   <div v-else>
@@ -68,17 +65,17 @@
                 <td>
                   <button
                     type="button"
-                    @click="abrirModal('puesto', 'actualizar', puesto)"
+                    @click="abrirModal('diaNoLaboral', 'actualizar', diaNoLaboral)"
                     class="btn btn-warning btn-sm"
                   >
                     <i class="icon-pencil"></i>
                   </button>
                   &nbsp;
-                  <template v-if="puesto.condicion">
+                  <template v-if="diaNoLaboral.condicion">
                     <button
                       type="button"
                       class="btn btn-danger btn-sm"
-                      @click="desactivarPuesto(puesto.id)"
+                      @click="desactivarDiaNoLaboral(diaNoLaboral.id)"
                     >
                       <i class="icon-trash"></i>
                     </button>
@@ -87,7 +84,7 @@
                     <button
                       type="button"
                       class="btn btn-info btn-sm"
-                      @click="activarPuesto(puesto.id)"
+                      @click="activarDiaNoLaboral(diaNoLaboral.id)"
                     >
                       <i class="icon-check"></i>
                     </button>
@@ -171,59 +168,47 @@
               enctype="multipart/form-data"
               class="form-horizontal"
             >
-              <div class="form-group row">
+            <div class="form-group row">
                 <label class="col-md-3 form-control-label" for="text-input"
-                  >Departamentos (*)</label
+                  >Empresa (*)</label
                 >
-                <select class="form-control" v-model="departamento_id">
+                <select class="form-control" v-model="empresa_id">
                   <option value="0" disabled>Seleccione</option>
                   <option
-                    v-for="departamento in arrayDepartamento"
-                    :key="departamento.id"
-                    :value="departamento.id"
-                    v-text="departamento.nombre"
+                    v-for="empresa in arrayEmpresa"
+                    :key="empresa.id"
+                    :value="empresa.id"
+                    v-text="empresa.nombre"
                   ></option>
                 </select>
               </div>
-              <div class="form-group row">
-                <label class="col-md-3 form-control-label" for="text-input"
-                  >Nombre (*)</label
-                >
-                <div class="col-md-9">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Dia No Laborable (*)</label>
                   <input
-                    type="text"
-                    v-model="nombre"
+                    type="date"
                     class="form-control"
-                    placeholder="Nombre del departamento"
+                    v-model="dia"
                   />
                 </div>
               </div>
               <div class="form-group row">
                 <label class="col-md-3 form-control-label" for="text-input"
-                  >Descripcion </label
-                >
+                  >Descripcion (*)</label>
+
                 <div class="col-md-9">
                   <input
                     type="text"
                     v-model="descripcion"
                     class="form-control"
-                    placeholder="Descripcion del departamento"
+                    placeholder="Descripcion del dia no laboral"
                   />
                 </div>
               </div>
-              <div class="form-group row">
-                <label class="col-md-3 form-control-label" for="text-input"
-                  >Salario Basico (*)</label
-                >
-                <div class="col-md-9">
-                  <input
-                    type="text"
-                    v-model="sueldoBasico"
-                    class="form-control"
-                    placeholder="Salario laboral"
-                  />
-                </div>
-              </div>
+              
+              
+            
+            
 
               <div v-show="errorComponente" class="form-group row div-error">
                 <div class="text-center text-error">
@@ -248,7 +233,7 @@
               type="button"
               v-if="tipoAccion == 1"
               class="btn btn-primary"
-              @click="registrarPuesto()"
+              @click="registrarDiaNoLaboral()"
             >
               Guardar
             </button>
@@ -256,7 +241,7 @@
               type="button"
               v-if="tipoAccion == 2"
               class="btn btn-primary"
-              @click="actualizarPuesto()"
+              @click="actualizarDiaNoLaboral()"
             >
               Actualizar
             </button>
@@ -275,14 +260,13 @@ import toastr from "toastr";
 export default {
   data() {
     return {
-      arrayPuestos: [],
-      arrayDepartamento: [],
-
-      puesto_id: 0,
-      nombre: "",
+      arraydianolaboral: [],
+      arrayEmpresa:[],
+      id: 0,
+      //datetime
+      dia: "",
       descripcion: "",
-      sueldoBasico: 0.0,
-      departamento_id:0,
+      empresa_id: 0,
       
 
       modal: 0,
@@ -333,22 +317,18 @@ export default {
   },
   methods: {
     listarTabla(page, buscar, criterio) {
-      this.listarPuestos(page, buscar, criterio);
+      this.listardiaNoLaboral(page, buscar, criterio);
     },
-    listarPuestos(page, buscar, criterio) {
+    listardiaNoLaboral(page, buscar, criterio) {
       let me = this;
       var url =
-        "/puesto?page=" +
-        page +
-        "&buscar=" +
-        buscar +
-        "&criterio=" +
-        criterio;
+        "/diaNoLaboral?page=" + page + "&buscar=" + buscar + "&criterio=" + criterio;
       axios
         .get(url)
         .then(function (response) {
+          console.log(response);
           var respuesta = response.data;
-          me.arrayPuestos = respuesta.puestos.data;
+          me.arraydianolaboral = respuesta.diaNoLaborales.data;
           me.pagination = respuesta.pagination;
         })
         .catch(function (error) {
@@ -362,20 +342,19 @@ export default {
       //Envia la petición para visualizar la data de esa página
       me.listarTabla(page, buscar, criterio);
     },
-    registrarPuesto() {
+    registrarDiaNoLaboral() {
       let me = this;
       if (this.validarForm()) {
         return;
       }
       axios
-        .post("/puesto/registrar", {
-          "nombre": this.nombre,
-          "descripcion": this.descripcion,
-          "departamento_id": this.departamento_id,
-          "sueldoBasico": parseFloat(this.sueldoBasico)
+      .post("/diaNoLaboral/registrar", {
+      dia: this.dia,
+      descripcion: this.descripcion,
+      empresa_id: this.empresa_id,
+      
         })
         .then(function (response) {
-          console.log(response);
           me.cerrarModal();
           me.listarTabla(1, "", "nombre");
           toastr.success("Se ha registrado con exito", "Registrado", {
@@ -387,7 +366,7 @@ export default {
           toastr.error("Ha ocurrido un error", "Error", { timeOut: 5000 });
         });
     },
-    actualizarPuesto() {
+    actualizarDiaNoLaboral() {
       console.log("prueba");
       if (this.validarForm()) {
         return;
@@ -395,12 +374,11 @@ export default {
 
       let me = this;
       axios
-        .put("/puesto/actualizar", {
-          "id": this.puesto_id,
-          "nombre": this.nombre,
-          "descripcion": this.descripcion,
-          "departamento_id": this.departamento_id,
-          "sueldoBasico": this.sueldoBasico
+        .put("/diaNoLaboral/actualizar", {
+        id: this.id,
+        dia: this.dia,
+        descripcion: this.descripcion,
+        empresa_id: this.empresa_id,
         })
         .then(function (response) {
           me.cerrarModal();
@@ -414,7 +392,7 @@ export default {
           toastr.error("Ha ocurrido un error", "Error", { timeOut: 5000 });
         });
     },
-    desactivarContrato(id) {
+    desactivarDiaNoLaboral(id) {
       swal({
         title: "Esta seguro de desactivarlo ?",
         type: "warning",
@@ -432,16 +410,12 @@ export default {
           let me = this;
 
           axios
-            .put("/puesto/desactivar", {
+            .put("/diaNoLaboral/desactivar", {
               id: id,
             })
             .then(function (response) {
               me.listarTabla(1, "", "nombre");
-              swal(
-                "Desactivado!",
-                "Se ha desactivado con éxito.",
-                "success"
-              );
+              swal("Desactivado!", "Se ha desactivado con éxito.", "success");
             })
             .catch(function (error) {
               console.log(error);
@@ -453,7 +427,7 @@ export default {
         }
       });
     },
-    activarContrato(id) {
+    activarDiaNoLaboral(id) {
       swal({
         title: "Esta seguro de activarlo?",
         type: "warning",
@@ -471,16 +445,12 @@ export default {
           let me = this;
 
           axios
-            .put("/puesto/activar", {
+            .put("/diaNoLaboral/activar", {
               id: id,
             })
             .then(function (response) {
               me.listarTabla(1, "", "nombre");
-              swal(
-                "Activado!",
-                "Se ha activado con éxito.",
-                "success"
-              );
+              swal("Activado!", "Se ha activado con éxito.", "success");
             })
             .catch(function (error) {
               console.log(error);
@@ -496,77 +466,77 @@ export default {
     validarForm() {
       this.errorComponente = 0;
       this.errorMostrarMsjForm = [];
-      if (!this.nombre)
-        this.errorMostrarMsjForm.push("Debe ingresar el nombre");
-      if (!this.departamento_id)
-        this.errorMostrarMsjForm.push("Debe seleccionar un departamento");
-      if (parseFloat(this.sueldoBasico) <= 0.0 )
-        this.errorMostrarMsjForm.push("Debe ingresar un sueldo basico mayor a 0");
+      if (!this.dia)
+        this.errorMostrarMsjForm.push("Debe seleccionar un dia ");
+      if (!this.empresa_id)
+        this.errorMostrarMsjForm.push("Debe seleccionar la empresa relacionada. ");
       if (this.errorMostrarMsjForm.length) this.errorComponente = 1;
       return this.errorComponente;
     },
-     selectDepartamentos(){
-                let me=this;
-                //loading(true)
-                var url= '/departamento/selectDepartamento';
-                axios.get(url).then(function (response) {
-                    let respuesta = response.data;
-                    //q: search
-                    me.arrayDepartamento=respuesta.departamentos;
-                    //loading(false)
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-     },
     cerrarModal() {
       this.modal = 0;
       this.tituloModal = "";
-   
-      this.nombre = "";
-      this.descripcion = '';
-      this.departamento_id = 0;
-      this.sueldoBasico = 0.0;
+
+      this.id=0;
+      this.dia = "";
+      this.descripcion = "";
+      this.empresa_id = 0;
     },
 
     abrirModal(modelo, accion, data = []) {
       switch (modelo) {
-        case "puesto": {
+        case "diaNoLaboral": {
           switch (accion) {
             case "registrar": {
               this.modal = 1;
-              this.tituloModal = "Registrar Puesto";
+              this.tituloModal = "Registrar dia no laboral";
 
-              this.nombre = "";
-              this.descripcion = '';
-              this.departamento_id = 0;
-              this.sueldoBasico = 0.0;
+               this.id=0;
+              this.dia = "";
+              this.descripcion = "";
+              this.empresa_id = 0;
 
               this.tipoAccion = 1;
               break;
             }
             case "actualizar": {
               this.modal = 1;
-              this.tituloModal = "Actualizar contrato";
+              this.tituloModal = "Actualizar dia no laboral";
               this.tipoAccion = 2;
 
-              this.nombre = data["nombre"];
+
+              this.id = data["id"];
+              this.dia = data["dia"];
               this.descripcion = data["descripcion"];
-              this.departamento_id = data["departamento_id"];
-              this.sueldoBasico = data["sueldoBasico"];
-              
+              this.empresa_id = data["empresa_id"];
+
               break;
             }
           }
         }
       }
     },
+    selectEmpresa(){
+                let me=this;
+                //loading(true)
+                var url= '/empresa/selectEmpresa';
+                axios.get(url).then(function (response) {
+                    let respuesta = response.data;
+                    //q: search
+                    me.arrayEmpresa=respuesta.empresas;
+                    //loading(false)
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+     }
   },
   mounted() {
     this.listarTabla(1, this.buscar, this.criterio);
-    this.selectDepartamentos();
+    this.selectEmpresa();
   },
 };
+
 </script>
 <style>
 .modal-content {
