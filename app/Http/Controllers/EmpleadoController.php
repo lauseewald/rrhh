@@ -168,20 +168,21 @@ class EmpleadoController extends Controller
             
             $competencias = $request->data;//Array de competencias
             $contactos = $request->contactos;//Array de contactos
+            $eliminar = $request->eliminar;//Array de eliminar
             
             //Recorro todos los elementos
-            $idempleado = $request->id;    
-                    /*foreach($competencias as $ep=>$det)
+            $idempleado = $request->id;  
+            $this->encontrar($idempleado);
+                    foreach($competencias as $ep=>$det)
                     {
-                        $idcompetencia = $det['id'];
-                        if($this->encontrarEliminar($idempleado, $idcompetencia)==1){
+                        
                                 $competencia = new CompetenciaEmpleado();
                                 $competencia->empleado_id = $empleado->id;
                                 $competencia->competencia_id = $det['id'];
                                 $competencia->save();
-                        }
+                        
                                 
-                    }*/
+                    }
                     foreach($contactos as $ep=>$det)
                     {
                         
@@ -203,7 +204,14 @@ class EmpleadoController extends Controller
                             $contacto->save();
                         }
                         
-                    }   
+                    }
+                    foreach($eliminar as $ep=>$det)
+                    {
+                            $idcontacto = $det['id'];
+                            $contacto = ContactoEmergencia::findOrFail($idcontacto);
+                            $contacto->delete();
+                        
+                    }      
                         
                     DB::commit();
         } catch (PDOException $e){
@@ -232,7 +240,7 @@ class EmpleadoController extends Controller
        $id = $request->id;
         $competencias = CompetenciaEmpleado::join('competencias','competencias_empleados.competencia_id','=','competencias.id')
         ->join('empleados','competencias_empleados.empleado_id','=','empleados.id')
-        ->select('competencias.id as id', 'competencias.nombre as nombre')
+        ->select('competencias.id as id', 'competencias_empleados.id as idcomp_emp', 'competencias.nombre as nombre')
         ->where('empleados.id', '=', $id)
         ->orderBy('competencias.nombre', 'asc')->get();
         
@@ -248,17 +256,16 @@ class EmpleadoController extends Controller
         
         return ['contactos' => $contactos];
     }
-    public function encontrar($idempleado, $idcompetencia)
+    public function encontrar($idempleado)
     {
         
         $comp = CompetenciaEmpleado::where('empleado_id', '=', $idempleado)
-        ->where('competencia_id', '=', $idcompetencia)
         ->select('id')->get();
-        if (count($comp)==0){
-            return '1';
-        } else{
-            return '0';
-        }
+        foreach($comp as $ep=>$det)
+                    {
+                        $c = CompetenciaEmpleado::findOrFail($det['id']);
+                        $c->delete();
+                    }
     }
    
 }

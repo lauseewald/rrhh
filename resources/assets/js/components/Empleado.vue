@@ -221,7 +221,7 @@
                 </div>
               </div>
 
-              <div class="col-md-9">
+              <div class="col-md-9" >
                 <label>Competencias</label>
 
                 <multiselect
@@ -234,7 +234,8 @@
                 >
                 </multiselect>
               </div>
-              <div class="col-md-7">
+              <br>
+              <div class="col-md-9">
                 <div class="form-group">
                   <label
                     for="data"
@@ -443,6 +444,7 @@ export default {
       empleado_id: 0,
       idincidencia: 0,
       arrayCompetencias: [],
+      arrayEliminar: [],
       competenciasId: [],
       nombreContacto: "",
       telefono1: "",
@@ -666,6 +668,9 @@ export default {
     },
     eliminarDetalle(index) {
       let me = this;
+      me.arrayEliminar.push({
+          id: me.arrayDetalle[index].id,
+        });
       me.arrayDetalle.splice(index, 1);
     },
    
@@ -680,7 +685,7 @@ export default {
         me.errorEmpleado = 1;
         return;
       }
-      console.log(this.competenciasId);
+      
       axios
         .post("/empleado/registrar", {
           nombre: this.nombre,
@@ -712,7 +717,7 @@ export default {
       }
 
       let me = this;
-      console.log(me.arrayDetalle);
+      console.log(this.competenciasId);
       axios
         .put("/empleado/actualizar", {
           nombre: this.nombre,
@@ -724,6 +729,7 @@ export default {
           curriculum: this.curriculum,
           data: this.competenciasId,
           contactos: this.arrayDetalle,
+          eliminar: this.arrayEliminar,
           id: this.id,
         })
         .then(function (response) {
@@ -925,6 +931,7 @@ export default {
       this.empleado_id = "";
       this.competenciasId = [];
       this.arrayDetalle = [];
+      this.arrayEliminar = [];
     },
     ocultarDetalle() {
       this.listado = 1;
@@ -939,6 +946,7 @@ export default {
       this.empleado_id = "";
       this.competenciasId = [];
       this.arrayDetalle = [];
+      this.arrayEliminar = [];
     },
     verEmpleado(id) {
       /*let me=this;

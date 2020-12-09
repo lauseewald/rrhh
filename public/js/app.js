@@ -51658,6 +51658,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /*import vSelect from 'vue-select';*/
 
@@ -51671,6 +51672,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       empleado_id: 0,
       idincidencia: 0,
       arrayCompetencias: [],
+      arrayEliminar: [],
       competenciasId: [],
       nombreContacto: "",
       telefono1: "",
@@ -51873,6 +51875,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     eliminarDetalle: function eliminarDetalle(index) {
       var me = this;
+      me.arrayEliminar.push({
+        id: me.arrayDetalle[index].id
+      });
       me.arrayDetalle.splice(index, 1);
     },
     registrarEmpleado: function registrarEmpleado() {
@@ -51885,7 +51890,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         me.errorEmpleado = 1;
         return;
       }
-      console.log(this.competenciasId);
+
       axios.post("/empleado/registrar", {
         nombre: this.nombre,
         apellido: this.apellido,
@@ -51914,7 +51919,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }
 
       var me = this;
-      console.log(me.arrayDetalle);
+      console.log(this.competenciasId);
       axios.put("/empleado/actualizar", {
         nombre: this.nombre,
         apellido: this.apellido,
@@ -51925,6 +51930,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         curriculum: this.curriculum,
         data: this.competenciasId,
         contactos: this.arrayDetalle,
+        eliminar: this.arrayEliminar,
         id: this.id
       }).then(function (response) {
         me.cerrarModal();
@@ -52061,6 +52067,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.empleado_id = "";
       this.competenciasId = [];
       this.arrayDetalle = [];
+      this.arrayEliminar = [];
     },
     ocultarDetalle: function ocultarDetalle() {
       this.listado = 1;
@@ -52075,6 +52082,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.empleado_id = "";
       this.competenciasId = [];
       this.arrayDetalle = [];
+      this.arrayEliminar = [];
     },
     verEmpleado: function verEmpleado(id) {
       /*let me=this;
@@ -52741,7 +52749,9 @@ var render = function() {
                       1
                     ),
                     _vm._v(" "),
-                    _c("div", { staticClass: "col-md-7" }, [
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-9" }, [
                       _c("div", { staticClass: "form-group" }, [
                         _c(
                           "label",
