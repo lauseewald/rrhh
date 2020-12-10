@@ -8,10 +8,10 @@
       <!-- Ejemplo de tabla Listado -->
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-align-justify"></i> Puesto
+          <i class="fa fa-align-justify"></i> Empresa
           <button
             type="button"
-            @click="abrirModal('puesto', 'registrar')"
+            @click="abrirModal('empresa', 'registrar')"
             class="btn btn-secondary"
           >
             <i class="icon-plus"></i>&nbsp;Nuevo
@@ -45,20 +45,23 @@
             <thead>
               <tr>
                 <th>Nombre</th>
-                <th>Sueldo Basico</th>
-                <th>Departamento</th>
+                <th>Razon Social</th>
+                <th>CUIT</th>
+                <th>Dirección</th>
+                <th>Inicio Actividad</th>
                 <th>Condición</th>
                 <th>Opciones</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="puesto in arrayPuestos" :key="puesto.id">
-               
-                <td v-text="puesto.nombre"></td>
-                <td v-text="puesto.sueldoBasico"></td>
-                <td v-text="puesto.nombreDepartamento"></td>
+              <tr v-for="empresa in arrayempresas" :key="empresa.id">
+                <td v-text="empresa.nombre"></td>
+                <td v-text="empresa.razonSocial"></td>
+                <td v-text="empresa.cuit"></td>
+                <td v-text="empresa.direccion"></td>
+                <td v-text="empresa.inicioActividad"></td>
                 <td>
-                  <div v-if="puesto.condicion">
+                  <div v-if="empresa.condicion">
                     <span class="badge badge-success">Activo</span>
                   </div>
                   <div v-else>
@@ -68,17 +71,17 @@
                 <td>
                   <button
                     type="button"
-                    @click="abrirModal('puesto', 'actualizar', puesto)"
+                    @click="abrirModal('empresa', 'actualizar', empresa)"
                     class="btn btn-warning btn-sm"
                   >
                     <i class="icon-pencil"></i>
                   </button>
                   &nbsp;
-                  <template v-if="puesto.condicion">
+                  <template v-if="empresa.condicion">
                     <button
                       type="button"
                       class="btn btn-danger btn-sm"
-                      @click="desactivarPuesto(puesto.id)"
+                      @click="desactivarEmpresa(empresa.id)"
                     >
                       <i class="icon-trash"></i>
                     </button>
@@ -87,7 +90,7 @@
                     <button
                       type="button"
                       class="btn btn-info btn-sm"
-                      @click="activarPuesto(puesto.id)"
+                      @click="activarEmpresa(empresa.id)"
                     >
                       <i class="icon-check"></i>
                     </button>
@@ -173,20 +176,6 @@
             >
               <div class="form-group row">
                 <label class="col-md-3 form-control-label" for="text-input"
-                  >Departamentos (*)</label
-                >
-                <select class="form-control" v-model="departamento_id">
-                  <option value="0" disabled>Seleccione</option>
-                  <option
-                    v-for="departamento in arrayDepartamento"
-                    :key="departamento.id"
-                    :value="departamento.id"
-                    v-text="departamento.nombre"
-                  ></option>
-                </select>
-              </div>
-              <div class="form-group row">
-                <label class="col-md-3 form-control-label" for="text-input"
                   >Nombre (*)</label
                 >
                 <div class="col-md-9">
@@ -194,33 +183,56 @@
                     type="text"
                     v-model="nombre"
                     class="form-control"
-                    placeholder="Nombre del departamento"
+                    placeholder="Nombre del empresa"
                   />
                 </div>
               </div>
               <div class="form-group row">
                 <label class="col-md-3 form-control-label" for="text-input"
-                  >Descripcion </label
-                >
+                  >Razon Social
+                </label>
                 <div class="col-md-9">
                   <input
                     type="text"
-                    v-model="descripcion"
+                    v-model="razonSocial"
                     class="form-control"
-                    placeholder="Descripcion del departamento"
+                    placeholder="Ej: Sociedad Anonima"
                   />
                 </div>
               </div>
               <div class="form-group row">
                 <label class="col-md-3 form-control-label" for="text-input"
-                  >Salario Basico (*)</label
-                >
+                  >CUIT
+                </label>
                 <div class="col-md-9">
                   <input
                     type="text"
-                    v-model="sueldoBasico"
+                    v-model="cuit"
                     class="form-control"
-                    placeholder="Salario laboral"
+                    placeholder="Ej: xx-xx.xxx.xxx.-xx"
+                  />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label" for="text-input"
+                  >Direccion (*)
+                </label>
+                <div class="col-md-9">
+                  <input
+                    type="text"
+                    v-model="direccion"
+                    class="form-control"
+                    placeholder="Ej: Las Heras"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Inicio de Actividad (*)</label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    v-model="inicioActividad"
                   />
                 </div>
               </div>
@@ -248,7 +260,7 @@
               type="button"
               v-if="tipoAccion == 1"
               class="btn btn-primary"
-              @click="registrarPuesto()"
+              @click="registrarEmpresa()"
             >
               Guardar
             </button>
@@ -256,7 +268,7 @@
               type="button"
               v-if="tipoAccion == 2"
               class="btn btn-primary"
-              @click="actualizarPuesto()"
+              @click="actualizarEmpresa()"
             >
               Actualizar
             </button>
@@ -275,15 +287,15 @@ import toastr from "toastr";
 export default {
   data() {
     return {
-      arrayPuestos: [],
-      arrayDepartamento: [],
+      arrayEmpresas: [],
+      arrayempresas: [],
 
-      puesto_id: 0,
+      id: 0,
       nombre: "",
-      descripcion: "",
-      sueldoBasico: 0.0,
-      departamento_id:0,
-      
+      razonSocial: "",
+      cuit: "",
+      direccion: "",
+      inicioActividad: "",
 
       modal: 0,
       tituloModal: "",
@@ -333,22 +345,17 @@ export default {
   },
   methods: {
     listarTabla(page, buscar, criterio) {
-      this.listarPuestos(page, buscar, criterio);
+      this.listarEmpresa(page, buscar, criterio);
     },
-    listarPuestos(page, buscar, criterio) {
+    listarEmpresa(page, buscar, criterio) {
       let me = this;
       var url =
-        "/puesto?page=" +
-        page +
-        "&buscar=" +
-        buscar +
-        "&criterio=" +
-        criterio;
+        "/empresa?page=" + page + "&buscar=" + buscar + "&criterio=" + criterio;
       axios
         .get(url)
         .then(function (response) {
           var respuesta = response.data;
-          me.arrayPuestos = respuesta.puestos.data;
+          me.arrayempresas = respuesta.empresas.data;
           me.pagination = respuesta.pagination;
         })
         .catch(function (error) {
@@ -362,20 +369,21 @@ export default {
       //Envia la petición para visualizar la data de esa página
       me.listarTabla(page, buscar, criterio);
     },
-    registrarPuesto() {
+    registrarEmpresa() {
       let me = this;
       if (this.validarForm()) {
         return;
       }
       axios
-        .post("/puesto/registrar", {
-          "nombre": this.nombre,
-          "descripcion": this.descripcion,
-          "departamento_id": this.departamento_id,
-          "sueldoBasico": parseFloat(this.sueldoBasico)
+      .post("/empresa/registrar", {
+      nombre: this.nombre,
+      razonSocial: this.razonSocial ,
+      cuit: this.cuit ,
+      direccion: this.direccion ,
+      inicioActividad: this.inicioActividad,
+      
         })
         .then(function (response) {
-          console.log(response);
           me.cerrarModal();
           me.listarTabla(1, "", "nombre");
           toastr.success("Se ha registrado con exito", "Registrado", {
@@ -387,7 +395,7 @@ export default {
           toastr.error("Ha ocurrido un error", "Error", { timeOut: 5000 });
         });
     },
-    actualizarPuesto() {
+    actualizarEmpresa() {
       console.log("prueba");
       if (this.validarForm()) {
         return;
@@ -395,12 +403,13 @@ export default {
 
       let me = this;
       axios
-        .put("/puesto/actualizar", {
-          "id": this.puesto_id,
-          "nombre": this.nombre,
-          "descripcion": this.descripcion,
-          "departamento_id": this.departamento_id,
-          "sueldoBasico": this.sueldoBasico
+        .put("/empresa/actualizar", {
+          id: this.id,
+          nombre: this.nombre,
+          razonSocial: this.razonSocial ,
+          cuit: this.cuit ,
+          direccion: this.direccion ,
+          inicioActividad: this.inicioActividad,
         })
         .then(function (response) {
           me.cerrarModal();
@@ -414,7 +423,7 @@ export default {
           toastr.error("Ha ocurrido un error", "Error", { timeOut: 5000 });
         });
     },
-    desactivarContrato(id) {
+    desactivarEmpresa(id) {
       swal({
         title: "Esta seguro de desactivarlo ?",
         type: "warning",
@@ -432,16 +441,12 @@ export default {
           let me = this;
 
           axios
-            .put("/puesto/desactivar", {
+            .put("/empresa/desactivar", {
               id: id,
             })
             .then(function (response) {
               me.listarTabla(1, "", "nombre");
-              swal(
-                "Desactivado!",
-                "Se ha desactivado con éxito.",
-                "success"
-              );
+              swal("Desactivado!", "Se ha desactivado con éxito.", "success");
             })
             .catch(function (error) {
               console.log(error);
@@ -453,7 +458,7 @@ export default {
         }
       });
     },
-    activarContrato(id) {
+    activarEmpresa(id) {
       swal({
         title: "Esta seguro de activarlo?",
         type: "warning",
@@ -471,16 +476,12 @@ export default {
           let me = this;
 
           axios
-            .put("/puesto/activar", {
+            .put("/empresa/activar", {
               id: id,
             })
             .then(function (response) {
               me.listarTabla(1, "", "nombre");
-              swal(
-                "Activado!",
-                "Se ha activado con éxito.",
-                "success"
-              );
+              swal("Activado!", "Se ha activado con éxito.", "success");
             })
             .catch(function (error) {
               console.log(error);
@@ -498,63 +499,44 @@ export default {
       this.errorMostrarMsjForm = [];
       if (!this.nombre)
         this.errorMostrarMsjForm.push("Debe ingresar el nombre");
-      if (!this.departamento_id)
-        this.errorMostrarMsjForm.push("Debe seleccionar un departamento");
-      if (parseFloat(this.sueldoBasico) <= 0.0 )
-        this.errorMostrarMsjForm.push("Debe ingresar un sueldo basico mayor a 0");
       if (this.errorMostrarMsjForm.length) this.errorComponente = 1;
       return this.errorComponente;
     },
-     selectDepartamentos(){
-                let me=this;
-                //loading(true)
-                var url= '/departamento/selectDepartamento';
-                axios.get(url).then(function (response) {
-                    let respuesta = response.data;
-                    //q: search
-                    me.arrayDepartamento=respuesta.departamentos;
-                    //loading(false)
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-     },
     cerrarModal() {
       this.modal = 0;
       this.tituloModal = "";
-   
+
       this.nombre = "";
-      this.descripcion = '';
-      this.departamento_id = 0;
-      this.sueldoBasico = 0.0;
+      this.descripcion = "";
+      this.empresa_id = 0;
     },
 
     abrirModal(modelo, accion, data = []) {
       switch (modelo) {
-        case "puesto": {
+        case "empresa": {
           switch (accion) {
             case "registrar": {
               this.modal = 1;
-              this.tituloModal = "Registrar Puesto";
+              this.tituloModal = "Registrar empresa";
 
+              this.id = 0;
               this.nombre = "";
-              this.descripcion = '';
-              this.departamento_id = 0;
-              this.sueldoBasico = 0.0;
+              this.descripcion = "";
+              this.empresa_id = 0;
 
               this.tipoAccion = 1;
               break;
             }
             case "actualizar": {
               this.modal = 1;
-              this.tituloModal = "Actualizar contrato";
+              this.tituloModal = "Actualizar empresa";
               this.tipoAccion = 2;
 
+              this.id = data["id"];
               this.nombre = data["nombre"];
               this.descripcion = data["descripcion"];
-              this.departamento_id = data["departamento_id"];
-              this.sueldoBasico = data["sueldoBasico"];
-              
+              this.empresa_id = data["empresa_id"];
+
               break;
             }
           }
@@ -564,7 +546,6 @@ export default {
   },
   mounted() {
     this.listarTabla(1, this.buscar, this.criterio);
-    this.selectDepartamentos();
   },
 };
 </script>

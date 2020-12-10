@@ -8,10 +8,10 @@
       <!-- Ejemplo de tabla Listado -->
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-align-justify"></i> Puesto
+          <i class="fa fa-align-justify"></i> Solicitud De Inasistencia
           <button
             type="button"
-            @click="abrirModal('puesto', 'registrar')"
+            @click="abrirModal('solicitudInasistencia', 'registrar')"
             class="btn btn-secondary"
           >
             <i class="icon-plus"></i>&nbsp;Nuevo
@@ -44,21 +44,33 @@
           <table class="table table-bordered table-striped table-sm">
             <thead>
               <tr>
-                <th>Nombre</th>
-                <th>Sueldo Basico</th>
-                <th>Departamento</th>
-                <th>Condición</th>
+                <th>Desde</th>
+                <th>Hasta</th>
+                <th>Motivo</th>
+                <th>Empleado</th>
+                <th>Incidencia</th>
+                <th>Estado</th>
                 <th>Opciones</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="puesto in arrayPuestos" :key="puesto.id">
-               
-                <td v-text="puesto.nombre"></td>
-                <td v-text="puesto.sueldoBasico"></td>
-                <td v-text="puesto.nombreDepartamento"></td>
+              <tr
+                v-for="solicitudInasistencia in arraysolicitudinasistencia"
+                :key="solicitudInasistencia.id"
+              >
+                <td v-text="solicitudInasistencia.desde"></td>
+                <td v-text="solicitudInasistencia.hasta"></td>
+                <td v-text="solicitudInasistencia.motivo"></td>
+                <td
+                  v-text="
+                    solicitudInasistencia.apellidoEmpleado +
+                    ' ' +
+                    solicitudInasistencia.nombreEmpleado
+                  "
+                ></td>
+                <td v-text="solicitudInasistencia.nombreIncidencia"></td>
                 <td>
-                  <div v-if="puesto.condicion">
+                  <div v-if="solicitudInasistencia.condicion">
                     <span class="badge badge-success">Activo</span>
                   </div>
                   <div v-else>
@@ -68,17 +80,27 @@
                 <td>
                   <button
                     type="button"
-                    @click="abrirModal('puesto', 'actualizar', puesto)"
+                    @click="
+                      abrirModal(
+                        'solicitudInasistencia',
+                        'actualizar',
+                        solicitudInasistencia
+                      )
+                    "
                     class="btn btn-warning btn-sm"
                   >
                     <i class="icon-pencil"></i>
                   </button>
                   &nbsp;
-                  <template v-if="puesto.condicion">
+                  <template v-if="solicitudInasistencia.condicion">
                     <button
                       type="button"
                       class="btn btn-danger btn-sm"
-                      @click="desactivarPuesto(puesto.id)"
+                      @click="
+                        desactivarSolicitudInasistencia(
+                          solicitudInasistencia.id
+                        )
+                      "
                     >
                       <i class="icon-trash"></i>
                     </button>
@@ -87,7 +109,9 @@
                     <button
                       type="button"
                       class="btn btn-info btn-sm"
-                      @click="activarPuesto(puesto.id)"
+                      @click="
+                        activarSolicitudInasistencia(solicitudInasistencia.id)
+                      "
                     >
                       <i class="icon-check"></i>
                     </button>
@@ -173,54 +197,54 @@
             >
               <div class="form-group row">
                 <label class="col-md-3 form-control-label" for="text-input"
-                  >Departamentos (*)</label
+                  >Empleados (*)</label
                 >
-                <select class="form-control" v-model="departamento_id">
+                <select class="form-control" v-model="empleado_id">
                   <option value="0" disabled>Seleccione</option>
                   <option
-                    v-for="departamento in arrayDepartamento"
-                    :key="departamento.id"
-                    :value="departamento.id"
-                    v-text="departamento.nombre"
+                    v-for="empleado in arrayEmpleados"
+                    :key="empleado.id"
+                    :value="empleado.id"
+                    v-text="empleado.nombre"
                   ></option>
                 </select>
               </div>
               <div class="form-group row">
                 <label class="col-md-3 form-control-label" for="text-input"
-                  >Nombre (*)</label
+                  >Incidencias (*)</label
                 >
-                <div class="col-md-9">
-                  <input
-                    type="text"
-                    v-model="nombre"
-                    class="form-control"
-                    placeholder="Nombre del departamento"
-                  />
+                <select class="form-control" v-model="incidencia_id">
+                  <option value="0" disabled>Seleccione</option>
+                  <option
+                    v-for="incidencia in arrayIncidencias"
+                    :key="incidencia.id"
+                    :value="incidencia.id"
+                    v-text="incidencia.nombre"
+                  ></option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Desde (*)</label>
+                  <input type="date" class="form-control" v-model="desde" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Hasta (*)</label>
+                  <input type="date" class="form-control" v-model="hasta" />
                 </div>
               </div>
               <div class="form-group row">
                 <label class="col-md-3 form-control-label" for="text-input"
-                  >Descripcion </label
-                >
+                  >Motivo
+                </label>
                 <div class="col-md-9">
                   <input
                     type="text"
-                    v-model="descripcion"
+                    v-model="motivo"
                     class="form-control"
-                    placeholder="Descripcion del departamento"
-                  />
-                </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-md-3 form-control-label" for="text-input"
-                  >Salario Basico (*)</label
-                >
-                <div class="col-md-9">
-                  <input
-                    type="text"
-                    v-model="sueldoBasico"
-                    class="form-control"
-                    placeholder="Salario laboral"
+                    placeholder="Motivo de la solicitud de la inasistencia"
                   />
                 </div>
               </div>
@@ -248,7 +272,7 @@
               type="button"
               v-if="tipoAccion == 1"
               class="btn btn-primary"
-              @click="registrarPuesto()"
+              @click="registrarSolicitudInasistencia()"
             >
               Guardar
             </button>
@@ -256,7 +280,7 @@
               type="button"
               v-if="tipoAccion == 2"
               class="btn btn-primary"
-              @click="actualizarPuesto()"
+              @click="actualizarSolicitudInasistencia()"
             >
               Actualizar
             </button>
@@ -275,15 +299,16 @@ import toastr from "toastr";
 export default {
   data() {
     return {
-      arrayPuestos: [],
-      arrayDepartamento: [],
+      arrayEmpleados: [],
+      arrayIncidencias: [],
+      arraysolicitudinasistencia: [],
 
-      puesto_id: 0,
-      nombre: "",
-      descripcion: "",
-      sueldoBasico: 0.0,
-      departamento_id:0,
-      
+      id: 0,
+      desde: "",
+      hasta: "",
+      motivo: "",
+      empleado_id: 0,
+      incidencia_id: 0,
 
       modal: 0,
       tituloModal: "",
@@ -333,12 +358,12 @@ export default {
   },
   methods: {
     listarTabla(page, buscar, criterio) {
-      this.listarPuestos(page, buscar, criterio);
+      this.listarSolicitudInasistencia(page, buscar, criterio);
     },
-    listarPuestos(page, buscar, criterio) {
+    listarSolicitudInasistencia(page, buscar, criterio) {
       let me = this;
       var url =
-        "/puesto?page=" +
+        "/solicitudInasistencia?page=" +
         page +
         "&buscar=" +
         buscar +
@@ -348,7 +373,7 @@ export default {
         .get(url)
         .then(function (response) {
           var respuesta = response.data;
-          me.arrayPuestos = respuesta.puestos.data;
+          me.arraysolicitudinasistencia = respuesta.solicitudInasistencias.data;
           me.pagination = respuesta.pagination;
         })
         .catch(function (error) {
@@ -362,20 +387,20 @@ export default {
       //Envia la petición para visualizar la data de esa página
       me.listarTabla(page, buscar, criterio);
     },
-    registrarPuesto() {
+    registrarSolicitudInasistencia() {
       let me = this;
       if (this.validarForm()) {
         return;
       }
       axios
-        .post("/puesto/registrar", {
-          "nombre": this.nombre,
-          "descripcion": this.descripcion,
-          "departamento_id": this.departamento_id,
-          "sueldoBasico": parseFloat(this.sueldoBasico)
+        .post("/solicitudInasistencia/registrar", {
+          desde: this.desde,
+          hasta: this.hasta,
+          motivo: this.motivo,
+          empleado_id: this.empleado_id,
+          incidencia_id: this.incidencia_id,
         })
         .then(function (response) {
-          console.log(response);
           me.cerrarModal();
           me.listarTabla(1, "", "nombre");
           toastr.success("Se ha registrado con exito", "Registrado", {
@@ -387,7 +412,7 @@ export default {
           toastr.error("Ha ocurrido un error", "Error", { timeOut: 5000 });
         });
     },
-    actualizarPuesto() {
+    actualizarSolicitudInasistencia() {
       console.log("prueba");
       if (this.validarForm()) {
         return;
@@ -395,12 +420,13 @@ export default {
 
       let me = this;
       axios
-        .put("/puesto/actualizar", {
-          "id": this.puesto_id,
-          "nombre": this.nombre,
-          "descripcion": this.descripcion,
-          "departamento_id": this.departamento_id,
-          "sueldoBasico": this.sueldoBasico
+        .put("/solicitudInasistencia/actualizar", {
+          id: this.id,
+          desde: this.desde,
+          hasta: this.hasta,
+          motivo: this.motivo,
+          empleado_id: this.empleado_id,
+          incidencia_id: this.incidencia_id,
         })
         .then(function (response) {
           me.cerrarModal();
@@ -414,7 +440,7 @@ export default {
           toastr.error("Ha ocurrido un error", "Error", { timeOut: 5000 });
         });
     },
-    desactivarContrato(id) {
+    desactivarSolicitudInasistencia(id) {
       swal({
         title: "Esta seguro de desactivarlo ?",
         type: "warning",
@@ -432,16 +458,12 @@ export default {
           let me = this;
 
           axios
-            .put("/puesto/desactivar", {
+            .put("/solicitudInasistencia/desactivar", {
               id: id,
             })
             .then(function (response) {
               me.listarTabla(1, "", "nombre");
-              swal(
-                "Desactivado!",
-                "Se ha desactivado con éxito.",
-                "success"
-              );
+              swal("Desactivado!", "Se ha desactivado con éxito.", "success");
             })
             .catch(function (error) {
               console.log(error);
@@ -453,7 +475,7 @@ export default {
         }
       });
     },
-    activarContrato(id) {
+    activarSolicitudInasistencia(id) {
       swal({
         title: "Esta seguro de activarlo?",
         type: "warning",
@@ -471,16 +493,12 @@ export default {
           let me = this;
 
           axios
-            .put("/puesto/activar", {
+            .put("/solicitudInasistencia/activar", {
               id: id,
             })
             .then(function (response) {
               me.listarTabla(1, "", "nombre");
-              swal(
-                "Activado!",
-                "Se ha activado con éxito.",
-                "success"
-              );
+              swal("Activado!", "Se ha activado con éxito.", "success");
             })
             .catch(function (error) {
               console.log(error);
@@ -496,65 +514,88 @@ export default {
     validarForm() {
       this.errorComponente = 0;
       this.errorMostrarMsjForm = [];
-      if (!this.nombre)
-        this.errorMostrarMsjForm.push("Debe ingresar el nombre");
-      if (!this.departamento_id)
-        this.errorMostrarMsjForm.push("Debe seleccionar un departamento");
-      if (parseFloat(this.sueldoBasico) <= 0.0 )
-        this.errorMostrarMsjForm.push("Debe ingresar un sueldo basico mayor a 0");
+      if (!this.desde) this.errorMostrarMsjForm.push("Debe ingresar una fecha");
+      if (!this.hasta) this.errorMostrarMsjForm.push("Debe ingresar una fecha");
+      if (!this.motivo) this.errorMostrarMsjForm.push("Debe ingresar una motivo");
+      if (this.empleado_id < 0) this.errorMostrarMsjForm.push("Debe seleccionar un empleado");
+      if (this.incidencia_id < 0) this.errorMostrarMsjForm.push("Debe seleccionar una incidencia");
       if (this.errorMostrarMsjForm.length) this.errorComponente = 1;
       return this.errorComponente;
     },
-     selectDepartamentos(){
-                let me=this;
-                //loading(true)
-                var url= '/departamento/selectDepartamento';
-                axios.get(url).then(function (response) {
-                    let respuesta = response.data;
-                    //q: search
-                    me.arrayDepartamento=respuesta.departamentos;
-                    //loading(false)
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-     },
     cerrarModal() {
       this.modal = 0;
       this.tituloModal = "";
-   
-      this.nombre = "";
-      this.descripcion = '';
-      this.departamento_id = 0;
-      this.sueldoBasico = 0.0;
+
+      this.id = 0;
+      this.desde = "";
+      this.hasta = "";
+      this.motivo = "";
+      this.empleado_id = 0;
+      this.incidencia_id = 0;
+    },
+    selectEmpleado() {
+      let me = this;
+      //loading(true)
+      var url = "/empleado/selectEmpleado";
+      axios
+        .get(url)
+        .then(function (response) {
+          let respuesta = response.data;
+          //q: search
+          me.arrayEmpleados = respuesta.empleados;
+          //loading(false)
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+    selectIncidencia() {
+      let me = this;
+      //loading(true)
+      var url = "/incidencia/selectIncidencia";
+      axios
+        .get(url)
+        .then(function (response) {
+          let respuesta = response.data;
+          //q: search
+          me.arrayIncidencias = respuesta.incidencias;
+          //loading(false)
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     },
 
     abrirModal(modelo, accion, data = []) {
       switch (modelo) {
-        case "puesto": {
+        case "solicitudInasistencia": {
           switch (accion) {
             case "registrar": {
               this.modal = 1;
-              this.tituloModal = "Registrar Puesto";
+              this.tituloModal = "Registrar solicitud inasistencia";
 
-              this.nombre = "";
-              this.descripcion = '';
-              this.departamento_id = 0;
-              this.sueldoBasico = 0.0;
+              this.id = 0;
+              this.desde = "";
+              this.hasta = "";
+              this.motivo = "";
+              this.empleado_id = 0;
+              this.incidencia_id = 0;
 
               this.tipoAccion = 1;
               break;
             }
             case "actualizar": {
               this.modal = 1;
-              this.tituloModal = "Actualizar contrato";
+              this.tituloModal = "Actualizar solicitud inasistencia";
               this.tipoAccion = 2;
 
-              this.nombre = data["nombre"];
-              this.descripcion = data["descripcion"];
-              this.departamento_id = data["departamento_id"];
-              this.sueldoBasico = data["sueldoBasico"];
-              
+              this.id = data["id"];
+              this.desde = data["desde"];
+              this.hasta = data["hasta"];
+              this.motivo = data["motivo"];
+              this.empleado_id = data["empleado_id"];
+              this.incidencia_id = data["incidencia_id"];
+
               break;
             }
           }
@@ -564,7 +605,8 @@ export default {
   },
   mounted() {
     this.listarTabla(1, this.buscar, this.criterio);
-    this.selectDepartamentos();
+    this.selectEmpleado();
+    this.selectIncidencia();
   },
 };
 </script>

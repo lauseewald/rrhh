@@ -15,7 +15,7 @@ class CreateDiasNoLaboralesTable extends Migration
     {
         Schema::create('dias_no_laborales', function (Blueprint $table) {
             $table->increments('id');
-            $table->dateTime('dia');
+            $table->date('dia');
             $table->string('descripcion');
             // 25 de mayo siempre es feriado. entonces deberia ser fijo = TRUE.
             // Un dia del mes se tiene que fumigar entonces no se trabaja. fijo = False

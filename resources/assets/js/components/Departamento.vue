@@ -170,7 +170,7 @@
             >
               <div class="form-group row">
                 <label class="col-md-3 form-control-label" for="text-input"
-                  >Departamentos (*)</label
+                  >Areas (*)</label
                 >
                 <select class="form-control" v-model="area_id">
                   <option value="0" disabled>Seleccione</option>
@@ -479,7 +479,7 @@ export default {
       this.errorMostrarMsjForm = [];
       if (!this.nombre)
         this.errorMostrarMsjForm.push("Debe ingresar el nombre");
-      if (this.area_id > 0)
+      if (!this.area_id )
         this.errorMostrarMsjForm.push("Debe seleccionar una area");
       if (this.errorMostrarMsjForm.length) this.errorComponente = 1;
       return this.errorComponente;
@@ -542,7 +542,7 @@ export default {
   },
   mounted() {
     this.listarTabla(1, this.buscar, this.criterio);
-    //  this.selectAreas()
+     this.selectAreas()
   },
 };
 </script>

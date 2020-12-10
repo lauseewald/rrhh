@@ -64,7 +64,7 @@ class DepartamentoController extends Controller
             $departamento = new Departamento();
             $departamento->nombre = $request->nombre;
             $departamento->descripcion = $request->descripcion;
-            $departamento->area_id=(int) ($request->departamento_id);
+            $departamento->area_id=(int) ($request->area_id);
             $departamento->save();
 
         } catch (Exception $e) {

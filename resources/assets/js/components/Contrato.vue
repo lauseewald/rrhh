@@ -165,7 +165,7 @@
                                  <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="text-input">Contrato </label>
                                     <div class="col-md-9">
-                                        <input type="text" v-model="contrato" class="form-control" placeholder="Contrato">
+                                        <input type="text" v-model="contratoUbicacion" class="form-control" placeholder="Contrato">
                                         
                                     </div>
                                 </div>
@@ -208,9 +208,9 @@ import toastr from 'toastr';
                 arrayContrato : [],
                 cantidadHorasDiarias : 0,
                 salario : 0.0,
-                inicioLaboral : new Date(),
-                finLaboral : new Date(),
-                contrato : '',
+                inicioLaboral : '',
+                finLaboral : '',
+                contratoUbicacion : '',
                 idpuesto : 0,
                 idempleado : 0,
                 modal : 0,
@@ -324,12 +324,12 @@ import toastr from 'toastr';
                 'nombre': this.nombre,
                 'descripcion': this.descripcion,
                 'idpuesto': this.idpuesto,
-                'idempleado ': this.idempleado,
-                'cantidadHorasDiarias ': this.cantidadHorasDiarias,
-                'salario ': this.salario,
-                'inicioLaboral ': this.inicioLaboral,
-                'finLaboral ': this.finLaboral,
-                'contrato ': this.contrato
+                'idempleado': this.idempleado,
+                'cantidadHorasDiarias': this.cantidadHorasDiarias,
+                'salario': this.salario,
+                'inicioLaboral': this.inicioLaboral,
+                'finLaboral': this.finLaboral,
+                'contrato': this.contratoUbicacion
                 }).then(function (response) {
                     console.log(response);
                     me.cerrarModal();
@@ -352,12 +352,12 @@ import toastr from 'toastr';
                 'nombre': this.nombre,
                 'descripcion': this.descripcion,
                 'idpuesto': this.idpuesto,
-                'idempleado ': this.idempleado,
-                'cantidadHorasDiarias ': this.cantidadHorasDiarias,
-                'salario ': this.salario,
-                'inicioLaboral ': this.inicioLaboral,
-                'finLaboral ': this.finLaboral,
-                'contrato ': this.contrato,
+                'idempleado': this.idempleado,
+                'cantidadHorasDiarias': this.cantidadHorasDiarias,
+                'salario': this.salario,
+                'inicioLaboral': this.inicioLaboral,
+                'finLaboral': this.finLaboral,
+                'contrato': this.contratoUbicacion,
                 'id': this.contrato_id
                 }).then(function (response) {
                     me.cerrarModal();
@@ -474,9 +474,9 @@ import toastr from 'toastr';
                 this.idempleado=0;
                 this.cantidadHorasDiarias=0;
                 this.salario=0.0;
-                this.inicioLaboral= new Date();
-                this.finLaboral= new Date();
-                this.contrato = '';
+                this.inicioLaboral= '';
+                this.finLaboral= '';
+                this.contratoUbicacion = '';
             },
             
             abrirModal(modelo, accion, data = []){
@@ -494,9 +494,9 @@ import toastr from 'toastr';
                                 this.idempleado=0;
                                 this.cantidadHorasDiarias=0;
                                 this.salario=0.0;
-                                this.inicioLaboral= new Date();
-                                this.finLaboral= new Date();
-                                this.contrato = '';
+                                this.inicioLaboral= '';
+                                this.finLaboral= '';
+                                this.contratoUbicacion = '';
                                 this.tipoAccion = 1;
                                 break;
                             }
@@ -515,7 +515,7 @@ import toastr from 'toastr';
                                 this.salario=data['salario'];
                                 this.inicioLaboral= data['inicioLaboral'];
                                 this.finLaboral= data['finLaboral'];
-                                this.contrato = data['contrato'];
+                                this.contratoUbicacion = data['contrato'];
 
                                 break;
                             }

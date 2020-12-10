@@ -23,6 +23,10 @@ Vue.component('contrato', require('./components/Contrato.vue'));
 Vue.component('evento', require('./components/Evento.vue'));
 Vue.component('departamento', require('./components/Departamento.vue'));
 Vue.component('areal', require('./components/Area.vue'));
+Vue.component('empresa', require('./components/Empresa.vue'));
+Vue.component('dianolaboral', require('./components/DiaNoLaboral.vue'));
+Vue.component('inasistencia', require('./components/Inasistencia.vue'));
+
 const app = new Vue({
     el: '#app',
     data: {
