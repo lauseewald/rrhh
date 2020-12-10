@@ -267,5 +267,39 @@ class EmpleadoController extends Controller
                         $c->delete();
                     }
     }
+    public function pdf($buscar, $criterio)
+    {
+        //$desde = $request->desde;
+        //$hasta = $request->hasta;
+        /*$auditorias = Auditoria::select('auditorias.id','auditorias.fecha_hora', 'auditorias.accion', 'auditorias.user', 'auditorias.tabla')
+        ->whereBetween('auditorias.fecha_hora', [$desde, $hasta])->orderBy('auditorias.id', 'desc')->get();*/
+        if ($buscar==''){
+            $empleados = Empleado::select('nombre', 'apellido', 'cuil', 'fechaAlta', 'id')
+            ->orderBy('id', 'desc')->get();
+        }
+        else{
+            $empleados = Empleado::select('nombre', 'apellido', 'cuil', 'fechaAlta', 'id')
+            ->where('empleados.'.$criterio, 'like', '%'. $buscar . '%')->orderBy('id', 'desc')->get();
+        }
+        
+        $i=0;
+        while($i<count($empleados)){
+
+        
+        $originalDate = $empleados[$i]['fechaAlta'];
+        $empleados[$i]['fechaAlta'] = date("d/m/Y - H:i", strtotime($originalDate));
+        
+        $i++;
+        }
+        
+    
+   
+    $cont = count($empleados);
+    $now= Carbon::now();
+    
+     $pdf = \PDF::loadView('pdf.empleados', ['empleados' => $empleados, 'buscar' => $buscar, 'criterio' => $criterio, 'now' => $now, 'cont' => $cont]);
+    
+     return $pdf->download('empleados-.pdf');
+}
    
 }
