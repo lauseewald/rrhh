@@ -32,6 +32,7 @@
                                 <tr>
                                     <th>Empleado</th>
                                     <th>Nombre</th>
+                                    <th>Tipo Contrato</th>
                                     <th>Puesto</th>
                                     <th>Horas Laborales</th>
                                     <th>Salario</th>
@@ -47,6 +48,7 @@
                                    
                                     <td v-text="contrato.apellidoEmpleado+ ' ' + contrato.nombreEmpleado"></td>
                                     <td v-text="contrato.nombre"></td>
+                                    <td v-text="contrato.nombreTipoContrato"></td>
                                     <td v-text="contrato.nombrePuesto"></td>
                                     <td v-text="contrato.cantidadHorasDiarias"></td>
                                     <td v-text="contrato.salario"></td>
@@ -113,6 +115,13 @@
                                  <select class="form-control" v-model="idempleado">
                                     <option value="0" disabled>Seleccione</option>
                                     <option v-for="empleado in arrayEmpleado" :key="empleado.id" :value="empleado.id" v-text="empleado.apellido + ' ' + empleado.nombre"></option>
+                                </select>   
+                                    </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="text-input">Tipos de Contratos (*)</label>
+                                 <select class="form-control" v-model="idTipoContrato">
+                                    <option value="0" disabled>Seleccione</option>
+                                    <option v-for="tipoContrato in arrayTipoContrato" :key="tipoContrato.id" :value="tipoContrato.id" v-text="tipoContrato.nombre"></option>
                                 </select>   
                                     </div>
                                 <div class="form-group row">
@@ -206,6 +215,7 @@ import toastr from 'toastr';
                 arrayPuesto : [],
                 arrayEmpleado : [],
                 arrayContrato : [],
+                arrayTipoContrato : [],
                 cantidadHorasDiarias : 0,
                 salario : 0.0,
                 inicioLaboral : '',
@@ -213,6 +223,7 @@ import toastr from 'toastr';
                 contratoUbicacion : '',
                 idpuesto : 0,
                 idempleado : 0,
+                idTipoContrato : 0,
                 modal : 0,
                 tituloModal : '',
                 tipoAccion : 0,
@@ -307,6 +318,20 @@ import toastr from 'toastr';
                 .catch(function (error) {
                     console.log(error);
                 });
+            },selectTipoContrato(){
+                let me=this;
+                //loading(true)
+                var url= '/tipoContrato/selectTipoContrato';
+                axios.get(url).then(function (response) {
+                    let respuesta = response.data;
+                    //q: search
+                    me.arrayTipoContrato=respuesta.tipoContratos;
+                    console.log('select Empleado');
+                    //loading(false)
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
             },
             cambiarPagina(page,buscar,criterio){
                 let me = this;
@@ -325,6 +350,7 @@ import toastr from 'toastr';
                 'descripcion': this.descripcion,
                 'idpuesto': this.idpuesto,
                 'idempleado': this.idempleado,
+                'idtipocontrato': this.idTipoContrato,
                 'cantidadHorasDiarias': this.cantidadHorasDiarias,
                 'salario': this.salario,
                 'inicioLaboral': this.inicioLaboral,
@@ -353,6 +379,7 @@ import toastr from 'toastr';
                 'descripcion': this.descripcion,
                 'idpuesto': this.idpuesto,
                 'idempleado': this.idempleado,
+                'idtipocontrato': this.idTipoContrato,
                 'cantidadHorasDiarias': this.cantidadHorasDiarias,
                 'salario': this.salario,
                 'inicioLaboral': this.inicioLaboral,
@@ -472,6 +499,7 @@ import toastr from 'toastr';
                 this.descripcion='';
                 this.idpuesto=0;
                 this.idempleado=0;
+                this.idTipoContrato=0;
                 this.cantidadHorasDiarias=0;
                 this.salario=0.0;
                 this.inicioLaboral= '';
@@ -492,6 +520,7 @@ import toastr from 'toastr';
                                 this.descripcion='';
                                 this.idpuesto=0;
                                 this.idempleado=0;
+                                this.idTipoContrato=0;
                                 this.cantidadHorasDiarias=0;
                                 this.salario=0.0;
                                 this.inicioLaboral= '';
@@ -511,6 +540,7 @@ import toastr from 'toastr';
                                 this.descripcion = data['descripcion'];  
                                 this.idpuesto=data['puesto_id'];
                                 this.idempleado=data['empleado_id'];
+                                this.idTipoContrato=data['tipoContrato_id'];
                                 this.cantidadHorasDiarias=data['cantidadHorasDiarias'];
                                 this.salario=data['salario'];
                                 this.inicioLaboral= data['inicioLaboral'];
@@ -529,6 +559,7 @@ import toastr from 'toastr';
             this.listarTabla(1,this.buscar,this.criterio);
             this.selectPuesto();
             this.selectEmpleado();
+            this.selectTipoContrato();
         }
     }
 </script>

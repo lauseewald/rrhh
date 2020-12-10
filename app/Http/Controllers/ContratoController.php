@@ -26,20 +26,24 @@ class ContratoController extends Controller
         if ($buscar=='') {
             $contratos = Contrato::join('empleados', 'contratos.empleado_id', '=', 'empleados.id')
             ->join('puestos', 'contratos.puesto_id', '=', 'puestos.id')
+            ->join('tipo_contratos', 'contratos.tipoContrato_id', '=', 'tipo_contratos.id')
             ->select(
                 'contratos.*',
                 'puestos.nombre as nombrePuesto',
                 'empleados.nombre as nombreEmpleado',
-                'empleados.apellido as apellidoEmpleado'
+                'empleados.apellido as apellidoEmpleado',
+                'tipo_contratos.nombre as nombreTipoContrato'
             )->orderBy('contratos.nombre', 'desc')->paginate(3);
         } else {
             $contratos = Contrato::join('empleados', 'contratos.empleado_id', '=', 'empleados.id')
             ->join('puestos', 'contratos.puesto_id', '=', 'puestos.id')
+            ->join('tipo_contratos', 'contratos.tipoContrato_id', '=', 'tipo_contratos.id')
             ->select(
                 'contratos.*',
                 'puestos.nombre as nombrePuesto',
                 'empleados.nombre as nombreEmpleado',
-                'empleados.apellido as apellidoEmpleado'
+                'empleados.apellido as apellidoEmpleado',
+                'tipo_contratos.nombre as nombreTipoContrato'
             )->where('contratos.'.$criterio, 'like', '%'. $buscar . '%')
            ->orderBy('contratos.nombre', 'desc')->paginate(3);
         }
@@ -104,6 +108,7 @@ class ContratoController extends Controller
             $contrato->contrato = $request->contrato;
             $contrato->puesto_id=($request->idpuesto);
             $contrato->empleado_id=($request->idempleado);
+            $contrato->tipoContrato_id=($request->idtipocontrato);
 
             $contrato->save();
         } catch (Exception $e) {
@@ -180,6 +185,7 @@ class ContratoController extends Controller
             $contrato->nombre = $request->nombre;
             $contrato->puesto_id=$request->idpuesto;
             $contrato->empleado_id=$request->idempleado;
+            $contrato->tipoContrato_id=($request->idTipoContrato);
             $contrato->cantidadHorasLaborales=$request->cantidadHorasLaborales;
             $contrato->salario=$request->salario;
             $contrato->inicioLaboral= $request->inicioLaboral;
@@ -219,4 +225,39 @@ class ContratoController extends Controller
     {
         //
     }
+
+        public function pdfTiposContratos($buscar, $criterio)
+    {
+        //$desde = $request->desde;
+        //$hasta = $request->hasta;
+        /*$auditorias = Auditoria::select('auditorias.id','auditorias.fecha_hora', 'auditorias.accion', 'auditorias.user', 'auditorias.tabla')
+        ->whereBetween('auditorias.fecha_hora', [$desde, $hasta])->orderBy('auditorias.id', 'desc')->get();*/
+        if ($buscar==''){
+            $contratos = Contrato::all()
+            ->orderBy('id', 'desc')->get();
+        }
+        else{
+            $contratos = Contrato::all()
+            ->where('empleados.'.$criterio, 'like', '%'. $buscar . '%')->orderBy('id', 'desc');
+        }
+        
+        $i=0;
+        while($i<count($contratos)){
+
+        
+        $originalDate = $contratos[$i]['fechaAlta'];
+        $contratos[$i]['fechaAlta'] = date("d/m/Y - H:i", strtotime($originalDate));
+        
+        $i++;
+        }
+        
+    
+   
+    $cont = count($contratos);
+    $now= Carbon::now();
+    
+     $pdf = \PDF::loadView('pdf.empleados', ['empleados' => $contratos, 'buscar' => $buscar, 'criterio' => $criterio, 'now' => $now, 'cont' => $cont]);
+    
+     return $pdf->download('empleados-.pdf');
+}
 }

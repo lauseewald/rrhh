@@ -55,6 +55,9 @@
                     <li @click="menu='dianolaboral'" class="nav-item">
                         <a class="nav-link" href="i#"><i class="icon-basket-loaded"></i> Dias No Laborables</a>
                     </li>
+                    <li @click="menu='tipoContrato'" class="nav-item">
+                        <a class="nav-link" href="i#"><i class="icon-basket-loaded"></i> Tipo de Contratos</a>
+                    </li>
 
                 </ul>
             </li>

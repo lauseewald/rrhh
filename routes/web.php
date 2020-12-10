@@ -103,3 +103,11 @@ Route::put('/solicitudInasistencia/actualizar', 'SolicitudInasistenciaController
 Route::put('/solicitudInasistencia/desactivar', 'SolicitudInasistenciaController@desactivar');
 Route::put('/solicitudInasistencia/activar', 'SolicitudInasistenciaController@activar');
 Route::get('/solicitudInasistencia/selectSolicitudInasistencia', 'SolicitudInasistenciaController@selectSolicitudInasistencia');
+
+//DiaNoLaboral
+Route::get('/tipoContrato', 'TipoContratoController@index');
+Route::post('/tipoContrato/registrar', 'TipoContratoController@store');
+Route::put('/tipoContrato/actualizar', 'TipoContratoController@update');
+Route::put('/tipoContrato/desactivar', 'TipoContratoController@desactivar');
+Route::put('/tipoContrato/activar', 'TipoContratoController@activar');
+Route::get('/tipoContrato/selectTipoContrato', 'TipoContratoController@selectTipoContrato');

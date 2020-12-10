@@ -14,6 +14,7 @@ class Contrato extends Model
         'cantidadHorasDiarias',
         'empleado_id',
         'puesto_id',
+        'tipoContrato_id',
         'contrato',
         'descripcion',
         'salario',

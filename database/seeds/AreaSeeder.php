@@ -14,6 +14,7 @@ use App\Http\Controllers\EmpleadoController;
 use App\Incidencia;
 use App\Puesto;
 use App\SolicitudInasistencia;
+use App\TipoContrato;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
 
@@ -59,6 +60,10 @@ class AreaSeeder extends Seeder
         $puesto->sueldoBasico=16000.0;
         $puesto->departamento_id=$departamento->id;
         $puesto->save();
+
+        $tipoContrato = new TipoContrato();
+        $tipoContrato->nombre='Trabajo';
+        $tipoContrato->save();
         
         $contrato = new Contrato();
         $contrato->nombre='Trabajo';
@@ -70,6 +75,7 @@ class AreaSeeder extends Seeder
         $contrato->contrato='ubicacion';
         $contrato->puesto_id=$puesto->id;
         $contrato->empleado_id=$empleado->id;
+        $contrato->tipoContrato_id=$tipoContrato->id;
         $contrato->save();
         
     

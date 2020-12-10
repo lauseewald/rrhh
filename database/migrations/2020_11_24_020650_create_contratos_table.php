@@ -29,6 +29,8 @@ class CreateContratosTable extends Migration
             //el modelo contrato tiene que tener un metodo que devuelva el puesto del empleado
             $table->unsignedinteger('empleado_id')->nullable();
             $table->foreign('empleado_id')->references('id')->on('empleados');
+            $table->unsignedinteger('tipoContrato_id')->nullable();
+            $table->foreign('tipoContrato_id')->references('id')->on('tipo_contratos');
             $table->boolean('condicion')->default(1);
             $table->timestamps();
         });

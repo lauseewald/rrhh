@@ -39,5 +39,8 @@
 <template v-if="menu=='reporteEmpleado'">
     <empleadoreporte2></empleadoreporte2>
 </template>
+<template v-if="menu=='tipoContrato'">
+    <tipocontrato1></tipocontrato1>
+</template>
 
 @endsection
