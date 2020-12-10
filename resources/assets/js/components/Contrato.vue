@@ -14,19 +14,27 @@
                         </button>
                     </div>
                     <div class="card-body">
+                        <form action="/contrato/pdf" method="get">
+
                         <div class="form-group row">
-                            <div class="col-md-6">
+                            <div class="col-6">
                                 <div class="input-group">
-                                    <select class="form-control col-md-3" v-model="criterio">
+                                    <select name="criterio" class="form-control col-md-3" v-model="criterio">
                                     
                                     <option value="nombre">Nombre</option>
                                    
                                     </select>
-                                    <input type="text" v-model="buscar" @keyup.enter="listarTabla(1,buscar,criterio)" class="form-control" placeholder="Texto a buscar">
-                                    <button type="submit" @click="listarTabla(1,buscar,criterio)" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
+                                    <input name="buscar" type="text" v-model="buscar" @keyup.enter="listarTabla(1,buscar,criterio)" class="form-control" placeholder="Texto a buscar">
+                                    <button type="button" @click="listarTabla(1,buscar,criterio)" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
                                 </div>
                             </div>
+                            <div class="col">
+                                    <button type="submit" @click="listarTabla(1,buscar,criterio)" class="btn btn-warning"><i class="fa fa-search"></i> Reporte</button>
+                        
+                            </div>
+                            
                         </div>
+                        </form>
                         <table class="table table-bordered table-striped table-sm">
                             <thead>
                                 <tr>

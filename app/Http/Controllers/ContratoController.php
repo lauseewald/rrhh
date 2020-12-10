@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contrato;
+use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
@@ -59,7 +60,6 @@ class ContratoController extends Controller
             ],
             'contratos' => $contratos
         ];
-        
     }
 
     /**
@@ -80,7 +80,7 @@ class ContratoController extends Controller
      */
     public function store(Request $request)
     {
-    //   return $request;
+        //   return $request;
         if (!$request->ajax()) {
             return redirect('/');
         }
@@ -226,38 +226,39 @@ class ContratoController extends Controller
         //
     }
 
-        public function pdfTiposContratos($buscar, $criterio)
+    public function pdfContrato(Request $request)
     {
-        //$desde = $request->desde;
-        //$hasta = $request->hasta;
-        /*$auditorias = Auditoria::select('auditorias.id','auditorias.fecha_hora', 'auditorias.accion', 'auditorias.user', 'auditorias.tabla')
-        ->whereBetween('auditorias.fecha_hora', [$desde, $hasta])->orderBy('auditorias.id', 'desc')->get();*/
-        if ($buscar==''){
-            $contratos = Contrato::all()
-            ->orderBy('id', 'desc')->get();
-        }
-        else{
-            $contratos = Contrato::all()
-            ->where('empleados.'.$criterio, 'like', '%'. $buscar . '%')->orderBy('id', 'desc');
-        }
+        $contratos = Contrato::join('tipo_contratos','contratos.tipoContrato_id','=','tipo_contratos.id')
+            ->select('contratos.*','tipo_contratos.nombre as nombreTipoContrato');
+            
         
-        $i=0;
-        while($i<count($contratos)){
+        //anido las consultas segun los filtros
+        $buscar = $request->buscar;
+        $criterio = $request->criterio;
 
+        if ($buscar!='') {
+            if ($buscar =='activo') {   
+                $contratos->where('contratos.estado', 1);
+            } elseif ($buscar =='desactivado') {
+                $contratos->where('contratos.estado', 0);
+            } else {
+                $contratos->where('contratos.'.$criterio, 'like', '%'. $buscar . '%');
+            } 
+        } 
+        $contratos= $contratos->orderBy('nombre', 'desc')->get();
+        $buscar= $buscar ? ucfirst($buscar): 'Sin Busqueda';
+        $criterio= $criterio ? ucfirst($criterio): 'Sin Criterio';
+       
+        $count = count($contratos);
+        // $count = 1;
+        $now= Carbon::now();
         
-        $originalDate = $contratos[$i]['fechaAlta'];
-        $contratos[$i]['fechaAlta'] = date("d/m/Y - H:i", strtotime($originalDate));
+         $pdf = PDF::loadView('pdf.contrato', ['contratos' => $contratos, 'buscar' => $buscar, 'criterio' => $criterio, 'now' => $now, 'count' => $count]);
         
-        $i++;
-        }
-        
-    
-   
-    $cont = count($contratos);
-    $now= Carbon::now();
-    
-     $pdf = \PDF::loadView('pdf.empleados', ['empleados' => $contratos, 'buscar' => $buscar, 'criterio' => $criterio, 'now' => $now, 'cont' => $cont]);
-    
-     return $pdf->download('empleados-.pdf');
-}
+        $dom_pdf = $pdf->getDomPDF();
+        $canvas = $dom_pdf->get_canvas();
+        $y = $canvas->get_height() - 35;
+        $pdf->getDomPDF()->get_canvas()->page_text(500, $y, "Pagina {PAGE_NUM} de {PAGE_COUNT}", null, 10, array(0, 0, 0));
+        return $pdf->stream();
+    }
 }

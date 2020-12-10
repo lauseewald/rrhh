@@ -32,6 +32,7 @@ Route::put('/contrato/actualizar', 'ContratoController@update');
 Route::put('/contrato/desactivar', 'ContratoController@desactivar');
 Route::put('/contrato/activar', 'ContratoController@activar');
 Route::get('/contrato/selectContrato', 'ContratoController@selectContrato');
+Route::get('/contrato/pdf', 'ContratoController@pdfContrato')->name('contrato_pdf');
 
 //Empresa
 Route::get('/empresa', 'EmpresaController@index');
