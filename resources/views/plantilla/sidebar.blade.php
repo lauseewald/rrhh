@@ -22,6 +22,9 @@
                     <li @click="menu='inasistencia'" class="nav-item">
                         <a class="nav-link" href="i#"><i class="icon-basket-loaded"></i> Solicitudes</a>
                     </li>
+                    <li @click="menu='competencia'" class="nav-item">
+                        <a class="nav-link" href="i#"><i class="icon-basket-loaded"></i> Competencias</a>
+                    </li>
                 </ul>
             </li>
 

@@ -33,5 +33,8 @@
 <template v-if="menu=='inasistencia'">
     <inasistencia></inasistencia>
 </template>
+<template v-if="menu=='competencia'">
+    <competencia></competencia>
+</template>
 
 @endsection

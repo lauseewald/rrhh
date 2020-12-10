@@ -103,7 +103,6 @@ class SolicitudInasistenciaController extends Controller
             'desde' => 'required',
             'hasta' => 'required',
             'motivo' => 'required',
-            
         ];
         $messages = [
             'desde.required' => 'Debe ingresar el :attribute .',

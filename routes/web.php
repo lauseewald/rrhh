@@ -23,6 +23,7 @@ Route::put('/empleado/activar', 'EmpleadoController@activar');
 Route::get('/empleado/selectEmpleado', 'EmpleadoController@selectEmpleado');
 Route::get('/empleado/findCompetencias', 'EmpleadoController@findCompetencias');
 Route::get('/empleado/findContactos', 'EmpleadoController@findContactos');
+Route::get('/empleado/pdf/{buscar}/{criterio}/{incidencia}', 'EmpleadoController@pdf')->name('empleado_pdf');
 
 //Contrato
 Route::get('/contrato', 'ContratoController@index');

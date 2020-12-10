@@ -26,6 +26,7 @@ Vue.component('areal', require('./components/Area.vue'));
 Vue.component('empresa', require('./components/Empresa.vue'));
 Vue.component('dianolaboral', require('./components/DiaNoLaboral.vue'));
 Vue.component('inasistencia', require('./components/Inasistencia.vue'));
+Vue.component('competencia', require('./components/Competencia.vue'));
 
 const app = new Vue({
     el: '#app',
