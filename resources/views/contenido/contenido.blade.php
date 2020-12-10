@@ -34,7 +34,10 @@
     <inasistencia></inasistencia>
 </template>
 <template v-if="menu=='competencia'">
-    <competencia></competencia>
+    <competencia1></competencia1>
+</template>
+<template v-if="menu=='reporteEmpleado'">
+    <empleadoreporte2></empleadoreporte2>
 </template>
 
 @endsection

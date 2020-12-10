@@ -40,9 +40,7 @@
                                 <tr v-for="competencia in arrayCompetencia" :key="competencia.id">
                                    
                                     <td v-text="competencia.nombre"></td>
-                                    <td v-text="competencia.diasMinimo"></td>
-                                    <td v-text="competencia.diasMaximo"></td>
-                                 
+                              
                                     <td>
                                         <div v-if="competencia.condicion">
                                             <span class="badge badge-success">Activo</span>
