@@ -229,22 +229,28 @@ class ContratoController extends Controller
     public function pdfContrato(Request $request)
     {
         $contratos = Contrato::join('tipo_contratos','contratos.tipoContrato_id','=','tipo_contratos.id')
-            ->select('contratos.*','tipo_contratos.nombre as nombreTipoContrato');
+        ->join('empleados','contratos.empleado_id','=','empleados.id')
+        ->select('contratos.*','tipo_contratos.nombre as nombreTipoContrato','empleados.nombre as nombreEmpleado','empleados.apellido as apellidoEmpleado');
             
         
         //anido las consultas segun los filtros
         $buscar = $request->buscar;
         $criterio = $request->criterio;
 
-        if ($buscar!='') {
-            if ($buscar =='activo') {   
-                $contratos->where('contratos.estado', 1);
-            } elseif ($buscar =='desactivado') {
-                $contratos->where('contratos.estado', 0);
-            } else {
+        
+            if ($criterio =='activo') {   
+                $contratos->where('contratos.condicion', 1);
+            } elseif ($criterio =='desactivado') {
+                $contratos->where('contratos.condicion', 0);
+            }elseif ($criterio =='vigente') {//contrato en curso
+                $contratos->where('contratos.inicioLaboral','<=', Carbon::now()->format('Y-m-d'))->where('contratos.finLaboral','>=', Carbon::now()->format('Y-m-d'));
+            } elseif ($criterio =='terminado') {
+                $contratos->where('contratos.condicion', 0);
+            }
+            elseif ($buscar!=''){
                 $contratos->where('contratos.'.$criterio, 'like', '%'. $buscar . '%');
             } 
-        } 
+         
         $contratos= $contratos->orderBy('nombre', 'desc')->get();
         $buscar= $buscar ? ucfirst($buscar): 'Sin Busqueda';
         $criterio= $criterio ? ucfirst($criterio): 'Sin Criterio';

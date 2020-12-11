@@ -28,6 +28,10 @@ class Contrato extends Model
     {
         return $this->belongsTo('App\Empleado');
     }
+    public function tipoContrato()
+    {
+        return $this->belongsTo(TipoContrato::class);
+    }
   
    
 }

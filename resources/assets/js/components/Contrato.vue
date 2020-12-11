@@ -22,6 +22,10 @@
                                     <select name="criterio" class="form-control col-md-3" v-model="criterio">
                                     
                                     <option value="nombre">Nombre</option>
+                                    <option value="activo">Activo</option>
+                                    <option value="desactivado">Desativado</option>
+                                    <option value="vigente">Vigente</option>
+                                    <option value="terminado">Terminado</option>
                                    
                                     </select>
                                     <input name="buscar" type="text" v-model="buscar" @keyup.enter="listarTabla(1,buscar,criterio)" class="form-control" placeholder="Texto a buscar">
