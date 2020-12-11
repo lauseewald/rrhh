@@ -55973,6 +55973,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -56386,6 +56390,22 @@ var render = function() {
                     [
                       _c("option", { attrs: { value: "nombre" } }, [
                         _vm._v("Nombre")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "activo" } }, [
+                        _vm._v("Activo")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "desactivado" } }, [
+                        _vm._v("Desativado")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "vigente" } }, [
+                        _vm._v("Vigente")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "terminado" } }, [
+                        _vm._v("Terminado")
                       ])
                     ]
                   ),
@@ -70429,41 +70449,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            varIngreso: null,
-            charIngreso: null,
+            varArea: null,
+            charArea: null,
             areas: [],
-            varTotalIngreso: [],
-            varMesIngreso: [],
+            varCantidadArea: [],
+            varNombreArea: [],
 
             varVenta: null,
             charVenta: null,
-            ventas: [],
-            varTotalVenta: [],
-            varMesVenta: []
+            puestos: [],
+            varCantidadPuesto: [],
+            varNombrePuesto: []
         };
     },
 
     methods: {
         getAreas: function getAreas() {
             var me = this;
-            var url = '/dashboard';
+            var url = '/empleado/reporte';
             axios.get(url).then(function (response) {
                 var respuesta = response.data;
-                me.areas = respuesta.areas;
+                me.areas = respuesta.empleadosArea;
                 //cargamos los datos del chart
                 me.loadArea();
             }).catch(function (error) {
                 console.log(error);
             });
         },
-        getVentas: function getVentas() {
+        getPuestos: function getPuestos() {
             var me = this;
-            var url = '/dashboard';
+            var url = '/empleado/reporte';
             axios.get(url).then(function (response) {
                 var respuesta = response.data;
-                me.ventas = respuesta.ventas;
+                me.puestos = respuesta.empleadosPuesto;
                 //cargamos los datos del chart
-                me.loadVentas();
+                me.loadPuestos();
             }).catch(function (error) {
                 console.log(error);
             });
@@ -70471,18 +70491,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         loadArea: function loadArea() {
             var me = this;
             me.areas.map(function (x) {
-                me.varMesIngreso.push(x.mes);
-                me.varTotalIngreso.push(x.total);
+                me.varNombreArea.push(x.nombre);
+                me.varCantidadArea.push(x.cantidad);
             });
-            me.varIngreso = document.getElementById('areas').getContext('2d');
+            me.varArea = document.getElementById('areas').getContext('2d');
 
-            me.charIngreso = new Chart(me.varIngreso, {
+            me.charArea = new Chart(me.varArea, {
                 type: 'bar',
                 data: {
-                    labels: me.varMesIngreso,
+                    labels: me.varNombreArea,
                     datasets: [{
                         label: 'areas',
-                        data: me.varTotalIngreso,
+                        data: me.varCantidadArea,
                         backgroundColor: 'rgba(255, 99, 132, 0.2)',
                         borderColor: 'rgba(255, 99, 132, 0.2)',
                         borderWidth: 1
@@ -70499,21 +70519,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             });
         },
-        loadVentas: function loadVentas() {
+        loadPuestos: function loadPuestos() {
             var me = this;
-            me.ventas.map(function (x) {
-                me.varMesVenta.push(x.mes);
-                me.varTotalVenta.push(x.total);
+            me.puestos.map(function (x) {
+                me.varNombrePuesto.push(x.nombre);
+                me.varCantidadPuesto.push(x.cantidad);
             });
-            me.varVenta = document.getElementById('ventas').getContext('2d');
+            me.varVenta = document.getElementById('puestos').getContext('2d');
 
             me.charVenta = new Chart(me.varVenta, {
                 type: 'bar',
                 data: {
-                    labels: me.varMesVenta,
+                    labels: me.varNombrePuesto,
                     datasets: [{
-                        label: 'Ventas',
-                        data: me.varTotalVenta,
+                        label: 'puestos',
+                        data: me.varCantidadPuesto,
                         backgroundColor: 'rgba(54, 162, 235, 0.2)',
                         borderColor: 'rgba(54, 162, 235, 0.2)',
                         borderWidth: 1
@@ -70533,7 +70553,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     mounted: function mounted() {
         this.getAreas();
-        this.getVentas();
+        this.getPuestos();
     }
 });
 
@@ -70568,7 +70588,7 @@ var staticRenderFns = [
               _c("div", { staticClass: "col-md-6" }, [
                 _c("div", { staticClass: "card card-chart" }, [
                   _c("div", { staticClass: "card-header" }, [
-                    _c("h4", [_vm._v("areas")])
+                    _c("h4", [_vm._v("Areas")])
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "card-content" }, [
@@ -70578,7 +70598,7 @@ var staticRenderFns = [
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "card-footer" }, [
-                    _c("p", [_vm._v("Compras de los últimos meses.")])
+                    _c("p", [_vm._v("Cantidad de Empleados por areas.")])
                   ])
                 ])
               ]),
@@ -70586,17 +70606,17 @@ var staticRenderFns = [
               _c("div", { staticClass: "col-md-6" }, [
                 _c("div", { staticClass: "card card-chart" }, [
                   _c("div", { staticClass: "card-header" }, [
-                    _c("h4", [_vm._v("Ventas")])
+                    _c("h4", [_vm._v("Puestos")])
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "card-content" }, [
                     _c("div", { staticClass: "ct-chart" }, [
-                      _c("canvas", { attrs: { id: "ventas" } })
+                      _c("canvas", { attrs: { id: "puestos" } })
                     ])
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "card-footer" }, [
-                    _c("p", [_vm._v("Ventas de los últimos meses.")])
+                    _c("p", [_vm._v("Empleados por puestos.")])
                   ])
                 ])
               ])

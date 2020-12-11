@@ -14,7 +14,7 @@
                     <div class="col-md-6">
                         <div class="card card-chart">
                             <div class="card-header">
-                                <h4>areas</h4>
+                                <h4>Areas</h4>
                             </div>
                             <div class="card-content">
                                 <div class="ct-chart">
@@ -23,23 +23,23 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <p>Compras de los últimos meses.</p>
+                                <p>Cantidad de Empleados por areas.</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="card card-chart">
                             <div class="card-header">
-                                <h4>Ventas</h4>
+                                <h4>Puestos</h4>
                             </div>
                             <div class="card-content">
                                 <div class="ct-chart">
-                                    <canvas id="ventas">                                                
+                                    <canvas id="puestos">                                                
                                     </canvas>
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <p>Ventas de los últimos meses.</p>
+                                <p>Empleados por puestos.</p>
                             </div>
                         </div>
                     </div>
@@ -54,26 +54,26 @@
     export default {
         data (){
             return {
-                varIngreso:null,
-                charIngreso:null,
+                varArea:null,
+                charArea:null,
                 areas:[],
-                varTotalIngreso:[],
-                varMesIngreso:[], 
+                varCantidadArea:[],
+                varNombreArea:[], 
                 
                 varVenta:null,
                 charVenta:null,
-                ventas:[],
-                varTotalVenta:[],
-                varMesVenta:[],
+                puestos:[],
+                varCantidadPuesto:[],
+                varNombrePuesto:[],
             }
         },
         methods : {
             getAreas(){
                 let me=this;
-                var url= '/dashboard';
+                var url= '/empleado/reporte';
                 axios.get(url).then(function (response) {
                     var respuesta= response.data;
-                    me.areas = respuesta.areas;
+                    me.areas = respuesta.empleadosArea;
                     //cargamos los datos del chart
                     me.loadArea();
                 })
@@ -81,14 +81,14 @@
                     console.log(error);
                 });
             },
-            getVentas(){
+            getPuestos(){
                 let me=this;
-                var url= '/dashboard';
+                var url= '/empleado/reporte';
                 axios.get(url).then(function (response) {
                     var respuesta= response.data;
-                    me.ventas = respuesta.ventas;
+                    me.puestos = respuesta.empleadosPuesto;
                     //cargamos los datos del chart
-                    me.loadVentas();
+                    me.loadPuestos();
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -97,18 +97,18 @@
             loadArea(){
                 let me=this;
                 me.areas.map(function(x){
-                    me.varMesIngreso.push(x.mes);
-                    me.varTotalIngreso.push(x.total);
+                    me.varNombreArea.push(x.nombre);
+                    me.varCantidadArea.push(x.cantidad);
                 });
-                me.varIngreso=document.getElementById('areas').getContext('2d');
+                me.varArea=document.getElementById('areas').getContext('2d');
 
-                me.charIngreso = new Chart(me.varIngreso, {
+                me.charArea = new Chart(me.varArea, {
                     type: 'bar',
                     data: {
-                        labels: me.varMesIngreso,
+                        labels: me.varNombreArea,
                         datasets: [{
                             label: 'areas',
-                            data: me.varTotalIngreso,
+                            data: me.varCantidadArea,
                             backgroundColor: 'rgba(255, 99, 132, 0.2)',
                             borderColor: 'rgba(255, 99, 132, 0.2)',
                             borderWidth: 1
@@ -125,21 +125,21 @@
                     }
                 });
             },
-            loadVentas(){
+            loadPuestos(){
                 let me=this;
-                me.ventas.map(function(x){
-                    me.varMesVenta.push(x.mes);
-                    me.varTotalVenta.push(x.total);
+                me.puestos.map(function(x){
+                    me.varNombrePuesto.push(x.nombre);
+                    me.varCantidadPuesto.push(x.cantidad);
                 });
-                me.varVenta=document.getElementById('ventas').getContext('2d');
+                me.varVenta=document.getElementById('puestos').getContext('2d');
 
                 me.charVenta = new Chart(me.varVenta, {
                     type: 'bar',
                     data: {
-                        labels: me.varMesVenta,
+                        labels: me.varNombrePuesto,
                         datasets: [{
-                            label: 'Ventas',
-                            data: me.varTotalVenta,
+                            label: 'puestos',
+                            data: me.varCantidadPuesto,
                             backgroundColor: 'rgba(54, 162, 235, 0.2)',
                             borderColor: 'rgba(54, 162, 235, 0.2)',
                             borderWidth: 1
@@ -159,7 +159,7 @@
         },
         mounted() {
             this.getAreas();
-            this.getVentas();
+            this.getPuestos();
         }
     }
 </script>

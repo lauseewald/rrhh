@@ -313,33 +313,33 @@ class EmpleadoController extends Controller
 public function __invoke(Request $request){
     
         $empleadosPuesto=DB::table('empleados as e')
-        ->join('contratos','empleados.id','=','contratos.empleado_id')
+        ->join('contratos','e.id','=','contratos.empleado_id')
         ->join('puestos','contratos.puesto_id','=','puestos.id')
-        ->select(DB::raw('COUNT(e.cuil) as cantidad'),
-        //DB::raw('e.cuil'),
+        ->select(DB::raw('COUNT(e.id) as cantidad'),
+        //DB::raw('e.id'),
         DB::raw('puestos.nombre'))
-        ->groupBy(DB::raw('puestos.nombre'),DB::raw('(e.cuil)'))
+        ->groupBy(DB::raw('puestos.nombre'),DB::raw('(e.id)'))
         ->get();
 
         $empleadosDepartamento=DB::table('empleados as e')
-        ->join('contratos','empleados.id','=','contratos.empleado_id')
+        ->join('contratos','e.id','=','contratos.empleado_id')
         ->join('puestos','contratos.puesto_id','=','puestos.id')
         ->join('departamentos','puestos.departamento_id','=','departamentos.id')
         ->join('areas','departamentos.area_id','=','areas.id')
-        ->select(DB::raw('COUNT(e.cuil) as cantidad'),
-        //DB::raw('e.cuil'),
-        DB::raw('areas.nombre'))
-        ->groupBy(DB::raw('areas.nombre'),DB::raw('(e.cuil)'))
+        ->select(DB::raw('COUNT(e.id) as cantidad'),
+        //DB::raw('e.id'),
+        DB::raw('areas.nombre as nombre'))
+        ->groupBy(DB::raw('areas.nombre'))
         ->get();
 
         $empleadosArea=DB::table('empleados as e')
-        ->join('contratos','empleados.id','=','contratos.empleado_id')
+        ->join('contratos','e.id','=','contratos.empleado_id')
         ->join('puestos','contratos.puesto_id','=','puestos.id')
         ->join('departamentos','puestos.departamento_id','=','departamentos.id')
-        ->select(DB::raw('COUNT(e.cuil) as cantidad'),
-        //DB::raw('e.cuil'),
+        ->select(DB::raw('COUNT(e.id) as cantidad'),
+        //DB::raw('e.id'),
         DB::raw('departamentos.nombre'))
-        ->groupBy(DB::raw('departamentos.nombre'),DB::raw('(e.cuil)'))
+        ->groupBy(DB::raw('departamentos.nombre'))
         ->get();
     
 
