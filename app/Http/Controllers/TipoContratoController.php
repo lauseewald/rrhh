@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\TipoContrato;
+use Barryvdh\DomPDF\PDF;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TipoContratoController extends Controller
 {
@@ -116,5 +119,47 @@ class TipoContratoController extends Controller
         }
         
         return ['tipoContratos' => $tipoContrato];
+    }
+    public function pdfTipoContrato(Request $request)
+    {
+        // $tipoContratos = TipoContrato::join('contratos','contratos.tipoContrato_id','=','tipo_contratos.id')
+        $tipoContratos = TipoContrato::select('tipo_contratos.*');    
+         
+         //SELECT tipo_contratos.nombre, COUNT(contratos.id) as cantidad FROM `tipo_contratos` INNER JOIN contratos on contratos.tipoContrato_id = tipo_contratos.id  GROUP by tipo_contratos.id
+
+        
+        //anido las consultas segun los filtros
+        $buscar = $request->buscar;
+        $criterio = $request->criterio;
+
+        
+            if ($criterio =='activo') {   
+                $tipoContratos->where('contratos.condicion', 1);
+            } elseif ($criterio =='desactivado') {
+                $tipoContratos->where('contratos.condicion', 0);
+            }elseif ($criterio =='vigente') {//contrato en curso
+                $tipoContratos->where('contratos.inicioLaboral','<=', Carbon::now()->format('Y-m-d'))->where('contratos.finLaboral','>=', Carbon::now()->format('Y-m-d'));
+            } elseif ($criterio =='terminado') {
+                $tipoContratos->where('contratos.condicion', 0);
+            }
+            elseif ($buscar!=''){
+                $tipoContratos->where('contratos.'.$criterio, 'like', '%'. $buscar . '%');
+            } 
+         
+        $tipoContratos= $tipoContratos->orderBy('nombre', 'desc')->get();
+        $buscar= $buscar ? ucfirst($buscar): 'Sin Busqueda';
+        $criterio= $criterio ? ucfirst($criterio): 'Sin Criterio';
+       
+        $count = count($tipoContratos);
+        // $count = 1;
+        $now= Carbon::now();
+        
+         $pdf = PDF::loadView('pdf.contrato', ['contratos' => $tipoContratos, 'buscar' => $buscar, 'criterio' => $criterio, 'now' => $now, 'count' => $count]);
+        
+        $dom_pdf = $pdf->getDomPDF();
+        $canvas = $dom_pdf->get_canvas();
+        $y = $canvas->get_height() - 35;
+        $pdf->getDomPDF()->get_canvas()->page_text(500, $y, "Pagina {PAGE_NUM} de {PAGE_COUNT}", null, 10, array(0, 0, 0));
+        return $pdf->stream();
     }
 }

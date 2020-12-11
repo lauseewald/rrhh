@@ -136,40 +136,9 @@
            
         </header>
         <br>
-        <section>
-            <div>
-                <table id="facliente">
-                    <thead>                        
-                        <tr>
-                            <th id="fac"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                  
-                        <tr>
-                            
-                            <th><p id="cliente"> Criterio: {{$criterio}}<br>
-                           
-                            Busqueda: {{$buscar}}</p></th>
-                           
-                        </tr>
-                
-                    </tbody>
-                </table>
-            </div>
-        </section>
-        <br>
-        <section>
-            <div>
-          
-                
-                
-            </div>
-        </section>
-        <br>
-        <section>
-            @yield('content')
-        </section>
+     
+        @yield('content')
+        
         <br>
         <br>
         <div class="izquierda">

@@ -11,4 +11,9 @@ class TipoContrato extends Model
     protected $fillable = [
         'nombre'
     ];
+
+    public function contratos()
+    {
+        return $this->hasMany(Contrato::class);
+    }
 }

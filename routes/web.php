@@ -112,3 +112,4 @@ Route::put('/tipoContrato/actualizar', 'TipoContratoController@update');
 Route::put('/tipoContrato/desactivar', 'TipoContratoController@desactivar');
 Route::put('/tipoContrato/activar', 'TipoContratoController@activar');
 Route::get('/tipoContrato/selectTipoContrato', 'TipoContratoController@selectTipoContrato');
+Route::get('/tipoContrato/pdf', 'TipoContratoController@pdfTipoContrato')->name('tipoContrato_pdf');
