@@ -14,6 +14,6 @@ class TipoContrato extends Model
 
     public function contratos()
     {
-        return $this->hasMany(Contrato::class);
+        return $this->hasMany(Contrato::class,'tipoContrato_id');
     }
 }

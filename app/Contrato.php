@@ -30,7 +30,7 @@ class Contrato extends Model
     }
     public function tipoContrato()
     {
-        return $this->belongsTo(TipoContrato::class);
+        return $this->belongsTo(TipoContrato::class,'tipoContrato_id');
     }
   
    

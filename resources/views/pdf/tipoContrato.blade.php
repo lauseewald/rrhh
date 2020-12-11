@@ -49,7 +49,7 @@
 
                 <td>{{$tipoContrato->id}} </td>
                 <td>{{$tipoContrato->nombre}}</td>
-                <td>{{$tipoContrato->contratos->count()}}</td>
+                <td>{{count($tipoContrato->contratos)}}</td>
             </tr>
             @endforeach
             @endif

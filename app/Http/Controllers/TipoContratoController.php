@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\TipoContrato;
-use Barryvdh\DomPDF\PDF;
+use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
@@ -123,30 +123,25 @@ class TipoContratoController extends Controller
     public function pdfTipoContrato(Request $request)
     {
         // $tipoContratos = TipoContrato::join('contratos','contratos.tipoContrato_id','=','tipo_contratos.id')
-        $tipoContratos = TipoContrato::select('tipo_contratos.*');    
-         
-         //SELECT tipo_contratos.nombre, COUNT(contratos.id) as cantidad FROM `tipo_contratos` INNER JOIN contratos on contratos.tipoContrato_id = tipo_contratos.id  GROUP by tipo_contratos.id
-
+        $tipoContratos = TipoContrato::select('*');    
+        //SELECT tipo_contratos.nombre, COUNT(contratos.id) as cantidad FROM `tipo_contratos` INNER JOIN contratos on contratos.tipoContrato_id = tipo_contratos.id  GROUP by tipo_contratos.id
+        
         
         //anido las consultas segun los filtros
         $buscar = $request->buscar;
         $criterio = $request->criterio;
-
+        
         
             if ($criterio =='activo') {   
-                $tipoContratos->where('contratos.condicion', 1);
+                $tipoContratos->where('tipo_contratos.condicion', 1);
             } elseif ($criterio =='desactivado') {
-                $tipoContratos->where('contratos.condicion', 0);
-            }elseif ($criterio =='vigente') {//contrato en curso
-                $tipoContratos->where('contratos.inicioLaboral','<=', Carbon::now()->format('Y-m-d'))->where('contratos.finLaboral','>=', Carbon::now()->format('Y-m-d'));
-            } elseif ($criterio =='terminado') {
-                $tipoContratos->where('contratos.condicion', 0);
+                $tipoContratos->where('tipo_contratos.condicion', 0);
+            }elseif ($buscar!=''){
+                $tipoContratos->where('tipo_contratos.'.$criterio, 'like', '%'. $buscar . '%');
             }
-            elseif ($buscar!=''){
-                $tipoContratos->where('contratos.'.$criterio, 'like', '%'. $buscar . '%');
-            } 
-         
-        $tipoContratos= $tipoContratos->orderBy('nombre', 'desc')->get();
+            
+            $tipoContratos= $tipoContratos->orderBy('nombre', 'desc')->get();
+            
         $buscar= $buscar ? ucfirst($buscar): 'Sin Busqueda';
         $criterio= $criterio ? ucfirst($criterio): 'Sin Criterio';
        
@@ -154,7 +149,7 @@ class TipoContratoController extends Controller
         // $count = 1;
         $now= Carbon::now();
         
-         $pdf = PDF::loadView('pdf.contrato', ['contratos' => $tipoContratos, 'buscar' => $buscar, 'criterio' => $criterio, 'now' => $now, 'count' => $count]);
+        $pdf = PDF::loadView('pdf.tipoContrato', ['tipoContratos' => $tipoContratos, 'buscar' => $buscar, 'criterio' => $criterio, 'now' => $now, 'count' => $count]);
         
         $dom_pdf = $pdf->getDomPDF();
         $canvas = $dom_pdf->get_canvas();

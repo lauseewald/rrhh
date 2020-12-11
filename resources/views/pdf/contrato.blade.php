@@ -51,7 +51,6 @@
             <tr style="text-align: right">
 
                 <td>{{$contrato->id}} </td>
-
                 <td>{{$contrato->nombreTipoContrato}} </td>
                 <td>{{$contrato->apellidoEmpleado . ' '.$contrato->nombreEmpleado . ' ('.$contrato->empleado_id.')'}} </td>
                 <td>{{\Carbon\Carbon::parse($contrato->inicioLaboral)->format('d/m/Y')}} </td>
