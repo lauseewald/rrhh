@@ -24,6 +24,7 @@
     },
     "dependencies": {
         "ajv": "^6.5.4",
+        "chart.js": "^2.9.4",
         "datatables.net": "^1.10.19",
         "imagemin": "^5.0.0",
         "moment": "^2.22.2",

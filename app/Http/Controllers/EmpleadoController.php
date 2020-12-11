@@ -278,7 +278,15 @@ class EmpleadoController extends Controller
             ->orderBy('id', 'desc')->get();
         }
         else{
-            $empleados = Empleado::select('nombre', 'apellido', 'cuil', 'fechaAlta', 'id')
+            $empleados = Empleado::join('contratos','empleados.id','=','contratos.empleado_id')
+            ->join('puestos','contratos.puesto_id','=','puestos.id')
+            ->join('departamentos','puestos.departamento_id','=','departamentos.id')
+            ->join('areas','departamentos.area_id','=','areas.id')
+            ->select('cuil', 'direccion', 'empleados.nombre as nombreEmpleado',
+             'empleados.apellido as apellidoEmpleado', 'fechaAlta', 'fechaBaja',
+              'curriculum', 'fechaNacimiento', 'empleados.condicion as condicion', '')
+              ->orderBy('empleados.nombre', 'desc')
+        
             ->where('empleados.'.$criterio, 'like', '%'. $buscar . '%')->orderBy('id', 'desc')->get();
         }
         
@@ -287,7 +295,7 @@ class EmpleadoController extends Controller
 
         
         $originalDate = $empleados[$i]['fechaAlta'];
-        $empleados[$i]['fechaAlta'] = date("d/m/Y - H:i", strtotime($originalDate));
+        $empleados[$i]['fechaAlta'] = date("d/m/Y", strtotime($originalDate));
         
         $i++;
         }
@@ -301,5 +309,40 @@ class EmpleadoController extends Controller
     
      return $pdf->download('empleados-.pdf');
 }
-   
+ 
+public function __invoke(Request $request){
+    
+        $empleadosPuesto=DB::table('empleados as e')
+        ->join('contratos','empleados.id','=','contratos.empleado_id')
+        ->join('puestos','contratos.puesto_id','=','puestos.id')
+        ->select(DB::raw('COUNT(e.cuil) as cantidad'),
+        //DB::raw('e.cuil'),
+        DB::raw('puestos.nombre'))
+        ->groupBy(DB::raw('puestos.nombre'),DB::raw('(e.cuil)'))
+        ->get();
+
+        $empleadosDepartamento=DB::table('empleados as e')
+        ->join('contratos','empleados.id','=','contratos.empleado_id')
+        ->join('puestos','contratos.puesto_id','=','puestos.id')
+        ->join('departamentos','puestos.departamento_id','=','departamentos.id')
+        ->join('areas','departamentos.area_id','=','areas.id')
+        ->select(DB::raw('COUNT(e.cuil) as cantidad'),
+        //DB::raw('e.cuil'),
+        DB::raw('areas.nombre'))
+        ->groupBy(DB::raw('areas.nombre'),DB::raw('(e.cuil)'))
+        ->get();
+
+        $empleadosArea=DB::table('empleados as e')
+        ->join('contratos','empleados.id','=','contratos.empleado_id')
+        ->join('puestos','contratos.puesto_id','=','puestos.id')
+        ->join('departamentos','puestos.departamento_id','=','departamentos.id')
+        ->select(DB::raw('COUNT(e.cuil) as cantidad'),
+        //DB::raw('e.cuil'),
+        DB::raw('departamentos.nombre'))
+        ->groupBy(DB::raw('departamentos.nombre'),DB::raw('(e.cuil)'))
+        ->get();
+    
+
+        return ['empleadosArea'=>$empleadosArea,'empleadosDepartamento'=>$empleadosDepartamento,'empleadosPuesto'=>$empleadosPuesto]; 
+    }
 }
