@@ -17,7 +17,7 @@
               </div>
               <div class="form-group mb-4{{$errors->has('password' ? 'is-invalid' : '')}}">
                 <span class="input-group-addon"><i class="icon-lock"></i></span>
-                <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña">
                 {!!$errors->first('password','<span class="invalid-feedback">:message</span>')!!}
               </div>
               <div class="row">

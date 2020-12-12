@@ -19,7 +19,7 @@
                                 <div class="input-group">
                                     <select class="form-control col-md-3" v-model="criterio">
                                     
-                                    <option value="name">Nombre</option>
+                                    <option value="usuario">Usuario</option>
                                    <option value="email">Email</option>
                                     </select>
                                     <input type="text" v-model="buscar" @keyup.enter="listarUsuario(1,buscar,criterio)" class="form-control" placeholder="Texto a buscar">
@@ -32,17 +32,24 @@
                                 <tr>
                                     <th>Nombre</th>
                                     <th>Email</th>
-                                   
+                                    <th>Estado</th>
                                     <th>Opciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr v-for="usuario in arrayUsuario" :key="usuario.id">
                                    
-                                    <td v-text="usuario.name"></td>
+                                    <td v-text="usuario.usuario"></td>
                                     <td v-text="usuario.email"></td>
                                     
-                                 
+                                     <td>
+                                        <div v-if="usuario.condicion">
+                                            <span class="badge badge-success">Activo</span>
+                                        </div>
+                                        <div v-else>
+                                            <span class="badge badge-danger">Desactivado</span>
+                                        </div>
+                                    </td>
                                    
                                     <td>
                                         <button type="button" @click="abrirModal('usuario','actualizar',usuario)" class="btn btn-warning btn-sm">
@@ -92,16 +99,22 @@
                         <div class="modal-body">
                             <form id="modal-form" action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                                 <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="text-input">Nombre (*)</label>
+                                    <label class="col-md-3 form-control-label" for="text-input">Usuario (*)</label>
                                     <div class="col-md-9">
-                                        <input type="text" v-model="name" class="form-control" placeholder="Nombre del usuario">
+                                        <input type="text" v-model="usuario" class="form-control" placeholder="Nombre del usuario">
                                         
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="text-input">Email (*)</label>
+                                 <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="email-input">Contraseña (*)</label>
                                     <div class="col-md-9">
-                                        <input type="text" v-model="email" class="form-control" placeholder="Ingrese la cantidad de días mínimos que  usuario">
+                                        <input type="password" v-model="password" class="form-control" placeholder="Password de acceso" maxlength="60">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                   <label class="col-md-3 form-control-label" for="email-input">Email (*)</label>
+                                    <div class="col-md-9">
+                                        <input type="email" v-model="email" class="form-control" placeholder="Email" maxlength="50">
                                     </div>
                                 </div>
                                
@@ -136,7 +149,7 @@ import toastr from 'toastr';
         data (){
             return {
                 usuario_id: 0,
-                name : '',
+                usuario : '',
                 email : '',
                 password : '',
                 arrayUsuario : [],
@@ -154,7 +167,7 @@ import toastr from 'toastr';
                     'to' : 0,
                 },
                 offset : 3,
-                criterio : 'name',
+                criterio : 'usuario',
                 buscar : ''
             }
         },
@@ -193,7 +206,7 @@ import toastr from 'toastr';
                 var url= '/usuario?page=' + page + '&buscar='+ buscar + '&criterio='+ criterio;
                 axios.get(url).then(function (response) {
                     var respuesta= response.data;
-                    me.arrayUsuario = respuesta.usuarios.data;
+                    me.arrayUsuario = respuesta.users.data;
                     me.pagination= respuesta.pagination;
                 })
                 .catch(function (error) {
@@ -212,13 +225,23 @@ import toastr from 'toastr';
                 if (this.validarUsuario()){
                     return;
                 }
+                 if( this.validarEmail())
+                    {
+                      
+                    }
+                    else
+                    {
+                        me.errorMostrarMsjUsuario.push("El email ingresado no es valido");
+                        me.errorUsuario=1;
+                        return;
+                    }
                 axios.post('/usuario/registrar',{
-                    'name': this.name,
+                    'usuario': this.usuario,
                     'email': this.email,
                     'password': this.password
                 }).then(function (response) {
                     me.cerrarModal();
-                    me.listarUsuario(1,'','name');
+                    me.listarUsuario(1,'','usuario');
                     toastr.success('Se ha registrado la usuario', 'Actualizado', {timeOut: 5000})
                 }).catch(function (error) {
                     console.log(error);
@@ -231,16 +254,25 @@ import toastr from 'toastr';
                if (this.validarUsuario()){
                     return;
                 }
-                
+                 if( this.validarEmail())
+                    {
+                      
+                    }
+                    else
+                    {
+                        me.errorMostrarMsjUsuario.push("El email ingresado no es valido");
+                        me.errorUsuario=1;
+                        return;
+                    }
                 let me = this;
                 axios.put('/usuario/actualizar',{
-                    'name': this.name,
+                    'usuario': this.usuario,
                     'email': this.email,
                     'password': this.password,
                     'id': this.usuario_id
                 }).then(function (response) {
                     me.cerrarModal();
-                    me.listarUsuario(1,'','name');
+                    me.listarUsuario(1,'','usuario');
                     toastr.success('Se ha actualizado con exito', 'Actualizado', {timeOut: 5000})
                 }).catch(function (error) {
                     console.log(error);
@@ -267,7 +299,7 @@ import toastr from 'toastr';
                     axios.put('/usuario/desactivar',{
                         'id': id
                     }).then(function (response) {
-                        me.listarUsuario(1,'','nombre');
+                        me.listarUsuario(1,'','usuario');
                         swal(
                         'Desactivado!',
                         'La usuario se ha desactivado con éxito.',
@@ -306,7 +338,7 @@ import toastr from 'toastr';
                     axios.put('/usuario/activar',{
                         'id': id
                     }).then(function (response) {
-                        me.listarUsuario(1,'','nombre');
+                        me.listarUsuario(1,'','usuario');
                         swal(
                         'Activado!',
                         'El usuario se ha activado con éxito.',
@@ -331,7 +363,7 @@ import toastr from 'toastr';
                 this.errorUsuario=0;
                 this.errorMostrarMsjUsuario =[];
 
-                if (!this.name) this.errorMostrarMsjUsuario.push("Debe ingresar el nombre de la usuario");
+                if (!this.usuario) this.errorMostrarMsjUsuario.push("Debe ingresar el usuario de la usuario");
                 if (!this.email) this.errorMostrarMsjUsuario.push("Debe ingresar la cantidad de días mínimos");
                 if (!this.password) this.errorMostrarMsjUsuario.push("Debe ingresar la cantidad de días máximos");
                 if (this.errorMostrarMsjUsuario.length) this.errorUsuario = 1;
@@ -340,11 +372,15 @@ import toastr from 'toastr';
             cerrarModal(){
                 this.modal=0;
                 this.tituloModal='';
-                this.name='';
+                this.usuario='';
                 this.email='';
                 this.password='';
             },
-            
+             validarEmail() 
+            {
+                var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                return regex.test(this.email) ? true : false;
+            },
             abrirModal(modelo, accion, data = []){
                 switch(modelo){
                     case "usuario":
@@ -355,7 +391,7 @@ import toastr from 'toastr';
                                 this.modal = 1;
                                 this.tituloModal = 'Registrar usuario';
                                  this.email = data['email'];
-                                this.name = data['name'];
+                                this.usuario = data['usuario'];
                                 this.password = data['password'];
                                 this.tipoAccion = 1;
                                 break;
@@ -363,10 +399,11 @@ import toastr from 'toastr';
                             case 'actualizar':
                             {
                                 this.modal=1;
+                                this.usuario_id = data['id'];
                                 this.tituloModal='Actualizar usuario';
                                 this.tipoAccion=2;
                                 this.email = data['email'];
-                                this.name = data['name'];
+                                this.usuario = data['usuario'];
                                 this.password = data['password'];
                                 break;
                             }

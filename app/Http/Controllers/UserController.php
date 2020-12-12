@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\User;
+use App\Empresa;
 class UserController extends Controller
 {
     public function index(Request $request)
@@ -19,7 +20,7 @@ class UserController extends Controller
         else{
             $users = User::where($criterio, 'like', '%'. $buscar . '%')->orderBy('id', 'desc')->paginate(3);
         }
-         
+        
  
         return [
             'pagination' => [
@@ -32,6 +33,7 @@ class UserController extends Controller
             ],
             'users' => $users
         ];
+        
     }
 
     public function store(Request $request)
@@ -40,31 +42,34 @@ class UserController extends Controller
         $rules = [
             //'apellido' => 'required|max:255',
             //'nombre' => 'required|max:255',
-            'name' => 'required|unique:users',
+            'usuario' => 'required|unique:users',
      
         ];
         $messages = [
-            'name.unique' => 'Ese :attribute ya se encuentra en uso.',
+            'usuario.unique' => 'Ese :attribute ya se encuentra en uso.',
           
         ];
         $this->validate($request, $rules, $messages);
         try{
-            DB::beginTransaction();
+          
             
- 
+            $iduser = \Auth::user()->id;
+           
+            $empresa = $this->obtenerEmpresa($iduser);
             $user = new User();
             $user->id = $request->id;
-            $user->name = $request->name;
+            $user->usuario = $request->usuario;
             $user->email = $request->email;
+            $user->empresa_id = $empresa;
             $user->password = bcrypt($request->password);
-            //$user->condicion = '1';         
+              
  
             $user->save();
  
-            DB::commit();
+           
  
-        } catch (Exception $e){
-            DB::rollBack();
+        } catch (PDOException $e){
+            return 'error' + $e;
         }
  
          
@@ -75,32 +80,32 @@ class UserController extends Controller
     {
         if (!$request->ajax()) return redirect('/');
         $user = User::findOrFail($request->id);
-        $us = $request->name;
+        $us = $request->usuario;
         $ema = $request->email;
-        if($us != $user->name && $ema != $user->email){
+        if($us != $user->usuario && $ema != $user->email){
             $rules = [
            
-                'name' => 'required|unique:users',
+                'usuario' => 'required|unique:users',
                 'email' => 'required|unique:users',
                 
             ];
             $messages = [
-                'name.unique' => 'Ese nombre de :attribute ya fue utilizado.',
+                'usuario.unique' => 'Ese nombre de :attribute ya fue utilizado.',
                 'email.unique' => 'El :attribute que ingresó ya fue utilizado.',
                
             ];
             $this->validate($request, $rules, $messages);
 
         }
-        if($us != $user->name){
+        if($us != $user->usuario){
             $rules = [
            
-                'name' => 'required|unique:users',
+                'usuario' => 'required|unique:users',
                 
                 
             ];
             $messages = [
-                'name.unique' => 'Ese nombre de :attribute ya fue utilizado.',
+                'usuario.unique' => 'Ese nombre de :attribute ya fue utilizado.',
                
             ];
             $this->validate($request, $rules, $messages);
@@ -122,17 +127,20 @@ class UserController extends Controller
         }
             
         try{
-            DB::beginTransaction();
-            $user->name = $request->name;
+            //$iduser = \Auth::user()->id;
+           
+            //$empresa = $this->obtenerEmpresa($iduser);
+            $user->usuario = $request->usuario;
             $user->email = $request->email;
             $user->password = bcrypt( $request->password);
-            //$user->condicion = '1';
+            //$user->empresa_id = $empresa;
+            $user->condicion = '1';
             $user->save();
  
            
-            DB::commit();
-        } catch (Exception $e){
-            DB::rollBack();
+          
+        } catch (PDOException $e){
+            return 'error' + $e;
         } 
  
     }
@@ -151,5 +159,16 @@ class UserController extends Controller
         $user = User::findOrFail($request->id);
         $user->condicion = '1';
         $user->save();
+    }
+
+    public function obtenerEmpresa($iduser)
+    {
+        
+        $empresa = Empresa::join('users','empresas.id','=','users.empresa_id')
+        ->where('users.id', '=', $iduser)
+        ->select('empresas.id as id')
+        ->orderBy('empresas.id', 'asc')->take(1)->get();
+        $empresa = $empresa[0]['id'];
+        return $empresa;
     }
 }

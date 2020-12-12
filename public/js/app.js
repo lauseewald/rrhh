@@ -15488,7 +15488,7 @@ Vue.component('inasistencia', __webpack_require__(100));
 Vue.component('competencia1', __webpack_require__(105));
 Vue.component('empleadoreporte2', __webpack_require__(110));
 Vue.component('tipocontrato1', __webpack_require__(113));
-Vue.component('usuario', __webpack_require__(123));
+Vue.component('usuario', __webpack_require__(118));
 
 var app = new Vue({
   el: '#app',
@@ -71789,24 +71789,19 @@ if (false) {
 }
 
 /***/ }),
-/* 118 */,
-/* 119 */,
-/* 120 */,
-/* 121 */,
-/* 122 */,
-/* 123 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(124)
+  __webpack_require__(119)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(126)
+var __vue_script__ = __webpack_require__(121)
 /* template */
-var __vue_template__ = __webpack_require__(127)
+var __vue_template__ = __webpack_require__(122)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -71845,13 +71840,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 124 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(125);
+var content = __webpack_require__(120);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -71871,7 +71866,7 @@ if(false) {
 }
 
 /***/ }),
-/* 125 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -71885,7 +71880,7 @@ exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    pos
 
 
 /***/ }),
-/* 126 */
+/* 121 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -72024,13 +72019,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             usuario_id: 0,
-            name: '',
+            usuario: '',
             email: '',
             password: '',
             arrayUsuario: [],
@@ -72048,7 +72056,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'to': 0
             },
             offset: 3,
-            criterio: 'name',
+            criterio: 'usuario',
             buscar: ''
         };
     },
@@ -72087,7 +72095,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var url = '/usuario?page=' + page + '&buscar=' + buscar + '&criterio=' + criterio;
             axios.get(url).then(function (response) {
                 var respuesta = response.data;
-                me.arrayUsuario = respuesta.usuarios.data;
+                me.arrayUsuario = respuesta.users.data;
                 me.pagination = respuesta.pagination;
             }).catch(function (error) {
                 console.log(error);
@@ -72105,13 +72113,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.validarUsuario()) {
                 return;
             }
+            if (this.validarEmail()) {} else {
+                me.errorMostrarMsjUsuario.push("El email ingresado no es valido");
+                me.errorUsuario = 1;
+                return;
+            }
             axios.post('/usuario/registrar', {
-                'name': this.name,
+                'usuario': this.usuario,
                 'email': this.email,
                 'password': this.password
             }).then(function (response) {
                 me.cerrarModal();
-                me.listarUsuario(1, '', 'name');
+                me.listarUsuario(1, '', 'usuario');
                 __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.success('Se ha registrado la usuario', 'Actualizado', { timeOut: 5000 });
             }).catch(function (error) {
                 console.log(error);
@@ -72124,16 +72137,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.validarUsuario()) {
                 return;
             }
-
+            if (this.validarEmail()) {} else {
+                me.errorMostrarMsjUsuario.push("El email ingresado no es valido");
+                me.errorUsuario = 1;
+                return;
+            }
             var me = this;
             axios.put('/usuario/actualizar', {
-                'name': this.name,
+                'usuario': this.usuario,
                 'email': this.email,
                 'password': this.password,
                 'id': this.usuario_id
             }).then(function (response) {
                 me.cerrarModal();
-                me.listarUsuario(1, '', 'name');
+                me.listarUsuario(1, '', 'usuario');
                 __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.success('Se ha actualizado con exito', 'Actualizado', { timeOut: 5000 });
             }).catch(function (error) {
                 console.log(error);
@@ -72157,12 +72174,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 reverseButtons: true
             }).then(function (result) {
                 if (result.value) {
-                    var me = _this;
+                    var _me = _this;
 
                     axios.put('/usuario/desactivar', {
                         'id': id
                     }).then(function (response) {
-                        me.listarUsuario(1, '', 'nombre');
+                        _me.listarUsuario(1, '', 'usuario');
                         swal('Desactivado!', 'La usuario se ha desactivado con éxito.', 'success');
                     }).catch(function (error) {
                         console.log(error);
@@ -72189,12 +72206,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 reverseButtons: true
             }).then(function (result) {
                 if (result.value) {
-                    var me = _this2;
+                    var _me2 = _this2;
 
                     axios.put('/usuario/activar', {
                         'id': id
                     }).then(function (response) {
-                        me.listarUsuario(1, '', 'nombre');
+                        _me2.listarUsuario(1, '', 'usuario');
                         swal('Activado!', 'El usuario se ha activado con éxito.', 'success');
                     }).catch(function (error) {
                         console.log(error);
@@ -72208,7 +72225,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.errorUsuario = 0;
             this.errorMostrarMsjUsuario = [];
 
-            if (!this.name) this.errorMostrarMsjUsuario.push("Debe ingresar el nombre de la usuario");
+            if (!this.usuario) this.errorMostrarMsjUsuario.push("Debe ingresar el usuario de la usuario");
             if (!this.email) this.errorMostrarMsjUsuario.push("Debe ingresar la cantidad de días mínimos");
             if (!this.password) this.errorMostrarMsjUsuario.push("Debe ingresar la cantidad de días máximos");
             if (this.errorMostrarMsjUsuario.length) this.errorUsuario = 1;
@@ -72217,9 +72234,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         cerrarModal: function cerrarModal() {
             this.modal = 0;
             this.tituloModal = '';
-            this.name = '';
+            this.usuario = '';
             this.email = '';
             this.password = '';
+        },
+        validarEmail: function validarEmail() {
+            var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            return regex.test(this.email) ? true : false;
         },
         abrirModal: function abrirModal(modelo, accion) {
             var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
@@ -72233,7 +72254,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                     this.modal = 1;
                                     this.tituloModal = 'Registrar usuario';
                                     this.email = data['email'];
-                                    this.name = data['name'];
+                                    this.usuario = data['usuario'];
                                     this.password = data['password'];
                                     this.tipoAccion = 1;
                                     break;
@@ -72241,10 +72262,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                             case 'actualizar':
                                 {
                                     this.modal = 1;
+                                    this.usuario_id = data['id'];
                                     this.tituloModal = 'Actualizar usuario';
                                     this.tipoAccion = 2;
                                     this.email = data['email'];
-                                    this.name = data['name'];
+                                    this.usuario = data['usuario'];
                                     this.password = data['password'];
                                     break;
                                 }
@@ -72259,7 +72281,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 127 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -72325,8 +72347,8 @@ var render = function() {
                     }
                   },
                   [
-                    _c("option", { attrs: { value: "name" } }, [
-                      _vm._v("Nombre")
+                    _c("option", { attrs: { value: "usuario" } }, [
+                      _vm._v("Usuario")
                     ]),
                     _vm._v(" "),
                     _c("option", { attrs: { value: "email" } }, [
@@ -72394,12 +72416,26 @@ var render = function() {
                 _vm._l(_vm.arrayUsuario, function(usuario) {
                   return _c("tr", { key: usuario.id }, [
                     _c("td", {
-                      domProps: { textContent: _vm._s(usuario.name) }
+                      domProps: { textContent: _vm._s(usuario.usuario) }
                     }),
                     _vm._v(" "),
                     _c("td", {
                       domProps: { textContent: _vm._s(usuario.email) }
                     }),
+                    _vm._v(" "),
+                    _c("td", [
+                      usuario.condicion
+                        ? _c("div", [
+                            _c("span", { staticClass: "badge badge-success" }, [
+                              _vm._v("Activo")
+                            ])
+                          ])
+                        : _c("div", [
+                            _c("span", { staticClass: "badge badge-danger" }, [
+                              _vm._v("Desactivado")
+                            ])
+                          ])
+                    ]),
                     _vm._v(" "),
                     _c(
                       "td",
@@ -72616,7 +72652,7 @@ var render = function() {
                           staticClass: "col-md-3 form-control-label",
                           attrs: { for: "text-input" }
                         },
-                        [_vm._v("Nombre (*)")]
+                        [_vm._v("Usuario (*)")]
                       ),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-md-9" }, [
@@ -72625,8 +72661,8 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.name,
-                              expression: "name"
+                              value: _vm.usuario,
+                              expression: "usuario"
                             }
                           ],
                           staticClass: "form-control",
@@ -72634,13 +72670,13 @@ var render = function() {
                             type: "text",
                             placeholder: "Nombre del usuario"
                           },
-                          domProps: { value: _vm.name },
+                          domProps: { value: _vm.usuario },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
                                 return
                               }
-                              _vm.name = $event.target.value
+                              _vm.usuario = $event.target.value
                             }
                           }
                         })
@@ -72652,7 +72688,46 @@ var render = function() {
                         "label",
                         {
                           staticClass: "col-md-3 form-control-label",
-                          attrs: { for: "text-input" }
+                          attrs: { for: "email-input" }
+                        },
+                        [_vm._v("Contraseña (*)")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-9" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.password,
+                              expression: "password"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "password",
+                            placeholder: "Password de acceso",
+                            maxlength: "60"
+                          },
+                          domProps: { value: _vm.password },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.password = $event.target.value
+                            }
+                          }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-md-3 form-control-label",
+                          attrs: { for: "email-input" }
                         },
                         [_vm._v("Email (*)")]
                       ),
@@ -72669,9 +72744,9 @@ var render = function() {
                           ],
                           staticClass: "form-control",
                           attrs: {
-                            type: "text",
-                            placeholder:
-                              "Ingrese la cantidad de días mínimos que  usuario"
+                            type: "email",
+                            placeholder: "Email",
+                            maxlength: "50"
                           },
                           domProps: { value: _vm.email },
                           on: {
@@ -72791,6 +72866,8 @@ var staticRenderFns = [
         _c("th", [_vm._v("Nombre")]),
         _vm._v(" "),
         _c("th", [_vm._v("Email")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Estado")]),
         _vm._v(" "),
         _c("th", [_vm._v("Opciones")])
       ])
