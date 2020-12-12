@@ -43,6 +43,38 @@
                             </div>
                         </div>
                     </div>
+                     <div class="col-md-6">
+                        <div class="card card-chart">
+                            <div class="card-header">
+                                <h4>Departamentos</h4>
+                            </div>
+                            <div class="card-content">
+                                <div class="ct-chart">
+                                    <canvas id="departamentos">                                                
+                                    </canvas>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <p>Empleados por departamentos.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card card-chart">
+                            <div class="card-header">
+                                <h4>Activos</h4>
+                            </div>
+                            <div class="card-content">
+                                <div class="ct-chart">
+                                    <canvas id="activos">                                                
+                                    </canvas>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <p>Cantidad de Empleados Activos.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -58,10 +90,23 @@
                 charArea:null,
                 areas:[],
                 varCantidadArea:[],
-                varNombreArea:[], 
+                varNombreArea:[],
                 
-                varVenta:null,
-                charVenta:null,
+                varDepartamento:null,
+                charDepartamento:null,
+                departamentos:[],
+                varCantidadDepartamento:[],
+                varNombreDepartamento:[],
+
+                varActivos:null,
+                charActivos:null,
+                activos:[],
+                activosIn:[],
+                varCantidadActivos:[],
+                varNombreActivos:[],
+                
+                varPuesto:null,
+                charPuesto:null,
                 puestos:[],
                 varCantidadPuesto:[],
                 varNombrePuesto:[],
@@ -74,6 +119,7 @@
                 axios.get(url).then(function (response) {
                     var respuesta= response.data;
                     me.areas = respuesta.empleadosArea;
+                    
                     //cargamos los datos del chart
                     me.loadArea();
                 })
@@ -94,12 +140,41 @@
                     console.log(error);
                 });
             },
+             getDepartamentos(){
+                let me=this;
+                var url= '/empleado/reporte';
+                axios.get(url).then(function (response) {
+                    var respuesta= response.data;
+                    me.departamentos = respuesta.empleadosDepartamento;
+                    //cargamos los datos del chart
+                    me.loadDepartamentos();
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            },
+             getActivos(){
+                let me=this;
+                var url= '/empleado/reporte';
+                axios.get(url).then(function (response) {
+                    var respuesta= response.data;
+                   me.activos = respuesta.activos;
+                    me.activosIn = respuesta.activosIn;
+                    //cargamos los datos del chart
+                    me.loadActivos();
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            },
             loadArea(){
                 let me=this;
+                
                 me.areas.map(function(x){
                     me.varNombreArea.push(x.nombre);
                     me.varCantidadArea.push(x.cantidad);
                 });
+                
                 me.varArea=document.getElementById('areas').getContext('2d');
 
                 me.charArea = new Chart(me.varArea, {
@@ -125,15 +200,80 @@
                     }
                 });
             },
+            loadDepartamentos(){
+                let me=this;
+                me.departamentos.map(function(x){
+                    me.varNombreDepartamento.push(x.nombre);
+                    me.varCantidadDepartamento.push(x.cantidad);
+                });
+                me.varArea=document.getElementById('departamentos').getContext('2d');
+
+                me.charDepartamento = new Chart(me.varDepartamento, {
+                    type: 'bar',
+                    data: {
+                        labels: me.varNombreDepartamento,
+                        datasets: [{
+                            label: 'departamentos',
+                            data: me.varCantidadDepartamento,
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            borderColor: 'rgba(255, 99, 132, 0.2)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero:true
+                                }
+                            }]
+                        }
+                    }
+                });
+            },
+            
+            loadActivos(){
+                let me=this;
+                /*me.areas.map(function(x){
+                    me.varNombreActivos.push(x.nombre);
+                    me.varCantidadActivos.push(x.cantidad);
+                });*/
+                me.varNombreActivos = ["Activos","Activos con Incidencias"];
+                me.varCantidadActivos = [me.activos, me.activosIn];
+                me.varActivos=document.getElementById('activos').getContext('2d');
+                console.log(me.varNombreActivos);
+                me.charActivo = new Chart(me.varActivos, {
+                    type: 'bar',
+                    data: {
+                        labels: me.varNombreActivos,
+                        datasets: [{
+                            label: 'activos',
+                            data: me.varCantidadActivos,
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            borderColor: 'rgba(255, 99, 132, 0.2)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero:true
+                                }
+                            }]
+                        }
+                    }
+                });
+            },
             loadPuestos(){
                 let me=this;
                 me.puestos.map(function(x){
                     me.varNombrePuesto.push(x.nombre);
                     me.varCantidadPuesto.push(x.cantidad);
                 });
-                me.varVenta=document.getElementById('puestos').getContext('2d');
+                me.varPuesto=document.getElementById('puestos').getContext('2d');
 
-                me.charVenta = new Chart(me.varVenta, {
+                me.charPuesto = new Chart(me.varPuesto, {
                     type: 'bar',
                     data: {
                         labels: me.varNombrePuesto,
@@ -160,6 +300,8 @@
         mounted() {
             this.getAreas();
             this.getPuestos();
+            this.getActivos();
+             this.getDepartamentos();
         }
     }
 </script>

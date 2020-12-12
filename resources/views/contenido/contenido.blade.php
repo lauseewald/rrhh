@@ -42,5 +42,8 @@
 <template v-if="menu=='tipoContrato'">
     <tipocontrato1></tipocontrato1>
 </template>
+<template v-if="menu=='usuarios'">
+    <usuario></usuario>
+</template>
 
 @endsection
