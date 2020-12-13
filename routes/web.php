@@ -73,6 +73,7 @@ Route::post('/evento/registrar', 'EventoController@store');
 Route::put('/evento/actualizar', 'EventoController@update');
 Route::put('/evento/desactivar', 'EventoController@desactivar');
 Route::put('/evento/activar', 'EventoController@activar');
+Route::get('/evento/alarma', 'EventoController@alarmaEvento');
 
 //Departamento
 Route::get('/departamento', 'DepartamentoController@index');
@@ -97,6 +98,7 @@ Route::put('/diaNoLaboral/actualizar', 'DiaNoLaboralController@update');
 Route::put('/diaNoLaboral/desactivar', 'DiaNoLaboralController@desactivar');
 Route::put('/diaNoLaboral/activar', 'DiaNoLaboralController@activar');
 Route::get('/diaNoLaboral/selectDiaNoLaboral', 'DiaNoLaboralController@selectDiaNoLaboral');
+Route::get('/diaNoLaboral/alarmaDiaNoLaboral', 'DiaNoLaboralController@alarmaDiaNoLaboral');
 
 //Solicitudes
 Route::get('/solicitudInasistencia', 'SolicitudInasistenciaController@index');
@@ -105,6 +107,7 @@ Route::put('/solicitudInasistencia/actualizar', 'SolicitudInasistenciaController
 Route::put('/solicitudInasistencia/desactivar', 'SolicitudInasistenciaController@desactivar');
 Route::put('/solicitudInasistencia/activar', 'SolicitudInasistenciaController@activar');
 Route::get('/solicitudInasistencia/selectSolicitudInasistencia', 'SolicitudInasistenciaController@selectSolicitudInasistencia');
+Route::get('/solicitudInasistencia/alarma', 'SolicitudInasistenciaController@alarmaInasistencia');
 
 //TipoContrato
 Route::get('/tipoContrato', 'TipoContratoController@index');

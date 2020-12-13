@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\SolicitudInasistencia;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SolicitudInasistenciaController extends Controller
 {
@@ -27,6 +29,47 @@ class SolicitudInasistenciaController extends Controller
             ->join('incidencias', 'incidencias.id', '=', 'solicitudes_inasistencias.incidencia_id')
             ->select('solicitudes_inasistencias.*','incidencias.nombre as nombreIncidencia','empleados.nombre as nombreEmpleado','empleados.apellido as apellidoEmpleado')
             ->where('solicitudes_inasistencias.'.$criterio, 'like', '%'. $buscar . '%')
+            ->paginate(3);
+        }
+         
+        return [
+            'pagination' => [
+                'total'        => $solicitudInasistencias->total(),
+                'current_page' => $solicitudInasistencias->currentPage(),
+                'per_page'     => $solicitudInasistencias->perPage(),
+                'last_page'    => $solicitudInasistencias->lastPage(),
+                'from'         => $solicitudInasistencias->firstItem(),
+                'to'           => $solicitudInasistencias->lastItem(),
+            ],
+            'solicitudInasistencias' => $solicitudInasistencias
+        ];
+        
+    }
+    public function alarmaInasistencia(Request $request)
+    {
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+ 
+        $buscar = $request->buscar;
+        $criterio = $request->criterio;
+         
+        if ($buscar=='') {
+            $solicitudInasistencias = SolicitudInasistencia::join('empleados', 'empleados.id', '=', 'solicitudes_inasistencias.empleado_id')
+            ->join('incidencias', 'incidencias.id', '=', 'solicitudes_inasistencias.incidencia_id')
+            ->select('solicitudes_inasistencias.*','incidencias.nombre as nombreIncidencia','empleados.nombre as nombreEmpleado','empleados.apellido as apellidoEmpleado',
+            DB::raw("DATE_FORMAT(solicitudes_inasistencias.desde, '%d/%m/%Y') as desde2"),DB::raw("DATE_FORMAT(solicitudes_inasistencias.hasta, '%d/%m/%Y') as hasta2"))
+            ->where('desde','>',Carbon::now())
+            ->orderBy('desde','asc')
+            ->paginate(3);
+        } else {
+            $solicitudInasistencias = SolicitudInasistencia::join('empleados', 'empleados.id', '=', 'solicitudes_inasistencias.empleado_id')
+            ->join('incidencias', 'incidencias.id', '=', 'solicitudes_inasistencias.incidencia_id')
+            ->select('solicitudes_inasistencias.*','incidencias.nombre as nombreIncidencia','empleados.nombre as nombreEmpleado','empleados.apellido as apellidoEmpleado',
+            DB::raw("DATE_FORMAT(solicitudes_inasistencias.desde, '%d/%m/%Y') as desde2"),DB::raw("DATE_FORMAT(solicitudes_inasistencias.hasta, '%d/%m/%Y') as hasta2"))
+            ->where('desde','>',Carbon::now())
+            ->where('solicitudes_inasistencias.'.$criterio, 'like', '%'. $buscar . '%')
+            ->orderBy('desde','asc')
             ->paginate(3);
         }
          

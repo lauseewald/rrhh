@@ -15,6 +15,7 @@ class CreateSolicitudesInasistenciasTable extends Migration
     {
         Schema::create('solicitudes_inasistencias', function (Blueprint $table) {
             $table->increments('id');
+            $table->boolean('aprobado')->nullable();
             $table->date('desde');
             $table->date('hasta');
             $table->string('motivo');

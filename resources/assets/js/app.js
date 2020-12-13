@@ -30,6 +30,7 @@ Vue.component('competencia1', require('./components/Competencia.vue'));
 Vue.component('empleadoreporte2', require('./components/EmpleadoReporte.vue'));
 Vue.component('tipocontrato1', require('./components/TipoContrato.vue'));
 Vue.component('usuario', require('./components/Usuario.vue'));
+Vue.component('alarma', require('./components/Alarma.vue'));
 
 const app = new Vue({
     el: '#app',

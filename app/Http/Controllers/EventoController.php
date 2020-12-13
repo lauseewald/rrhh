@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Evento;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+
 class EventoController extends Controller
 {
     public function index(Request $request)
@@ -16,16 +18,48 @@ class EventoController extends Controller
          
         if ($buscar=='') {
             $eventos = Evento::join('departamentos','eventos.departamento_id','=','departamentos.id')
-            ->select( 'eventos.id as id','titulo', 'departamentos.nombre as nombreDepartamento',
-             'eventos.descripcion as descripcion', 'fecha', 'eventos.condicion as condicion')
+            ->select( 'eventos.*', 'departamentos.nombre as nombreDepartamento')
             ->orderBy('titulo', 'desc')->paginate(3);
             
         } else {
             $eventos = Evento::join('departamentos','eventos.departamento_id','=','departamentos.id')
-            ->select('eventos.id as id','titulo', 'departamentos.nombre as nombreDepartamento',
-             'eventos.descripcion as descripcion', 'fecha', 'eventos.condicion as condicion')
+            ->select( 'eventos.*', 'departamentos.nombre as nombreDepartamento')
             ->where('eventos.'.$criterio, 'like', '%'. $buscar . '%')
             ->orderBy('titulo', 'desc')->paginate(3);
+        }
+         
+        return [
+            'pagination' => [
+                'total'        => $eventos->total(),
+                'current_page' => $eventos->currentPage(),
+                'per_page'     => $eventos->perPage(),
+                'last_page'    => $eventos->lastPage(),
+                'from'         => $eventos->firstItem(),
+                'to'           => $eventos->lastItem(),
+            ],
+            'eventos' => $eventos
+        ];
+    }
+
+    public function alarmaEvento(Request $request)
+    {
+        if (!$request->ajax()) return redirect('/');
+ 
+        $buscar = $request->buscar;
+        $criterio = $request->criterio;
+         
+        if ($buscar=='') {
+            $eventos = Evento::join('departamentos','eventos.departamento_id','=','departamentos.id')
+            ->select( 'eventos.*',DB::raw("DATE_FORMAT(eventos.fecha, '%d/%m/%Y') as fecha2"), 'departamentos.nombre as nombreDepartamento')
+            ->where('eventos.fecha','>',Carbon::now())
+            ->orderBy('fecha', 'asc')->paginate(3);
+            
+        } else {
+            $eventos = Evento::join('departamentos','eventos.departamento_id','=','departamentos.id')
+            ->select( 'eventos.*',DB::raw("DATE_FORMAT(eventos.fecha, '%d/%m/%Y') as fecha2"), 'departamentos.nombre as nombreDepartamento')
+            ->where('eventos.'.$criterio, 'like', '%'. $buscar . '%')
+            ->where('eventos.fecha','>',Carbon::now())
+            ->orderBy('fecha', 'asc')->paginate(3);
         }
          
         return [

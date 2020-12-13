@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\DiaNoLaboral;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DiaNoLaboralController extends Controller
 {
@@ -30,6 +32,49 @@ class DiaNoLaboralController extends Controller
                 'dias_no_laborales.*',
                 'empresas.nombre as nombreEmpresa'
             )->where('dias_no_laborales.'.$criterio, 'like', '%'. $buscar . '%')
+            ->paginate(3);
+        }
+         
+        return [
+            'pagination' => [
+                'total'        => $diaNoLaborales->total(),
+                'current_page' => $diaNoLaborales->currentPage(),
+                'per_page'     => $diaNoLaborales->perPage(),
+                'last_page'    => $diaNoLaborales->lastPage(),
+                'from'         => $diaNoLaborales->firstItem(),
+                'to'           => $diaNoLaborales->lastItem(),
+            ],
+            'diaNoLaborales' => $diaNoLaborales
+        ];
+    }
+    public function alarmaDiaNoLaboral(Request $request)
+    {
+        if (!$request->ajax()) {
+            return redirect('/');
+        }
+ 
+        $buscar = $request->buscar;
+        $criterio = $request->criterio;
+         
+        if ($buscar=='') {
+            $diaNoLaborales = DiaNoLaboral::join('empresas', 'dias_no_laborales.empresa_id', '=', 'empresas.id')
+            ->select(
+                'dias_no_laborales.*',
+                'empresas.nombre as nombreEmpresa',
+                DB::raw("DATE_FORMAT(dias_no_laborales.dia, '%d/%m/%Y') as dia2")
+            )
+            ->where('dia', '>', Carbon::now())
+            ->orderBy('dia', 'asc')
+            ->paginate(3);
+        } else {
+            $diaNoLaborales = DiaNoLaboral::join('empresas', 'dias_no_laborales.empresa_id', '=', 'empresas.id')
+            ->select(
+                'dias_no_laborales.*',
+                'empresas.nombre as nombreEmpresa',
+                DB::raw("DATE_FORMAT(dias_no_laborales.dia, '%d/%m/%Y') as dia2")
+            )->where('dias_no_laborales.'.$criterio, 'like', '%'. $buscar . '%')
+                ->where('dia', '>', Carbon::now())
+                ->orderBy('dia', 'asc')
             ->paginate(3);
         }
          

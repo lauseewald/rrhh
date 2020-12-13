@@ -81,6 +81,10 @@
                     </li>
                 </ul>
             </li>
+            <li @click="menu='alarma2'" class="nav-item">
+                <a class="nav-link" href="main.html"><i class="icon-book-open"></i> Alarma <span
+                        class="badge badge-danger">!</span></a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="main.html"><i class="icon-book-open"></i> Ayuda <span
                         class="badge badge-danger">PDF</span></a>

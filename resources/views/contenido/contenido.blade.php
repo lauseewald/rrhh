@@ -45,5 +45,8 @@
 <template v-if="menu=='usuarios'">
     <usuario></usuario>
 </template>
+<template v-if="menu=='alarma2'">
+    <alarma></alarma>
+</template>
 
 @endsection
