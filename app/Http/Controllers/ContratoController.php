@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contrato;
+use App\Empleado;
 use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
 use Exception;
@@ -23,31 +24,31 @@ class ContratoController extends Controller
  
         $buscar = $request->buscar;
         $criterio = $request->criterio;
+        $contratos = Contrato::join('empleados', 'contratos.empleado_id', '=', 'empleados.id')
+            ->join('puestos', 'contratos.puesto_id', '=', 'puestos.id')
+            ->join('tipo_contratos', 'contratos.tipoContrato_id', '=', 'tipo_contratos.id')
+            ->select(
+                'contratos.*',
+                'puestos.nombre as nombrePuesto',
+                'empleados.nombre as nombreEmpleado',
+                'empleados.apellido as apellidoEmpleado',
+                'tipo_contratos.nombre as nombreTipoContrato'
+            );
+        
+            if ($criterio =='activo') {   
+                $contratos->where('contratos.condicion', 1);
+            } elseif ($criterio =='desactivado') {
+                $contratos->where('contratos.condicion', 0);
+            }elseif ($criterio =='vigente') {//contrato en curso
+                $contratos->where('contratos.inicioLaboral','<=', Carbon::now()->format('Y-m-d'))->where('contratos.finLaboral','>=', Carbon::now()->format('Y-m-d'));
+            } elseif ($criterio =='terminado') {
+                $contratos->where('contratos.finLaboral','<', Carbon::now());
+            }
+            elseif ($buscar!=''){
+                $contratos->where('contratos.'.$criterio, 'like', '%'. $buscar . '%');
+            } 
          
-        if ($buscar=='') {
-            $contratos = Contrato::join('empleados', 'contratos.empleado_id', '=', 'empleados.id')
-            ->join('puestos', 'contratos.puesto_id', '=', 'puestos.id')
-            ->join('tipo_contratos', 'contratos.tipoContrato_id', '=', 'tipo_contratos.id')
-            ->select(
-                'contratos.*',
-                'puestos.nombre as nombrePuesto',
-                'empleados.nombre as nombreEmpleado',
-                'empleados.apellido as apellidoEmpleado',
-                'tipo_contratos.nombre as nombreTipoContrato'
-            )->orderBy('contratos.nombre', 'desc')->paginate(3);
-        } else {
-            $contratos = Contrato::join('empleados', 'contratos.empleado_id', '=', 'empleados.id')
-            ->join('puestos', 'contratos.puesto_id', '=', 'puestos.id')
-            ->join('tipo_contratos', 'contratos.tipoContrato_id', '=', 'tipo_contratos.id')
-            ->select(
-                'contratos.*',
-                'puestos.nombre as nombrePuesto',
-                'empleados.nombre as nombreEmpleado',
-                'empleados.apellido as apellidoEmpleado',
-                'tipo_contratos.nombre as nombreTipoContrato'
-            )->where('contratos.'.$criterio, 'like', '%'. $buscar . '%')
-           ->orderBy('contratos.nombre', 'desc')->paginate(3);
-        }
+        $contratos= $contratos->orderBy('contratos.nombre', 'desc')->paginate(3); 
          
         return [
             'pagination' => [
@@ -92,10 +93,18 @@ class ContratoController extends Controller
             ];
         $this->validate($request, $rules, $messages);
         try {
-            if (!$request->ajax()) {
-                return redirect('/');
-            }
+            if (!$request->ajax()) return redirect('/');
             
+            // $exploded = explode(',', $request->contrato);
+            // $decoded = base64_decode($exploded[1]);
+            // if(str_contains($exploded[0], 'pdf'))
+            //     $extension = 'pdf';
+            // else
+            //     $extension = 'pdf';
+            // $fileName = str_random().'.'.$extension;
+            // $path = public_path().'/'.$fileName;
+            // file_put_contents($path, $decoded);
+
             $contrato = new Contrato();
             $contrato->nombre = $request->nombre;
             $contrato->descripcion = $request->descripcion;
@@ -105,12 +114,15 @@ class ContratoController extends Controller
             // $contrato->finLaboral= Carbon::now();
             $contrato->cantidadHorasDiarias= intval($request->cantidadHorasDiarias);
             $contrato->salario= floatval($request->salario);
-            $contrato->contrato = $request->contrato;
+            $contrato->contrato = '';
+            // $contrato->contrato=$fileName;
             $contrato->puesto_id=($request->idpuesto);
             $contrato->empleado_id=($request->idempleado);
             $contrato->tipoContrato_id=($request->idtipocontrato);
-
+            
             $contrato->save();
+
+           
         } catch (Exception $e) {
             return redirect()->withErrors('Error');
         }
@@ -245,7 +257,7 @@ class ContratoController extends Controller
             }elseif ($criterio =='vigente') {//contrato en curso
                 $contratos->where('contratos.inicioLaboral','<=', Carbon::now()->format('Y-m-d'))->where('contratos.finLaboral','>=', Carbon::now()->format('Y-m-d'));
             } elseif ($criterio =='terminado') {
-                $contratos->where('contratos.condicion', 0);
+                $contratos->where('contratos.finLaboral','<', Carbon::now());
             }
             elseif ($buscar!=''){
                 $contratos->where('contratos.'.$criterio, 'like', '%'. $buscar . '%');

@@ -20,6 +20,8 @@
                                     <select class="form-control col-md-3" v-model="criterio">
                                     
                                     <option value="nombre">Nombre</option>
+                                    <option value="diasMinimo">Dias Minimos</option>
+                                    <option value="diasMaximo">Dias Maximos</option>
                                    
                                     </select>
                                     <input type="text" v-model="buscar" @keyup.enter="listarIncidencia(1,buscar,criterio)" class="form-control" placeholder="Texto a buscar">
