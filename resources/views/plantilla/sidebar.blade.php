@@ -64,12 +64,10 @@
             <li class="nav-item nav-dropdown">
                 <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-people"></i> Acceso</a>
                 <ul class="nav-dropdown-items">
-                    <li class="nav-item">
+                    <li @click="menu='usuarios'" class="nav-item">
                         <a class="nav-link" href="i#"><i class="icon-user"></i> Usuarios</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="icon-user-following"></i> Roles</a>
-                    </li>
+                    
                 </ul>
             </li>
             <li class="nav-item nav-dropdown">

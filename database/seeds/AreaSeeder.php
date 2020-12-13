@@ -3,6 +3,7 @@
 use App\Area;
 use App\AreaEmpresa;
 use App\Competencia;
+use App\User;
 use App\ContactoEmergencia;
 use App\Contrato;
 use App\Departamento;
@@ -64,6 +65,8 @@ class AreaSeeder extends Seeder
         $tipoContrato = new TipoContrato();
         $tipoContrato->nombre='Trabajo';
         $tipoContrato->save();
+
+       
         
         $contrato = new Contrato();
         $contrato->nombre='Trabajo';
@@ -89,6 +92,13 @@ class AreaSeeder extends Seeder
         $empresa->save();
         $nuevaArea->empresa_id=$empresa->id;
         $nuevaArea->update();
+
+        $user = new User();
+        $user->usuario='root';
+        $user->email='root@root.com';
+        $user->empresa_id=$empresa->id;
+        $user->password = bcrypt('root');
+        $user->save();
         
         $diaNoLaboral = new DiaNoLaboral();
         $diaNoLaboral->dia=Carbon::createFromFormat('Y-m-d','2020-05-25');

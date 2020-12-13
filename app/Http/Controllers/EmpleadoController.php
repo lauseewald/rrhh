@@ -7,6 +7,7 @@ use App\Empleado;
 use App\CompetenciaEmpleado;
 use App\ContactoEmergencia;
 use Exception;
+use Carbon\Carbon; 
 use Illuminate\Support\Facades\DB;
 
 class EmpleadoController extends Controller
@@ -318,10 +319,10 @@ public function __invoke(Request $request){
         ->select(DB::raw('COUNT(e.id) as cantidad'),
         //DB::raw('e.id'),
         DB::raw('puestos.nombre'))
-        ->groupBy(DB::raw('puestos.nombre'),DB::raw('(e.id)'))
+        ->groupBy(DB::raw('puestos.nombre'))
         ->get();
 
-        $empleadosDepartamento=DB::table('empleados as e')
+        $empleadosArea=DB::table('empleados as e')
         ->join('contratos','e.id','=','contratos.empleado_id')
         ->join('puestos','contratos.puesto_id','=','puestos.id')
         ->join('departamentos','puestos.departamento_id','=','departamentos.id')
@@ -332,17 +333,47 @@ public function __invoke(Request $request){
         ->groupBy(DB::raw('areas.nombre'))
         ->get();
 
-        $empleadosArea=DB::table('empleados as e')
+        $empleadosDepartamento=DB::table('empleados as e')
         ->join('contratos','e.id','=','contratos.empleado_id')
         ->join('puestos','contratos.puesto_id','=','puestos.id')
         ->join('departamentos','puestos.departamento_id','=','departamentos.id')
+        //->join('areas','departamentos.area_id','=','areas.id')
         ->select(DB::raw('COUNT(e.id) as cantidad'),
         //DB::raw('e.id'),
-        DB::raw('departamentos.nombre'))
+        DB::raw('departamentos.nombre as nombre'))
         ->groupBy(DB::raw('departamentos.nombre'))
         ->get();
-    
 
-        return ['empleadosArea'=>$empleadosArea,'empleadosDepartamento'=>$empleadosDepartamento,'empleadosPuesto'=>$empleadosPuesto]; 
+        /*$empleadosActivosIn=DB::table('empleados as e')
+        ->join('solicitudes_inasistencias','e.id','=','solicitudes_inasistencias.empleado_id')
+        ->where('e.condicion', '=', 1)
+        ->select(DB::raw('COUNT(e.id) as cantidad'),
+        //DB::raw('e.id'),
+        DB::raw('e.nombre'))
+        ->groupBy(DB::raw('cantidad'))
+        ->get();*/
+
+        /*$empleadosActivos=DB::table('empleados as e')
+        ->where('e.condicion', '=', 1)
+        ->select(DB::raw('COUNT(e.id) as cantidad'),
+        //DB::raw('e.id'),
+        DB::raw('e.nombre'))
+        ->groupBy(DB::raw('e.nombre'))
+        ->get();*/
+        $empleados = Empleado::where('condicion', '=', 1)
+        ->select('cuil')
+              ->orderBy('nombre', 'desc')->get();
+              $hoy = Carbon::today();
+              $empleadosin = Empleado::join('solicitudes_inasistencias','empleados.id','=','solicitudes_inasistencias.empleado_id')
+              ->select('cuil')
+              ->where('empleados.condicion', '=', 1)
+              ->whereDate('solicitudes_inasistencias.hasta', '>=', $hoy)
+            ->orderBy('empleados.nombre', 'desc')->get();
+
+        $activos = count($empleados);
+        $activosIn = count($empleadosin);
+
+        return ['empleadosArea'=>$empleadosArea,'empleadosDepartamento'=>$empleadosDepartamento,
+        'empleadosPuesto'=>$empleadosPuesto, 'activos'=>$activos, 'activosIn'=>$activosIn]; 
     }
 }
