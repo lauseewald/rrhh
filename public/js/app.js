@@ -51948,11 +51948,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       if (this.validarEmpleado()) {
         return;
       }
-      if (me.esCUITValida() == false) {
+      /*if (me.esCUITValida() == false) {
         me.errorMostrarMsjEmpleado.push("El cuil ingresado no es válido");
         me.errorEmpleado = 1;
         return;
-      }
+      }*/
 
       var me = this;
       console.log(this.competenciasId);
@@ -51997,12 +51997,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         reverseButtons: true
       }).then(function (result) {
         if (result.value) {
-          var _me = _this2;
+          var me = _this2;
 
           axios.put("/empleado/desactivar", {
             id: id
           }).then(function (response) {
-            _me.listarEmpleado(1, "", "nombre");
+            me.listarEmpleado(1, "", "nombre");
             swal("Desactivado!", "El registro ha sido desactivado con éxito.", "success");
           }).catch(function (error) {
             console.log(error);
@@ -52029,12 +52029,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         reverseButtons: true
       }).then(function (result) {
         if (result.value) {
-          var _me2 = _this3;
+          var me = _this3;
 
           axios.put("/empleado/activar", {
             id: id
           }).then(function (response) {
-            _me2.listarEmpleado(1, "", "nombre");
+            me.listarEmpleado(1, "", "nombre");
             swal("Activado!", "El registro ha sido activado con éxito.", "success");
           }).catch(function (error) {
             console.log(error);

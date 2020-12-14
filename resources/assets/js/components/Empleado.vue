@@ -734,11 +734,11 @@ export default {
       if (this.validarEmpleado()) {
         return;
       }
-      if (me.esCUITValida() == false) {
+      /*if (me.esCUITValida() == false) {
         me.errorMostrarMsjEmpleado.push("El cuil ingresado no es válido");
         me.errorEmpleado = 1;
         return;
-      }
+      }*/
 
       let me = this;
       console.log(this.competenciasId);
