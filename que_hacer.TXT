@@ -1,0 +1,47 @@
+[] Lista de empleados que estan con licencia.
+[] Vista solo de empleado con, la solicitud de inasistencia.
+[] Asociar el control de incidencia con la solocitud de inasistencia.
+[] Alarma cuando hay una nueva solicitud e inasistencia.
+[] Alarma cuando un contrato se esta por vencer.
+[] Cargar hijo discapacitado para un empleado. (Asocines con la familia)
+[] Precargar licencias (Embarazo, muerte de familiar, etc)
+[] Precargar Tipos de contratos.
+[] Cambiar de contrato.
+[] Agregar un Candelario.
+
+
+Detalle del profesor
+empleados.
+Inasistencia
+Acepta.
+Roles 
+El empleado solicita una incidencia. El administrador aprueba.
+
+Quienes estan con inasistencia.
+
+Empleado, su candelario, solicitar su incidencia.
+Personas activas e inactivas en este momento.
+
+Nomina: Datos personales de familiares del empleado.
+Todo para saber si hay empleados y si me conviene.
+
+Un empleado tiene un hijo discapacitado.
+
+Tiene contrato aprueba y despues.
+
+
+Circuito:
+Empleado tiene un hijo discapacitado, solicita inasistencia de unansemana
+el adminstrador ve que empleados ya estan de licencia.
+aprueba o desaprueba la solicitud.
+
+Empleado que vence un contrato. alargar un contrato.
+cambiar de contrato a los empleados.
+
+Agregar un Candelario.
+
+ALarma de contato por vencerse.
+
+Cargar todos los feriados.
+
+Incidencia control con solicitud de inasitencia
