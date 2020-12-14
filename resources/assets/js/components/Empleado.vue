@@ -175,7 +175,7 @@
               </div>
 
               <div class="col-md-6">
-                <label for=""><strong>Nombre (*)</strong></label>
+                <label for="">Nombre (*)</label>
                 <input type="text" class="form-control" v-model="nombre" />
               </div>
 
@@ -221,7 +221,7 @@
                 </div>
               </div>
 
-              <div class="col-md-9" >
+              <div class="col-md-9">
                 <label>Competencias</label>
 
                 <multiselect
@@ -234,7 +234,7 @@
                 >
                 </multiselect>
               </div>
-              <br>
+              <br />
               <div class="col-md-9">
                 <div class="form-group">
                   <label
@@ -246,44 +246,63 @@
                     >Curriculum (*)
                   </label>
                   <input type="file" @change="getImage" id="data" name="data" />
+                  <a :href="curriculum" target="_blank">Ver</a>
                 </div>
-                <a :href="curriculum" target="_blank">Ver</a>
               </div>
-              <div class="col-md-9">
-                                    <h4>Contacto de Emergencia </h4>
+              <div class="col-md-6">
+                <h4>Contacto de Emergencia</h4>
+                 <div class="form-group">
+              
+                  <label>Nombre (*)</label>
+                    <div class="col-md-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    v-model="nombreContacto"
+                  />
+                </div>
+                </div>
                 <div class="form-group">
+               
+                  <label>Telefono 1 (*)</label>
+                   <div class="col-md-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    v-model="telefono1"
+                    placeholder="376xxxxxxx"
+                    maxlength="10"
+                  />
+                </div>
+                 </div>
+                  <div class="form-group">
+                
+                  <label>Telefono 2(*)</label>
+                  <div class="col-md-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    v-model="telefono2"
+                    placeholder="376xxxxxxx"
+                    maxlength="10"
+                  />
+                   </div>
+                </div>
+                 <div class="form-group">
+               
                   
-                    <label>Nombre (*)</label>
+                    <label>Correo(*)</label>
+                     <div class="col-md-6">
                     <input
-                      type="text"
+                      type="email"
                       class="form-control"
-                      v-model="nombreContacto"
+                      v-model="correo"
+                      maxlength="100"
                     />
+                  </div>
                   
-                </div>
-                <div class="col-md-4">                
-                    <label>Telefono 1(*)</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      v-model="telefono1"
-                    /> 
-                </div>
-                <div class="col-md-4">                
-                    <label>Telefono 2(*)</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      v-model="telefono2"
-                    /> 
                 </div>
                 <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Correo(*)</label>
-                                    <input type="email" class="form-control" v-model="correo"  maxlength="100">
-                                </div>
-                            </div>
-                <div class="col-md-2">
                   <button
                     @click="agregarDetalle()"
                     class="btn btn-success form-control btnagregar"
@@ -292,7 +311,7 @@
                   </button>
                 </div>
               </div>
-               
+
               <div class="col-md-12">
                 <div v-show="errorEmpleado" class="form-group row div-error">
                   <div class="text-center text-error">
@@ -304,51 +323,53 @@
                   </div>
                 </div>
               </div>
-               <div class="col-md-9">
-              <div class="form-group">
-                <div class="table-responsive col-md-9">
-                  <table class="table table-bordered table-striped table-sm">
-                    <thead>
-                      <tr>
-                        <th>Nombre</th>
-                        <th>Telefono 1</th>
-                        <th>Telefono 2</th>
-                        <th>Correo</th>
-                        <th>Acción</th>
-                      </tr>
-                    </thead>
-                    <tbody v-if="arrayDetalle.length">
-                      <tr
-                        v-for="(detalle, index) in arrayDetalle"
-                        :key="detalle.id"
-                      >
-                        <td v-text="detalle.nombre"></td>
+              <div class="col-md-9">
+                <div class="form-group">
+                  <div class="table-responsive col-md-9">
+                    <table class="table table-bordered table-striped table-sm">
+                      <thead>
+                        <tr>
+                          <th>Nombre</th>
+                          <th>Telefono 1</th>
+                          <th>Telefono 2</th>
+                          <th>Correo</th>
+                          <th>Acción</th>
+                        </tr>
+                      </thead>
+                      <tbody v-if="arrayDetalle.length">
+                        <tr
+                          v-for="(detalle, index) in arrayDetalle"
+                          :key="detalle.id"
+                        >
+                          <td v-text="detalle.nombre"></td>
 
-                        <td v-text="detalle.telefono1"></td>
-                        <td v-text="detalle.telefono2"></td>
-                        <td v-text="detalle.correo"></td>
-                        <td>
-                          <button
-                            @click="eliminarDetalle(index)"
-                            type="button"
-                            class="btn btn-danger btn-sm"
-                          >
-                            <i class="icon-close"></i>
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
-                    <tbody v-else>
-                      <tr>
-                        <td colspan="5">No hay contactos de emergencia cargados</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                          <td v-text="detalle.telefono1"></td>
+                          <td v-text="detalle.telefono2"></td>
+                          <td v-text="detalle.correo"></td>
+                          <td>
+                            <button
+                              @click="eliminarDetalle(index)"
+                              type="button"
+                              class="btn btn-danger btn-sm"
+                            >
+                              <i class="icon-close"></i>
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                      <tbody v-else>
+                        <tr>
+                          <td colspan="5">
+                            No hay contactos de emergencia cargados
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
-            </div>
-            
+
             <div class="form-group row">
               <div class="col-md-12">
                 <button
@@ -648,7 +669,6 @@ export default {
       me.listarEmpleado(page, buscar, criterio);
     },
 
-    
     agregarDetalle() {
       let me = this;
 
@@ -658,22 +678,21 @@ export default {
           nombre: me.nombreContacto,
           telefono1: me.telefono1,
           telefono2: me.telefono2,
-          correo: me.correo
+          correo: me.correo,
         });
         me.nombreContacto = "";
         me.telefono1 = "";
         me.telefono2 = "";
-         me.correo = "";
+        me.correo = "";
       }
     },
     eliminarDetalle(index) {
       let me = this;
       me.arrayEliminar.push({
-          id: me.arrayDetalle[index].id,
-        });
+        id: me.arrayDetalle[index].id,
+      });
       me.arrayDetalle.splice(index, 1);
     },
-   
 
     registrarEmpleado() {
       let me = this;
@@ -685,7 +704,7 @@ export default {
         me.errorEmpleado = 1;
         return;
       }
-      
+
       axios
         .post("/empleado/registrar", {
           nombre: this.nombre,
@@ -713,6 +732,11 @@ export default {
     },
     actualizarEmpleado() {
       if (this.validarEmpleado()) {
+        return;
+      }
+      if (me.esCUITValida() == false) {
+        me.errorMostrarMsjEmpleado.push("El cuil ingresado no es válido");
+        me.errorEmpleado = 1;
         return;
       }
 
@@ -916,6 +940,15 @@ export default {
 
       return this.errorEmpleado;
     },
+    validarTelefono() {
+      if (/^([0-9]{4})+([0-9]{6})$/i.test(this.telefono1)) {
+        return "1";
+      } else if (/^([0-9]{4})+([0-9]{6})$/i.test(this.telefono2)) {
+        return "1";
+      } else {
+        return "0";
+      }
+    },
     mostrarDetalle() {
       let me = this;
       me.listado = 0;
@@ -997,7 +1030,8 @@ export default {
       me.fechaBaja = data["fechaBaja"];
       me.curriculum = data["curriculum"];
       var url = "/empleado/findCompetencias?id=" + data["id"];
-      axios.get(url)
+      axios
+        .get(url)
         .then(function (response) {
           var respuesta = response.data;
           me.competenciasId = respuesta.competencias;
@@ -1005,8 +1039,9 @@ export default {
         .catch(function (error) {
           console.log(error);
         });
-        var url = "/empleado/findContactos?id=" + data["id"];
-      axios.get(url)
+      var url = "/empleado/findContactos?id=" + data["id"];
+      axios
+        .get(url)
         .then(function (response) {
           var respuesta = response.data;
           console.log(respuesta.contactos);
