@@ -115,11 +115,12 @@ class AreaController extends Controller
             $area = Area::findOrFail($request->id);
             $area->nombre = $request->nombre;
             $area->descripcion = $request->descripcion;
-            $area->empresa_id=(int) ($request->empresa_id);
+            //$area->empresa_id=(int) ($request->empresa_id);
 
             $area->save();
-        } catch (Exception $e) {
-            return redirect()->withErrors('Error');
+        } catch (PDOException $e) {
+            //return redirect()->withErrors('Error');
+            return 'error' + $e;
         }
     }
     

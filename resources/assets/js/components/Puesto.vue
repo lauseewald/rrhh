@@ -551,7 +551,7 @@ export default {
               this.modal = 1;
               this.tituloModal = "Actualizar contrato";
               this.tipoAccion = 2;
-
+            this.puesto_id = data["id"];
               this.nombre = data["nombre"];
               this.descripcion = data["descripcion"];
               this.departamento_id = data["departamento_id"];

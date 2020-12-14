@@ -55036,7 +55036,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                   this.modal = 1;
                   this.tituloModal = "Actualizar contrato";
                   this.tipoAccion = 2;
-
+                  this.puesto_id = data["id"];
                   this.nombre = data["nombre"];
                   this.descripcion = data["descripcion"];
                   this.departamento_id = data["departamento_id"];
@@ -66200,8 +66200,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                   this.id = 0;
                   this.nombre = "";
-                  this.descripcion = "";
-                  this.empresa_id = 0;
+                  this.razonSocial = "";
+                  this.cuit = "";
+                  this.inicioActividad = "";
+                  this.direccion = "";
 
                   this.tipoAccion = 1;
                   break;
@@ -66214,8 +66216,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                   this.id = data["id"];
                   this.nombre = data["nombre"];
-                  this.descripcion = data["descripcion"];
-                  this.empresa_id = data["empresa_id"];
+                  this.razonSocial = data["razonSocial"];
+                  this.cuit = data["cuit"];
+                  this.inicioActividad = data["inicioActividad"];
+                  this.direccion = data["direccion"];
 
                   break;
                 }

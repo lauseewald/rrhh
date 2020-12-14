@@ -158,12 +158,13 @@ class PuestoController extends Controller
         try {
             $puesto = Puesto::findOrFail($request->id);
             $puesto->nombre = $request->nombre;
-            $puesto->descipcion = $request->descipcion;
+            $puesto->descripcion = $request->descripcion;
             $puesto->sueldoBasico = $request->sueldoBasico;
             $puesto->departamento_id = $request->departamento_id;
             $puesto->save();
-        } catch (Exception $e) {
-            return redirect()->withErrors('Error');
+        } catch (PDOException $e) {
+            //return redirect()->withErrors('Error');
+            return 'error' + $e;
         }
     }
     public function desactivar(Request $request)

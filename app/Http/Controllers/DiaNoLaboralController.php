@@ -114,7 +114,7 @@ class DiaNoLaboralController extends Controller
             $diaNoLaboral->empresa_id=(int) ($request->empresa_id);
             $diaNoLaboral->save();
         } catch (Exception $e) {
-            return redirect()->withErrors('Error');
+           // return redirect()->withErrors('Error');
         }
     }
 
