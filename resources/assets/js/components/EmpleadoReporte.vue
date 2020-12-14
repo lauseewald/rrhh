@@ -133,6 +133,7 @@
                 axios.get(url).then(function (response) {
                     var respuesta= response.data;
                     me.puestos = respuesta.empleadosPuesto;
+                    console.log(me.puestos);
                     //cargamos los datos del chart
                     me.loadPuestos();
                 })
@@ -146,6 +147,7 @@
                 axios.get(url).then(function (response) {
                     var respuesta= response.data;
                     me.departamentos = respuesta.empleadosDepartamento;
+                    console.log(me.departamentos);
                     //cargamos los datos del chart
                     me.loadDepartamentos();
                 })
@@ -206,7 +208,7 @@
                     me.varNombreDepartamento.push(x.nombre);
                     me.varCantidadDepartamento.push(x.cantidad);
                 });
-                me.varArea=document.getElementById('departamentos').getContext('2d');
+                me.varDepartamento=document.getElementById('departamentos').getContext('2d');
 
                 me.charDepartamento = new Chart(me.varDepartamento, {
                     type: 'bar',

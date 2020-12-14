@@ -333,7 +333,7 @@
                   </label>
                   <input type="file" @change="getImage" id="data" name="data" />
                 </div>
-                <a :href="contratoUbicacion" target="_blank">Ver</a>
+                <a :href="contrato" target="_blank">Ver</a>
               </div>
 
               <div v-show="errorComponente" class="form-group row div-error">
@@ -397,7 +397,7 @@ export default {
       salario: 0.0,
       inicioLaboral: "",
       finLaboral: "",
-      contratoUbicacion: "",
+      contrato: "",
       idpuesto: 0,
       idempleado: 0,
       idTipoContrato: 0,
@@ -479,9 +479,9 @@ export default {
       var fileReader = new FileReader();
       fileReader.readAsDataURL(event.target.files[0]);
       fileReader.onload = (event) => {
-        this.curriculum = event.target.result;
+        this.contrato = event.target.result;
       };
-      console.log(this.curriculum);
+      //console.log(this.curriculum);
     },
     selectPuesto() {
       let me = this;
@@ -558,7 +558,7 @@ export default {
           salario: this.salario,
           inicioLaboral: this.inicioLaboral,
           finLaboral: this.finLaboral,
-          contrato: this.contratoUbicacion,
+          contrato: this.contrato,
         })
         .then(function (response) {
           console.log(response);
@@ -591,7 +591,7 @@ export default {
           salario: this.salario,
           inicioLaboral: this.inicioLaboral,
           finLaboral: this.finLaboral,
-          contrato: this.contratoUbicacion,
+          contrato: this.contrato,
           id: this.contrato_id,
         })
         .then(function (response) {
@@ -714,7 +714,7 @@ export default {
       this.salario = 0.0;
       this.inicioLaboral = "";
       this.finLaboral = "";
-      this.contratoUbicacion = "";
+      this.contrato = "";
     },
 
     abrirModal(modelo, accion, data = []) {
@@ -733,7 +733,7 @@ export default {
               this.salario = 0.0;
               this.inicioLaboral = "";
               this.finLaboral = "";
-              this.contratoUbicacion = "";
+              this.contrato = "";
               this.tipoAccion = 1;
               break;
             }
@@ -752,7 +752,7 @@ export default {
               this.salario = data["salario"];
               this.inicioLaboral = data["inicioLaboral"];
               this.finLaboral = data["finLaboral"];
-              this.contratoUbicacion = data["contrato"];
+              this.contrato = data["contrato"];
 
               break;
             }

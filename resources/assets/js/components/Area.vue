@@ -167,20 +167,7 @@
               enctype="multipart/form-data"
               class="form-horizontal"
             >
-              <div class="form-group row">
-                <label class="col-md-3 form-control-label" for="text-input"
-                  >Empresas (*)</label
-                >
-                <select class="form-control" v-model="empresa_id">
-                  <option value="0" disabled>Seleccione</option>
-                  <option
-                    v-for="empresa in arrayEmpresas"
-                    :key="empresa.id"
-                    :value="empresa.id"
-                    v-text="empresa.nombre"
-                  ></option>
-                </select>
-              </div>
+              
               <div class="form-group row">
                 <label class="col-md-3 form-control-label" for="text-input"
                   >Nombre (*)</label
@@ -196,7 +183,7 @@
               </div>
               <div class="form-group row">
                 <label class="col-md-3 form-control-label" for="text-input"
-                  >Descripcion </label
+                  >Descripción </label
                 >
                 <div class="col-md-9">
                   <input
@@ -353,7 +340,7 @@ export default {
         .post("/area/registrar", {
           "nombre": this.nombre,
           "descripcion": this.descripcion,
-          "empresa_id": this.empresa_id,
+          //"empresa_id": this.empresa_id,
 
         })
         .then(function (response) {
@@ -380,7 +367,7 @@ export default {
           "id": this.id,
           "nombre": this.nombre,
           "descripcion": this.descripcion,
-          "empresa_id": this.empresa_id,
+          //"empresa_id": this.empresa_id,
         })
         .then(function (response) {
           me.cerrarModal();

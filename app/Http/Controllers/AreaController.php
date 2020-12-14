@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Area;
+use App\Empresa;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -63,11 +64,12 @@ class AreaController extends Controller
             if (!$request->ajax()) {
                 return redirect('/');
             }
-            
+            $iduser = \Auth::user()->id;
+            $empresa = $this->obtenerEmpresa($iduser);
             $area = new Area();
             $area->nombre = $request->nombre;
             $area->descripcion = $request->descripcion;
-            $area->empresa_id=(int) ($request->empresa_id);
+            $area->empresa_id= $empresa;
             $area->save();
 
         } catch (Exception $e) {
@@ -139,6 +141,17 @@ class AreaController extends Controller
         $area = Area::findOrFail($request->id);
         $area->condicion = '1';
         $area->save();
+    }
+
+    public function obtenerEmpresa($iduser)
+    {
+        
+        $empresa = Empresa::join('users','empresas.id','=','users.empresa_id')
+        ->where('users.id', '=', $iduser)
+        ->select('empresas.id as id')
+        ->orderBy('empresas.id', 'asc')->take(1)->get();
+        $empresa = $empresa[0]['id'];
+        return $empresa;
     }
 
 }

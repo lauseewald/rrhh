@@ -15489,6 +15489,7 @@ Vue.component('competencia1', __webpack_require__(105));
 Vue.component('empleadoreporte2', __webpack_require__(110));
 Vue.component('tipocontrato1', __webpack_require__(113));
 Vue.component('usuario', __webpack_require__(118));
+Vue.component('alarma', __webpack_require__(123));
 
 var app = new Vue({
   el: '#app',
@@ -53512,6 +53513,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -53816,6 +53819,14 @@ var render = function() {
                   [
                     _c("option", { attrs: { value: "nombre" } }, [
                       _vm._v("Nombre")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "diasMinimo" } }, [
+                      _vm._v("Dias Minimos")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "diasMaximo" } }, [
+                      _vm._v("Dias Maximos")
                     ])
                   ]
                 ),
@@ -55747,7 +55758,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    position: absolute !important;\n}\n.mostrar{\n    display: list-item !important;\n    opacity: 1 !important;\n    position: absolute !important;\n    background-color: #3c29297a !important;\n}\n.div-error{\n    display: flex;\n    justify-content: center;\n}\n.text-error{\n    color: red !important;\n    font-weight: bold;\n}\n", ""]);
+exports.push([module.i, "\n.modal-content {\r\n  width: 100% !important;\r\n  position: absolute !important;\n}\n.mostrar {\r\n  display: list-item !important;\r\n  opacity: 1 !important;\r\n  position: absolute !important;\r\n  background-color: #3c29297a !important;\n}\n.div-error {\r\n  display: flex;\r\n  justify-content: center;\n}\n.text-error {\r\n  color: red !important;\r\n  font-weight: bold;\n}\r\n", ""]);
 
 // exports
 
@@ -55978,346 +55989,525 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            contrato_id: 0,
-            nombre: '',
-            descripcion: '',
-            arrayPuesto: [],
-            arrayEmpleado: [],
-            arrayContrato: [],
-            arrayTipoContrato: [],
-            cantidadHorasDiarias: 0,
-            salario: 0.0,
-            inicioLaboral: '',
-            finLaboral: '',
-            contratoUbicacion: '',
-            idpuesto: 0,
-            idempleado: 0,
-            idTipoContrato: 0,
-            modal: 0,
-            tituloModal: '',
-            tipoAccion: 0,
-            errorComponente: 0,
-            errorMostrarMsjForm: [],
-            pagination: {
-                'total': 0,
-                'current_page': 0,
-                'per_page': 0,
-                'last_page': 0,
-                'from': 0,
-                'to': 0
-            },
-            offset: 3,
-            criterio: 'nombre',
-            buscar: ''
-        };
+  data: function data() {
+    return {
+      contrato_id: 0,
+      nombre: "",
+      descripcion: "",
+      arrayPuesto: [],
+      arrayEmpleado: [],
+      arrayContrato: [],
+      arrayTipoContrato: [],
+      cantidadHorasDiarias: 0,
+      salario: 0.0,
+      inicioLaboral: "",
+      finLaboral: "",
+      contrato: "",
+      idpuesto: 0,
+      idempleado: 0,
+      idTipoContrato: 0,
+      modal: 0,
+      tituloModal: "",
+      tipoAccion: 0,
+      errorComponente: 0,
+      errorMostrarMsjForm: [],
+      pagination: {
+        total: 0,
+        current_page: 0,
+        per_page: 0,
+        last_page: 0,
+        from: 0,
+        to: 0
+      },
+      offset: 3,
+      criterio: "nombre",
+      buscar: ""
+    };
+  },
+
+  computed: {
+    isActived: function isActived() {
+      return this.pagination.current_page;
     },
+    //Calcula los elementos de la paginación
+    pagesNumber: function pagesNumber() {
+      if (!this.pagination.to) {
+        return [];
+      }
 
-    computed: {
-        isActived: function isActived() {
-            return this.pagination.current_page;
-        },
-        //Calcula los elementos de la paginación
-        pagesNumber: function pagesNumber() {
-            if (!this.pagination.to) {
-                return [];
-            }
+      var from = this.pagination.current_page - this.offset;
+      if (from < 1) {
+        from = 1;
+      }
 
-            var from = this.pagination.current_page - this.offset;
-            if (from < 1) {
-                from = 1;
-            }
+      var to = from + this.offset * 2;
+      if (to >= this.pagination.last_page) {
+        to = this.pagination.last_page;
+      }
 
-            var to = from + this.offset * 2;
-            if (to >= this.pagination.last_page) {
-                to = this.pagination.last_page;
-            }
-
-            var pagesArray = [];
-            while (from <= to) {
-                pagesArray.push(from);
-                from++;
-            }
-            return pagesArray;
-        }
-    },
-    methods: {
-        listarTabla: function listarTabla(page, buscar, criterio) {
-            this.listarContrato(page, buscar, criterio);
-        },
-        listarContrato: function listarContrato(page, buscar, criterio) {
-            var me = this;
-            var url = '/contrato?page=' + page + '&buscar=' + buscar + '&criterio=' + criterio;
-            axios.get(url).then(function (response) {
-                var respuesta = response.data;
-
-                me.arrayContrato = respuesta.contratos.data;
-                me.pagination = respuesta.pagination;
-                console.log(response);
-            }).catch(function (error) {
-                console.log(error);
-            });
-        },
-        selectPuesto: function selectPuesto() {
-
-            var me = this;
-            //loading(true)
-
-            var url = '/puesto/selectPuesto';
-            axios.get(url).then(function (response) {
-                var respuesta = response.data;
-                //q: search
-                me.arrayPuesto = respuesta.puestos;
-                console.log('select Puesto');
-                //loading(false)
-            }).catch(function (error) {
-                console.log(error);
-            });
-        },
-        selectEmpleado: function selectEmpleado() {
-            var me = this;
-            //loading(true)
-            var url = '/empleado/selectEmpleado';
-            axios.get(url).then(function (response) {
-                var respuesta = response.data;
-                //q: search
-                me.arrayEmpleado = respuesta.empleados;
-                console.log('select Empleado');
-                //loading(false)
-            }).catch(function (error) {
-                console.log(error);
-            });
-        },
-        selectTipoContrato: function selectTipoContrato() {
-            var me = this;
-            //loading(true)
-            var url = '/tipoContrato/selectTipoContrato';
-            axios.get(url).then(function (response) {
-                var respuesta = response.data;
-                //q: search
-                me.arrayTipoContrato = respuesta.tipoContratos;
-                console.log('select Empleado');
-                //loading(false)
-            }).catch(function (error) {
-                console.log(error);
-            });
-        },
-        cambiarPagina: function cambiarPagina(page, buscar, criterio) {
-            var me = this;
-            //Actualiza la página actual
-            me.pagination.current_page = page;
-            //Envia la petición para visualizar la data de esa página
-            me.listarTabla(page, buscar, criterio);
-        },
-        registrarContrato: function registrarContrato() {
-            var me = this;
-            if (this.validarForm()) {
-                return;
-            }
-            axios.post('/contrato/registrar', {
-                'nombre': this.nombre,
-                'descripcion': this.descripcion,
-                'idpuesto': this.idpuesto,
-                'idempleado': this.idempleado,
-                'idtipocontrato': this.idTipoContrato,
-                'cantidadHorasDiarias': this.cantidadHorasDiarias,
-                'salario': this.salario,
-                'inicioLaboral': this.inicioLaboral,
-                'finLaboral': this.finLaboral,
-                'contrato': this.contratoUbicacion
-            }).then(function (response) {
-                console.log(response);
-                me.cerrarModal();
-                me.listarTabla(1, '', 'nombre');
-                __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.success('Se ha registrado el contrato', 'Registrado', { timeOut: 5000 });
-            }).catch(function (error) {
-                console.log(error);
-                __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.error('Ha ocurrido un error', 'Error', { timeOut: 5000 });
-            });
-        },
-        actualizarContrato: function actualizarContrato() {
-
-            console.log('prueba');
-            if (this.validarForm()) {
-                return;
-            }
-
-            var me = this;
-            axios.put('/contrato/actualizar', {
-                'nombre': this.nombre,
-                'descripcion': this.descripcion,
-                'idpuesto': this.idpuesto,
-                'idempleado': this.idempleado,
-                'idtipocontrato': this.idTipoContrato,
-                'cantidadHorasDiarias': this.cantidadHorasDiarias,
-                'salario': this.salario,
-                'inicioLaboral': this.inicioLaboral,
-                'finLaboral': this.finLaboral,
-                'contrato': this.contratoUbicacion,
-                'id': this.contrato_id
-            }).then(function (response) {
-                me.cerrarModal();
-                me.listarTabla(1, '', 'nombre');
-                __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.success('Se ha actualizado con exito', 'Actualizado', { timeOut: 5000 });
-            }).catch(function (error) {
-                console.log(error);
-                __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.error('Ha ocurrido un error', 'Error', { timeOut: 5000 });
-            });
-        },
-        desactivarContrato: function desactivarContrato(id) {
-            var _this = this;
-
-            swal({
-                title: 'Esta seguro de desactivar este Contrato?',
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Aceptar!',
-                cancelButtonText: 'Cancelar',
-                confirmButtonClass: 'btn btn-success',
-                cancelButtonClass: 'btn btn-danger',
-                buttonsStyling: false,
-                reverseButtons: true
-            }).then(function (result) {
-                if (result.value) {
-                    var me = _this;
-
-                    axios.put('/contrato/desactivar', {
-                        'id': id
-                    }).then(function (response) {
-                        me.listarTabla(1, '', 'nombre');
-                        swal('Desactivado!', 'El contrato se ha desactivado con éxito.', 'success');
-                    }).catch(function (error) {
-                        console.log(error);
-                    });
-                } else if (
-                // Read more about handling dismissals
-                result.dismiss === swal.DismissReason.cancel) {}
-            });
-        },
-        activarContrato: function activarContrato(id) {
-            var _this2 = this;
-
-            swal({
-                title: 'Esta seguro de activar este contrato?',
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Aceptar!',
-                cancelButtonText: 'Cancelar',
-                confirmButtonClass: 'btn btn-success',
-                cancelButtonClass: 'btn btn-danger',
-                buttonsStyling: false,
-                reverseButtons: true
-            }).then(function (result) {
-                if (result.value) {
-                    var me = _this2;
-
-                    axios.put('/contrato/activar', {
-                        'id': id
-                    }).then(function (response) {
-                        me.listarTabla(1, '', 'nombre');
-                        swal('Activado!', 'El Contrato se ha activado con éxito.', 'success');
-                    }).catch(function (error) {
-                        console.log(error);
-                    });
-                } else if (
-                // Read more about handling dismissals
-                result.dismiss === swal.DismissReason.cancel) {}
-            });
-        },
-        validarForm: function validarForm() {
-            this.errorComponente = 0;
-            this.errorMostrarMsjForm = [];
-            // if (!this.nombre) this.errorMostrarMsjForm.push("Debe ingresar el nombre del Contrato");
-            // if (!this.cantidadHorasDiarias) this.errorMostrarMsjForm.push("Debe ingresar una cantidad de horas de trabajo");
-            // if (!this.salario) this.errorMostrarMsjForm.push("Debe ingresar un salario mayor a 0.0");
-            // if (!this.idpuesto) this.errorMostrarMsjForm.push("Debe seleccionar un puesto");
-            // if (!this.idempleado) this.errorMostrarMsjForm.push("Debe seleccionar un empleado");
-            // if (!this.inicioLaboral) this.errorMostrarMsjForm.push("Debe seleccionar una fecha inicial");
-            // if (!this.finLaboral) this.errorMostrarMsjForm.push("Debe seleccionar una fecha final del contrato");
-            // if (!this.fechaAlta) this.errorMostrarMsjEmpleado.push("La fecha de ingreso del empleado no puede estar vacía.");
-
-            // if (this.inicioLaboral.getTime() > Date().getTime()) this.errorMostrarMsjForm.push("La fecha del contrato debe ser mayor a hoy");
-            // if (this.finLaboral.getTime() > this.inicioLaboral.getTime()) this.errorMostrarMsjForm.push("La fecha de expirasión del contrato tiene que ser mayor al dia Inicial");
-            if (this.errorMostrarMsjForm.length) this.errorComponente = 1;
-            return this.errorComponente;
-        },
-        cerrarModal: function cerrarModal() {
-            this.modal = 0;
-            this.tituloModal = '';
-            this.nombre = '';
-            this.descripcion = '';
-            this.idpuesto = 0;
-            this.idempleado = 0;
-            this.idTipoContrato = 0;
-            this.cantidadHorasDiarias = 0;
-            this.salario = 0.0;
-            this.inicioLaboral = '';
-            this.finLaboral = '';
-            this.contratoUbicacion = '';
-        },
-        abrirModal: function abrirModal(modelo, accion) {
-            var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
-
-            switch (modelo) {
-                case "contrato":
-                    {
-                        switch (accion) {
-                            case 'registrar':
-                                {
-                                    this.modal = 1;
-                                    this.tituloModal = 'Registrar Contrato';
-                                    this.nombre = '';
-                                    this.descripcion = '';
-                                    this.idpuesto = 0;
-                                    this.idempleado = 0;
-                                    this.idTipoContrato = 0;
-                                    this.cantidadHorasDiarias = 0;
-                                    this.salario = 0.0;
-                                    this.inicioLaboral = '';
-                                    this.finLaboral = '';
-                                    this.contratoUbicacion = '';
-                                    this.tipoAccion = 1;
-                                    break;
-                                }
-                            case 'actualizar':
-                                {
-                                    this.modal = 1;
-                                    this.tituloModal = 'Actualizar contrato';
-                                    this.tipoAccion = 2;
-
-                                    this.contrato_id = data['id'];
-                                    this.nombre = data['nombre'];
-                                    this.descripcion = data['descripcion'];
-                                    this.idpuesto = data['puesto_id'];
-                                    this.idempleado = data['empleado_id'];
-                                    this.idTipoContrato = data['tipoContrato_id'];
-                                    this.cantidadHorasDiarias = data['cantidadHorasDiarias'];
-                                    this.salario = data['salario'];
-                                    this.inicioLaboral = data['inicioLaboral'];
-                                    this.finLaboral = data['finLaboral'];
-                                    this.contratoUbicacion = data['contrato'];
-
-                                    break;
-                                }
-                        }
-                    }
-            }
-        }
-    },
-    mounted: function mounted() {
-        this.listarTabla(1, this.buscar, this.criterio);
-        this.selectPuesto();
-        this.selectEmpleado();
-        this.selectTipoContrato();
+      var pagesArray = [];
+      while (from <= to) {
+        pagesArray.push(from);
+        from++;
+      }
+      return pagesArray;
     }
+  },
+  methods: {
+    listarTabla: function listarTabla(page, buscar, criterio) {
+      this.listarContrato(page, buscar, criterio);
+    },
+    listarContrato: function listarContrato(page, buscar, criterio) {
+      var me = this;
+      var url = "/contrato?page=" + page + "&buscar=" + buscar + "&criterio=" + criterio;
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+
+        me.arrayContrato = respuesta.contratos.data;
+        me.pagination = respuesta.pagination;
+        console.log(response);
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    getImage: function getImage(event) {
+      var _this = this;
+
+      //Asignamos la imagen a  nuestra data
+      //this.imagen = event.target.files[0];
+      var fileReader = new FileReader();
+      fileReader.readAsDataURL(event.target.files[0]);
+      fileReader.onload = function (event) {
+        _this.contrato = event.target.result;
+      };
+      //console.log(this.curriculum);
+    },
+    selectPuesto: function selectPuesto() {
+      var me = this;
+      //loading(true)
+
+      var url = "/puesto/selectPuesto";
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        //q: search
+        me.arrayPuesto = respuesta.puestos;
+        console.log("select Puesto");
+        //loading(false)
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    selectEmpleado: function selectEmpleado() {
+      var me = this;
+      //loading(true)
+      var url = "/empleado/selectEmpleado";
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        //q: search
+        me.arrayEmpleado = respuesta.empleados;
+        console.log("select Empleado");
+        //loading(false)
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    selectTipoContrato: function selectTipoContrato() {
+      var me = this;
+      //loading(true)
+      var url = "/tipoContrato/selectTipoContrato";
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        //q: search
+        me.arrayTipoContrato = respuesta.tipoContratos;
+        console.log("select Empleado");
+        //loading(false)
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    cambiarPagina: function cambiarPagina(page, buscar, criterio) {
+      var me = this;
+      //Actualiza la página actual
+      me.pagination.current_page = page;
+      //Envia la petición para visualizar la data de esa página
+      me.listarTabla(page, buscar, criterio);
+    },
+    registrarContrato: function registrarContrato() {
+      var me = this;
+      if (this.validarForm()) {
+        return;
+      }
+      axios.post("/contrato/registrar", {
+        nombre: this.nombre,
+        descripcion: this.descripcion,
+        idpuesto: this.idpuesto,
+        idempleado: this.idempleado,
+        idtipocontrato: this.idTipoContrato,
+        cantidadHorasDiarias: this.cantidadHorasDiarias,
+        salario: this.salario,
+        inicioLaboral: this.inicioLaboral,
+        finLaboral: this.finLaboral,
+        contrato: this.contrato
+      }).then(function (response) {
+        console.log(response);
+        me.cerrarModal();
+        me.listarTabla(1, "", "nombre");
+        __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.success("Se ha registrado el contrato", "Registrado", {
+          timeOut: 5000
+        });
+      }).catch(function (error) {
+        console.log(error);
+        __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.error("Ha ocurrido un error", "Error", { timeOut: 5000 });
+      });
+    },
+    actualizarContrato: function actualizarContrato() {
+      console.log("prueba");
+      if (this.validarForm()) {
+        return;
+      }
+
+      var me = this;
+      axios.put("/contrato/actualizar", {
+        nombre: this.nombre,
+        descripcion: this.descripcion,
+        idpuesto: this.idpuesto,
+        idempleado: this.idempleado,
+        idtipocontrato: this.idTipoContrato,
+        cantidadHorasDiarias: this.cantidadHorasDiarias,
+        salario: this.salario,
+        inicioLaboral: this.inicioLaboral,
+        finLaboral: this.finLaboral,
+        contrato: this.contrato,
+        id: this.contrato_id
+      }).then(function (response) {
+        me.cerrarModal();
+        me.listarTabla(1, "", "nombre");
+        __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.success("Se ha actualizado con exito", "Actualizado", {
+          timeOut: 5000
+        });
+      }).catch(function (error) {
+        console.log(error);
+        __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.error("Ha ocurrido un error", "Error", { timeOut: 5000 });
+      });
+    },
+    desactivarContrato: function desactivarContrato(id) {
+      var _this2 = this;
+
+      swal({
+        title: "Esta seguro de desactivar este Contrato?",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Aceptar!",
+        cancelButtonText: "Cancelar",
+        confirmButtonClass: "btn btn-success",
+        cancelButtonClass: "btn btn-danger",
+        buttonsStyling: false,
+        reverseButtons: true
+      }).then(function (result) {
+        if (result.value) {
+          var me = _this2;
+
+          axios.put("/contrato/desactivar", {
+            id: id
+          }).then(function (response) {
+            me.listarTabla(1, "", "nombre");
+            swal("Desactivado!", "El contrato se ha desactivado con éxito.", "success");
+          }).catch(function (error) {
+            console.log(error);
+          });
+        } else if (
+        // Read more about handling dismissals
+        result.dismiss === swal.DismissReason.cancel) {}
+      });
+    },
+    activarContrato: function activarContrato(id) {
+      var _this3 = this;
+
+      swal({
+        title: "Esta seguro de activar este contrato?",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Aceptar!",
+        cancelButtonText: "Cancelar",
+        confirmButtonClass: "btn btn-success",
+        cancelButtonClass: "btn btn-danger",
+        buttonsStyling: false,
+        reverseButtons: true
+      }).then(function (result) {
+        if (result.value) {
+          var me = _this3;
+
+          axios.put("/contrato/activar", {
+            id: id
+          }).then(function (response) {
+            me.listarTabla(1, "", "nombre");
+            swal("Activado!", "El Contrato se ha activado con éxito.", "success");
+          }).catch(function (error) {
+            console.log(error);
+          });
+        } else if (
+        // Read more about handling dismissals
+        result.dismiss === swal.DismissReason.cancel) {}
+      });
+    },
+    validarForm: function validarForm() {
+      this.errorComponente = 0;
+      this.errorMostrarMsjForm = [];
+      // if (!this.nombre) this.errorMostrarMsjForm.push("Debe ingresar el nombre del Contrato");
+      // if (!this.cantidadHorasDiarias) this.errorMostrarMsjForm.push("Debe ingresar una cantidad de horas de trabajo");
+      // if (!this.salario) this.errorMostrarMsjForm.push("Debe ingresar un salario mayor a 0.0");
+      // if (!this.idpuesto) this.errorMostrarMsjForm.push("Debe seleccionar un puesto");
+      // if (!this.idempleado) this.errorMostrarMsjForm.push("Debe seleccionar un empleado");
+      // if (!this.inicioLaboral) this.errorMostrarMsjForm.push("Debe seleccionar una fecha inicial");
+      // if (!this.finLaboral) this.errorMostrarMsjForm.push("Debe seleccionar una fecha final del contrato");
+      // if (!this.fechaAlta) this.errorMostrarMsjEmpleado.push("La fecha de ingreso del empleado no puede estar vacía.");
+
+      // if (this.inicioLaboral.getTime() > Date().getTime()) this.errorMostrarMsjForm.push("La fecha del contrato debe ser mayor a hoy");
+      // if (this.finLaboral.getTime() > this.inicioLaboral.getTime()) this.errorMostrarMsjForm.push("La fecha de expirasión del contrato tiene que ser mayor al dia Inicial");
+      if (this.errorMostrarMsjForm.length) this.errorComponente = 1;
+      return this.errorComponente;
+    },
+    cerrarModal: function cerrarModal() {
+      this.modal = 0;
+      this.tituloModal = "";
+      this.nombre = "";
+      this.descripcion = "";
+      this.idpuesto = 0;
+      this.idempleado = 0;
+      this.idTipoContrato = 0;
+      this.cantidadHorasDiarias = 0;
+      this.salario = 0.0;
+      this.inicioLaboral = "";
+      this.finLaboral = "";
+      this.contrato = "";
+    },
+    abrirModal: function abrirModal(modelo, accion) {
+      var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+
+      switch (modelo) {
+        case "contrato":
+          {
+            switch (accion) {
+              case "registrar":
+                {
+                  this.modal = 1;
+                  this.tituloModal = "Registrar Contrato";
+                  this.nombre = "";
+                  this.descripcion = "";
+                  this.idpuesto = 0;
+                  this.idempleado = 0;
+                  this.idTipoContrato = 0;
+                  this.cantidadHorasDiarias = 0;
+                  this.salario = 0.0;
+                  this.inicioLaboral = "";
+                  this.finLaboral = "";
+                  this.contrato = "";
+                  this.tipoAccion = 1;
+                  break;
+                }
+              case "actualizar":
+                {
+                  this.modal = 1;
+                  this.tituloModal = "Actualizar contrato";
+                  this.tipoAccion = 2;
+
+                  this.contrato_id = data["id"];
+                  this.nombre = data["nombre"];
+                  this.descripcion = data["descripcion"];
+                  this.idpuesto = data["puesto_id"];
+                  this.idempleado = data["empleado_id"];
+                  this.idTipoContrato = data["tipoContrato_id"];
+                  this.cantidadHorasDiarias = data["cantidadHorasDiarias"];
+                  this.salario = data["salario"];
+                  this.inicioLaboral = data["inicioLaboral"];
+                  this.finLaboral = data["finLaboral"];
+                  this.contrato = data["contrato"];
+
+                  break;
+                }
+            }
+          }
+      }
+    }
+  },
+  mounted: function mounted() {
+    this.listarTabla(1, this.buscar, this.criterio);
+    this.selectPuesto();
+    this.selectEmpleado();
+    this.selectTipoContrato();
+  }
 });
 
 /***/ }),
@@ -56335,7 +56525,7 @@ var render = function() {
       _c("div", { staticClass: "card" }, [
         _c("div", { staticClass: "card-header" }, [
           _c("i", { staticClass: "fa fa-align-justify" }),
-          _vm._v(" Contrato\n                "),
+          _vm._v(" Contrato\n        "),
           _c(
             "button",
             {
@@ -56347,10 +56537,7 @@ var render = function() {
                 }
               }
             },
-            [
-              _c("i", { staticClass: "icon-plus" }),
-              _vm._v(" Nuevo\n                ")
-            ]
+            [_c("i", { staticClass: "icon-plus" }), _vm._v(" Nuevo\n        ")]
           )
         ]),
         _vm._v(" "),
@@ -56465,7 +56652,7 @@ var render = function() {
                     },
                     [
                       _c("i", { staticClass: "fa fa-search" }),
-                      _vm._v(" Buscar")
+                      _vm._v(" Buscar\n                ")
                     ]
                   )
                 ])
@@ -56483,7 +56670,10 @@ var render = function() {
                       }
                     }
                   },
-                  [_c("i", { staticClass: "fa fa-search" }), _vm._v(" Reporte")]
+                  [
+                    _c("i", { staticClass: "fa fa-search" }),
+                    _vm._v(" Reporte\n              ")
+                  ]
                 )
               ])
             ])
@@ -56575,7 +56765,7 @@ var render = function() {
                           },
                           [_c("i", { staticClass: "icon-pencil" })]
                         ),
-                        _vm._v("  \n                                "),
+                        _vm._v("\n                 \n                "),
                         contrato.condicion
                           ? [
                               _c(
@@ -57150,39 +57340,33 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "form-group row" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "col-md-3 form-control-label",
-                          attrs: { for: "text-input" }
-                        },
-                        [_vm._v("Contrato ")]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-9" }, [
+                    _c("div", { staticClass: "col-md-9" }, [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c(
+                          "label",
+                          {
+                            attrs: {
+                              for: "data",
+                              form: "",
+                              action: "/data",
+                              method: "POST",
+                              enctype: "multipart/form-data"
+                            }
+                          },
+                          [_vm._v("Contrato (*)\n                ")]
+                        ),
+                        _vm._v(" "),
                         _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.contratoUbicacion,
-                              expression: "contratoUbicacion"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: { type: "text", placeholder: "Contrato" },
-                          domProps: { value: _vm.contratoUbicacion },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.contratoUbicacion = $event.target.value
-                            }
-                          }
+                          attrs: { type: "file", id: "data", name: "data" },
+                          on: { change: _vm.getImage }
                         })
-                      ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        { attrs: { href: _vm.contrato, target: "_blank" } },
+                        [_vm._v("Ver")]
+                      )
                     ]),
                     _vm._v(" "),
                     _c(
@@ -57228,7 +57412,7 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v("Cerrar")]
+                  [_vm._v("\n            Cerrar\n          ")]
                 ),
                 _vm._v(" "),
                 _vm.tipoAccion == 1
@@ -57243,7 +57427,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("Guardar")]
+                      [_vm._v("\n            Guardar\n          ")]
                     )
                   : _vm._e(),
                 _vm._v(" "),
@@ -57259,7 +57443,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("Actualizar")]
+                      [_vm._v("\n            Actualizar\n          ")]
                     )
                   : _vm._e()
               ])
@@ -64492,19 +64676,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -64594,8 +64765,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }
       axios.post("/area/registrar", {
         "nombre": this.nombre,
-        "descripcion": this.descripcion,
-        "empresa_id": this.empresa_id
+        "descripcion": this.descripcion
+        //"empresa_id": this.empresa_id,
 
       }).then(function (response) {
         me.cerrarModal();
@@ -64618,8 +64789,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       axios.put("/area/actualizar", {
         "id": this.id,
         "nombre": this.nombre,
-        "descripcion": this.descripcion,
-        "empresa_id": this.empresa_id
+        "descripcion": this.descripcion
+        //"empresa_id": this.empresa_id,
       }).then(function (response) {
         me.cerrarModal();
         me.listarTabla(1, "", "nombre");
@@ -65135,65 +65306,6 @@ var render = function() {
                           staticClass: "col-md-3 form-control-label",
                           attrs: { for: "text-input" }
                         },
-                        [_vm._v("Empresas (*)")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.empresa_id,
-                              expression: "empresa_id"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.empresa_id = $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            }
-                          }
-                        },
-                        [
-                          _c(
-                            "option",
-                            { attrs: { value: "0", disabled: "" } },
-                            [_vm._v("Seleccione")]
-                          ),
-                          _vm._v(" "),
-                          _vm._l(_vm.arrayEmpresas, function(empresa) {
-                            return _c("option", {
-                              key: empresa.id,
-                              domProps: {
-                                value: empresa.id,
-                                textContent: _vm._s(empresa.nombre)
-                              }
-                            })
-                          })
-                        ],
-                        2
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group row" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "col-md-3 form-control-label",
-                          attrs: { for: "text-input" }
-                        },
                         [_vm._v("Nombre (*)")]
                       ),
                       _vm._v(" "),
@@ -65232,7 +65344,7 @@ var render = function() {
                           staticClass: "col-md-3 form-control-label",
                           attrs: { for: "text-input" }
                         },
-                        [_vm._v("Descripcion ")]
+                        [_vm._v("Descripción ")]
                       ),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-md-9" }, [
@@ -70527,6 +70639,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.get(url).then(function (response) {
                 var respuesta = response.data;
                 me.puestos = respuesta.empleadosPuesto;
+                console.log(me.puestos);
                 //cargamos los datos del chart
                 me.loadPuestos();
             }).catch(function (error) {
@@ -70539,6 +70652,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.get(url).then(function (response) {
                 var respuesta = response.data;
                 me.departamentos = respuesta.empleadosDepartamento;
+                console.log(me.departamentos);
                 //cargamos los datos del chart
                 me.loadDepartamentos();
             }).catch(function (error) {
@@ -70597,7 +70711,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 me.varNombreDepartamento.push(x.nombre);
                 me.varCantidadDepartamento.push(x.cantidad);
             });
-            me.varArea = document.getElementById('departamentos').getContext('2d');
+            me.varDepartamento = document.getElementById('departamentos').getContext('2d');
 
             me.charDepartamento = new Chart(me.varDepartamento, {
                 type: 'bar',
@@ -72880,6 +72994,1489 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-7259c847", module.exports)
+  }
+}
+
+/***/ }),
+/* 123 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(124)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(126)
+/* template */
+var __vue_template__ = __webpack_require__(127)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/Alarma.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6e3dcd27", Component.options)
+  } else {
+    hotAPI.reload("data-v-6e3dcd27", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 124 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(125);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("a7ea681a", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6e3dcd27\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Alarma.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6e3dcd27\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Alarma.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 125 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.modal-content {\r\n  width: 100% !important;\r\n  position: absolute !important;\n}\n.mostrar {\r\n  display: list-item !important;\r\n  opacity: 1 !important;\r\n  position: absolute !important;\r\n  background-color: #3c29297a !important;\n}\n.div-error {\r\n  display: flex;\r\n  justify-content: center;\n}\n.text-error {\r\n  color: red !important;\r\n  font-weight: bold;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 126 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_toastr__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_toastr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_toastr__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      arrayEmpresas: [],
+      arrayareas: [],
+      arrayEvento: [],
+      arrayInasistencia: [],
+      arrayDiaNoLaboral: [],
+
+      id: 0,
+      nombre: "",
+      descripcion: "",
+      empresa_id: 0,
+
+      modal: 0,
+      tituloModal: "",
+      tipoAccion: 0,
+      errorComponente: 0,
+      errorMostrarMsjForm: [],
+
+      pagEvento: {
+        total: 0,
+        current_page: 0,
+        per_page: 0,
+        last_page: 0,
+        from: 0,
+        to: 0
+      },
+      pagInasistencia: {
+        total: 0,
+        current_page: 0,
+        per_page: 0,
+        last_page: 0,
+        from: 0,
+        to: 0
+      },
+      pagDiaNoLaboral: {
+        total: 0,
+        current_page: 0,
+        per_page: 0,
+        last_page: 0,
+        from: 0,
+        to: 0
+      },
+      offset: 3,
+      criEvento: "titulo",
+      buEvento: "",
+      criInasistencia: "desde",
+      buInasistencia: "",
+      criDiaNoLaboral: "dia",
+      buDiaNoLaboral: ""
+    };
+  },
+
+  computed: {
+    isActivedEvento: function isActivedEvento() {
+      return this.pagEvento.current_page;
+    },
+    //Calcula los elementos de la paginación
+    pagesNumberEvento: function pagesNumberEvento() {
+      if (!this.pagEvento.to) {
+        return [];
+      }
+
+      var from = this.pagEvento.current_page - this.offset;
+      if (from < 1) {
+        from = 1;
+      }
+
+      var to = from + this.offset * 2;
+      if (to >= this.pagEvento.last_page) {
+        to = this.pagEvento.last_page;
+      }
+
+      var pagesArray = [];
+      while (from <= to) {
+        pagesArray.push(from);
+        from++;
+      }
+      return pagesArray;
+    },
+    isActivedInasistencia: function isActivedInasistencia() {
+      return this.pagInasistencia.current_page;
+    },
+    //Calcula los elementos de la paginación
+    pagesNumberInasistencia: function pagesNumberInasistencia() {
+      if (!this.pagInasistencia.to) {
+        return [];
+      }
+
+      var from = this.pagInasistencia.current_page - this.offset;
+      if (from < 1) {
+        from = 1;
+      }
+
+      var to = from + this.offset * 2;
+      if (to >= this.pagInasistencia.last_page) {
+        to = this.pagInasistencia.last_page;
+      }
+
+      var pagesArray = [];
+      while (from <= to) {
+        pagesArray.push(from);
+        from++;
+      }
+      return pagesArray;
+    },
+    isActivedDiaNoLaboral: function isActivedDiaNoLaboral() {
+      return this.pagDiaNoLaboral.current_page;
+    },
+    //Calcula los elementos de la paginación
+    pagesNumberDiaNoLaboral: function pagesNumberDiaNoLaboral() {
+      if (!this.pagDiaNoLaboral.to) {
+        return [];
+      }
+
+      var from = this.pagDiaNoLaboral.current_page - this.offset;
+      if (from < 1) {
+        from = 1;
+      }
+
+      var to = from + this.offset * 2;
+      if (to >= this.pagDiaNoLaboral.last_page) {
+        to = this.pagDiaNoLaboral.last_page;
+      }
+
+      var pagesArray = [];
+      while (from <= to) {
+        pagesArray.push(from);
+        from++;
+      }
+      return pagesArray;
+    }
+  },
+  methods: {
+    listarEvento: function listarEvento(page, buEvento, criEvento) {
+      var me = this;
+      var url = "/evento/alarma?page=" + page + "&buscar=" + buEvento + "&criterio=" + criEvento;
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayEvento = respuesta.eventos.data;
+        me.pagEvento = respuesta.pagination;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    cambiarPaginaEvento: function cambiarPaginaEvento(page, buEvento, criEvento) {
+      var me = this;
+      //Actualiza la página actual
+      me.pagEvento.current_page = page;
+      //Envia la petición para visualizar la data de esa página
+      me.listarEvento(page, buEvento, criEvento);
+    },
+    listarInasistencia: function listarInasistencia(page, buInasistencia, criInasistencia) {
+      var me = this;
+      var url = "/solicitudInasistencia/alarma?page=" + page + "&buscar=" + buInasistencia + "&criterio=" + criInasistencia;
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayInasistencia = respuesta.solicitudInasistencias.data;
+        me.pagInasistencia = respuesta.pagination;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    cambiarPaginaInasistencia: function cambiarPaginaInasistencia(page, buInasistencia, criInasistencia) {
+      var me = this;
+      //Actualiza la página actual
+      me.pagInasistencia.current_page = page;
+      //Envia la petición para visualizar la data de esa página
+      me.listarInasistencia(page, buInasistencia, criInasistencia);
+    },
+    listarDiaNoLaboral: function listarDiaNoLaboral(page, buDiaNoLaboral, criDiaNoLaboral) {
+      var me = this;
+      var url = "/diaNoLaboral/alarmaDiaNoLaboral?page=" + page + "&buscar=" + buDiaNoLaboral + "&criterio=" + criDiaNoLaboral;
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayDiaNoLaboral = respuesta.diaNoLaborales.data;
+        me.pagDiaNoLaboral = respuesta.pagination;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    cambiarPaginaDiaNoLaboral: function cambiarPaginaDiaNoLaboral(page, buDiaNoLaboral, criDiaNoLaboral) {
+      var me = this;
+      //Actualiza la página actual
+      me.pagDiaNoLaboral.current_page = page;
+      //Envia la petición para visualizar la data de esa página
+      me.listarDiaNoLaboral(page, buDiaNoLaboral, criDiaNoLaboral);
+    },
+    cerrarModal: function cerrarModal() {
+      this.modal = 0;
+      this.tituloModal = "";
+
+      this.nombre = "";
+      this.descripcion = "";
+      this.empresa_id = 0;
+    },
+    abrirModal: function abrirModal(modelo, accion) {
+      var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+
+      switch (modelo) {
+        case "area":
+          {
+            switch (accion) {
+              case "registrar":
+                {
+                  this.modal = 1;
+                  this.tituloModal = "Registrar area";
+
+                  this.id = 0;
+                  this.nombre = "";
+                  this.descripcion = "";
+                  this.empresa_id = 0;
+
+                  this.tipoAccion = 1;
+                  break;
+                }
+              case "actualizar":
+                {
+                  this.modal = 1;
+                  this.tituloModal = "Actualizar area";
+                  this.tipoAccion = 2;
+
+                  this.id = data["id"];
+                  this.nombre = data["nombre"];
+                  this.descripcion = data["descripcion"];
+                  this.empresa_id = data["empresa_id"];
+
+                  break;
+                }
+            }
+          }
+      }
+    }
+  },
+  mounted: function mounted() {
+    this.listarEvento(1, this.buEvento, this.criEvento);
+    this.listarInasistencia(1, this.buInasistencia, this.criInasistencia);
+    this.listarDiaNoLaboral(1, this.buDiaNoLaboral, this.criDiaNoLaboral);
+  }
+});
+
+/***/ }),
+/* 127 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("main", { staticClass: "main" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "container-fluid" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-header" }, [_vm._v("Alarmas")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col" }, [
+              _c("div", { staticClass: "card" }, [
+                _c("div", { staticClass: "card-header" }, [
+                  _vm._v("Eventos Proximos")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c("div", { staticClass: "col" }, [
+                      _c("div", { staticClass: "input-group" }, [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.criEvento,
+                                expression: "criEvento"
+                              }
+                            ],
+                            staticClass: "form-control col",
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.criEvento = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              }
+                            }
+                          },
+                          [
+                            _c("option", { attrs: { value: "titulo" } }, [
+                              _vm._v("Título")
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.buEvento,
+                              expression: "buEvento"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            placeholder: "Texto a buEvento"
+                          },
+                          domProps: { value: _vm.buEvento },
+                          on: {
+                            keyup: function($event) {
+                              if (
+                                !$event.type.indexOf("key") &&
+                                _vm._k(
+                                  $event.keyCode,
+                                  "enter",
+                                  13,
+                                  $event.key,
+                                  "Enter"
+                                )
+                              ) {
+                                return null
+                              }
+                              return _vm.listarEvento(
+                                1,
+                                _vm.buEvento,
+                                _vm.criEvento
+                              )
+                            },
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.buEvento = $event.target.value
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary",
+                            attrs: { type: "submit" },
+                            on: {
+                              click: function($event) {
+                                return _vm.listarEvento(
+                                  1,
+                                  _vm.buEvento,
+                                  _vm.criEvento
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c("i", { staticClass: "fa fa-search" }),
+                            _vm._v(" Buscar\n                      ")
+                          ]
+                        )
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "table",
+                    {
+                      staticClass: "table table-bordered table-striped table-sm"
+                    },
+                    [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.arrayEvento, function(evento) {
+                          return _c("tr", { key: evento.id }, [
+                            _c("td", {
+                              domProps: { textContent: _vm._s(evento.id) }
+                            }),
+                            _vm._v(" "),
+                            _c("td", {
+                              domProps: { textContent: _vm._s(evento.titulo) }
+                            }),
+                            _vm._v(" "),
+                            _c("td", {
+                              domProps: { textContent: _vm._s(evento.fecha2) }
+                            }),
+                            _vm._v(" "),
+                            _c("td", {
+                              domProps: {
+                                textContent: _vm._s(
+                                  evento.nombreDepartamento +
+                                    " ( " +
+                                    evento.departamento_id +
+                                    " )"
+                                )
+                              }
+                            })
+                          ])
+                        }),
+                        0
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("nav", [
+                    _c(
+                      "ul",
+                      { staticClass: "pagination" },
+                      [
+                        _vm.pagEvento.current_page > 1
+                          ? _c("li", { staticClass: "page-item" }, [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "page-link",
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.cambiarPaginaEvento(
+                                        _vm.pagEvento.current_page - 1,
+                                        _vm.buEvento,
+                                        _vm.criEvento
+                                      )
+                                    }
+                                  }
+                                },
+                                [_vm._v("Ant")]
+                              )
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm._l(_vm.pagesNumberEvento, function(page) {
+                          return _c(
+                            "li",
+                            {
+                              key: page,
+                              staticClass: "page-item",
+                              class: [
+                                page == _vm.isActivedEvento ? "active" : ""
+                              ]
+                            },
+                            [
+                              _c("a", {
+                                staticClass: "page-link",
+                                attrs: { href: "#" },
+                                domProps: { textContent: _vm._s(page) },
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.cambiarPaginaEvento(
+                                      page,
+                                      _vm.buEvento,
+                                      _vm.criEvento
+                                    )
+                                  }
+                                }
+                              })
+                            ]
+                          )
+                        }),
+                        _vm._v(" "),
+                        _vm.pagEvento.current_page < _vm.pagEvento.last_page
+                          ? _c("li", { staticClass: "page-item" }, [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "page-link",
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.cambiarPaginaEvento(
+                                        _vm.pagEvento.current_page + 1,
+                                        _vm.buEvento,
+                                        _vm.criEvento
+                                      )
+                                    }
+                                  }
+                                },
+                                [_vm._v("Sig")]
+                              )
+                            ])
+                          : _vm._e()
+                      ],
+                      2
+                    )
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col" }, [
+              _c("div", { staticClass: "card" }, [
+                _c("div", { staticClass: "card-header" }, [
+                  _vm._v("Solicitudes de Inasistencias")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c("div", { staticClass: "col" }, [
+                      _c("div", { staticClass: "input-group" }, [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.criInasistencia,
+                                expression: "criInasistencia"
+                              }
+                            ],
+                            staticClass: "form-control col",
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.criInasistencia = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              }
+                            }
+                          },
+                          [
+                            _c("option", { attrs: { value: "desde" } }, [
+                              _vm._v("Desde")
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.buInasistencia,
+                              expression: "buInasistencia"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            placeholder: "Texto en Solicitud de Inasistencia"
+                          },
+                          domProps: { value: _vm.buInasistencia },
+                          on: {
+                            keyup: function($event) {
+                              if (
+                                !$event.type.indexOf("key") &&
+                                _vm._k(
+                                  $event.keyCode,
+                                  "enter",
+                                  13,
+                                  $event.key,
+                                  "Enter"
+                                )
+                              ) {
+                                return null
+                              }
+                              return _vm.listarInasistencia(
+                                1,
+                                _vm.buInasistencia,
+                                _vm.criInasistencia
+                              )
+                            },
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.buInasistencia = $event.target.value
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary",
+                            attrs: { type: "submit" },
+                            on: {
+                              click: function($event) {
+                                return _vm.listarInasistencia(
+                                  1,
+                                  _vm.buInasistencia,
+                                  _vm.criInasistencia
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c("i", { staticClass: "fa fa-search" }),
+                            _vm._v(" Buscar\n                      ")
+                          ]
+                        )
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "table",
+                    {
+                      staticClass: "table table-bordered table-striped table-sm"
+                    },
+                    [
+                      _vm._m(2),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.arrayInasistencia, function(inasistencia) {
+                          return _c("tr", { key: inasistencia.id }, [
+                            _c("td", {
+                              domProps: { textContent: _vm._s(inasistencia.id) }
+                            }),
+                            _vm._v(" "),
+                            _c("td", {
+                              domProps: {
+                                textContent: _vm._s(inasistencia.desde2)
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("td", {
+                              domProps: {
+                                textContent: _vm._s(inasistencia.hasta2)
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("td", {
+                              domProps: {
+                                textContent: _vm._s(
+                                  inasistencia.nombreEmpleado +
+                                    " " +
+                                    inasistencia.apellidoEmpleado +
+                                    " ( " +
+                                    inasistencia.empleado_id +
+                                    " )"
+                                )
+                              }
+                            })
+                          ])
+                        }),
+                        0
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("nav", [
+                    _c(
+                      "ul",
+                      { staticClass: "pagination" },
+                      [
+                        _vm.pagInasistencia.current_page > 1
+                          ? _c("li", { staticClass: "page-item" }, [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "page-link",
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.cambiarPaginaInasistencia(
+                                        _vm.pagInasistencia.current_page - 1,
+                                        _vm.buInasistencia,
+                                        _vm.criInasistencia
+                                      )
+                                    }
+                                  }
+                                },
+                                [_vm._v("Ant")]
+                              )
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm._l(_vm.pagesNumberInasistencia, function(page) {
+                          return _c(
+                            "li",
+                            {
+                              key: page,
+                              staticClass: "page-item",
+                              class: [
+                                page == _vm.isActivedInasistencia
+                                  ? "active"
+                                  : ""
+                              ]
+                            },
+                            [
+                              _c("a", {
+                                staticClass: "page-link",
+                                attrs: { href: "#" },
+                                domProps: { textContent: _vm._s(page) },
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.cambiarPaginaInasistencia(
+                                      page,
+                                      _vm.buInasistencia,
+                                      _vm.criInasistencia
+                                    )
+                                  }
+                                }
+                              })
+                            ]
+                          )
+                        }),
+                        _vm._v(" "),
+                        _vm.pagInasistencia.current_page <
+                        _vm.pagInasistencia.last_page
+                          ? _c("li", { staticClass: "page-item" }, [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "page-link",
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.cambiarPaginaInasistencia(
+                                        _vm.pagInasistencia.current_page + 1,
+                                        _vm.buInasistencia,
+                                        _vm.criInasistencia
+                                      )
+                                    }
+                                  }
+                                },
+                                [_vm._v("Sig")]
+                              )
+                            ])
+                          : _vm._e()
+                      ],
+                      2
+                    )
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col" }, [
+              _c("div", { staticClass: "card" }, [
+                _c("div", { staticClass: "card-header" }, [
+                  _vm._v("Dias No Laborales Proximos")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c("div", { staticClass: "col" }, [
+                      _c("div", { staticClass: "input-group" }, [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.criDiaNoLaboral,
+                                expression: "criDiaNoLaboral"
+                              }
+                            ],
+                            staticClass: "form-control col",
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.criDiaNoLaboral = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              }
+                            }
+                          },
+                          [
+                            _c("option", { attrs: { value: "dia" } }, [
+                              _vm._v("Dia")
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.buDiaNoLaboral,
+                              expression: "buDiaNoLaboral"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "text", placeholder: "Buscar dia" },
+                          domProps: { value: _vm.buDiaNoLaboral },
+                          on: {
+                            keyup: function($event) {
+                              if (
+                                !$event.type.indexOf("key") &&
+                                _vm._k(
+                                  $event.keyCode,
+                                  "enter",
+                                  13,
+                                  $event.key,
+                                  "Enter"
+                                )
+                              ) {
+                                return null
+                              }
+                              return _vm.listarDiaNoLaboral(
+                                1,
+                                _vm.buDiaNoLaboral,
+                                _vm.criDiaNoLaboral
+                              )
+                            },
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.buDiaNoLaboral = $event.target.value
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary",
+                            attrs: { type: "submit" },
+                            on: {
+                              click: function($event) {
+                                return _vm.listarDiaNoLaboral(
+                                  1,
+                                  _vm.buDiaNoLaboral,
+                                  _vm.criDiaNoLaboral
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c("i", { staticClass: "fa fa-search" }),
+                            _vm._v(" Buscar\n                      ")
+                          ]
+                        )
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "table",
+                    {
+                      staticClass: "table table-bordered table-striped table-sm"
+                    },
+                    [
+                      _vm._m(3),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.arrayDiaNoLaboral, function(diaNoLaboral) {
+                          return _c("tr", { key: diaNoLaboral.id }, [
+                            _c("td", {
+                              domProps: { textContent: _vm._s(diaNoLaboral.id) }
+                            }),
+                            _vm._v(" "),
+                            _c("td", {
+                              domProps: {
+                                textContent: _vm._s(diaNoLaboral.dia2)
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("td", {
+                              domProps: {
+                                textContent: _vm._s(
+                                  diaNoLaboral.nombreEmpresa +
+                                    " ( " +
+                                    diaNoLaboral.empresa_id +
+                                    " )"
+                                )
+                              }
+                            })
+                          ])
+                        }),
+                        0
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("nav", [
+                    _c(
+                      "ul",
+                      { staticClass: "pagination" },
+                      [
+                        _vm.pagDiaNoLaboral.current_page > 1
+                          ? _c("li", { staticClass: "page-item" }, [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "page-link",
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.cambiarPaginaDiaNoLaboral(
+                                        _vm.pagDiaNoLaboral.current_page - 1,
+                                        _vm.buDiaNoLaboral,
+                                        _vm.criDiaNoLaboral
+                                      )
+                                    }
+                                  }
+                                },
+                                [_vm._v("Ant")]
+                              )
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm._l(_vm.pagesNumberDiaNoLaboral, function(page) {
+                          return _c(
+                            "li",
+                            {
+                              key: page,
+                              staticClass: "page-item",
+                              class: [
+                                page == _vm.isActivedDiaNoLaboral
+                                  ? "active"
+                                  : ""
+                              ]
+                            },
+                            [
+                              _c("a", {
+                                staticClass: "page-link",
+                                attrs: { href: "#" },
+                                domProps: { textContent: _vm._s(page) },
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.cambiarPaginaDiaNoLaboral(
+                                      page,
+                                      _vm.buDiaNoLaboral,
+                                      _vm.criDiaNoLaboral
+                                    )
+                                  }
+                                }
+                              })
+                            ]
+                          )
+                        }),
+                        _vm._v(" "),
+                        _vm.pagDiaNoLaboral.current_page <
+                        _vm.pagDiaNoLaboral.last_page
+                          ? _c("li", { staticClass: "page-item" }, [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "page-link",
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.cambiarPaginaDiaNoLaboral(
+                                        _vm.pagDiaNoLaboral.current_page + 1,
+                                        _vm.buDiaNoLaboral,
+                                        _vm.criDiaNoLaboral
+                                      )
+                                    }
+                                  }
+                                },
+                                [_vm._v("Sig")]
+                              )
+                            ])
+                          : _vm._e()
+                      ],
+                      2
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("ol", { staticClass: "breadcrumb" }, [
+      _c("li", { staticClass: "breadcrumb-item" }, [
+        _c("a", { attrs: { href: "/" } }, [_vm._v("Escritorio")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Título")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Fecha")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Departamento(id)")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Desde")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Hasta")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Empleado(id)")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Dia")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Empresa(id)")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6e3dcd27", module.exports)
   }
 }
 

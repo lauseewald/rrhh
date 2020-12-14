@@ -95,15 +95,15 @@ class ContratoController extends Controller
         try {
             if (!$request->ajax()) return redirect('/');
             
-            // $exploded = explode(',', $request->contrato);
-            // $decoded = base64_decode($exploded[1]);
-            // if(str_contains($exploded[0], 'pdf'))
-            //     $extension = 'pdf';
-            // else
-            //     $extension = 'pdf';
-            // $fileName = str_random().'.'.$extension;
-            // $path = public_path().'/'.$fileName;
-            // file_put_contents($path, $decoded);
+             $exploded = explode(',', $request->contrato);
+             $decoded = base64_decode($exploded[1]);
+             if(str_contains($exploded[0], 'pdf'))
+                 $extension = 'pdf';
+             else
+                 $extension = 'pdf';
+             $fileName = str_random().'.'.$extension;
+             $path = public_path().'/'.$fileName;
+             file_put_contents($path, $decoded);
 
             $contrato = new Contrato();
             $contrato->nombre = $request->nombre;
@@ -114,8 +114,8 @@ class ContratoController extends Controller
             // $contrato->finLaboral= Carbon::now();
             $contrato->cantidadHorasDiarias= intval($request->cantidadHorasDiarias);
             $contrato->salario= floatval($request->salario);
-            $contrato->contrato = '';
-            // $contrato->contrato=$fileName;
+            //$contrato->contrato = '';
+             $contrato->contrato=$fileName;
             $contrato->puesto_id=($request->idpuesto);
             $contrato->empleado_id=($request->idempleado);
             $contrato->tipoContrato_id=($request->idtipocontrato);
