@@ -226,15 +226,18 @@
                   />
                 </div>
               </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Inicio de Actividad (*)</label>
+              <div class="form-group row">
+
+                  <label class="col-md-3">Inicio de Actividad (*)</label>
+                  <div class="col-md-9">
                   <input
                     type="date"
                     class="form-control"
                     v-model="inicioActividad"
                   />
-                </div>
+
+                  </div>
+               
               </div>
 
               <div v-show="errorComponente" class="form-group row div-error">
@@ -499,6 +502,14 @@ export default {
       this.errorMostrarMsjForm = [];
       if (!this.nombre)
         this.errorMostrarMsjForm.push("Debe ingresar el nombre");
+      if (!this.razonSocial)
+        this.errorMostrarMsjForm.push("Debe ingresar una razon social");
+      if (!this.cuit)
+        this.errorMostrarMsjForm.push("Debe ingresar un CUIT");
+      if (!this.direccion)
+        this.errorMostrarMsjForm.push("Debe ingresar una direccion");
+      if (!this.inicioActividad)
+        this.errorMostrarMsjForm.push("Debe seleccionar una fecha");
       if (this.errorMostrarMsjForm.length) this.errorComponente = 1;
       return this.errorComponente;
     },

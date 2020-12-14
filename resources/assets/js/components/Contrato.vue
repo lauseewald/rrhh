@@ -67,11 +67,12 @@
                 <th>Empleado</th>
                 <th>Nombre</th>
                 <th>Tipo Contrato</th>
+                <!-- <th>Contrato</th> -->
                 <th>Puesto</th>
                 <th>Horas Laborales</th>
                 <th>Salario</th>
                 <th>Inicio Laboral</th>
-                <th>Exitinción de Contrato</th>
+                <th>Fin Laboral</th>
 
                 <th>Condición</th>
                 <th>Opciones</th>
@@ -86,11 +87,15 @@
                 ></td>
                 <td v-text="contrato.nombre"></td>
                 <td v-text="contrato.nombreTipoContrato"></td>
+                <!-- <td><a v-bind:href="contrato.url">Ver Contrato</a></td> -->
                 <td v-text="contrato.nombrePuesto"></td>
-                <td v-text="contrato.cantidadHorasDiarias"></td>
-                <td v-text="contrato.salario"></td>
-                <td v-text="contrato.inicioLaboral"></td>
-                <td v-text="contrato.finLaboral"></td>
+                <td
+                  class="text-right"
+                  v-text="contrato.cantidadHorasDiarias"
+                ></td>
+                <td class="text-right" v-text="contrato.salario"></td>
+                <td class="text-right" v-text="contrato.inicioLaboral"></td>
+                <td class="text-right" v-text="contrato.finLaboral"></td>
 
                 <td>
                   <div v-if="contrato.condicion">
@@ -210,6 +215,8 @@
                 <label class="col-md-3 form-control-label" for="text-input"
                   >Empleados (*)</label
                 >
+                <div class="col-md-9">
+
                 <select class="form-control" v-model="idempleado">
                   <option value="0" disabled>Seleccione</option>
                   <option
@@ -219,11 +226,13 @@
                     v-text="empleado.apellido + ' ' + empleado.nombre"
                   ></option>
                 </select>
+                </div>
               </div>
               <div class="form-group row">
                 <label class="col-md-3 form-control-label" for="text-input"
                   >Tipos de Contratos (*)</label
                 >
+                <div class="col-md-9">
                 <select class="form-control" v-model="idTipoContrato">
                   <option value="0" disabled>Seleccione</option>
                   <option
@@ -233,6 +242,7 @@
                     v-text="tipoContrato.nombre"
                   ></option>
                 </select>
+                </div>
               </div>
               <div class="form-group row">
                 <label class="col-md-3 form-control-label" for="text-input"
@@ -252,12 +262,12 @@
                   >Descripcion (*)</label
                 >
                 <div class="col-md-9">
-                  <input
-                    type="text"
-                    v-model="descripcion"
-                    class="form-control"
-                    placeholder="Descripcion del contrato"
-                  />
+                <input
+                  type="text"
+                  v-model="descripcion"
+                  class="form-control"
+                  placeholder="Descripcion del contrato"
+                />
                 </div>
               </div>
 
@@ -265,6 +275,8 @@
                 <label class="col-md-3 form-control-label" for="text-input"
                   >Puestos (*)</label
                 >
+                <div class="col-md-9">
+
                 <select class="form-control" v-model="idpuesto">
                   <option value="0" disabled>Seleccione</option>
                   <option
@@ -274,6 +286,7 @@
                     v-text="puesto.nombre"
                   ></option>
                 </select>
+                </div>
               </div>
               <div class="form-group row">
                 <label class="col-md-3 form-control-label" for="text-input"
@@ -288,42 +301,49 @@
                   />
                 </div>
               </div>
+
               <div class="form-group row">
+
                 <label class="col-md-3 form-control-label" for="text-input"
                   >Salario (*)</label
                 >
                 <div class="col-md-9">
                   <input
-                    type="text"
+                    type="number"
                     v-model="salario"
                     class="form-control"
                     placeholder="Salario laboral"
                   />
                 </div>
               </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Fecha Inicio Laboral (*)</label>
+           
+                <div class="form-group row">
+                  <label class="col-md-3">Fecha Inicio Laboral (*)</label>
+                  <div class="col-md-9">
+
                   <input
                     type="date"
                     class="form-control"
                     v-model="inicioLaboral"
                   />
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Fecha final del contrato (*)</label>
+           
+            
+                <div class="form-group row">
+                  <label class="col-md-3">Fecha final del contrato (*)</label>
+                  <div class="col-md-9"> 
                   <input
                     type="date"
                     class="form-control"
                     v-model="finLaboral"
                   />
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-9">
-                <div class="form-group">
-                  <label
+            
+              
+                <div class="form-group row">
+                  <label class="col-md-3"
                     for="data"
                     form
                     action="/data"
@@ -331,10 +351,13 @@
                     enctype="multipart/form-data"
                     >Contrato (*)
                   </label>
+                  <div class="col-md-9">
+
                   <input type="file" @change="getImage" id="data" name="data" />
+                  <a :href="contrato" target="_blank">Ver</a>
+                  </div>
                 </div>
-                <a :href="contrato" target="_blank">Ver</a>
-              </div>
+            
 
               <div v-show="errorComponente" class="form-group row div-error">
                 <div class="text-center text-error">
@@ -473,7 +496,7 @@ export default {
           console.log(error);
         });
     },
-      getImage(event) {
+    getImage(event) {
       //Asignamos la imagen a  nuestra data
       //this.imagen = event.target.files[0];
       var fileReader = new FileReader();
@@ -688,17 +711,30 @@ export default {
     validarForm() {
       this.errorComponente = 0;
       this.errorMostrarMsjForm = [];
-      // if (!this.nombre) this.errorMostrarMsjForm.push("Debe ingresar el nombre del Contrato");
-      // if (!this.cantidadHorasDiarias) this.errorMostrarMsjForm.push("Debe ingresar una cantidad de horas de trabajo");
-      // if (!this.salario) this.errorMostrarMsjForm.push("Debe ingresar un salario mayor a 0.0");
-      // if (!this.idpuesto) this.errorMostrarMsjForm.push("Debe seleccionar un puesto");
-      // if (!this.idempleado) this.errorMostrarMsjForm.push("Debe seleccionar un empleado");
-      // if (!this.inicioLaboral) this.errorMostrarMsjForm.push("Debe seleccionar una fecha inicial");
-      // if (!this.finLaboral) this.errorMostrarMsjForm.push("Debe seleccionar una fecha final del contrato");
-      // if (!this.fechaAlta) this.errorMostrarMsjEmpleado.push("La fecha de ingreso del empleado no puede estar vacía.");
-
-      // if (this.inicioLaboral.getTime() > Date().getTime()) this.errorMostrarMsjForm.push("La fecha del contrato debe ser mayor a hoy");
-      // if (this.finLaboral.getTime() > this.inicioLaboral.getTime()) this.errorMostrarMsjForm.push("La fecha de expirasión del contrato tiene que ser mayor al dia Inicial");
+      if (!this.nombre)
+        this.errorMostrarMsjForm.push("Debe ingresar el nombre del Contrato");
+      if (!this.cantidadHorasDiarias)
+        this.errorMostrarMsjForm.push(
+          "Debe ingresar una cantidad de horas de trabajo"
+        );
+      if (!this.salario)
+        this.errorMostrarMsjForm.push("Debe ingresar un salario mayor a 0.0");
+      if (!this.idpuesto)
+        this.errorMostrarMsjForm.push("Debe seleccionar un puesto");
+      if (!this.idempleado)
+        this.errorMostrarMsjForm.push("Debe seleccionar un empleado");
+      if (!this.inicioLaboral)
+        this.errorMostrarMsjForm.push("Debe seleccionar una fecha inicial");
+      if (!this.finLaboral)
+        this.errorMostrarMsjForm.push(
+          "Debe seleccionar una fecha final del contrato"
+        );
+      if (!this.contrato)
+        this.errorMostrarMsjForm.push("Debe subir el archivo del contrato");
+      if (this.finLaboral < this.inicioLaboral)
+        this.errorMostrarMsjForm.push(
+          "El inicio laboral debe ser igual o mas grande que el final del contrato"
+        );
       if (this.errorMostrarMsjForm.length) this.errorComponente = 1;
       return this.errorComponente;
     },

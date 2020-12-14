@@ -175,6 +175,7 @@
                 <label class="col-md-3 form-control-label" for="text-input"
                   >Departamentos (*)</label
                 >
+                <div class="col-md-9">
                 <select class="form-control" v-model="departamento_id">
                   <option value="0" disabled>Seleccione</option>
                   <option
@@ -184,6 +185,7 @@
                     v-text="departamento.nombre"
                   ></option>
                 </select>
+              </div>
               </div>
               <div class="form-group row">
                 <label class="col-md-3 form-control-label" for="text-input"

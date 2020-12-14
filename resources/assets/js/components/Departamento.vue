@@ -172,7 +172,9 @@
                 <label class="col-md-3 form-control-label" for="text-input"
                   >Areas (*)</label
                 >
-                <select class="form-control" v-model="area_id">
+                <div class="col-md-9"> 
+
+                <select class=" form-control" v-model="area_id">
                   <option value="0" disabled>Seleccione</option>
                   <option
                     v-for="area in arrayAreas"
@@ -181,6 +183,7 @@
                     v-text="area.nombre"
                   ></option>
                 </select>
+                </div>
               </div>
               <div class="form-group row">
                 <label class="col-md-3 form-control-label" for="text-input"

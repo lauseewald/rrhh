@@ -8,6 +8,7 @@ use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ContratoController extends Controller
 {
@@ -32,8 +33,10 @@ class ContratoController extends Controller
                 'puestos.nombre as nombrePuesto',
                 'empleados.nombre as nombreEmpleado',
                 'empleados.apellido as apellidoEmpleado',
-                'tipo_contratos.nombre as nombreTipoContrato'
+                'tipo_contratos.nombre as nombreTipoContrato',
+                DB::raw('CONCAT("'. public_path().'/'.'", contratos.contrato) as url')
             );
+            
         
             if ($criterio =='activo') {   
                 $contratos->where('contratos.condicion', 1);

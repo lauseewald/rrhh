@@ -111,14 +111,14 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="text-input">Días Mínimo (*)</label>
                                     <div class="col-md-9">
-                                        <input type="text" v-model="diasMinimo" class="form-control" placeholder="Ingrese la cantidad de días mínimos que  incidencia">
+                                        <input type="number" v-model="diasMinimo" class="form-control" placeholder="Ingrese la cantidad de días mínimos que  incidencia">
                                     </div>
                                 </div>
                                
                                 <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="text-input">Días Máximo (*)</label>
                                     <div class="col-md-9">
-                                        <input type="text" v-model="diasMaximo" class="form-control" placeholder="Ingrese la cantidad de días máximo que puede tener la incidencia">
+                                        <input type="number" v-model="diasMaximo" class="form-control" placeholder="Ingrese la cantidad de días máximo que puede tener la incidencia">
                                     </div>
                                 </div>
                                

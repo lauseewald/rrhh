@@ -172,6 +172,8 @@
                 <label class="col-md-3 form-control-label" for="text-input"
                   >Empresa (*)</label
                 >
+                <div class="col-md-9">
+
                 <select class="form-control" v-model="empresa_id">
                   <option value="0" disabled>Seleccione</option>
                   <option
@@ -181,17 +183,19 @@
                     v-text="empresa.nombre"
                   ></option>
                 </select>
+                </div>
               </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Dia No Laborable (*)</label>
+                <div class="form-group row">
+                  <label class="col-md-3">Dia No Laborable (*)</label>
+                  <div class="col-md-9">
+
                   <input
                     type="date"
                     class="form-control"
                     v-model="dia"
                   />
+                  </div>
                 </div>
-              </div>
               <div class="form-group row">
                 <label class="col-md-3 form-control-label" for="text-input"
                   >Descripcion (*)</label>

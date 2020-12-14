@@ -175,7 +175,7 @@
       aria-hidden="true"
     >
       <div class="modal-dialog modal-primary modal-lg" role="document">
-        <div class="modal-content">
+        <div class="modal-content ">
           <div class="modal-header">
             <h4 class="modal-title" v-text="tituloModal"></h4>
             <button
@@ -195,10 +195,11 @@
               enctype="multipart/form-data"
               class="form-horizontal"
             >
-              <div class="form-group row">
-                <label class="col-md-3 form-control-label" for="text-input"
+              <div class="col form-group form-group">
+                <label class=" form-control-label" for="text-input"
                   >Empleados (*)</label
                 >
+                <div class="col-3"></div>
                 <select class="form-control" v-model="empleado_id">
                   <option value="0" disabled>Seleccione</option>
                   <option
@@ -208,11 +209,13 @@
                     v-text="empleado.nombre"
                   ></option>
                 </select>
+                <div class="col-3"></div>
               </div>
-              <div class="form-group row">
-                <label class="col-md-3 form-control-label" for="text-input"
+              <div class="col form-group">
+                <label class="form-control-label" for="text-input"
                   >Incidencias (*)</label
                 >
+                <div class="col-3"></div>
                 <select class="form-control" v-model="incidencia_id">
                   <option value="0" disabled>Seleccione</option>
                   <option
@@ -222,31 +225,36 @@
                     v-text="incidencia.nombre"
                   ></option>
                 </select>
+                <div class="col-3"></div>
               </div>
-              <div class="col-md-6">
+              <div class="col">
                 <div class="form-group">
                   <label>Desde (*)</label>
+                  <div class="col-3"></div>
                   <input type="date" class="form-control" v-model="desde" />
+                  <div class="col-3"></div>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col">
                 <div class="form-group">
                   <label>Hasta (*)</label>
+                  <div class="col-3"></div>
                   <input type="date" class="form-control" v-model="hasta" />
+                  <div class="col-3"></div>
                 </div>
               </div>
-              <div class="form-group row">
-                <label class="col-md-3 form-control-label" for="text-input"
+              <div class="form-group col">
+                <label class="form-control-label" for="text-input"
                   >Motivo
                 </label>
-                <div class="col-md-9">
+                <div class="col-3"></div>
                   <input
                     type="text"
                     v-model="motivo"
                     class="form-control"
                     placeholder="Motivo de la solicitud de la inasistencia"
                   />
-                </div>
+                <div class="col-3"></div>
               </div>
 
               <div v-show="errorComponente" class="form-group row div-error">
@@ -517,8 +525,8 @@ export default {
       if (!this.desde) this.errorMostrarMsjForm.push("Debe ingresar una fecha");
       if (!this.hasta) this.errorMostrarMsjForm.push("Debe ingresar una fecha");
       if (!this.motivo) this.errorMostrarMsjForm.push("Debe ingresar una motivo");
-      if (this.empleado_id < 0) this.errorMostrarMsjForm.push("Debe seleccionar un empleado");
-      if (this.incidencia_id < 0) this.errorMostrarMsjForm.push("Debe seleccionar una incidencia");
+      if (this.empleado_id <= 0) this.errorMostrarMsjForm.push("Debe seleccionar un empleado");
+      if (this.incidencia_id <= 0) this.errorMostrarMsjForm.push("Debe seleccionar una incidencia");
       if (this.errorMostrarMsjForm.length) this.errorComponente = 1;
       return this.errorComponente;
     },

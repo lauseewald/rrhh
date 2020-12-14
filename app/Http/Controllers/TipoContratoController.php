@@ -17,16 +17,18 @@ class TipoContratoController extends Controller
  
         $buscar = $request->buscar;
         $criterio = $request->criterio;
-         
-        if ($buscar==''){
+        $tipoContratos = TipoContrato::select('*');    
+      
+        
+            if ($criterio =='activo') {   
+                $tipoContratos->where('tipo_contratos.condicion', 1);
+            } elseif ($criterio =='desactivado') {
+                $tipoContratos->where('tipo_contratos.condicion', 0);
+            }elseif ($buscar!=''){
+                $tipoContratos->where('tipo_contratos.'.$criterio, 'like', '%'. $buscar . '%');
+            }
             
-            $tipoContrato = TipoContrato::orderBy('nombre', 'desc')->paginate(3);
-        }
-        else{
-           
-            $tipoContrato = TipoContrato::where($criterio, 'like', '%'. $buscar . '%')
-            ->orderBy('nombre', 'desc')->paginate(3);
-        }
+            $tipoContrato= $tipoContratos->orderBy('nombre', 'desc')->paginate(3);
          
         return [
             'pagination' => [

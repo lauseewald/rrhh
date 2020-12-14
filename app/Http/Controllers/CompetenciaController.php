@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Competencia;
+use Exception;
 use Illuminate\Http\Request;
 
 class CompetenciaController extends Controller
