@@ -525,10 +525,12 @@ export default {
               this.tituloModal = "Registrar empresa";
 
               this.id = 0;
-              this.nombre = "";
-              this.descripcion = "";
-              this.empresa_id = 0;
-
+             this.nombre = "";
+              this.razonSocial = "";
+              this.cuit = "";
+              this.inicioActividad = "";
+              this.direccion = "";
+              
               this.tipoAccion = 1;
               break;
             }
@@ -539,8 +541,11 @@ export default {
 
               this.id = data["id"];
               this.nombre = data["nombre"];
-              this.descripcion = data["descripcion"];
-              this.empresa_id = data["empresa_id"];
+              this.razonSocial = data["razonSocial"];
+              this.cuit = data["cuit"];
+              this.inicioActividad = data["inicioActividad"];
+              this.direccion = data["direccion"];
+              
 
               break;
             }

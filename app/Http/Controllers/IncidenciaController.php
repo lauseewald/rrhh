@@ -101,7 +101,7 @@ class IncidenciaController extends Controller
             
             
         } catch (Exception $e){
-            return redirect()->withErrors('Error');
+            //return redirect()->withErrors('Error');
         }
     }
     public function desactivar(Request $request)

@@ -208,7 +208,7 @@ class ContratoController extends Controller
             $contrato->contrato = $request->contrato;
             $contrato->save();
         } catch (Exception $e) {
-            return redirect()->withErrors('Error');
+            //return redirect()->withErrors('Error');
         }
     }
     public function desactivar(Request $request)

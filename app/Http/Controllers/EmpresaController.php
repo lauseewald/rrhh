@@ -113,7 +113,7 @@ class EmpresaController extends Controller
             $empresa->save();
 
         } catch (Exception $e) {
-            return redirect()->withErrors('Error');
+            //return redirect()->withErrors('Error');
         }
     }
 
