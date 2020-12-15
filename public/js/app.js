@@ -50555,7 +50555,7 @@ var staticRenderFns = [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header" }, [
             _c("i", { staticClass: "fa fa-align-justify" }),
-            _vm._v(" Categorías\n                "),
+            _vm._v(" Categorías\r\n                "),
             _c(
               "button",
               {
@@ -50568,7 +50568,7 @@ var staticRenderFns = [
               },
               [
                 _c("i", { staticClass: "icon-plus" }),
-                _vm._v(" Nuevo\n                ")
+                _vm._v(" Nuevo\r\n                ")
               ]
             )
           ]),
@@ -50650,7 +50650,7 @@ var staticRenderFns = [
                         },
                         [_c("i", { staticClass: "icon-pencil" })]
                       ),
-                      _vm._v("  \n                                "),
+                      _vm._v("  \r\n                                "),
                       _c(
                         "button",
                         {
@@ -50690,7 +50690,7 @@ var staticRenderFns = [
                         },
                         [_c("i", { staticClass: "icon-pencil" })]
                       ),
-                      _vm._v("  \n                                "),
+                      _vm._v("  \r\n                                "),
                       _c(
                         "button",
                         {
@@ -50730,7 +50730,7 @@ var staticRenderFns = [
                         },
                         [_c("i", { staticClass: "icon-pencil" })]
                       ),
-                      _vm._v("  \n                                "),
+                      _vm._v("  \r\n                                "),
                       _c(
                         "button",
                         {
@@ -50770,7 +50770,7 @@ var staticRenderFns = [
                         },
                         [_c("i", { staticClass: "icon-pencil" })]
                       ),
-                      _vm._v("  \n                                "),
+                      _vm._v("  \r\n                                "),
                       _c(
                         "button",
                         {
@@ -50810,7 +50810,7 @@ var staticRenderFns = [
                         },
                         [_c("i", { staticClass: "icon-pencil" })]
                       ),
-                      _vm._v(" \n                                "),
+                      _vm._v(" \r\n                                "),
                       _c(
                         "button",
                         {
@@ -68552,6 +68552,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -68649,11 +68656,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         empleado_id: this.empleado_id,
         incidencia_id: this.incidencia_id
       }).then(function (response) {
-        me.cerrarModal();
-        me.listarTabla(1, "", "nombre");
-        __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.success("Se ha registrado con exito", "Registrado", {
-          timeOut: 5000
-        });
+        console.log(response);
+        if (response.data) {
+          __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.error(response.data[1], "Error", { timeOut: 10000 });
+        } else {
+          me.cerrarModal();
+          me.listarTabla(1, "", "nombre");
+          __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.success("Se ha registrado con exito", "Registrado", {
+            timeOut: 5000
+          });
+        }
       }).catch(function (error) {
         console.log(error);
         __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.error("Ha ocurrido un error", "Error", { timeOut: 5000 });
@@ -68674,11 +68686,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         empleado_id: this.empleado_id,
         incidencia_id: this.incidencia_id
       }).then(function (response) {
-        me.cerrarModal();
-        me.listarTabla(1, "", "nombre");
-        __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.success("Se ha actualizado con exito", "Actualizado", {
-          timeOut: 5000
-        });
+        if (response.data) {
+          __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.error(response.data[1], "Error", { timeOut: 10000 });
+        } else {
+          me.cerrarModal();
+          me.listarTabla(1, "", "nombre");
+          __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.success("Se ha actualizado con exito", "Actualizado", {
+            timeOut: 5000
+          });
+        }
       }).catch(function (error) {
         console.log(error);
         __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.error("Ha ocurrido un error", "Error", { timeOut: 5000 });
@@ -69201,7 +69217,7 @@ var render = function() {
             attrs: { role: "document" }
           },
           [
-            _c("div", { staticClass: "modal-content " }, [
+            _c("div", { staticClass: "modal-content" }, [
               _c("div", { staticClass: "modal-header" }, [
                 _c("h4", {
                   staticClass: "modal-title",
@@ -69244,7 +69260,7 @@ var render = function() {
                       _c(
                         "label",
                         {
-                          staticClass: " form-control-label",
+                          staticClass: "form-control-label",
                           attrs: { for: "text-input" }
                         },
                         [_vm._v("Empleados (*)")]
@@ -69355,7 +69371,14 @@ var render = function() {
                               key: incidencia.id,
                               domProps: {
                                 value: incidencia.id,
-                                textContent: _vm._s(incidencia.nombre)
+                                textContent: _vm._s(
+                                  incidencia.nombre +
+                                    " (Dias Minimos:" +
+                                    incidencia.diasMinimo +
+                                    " -  Dias Maximos:" +
+                                    incidencia.diasMaximo +
+                                    ")"
+                                )
                               }
                             })
                           })

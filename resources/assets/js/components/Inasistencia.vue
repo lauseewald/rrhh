@@ -175,7 +175,7 @@
       aria-hidden="true"
     >
       <div class="modal-dialog modal-primary modal-lg" role="document">
-        <div class="modal-content ">
+        <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title" v-text="tituloModal"></h4>
             <button
@@ -196,7 +196,7 @@
               class="form-horizontal"
             >
               <div class="col form-group form-group">
-                <label class=" form-control-label" for="text-input"
+                <label class="form-control-label" for="text-input"
                   >Empleados (*)</label
                 >
                 <div class="col-3"></div>
@@ -222,7 +222,14 @@
                     v-for="incidencia in arrayIncidencias"
                     :key="incidencia.id"
                     :value="incidencia.id"
-                    v-text="incidencia.nombre"
+                    v-text="
+                      incidencia.nombre +
+                      ' (Dias Minimos:' +
+                      incidencia.diasMinimo +
+                      ' -  Dias Maximos:' +
+                      incidencia.diasMaximo +
+                      ')'
+                    "
                   ></option>
                 </select>
                 <div class="col-3"></div>
@@ -248,12 +255,12 @@
                   >Motivo
                 </label>
                 <div class="col-3"></div>
-                  <input
-                    type="text"
-                    v-model="motivo"
-                    class="form-control"
-                    placeholder="Motivo de la solicitud de la inasistencia"
-                  />
+                <input
+                  type="text"
+                  v-model="motivo"
+                  class="form-control"
+                  placeholder="Motivo de la solicitud de la inasistencia"
+                />
                 <div class="col-3"></div>
               </div>
 
@@ -409,11 +416,16 @@ export default {
           incidencia_id: this.incidencia_id,
         })
         .then(function (response) {
-          me.cerrarModal();
-          me.listarTabla(1, "", "nombre");
-          toastr.success("Se ha registrado con exito", "Registrado", {
-            timeOut: 5000,
-          });
+          console.log(response);
+          if (response.data) {
+            toastr.error(response.data[1], "Error", { timeOut: 10000 });
+          } else {
+            me.cerrarModal();
+            me.listarTabla(1, "", "nombre");
+            toastr.success("Se ha registrado con exito", "Registrado", {
+              timeOut: 5000,
+            });
+          }
         })
         .catch(function (error) {
           console.log(error);
@@ -437,11 +449,15 @@ export default {
           incidencia_id: this.incidencia_id,
         })
         .then(function (response) {
-          me.cerrarModal();
-          me.listarTabla(1, "", "nombre");
-          toastr.success("Se ha actualizado con exito", "Actualizado", {
-            timeOut: 5000,
-          });
+          if (response.data) {
+            toastr.error(response.data[1], "Error", { timeOut: 10000 });
+          } else {
+            me.cerrarModal();
+            me.listarTabla(1, "", "nombre");
+            toastr.success("Se ha actualizado con exito", "Actualizado", {
+              timeOut: 5000,
+            });
+          }
         })
         .catch(function (error) {
           console.log(error);
@@ -524,9 +540,12 @@ export default {
       this.errorMostrarMsjForm = [];
       if (!this.desde) this.errorMostrarMsjForm.push("Debe ingresar una fecha");
       if (!this.hasta) this.errorMostrarMsjForm.push("Debe ingresar una fecha");
-      if (!this.motivo) this.errorMostrarMsjForm.push("Debe ingresar una motivo");
-      if (this.empleado_id <= 0) this.errorMostrarMsjForm.push("Debe seleccionar un empleado");
-      if (this.incidencia_id <= 0) this.errorMostrarMsjForm.push("Debe seleccionar una incidencia");
+      if (!this.motivo)
+        this.errorMostrarMsjForm.push("Debe ingresar una motivo");
+      if (this.empleado_id <= 0)
+        this.errorMostrarMsjForm.push("Debe seleccionar un empleado");
+      if (this.incidencia_id <= 0)
+        this.errorMostrarMsjForm.push("Debe seleccionar una incidencia");
       if (this.errorMostrarMsjForm.length) this.errorComponente = 1;
       return this.errorComponente;
     },

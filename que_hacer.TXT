@@ -1,6 +1,7 @@
+Actividades
+
 [] Lista de empleados que estan con licencia.
 [] Vista solo de empleado con, la solicitud de inasistencia.
-[] Asociar el control de incidencia con la solocitud de inasistencia.
 [] Alarma cuando hay una nueva solicitud e inasistencia.
 [] Alarma cuando un contrato se esta por vencer.
 [] Cargar hijo discapacitado para un empleado. (Asocines con la familia)
@@ -9,6 +10,8 @@
 [] Cambiar de contrato.
 [] Agregar un Candelario.
 
+Completas
+[x] Asociar el control de incidencia con la solicitud de inasistencia. (Calcula el dia minimo habiles, cuenta los feriados y domingos como dia no habiles)
 
 Detalle del profesor
 empleados.

@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\DiaNoLaboral;
+use App\Incidencia;
 use App\SolicitudInasistencia;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PhpParser\Node\Expr\Include_;
 
 class SolicitudInasistenciaController extends Controller
 {
@@ -103,7 +106,24 @@ class SolicitudInasistenciaController extends Controller
             if (!$request->ajax()) {
                 return redirect('/');
             }
+            $fechaEmision = Carbon::parse($request->input('desde'));
+            $fechaExpiracion = Carbon::parse($request->input('hasta'));
 
+            $diasDiferencia = $fechaExpiracion->diffInDays($fechaEmision);
+            //cada 7 dias 1 no es Habil y sin contar los feriados
+            $decimales = explode('.',$diasDiferencia/7);
+            $diasDiferencia-= $decimales[0] ;
+            $diasNoLaborales= DiaNoLaboral::where('dia','>=',$request->desde)->where('dia','<=',$request->hasta)->where('condicion',1)->get();
+            $contarFeriados=count($diasNoLaborales);
+            if($contarFeriados>0){
+                $diasDiferencia-=$contarFeriados;
+            }
+            $incidencia= Incidencia::findOrFail($request->incidencia_id);
+            
+            if(($incidencia->diasMaximo < $diasDiferencia) || ($diasDiferencia < $incidencia->diasMinimo)){
+                return ['Error','Los dias desde y hasta no cumplen con la cantidad de dias minimos y maximos para la Incidencia Seleccionada'];
+            }
+            
             $solicitudInasistencia = new SolicitudInasistencia();
             $solicitudInasistencia->desde = $request->desde;
             $solicitudInasistencia->hasta = $request->hasta;
@@ -154,6 +174,25 @@ class SolicitudInasistenciaController extends Controller
         ];
         $this->validate($request, $rules, $messages);
         try {
+
+            $fechaEmision = Carbon::parse($request->input('desde'));
+            $fechaExpiracion = Carbon::parse($request->input('hasta'));
+
+            $diasDiferencia = $fechaExpiracion->diffInDays($fechaEmision);
+            //cada 7 dias 1 no es Habil y sin contar los feriados
+            $decimales = explode('.',$diasDiferencia/7);
+            $diasDiferencia-= $decimales[0] ;
+            $diasNoLaborales= DiaNoLaboral::where('dia','>=',$request->desde)->where('dia','<=',$request->hasta)->where('condicion',1)->get();
+            $contarFeriados=count($diasNoLaborales);
+            if($contarFeriados>0){
+                $diasDiferencia-=$contarFeriados;
+            }
+            $incidencia= Incidencia::findOrFail($request->incidencia_id);
+            
+            if(($incidencia->diasMaximo < $diasDiferencia) || ($diasDiferencia < $incidencia->diasMinimo)){
+                return ['Error','Los dias de licencia tiene que ser mayor a '.$incidencia->diasMinimo.' dias y menor a '.$incidencia->diasMaximo.' dias'];
+            }
+
             $solicitudInasistencia = SolicitudInasistencia::findOrFail($request->id);
             $solicitudInasistencia->desde = $request->desde;
             $solicitudInasistencia->hasta = $request->hasta;
