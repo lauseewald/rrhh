@@ -57,6 +57,8 @@ class TipoContratoController extends Controller
                     if (!$request->ajax()) return redirect('/');
                     $tipoContrato = new TipoContrato();
                     $tipoContrato->nombre = $request->nombre;
+                    $tipoContrato->diasMaximo = $request->diasMaximo;
+                    $tipoContrato->diasMinimo = $request->diasMinimo;
                     $tipoContrato->save();
                 } catch (Exception $e){
                     //return redirect()->withErrors('Error'); 
@@ -79,7 +81,8 @@ class TipoContratoController extends Controller
                 
             $tipoContrato = TipoContrato::findOrFail($request->id);
             $tipoContrato->nombre = $request->nombre;
-            $tipoContrato->condicion = '1';
+            $tipoContrato->diasMaximo = $request->diasMaximo;
+            $tipoContrato->diasMinimo = $request->diasMinimo;
             $tipoContrato->save();
             
             
@@ -110,13 +113,13 @@ class TipoContratoController extends Controller
         $filtro = $request->filtro;
         if ($filtro==''){
             $tipoContrato = TipoContrato::where('condicion', '=', 1)
-            ->select('id','nombre')
+            ->select('*')
             ->orderBy('nombre', 'asc')->get();
             
         } else {
             $tipoContrato = TipoContrato::where('nombre', 'like', '%'. $filtro . '%')
             ->where('condicion', '=', 1)
-            ->select('id','nombre')
+            ->select('*')
             ->orderBy('nombre', 'asc')->get();
         }
         

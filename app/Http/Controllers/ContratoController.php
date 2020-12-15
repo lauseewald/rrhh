@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Contrato;
+use App\DiaNoLaboral;
 use App\Empleado;
+use App\TipoContrato;
 use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
 use Exception;
@@ -97,7 +99,30 @@ class ContratoController extends Controller
         $this->validate($request, $rules, $messages);
         try {
             if (!$request->ajax()) return redirect('/');
+            //A continiacion se calcula si la cantidad de dias seleccionado respeta la cantidad de dias
+            //definido en el TIPO de CONTRATO
+            //********************************** */
+            $fechaEmision = Carbon::parse($request->input('inicioLaboral'));
+            $fechaExpiracion = Carbon::parse($request->input('finLaboral'));
             
+            $cantidadDiasRealTrabajo = $fechaExpiracion->diffInDays($fechaEmision)+ 1;
+            //cada 7 dias 1 no es Habil y sin contar los feriados
+            $decimales = explode('.',$cantidadDiasRealTrabajo/7);
+            $cantidadDiasRealTrabajo-= $decimales[0] ;
+            $diasNoLaborales= DiaNoLaboral::where('dia','>=',$request->inicioLaboral)->where('dia','<=',$request->finLaboral)->where('condicion',1)->get();
+            $contarFeriados=count($diasNoLaborales);
+            if($contarFeriados>0){
+                $cantidadDiasRealTrabajo-=$contarFeriados;
+            }
+            
+            $tipoContrato=  TipoContrato::findOrFail($request->idtipocontrato);
+            
+            if(($tipoContrato->diasMaximo < $cantidadDiasRealTrabajo) || ($cantidadDiasRealTrabajo < $tipoContrato->diasMinimo)){
+                return ['Error','Los dias de los Tipos de contrato '. strtoupper($tipoContrato->nombre) .' tienen que ser mayor a '.$tipoContrato->diasMinimo.' dias y menor a '.$tipoContrato->diasMaximo.' dias'];
+            }
+            //****************************************************************** */
+            
+
              $exploded = explode(',', $request->contrato);
              $decoded = base64_decode($exploded[1]);
              if(str_contains($exploded[0], 'pdf'))
@@ -107,6 +132,7 @@ class ContratoController extends Controller
              $fileName = str_random().'.'.$extension;
              $path = public_path().'/'.$fileName;
              file_put_contents($path, $decoded);
+
 
             $contrato = new Contrato();
             $contrato->nombre = $request->nombre;
@@ -195,7 +221,45 @@ class ContratoController extends Controller
         ];
         $this->validate($request, $rules, $messages);
         try {
+            
+             //A continiacion se calcula si la cantidad de dias seleccionado respeta la cantidad de dias
+            //definido en el TIPO de CONTRATO
+            //********************************** */
+            $fechaEmision = Carbon::parse($request->input('inicioLaboral'));
+            $fechaExpiracion = Carbon::parse($request->input('finLaboral'));
+            
+            $cantidadDiasRealTrabajo = $fechaExpiracion->diffInDays($fechaEmision)+ 1;
+            //cada 7 dias 1 no es Habil y sin contar los feriados
+            $decimales = explode('.',$cantidadDiasRealTrabajo/7);
+            $cantidadDiasRealTrabajo-= $decimales[0] ;
+            $diasNoLaborales= DiaNoLaboral::where('dia','>=',$request->inicioLaboral)->where('dia','<=',$request->finLaboral)->where('condicion',1)->get();
+            $contarFeriados=count($diasNoLaborales);
+            if($contarFeriados>0){
+                $cantidadDiasRealTrabajo-=$contarFeriados;
+            }
+            
+            $tipoContrato=  TipoContrato::findOrFail($request->idtipocontrato);
+            
+            if(($tipoContrato->diasMaximo < $cantidadDiasRealTrabajo) || ($cantidadDiasRealTrabajo < $tipoContrato->diasMinimo)){
+                return ['Error','Los dias de los Tipos de contrato '. strtoupper($tipoContrato->nombre) .' tienen que ser mayor a '.$tipoContrato->diasMinimo.' dias y menor a '.$tipoContrato->diasMaximo.' dias'];
+            }
+            //****************************************************************** */
+           
+
             $contrato = Contrato::findOrFail($request->id);
+            if($request->contrato){
+                $exploded = explode(',', $request->contrato);
+                $decoded = base64_decode($exploded[1]);
+                if(str_contains($exploded[0], 'pdf'))
+                    $extension = 'pdf';
+                else
+                    $extension = 'pdf';
+                $fileName = str_random().'.'.$extension;
+                $path = public_path().'/'.$fileName;
+                file_put_contents($path, $decoded);
+            }else{
+                $fileName= $contrato->contrato;
+            }
             $contrato->nombre = $request->nombre;
             $contrato->nombre = $request->nombre;
             $contrato->puesto_id=$request->idpuesto;
@@ -205,12 +269,33 @@ class ContratoController extends Controller
             $contrato->salario=$request->salario;
             $contrato->inicioLaboral= $request->inicioLaboral;
             $contrato->finLaboral= $request->finLaboral;
-            $contrato->contrato = $request->contrato;
+            $contrato->contrato=$fileName;
             $contrato->save();
         } catch (Exception $e) {
             //return redirect()->withErrors('Error');
         }
     }
+    public function calculadorDias(Request $request)
+    {
+         //********************************** */
+          $fechaEmision = Carbon::parse($request->inicioLaboral);
+          $fechaExpiracion = Carbon::parse($request->finLaboral);
+         
+         $cantidadDiasRealTrabajo = $fechaExpiracion->diffInDays($fechaEmision)+ 1;
+
+         //cada 7 dias 1 no es Habil y sin contar los feriados
+         $decimales = explode('.',$cantidadDiasRealTrabajo/7);
+         $cantidadDiasRealTrabajo-= $decimales[0] ;
+         $diasNoLaborales= DiaNoLaboral::all()->where('dia','>=',$request->inicioLaboral)->where('dia','<=',$request->finLaboral)->where('condicion',1);
+
+         $contarFeriados=count($diasNoLaborales);
+         if($contarFeriados>0){
+             $cantidadDiasRealTrabajo-=$contarFeriados;
+         }
+         return $cantidadDiasRealTrabajo;
+         //****************************************************************** */
+    }
+
     public function desactivar(Request $request)
     {
         if (!$request->ajax()) {

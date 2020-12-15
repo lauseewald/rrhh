@@ -12,6 +12,8 @@ class SolicitudInasistencia extends Model
         'hasta',
         'motivo',
         'empleado_id',
-        'incidencia_id','condicion'
+        'incidencia_id',
+        'aprobado',
+        'condicion'
     ];
 }

@@ -56228,6 +56228,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -56253,6 +56271,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       tipoAccion: 0,
       errorComponente: 0,
       errorMostrarMsjForm: [],
+      otroMensaje: [],
       pagination: {
         total: 0,
         current_page: 0,
@@ -56307,7 +56326,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         me.arrayContrato = respuesta.contratos.data;
         me.pagination = respuesta.pagination;
-        console.log(response);
       }).catch(function (error) {
         console.log(error);
       });
@@ -56374,6 +56392,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       //Envia la petición para visualizar la data de esa página
       me.listarTabla(page, buscar, criterio);
     },
+    calculadorDias: function calculadorDias() {
+      var me = this;
+      me.otroMensaje = [];
+      if (this.inicioLaboral != "" && this.finLaboral != "") {
+        axios.post("/contrato/calculadorDias", {
+          inicioLaboral: me.inicioLaboral,
+          finLaboral: me.finLaboral
+        }).then(function (response) {
+          console.log(response);
+          me.otroMensaje.push(response.data);
+          me.listarTabla(1, "", "nombre");
+        }).catch(function (error) {
+          console.log(error);
+          __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.error("Error al calcular los dias", "Error", {
+            timeOut: 5000
+          });
+        });
+      } else {
+        me.otroMensaje.push('Seleccione la fecha de inicio y fin laboral');
+      }
+    },
     registrarContrato: function registrarContrato() {
       var me = this;
       if (this.validarForm()) {
@@ -56392,11 +56431,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         contrato: this.contrato
       }).then(function (response) {
         console.log(response);
-        me.cerrarModal();
-        me.listarTabla(1, "", "nombre");
-        __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.success("Se ha registrado el contrato", "Registrado", {
-          timeOut: 5000
-        });
+        if (response.data) {
+          __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.error(response.data[1], "Error", { timeOut: 10000 });
+        } else {
+          me.cerrarModal();
+          me.listarTabla(1, "", "nombre");
+          __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.success("Se ha registrado con exito", "Registrado", {
+            timeOut: 5000
+          });
+        }
       }).catch(function (error) {
         console.log(error);
         __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.error("Ha ocurrido un error", "Error", { timeOut: 5000 });
@@ -57145,7 +57188,14 @@ var render = function() {
                                 key: tipoContrato.id,
                                 domProps: {
                                   value: tipoContrato.id,
-                                  textContent: _vm._s(tipoContrato.nombre)
+                                  textContent: _vm._s(
+                                    tipoContrato.nombre +
+                                      " (" +
+                                      tipoContrato.diasMinimo +
+                                      " - " +
+                                      tipoContrato.diasMaximo +
+                                      ") Dias"
+                                  )
                                 }
                               })
                             })
@@ -57428,6 +57478,40 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
+                    _c("div", { staticClass: "form-group row div-error" }, [
+                      _c("div", { staticClass: "col-md-3" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-secondary",
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                return _vm.calculadorDias()
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                  Calcular Dias\n                "
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "col-md-9 text-center text-error" },
+                        _vm._l(_vm.otroMensaje, function(otro) {
+                          return _c("div", {
+                            key: otro,
+                            domProps: { textContent: _vm._s(otro) }
+                          })
+                        }),
+                        0
+                      )
+                    ]),
+                    _vm._v(" "),
                     _c("div", { staticClass: "form-group row" }, [
                       _c(
                         "label",
@@ -57441,7 +57525,7 @@ var render = function() {
                             enctype: "multipart/form-data"
                           }
                         },
-                        [_vm._v("Contrato (*)\n                ")]
+                        [_vm._v("Contrato (*)\n              ")]
                       ),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-md-9" }, [
@@ -68559,6 +68643,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -68927,6 +69016,26 @@ var render = function() {
                   [
                     _c("option", { attrs: { value: "nombre" } }, [
                       _vm._v("Nombre")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "aprobado" } }, [
+                      _vm._v("Aprobado")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "desaprobado" } }, [
+                      _vm._v("Desaprobado")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "revision" } }, [
+                      _vm._v("En Revision")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "enlicencia" } }, [
+                      _vm._v("En licencia")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "proximo" } }, [
+                      _vm._v("Proxima Licencias")
                     ])
                   ]
                 ),
@@ -68996,13 +69105,13 @@ var render = function() {
                   return _c("tr", { key: solicitudInasistencia.id }, [
                     _c("td", {
                       domProps: {
-                        textContent: _vm._s(solicitudInasistencia.desde)
+                        textContent: _vm._s(solicitudInasistencia.desde2)
                       }
                     }),
                     _vm._v(" "),
                     _c("td", {
                       domProps: {
-                        textContent: _vm._s(solicitudInasistencia.hasta)
+                        textContent: _vm._s(solicitudInasistencia.hasta2)
                       }
                     }),
                     _vm._v(" "),
@@ -71426,13 +71535,45 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      competencia_id: 0,
+      _id: 0,
       nombre: "",
+      diasMaximo: 0,
+      diasMinimo: 0,
       arrayTipoContrato: [],
       modal: 0,
       tituloModal: "",
@@ -71506,11 +71647,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return;
       }
       axios.post("/tipoContrato/registrar", {
-        nombre: this.nombre
+        nombre: this.nombre,
+        diasMaximo: this.diasMaximo,
+        diasMinimo: this.diasMinimo
       }).then(function (response) {
         me.cerrarModal();
         me.listarTipoContrato(1, "", "nombre");
-        __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.success("Se ha registrado", "Actualizado", { timeOut: 5000 });
+        __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.success("Se ha registrado", "Registrado", { timeOut: 5000 });
       }).catch(function (error) {
         console.log(error);
         __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.error("Ha ocurrido un error", "Error", { timeOut: 5000 });
@@ -71525,7 +71668,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var me = this;
       axios.put("/tipoContrato/actualizar", {
         nombre: this.nombre,
-        id: this.competencia_id
+        diasMaximo: this.diasMaximo,
+        diasMinimo: this.diasMinimo,
+        id: this._id
       }).then(function (response) {
         me.cerrarModal();
         me.listarTipoContrato(1, "", "nombre");
@@ -71606,6 +71751,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.errorMostrarMsjCompetencia = [];
 
       if (!this.nombre) this.errorMostrarMsjCompetencia.push("Debe ingresar el nombre del tipo de contrato");
+      if (this.diasMaximo <= 0) this.errorMostrarMsjCompetencia.push("Debe ingresar un dia Maximo mayor a 0");
+      if (this.diasMinimo <= 0) this.errorMostrarMsjCompetencia.push("Debe ingresar un dia Minimo mayor a 0");
+      if (this.diasMinimo >= this.diasMaximo) this.errorMostrarMsjCompetencia.push("El dias minimos debe ser menor a dias maximos");
 
       if (this.errorMostrarMsjCompetencia.length) this.errorCompetencia = 1;
       return this.errorCompetencia;
@@ -71636,7 +71784,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                   this.modal = 1;
                   this.tituloModal = "Actualizar Tipo de Contrato";
                   this.tipoAccion = 2;
-                  this.competencia_id = data["id"];
+                  this._id = data["id"];
                   this.nombre = data["nombre"];
                   break;
                 }
@@ -71839,6 +71987,16 @@ var render = function() {
                   return _c("tr", { key: tipoContrato.id }, [
                     _c("td", {
                       domProps: { textContent: _vm._s(tipoContrato.nombre) }
+                    }),
+                    _vm._v(" "),
+                    _c("td", {
+                      staticClass: "text-right",
+                      domProps: { textContent: _vm._s(tipoContrato.diasMinimo) }
+                    }),
+                    _vm._v(" "),
+                    _c("td", {
+                      staticClass: "text-right",
+                      domProps: { textContent: _vm._s(tipoContrato.diasMaximo) }
                     }),
                     _vm._v(" "),
                     _c("td", [
@@ -72105,6 +72263,84 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-md-3 form-control-label",
+                          attrs: { for: "text-input" }
+                        },
+                        [_vm._v("Dias Minimos (*)")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-9" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.diasMinimo,
+                              expression: "diasMinimo"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "number",
+                            placeholder:
+                              "La cantidad de dias minimos de un contrato de este tipo"
+                          },
+                          domProps: { value: _vm.diasMinimo },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.diasMinimo = $event.target.value
+                            }
+                          }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-md-3 form-control-label",
+                          attrs: { for: "text-input" }
+                        },
+                        [_vm._v("Dias Maximos (*)")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-9" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.diasMaximo,
+                              expression: "diasMaximo"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "number",
+                            placeholder:
+                              "La cantidad de dias maximos de un contrato de este tipo"
+                          },
+                          domProps: { value: _vm.diasMaximo },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.diasMaximo = $event.target.value
+                            }
+                          }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
                     _c(
                       "div",
                       {
@@ -72210,6 +72446,10 @@ var staticRenderFns = [
     return _c("thead", [
       _c("tr", [
         _c("th", [_vm._v("Nombre")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Dias Minimos")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Dias Maximo")]),
         _vm._v(" "),
         _c("th", [_vm._v("Estado")]),
         _vm._v(" "),

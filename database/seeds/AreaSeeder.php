@@ -63,7 +63,9 @@ class AreaSeeder extends Seeder
         $puesto->save();
 
         $tipoContrato = new TipoContrato();
-        $tipoContrato->nombre='Trabajo';
+        $tipoContrato->nombre='Prueba';
+        $tipoContrato->diasMaximo=90;
+        $tipoContrato->diasMinimo=30;
         $tipoContrato->save();
 
        

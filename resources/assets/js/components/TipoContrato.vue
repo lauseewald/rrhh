@@ -63,6 +63,8 @@
             <thead>
               <tr>
                 <th>Nombre</th>
+                <th>Dias Minimos</th>
+                <th>Dias Maximo</th>
 
                 <th>Estado</th>
                 <th>Opciones</th>
@@ -74,6 +76,8 @@
                 :key="tipoContrato.id"
               >
                 <td v-text="tipoContrato.nombre"></td>
+                <td class="text-right" v-text="tipoContrato.diasMinimo"></td>
+                <td class="text-right" v-text="tipoContrato.diasMaximo"></td>
 
                 <td>
                   <div v-if="tipoContrato.condicion">
@@ -204,6 +208,32 @@
                   />
                 </div>
               </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label" for="text-input"
+                  >Dias Minimos (*)</label
+                >
+                <div class="col-md-9">
+                  <input
+                    type="number"
+                    v-model="diasMinimo"
+                    class="form-control"
+                    placeholder="La cantidad de dias minimos de un contrato de este tipo"
+                  />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label" for="text-input"
+                  >Dias Maximos (*)</label
+                >
+                <div class="col-md-9">
+                  <input
+                    type="number"
+                    v-model="diasMaximo"
+                    class="form-control"
+                    placeholder="La cantidad de dias maximos de un contrato de este tipo"
+                  />
+                </div>
+              </div>
 
               <div v-show="errorCompetencia" class="form-group row div-error">
                 <div class="text-center text-error">
@@ -255,8 +285,10 @@ import toastr from "toastr";
 export default {
   data() {
     return {
-      competencia_id: 0,
+      _id: 0,
       nombre: "",
+      diasMaximo: 0,
+      diasMinimo: 0,
       arrayTipoContrato: [],
       modal: 0,
       tituloModal: "",
@@ -340,11 +372,13 @@ export default {
       axios
         .post("/tipoContrato/registrar", {
           nombre: this.nombre,
+          diasMaximo: this.diasMaximo,
+          diasMinimo: this.diasMinimo,
         })
         .then(function (response) {
           me.cerrarModal();
           me.listarTipoContrato(1, "", "nombre");
-          toastr.success("Se ha registrado", "Actualizado", { timeOut: 5000 });
+          toastr.success("Se ha registrado", "Registrado", { timeOut: 5000 });
         })
         .catch(function (error) {
           console.log(error);
@@ -361,7 +395,9 @@ export default {
       axios
         .put("/tipoContrato/actualizar", {
           nombre: this.nombre,
-          id: this.competencia_id,
+          diasMaximo: this.diasMaximo,
+          diasMinimo: this.diasMinimo,
+          id: this._id,
         })
         .then(function (response) {
           me.cerrarModal();
@@ -450,10 +486,10 @@ export default {
       this.errorCompetencia = 0;
       this.errorMostrarMsjCompetencia = [];
 
-      if (!this.nombre)
-        this.errorMostrarMsjCompetencia.push(
-          "Debe ingresar el nombre del tipo de contrato"
-        );
+      if (!this.nombre) this.errorMostrarMsjCompetencia.push("Debe ingresar el nombre del tipo de contrato");
+      if (this.diasMaximo<=0) this.errorMostrarMsjCompetencia.push("Debe ingresar un dia Maximo mayor a 0");
+      if (this.diasMinimo<=0) this.errorMostrarMsjCompetencia.push("Debe ingresar un dia Minimo mayor a 0");
+      if (this.diasMinimo >= this.diasMaximo ) this.errorMostrarMsjCompetencia.push("El dias minimos debe ser menor a dias maximos");
 
       if (this.errorMostrarMsjCompetencia.length) this.errorCompetencia = 1;
       return this.errorCompetencia;
@@ -480,7 +516,7 @@ export default {
               this.modal = 1;
               this.tituloModal = "Actualizar Tipo de Contrato";
               this.tipoAccion = 2;
-              this.competencia_id = data["id"];
+              this._id = data["id"];
               this.nombre = data["nombre"];
               break;
             }

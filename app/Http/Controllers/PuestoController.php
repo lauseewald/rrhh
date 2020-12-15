@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Puesto;
 use Exception;
 use Illuminate\Http\Request;
+use PDOException;
 
 class PuestoController extends Controller
 {

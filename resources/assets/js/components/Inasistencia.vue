@@ -23,6 +23,11 @@
               <div class="input-group">
                 <select class="form-control col-md-3" v-model="criterio">
                   <option value="nombre">Nombre</option>
+                  <option value="aprobado">Aprobado</option>
+                  <option value="desaprobado">Desaprobado</option>
+                  <option value="revision">En Revision</option>
+                  <option value="enlicencia">En licencia</option>
+                  <option value="proximo">Proxima Licencias</option>
                 </select>
                 <input
                   type="text"
@@ -58,8 +63,8 @@
                 v-for="solicitudInasistencia in arraysolicitudinasistencia"
                 :key="solicitudInasistencia.id"
               >
-                <td v-text="solicitudInasistencia.desde"></td>
-                <td v-text="solicitudInasistencia.hasta"></td>
+                <td v-text="solicitudInasistencia.desde2"></td>
+                <td v-text="solicitudInasistencia.hasta2"></td>
                 <td v-text="solicitudInasistencia.motivo"></td>
                 <td
                   v-text="

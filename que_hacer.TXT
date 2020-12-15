@@ -1,7 +1,7 @@
 Actividades
-
-[] Lista de empleados que estan con licencia.
+Frase del profe: "Todo lo que necesite debe tener el sistema Donde dice A1 referencia esta frase"
 [] Vista solo de empleado con, la solicitud de inasistencia.
+[] Un empleado pueda crear una solicitud de inasistencia desde su vista (hay que sacar seleccionar usuario).
 [] Alarma cuando hay una nueva solicitud e inasistencia.
 [] Alarma cuando un contrato se esta por vencer.
 [] Cargar hijo discapacitado para un empleado. (Asocines con la familia)
@@ -11,7 +11,11 @@ Actividades
 [] Agregar un Candelario.
 
 Completas
+[x] A1: Hay que calcular la cantidad de dias que lleva un contrato de 3 años (en Tipo de Contrato).
+[x] Asociar tipo de contrato con contratos (los dias maximos segun el tipo de contrato) 
 [x] Asociar el control de incidencia con la solicitud de inasistencia. (Calcula el dia minimo habiles, cuenta los feriados y domingos como dia no habiles)
+[x] Lista de empleados que estan con licencia.
+[x] Tipo de contrato tiene que tener un limite de duración; por ejemplo el contrato a prueba no puede ser mayor a 3 meses.
 
 Detalle del profesor
 empleados.

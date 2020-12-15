@@ -216,16 +216,15 @@
                   >Empleados (*)</label
                 >
                 <div class="col-md-9">
-
-                <select class="form-control" v-model="idempleado">
-                  <option value="0" disabled>Seleccione</option>
-                  <option
-                    v-for="empleado in arrayEmpleado"
-                    :key="empleado.id"
-                    :value="empleado.id"
-                    v-text="empleado.apellido + ' ' + empleado.nombre"
-                  ></option>
-                </select>
+                  <select class="form-control" v-model="idempleado">
+                    <option value="0" disabled>Seleccione</option>
+                    <option
+                      v-for="empleado in arrayEmpleado"
+                      :key="empleado.id"
+                      :value="empleado.id"
+                      v-text="empleado.apellido + ' ' + empleado.nombre"
+                    ></option>
+                  </select>
                 </div>
               </div>
               <div class="form-group row">
@@ -233,15 +232,22 @@
                   >Tipos de Contratos (*)</label
                 >
                 <div class="col-md-9">
-                <select class="form-control" v-model="idTipoContrato">
-                  <option value="0" disabled>Seleccione</option>
-                  <option
-                    v-for="tipoContrato in arrayTipoContrato"
-                    :key="tipoContrato.id"
-                    :value="tipoContrato.id"
-                    v-text="tipoContrato.nombre"
-                  ></option>
-                </select>
+                  <select class="form-control" v-model="idTipoContrato">
+                    <option value="0" disabled>Seleccione</option>
+                    <option
+                      v-for="tipoContrato in arrayTipoContrato"
+                      :key="tipoContrato.id"
+                      :value="tipoContrato.id"
+                      v-text="
+                        tipoContrato.nombre +
+                        ' (' +
+                        tipoContrato.diasMinimo +
+                        ' - ' +
+                        tipoContrato.diasMaximo +
+                        ') Dias'
+                      "
+                    ></option>
+                  </select>
                 </div>
               </div>
               <div class="form-group row">
@@ -262,12 +268,12 @@
                   >Descripcion (*)</label
                 >
                 <div class="col-md-9">
-                <input
-                  type="text"
-                  v-model="descripcion"
-                  class="form-control"
-                  placeholder="Descripcion del contrato"
-                />
+                  <input
+                    type="text"
+                    v-model="descripcion"
+                    class="form-control"
+                    placeholder="Descripcion del contrato"
+                  />
                 </div>
               </div>
 
@@ -276,16 +282,15 @@
                   >Puestos (*)</label
                 >
                 <div class="col-md-9">
-
-                <select class="form-control" v-model="idpuesto">
-                  <option value="0" disabled>Seleccione</option>
-                  <option
-                    v-for="puesto in arrayPuesto"
-                    :key="puesto.id"
-                    :value="puesto.id"
-                    v-text="puesto.nombre"
-                  ></option>
-                </select>
+                  <select class="form-control" v-model="idpuesto">
+                    <option value="0" disabled>Seleccione</option>
+                    <option
+                      v-for="puesto in arrayPuesto"
+                      :key="puesto.id"
+                      :value="puesto.id"
+                      v-text="puesto.nombre"
+                    ></option>
+                  </select>
                 </div>
               </div>
               <div class="form-group row">
@@ -303,7 +308,6 @@
               </div>
 
               <div class="form-group row">
-
                 <label class="col-md-3 form-control-label" for="text-input"
                   >Salario (*)</label
                 >
@@ -316,48 +320,62 @@
                   />
                 </div>
               </div>
-           
-                <div class="form-group row">
-                  <label class="col-md-3">Fecha Inicio Laboral (*)</label>
-                  <div class="col-md-9">
 
+              <div class="form-group row">
+                <label class="col-md-3">Fecha Inicio Laboral (*)</label>
+                <div class="col-md-9">
                   <input
                     type="date"
                     class="form-control"
                     v-model="inicioLaboral"
                   />
-                  </div>
                 </div>
-           
-            
-                <div class="form-group row">
-                  <label class="col-md-3">Fecha final del contrato (*)</label>
-                  <div class="col-md-9"> 
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-3">Fecha final del contrato (*)</label>
+                <div class="col-md-9">
                   <input
                     type="date"
                     class="form-control"
                     v-model="finLaboral"
                   />
-                  </div>
                 </div>
-            
-              
-                <div class="form-group row">
-                  <label class="col-md-3"
-                    for="data"
-                    form
-                    action="/data"
-                    method="POST"
-                    enctype="multipart/form-data"
-                    >Contrato (*)
-                  </label>
-                  <div class="col-md-9">
+              </div>
+              <div class="form-group row div-error">
+                <div class="col-md-3">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    @click="calculadorDias()"
+                  >
+                    Calcular Dias
+                  </button>
+                </div>
+                <div class="col-md-9 text-center text-error">
+                  <div
+                    v-for="otro in otroMensaje"
+                    :key="otro"
+                    v-text="otro"
+                  ></div>
+                </div>
+              </div>
 
+              <div class="form-group row">
+                <label
+                  class="col-md-3"
+                  for="data"
+                  form
+                  action="/data"
+                  method="POST"
+                  enctype="multipart/form-data"
+                  >Contrato (*)
+                </label>
+                <div class="col-md-9">
                   <input type="file" @change="getImage" id="data" name="data" />
                   <a :href="contrato" target="_blank">Ver</a>
-                  </div>
                 </div>
-            
+              </div>
 
               <div v-show="errorComponente" class="form-group row div-error">
                 <div class="text-center text-error">
@@ -429,6 +447,7 @@ export default {
       tipoAccion: 0,
       errorComponente: 0,
       errorMostrarMsjForm: [],
+      otroMensaje: [],
       pagination: {
         total: 0,
         current_page: 0,
@@ -490,7 +509,6 @@ export default {
 
           me.arrayContrato = respuesta.contratos.data;
           me.pagination = respuesta.pagination;
-          console.log(response);
         })
         .catch(function (error) {
           console.log(error);
@@ -565,6 +583,30 @@ export default {
       //Envia la petición para visualizar la data de esa página
       me.listarTabla(page, buscar, criterio);
     },
+    calculadorDias() {
+      let me = this;
+      me.otroMensaje=[];
+      if (this.inicioLaboral != "" && this.finLaboral != "") {
+        axios
+          .post("/contrato/calculadorDias", {
+            inicioLaboral: me.inicioLaboral,
+            finLaboral: me.finLaboral
+          })
+          .then(function (response) {
+            console.log(response);
+            me.otroMensaje.push(response.data);
+            me.listarTabla(1, "", "nombre");
+          })
+          .catch(function (error) {
+            console.log(error);
+            toastr.error("Error al calcular los dias", "Error", {
+              timeOut: 5000,
+            });
+          });
+      }else{
+              me.otroMensaje.push('Seleccione la fecha de inicio y fin laboral');
+      }
+    },
     registrarContrato() {
       let me = this;
       if (this.validarForm()) {
@@ -585,11 +627,15 @@ export default {
         })
         .then(function (response) {
           console.log(response);
-          me.cerrarModal();
-          me.listarTabla(1, "", "nombre");
-          toastr.success("Se ha registrado el contrato", "Registrado", {
-            timeOut: 5000,
-          });
+          if (response.data) {
+            toastr.error(response.data[1], "Error", { timeOut: 10000 });
+          } else {
+            me.cerrarModal();
+            me.listarTabla(1, "", "nombre");
+            toastr.success("Se ha registrado con exito", "Registrado", {
+              timeOut: 5000,
+            });
+          }
         })
         .catch(function (error) {
           console.log(error);

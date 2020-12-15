@@ -21,19 +21,25 @@ class SolicitudInasistenciaController extends Controller
  
         $buscar = $request->buscar;
         $criterio = $request->criterio;
-         
-        if ($buscar=='') {
-            $solicitudInasistencias = SolicitudInasistencia::join('empleados', 'empleados.id', '=', 'solicitudes_inasistencias.empleado_id')
-            ->join('incidencias', 'incidencias.id', '=', 'solicitudes_inasistencias.incidencia_id')
-            ->select('solicitudes_inasistencias.*','incidencias.nombre as nombreIncidencia','empleados.nombre as nombreEmpleado','empleados.apellido as apellidoEmpleado')
-            ->paginate(3);
-        } else {
-            $solicitudInasistencias = SolicitudInasistencia::join('empleados', 'empleados.id', '=', 'solicitudes_inasistencias.empleado_id')
-            ->join('incidencias', 'incidencias.id', '=', 'solicitudes_inasistencias.incidencia_id')
-            ->select('solicitudes_inasistencias.*','incidencias.nombre as nombreIncidencia','empleados.nombre as nombreEmpleado','empleados.apellido as apellidoEmpleado')
-            ->where('solicitudes_inasistencias.'.$criterio, 'like', '%'. $buscar . '%')
-            ->paginate(3);
+        $solicitudInasistencias = SolicitudInasistencia::join('empleados', 'empleados.id', '=', 'solicitudes_inasistencias.empleado_id')
+        ->join('incidencias', 'incidencias.id', '=', 'solicitudes_inasistencias.incidencia_id')
+        ->select('solicitudes_inasistencias.*','incidencias.nombre as nombreIncidencia','empleados.nombre as nombreEmpleado','empleados.apellido as apellidoEmpleado',
+        DB::raw("DATE_FORMAT(solicitudes_inasistencias.desde, '%d/%m/%Y') as desde2"),DB::raw("DATE_FORMAT(solicitudes_inasistencias.hasta, '%d/%m/%Y') as hasta2"));
+        
+        if ($criterio=='aprobado') {
+            $solicitudInasistencias= $solicitudInasistencias->where('aprobado',1);
+        } elseif ($criterio=='desaprobado')  {
+            $solicitudInasistencias= $solicitudInasistencias->where('aprobado',0);
+        }elseif ($criterio=='revision')  {
+            $solicitudInasistencias= $solicitudInasistencias->where('aprobado',null);
+        }elseif ($criterio=='enlicencia')  {
+            $solicitudInasistencias= $solicitudInasistencias->where('aprobado',1)->where('desde','<=',Carbon::now())->where('hasta','>=',Carbon::now());
+        }elseif ($criterio=='proximo')  {
+            $solicitudInasistencias= $solicitudInasistencias->where('aprobado',1)->where('desde','>=',Carbon::now());
+        }elseif($buscar!=''){
+            $solicitudInasistencias= $solicitudInasistencias->where('solicitudes_inasistencias.'.$criterio, 'like', '%'. $buscar . '%');
         }
+        $solicitudInasistencias=$solicitudInasistencias->paginate(3);
          
         return [
             'pagination' => [
@@ -109,7 +115,7 @@ class SolicitudInasistenciaController extends Controller
             $fechaEmision = Carbon::parse($request->input('desde'));
             $fechaExpiracion = Carbon::parse($request->input('hasta'));
 
-            $diasDiferencia = $fechaExpiracion->diffInDays($fechaEmision);
+            $diasDiferencia = $fechaExpiracion->diffInDays($fechaEmision)+ 1;
             //cada 7 dias 1 no es Habil y sin contar los feriados
             $decimales = explode('.',$diasDiferencia/7);
             $diasDiferencia-= $decimales[0] ;
@@ -118,10 +124,11 @@ class SolicitudInasistenciaController extends Controller
             if($contarFeriados>0){
                 $diasDiferencia-=$contarFeriados;
             }
+
             $incidencia= Incidencia::findOrFail($request->incidencia_id);
             
             if(($incidencia->diasMaximo < $diasDiferencia) || ($diasDiferencia < $incidencia->diasMinimo)){
-                return ['Error','Los dias desde y hasta no cumplen con la cantidad de dias minimos y maximos para la Incidencia Seleccionada'];
+                return ['Error','Los dias de licencia tiene que ser mayor a '.$incidencia->diasMinimo.' dias y menor a '.$incidencia->diasMaximo.' dias'];
             }
             
             $solicitudInasistencia = new SolicitudInasistencia();
@@ -178,7 +185,7 @@ class SolicitudInasistenciaController extends Controller
             $fechaEmision = Carbon::parse($request->input('desde'));
             $fechaExpiracion = Carbon::parse($request->input('hasta'));
 
-            $diasDiferencia = $fechaExpiracion->diffInDays($fechaEmision);
+            $diasDiferencia = $fechaExpiracion->diffInDays($fechaEmision)+ 1;
             //cada 7 dias 1 no es Habil y sin contar los feriados
             $decimales = explode('.',$diasDiferencia/7);
             $diasDiferencia-= $decimales[0] ;

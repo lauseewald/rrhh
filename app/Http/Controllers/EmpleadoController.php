@@ -9,6 +9,7 @@ use App\ContactoEmergencia;
 use Exception;
 use Carbon\Carbon; 
 use Illuminate\Support\Facades\DB;
+use PDOException;
 
 class EmpleadoController extends Controller
 {
@@ -164,7 +165,6 @@ class EmpleadoController extends Controller
             $empleado->direccion = $request->direccion;
             $empleado->curriculum = $request->curriculum;
             $empleado->cuil = $request->cuil;
-            $empleado->condicion = '1';
             $empleado->save();
             
             $competencias = $request->data;//Array de competencias
@@ -306,7 +306,7 @@ class EmpleadoController extends Controller
     $cont = count($empleados);
     $now= Carbon::now();
     
-     $pdf = \PDF::loadView('pdf.empleados', ['empleados' => $empleados, 'buscar' => $buscar, 'criterio' => $criterio, 'now' => $now, 'cont' => $cont]);
+     $pdf = \pdf::loadView('pdf.empleados', ['empleados' => $empleados, 'buscar' => $buscar, 'criterio' => $criterio, 'now' => $now, 'cont' => $cont]);
     
      return $pdf->download('empleados-.pdf');
 }

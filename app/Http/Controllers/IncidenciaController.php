@@ -96,7 +96,6 @@ class IncidenciaController extends Controller
              $incidencia->nombre = $request->nombre;
             $incidencia->diasMinimo = $request->diasMinimo;
             $incidencia->diasMaximo = $request->diasMaximo;
-            $incidencia->condicion = '1';
             $incidencia->save();
             
             

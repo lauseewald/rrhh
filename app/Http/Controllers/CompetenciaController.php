@@ -74,7 +74,6 @@ class CompetenciaController extends Controller
                 
             $competencia = Competencia::findOrFail($request->id);
             $competencia->nombre = $request->nombre;
-            $competencia->condicion = '1';
             $competencia->save();
             
             

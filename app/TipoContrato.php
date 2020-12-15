@@ -9,7 +9,10 @@ class TipoContrato extends Model
     protected $table = 'tipo_contratos';
 
     protected $fillable = [
-        'nombre'
+        'nombre',
+        'diasMinimo',
+        'diasMaximo',
+        'condicion'
     ];
 
     public function contratos()

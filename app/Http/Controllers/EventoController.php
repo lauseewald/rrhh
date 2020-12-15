@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Evento;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Support\Facades\DB;
 
 class EventoController extends Controller
@@ -118,7 +119,6 @@ class EventoController extends Controller
             $evento->fecha = Carbon::parse($input);
             $evento->departamento_id=$request->departamento_id;
             //$evento->empresa_id=$request->idempresa;
-            $evento->condicion = '1';
             $evento->save();
             
             

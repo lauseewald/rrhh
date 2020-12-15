@@ -16,6 +16,8 @@ class CreateTipoContratosTable extends Migration
         Schema::create('tipo_contratos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
+            $table->integer('diasMaximo');
+            $table->integer('diasMinimo');
             $table->boolean('condicion')->default(1);
             $table->timestamps();
         });
