@@ -1,6 +1,7 @@
 <?php
 
 use App\Area;
+use App\Rol;
 use App\AreaEmpresa;
 use App\Competencia;
 use App\User;
@@ -81,14 +82,22 @@ class AreaSeeder extends Seeder
         $contrato->tipoContrato_id=$tipoContrato->id;
         $contrato->save();
         
-    
+        $rol1 = new Rol();
+        $rol1->nombre='Administrador';
+        $rol1->descripcion='...';
+        $rol1->save();
+
+        $rol2 = new Rol();
+        $rol2->nombre='Empleado';
+        $rol2->descripcion='...';
+        $rol2->save();
         
         $empresa = new Empresa();
         $empresa->nombre='Angaus Producciones ';
         $empresa->razonSocial='Sociedad Anonima';
-        $empresa->cuit='31-40.123.312-7';
+        $empresa->cuit='30707831320';
         $empresa->direccion='Debajo del puente';
-        $empresa->inicioActividad=Carbon::createFromFormat('Y-m-d','1700-02-25');
+        $empresa->inicioActividad=Carbon::createFromFormat('Y-m-d','1990-02-25');
         $empresa->save();
         $nuevaArea->empresa_id=$empresa->id;
         $nuevaArea->update();
@@ -97,6 +106,8 @@ class AreaSeeder extends Seeder
         $user->usuario='root';
         $user->email='root@root.com';
         $user->empresa_id=$empresa->id;
+        $user->empleado_id=$empleado->id;
+        $user->rol_id=$rol1->id;
         $user->password = bcrypt('root');
         $user->save();
         

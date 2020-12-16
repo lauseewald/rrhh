@@ -17,6 +17,10 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->unsignedinteger('empresa_id');
             $table->foreign('empresa_id')->references('id')->on('empresas');
+            $table->unsignedinteger('rol_id');
+            $table->foreign('rol_id')->references('id')->on('roles');
+            $table->unsignedinteger('empleado_id');
+            $table->foreign('empleado_id')->references('id')->on('empleados');
             $table->string('usuario')->unique();
             $table->string('email')->unique();
             $table->string('password');
