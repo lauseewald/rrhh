@@ -7,7 +7,7 @@
             <li class="nav-title">
                 Mantenimiento
             </li>
-            @if (Auth::user()->rol_id == 1)
+            @if (Auth::user()->rol->nombre == 'Administrador')
             <li class="nav-item nav-dropdown">
                 <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-bag"></i> Empleados</a>
                 <ul class="nav-dropdown-items">
