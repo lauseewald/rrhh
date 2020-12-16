@@ -7,6 +7,7 @@
             <li class="nav-title">
                 Mantenimiento
             </li>
+            @if (Auth::user()->rol_id == 1)
             <li class="nav-item nav-dropdown">
                 <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-bag"></i> Empleados</a>
                 <ul class="nav-dropdown-items">
@@ -79,6 +80,7 @@
                     
                 </ul>
             </li>
+            @endif
             <li @click="menu='alarma2'" class="nav-item">
                 <a class="nav-link" href="main.html"><i class="icon-book-open"></i> Alarma <span
                         class="badge badge-danger">!</span></a>

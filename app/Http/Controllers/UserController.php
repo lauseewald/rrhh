@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Rol;
 use App\Empresa;
 class UserController extends Controller
 {
@@ -35,6 +36,34 @@ class UserController extends Controller
         ];
         
     }
+    public function indexRol(Request $request)
+    {
+        if (!$request->ajax()) return redirect('/');
+ 
+        $buscar = $request->buscar;
+        $criterio = $request->criterio;
+         
+        if ($buscar==''){
+            $roles = Rol::orderBy('roles.id', 'desc')->paginate(3);
+        }
+        else{
+            $roles = Rol::where($criterio, 'like', '%'. $buscar . '%')->orderBy('id', 'desc')->paginate(3);
+        }
+        
+ 
+        return [
+            'pagination' => [
+                'total'        => $roles->total(),
+                'current_page' => $roles->currentPage(),
+                'per_page'     => $roles->perPage(),
+                'last_page'    => $roles->lastPage(),
+                'from'         => $roles->firstItem(),
+                'to'           => $roles->lastItem(),
+            ],
+            'roles' => $roles
+        ];
+        
+    }
 
     public function store(Request $request)
     {
@@ -43,10 +72,12 @@ class UserController extends Controller
             //'apellido' => 'required|max:255',
             //'nombre' => 'required|max:255',
             'usuario' => 'required|unique:users',
+            'empleado_id' => 'required|unique:users',
      
         ];
         $messages = [
             'usuario.unique' => 'Ese :attribute ya se encuentra en uso.',
+            'empleado_id.unique' => 'El :attribute que ingresó ya tiene usuario.',
           
         ];
         $this->validate($request, $rules, $messages);
@@ -61,6 +92,8 @@ class UserController extends Controller
             $user->usuario = $request->usuario;
             $user->email = $request->email;
             $user->empresa_id = $empresa;
+            $user->empleado_id = $request->empleado_id;
+            $user->rol_id = $request->rol_id;
             $user->password = bcrypt($request->password);
               
  
@@ -87,11 +120,13 @@ class UserController extends Controller
            
                 'usuario' => 'required|unique:users',
                 'email' => 'required|unique:users',
+                'empleado_id' => 'required|unique:users',
                 
             ];
             $messages = [
                 'usuario.unique' => 'Ese nombre de :attribute ya fue utilizado.',
                 'email.unique' => 'El :attribute que ingresó ya fue utilizado.',
+                'empleado_id.unique' => 'El :attribute que ingresó ya fue utilizado.',
                
             ];
             $this->validate($request, $rules, $messages);
@@ -133,6 +168,8 @@ class UserController extends Controller
             $user->usuario = $request->usuario;
             $user->email = $request->email;
             $user->password = bcrypt( $request->password);
+            $user->empleado_id = $request->empleado_id;
+            $user->rol_id = $request->rol_id;
             //$user->empresa_id = $empresa;
             $user->condicion = '1';
             $user->save();

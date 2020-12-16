@@ -10,10 +10,19 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['middleware'=>['guest']],function(){
+    Route::get('/','Auth\LoginController@showLoginForm');
+    Route::post('/login', 'Auth\LoginController@login')->name('login');
+});
+Route::group(['middleware'=>['auth']],function(){
+    
+    Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/main', function () {
     return view('contenido/contenido');
 })->name('main');
+
+Route::group(['middleware' => ['Administrador']], function () {
 //Empleado
 Route::get('/empleado', 'EmpleadoController@index');
 Route::post('/empleado/registrar', 'EmpleadoController@store');
@@ -126,10 +135,44 @@ Route::put('/usuario/actualizar', 'UserController@update');
 Route::put('/usuario/desactivar', 'UserController@desactivar');
 Route::put('/usuario/activar', 'UserController@activar');
 
+//Rol
+Route::get('/rol', 'UserController@indexRol');
+/*Route::post('/usuario/registrar', 'UserController@store');
+Route::put('/usuario/actualizar', 'UserController@update');
+Route::put('/usuario/desactivar', 'UserController@desactivar');
+Route::put('/usuario/activar', 'UserController@activar');*/
+
+});
+
+Route::group(['middleware' => ['Empleado']], function () {
+    //Empleado
+    Route::get('/empleado', 'EmpleadoController@index');
+    Route::post('/empleado/registrar', 'EmpleadoController@store');
+    Route::put('/empleado/actualizar', 'EmpleadoController@update');
+    Route::put('/empleado/desactivar', 'EmpleadoController@desactivar');
+    Route::put('/empleado/activar', 'EmpleadoController@activar');
+    Route::get('/empleado/selectEmpleado', 'EmpleadoController@selectEmpleado');
+    Route::get('/empleado/findCompetencias', 'EmpleadoController@findCompetencias');
+    Route::get('/empleado/findContactos', 'EmpleadoController@findContactos');
+    Route::get('/empleado/reporte', 'EmpleadoController@__invoke');
+    Route::get('/empleado/pdf/{buscar}/{criterio}/{incidencia}', 'EmpleadoController@pdf')->name('empleado_pdf');
+    //Solicitudes
+Route::get('/solicitudInasistencia', 'SolicitudInasistenciaController@index');
+Route::post('/solicitudInasistencia/registrar', 'SolicitudInasistenciaController@store');
+Route::put('/solicitudInasistencia/actualizar', 'SolicitudInasistenciaController@update');
+Route::put('/solicitudInasistencia/desactivar', 'SolicitudInasistenciaController@desactivar');
+Route::put('/solicitudInasistencia/activar', 'SolicitudInasistenciaController@activar');
+Route::get('/solicitudInasistencia/selectSolicitudInasistencia', 'SolicitudInasistenciaController@selectSolicitudInasistencia');
+Route::get('/solicitudInasistencia/alarma', 'SolicitudInasistenciaController@alarmaInasistencia');
+});
+
+
 //Auth::routes();
 
-Route::get('/', 'Auth\LoginController@showLoginForm');
-Route::post('/login', 'Auth\LoginController@login')->name('login');
-Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+//Route::get('/', 'Auth\LoginController@showLoginForm');
+//Route::post('/login', 'Auth\LoginController@login')->name('login');
+//Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
+
+});

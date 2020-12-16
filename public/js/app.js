@@ -50555,7 +50555,7 @@ var staticRenderFns = [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header" }, [
             _c("i", { staticClass: "fa fa-align-justify" }),
-            _vm._v(" Categorías\r\n                "),
+            _vm._v(" Categorías\n                "),
             _c(
               "button",
               {
@@ -50568,7 +50568,7 @@ var staticRenderFns = [
               },
               [
                 _c("i", { staticClass: "icon-plus" }),
-                _vm._v(" Nuevo\r\n                ")
+                _vm._v(" Nuevo\n                ")
               ]
             )
           ]),
@@ -50650,7 +50650,7 @@ var staticRenderFns = [
                         },
                         [_c("i", { staticClass: "icon-pencil" })]
                       ),
-                      _vm._v("  \r\n                                "),
+                      _vm._v("  \n                                "),
                       _c(
                         "button",
                         {
@@ -50690,7 +50690,7 @@ var staticRenderFns = [
                         },
                         [_c("i", { staticClass: "icon-pencil" })]
                       ),
-                      _vm._v("  \r\n                                "),
+                      _vm._v("  \n                                "),
                       _c(
                         "button",
                         {
@@ -50730,7 +50730,7 @@ var staticRenderFns = [
                         },
                         [_c("i", { staticClass: "icon-pencil" })]
                       ),
-                      _vm._v("  \r\n                                "),
+                      _vm._v("  \n                                "),
                       _c(
                         "button",
                         {
@@ -50770,7 +50770,7 @@ var staticRenderFns = [
                         },
                         [_c("i", { staticClass: "icon-pencil" })]
                       ),
-                      _vm._v("  \r\n                                "),
+                      _vm._v("  \n                                "),
                       _c(
                         "button",
                         {
@@ -50810,7 +50810,7 @@ var staticRenderFns = [
                         },
                         [_c("i", { staticClass: "icon-pencil" })]
                       ),
-                      _vm._v(" \r\n                                "),
+                      _vm._v(" \n                                "),
                       _c(
                         "button",
                         {
@@ -64854,6 +64854,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -72553,7 +72554,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    position: absolute !important;\n}\n.mostrar{\n    display: list-item !important;\n    opacity: 1 !important;\n    position: absolute !important;\n    background-color: #3c29297a !important;\n}\n.div-error{\n    display: flex;\n    justify-content: center;\n}\n.text-error{\n    color: red !important;\n    font-weight: bold;\n}\n", ""]);
+exports.push([module.i, "\n.modal-content {\r\n  width: 100% !important;\r\n  position: absolute !important;\n}\n.mostrar {\r\n  display: list-item !important;\r\n  opacity: 1 !important;\r\n  position: absolute !important;\r\n  background-color: #3c29297a !important;\n}\n.div-error {\r\n  display: flex;\r\n  justify-content: center;\n}\n.text-error {\r\n  color: red !important;\r\n  font-weight: bold;\n}\r\n", ""]);
 
 // exports
 
@@ -72711,252 +72712,442 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            usuario_id: 0,
-            usuario: '',
-            email: '',
-            password: '',
-            arrayUsuario: [],
-            modal: 0,
-            tituloModal: '',
-            tipoAccion: 0,
-            errorUsuario: 0,
-            errorMostrarMsjUsuario: [],
-            pagination: {
-                'total': 0,
-                'current_page': 0,
-                'per_page': 0,
-                'last_page': 0,
-                'from': 0,
-                'to': 0
-            },
-            offset: 3,
-            criterio: 'usuario',
-            buscar: ''
-        };
+  data: function data() {
+    return {
+      usuario_id: 0,
+      usuario: "",
+      empleado_id: 0,
+      rol_id: 0,
+      email: "",
+      password: "",
+      arrayUsuario: [],
+      arrayEmpleado: [],
+      arrayRol: [],
+      modal: 0,
+      tituloModal: "",
+      tipoAccion: 0,
+      errorUsuario: 0,
+      errorMostrarMsjUsuario: [],
+      pagination: {
+        total: 0,
+        current_page: 0,
+        per_page: 0,
+        last_page: 0,
+        from: 0,
+        to: 0
+      },
+      offset: 3,
+      criterio: "usuario",
+      buscar: ""
+    };
+  },
+
+  computed: {
+    isActived: function isActived() {
+      return this.pagination.current_page;
     },
+    //Calcula los elementos de la paginación
+    pagesNumber: function pagesNumber() {
+      if (!this.pagination.to) {
+        return [];
+      }
 
-    computed: {
-        isActived: function isActived() {
-            return this.pagination.current_page;
-        },
-        //Calcula los elementos de la paginación
-        pagesNumber: function pagesNumber() {
-            if (!this.pagination.to) {
-                return [];
-            }
+      var from = this.pagination.current_page - this.offset;
+      if (from < 1) {
+        from = 1;
+      }
 
-            var from = this.pagination.current_page - this.offset;
-            if (from < 1) {
-                from = 1;
-            }
+      var to = from + this.offset * 2;
+      if (to >= this.pagination.last_page) {
+        to = this.pagination.last_page;
+      }
 
-            var to = from + this.offset * 2;
-            if (to >= this.pagination.last_page) {
-                to = this.pagination.last_page;
-            }
-
-            var pagesArray = [];
-            while (from <= to) {
-                pagesArray.push(from);
-                from++;
-            }
-            return pagesArray;
-        }
-    },
-    methods: {
-        listarUsuario: function listarUsuario(page, buscar, criterio) {
-            var me = this;
-            var url = '/usuario?page=' + page + '&buscar=' + buscar + '&criterio=' + criterio;
-            axios.get(url).then(function (response) {
-                var respuesta = response.data;
-                me.arrayUsuario = respuesta.users.data;
-                me.pagination = respuesta.pagination;
-            }).catch(function (error) {
-                console.log(error);
-            });
-        },
-        cambiarPagina: function cambiarPagina(page, buscar, criterio) {
-            var me = this;
-            //Actualiza la página actual
-            me.pagination.current_page = page;
-            //Envia la petición para visualizar la data de esa página
-            me.listarUsuario(page, buscar, criterio);
-        },
-        registrarUsuario: function registrarUsuario() {
-            var me = this;
-            if (this.validarUsuario()) {
-                return;
-            }
-            if (this.validarEmail()) {} else {
-                me.errorMostrarMsjUsuario.push("El email ingresado no es valido");
-                me.errorUsuario = 1;
-                return;
-            }
-            axios.post('/usuario/registrar', {
-                'usuario': this.usuario,
-                'email': this.email,
-                'password': this.password
-            }).then(function (response) {
-                me.cerrarModal();
-                me.listarUsuario(1, '', 'usuario');
-                __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.success('Se ha registrado la usuario', 'Actualizado', { timeOut: 5000 });
-            }).catch(function (error) {
-                console.log(error);
-                __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.error('Ha ocurrido un error', 'Error', { timeOut: 5000 });
-            });
-        },
-        actualizarUsuario: function actualizarUsuario() {
-
-            console.log('prueba');
-            if (this.validarUsuario()) {
-                return;
-            }
-            if (this.validarEmail()) {} else {
-                me.errorMostrarMsjUsuario.push("El email ingresado no es valido");
-                me.errorUsuario = 1;
-                return;
-            }
-            var me = this;
-            axios.put('/usuario/actualizar', {
-                'usuario': this.usuario,
-                'email': this.email,
-                'password': this.password,
-                'id': this.usuario_id
-            }).then(function (response) {
-                me.cerrarModal();
-                me.listarUsuario(1, '', 'usuario');
-                __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.success('Se ha actualizado con exito', 'Actualizado', { timeOut: 5000 });
-            }).catch(function (error) {
-                console.log(error);
-                __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.error('Ha ocurrido un error', 'Error', { timeOut: 5000 });
-            });
-        },
-        desactivarUsuario: function desactivarUsuario(id) {
-            var _this = this;
-
-            swal({
-                title: 'Esta seguro de desactivar este usuario?',
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Aceptar!',
-                cancelButtonText: 'Cancelar',
-                confirmButtonClass: 'btn btn-success',
-                cancelButtonClass: 'btn btn-danger',
-                buttonsStyling: false,
-                reverseButtons: true
-            }).then(function (result) {
-                if (result.value) {
-                    var _me = _this;
-
-                    axios.put('/usuario/desactivar', {
-                        'id': id
-                    }).then(function (response) {
-                        _me.listarUsuario(1, '', 'usuario');
-                        swal('Desactivado!', 'La usuario se ha desactivado con éxito.', 'success');
-                    }).catch(function (error) {
-                        console.log(error);
-                    });
-                } else if (
-                // Read more about handling dismissals
-                result.dismiss === swal.DismissReason.cancel) {}
-            });
-        },
-        activarUsuario: function activarUsuario(id) {
-            var _this2 = this;
-
-            swal({
-                title: 'Esta seguro de activar este usuario?',
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Aceptar!',
-                cancelButtonText: 'Cancelar',
-                confirmButtonClass: 'btn btn-success',
-                cancelButtonClass: 'btn btn-danger',
-                buttonsStyling: false,
-                reverseButtons: true
-            }).then(function (result) {
-                if (result.value) {
-                    var _me2 = _this2;
-
-                    axios.put('/usuario/activar', {
-                        'id': id
-                    }).then(function (response) {
-                        _me2.listarUsuario(1, '', 'usuario');
-                        swal('Activado!', 'El usuario se ha activado con éxito.', 'success');
-                    }).catch(function (error) {
-                        console.log(error);
-                    });
-                } else if (
-                // Read more about handling dismissals
-                result.dismiss === swal.DismissReason.cancel) {}
-            });
-        },
-        validarUsuario: function validarUsuario() {
-            this.errorUsuario = 0;
-            this.errorMostrarMsjUsuario = [];
-
-            if (!this.usuario) this.errorMostrarMsjUsuario.push("Debe ingresar el usuario de la usuario");
-            if (!this.email) this.errorMostrarMsjUsuario.push("Debe ingresar la cantidad de días mínimos");
-            if (!this.password) this.errorMostrarMsjUsuario.push("Debe ingresar la cantidad de días máximos");
-            if (this.errorMostrarMsjUsuario.length) this.errorUsuario = 1;
-            return this.errorUsuario;
-        },
-        cerrarModal: function cerrarModal() {
-            this.modal = 0;
-            this.tituloModal = '';
-            this.usuario = '';
-            this.email = '';
-            this.password = '';
-        },
-        validarEmail: function validarEmail() {
-            var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-            return regex.test(this.email) ? true : false;
-        },
-        abrirModal: function abrirModal(modelo, accion) {
-            var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
-
-            switch (modelo) {
-                case "usuario":
-                    {
-                        switch (accion) {
-                            case 'registrar':
-                                {
-                                    this.modal = 1;
-                                    this.tituloModal = 'Registrar usuario';
-                                    this.email = data['email'];
-                                    this.usuario = data['usuario'];
-                                    this.password = data['password'];
-                                    this.tipoAccion = 1;
-                                    break;
-                                }
-                            case 'actualizar':
-                                {
-                                    this.modal = 1;
-                                    this.usuario_id = data['id'];
-                                    this.tituloModal = 'Actualizar usuario';
-                                    this.tipoAccion = 2;
-                                    this.email = data['email'];
-                                    this.usuario = data['usuario'];
-                                    this.password = data['password'];
-                                    break;
-                                }
-                        }
-                    }
-            }
-        }
-    },
-    mounted: function mounted() {
-        this.listarUsuario(1, this.buscar, this.criterio);
+      var pagesArray = [];
+      while (from <= to) {
+        pagesArray.push(from);
+        from++;
+      }
+      return pagesArray;
     }
+  },
+  methods: {
+    listarUsuario: function listarUsuario(page, buscar, criterio) {
+      var me = this;
+      var url = "/usuario?page=" + page + "&buscar=" + buscar + "&criterio=" + criterio;
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayUsuario = respuesta.users.data;
+        me.pagination = respuesta.pagination;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    listarEmpleado: function listarEmpleado(page, buscar, criterio) {
+      var me = this;
+      var url = "/empleado?page=" + page + "&buscar=" + buscar + "&criterio=" + criterio;
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayEmpleado = respuesta.empleados.data;
+        me.pagination = respuesta.pagination;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    listarRol: function listarRol(page, buscar, criterio) {
+      var me = this;
+      var url = "/rol?page=" + page + "&buscar=" + buscar + "&criterio=" + criterio;
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        me.arrayRol = respuesta.roles.data;
+        me.pagination = respuesta.pagination;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    cambiarPagina: function cambiarPagina(page, buscar, criterio) {
+      var me = this;
+      //Actualiza la página actual
+      me.pagination.current_page = page;
+      //Envia la petición para visualizar la data de esa página
+      me.listarUsuario(page, buscar, criterio);
+    },
+    registrarUsuario: function registrarUsuario() {
+      var me = this;
+      if (this.validarUsuario()) {
+        return;
+      }
+      if (this.validarEmail()) {} else {
+        me.errorMostrarMsjUsuario.push("El email ingresado no es valido");
+        me.errorUsuario = 1;
+        return;
+      }
+      axios.post("/usuario/registrar", {
+        usuario: this.usuario,
+        email: this.email,
+        empleado_id: this.empleado_id,
+        rol_id: this.rol_id,
+        password: this.password
+      }).then(function (response) {
+        me.cerrarModal();
+        me.listarUsuario(1, "", "usuario");
+        __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.success("Se ha registrado el usuario", "Registrado", {
+          timeOut: 5000
+        });
+      }).catch(function (error) {
+        console.log(error);
+        __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.error("Error", { timeOut: 5000 });
+      });
+    },
+    actualizarUsuario: function actualizarUsuario() {
+      console.log("prueba");
+      if (this.validarUsuario()) {
+        return;
+      }
+      if (this.validarEmail()) {} else {
+        me.errorMostrarMsjUsuario.push("El email ingresado no es valido");
+        me.errorUsuario = 1;
+        return;
+      }
+      var me = this;
+      axios.put("/usuario/actualizar", {
+        usuario: this.usuario,
+        email: this.email,
+        password: this.password,
+        empleado_id: this.empleado_id,
+        rol_id: this.rol_id,
+        id: this.usuario_id
+      }).then(function (response) {
+        me.cerrarModal();
+        me.listarUsuario(1, "", "usuario");
+        __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.success("Se ha actualizado con exito", "Actualizado", {
+          timeOut: 5000
+        });
+      }).catch(function (error) {
+        console.log(error);
+        __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.error("Ha ocurrido un error", "Error", { timeOut: 5000 });
+      });
+    },
+    desactivarUsuario: function desactivarUsuario(id) {
+      var _this = this;
+
+      swal({
+        title: "Esta seguro de desactivar este usuario?",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Aceptar!",
+        cancelButtonText: "Cancelar",
+        confirmButtonClass: "btn btn-success",
+        cancelButtonClass: "btn btn-danger",
+        buttonsStyling: false,
+        reverseButtons: true
+      }).then(function (result) {
+        if (result.value) {
+          var _me = _this;
+
+          axios.put("/usuario/desactivar", {
+            id: id
+          }).then(function (response) {
+            _me.listarUsuario(1, "", "usuario");
+            swal("Desactivado!", "La usuario se ha desactivado con éxito.", "success");
+          }).catch(function (error) {
+            console.log(error);
+          });
+        } else if (
+        // Read more about handling dismissals
+        result.dismiss === swal.DismissReason.cancel) {}
+      });
+    },
+    activarUsuario: function activarUsuario(id) {
+      var _this2 = this;
+
+      swal({
+        title: "Esta seguro de activar este usuario?",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Aceptar!",
+        cancelButtonText: "Cancelar",
+        confirmButtonClass: "btn btn-success",
+        cancelButtonClass: "btn btn-danger",
+        buttonsStyling: false,
+        reverseButtons: true
+      }).then(function (result) {
+        if (result.value) {
+          var _me2 = _this2;
+
+          axios.put("/usuario/activar", {
+            id: id
+          }).then(function (response) {
+            _me2.listarUsuario(1, "", "usuario");
+            swal("Activado!", "El usuario se ha activado con éxito.", "success");
+          }).catch(function (error) {
+            console.log(error);
+          });
+        } else if (
+        // Read more about handling dismissals
+        result.dismiss === swal.DismissReason.cancel) {}
+      });
+    },
+    validarUsuario: function validarUsuario() {
+      this.errorUsuario = 0;
+      this.errorMostrarMsjUsuario = [];
+
+      if (!this.usuario) this.errorMostrarMsjUsuario.push("Debe ingresar el usuario de la usuario");
+      if (!this.email) this.errorMostrarMsjUsuario.push("Debe ingresar la cantidad de días mínimos");
+      if (!this.password) this.errorMostrarMsjUsuario.push("Debe ingresar la cantidad de días máximos");
+      if (!this.empleado_id) this.errorMostrarMsjUsuario.push("Debe ingresar el empleado");
+      if (!this.rol_id) this.errorMostrarMsjUsuario.push("Debe ingresar el rol");
+      if (this.errorMostrarMsjUsuario.length) this.errorUsuario = 1;
+      return this.errorUsuario;
+    },
+    cerrarModal: function cerrarModal() {
+      this.modal = 0;
+      this.tituloModal = "";
+      this.usuario = "";
+      this.email = "";
+      this.empleado_id = 0;
+      this.rol_id = 0;
+      this.password = "";
+    },
+    validarEmail: function validarEmail() {
+      var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+      return regex.test(this.email) ? true : false;
+    },
+    abrirModal: function abrirModal(modelo, accion) {
+      var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+
+      switch (modelo) {
+        case "usuario":
+          {
+            switch (accion) {
+              case "registrar":
+                {
+                  this.modal = 1;
+                  this.tituloModal = "Registrar usuario";
+                  this.email = data["email"];
+                  this.usuario = data["usuario"];
+                  this.empleado_id = data["empleado_id"];
+                  this.rol_id = data["rol_id"];
+                  this.password = data["password"];
+                  this.tipoAccion = 1;
+                  break;
+                }
+              case "actualizar":
+                {
+                  this.modal = 1;
+                  this.usuario_id = data["id"];
+                  this.tituloModal = "Actualizar usuario";
+                  this.tipoAccion = 2;
+                  this.email = data["email"];
+                  this.usuario = data["usuario"];
+                  this.empleado_id = data["empleado_id"];
+                  this.rol_id = data["rol_id"];
+                  this.password = data["password"];
+                  break;
+                }
+            }
+          }
+      }
+    }
+  },
+  mounted: function mounted() {
+    this.listarUsuario(1, this.buscar, this.criterio);
+    this.listarEmpleado(1, this.buscar, this.criterio);
+    this.listarRol(1, this.buscar, this.criterio);
+  }
 });
 
 /***/ }),
@@ -72974,7 +73165,7 @@ var render = function() {
       _c("div", { staticClass: "card" }, [
         _c("div", { staticClass: "card-header" }, [
           _c("i", { staticClass: "fa fa-align-justify" }),
-          _vm._v(" Usuarios\n                "),
+          _vm._v(" Usuarios\n        "),
           _c(
             "button",
             {
@@ -72986,10 +73177,7 @@ var render = function() {
                 }
               }
             },
-            [
-              _c("i", { staticClass: "icon-plus" }),
-              _vm._v(" Nuevo\n                ")
-            ]
+            [_c("i", { staticClass: "icon-plus" }), _vm._v(" Nuevo\n        ")]
           )
         ]),
         _vm._v(" "),
@@ -73078,7 +73266,10 @@ var render = function() {
                       }
                     }
                   },
-                  [_c("i", { staticClass: "fa fa-search" }), _vm._v(" Buscar")]
+                  [
+                    _c("i", { staticClass: "fa fa-search" }),
+                    _vm._v(" Buscar\n              ")
+                  ]
                 )
               ])
             ])
@@ -73136,7 +73327,7 @@ var render = function() {
                           },
                           [_c("i", { staticClass: "icon-pencil" })]
                         ),
-                        _vm._v("  \n                                "),
+                        _vm._v("\n                 \n                "),
                         usuario.condicion
                           ? [
                               _c(
@@ -73440,6 +73631,130 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-md-3 form-control-label",
+                          attrs: { for: "text-input" }
+                        },
+                        [_vm._v("Empleado (*)")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-9" }, [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.empleado_id,
+                                expression: "empleado_id"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.empleado_id = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "option",
+                              { attrs: { value: "0", disabled: "" } },
+                              [_vm._v("Seleccione el Empleado")]
+                            ),
+                            _vm._v(" "),
+                            _vm._l(_vm.arrayEmpleado, function(empleado) {
+                              return _c("option", {
+                                key: empleado.id,
+                                domProps: {
+                                  value: empleado.id,
+                                  textContent: _vm._s(
+                                    empleado.apellido + " " + empleado.nombre
+                                  )
+                                }
+                              })
+                            })
+                          ],
+                          2
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-md-3 form-control-label",
+                          attrs: { for: "text-input" }
+                        },
+                        [_vm._v("Rol (*)")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-9" }, [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.rol_id,
+                                expression: "rol_id"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.rol_id = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "option",
+                              { attrs: { value: "0", disabled: "" } },
+                              [_vm._v("Seleccione el Rol")]
+                            ),
+                            _vm._v(" "),
+                            _vm._l(_vm.arrayRol, function(rol) {
+                              return _c("option", {
+                                key: rol.id,
+                                domProps: {
+                                  value: rol.id,
+                                  textContent: _vm._s(rol.nombre)
+                                }
+                              })
+                            })
+                          ],
+                          2
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
                     _c(
                       "div",
                       {
@@ -73483,7 +73798,7 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v("Cerrar")]
+                  [_vm._v("\n            Cerrar\n          ")]
                 ),
                 _vm._v(" "),
                 _vm.tipoAccion == 1
@@ -73498,7 +73813,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("Guardar")]
+                      [_vm._v("\n            Guardar\n          ")]
                     )
                   : _vm._e(),
                 _vm._v(" "),
@@ -73514,7 +73829,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("Actualizar")]
+                      [_vm._v("\n            Actualizar\n          ")]
                     )
                   : _vm._e()
               ])
