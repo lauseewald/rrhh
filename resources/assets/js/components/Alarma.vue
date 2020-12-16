@@ -312,6 +312,209 @@
       <!-- Fin ejemplo de tabla Listado -->
     </div>
     <!--Inicio del modal agregar/actualizar-->
+    <div
+      class="modal fade"
+      tabindex="-1"
+      :class="{ mostrar: modal }"
+      role="dialog"
+      aria-labelledby="myModalLabel"
+      style="display: none"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-primary modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" v-text="tituloModal"></h4>
+            <button
+              type="button"
+              class="close"
+              @click="cerrarModal()"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form
+              id="modal-form"
+              action=""
+              method="post"
+              enctype="multipart/form-data"
+              class="form-horizontal"
+            >
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label" for="text-input"
+                  >ID (*)</label
+                >
+                <div class="col-md-9">
+                  <input
+                    type="text"
+                    v-model="_id"
+                    class="form-control"
+                    placeholder="ID Empleado"
+                    disabled
+                  />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label" for="text-input"
+                  >Empleado :</label
+                >
+                <div class="col-md-3"> 
+                    <input
+                    type="text"
+                    v-model="apellido"
+                    class="form-control"
+                    placeholder="Nombre del departamento"
+                    disabled
+                  />
+                
+                </div>
+                <div class="col-md-3"> 
+                    <input
+                    type="text"
+                    v-model="nombre"
+                    class="form-control"
+                    placeholder="Nombre del departamento"
+                    disabled
+                  />
+                
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label" for="text-input"
+                  >CUIL (*)</label
+                >
+                <div class="col-md-9">
+                  <input
+                    type="text"
+                    v-model="cuil"
+                    class="form-control"
+                    placeholder="ID Empleado"
+                    disabled
+                  />
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label" for="text-input"
+                  >Direccion </label
+                >
+                <div class="col-md-9">
+                  <input
+                    type="text"
+                    v-model="direccion"
+                    class="form-control"
+                    placeholder="Descripcion del departamento"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label" for="text-input"
+                  >Fecha Nacimiento </label
+                >
+                <div class="col-md-9">
+                 <input
+                    type="date"
+                    class="form-control"
+                    v-model="fechaNacimiento"
+                  />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label" for="text-input"
+                  >Fecha Ingeso </label
+                >
+                <div class="col-md-9">
+                 <input
+                    type="date"
+                    class="form-control"
+                    v-model="fechaIngreso"
+                  />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label" for="text-input"
+                  >Competencias </label
+                >
+                <div class="col-md-9">
+                  <div
+                    v-for="comp in competencias"
+                    :key="comp"
+                    v-text="comp"
+                  > </div>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label" for="text-input"
+                  >Contacto Emergencia </label
+                >
+                <div class="col-md-9">
+                 <input
+                    type="date"
+                    class="form-control"
+                    v-model="contactoEmergencia"
+                  />
+                </div>
+                </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label" for="text-input"
+                  >Personas a cargo </label
+                >
+                <div class="col-md-9">
+                 <div
+                    v-for="dependiente in personaDependientes"
+                    :key="dependiente"
+                    v-text="dependiente"
+                  > </div>
+                </div>
+                </div>
+
+              <div v-show="errorComponente" class="form-group row div-error">
+                <div class="text-center text-error">
+                  <div
+                    v-for="error in errorMostrarMsjForm"
+                    :key="error"
+                    v-text="error"
+                  ></div>
+                </div>
+              </div>
+            </form>
+              </div>
+
+
+         
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              @click="cerrarModal()"
+            >
+              Cerrar
+            </button>
+            <button
+              type="button"
+              class="btn btn-success"
+              @click="registrarDepartamento()"
+            >
+              Aprobar
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              @click="actualizarDepartamento()"
+            >
+              Desaprobar
+            </button>
+          </div>
+           </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
     <!--Fin del modal-->
   </main>
 </template>

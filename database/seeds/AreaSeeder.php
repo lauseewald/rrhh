@@ -14,6 +14,7 @@ use App\Empresa;
 use App\Evento;
 use App\Http\Controllers\EmpleadoController;
 use App\Incidencia;
+use App\PersonaDependiente;
 use App\Puesto;
 use App\SolicitudInasistencia;
 use App\TipoContrato;
@@ -55,6 +56,15 @@ class AreaSeeder extends Seeder
         $empleado->direccion='Belgrano 10000';
         $empleado->curriculum='La jefa de marandu';
         $empleado->save();
+
+        $dependiente = new PersonaDependiente();
+        $dependiente->nombre='Rafael';
+        $dependiente->apellido='Robert';
+        $dependiente->dni='50.123.313';
+        $dependiente->relacion='Hermano';
+        $dependiente->necesidad='Discapicidad';
+        $dependiente->empleado_id=$empleado->id;
+        $dependiente->save();
 
         $puesto = new Puesto();
         $puesto->nombre='Programacion';

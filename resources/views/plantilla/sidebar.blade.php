@@ -14,6 +14,9 @@
                     <li @click="menu=1" class="nav-item">
                         <a class="nav-link" href="#"><i class="icon-people-carry"></i> Empleados</a>
                     </li>
+                    <li @click="menu='personadependiente2'" class="nav-item">
+                        <a class="nav-link" href="#"><i class="icon-people-carry"></i> P. Dependientes</a>
+                    </li>
                     <li @click="menu=2" class="nav-item">
                         <a class="nav-link" href="#"><i class="icon-file-signature"></i> Contratos</a>
                     </li>

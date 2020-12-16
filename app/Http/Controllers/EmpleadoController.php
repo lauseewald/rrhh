@@ -70,15 +70,19 @@ class EmpleadoController extends Controller
             
                 try{
                     if (!$request->ajax()) return redirect('/');
-                    $exploded = explode(',', $request->curriculum);
-                    $decoded = base64_decode($exploded[1]);
-                    if(str_contains($exploded[0], 'pdf'))
-                        $extension = 'pdf';
-                    else
-                        $extension = 'pdf';
-                    $fileName = str_random().'.'.$extension;
-                    $path = public_path().'/'.$fileName;
-                    file_put_contents($path, $decoded);
+                    $fileName='';
+                    if($request->hasFile($request->curriculum)){
+
+                        $exploded = explode(',', $request->curriculum);
+                        $decoded = base64_decode($exploded[1]);
+                        if(str_contains($exploded[0], 'pdf'))
+                            $extension = 'pdf';
+                        else
+                            $extension = 'pdf';
+                        $fileName = str_random().'.'.$extension;
+                        $path = public_path().'/'.$fileName;
+                        file_put_contents($path, $decoded);
+                    }
                    
 
                     $empleado = new Empleado();
@@ -155,15 +159,32 @@ class EmpleadoController extends Controller
             $this->validate($request, $rules, $messages);
             try{
                 if (!$request->ajax()) return redirect('/');
-                DB::beginTransaction();  
-            $empleado = Empleado::findOrFail($request->id);
+                DB::beginTransaction(); 
+
+                $empleado = Empleado::findOrFail($request->id);
+                $fileName=$empleado->curriculum;
+
+                if(($request->hasFile($request->curriculum))){
+
+                    $exploded = explode(',', $request->curriculum);
+                        $decoded = base64_decode($exploded[1]);
+                        if(str_contains($exploded[0], 'pdf'))
+                            $extension = 'pdf';
+                        else
+                            $extension = 'pdf';
+                        $fileName = str_random().'.'.$extension;
+                        $path = public_path().'/'.$fileName;
+                        file_put_contents($path, $decoded);
+                } 
+                
+
             $empleado->nombre = $request->nombre;
             $empleado->apellido = $request->apellido;
             //$empleado->id = $request->id;
             $empleado->fechaAlta = $request->fechaAlta;
             $empleado->fechaNacimiento = $request->fechaNacimiento;
             $empleado->direccion = $request->direccion;
-            $empleado->curriculum = $request->curriculum;
+            $empleado->curriculum = $fileName;
             $empleado->cuil = $request->cuil;
             $empleado->save();
             

@@ -32,6 +32,7 @@
                     <option value="desactivado">Desativado</option>
                     <option value="vigente">Vigente</option>
                     <option value="terminado">Terminado</option>
+                    <option value="empleado_id">ID Empleado</option>
                   </select>
                   <input
                     name="buscar"
@@ -64,7 +65,7 @@
           <table class="table table-bordered table-striped table-sm">
             <thead>
               <tr>
-                <th>Empleado</th>
+                <th>Empleado (ID)</th>
                 <th>Nombre</th>
                 <th>Tipo Contrato</th>
                 <!-- <th>Contrato</th> -->
@@ -82,7 +83,7 @@
               <tr v-for="contrato in arrayContrato" :key="contrato.id">
                 <td
                   v-text="
-                    contrato.apellidoEmpleado + ' ' + contrato.nombreEmpleado
+                    contrato.apellidoEmpleado + ' ' + contrato.nombreEmpleado+ ' ('+contrato.empleado_id+')'
                   "
                 ></td>
                 <td v-text="contrato.nombre"></td>

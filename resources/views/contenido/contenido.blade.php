@@ -48,5 +48,8 @@
 <template v-if="menu=='alarma2'">
     <alarma></alarma>
 </template>
+<template v-if="menu=='personadependiente2'">
+    <personadependiente></personadependiente>
+</template>
 
 @endsection

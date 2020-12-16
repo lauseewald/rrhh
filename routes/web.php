@@ -77,6 +77,14 @@ Route::put('/incidencia/desactivar', 'IncidenciaController@desactivar');
 Route::put('/incidencia/activar', 'IncidenciaController@activar');
 Route::get('/incidencia/selectIncidencia', 'IncidenciaController@selectIncidencia');
 
+//Incidencia
+Route::get('/personaDependiente', 'PersonaDependienteController@index');
+Route::post('/personaDependiente/registrar', 'PersonaDependienteController@store');
+Route::put('/personaDependiente/actualizar', 'PersonaDependienteController@update');
+Route::put('/personaDependiente/desactivar', 'PersonaDependienteController@desactivar');
+Route::put('/personaDependiente/activar', 'PersonaDependienteController@activar');
+Route::get('/personaDependiente/selectPersonaDependiente', 'PersonaDependienteController@selectPersonaDependiente');
+
 //Evento
 Route::get('/evento', 'EventoController@index');
 Route::post('/evento/registrar', 'EventoController@store');

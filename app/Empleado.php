@@ -22,5 +22,10 @@ class Empleado extends Model
     {
         return $this->hasMany(SolicitudInasistencia::class,'solicitud_inasistencia_id');
     }
+    
+    public function personaDependientes()
+    {
+        return $this->hasMany(PersonaDependiente::class,'empleado_id');
+    }
    
 }
