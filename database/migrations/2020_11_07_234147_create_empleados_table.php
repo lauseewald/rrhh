@@ -17,6 +17,7 @@ class CreateEmpleadosTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('apellido');
+            $table->string('estadoCivil');
             $table->string('cuil');
             $table->date('fechaNacimiento');
             $table->date('fechaAlta');
