@@ -75,13 +75,24 @@
                 ></td>
                 <td v-text="solicitudInasistencia.nombreIncidencia"></td>
                 <td>
+                  <div v-if="solicitudInasistencia.aprobado">
+                    <span class="badge badge-success">Aprobado</span>
+                  </div>
+                  <div v-if="solicitudInasistencia.aprobado == null">
+                    <span class="badge badge-warning">En Espera</span>
+                  </div>
+                  <div v-if="solicitudInasistencia.aprobado == false">
+                    <span class="badge badge-danger">Desaprobado</span>
+                  </div>
+                </td>
+                <!-- <td>
                   <div v-if="solicitudInasistencia.condicion">
                     <span class="badge badge-success">Activo</span>
                   </div>
                   <div v-else>
                     <span class="badge badge-danger">Desactivado</span>
                   </div>
-                </td>
+                </td> -->
                 <td>
                   <button
                     type="button"
@@ -121,6 +132,14 @@
                       <i class="icon-check"></i>
                     </button>
                   </template>
+                  &nbsp;
+                  <button
+                    type="button"
+                    @click="verDatos(solicitudInasistencia)"
+                    class="btn btn-info btn-sm"
+                  >
+                    <i class="icon-eyes"></i>
+                  </button>
                 </td>
               </tr>
             </tbody>
@@ -200,7 +219,7 @@
               enctype="multipart/form-data"
               class="form-horizontal"
             >
-              <div class="col form-group form-group">
+              <!-- <div class="col form-group form-group">
                 <label class="form-control-label" for="text-input"
                   >Empleados (*)</label
                 >
@@ -215,7 +234,7 @@
                   ></option>
                 </select>
                 <div class="col-3"></div>
-              </div>
+              </div> -->
               <div class="col form-group">
                 <label class="form-control-label" for="text-input"
                   >Incidencias (*)</label
@@ -311,6 +330,83 @@
       <!-- /.modal-dialog -->
     </div>
     <!--Fin del modal-->
+    <div
+      class="modal fade"
+      tabindex="-1"
+      :class="{ mostrar: modal2 }"
+      role="dialog"
+      style="display: none"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-primary modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" v-text="tituloModal"></h4>
+            <button
+              type="button"
+              class="close"
+              @click="cerrarModalver()"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group" v-if="empleado.id">
+              <div class="row">
+                <label
+                  >Empleado: {{ empleado.nombre + empleado.apellido }}
+                </label>
+              </div>
+              <hr />
+              <h3>Personas Dependientes</h3>
+              <div class="row">
+                <ul>
+                  <li
+                    v-for="perDep in empleado.persona_dependientes"
+                    :key="perDep.id"
+                  >
+                    <div class="row">
+                      Nombre: {{ " " + perDep.nombre + " " + perDep.apellido }}
+                    </div>
+                    <div class="row">Relacion:{{ " " + perDep.relacion }}</div>
+                    <div class="row">
+                      Necesidad:{{ " " + perDep.necesidad }}
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <hr />
+              <h3>Otras Responsabilidades</h3>
+              <div class="row">
+                <ul>
+                  <li
+                    v-for="responsabilidad in empleado.responsabilidades"
+                    :key="responsabilidad.id"
+                  >
+                    <div class="row">
+                      Responsabilidad: {{ " " + responsabilidad.nombre }}
+                    </div>
+                    <div class="row">
+                      Descripcion:{{ " " + responsabilidad.descripcion }}
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              @click="cerrarModalVer()"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 </template>
 
@@ -330,7 +426,10 @@ export default {
       empleado_id: 0,
       incidencia_id: 0,
 
+      empleado: { id: 0 },
+
       modal: 0,
+      modal2: 0,
       tituloModal: "",
       tipoAccion: 0,
       errorComponente: 0,
@@ -377,6 +476,25 @@ export default {
     },
   },
   methods: {
+    verDatos(solicitudInasistencia) {
+      this.modal2 = 1;
+      let me = this;
+      var url = "/getEmpleado?id=" + solicitudInasistencia.empleado_id;
+      axios
+        .get(url)
+        .then(function (response) {
+          var respuesta = response.data;
+          me.empleado = respuesta.empleado;
+          console.log(respuesta.empleado);
+        })
+        .catch(function (error) {
+          me.empleado.id = 0;
+          console.log(error);
+        });
+    },
+    cerrarModalVer() {
+      this.modal2 = 0;
+    },
     listarTabla(page, buscar, criterio) {
       this.listarSolicitudInasistencia(page, buscar, criterio);
     },

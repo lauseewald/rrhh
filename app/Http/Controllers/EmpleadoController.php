@@ -242,6 +242,13 @@ class EmpleadoController extends Controller
             DB::rollBack();
         }
     }
+    public function getEmpleado(Request $request){
+        $empleado = Empleado::findOrFail($request->id);
+        $empleado->responsabilidades;
+        $empleado->personaDependientes;
+        return ['empleado'=>$empleado];
+    }
+
     public function desactivar(Request $request)
     {
         if (!$request->ajax()) return redirect('/');

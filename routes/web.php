@@ -155,6 +155,7 @@ Route::put('/usuario/activar', 'UserController@activar');*/
 Route::group(['middleware' => ['Empleado']], function () {
     //Empleado
     Route::get('/empleado', 'EmpleadoController@index');
+    Route::get('/getEmpleado', 'EmpleadoController@getEmpleado');
     Route::post('/empleado/registrar', 'EmpleadoController@store');
     Route::put('/empleado/actualizar', 'EmpleadoController@update');
     Route::put('/empleado/desactivar', 'EmpleadoController@desactivar');

@@ -55,6 +55,7 @@ class AreaSeeder extends Seeder
         $empleado->fechaAlta= Carbon::createFromFormat('Y-m-d','1990-11-22');
         $empleado->direccion='Belgrano 10000';
         $empleado->curriculum='La jefa de marandu';
+        $empleado->estadoCivil='Prefiero No decirlo';
         $empleado->save();
 
         $dependiente = new PersonaDependiente();

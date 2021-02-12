@@ -1,0 +1,3 @@
+*************************** inasistencia.vue
+[] Hay que hacer que el usuario logeado es el que envia la solicitud de inasistencia,
+actualmente esta que selecciona un empleado.

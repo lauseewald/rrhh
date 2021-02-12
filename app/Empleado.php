@@ -8,7 +8,7 @@ class Empleado extends Model
 {
     protected $fillable = ['nombre', 'apellido', 'cuil', 'fechaNacimiento',
      'direccion','fechaAlta',
-    'fechaBaja', 'curriculum', 'condicion'];
+    'fechaBaja', 'curriculum', 'condicion','responsabilidades'];
 
     public function competenciasEmpleado()
     {
@@ -26,6 +26,11 @@ class Empleado extends Model
     public function personaDependientes()
     {
         return $this->hasMany(PersonaDependiente::class,'empleado_id');
+    }
+
+    public function responsabilidades()
+    {
+        return $this->hasMany(Responsabilidad::class,'empleado_id');
     }
    
 }
