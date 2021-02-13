@@ -83,6 +83,10 @@
                     
                 </ul>
             </li>
+            <li @click="menu='calendario'" class="nav-item">
+                <a class="nav-link" href="main.html"><i class="icon-book-open"></i> Calendario <span
+                        class="badge badge-danger">!</span></a>
+            </li>
             @endif
             <li @click="menu='alarma2'" class="nav-item">
                 <a class="nav-link" href="main.html"><i class="icon-book-open"></i> Alarma <span

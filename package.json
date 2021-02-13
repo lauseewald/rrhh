@@ -23,6 +23,9 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
+        "@fullcalendar/daygrid": "^5.5.0",
+        "@fullcalendar/interaction": "^5.5.0",
+        "@fullcalendar/vue": "^5.5.0",
         "ajv": "^6.5.4",
         "chart.js": "^2.9.4",
         "datatables.net": "^1.10.19",

@@ -198,6 +198,21 @@
                   />
                 </div>
               </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label" for="text-input"
+                  >Estado Civil (*)</label
+                >
+                <div class="col-md-9">
+                  <select v-model="estadoCivil">
+                  <option disabled value="">Estado Civil</option>
+                  <option>Soltero</option>
+                  <option>Casado</option>
+                  <option>Divorciado</option>
+                  <option>Viudo</option>
+                </select>
+                </div>
+              </div>
+              
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Dirección (*)</label>

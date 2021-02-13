@@ -51,5 +51,8 @@
 <template v-if="menu=='personadependiente2'">
     <personadependiente></personadependiente>
 </template>
+<template v-if="menu=='calendario'">
+    <calendario></calendario>
+</template>
 
 @endsection
