@@ -85,6 +85,7 @@
                         </nav>
                     </div>
                 </div>
+               
                 <!-- Fin ejemplo de tabla Listado -->
             </div>
             <!--Inicio del modal agregar/actualizar-->
