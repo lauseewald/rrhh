@@ -168,6 +168,7 @@ Route::group(['middleware' => ['Empleado']], function () {
     //Solicitudes
 Route::get('/solicitudInasistencia', 'SolicitudInasistenciaController@index');
 Route::post('/solicitudInasistencia/registrar', 'SolicitudInasistenciaController@store');
+Route::put('/solicitudInasistencia/aprobar', 'SolicitudInasistenciaController@aprobar');
 Route::put('/solicitudInasistencia/actualizar', 'SolicitudInasistenciaController@update');
 Route::put('/solicitudInasistencia/desactivar', 'SolicitudInasistenciaController@desactivar');
 Route::put('/solicitudInasistencia/activar', 'SolicitudInasistenciaController@activar');
