@@ -25,7 +25,7 @@
                   <option value="nombre">Nombre</option>
                   <option value="aprobado">Aprobado</option>
                   <option value="desaprobado">Desaprobado</option>
-                  <option value="revision">En Revision</option>
+                  <option value="enespera">En Espera</option>
                   <option value="enlicencia">En licencia</option>
                   <option value="proximo">Proxima Licencias</option>
                 </select>
@@ -94,6 +94,7 @@
                   </div>
                 </td> -->
                 <td>
+                  
                   <button
                     type="button"
                     @click="
@@ -133,13 +134,36 @@
                     </button>
                   </template>
                   &nbsp;
-                  <button
-                    type="button"
-                    @click="verDatos(solicitudInasistencia)"
-                    class="btn btn-info btn-sm"
-                  >
-                    <i class="icon-eyes"></i>
-                  </button>
+                  <template>
+                    <button
+                      type="button"
+                      @click="verDatos(solicitudInasistencia)"
+                      class="btn btn-outline-info btn-sm"
+                    >
+                      <i class="icon-eye"></i>
+                    </button>
+                  </template>
+                  &nbsp;
+                  <template>
+                    <div v-if="solicitudInasistencia.aprobado">
+                      <button
+                        type="button"
+                        @click="aprobarSolicitud(solicitudInasistencia, 0)"
+                        class="btn btn-outline-info btn-sm"
+                      >
+                        <i class="icon-close"></i>
+                      </button>
+                    </div>
+                    <div v-else>
+                      <button
+                        type="button"
+                        @click="aprobarSolicitud(solicitudInasistencia, 1)"
+                        class="btn btn-outline-info btn-sm"
+                      >
+                        <i class="icon-check"></i>
+                      </button>
+                    </div>
+                  </template>
                 </td>
               </tr>
             </tbody>
@@ -476,6 +500,51 @@ export default {
     },
   },
   methods: {
+    aprobarSolicitud(solicitudInasistencia, valor) {
+      let mensaje = "¿Desea Aprobar la Solicitud de Inasistencia?";
+
+      if (!valor) {
+        mensaje = "¿Desea Desaprobar la solicitud de Inasistencia?";
+      }
+      swal({
+        title: mensaje,
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Aceptar!",
+        cancelButtonText: "Cancelar",
+        confirmButtonClass: "btn btn-success",
+        cancelButtonClass: "btn btn-danger",
+        buttonsStyling: false,
+        reverseButtons: true,
+      }).then((result) => {
+        if (result.value) {
+          let me = this;
+
+          axios
+            .put("/solicitudInasistencia/aprobar", {
+              id: solicitudInasistencia.id,
+              aprobado: parseInt(valor),
+            })
+            .then(function (response) {
+              if (valor) {
+                swal("Aprobado!", "Se ha aprobado correctamente.", "success");
+              } else {
+                swal("Desaprobado!", "Se desaprobo la solicitud.", "success");
+              }
+              me.listarTabla(1, "", "nombre");
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        } else if (
+          // Read more about handling dismissals
+          result.dismiss === swal.DismissReason.cancel
+        ) {
+        }
+      });
+    },
     verDatos(solicitudInasistencia) {
       this.modal2 = 1;
       let me = this;

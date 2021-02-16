@@ -30,7 +30,7 @@ class SolicitudInasistenciaController extends Controller
             $solicitudInasistencias= $solicitudInasistencias->where('aprobado',1);
         } elseif ($criterio=='desaprobado')  {
             $solicitudInasistencias= $solicitudInasistencias->where('aprobado',0);
-        }elseif ($criterio=='revision')  {
+        }elseif ($criterio=='enespera')  {
             $solicitudInasistencias= $solicitudInasistencias->where('aprobado',null);
         }elseif ($criterio=='enlicencia')  {
             $solicitudInasistencias= $solicitudInasistencias->where('aprobado',1)->where('desde','<=',Carbon::now())->where('hasta','>=',Carbon::now());
@@ -54,6 +54,17 @@ class SolicitudInasistenciaController extends Controller
         ];
         
     }
+
+    
+    public function aprobar(Request $request){
+        $solicitudInasistencias = SolicitudInasistencia::findOrFail($request->id);
+        if($solicitudInasistencias->id == 0){
+            return '';
+        }
+        $solicitudInasistencias->aprobado=$request->aprobado;
+        $solicitudInasistencias->update();
+    }
+
     public function alarmaInasistencia(Request $request)
     {
         if (!$request->ajax()) {

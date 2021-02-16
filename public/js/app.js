@@ -60494,7 +60494,7 @@ var staticRenderFns = [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header" }, [
             _c("i", { staticClass: "fa fa-align-justify" }),
-            _vm._v(" Categorías\n                "),
+            _vm._v(" Categorías\r\n                "),
             _c(
               "button",
               {
@@ -60507,7 +60507,7 @@ var staticRenderFns = [
               },
               [
                 _c("i", { staticClass: "icon-plus" }),
-                _vm._v(" Nuevo\n                ")
+                _vm._v(" Nuevo\r\n                ")
               ]
             )
           ]),
@@ -60589,7 +60589,7 @@ var staticRenderFns = [
                         },
                         [_c("i", { staticClass: "icon-pencil" })]
                       ),
-                      _vm._v("  \n                                "),
+                      _vm._v("  \r\n                                "),
                       _c(
                         "button",
                         {
@@ -60629,7 +60629,7 @@ var staticRenderFns = [
                         },
                         [_c("i", { staticClass: "icon-pencil" })]
                       ),
-                      _vm._v("  \n                                "),
+                      _vm._v("  \r\n                                "),
                       _c(
                         "button",
                         {
@@ -60669,7 +60669,7 @@ var staticRenderFns = [
                         },
                         [_c("i", { staticClass: "icon-pencil" })]
                       ),
-                      _vm._v("  \n                                "),
+                      _vm._v("  \r\n                                "),
                       _c(
                         "button",
                         {
@@ -60709,7 +60709,7 @@ var staticRenderFns = [
                         },
                         [_c("i", { staticClass: "icon-pencil" })]
                       ),
-                      _vm._v("  \n                                "),
+                      _vm._v("  \r\n                                "),
                       _c(
                         "button",
                         {
@@ -60749,7 +60749,7 @@ var staticRenderFns = [
                         },
                         [_c("i", { staticClass: "icon-pencil" })]
                       ),
-                      _vm._v(" \n                                "),
+                      _vm._v(" \r\n                                "),
                       _c(
                         "button",
                         {
@@ -78765,6 +78765,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -78832,6 +78856,48 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     }
   },
   methods: {
+    aprobarSolicitud: function aprobarSolicitud(solicitudInasistencia, valor) {
+      var _this = this;
+
+      var mensaje = "¿Desea Aprobar la Solicitud de Inasistencia?";
+
+      if (!valor) {
+        mensaje = "¿Desea Desaprobar la solicitud de Inasistencia?";
+      }
+      swal({
+        title: mensaje,
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Aceptar!",
+        cancelButtonText: "Cancelar",
+        confirmButtonClass: "btn btn-success",
+        cancelButtonClass: "btn btn-danger",
+        buttonsStyling: false,
+        reverseButtons: true
+      }).then(function (result) {
+        if (result.value) {
+          var me = _this;
+
+          axios.put("/solicitudInasistencia/aprobar", {
+            id: solicitudInasistencia.id,
+            aprobado: parseInt(valor)
+          }).then(function (response) {
+            if (valor) {
+              swal("Aprobado!", "Se ha aprobado correctamente.", "success");
+            } else {
+              swal("Desaprobado!", "Se desaprobo la solicitud.", "success");
+            }
+            me.listarTabla(1, "", "nombre");
+          }).catch(function (error) {
+            console.log(error);
+          });
+        } else if (
+        // Read more about handling dismissals
+        result.dismiss === swal.DismissReason.cancel) {}
+      });
+    },
     verDatos: function verDatos(solicitudInasistencia) {
       this.modal2 = 1;
       var me = this;
@@ -78926,7 +78992,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       });
     },
     desactivarSolicitudInasistencia: function desactivarSolicitudInasistencia(id) {
-      var _this = this;
+      var _this2 = this;
 
       swal({
         title: "Esta seguro de desactivarlo ?",
@@ -78942,7 +79008,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         reverseButtons: true
       }).then(function (result) {
         if (result.value) {
-          var me = _this;
+          var me = _this2;
 
           axios.put("/solicitudInasistencia/desactivar", {
             id: id
@@ -78958,7 +79024,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       });
     },
     activarSolicitudInasistencia: function activarSolicitudInasistencia(id) {
-      var _this2 = this;
+      var _this3 = this;
 
       swal({
         title: "Esta seguro de activarlo?",
@@ -78974,7 +79040,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         reverseButtons: true
       }).then(function (result) {
         if (result.value) {
-          var me = _this2;
+          var me = _this3;
 
           axios.put("/solicitudInasistencia/activar", {
             id: id
@@ -79162,8 +79228,8 @@ var render = function() {
                       _vm._v("Desaprobado")
                     ]),
                     _vm._v(" "),
-                    _c("option", { attrs: { value: "revision" } }, [
-                      _vm._v("En Revision")
+                    _c("option", { attrs: { value: "enespera" } }, [
+                      _vm._v("En Espera")
                     ]),
                     _vm._v(" "),
                     _c("option", { attrs: { value: "enlicencia" } }, [
@@ -79358,19 +79424,61 @@ var render = function() {
                               )
                             ],
                         _vm._v("\n                 \n                "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-info btn-sm",
-                            attrs: { type: "button" },
-                            on: {
-                              click: function($event) {
-                                return _vm.verDatos(solicitudInasistencia)
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-outline-info btn-sm",
+                              attrs: { type: "button" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.verDatos(solicitudInasistencia)
+                                }
                               }
-                            }
-                          },
-                          [_c("i", { staticClass: "icon-eyes" })]
-                        )
+                            },
+                            [_c("i", { staticClass: "icon-eye" })]
+                          )
+                        ],
+                        _vm._v("\n                 \n                "),
+                        [
+                          solicitudInasistencia.aprobado
+                            ? _c("div", [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-outline-info btn-sm",
+                                    attrs: { type: "button" },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.aprobarSolicitud(
+                                          solicitudInasistencia,
+                                          0
+                                        )
+                                      }
+                                    }
+                                  },
+                                  [_c("i", { staticClass: "icon-close" })]
+                                )
+                              ])
+                            : _c("div", [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-outline-info btn-sm",
+                                    attrs: { type: "button" },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.aprobarSolicitud(
+                                          solicitudInasistencia,
+                                          1
+                                        )
+                                      }
+                                    }
+                                  },
+                                  [_c("i", { staticClass: "icon-check" })]
+                                )
+                              ])
+                        ]
                       ],
                       2
                     )
