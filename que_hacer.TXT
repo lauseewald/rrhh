@@ -9,6 +9,8 @@ Frase del profe: "Todo lo que necesite debe tener el sistema Donde dice A1 refer
 [] Cambiar de contrato.
 [] Agregar un Candelario.
 [] Mostrar todos los datos de empleados con un modal.
+[] hay que controlar cuando se carga la solicitud que las fechas no pise a otra solicitud del mismo empleado porque o sino hay error cuando quiero traer los empleados con licnecia.
+el error es que no puede agrupar el mismo empleado con dos licencias al mismo tiempo.
 
 Completas
 [x] Cargar hijo discapacitado para un empleado. (Asocines con la familia)

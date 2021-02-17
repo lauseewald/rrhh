@@ -163,6 +163,7 @@ Route::group(['middleware' => ['Empleado']], function () {
     Route::get('/empleado/selectEmpleado', 'EmpleadoController@selectEmpleado');
     Route::get('/empleado/findCompetencias', 'EmpleadoController@findCompetencias');
     Route::get('/empleado/findContactos', 'EmpleadoController@findContactos');
+    Route::get('/empleado/enLicencia', 'EmpleadoController@enLicencia');
     Route::get('/empleado/reporte', 'EmpleadoController@__invoke');
     Route::get('/empleado/pdf/{buscar}/{criterio}/{incidencia}', 'EmpleadoController@pdf')->name('empleado_pdf');
     //Solicitudes

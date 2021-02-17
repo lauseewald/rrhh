@@ -20,23 +20,18 @@ class EmpleadoController extends Controller
  
         $buscar = $request->buscar;
         $criterio = $request->criterio;
-         
-        if ($buscar==''){
-            
-            /*$empleados = Empleado::join('competencias_empleados','empleados.id','=','competencias_empleados.empleado_id')
-            //->join('competencias','competencias_empleados.competencia_id','=','competencias.id')
-            ->select('cuil', 'direccion', 'empleados.nombre as nombreEmpleado',
-             'empleados.apellido as apellidoEmpleado', 'fechaAlta', 'fechaBaja',
-              'curriculum', 'fechaNacimiento', 'empleados.condicion as condicion', '')
-              ->orderBy('empleados.nombre', 'desc')->paginate(3);*/
-              $empleados = Empleado::orderBy('nombre', 'desc')->paginate(3);
+
+        $empleados = Empleado::join('solicitudes_inasistencias', 'empleados.id', '=', 'solicitudes_inasistencias.empleado_id');
+        if ($criterio=='enlicencia')  {
+            $empleados= $empleados->where('solicitudes_inasistencias.desde','<=',Carbon::now())->where('solicitudes_inasistencias.hasta','>=',Carbon::now())->where('aprobado',true);
+        }elseif($criterio=='trabajando'){
+            $empleados= $empleados->where('solicitudes_inasistencias.desde','>',Carbon::now())->Where('solicitudes_inasistencias.hasta','<',Carbon::now())->orWhere('aprobado',false);
+        }elseif($buscar!=''){
+            $empleados= $empleados->where('empleados.'.$criterio, 'like', '%'. $buscar . '%');
         }
-        else{
-           
-            $empleados = Empleado::where($criterio, 'like', '%'. $buscar . '%')
-            ->orderBy('nombre', 'desc')->paginate(3);
-        }
-         
+        
+        $empleados=$empleados->select('empleados.*')->groupBy('empleados.id')->orderBy('nombre', 'desc')->paginate(3);
+       
         return [
             'pagination' => [
                 'total'        => $empleados->total(),
@@ -50,6 +45,13 @@ class EmpleadoController extends Controller
         ];
     }
 
+    public function enLicencia(Request $request){
+        
+        $empleados = Empleado::join('solicitudes_inasistencias', 'empleados.id', '=', 'solicitudes_inasistencias.empleado_id');
+        $empleados= $empleados->where('solicitudes_inasistencias.desde','<=',Carbon::now())->where('solicitudes_inasistencias.hasta','>=',Carbon::now())->where('aprobado',true);
+        $empleados=$empleados->select('empleados.*','solicitudes_inasistencias.desde as desde','solicitudes_inasistencias.hasta as hasta','solicitudes_inasistencias.motivo as motivo')->orderBy('nombre', 'desc')->get();     
+        return ['empleados'=>$empleados]; 
+       }
     public function store(Request $request)
     {
         if (!$request->ajax()) return redirect('/');

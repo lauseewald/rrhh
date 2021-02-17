@@ -26,6 +26,8 @@
                   <select class="form-control col-md-3" v-model="criterio">
                     <option value="nombre">Nombre</option>
                     <option value="apellido">Apellido</option>
+                    <option value="enlicencia">En Licencia</option>
+                    <option value="trabajando">Trabajando</option>
                     <option value="cuil">Cuil</option>
                   </select>
                   <input
