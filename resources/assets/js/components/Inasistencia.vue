@@ -46,9 +46,15 @@
               </div>
             </div>
             <div class="col">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#listEmpleadosModal" @click="obtenerEmpleadosConLicencia()">
-              Ver Empleados con licencias
-            </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-toggle="modal"
+                data-target="#listEmpleadosModal"
+                @click.prevent="obtenerEmpleadosConLicencia()"
+              >
+                Ver Empleados con licencias
+              </button>
             </div>
           </div>
           <table class="table table-bordered table-striped table-sm">
@@ -99,7 +105,6 @@
                   </div>
                 </td> -->
                 <td>
-                  
                   <button
                     type="button"
                     @click="
@@ -437,37 +442,72 @@
       </div>
     </div>
 
-<div>
-  
-
-<!-- Modal -->
-<div class="modal fade" id="listEmpleadosModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <ul>
-          <li v-for="empleadoLicencia in arrayEmpleadosLicencia" :key="empleadoLicencia.id">
-            <span class="badge badge-primary">{{empleadoLicencia.nombre+' '+empleadoLicencia.apellido}}</span>
-            <span class="badge badge-success">{{'Desde: '+empleadoLicencia.desde}}</span>
-            <span class="badge badge-success">{{'Hasta: '+empleadoLicencia.hasta}}</span>
-          </li>
-        </ul>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+    <div>
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="listEmpleadosModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true"
+        :class="{ mostrar: modalListarEmpleadoLicencia }"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">
+                Empleados en Licencias
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+                @click.prevent="modalListarEmpleadoLicencia = 0"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <ul>
+                <li
+                  v-for="empleadoLicencia in arrayEmpleadosLicencia"
+                  :key="empleadoLicencia.id"
+                >
+                  <h5 >
+                    {{'ID: ('+empleadoLicencia.id+')'+
+                      empleadoLicencia.nombre +
+                      " " +
+                      empleadoLicencia.apellido +
+                      " "
+                    }}<span class="badge badge-success">{{
+                      "Desde: " + empleadoLicencia.desde
+                    }}</span
+                    ><span class="badge badge-success">{{
+                      "Hasta: " + empleadoLicencia.hasta
+                    }}</span>
+                  </h5>
+                </li>
+              </ul>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+                @click.prevent="modalListarEmpleadoLicencia = 0"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary">
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-</div>
-
   </main>
 </template>
 
@@ -479,7 +519,7 @@ export default {
       arrayEmpleados: [],
       arrayIncidencias: [],
       arraysolicitudinasistencia: [],
-      arrayEmpleadosLicencia:[],
+      arrayEmpleadosLicencia: [],
       id: 0,
       desde: "",
       hasta: "",
@@ -491,6 +531,7 @@ export default {
 
       modal: 0,
       modal2: 0,
+      modalListarEmpleadoLicencia: 0,
       tituloModal: "",
       tipoAccion: 0,
       errorComponente: 0,
@@ -537,14 +578,16 @@ export default {
     },
   },
   methods: {
-    obtenerEmpleadosConLicencia(){
+    obtenerEmpleadosConLicencia() {
+      this.modalListarEmpleadoLicencia = 1;
+      let me = this;
       var url = "/empleado/enLicencia";
       axios
         .get(url)
         .then(function (response) {
           let respuesta = response.data;
-          me.arrayEmpleadosLicencia = respuesta.empleados; 
-          console.log(me.arrayEmpleadosLicencia);
+          me.arrayEmpleadosLicencia = respuesta.empleados;
+          console.log(respuesta.empleados);
         })
         .catch(function (error) {
           console.log(error);
@@ -876,7 +919,6 @@ export default {
     this.listarTabla(1, this.buscar, this.criterio);
     this.selectEmpleado();
     this.selectIncidencia();
-    this.obtenerEmpleadosConLicencia();
   },
 };
 </script>
