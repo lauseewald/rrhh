@@ -78836,6 +78836,46 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -78856,6 +78896,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       modal: 0,
       modal2: 0,
+      modalListarEmpleadoLicencia: 0,
       tituloModal: "",
       tipoAccion: 0,
       errorComponente: 0,
@@ -78904,11 +78945,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   methods: {
     obtenerEmpleadosConLicencia: function obtenerEmpleadosConLicencia() {
+      this.modalListarEmpleadoLicencia = 1;
+      var me = this;
       var url = "/empleado/enLicencia";
       axios.get(url).then(function (response) {
         var respuesta = response.data;
         me.arrayEmpleadosLicencia = respuesta.empleados;
-        console.log(me.arrayEmpleadosLicencia);
+        console.log(respuesta.empleados);
       }).catch(function (error) {
         console.log(error);
       });
@@ -78935,7 +78978,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         reverseButtons: true
       }).then(function (result) {
         if (result.value) {
-          var _me = _this;
+          var me = _this;
 
           axios.put("/solicitudInasistencia/aprobar", {
             id: solicitudInasistencia.id,
@@ -78946,7 +78989,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             } else {
               swal("Desaprobado!", "Se desaprobo la solicitud.", "success");
             }
-            _me.listarTabla(1, "", "nombre");
+            me.listarTabla(1, "", "nombre");
           }).catch(function (error) {
             console.log(error);
           });
@@ -79065,12 +79108,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         reverseButtons: true
       }).then(function (result) {
         if (result.value) {
-          var _me2 = _this2;
+          var me = _this2;
 
           axios.put("/solicitudInasistencia/desactivar", {
             id: id
           }).then(function (response) {
-            _me2.listarTabla(1, "", "nombre");
+            me.listarTabla(1, "", "nombre");
             swal("Desactivado!", "Se ha desactivado con éxito.", "success");
           }).catch(function (error) {
             console.log(error);
@@ -79097,12 +79140,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         reverseButtons: true
       }).then(function (result) {
         if (result.value) {
-          var _me3 = _this3;
+          var me = _this3;
 
           axios.put("/solicitudInasistencia/activar", {
             id: id
           }).then(function (response) {
-            _me3.listarTabla(1, "", "nombre");
+            me.listarTabla(1, "", "nombre");
             swal("Activado!", "Se ha activado con éxito.", "success");
           }).catch(function (error) {
             console.log(error);
@@ -79206,7 +79249,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     this.listarTabla(1, this.buscar, this.criterio);
     this.selectEmpleado();
     this.selectIncidencia();
-    this.obtenerEmpleadosConLicencia();
   }
 });
 
@@ -79225,7 +79267,7 @@ var render = function() {
       _c("div", { staticClass: "card" }, [
         _c("div", { staticClass: "card-header" }, [
           _c("i", { staticClass: "fa fa-align-justify" }),
-          _vm._v(" Solicitud De Inasistencia\n          "),
+          _vm._v(" Solicitud De Inasistencia\n        "),
           _c(
             "button",
             {
@@ -79237,10 +79279,7 @@ var render = function() {
                 }
               }
             },
-            [
-              _c("i", { staticClass: "icon-plus" }),
-              _vm._v(" Nuevo\n          ")
-            ]
+            [_c("i", { staticClass: "icon-plus" }), _vm._v(" Nuevo\n        ")]
           )
         ]),
         _vm._v(" "),
@@ -79347,7 +79386,7 @@ var render = function() {
                   },
                   [
                     _c("i", { staticClass: "fa fa-search" }),
-                    _vm._v(" Buscar\n                ")
+                    _vm._v(" Buscar\n              ")
                   ]
                 )
               ])
@@ -79365,6 +79404,7 @@ var render = function() {
                   },
                   on: {
                     click: function($event) {
+                      $event.preventDefault()
                       return _vm.obtenerEmpleadosConLicencia()
                     }
                   }
@@ -79472,7 +79512,7 @@ var render = function() {
                           },
                           [_c("i", { staticClass: "icon-pencil" })]
                         ),
-                        _vm._v("\n                   \n                  "),
+                        _vm._v("\n                 \n                "),
                         solicitudInasistencia.condicion
                           ? [
                               _c(
@@ -79508,7 +79548,7 @@ var render = function() {
                                 [_c("i", { staticClass: "icon-check" })]
                               )
                             ],
-                        _vm._v("\n                   \n                  "),
+                        _vm._v("\n                 \n                "),
                         [
                           _c(
                             "button",
@@ -79524,7 +79564,7 @@ var render = function() {
                             [_c("i", { staticClass: "icon-eye" })]
                           )
                         ],
-                        _vm._v("\n                   \n                  "),
+                        _vm._v("\n                 \n                "),
                         [
                           solicitudInasistencia.aprobado
                             ? _c("div", [
@@ -79924,7 +79964,7 @@ var render = function() {
                           staticClass: "form-control-label",
                           attrs: { for: "text-input" }
                         },
-                        [_vm._v("Motivo\n                ")]
+                        [_vm._v("Motivo\n              ")]
                       ),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-3" }),
@@ -80001,7 +80041,7 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v("\n              Cerrar\n            ")]
+                  [_vm._v("\n            Cerrar\n          ")]
                 ),
                 _vm._v(" "),
                 _vm.tipoAccion == 1
@@ -80016,7 +80056,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("\n              Guardar\n            ")]
+                      [_vm._v("\n            Guardar\n          ")]
                     )
                   : _vm._e(),
                 _vm._v(" "),
@@ -80032,7 +80072,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("\n              Actualizar\n            ")]
+                      [_vm._v("\n            Actualizar\n          ")]
                     )
                   : _vm._e()
               ])
@@ -80094,7 +80134,7 @@ var render = function() {
                               _vm._s(
                                 _vm.empleado.nombre + _vm.empleado.apellido
                               ) +
-                              "\n                "
+                              "\n              "
                           )
                         ])
                       ]),
@@ -80112,14 +80152,14 @@ var render = function() {
                             return _c("li", { key: perDep.id }, [
                               _c("div", { staticClass: "row" }, [
                                 _vm._v(
-                                  "\n                      Nombre: " +
+                                  "\n                    Nombre: " +
                                     _vm._s(
                                       " " +
                                         perDep.nombre +
                                         " " +
                                         perDep.apellido
                                     ) +
-                                    "\n                    "
+                                    "\n                  "
                                 )
                               ]),
                               _vm._v(" "),
@@ -80131,9 +80171,9 @@ var render = function() {
                               _vm._v(" "),
                               _c("div", { staticClass: "row" }, [
                                 _vm._v(
-                                  "\n                      Necesidad:" +
+                                  "\n                    Necesidad:" +
                                     _vm._s(" " + perDep.necesidad) +
-                                    "\n                    "
+                                    "\n                  "
                                 )
                               ])
                             ])
@@ -80155,17 +80195,17 @@ var render = function() {
                             return _c("li", { key: responsabilidad.id }, [
                               _c("div", { staticClass: "row" }, [
                                 _vm._v(
-                                  "\n                      Responsabilidad: " +
+                                  "\n                    Responsabilidad: " +
                                     _vm._s(" " + responsabilidad.nombre) +
-                                    "\n                    "
+                                    "\n                  "
                                 )
                               ]),
                               _vm._v(" "),
                               _c("div", { staticClass: "row" }, [
                                 _vm._v(
-                                  "\n                      Descripcion:" +
+                                  "\n                    Descripcion:" +
                                     _vm._s(" " + responsabilidad.descripcion) +
-                                    "\n                    "
+                                    "\n                  "
                                 )
                               ])
                             ])
@@ -80189,7 +80229,7 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v("\n              Cerrar\n            ")]
+                  [_vm._v("\n            Cerrar\n          ")]
                 )
               ])
             ])
@@ -80203,6 +80243,7 @@ var render = function() {
         "div",
         {
           staticClass: "modal fade",
+          class: { mostrar: _vm.modalListarEmpleadoLicencia },
           attrs: {
             id: "listEmpleadosModal",
             tabindex: "-1",
@@ -80217,7 +80258,43 @@ var render = function() {
             { staticClass: "modal-dialog", attrs: { role: "document" } },
             [
               _c("div", { staticClass: "modal-content" }, [
-                _vm._m(2),
+                _c("div", { staticClass: "modal-header" }, [
+                  _c(
+                    "h5",
+                    {
+                      staticClass: "modal-title",
+                      attrs: { id: "exampleModalLongTitle" }
+                    },
+                    [
+                      _vm._v(
+                        "\n              Empleados en Licencias\n            "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "close",
+                      attrs: {
+                        type: "button",
+                        "data-dismiss": "modal",
+                        "aria-label": "Close"
+                      },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          _vm.modalListarEmpleadoLicencia = 0
+                        }
+                      }
+                    },
+                    [
+                      _c("span", { attrs: { "aria-hidden": "true" } }, [
+                        _vm._v("×")
+                      ])
+                    ]
+                  )
+                ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "modal-body" }, [
                   _c(
@@ -80226,22 +80303,25 @@ var render = function() {
                       empleadoLicencia
                     ) {
                       return _c("li", { key: empleadoLicencia.id }, [
-                        _c("span", { staticClass: "badge badge-primary" }, [
+                        _c("h5", [
                           _vm._v(
-                            _vm._s(
-                              empleadoLicencia.nombre +
-                                " " +
-                                empleadoLicencia.apellido
-                            )
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "badge badge-success" }, [
-                          _vm._v(_vm._s("Desde: " + empleadoLicencia.desde))
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "badge badge-success" }, [
-                          _vm._v(_vm._s("Hasta: " + empleadoLicencia.hasta))
+                            "\n                  " +
+                              _vm._s(
+                                "ID: (" +
+                                  empleadoLicencia.id +
+                                  ")" +
+                                  empleadoLicencia.nombre +
+                                  " " +
+                                  empleadoLicencia.apellido +
+                                  " "
+                              )
+                          ),
+                          _c("span", { staticClass: "badge badge-success" }, [
+                            _vm._v(_vm._s("Desde: " + empleadoLicencia.desde))
+                          ]),
+                          _c("span", { staticClass: "badge badge-success" }, [
+                            _vm._v(_vm._s("Hasta: " + empleadoLicencia.hasta))
+                          ])
                         ])
                       ])
                     }),
@@ -80249,7 +80329,31 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _vm._m(3)
+                _c("div", { staticClass: "modal-footer" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-secondary",
+                      attrs: { type: "button", "data-dismiss": "modal" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          _vm.modalListarEmpleadoLicencia = 0
+                        }
+                      }
+                    },
+                    [_vm._v("\n              Close\n            ")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      attrs: { type: "button" }
+                    },
+                    [_vm._v("\n              Save changes\n            ")]
+                  )
+                ])
               ])
             ]
           )
@@ -80289,52 +80393,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Opciones")])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
-      _c(
-        "h5",
-        { staticClass: "modal-title", attrs: { id: "exampleModalLongTitle" } },
-        [_vm._v("Modal title")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "close",
-          attrs: {
-            type: "button",
-            "data-dismiss": "modal",
-            "aria-label": "Close"
-          }
-        },
-        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-secondary",
-          attrs: { type: "button", "data-dismiss": "modal" }
-        },
-        [_vm._v("Close")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "button" } },
-        [_vm._v("Save changes")]
-      )
     ])
   }
 ]

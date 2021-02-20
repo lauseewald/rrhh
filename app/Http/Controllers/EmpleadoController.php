@@ -47,10 +47,14 @@ class EmpleadoController extends Controller
 
     public function enLicencia(Request $request){
         
+    //    return 0;
         $empleados = Empleado::join('solicitudes_inasistencias', 'empleados.id', '=', 'solicitudes_inasistencias.empleado_id');
         $empleados= $empleados->where('solicitudes_inasistencias.desde','<=',Carbon::now())->where('solicitudes_inasistencias.hasta','>=',Carbon::now())->where('aprobado',true);
-        $empleados=$empleados->select('empleados.*','solicitudes_inasistencias.desde as desde','solicitudes_inasistencias.hasta as hasta','solicitudes_inasistencias.motivo as motivo')->orderBy('nombre', 'desc')->get();     
+        $empleados=$empleados->select('empleados.*','solicitudes_inasistencias.motivo as motivo',
+        DB::raw("DATE_FORMAT(solicitudes_inasistencias.desde, '%d/%m/%Y') as desde"),DB::raw("DATE_FORMAT(solicitudes_inasistencias.hasta, '%d/%m/%Y') as hasta"))->orderBy('nombre', 'desc')->get();     
+    
         return ['empleados'=>$empleados]; 
+
        }
     public function store(Request $request)
     {
