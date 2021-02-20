@@ -200,8 +200,8 @@
                   />
                 </div>
               </div>
-              <div class="form-group row">
-                <label class="col-md-3 form-control-label" for="text-input"
+              <div class="col-md-9">
+                <label 
                   >Estado Civil (*)</label
                 >
                 <div class="col-md-9">
@@ -485,6 +485,7 @@ export default {
       arrayEliminar: [],
       competenciasId: [],
       nombreContacto: "",
+      estadoCivil:"",
       telefono1: "",
       telefono2: "",
       nombre: "",
@@ -653,30 +654,7 @@ export default {
       me.loading = true;
       me.idincidencia = val1.id;
     },
-    buscarArticulo() {
-      let me = this;
-      var url = "/articulo/buscarArticuloVenta?filtro=" + me.codigo;
-
-      axios
-        .get(url)
-        .then(function (response) {
-          var respuesta = response.data;
-          me.arrayArticulo = respuesta.articulos;
-
-          if (me.arrayArticulo.length > 0) {
-            me.articulo = me.arrayArticulo[0]["nombre"];
-            me.idarticulo = me.arrayArticulo[0]["id"];
-            me.precio = me.arrayArticulo[0]["precio_venta"];
-            me.stock = me.arrayArticulo[0]["stock"];
-          } else {
-            me.articulo = "No existe artículo";
-            me.idarticulo = 0;
-          }
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    },
+    
 
     cambiarPagina(page, buscar, criterio) {
       let me = this;
@@ -728,6 +706,7 @@ export default {
           apellido: this.apellido,
           cuil: this.cuil,
           direccion: this.direccion,
+          estadoCivil: this.estadoCivil,
           fechaNacimiento: this.fechaNacimiento,
           fechaAlta: this.fechaAlta,
           curriculum: this.curriculum,
@@ -765,6 +744,7 @@ export default {
           apellido: this.apellido,
           cuil: this.cuil,
           direccion: this.direccion,
+          estadoCivil: this.estadoCivil,
           fechaNacimiento: this.fechaNacimiento,
           fechaAlta: this.fechaAlta,
           curriculum: this.curriculum,
@@ -945,6 +925,10 @@ export default {
         this.errorMostrarMsjEmpleado.push(
           "La dirección del empleado no puede estar vacía."
         );
+         if (!this.direccion)
+        this.errorMostrarMsjEmpleado.push(
+          "La estado civil del empleado no puede estar vacío."
+        );
       if (!this.fechaAlta)
         this.errorMostrarMsjEmpleado.push(
           "La fecha de ingreso del empleado no puede estar vacía."
@@ -975,6 +959,7 @@ export default {
       this.apellido = "";
       this.cuil = "";
       this.direccion = "";
+      this.estadoCivil = "";
       this.fechaNacimiento = null;
       this.fechaAlta = null;
       this.curriculum = "";
@@ -990,6 +975,7 @@ export default {
       this.apellido = "";
       this.cuil = "";
       this.direccion = "";
+      this.estadoCivil = "";
       this.fechaNacimiento = null;
       this.fechaAlta = null;
       this.curriculum = "";
@@ -1041,6 +1027,7 @@ export default {
       me.nombre = data["nombre"];
       me.apellido = data["apellido"];
       me.cuil = data["cuil"];
+      me.estadoCivil = data["estadoCivil"];
       me.direccion = data["direccion"];
       me.fechaNacimiento = data["fechaNacimiento"];
       me.fechaAlta = data["fechaAlta"];

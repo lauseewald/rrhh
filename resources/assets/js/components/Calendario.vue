@@ -72,6 +72,7 @@ export default {
        calendarOptions: {
        plugins: [dayGridPlugin, interactionPlugin],
         events: "",
+        locale: "es",
        eventClick: this.showEvent,
         addingMode: true
      

@@ -61662,6 +61662,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       arrayEliminar: [],
       competenciasId: [],
       nombreContacto: "",
+      estadoCivil: "",
       telefono1: "",
       telefono2: "",
       nombre: "",
@@ -61816,27 +61817,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       me.loading = true;
       me.idincidencia = val1.id;
     },
-    buscarArticulo: function buscarArticulo() {
-      var me = this;
-      var url = "/articulo/buscarArticuloVenta?filtro=" + me.codigo;
-
-      axios.get(url).then(function (response) {
-        var respuesta = response.data;
-        me.arrayArticulo = respuesta.articulos;
-
-        if (me.arrayArticulo.length > 0) {
-          me.articulo = me.arrayArticulo[0]["nombre"];
-          me.idarticulo = me.arrayArticulo[0]["id"];
-          me.precio = me.arrayArticulo[0]["precio_venta"];
-          me.stock = me.arrayArticulo[0]["stock"];
-        } else {
-          me.articulo = "No existe artículo";
-          me.idarticulo = 0;
-        }
-      }).catch(function (error) {
-        console.log(error);
-      });
-    },
     cambiarPagina: function cambiarPagina(page, buscar, criterio) {
       var me = this;
       //Actualiza la página actual
@@ -61883,6 +61863,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         apellido: this.apellido,
         cuil: this.cuil,
         direccion: this.direccion,
+        estadoCivil: this.estadoCivil,
         fechaNacimiento: this.fechaNacimiento,
         fechaAlta: this.fechaAlta,
         curriculum: this.curriculum,
@@ -61917,6 +61898,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         apellido: this.apellido,
         cuil: this.cuil,
         direccion: this.direccion,
+        estadoCivil: this.estadoCivil,
         fechaNacimiento: this.fechaNacimiento,
         fechaAlta: this.fechaAlta,
         curriculum: this.curriculum,
@@ -62038,6 +62020,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       if (!this.apellido) this.errorMostrarMsjEmpleado.push("El apellido del empleado no puede estar vacío.");
       if (!this.cuil) this.errorMostrarMsjEmpleado.push("El cuil del empleado no puede estar vacío.");
       if (!this.direccion) this.errorMostrarMsjEmpleado.push("La dirección del empleado no puede estar vacía.");
+      if (!this.direccion) this.errorMostrarMsjEmpleado.push("La estado civil del empleado no puede estar vacío.");
       if (!this.fechaAlta) this.errorMostrarMsjEmpleado.push("La fecha de ingreso del empleado no puede estar vacía.");
       if (!this.curriculum) this.errorMostrarMsjEmpleado.push("El curriculum del empleado no puede estar vacío.");
       if (this.errorMostrarMsjEmpleado.length) this.errorEmpleado = 1;
@@ -62062,6 +62045,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.apellido = "";
       this.cuil = "";
       this.direccion = "";
+      this.estadoCivil = "";
       this.fechaNacimiento = null;
       this.fechaAlta = null;
       this.curriculum = "";
@@ -62077,6 +62061,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.apellido = "";
       this.cuil = "";
       this.direccion = "";
+      this.estadoCivil = "";
       this.fechaNacimiento = null;
       this.fechaAlta = null;
       this.curriculum = "";
@@ -62129,6 +62114,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       me.nombre = data["nombre"];
       me.apellido = data["apellido"];
       me.cuil = data["cuil"];
+      me.estadoCivil = data["estadoCivil"];
       me.direccion = data["direccion"];
       me.fechaNacimiento = data["fechaNacimiento"];
       me.fechaAlta = data["fechaAlta"];
@@ -62650,15 +62636,8 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "form-group row" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "col-md-3 form-control-label",
-                          attrs: { for: "text-input" }
-                        },
-                        [_vm._v("Estado Civil (*)")]
-                      ),
+                    _c("div", { staticClass: "col-md-9" }, [
+                      _c("label", [_vm._v("Estado Civil (*)")]),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-md-9" }, [
                         _c(
@@ -88397,6 +88376,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       calendarOptions: {
         plugins: [__WEBPACK_IMPORTED_MODULE_1__fullcalendar_daygrid__["a" /* default */], __WEBPACK_IMPORTED_MODULE_2__fullcalendar_interaction__["a" /* default */]],
         events: "",
+        locale: "es",
         eventClick: this.showEvent,
         addingMode: true
 

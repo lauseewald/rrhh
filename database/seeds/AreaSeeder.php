@@ -49,13 +49,13 @@ class AreaSeeder extends Seeder
         $empleado = new Empleado();
         $empleado->nombre='Ana';
         $empleado->apellido='Rafaela';
-        $empleado->cuil='27-39.123.412-1';
+        $empleado->cuil='27377048844';
         $empleado->fechaNacimiento= Carbon::createFromFormat('Y-m-d', '1980-01-12');
         $empleado->fechaBaja= null;
         $empleado->fechaAlta= Carbon::createFromFormat('Y-m-d','1990-11-22');
         $empleado->direccion='Belgrano 10000';
-        $empleado->curriculum='La jefa de marandu';
-        $empleado->estadoCivil='Prefiero No decirlo';
+        $empleado->curriculum='Programadora';
+        $empleado->estadoCivil='Soltera';
         $empleado->save();
 
         $dependiente = new PersonaDependiente();

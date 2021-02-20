@@ -95,6 +95,7 @@ class EmpleadoController extends Controller
                     $empleado->nombre = $request->nombre;
                     $empleado->apellido = $request->apellido;
                     $empleado->cuil = $request->cuil;
+                    $empleado->estadoCivil = $request->estadoCivil;
                     $empleado->fechaNacimiento = $request->fechaNacimiento;
                     $empleado->fechaAlta = $request->fechaAlta;
                     $empleado->direccion = $request->direccion;
@@ -190,6 +191,7 @@ class EmpleadoController extends Controller
             $empleado->fechaAlta = $request->fechaAlta;
             $empleado->fechaNacimiento = $request->fechaNacimiento;
             $empleado->direccion = $request->direccion;
+            $empleado->estadoCivil = $request->estadoCivil;
             $empleado->curriculum = $fileName;
             $empleado->cuil = $request->cuil;
             $empleado->save();
