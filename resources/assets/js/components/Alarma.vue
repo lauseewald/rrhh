@@ -11,15 +11,281 @@
           <div class="row">
             <div class="col">
               <div class="card">
-                <div class="card-header">Eventos Proximos</div>
+                <div class="card-header">Solicitudes de Inasistencias</div>
                 <div class="card-body">
                   <div class="form-group row">
                     <div class="col">
                       <div class="input-group">
                         <select
                           class="form-control col"
-                          v-model="criEvento"
+                          v-model="criInasistencia"
                         >
+                          <option value="desde">Desde</option>
+                        </select>
+                        <input
+                          type="text"
+                          v-model="buInasistencia"
+                          @keyup.enter="
+                            listarInasistencia(
+                              1,
+                              buInasistencia,
+                              criInasistencia
+                            )
+                          "
+                          class="form-control"
+                          placeholder="Texto en Solicitud de Inasistencia"
+                        />
+                        <button
+                          type="submit"
+                          @click="
+                            listarInasistencia(
+                              1,
+                              buInasistencia,
+                              criInasistencia
+                            )
+                          "
+                          class="btn btn-primary"
+                        >
+                          <i class="fa fa-search"></i> Buscar
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <table class="table table-bordered table-striped table-sm">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Desde</th>
+                        <th>Hasta</th>
+                        <th>Empleado(id)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        v-for="inasistencia in arrayInasistencia"
+                        :key="inasistencia.id"
+                      >
+                        <td v-text="inasistencia.id"></td>
+                        <td v-text="inasistencia.desde2"></td>
+                        <td v-text="inasistencia.hasta2"></td>
+                        <td
+                          v-text="
+                            inasistencia.nombreEmpleado +
+                            ' ' +
+                            inasistencia.apellidoEmpleado +
+                            ' ( ' +
+                            inasistencia.empleado_id +
+                            ' )'
+                          "
+                        ></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <nav>
+                    <ul class="pagination">
+                      <li
+                        class="page-item"
+                        v-if="pagInasistencia.current_page > 1"
+                      >
+                        <a
+                          class="page-link"
+                          href="#"
+                          @click.prevent="
+                            cambiarPaginaInasistencia(
+                              pagInasistencia.current_page - 1,
+                              buInasistencia,
+                              criInasistencia
+                            )
+                          "
+                          >Ant</a
+                        >
+                      </li>
+                      <li
+                        class="page-item"
+                        v-for="page in pagesNumberInasistencia"
+                        :key="page"
+                        :class="[page == isActivedInasistencia ? 'active' : '']"
+                      >
+                        <a
+                          class="page-link"
+                          href="#"
+                          @click.prevent="
+                            cambiarPaginaInasistencia(
+                              page,
+                              buInasistencia,
+                              criInasistencia
+                            )
+                          "
+                          v-text="page"
+                        ></a>
+                      </li>
+                      <li
+                        class="page-item"
+                        v-if="
+                          pagInasistencia.current_page <
+                          pagInasistencia.last_page
+                        "
+                      >
+                        <a
+                          class="page-link"
+                          href="#"
+                          @click.prevent="
+                            cambiarPaginaInasistencia(
+                              pagInasistencia.current_page + 1,
+                              buInasistencia,
+                              criInasistencia
+                            )
+                          "
+                          >Sig</a
+                        >
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card">
+                <div class="card-header">Contratos a vencerse</div>
+                <div class="card-body">
+                  <div class="form-group row">
+                    <div class="col">
+                      <div class="input-group">
+                        <select
+                          class="form-control col"
+                          v-model="criDiaNoLaboral"
+                        >
+                          <option value="dia">Dia</option>
+                        </select>
+                        <input
+                          type="text"
+                          v-model="buDiaNoLaboral"
+                          @keyup.enter="
+                            listarDiaNoLaboral(
+                              1,
+                              buDiaNoLaboral,
+                              criDiaNoLaboral
+                            )
+                          "
+                          class="form-control"
+                          placeholder="Buscar dia"
+                        />
+                        <button
+                          type="submit"
+                          @click="
+                            listarDiaNoLaboral(
+                              1,
+                              buDiaNoLaboral,
+                              criDiaNoLaboral
+                            )
+                          "
+                          class="btn btn-primary"
+                        >
+                          <i class="fa fa-search"></i> Buscar
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <table class="table table-bordered table-striped table-sm">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Dia</th>
+                        <th>Empresa(id)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        v-for="diaNoLaboral in arrayDiaNoLaboral"
+                        :key="diaNoLaboral.id"
+                      >
+                        <td v-text="diaNoLaboral.id"></td>
+                        <td v-text="diaNoLaboral.dia2"></td>
+                        <td
+                          v-text="
+                            diaNoLaboral.nombreEmpresa +
+                            ' ( ' +
+                            diaNoLaboral.empresa_id +
+                            ' )'
+                          "
+                        ></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <nav>
+                    <ul class="pagination">
+                      <li
+                        class="page-item"
+                        v-if="pagDiaNoLaboral.current_page > 1"
+                      >
+                        <a
+                          class="page-link"
+                          href="#"
+                          @click.prevent="
+                            cambiarPaginaDiaNoLaboral(
+                              pagDiaNoLaboral.current_page - 1,
+                              buDiaNoLaboral,
+                              criDiaNoLaboral
+                            )
+                          "
+                          >Ant</a
+                        >
+                      </li>
+                      <li
+                        class="page-item"
+                        v-for="page in pagesNumberDiaNoLaboral"
+                        :key="page"
+                        :class="[page == isActivedDiaNoLaboral ? 'active' : '']"
+                      >
+                        <a
+                          class="page-link"
+                          href="#"
+                          @click.prevent="
+                            cambiarPaginaDiaNoLaboral(
+                              page,
+                              buDiaNoLaboral,
+                              criDiaNoLaboral
+                            )
+                          "
+                          v-text="page"
+                        ></a>
+                      </li>
+                      <li
+                        class="page-item"
+                        v-if="
+                          pagDiaNoLaboral.current_page <
+                          pagDiaNoLaboral.last_page
+                        "
+                      >
+                        <a
+                          class="page-link"
+                          href="#"
+                          @click.prevent="
+                            cambiarPaginaDiaNoLaboral(
+                              pagDiaNoLaboral.current_page + 1,
+                              buDiaNoLaboral,
+                              criDiaNoLaboral
+                            )
+                          "
+                          >Sig</a
+                        >
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="card">
+                <div class="card-header">Eventos Proximos</div>
+                <div class="card-body">
+                  <div class="form-group row">
+                    <div class="col">
+                      <div class="input-group">
+                        <select class="form-control col" v-model="criEvento">
                           <option value="titulo">Título</option>
                         </select>
                         <input
@@ -53,7 +319,14 @@
                         <td v-text="evento.id"></td>
                         <td v-text="evento.titulo"></td>
                         <td v-text="evento.fecha2"></td>
-                        <td v-text="evento.nombreDepartamento + ' ( '+evento.departamento_id +' )'"></td>
+                        <td
+                          v-text="
+                            evento.nombreDepartamento +
+                            ' ( ' +
+                            evento.departamento_id +
+                            ' )'
+                          "
+                        ></td>
                       </tr>
                     </tbody>
                   </table>
@@ -82,7 +355,9 @@
                         <a
                           class="page-link"
                           href="#"
-                          @click.prevent="cambiarPaginaEvento(page, buEvento, criEvento)"
+                          @click.prevent="
+                            cambiarPaginaEvento(page, buEvento, criEvento)
+                          "
                           v-text="page"
                         ></a>
                       </li>
@@ -110,105 +385,6 @@
             </div>
             <div class="col">
               <div class="card">
-                <div class="card-header">Solicitudes de Inasistencias</div>
-                <div class="card-body">
-                  <div class="form-group row">
-                    <div class="col">
-                      <div class="input-group">
-                        <select
-                          class="form-control col"
-                          v-model="criInasistencia"
-                        >
-                          <option value="desde">Desde</option>
-                        </select>
-                        <input
-                          type="text"
-                          v-model="buInasistencia"
-                          @keyup.enter="listarInasistencia(1, buInasistencia, criInasistencia)"
-                          class="form-control"
-                          placeholder="Texto en Solicitud de Inasistencia"
-                        />
-                        <button
-                          type="submit"
-                          @click="listarInasistencia(1, buInasistencia, criInasistencia)"
-                          class="btn btn-primary"
-                        >
-                          <i class="fa fa-search"></i> Buscar
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <table class="table table-bordered table-striped table-sm">
-                    <thead>
-                      <tr>
-                        <th>ID</th>
-                        <th>Desde</th>
-                        <th>Hasta</th>
-                        <th>Empleado(id)</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr v-for="inasistencia in arrayInasistencia" :key="inasistencia.id">
-                        <td v-text="inasistencia.id"></td>
-                        <td v-text="inasistencia.desde2"></td>
-                        <td v-text="inasistencia.hasta2"></td>
-                        <td v-text="inasistencia.nombreEmpleado +' '+inasistencia.apellidoEmpleado+ ' ( '+inasistencia.empleado_id +' )'"></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <nav>
-                    <ul class="pagination">
-                      <li class="page-item" v-if="pagInasistencia.current_page > 1">
-                        <a
-                          class="page-link"
-                          href="#"
-                          @click.prevent="
-                            cambiarPaginaInasistencia(
-                              pagInasistencia.current_page - 1,
-                              buInasistencia,
-                              criInasistencia
-                            )
-                          "
-                          >Ant</a
-                        >
-                      </li>
-                      <li
-                        class="page-item"
-                        v-for="page in pagesNumberInasistencia"
-                        :key="page"
-                        :class="[page == isActivedInasistencia ? 'active' : '']"
-                      >
-                        <a
-                          class="page-link"
-                          href="#"
-                          @click.prevent="cambiarPaginaInasistencia(page, buInasistencia, criInasistencia)"
-                          v-text="page"
-                        ></a>
-                      </li>
-                      <li
-                        class="page-item"
-                        v-if="pagInasistencia.current_page < pagInasistencia.last_page"
-                      >
-                        <a
-                          class="page-link"
-                          href="#"
-                          @click.prevent="
-                            cambiarPaginaInasistencia(
-                              pagInasistencia.current_page + 1,
-                              buInasistencia,
-                              criInasistencia
-                            )
-                          "
-                          >Sig</a
-                        >
-                      </li>
-                    </ul>
-                  </nav>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
                 <div class="card-header">Dias No Laborales Proximos</div>
                 <div class="card-body">
                   <div class="form-group row">
@@ -216,19 +392,32 @@
                       <div class="input-group">
                         <select
                           class="form-control col"
-                          v-model="criDiaNoLaboral">
+                          v-model="criDiaNoLaboral"
+                        >
                           <option value="dia">Dia</option>
                         </select>
                         <input
                           type="text"
                           v-model="buDiaNoLaboral"
-                          @keyup.enter="listarDiaNoLaboral(1, buDiaNoLaboral, criDiaNoLaboral)"
+                          @keyup.enter="
+                            listarDiaNoLaboral(
+                              1,
+                              buDiaNoLaboral,
+                              criDiaNoLaboral
+                            )
+                          "
                           class="form-control"
                           placeholder="Buscar dia"
                         />
                         <button
                           type="submit"
-                          @click="listarDiaNoLaboral(1, buDiaNoLaboral, criDiaNoLaboral)"
+                          @click="
+                            listarDiaNoLaboral(
+                              1,
+                              buDiaNoLaboral,
+                              criDiaNoLaboral
+                            )
+                          "
                           class="btn btn-primary"
                         >
                           <i class="fa fa-search"></i> Buscar
@@ -245,16 +434,29 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr v-for="diaNoLaboral in arrayDiaNoLaboral" :key="diaNoLaboral.id">
+                      <tr
+                        v-for="diaNoLaboral in arrayDiaNoLaboral"
+                        :key="diaNoLaboral.id"
+                      >
                         <td v-text="diaNoLaboral.id"></td>
                         <td v-text="diaNoLaboral.dia2"></td>
-                        <td v-text="diaNoLaboral.nombreEmpresa +' ( '+diaNoLaboral.empresa_id +' )'"></td>
+                        <td
+                          v-text="
+                            diaNoLaboral.nombreEmpresa +
+                            ' ( ' +
+                            diaNoLaboral.empresa_id +
+                            ' )'
+                          "
+                        ></td>
                       </tr>
                     </tbody>
                   </table>
                   <nav>
                     <ul class="pagination">
-                      <li class="page-item" v-if="pagDiaNoLaboral.current_page > 1">
+                      <li
+                        class="page-item"
+                        v-if="pagDiaNoLaboral.current_page > 1"
+                      >
                         <a
                           class="page-link"
                           href="#"
@@ -277,13 +479,22 @@
                         <a
                           class="page-link"
                           href="#"
-                          @click.prevent="cambiarPaginaDiaNoLaboral(page, buDiaNoLaboral, criDiaNoLaboral)"
+                          @click.prevent="
+                            cambiarPaginaDiaNoLaboral(
+                              page,
+                              buDiaNoLaboral,
+                              criDiaNoLaboral
+                            )
+                          "
                           v-text="page"
                         ></a>
                       </li>
                       <li
                         class="page-item"
-                        v-if="pagDiaNoLaboral.current_page < pagDiaNoLaboral.last_page"
+                        v-if="
+                          pagDiaNoLaboral.current_page <
+                          pagDiaNoLaboral.last_page
+                        "
                       >
                         <a
                           class="page-link"
@@ -303,12 +514,13 @@
                 </div>
               </div>
             </div>
+            
           </div>
         </div>
       </div>
 
       <!-- Ejemplo de tabla Listado -->
-    
+
       <!-- Fin ejemplo de tabla Listado -->
     </div>
     <!--Inicio del modal agregar/actualizar-->
@@ -360,25 +572,23 @@
                 <label class="col-md-3 form-control-label" for="text-input"
                   >Empleado :</label
                 >
-                <div class="col-md-3"> 
-                    <input
+                <div class="col-md-3">
+                  <input
                     type="text"
                     v-model="apellido"
                     class="form-control"
                     placeholder="Nombre del departamento"
                     disabled
                   />
-                
                 </div>
-                <div class="col-md-3"> 
-                    <input
+                <div class="col-md-3">
+                  <input
                     type="text"
                     v-model="nombre"
                     class="form-control"
                     placeholder="Nombre del departamento"
                     disabled
                   />
-                
                 </div>
               </div>
               <div class="form-group row">
@@ -398,8 +608,8 @@
 
               <div class="form-group row">
                 <label class="col-md-3 form-control-label" for="text-input"
-                  >Direccion </label
-                >
+                  >Direccion
+                </label>
                 <div class="col-md-9">
                   <input
                     type="text"
@@ -412,10 +622,10 @@
 
               <div class="form-group row">
                 <label class="col-md-3 form-control-label" for="text-input"
-                  >Fecha Nacimiento </label
-                >
+                  >Fecha Nacimiento
+                </label>
                 <div class="col-md-9">
-                 <input
+                  <input
                     type="date"
                     class="form-control"
                     v-model="fechaNacimiento"
@@ -424,10 +634,10 @@
               </div>
               <div class="form-group row">
                 <label class="col-md-3 form-control-label" for="text-input"
-                  >Fecha Ingeso </label
-                >
+                  >Fecha Ingeso
+                </label>
                 <div class="col-md-9">
-                 <input
+                  <input
                     type="date"
                     class="form-control"
                     v-model="fechaIngreso"
@@ -436,41 +646,41 @@
               </div>
               <div class="form-group row">
                 <label class="col-md-3 form-control-label" for="text-input"
-                  >Competencias </label
-                >
+                  >Competencias
+                </label>
                 <div class="col-md-9">
                   <div
                     v-for="comp in competencias"
                     :key="comp"
                     v-text="comp"
-                  > </div>
+                  ></div>
                 </div>
               </div>
 
               <div class="form-group row">
                 <label class="col-md-3 form-control-label" for="text-input"
-                  >Contacto Emergencia </label
-                >
+                  >Contacto Emergencia
+                </label>
                 <div class="col-md-9">
-                 <input
+                  <input
                     type="date"
                     class="form-control"
                     v-model="contactoEmergencia"
                   />
                 </div>
-                </div>
+              </div>
               <div class="form-group row">
                 <label class="col-md-3 form-control-label" for="text-input"
-                  >Personas a cargo </label
-                >
+                  >Personas a cargo
+                </label>
                 <div class="col-md-9">
-                 <div
+                  <div
                     v-for="dependiente in personaDependientes"
                     :key="dependiente"
                     v-text="dependiente"
-                  > </div>
+                  ></div>
                 </div>
-                </div>
+              </div>
 
               <div v-show="errorComponente" class="form-group row div-error">
                 <div class="text-center text-error">
@@ -482,10 +692,7 @@
                 </div>
               </div>
             </form>
-              </div>
-
-
-         
+          </div>
 
           <div class="modal-footer">
             <button
@@ -510,11 +717,11 @@
               Desaprobar
             </button>
           </div>
-           </div>
         </div>
-        <!-- /.modal-content -->
       </div>
-      <!-- /.modal-dialog -->
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
     <!--Fin del modal-->
   </main>
 </template>
@@ -534,13 +741,13 @@ export default {
       nombre: "",
       descripcion: "",
       empresa_id: 0,
-    
+
       modal: 0,
       tituloModal: "",
       tipoAccion: 0,
       errorComponente: 0,
       errorMostrarMsjForm: [],
-      
+
       pagEvento: {
         total: 0,
         current_page: 0,
@@ -653,12 +860,17 @@ export default {
       }
       return pagesArray;
     },
-    },
+  },
   methods: {
     listarEvento(page, buEvento, criEvento) {
       let me = this;
       var url =
-        "/evento/alarma?page=" + page + "&buscar=" + buEvento + "&criterio=" + criEvento;
+        "/evento/alarma?page=" +
+        page +
+        "&buscar=" +
+        buEvento +
+        "&criterio=" +
+        criEvento;
       axios
         .get(url)
         .then(function (response) {
@@ -680,7 +892,12 @@ export default {
     listarInasistencia(page, buInasistencia, criInasistencia) {
       let me = this;
       var url =
-        "/solicitudInasistencia/alarma?page=" + page + "&buscar=" + buInasistencia + "&criterio=" + criInasistencia;
+        "/solicitudInasistencia/alarma?page=" +
+        page +
+        "&buscar=" +
+        buInasistencia +
+        "&criterio=" +
+        criInasistencia;
       axios
         .get(url)
         .then(function (response) {
@@ -702,7 +919,12 @@ export default {
     listarDiaNoLaboral(page, buDiaNoLaboral, criDiaNoLaboral) {
       let me = this;
       var url =
-        "/diaNoLaboral/alarmaDiaNoLaboral?page=" + page + "&buscar=" + buDiaNoLaboral + "&criterio=" + criDiaNoLaboral;
+        "/diaNoLaboral/alarmaDiaNoLaboral?page=" +
+        page +
+        "&buscar=" +
+        buDiaNoLaboral +
+        "&criterio=" +
+        criDiaNoLaboral;
       axios
         .get(url)
         .then(function (response) {
@@ -730,7 +952,6 @@ export default {
       this.descripcion = "";
       this.empresa_id = 0;
     },
-
 
     abrirModal(modelo, accion, data = []) {
       switch (modelo) {

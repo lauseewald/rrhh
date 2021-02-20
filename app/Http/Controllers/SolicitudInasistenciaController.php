@@ -73,25 +73,21 @@ class SolicitudInasistenciaController extends Controller
  
         $buscar = $request->buscar;
         $criterio = $request->criterio;
-         
-        if ($buscar=='') {
-            $solicitudInasistencias = SolicitudInasistencia::join('empleados', 'empleados.id', '=', 'solicitudes_inasistencias.empleado_id')
-            ->join('incidencias', 'incidencias.id', '=', 'solicitudes_inasistencias.incidencia_id')
-            ->select('solicitudes_inasistencias.*','incidencias.nombre as nombreIncidencia','empleados.nombre as nombreEmpleado','empleados.apellido as apellidoEmpleado',
-            DB::raw("DATE_FORMAT(solicitudes_inasistencias.desde, '%d/%m/%Y') as desde2"),DB::raw("DATE_FORMAT(solicitudes_inasistencias.hasta, '%d/%m/%Y') as hasta2"))
-            ->where('desde','>',Carbon::now())
-            ->orderBy('desde','asc')
-            ->paginate(3);
-        } else {
-            $solicitudInasistencias = SolicitudInasistencia::join('empleados', 'empleados.id', '=', 'solicitudes_inasistencias.empleado_id')
-            ->join('incidencias', 'incidencias.id', '=', 'solicitudes_inasistencias.incidencia_id')
-            ->select('solicitudes_inasistencias.*','incidencias.nombre as nombreIncidencia','empleados.nombre as nombreEmpleado','empleados.apellido as apellidoEmpleado',
-            DB::raw("DATE_FORMAT(solicitudes_inasistencias.desde, '%d/%m/%Y') as desde2"),DB::raw("DATE_FORMAT(solicitudes_inasistencias.hasta, '%d/%m/%Y') as hasta2"))
-            ->where('desde','>',Carbon::now())
-            ->where('solicitudes_inasistencias.'.$criterio, 'like', '%'. $buscar . '%')
-            ->orderBy('desde','asc')
-            ->paginate(3);
+        $solicitudInasistencias = SolicitudInasistencia::join('empleados', 'empleados.id', '=', 'solicitudes_inasistencias.empleado_id')
+        ->join('incidencias', 'incidencias.id', '=', 'solicitudes_inasistencias.incidencia_id')
+        ->select('solicitudes_inasistencias.*','incidencias.nombre as nombreIncidencia','empleados.nombre as nombreEmpleado','empleados.apellido as apellidoEmpleado',
+        DB::raw("DATE_FORMAT(solicitudes_inasistencias.desde, '%d/%m/%Y') as desde2"),DB::raw("DATE_FORMAT(solicitudes_inasistencias.hasta, '%d/%m/%Y') as hasta2"));
+        
+        
+        
+        $solicitudInasistencias= $solicitudInasistencias->where('aprobado',null);
+       
+        if($buscar!=''){
+            $solicitudInasistencias= $solicitudInasistencias->where('solicitudes_inasistencias.'.$criterio, 'like', '%'. $buscar . '%');
         }
+        $solicitudInasistencias=$solicitudInasistencias->paginate(3);
+         
+
          
         return [
             'pagination' => [
