@@ -44,6 +44,8 @@ Route::put('/contrato/activar', 'ContratoController@activar');
 Route::get('/contrato/selectContrato', 'ContratoController@selectContrato');
 Route::get('/contrato/pdf', 'ContratoController@pdfContrato')->name('contrato_pdf');
 Route::post('/contrato/calculadorDias', 'ContratoController@calculadorDias');
+Route::get('/contrato/alarma', 'ContratoController@alarma');
+
 
 //Empresa
 Route::get('/empresa', 'EmpresaController@index');
