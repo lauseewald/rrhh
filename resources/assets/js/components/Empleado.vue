@@ -177,19 +177,19 @@
               </div>
 
               <div class="col-md-6">
-                <label for="">Nombre (*)</label>
+                <b><label>Nombre (*)</label></b>
                 <input type="text" class="form-control" v-model="nombre" />
               </div>
 
               <div class="col-md-6">
-                <div class="form-group">
-                  <label>Apellido (*)</label>
+               <div class="form-group">
+                   <b><label>Apellido (*)</label></b>
                   <input type="text" class="form-control" v-model="apellido" />
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label>Cuil (*)</label>
+                   <b><label>Cuil (*)</label> </b>
                   <input
                     type="text"
                     id="numero"
@@ -200,12 +200,13 @@
                   />
                 </div>
               </div>
-              <div class="col-md-9">
-                <label 
+              <div class="col-md-6">
+                <div class="form-group">
+                 <b><label 
                   >Estado Civil (*)</label
-                >
-                <div class="col-md-9">
-                  <select v-model="estadoCivil">
+                > </b>
+                
+                  <select v-model="estadoCivil"  class="form-control">
                   <option disabled value="">Estado Civil</option>
                   <option>Soltero</option>
                   <option>Casado</option>
@@ -217,13 +218,13 @@
               
               <div class="col-md-4">
                 <div class="form-group">
-                  <label>Dirección (*)</label>
+                   <b><label>Dirección (*)</label> </b>
                   <input type="text" class="form-control" v-model="direccion" />
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <div class="form-group">
-                  <label>Fecha de Nacimiento (*)</label>
+                   <b><label>Fecha de Nacimiento (*)</label> </b>
                   <input
                     type="date"
                     class="form-control"
@@ -231,15 +232,16 @@
                   />
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <div class="form-group">
-                  <label>Fecha de de Ingreso (*)</label>
+                   <b><label>Fecha de de Ingreso (*)</label> </b>
                   <input type="date" class="form-control" v-model="fechaAlta" />
                 </div>
               </div>
 
               <div class="col-md-9">
-                <label>Competencias</label>
+                <div class="form-group">
+                 <b><label>Competencias</label> </b>
 
                 <multiselect
                   v-model="competenciasId"
@@ -251,27 +253,28 @@
                 >
                 </multiselect>
               </div>
-              <br />
+              </div>
               <div class="col-md-9">
                 <div class="form-group">
-                  <label
+                   <b><label
                     for="data"
                     form
                     action="/data"
                     method="POST"
                     enctype="multipart/form-data"
-                    >Curriculum (*)
-                  </label>
-                  <input type="file" @change="getImage" id="data" name="data" />
-                  <a :href="curriculum" target="_blank">Ver</a>
+                    >Currículum (*)
+                  </label> </b>
+                  <input class="form-control" type="file" @change="getImage" id="data" name="data" />
+                  <b><a :href="curriculum" target="_blank">Ver</a></b>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="card-body">
                 <h4>Contacto de Emergencia</h4>
-                 <div class="form-group">
+                  <div class="col-md-4">
+                <div class="form-group">
               
                   <label>Nombre (*)</label>
-                    <div class="col-md-6">
+                    
                   <input
                     type="text"
                     class="form-control"
@@ -279,10 +282,11 @@
                   />
                 </div>
                 </div>
+                 <div class="col-md-4">
                 <div class="form-group">
                
                   <label>Telefono 1 (*)</label>
-                   <div class="col-md-6">
+                   
                   <input
                     type="text"
                     class="form-control"
@@ -292,10 +296,11 @@
                   />
                 </div>
                  </div>
-                  <div class="form-group">
+                   <div class="col-md-6">
+                <div class="form-group">
                 
                   <label>Telefono 2(*)</label>
-                  <div class="col-md-6">
+                 
                   <input
                     type="text"
                     class="form-control"
@@ -305,11 +310,12 @@
                   />
                    </div>
                 </div>
-                 <div class="form-group">
+                  <div class="col-md-6">
+                <div class="form-group">
                
                   
                     <label>Correo(*)</label>
-                     <div class="col-md-6">
+                     
                     <input
                       type="email"
                       class="form-control"
@@ -323,7 +329,7 @@
                   <button
                     @click="agregarDetalle()"
                     class="btn btn-success form-control btnagregar"
-                  >
+                  >Agregar Contacto
                     <i class="icon-plus"></i>
                   </button>
                 </div>

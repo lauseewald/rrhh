@@ -61646,6 +61646,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /*import vSelect from 'vue-select';*/
 
@@ -62546,9 +62552,7 @@ var render = function() {
                     _c("div", { staticClass: "col-md-9" }),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-md-6" }, [
-                      _c("label", { attrs: { for: "" } }, [
-                        _vm._v("Nombre (*)")
-                      ]),
+                      _vm._m(2),
                       _vm._v(" "),
                       _c("input", {
                         directives: [
@@ -62575,7 +62579,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", { staticClass: "col-md-6" }, [
                       _c("div", { staticClass: "form-group" }, [
-                        _c("label", [_vm._v("Apellido (*)")]),
+                        _vm._m(3),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -62603,7 +62607,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", { staticClass: "col-md-6" }, [
                       _c("div", { staticClass: "form-group" }, [
-                        _c("label", [_vm._v("Cuil (*)")]),
+                        _vm._m(4),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -62636,10 +62640,10 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "col-md-9" }, [
-                      _c("label", [_vm._v("Estado Civil (*)")]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-9" }, [
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("div", { staticClass: "form-group" }, [
+                        _vm._m(5),
+                        _vm._v(" "),
                         _c(
                           "select",
                           {
@@ -62651,6 +62655,7 @@ var render = function() {
                                 expression: "estadoCivil"
                               }
                             ],
+                            staticClass: "form-control",
                             on: {
                               change: function($event) {
                                 var $$selectedVal = Array.prototype.filter
@@ -62688,7 +62693,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", { staticClass: "col-md-4" }, [
                       _c("div", { staticClass: "form-group" }, [
-                        _c("label", [_vm._v("Dirección (*)")]),
+                        _vm._m(6),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -62714,9 +62719,9 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "col-md-6" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
                       _c("div", { staticClass: "form-group" }, [
-                        _c("label", [_vm._v("Fecha de Nacimiento (*)")]),
+                        _vm._m(7),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -62742,9 +62747,9 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "col-md-6" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
                       _c("div", { staticClass: "form-group" }, [
-                        _c("label", [_vm._v("Fecha de de Ingreso (*)")]),
+                        _vm._m(8),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -62770,70 +62775,63 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "col-md-9" },
-                      [
-                        _c("label", [_vm._v("Competencias")]),
-                        _vm._v(" "),
-                        _c("multiselect", {
-                          attrs: {
-                            options: _vm.arrayCompetencias,
-                            multiple: true,
-                            label: "nombre",
-                            "track-by": "id",
-                            placeholder: "Seleccione una o más competencias"
-                          },
-                          model: {
-                            value: _vm.competenciasId,
-                            callback: function($$v) {
-                              _vm.competenciasId = $$v
+                    _c("div", { staticClass: "col-md-9" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _vm._m(9),
+                          _vm._v(" "),
+                          _c("multiselect", {
+                            attrs: {
+                              options: _vm.arrayCompetencias,
+                              multiple: true,
+                              label: "nombre",
+                              "track-by": "id",
+                              placeholder: "Seleccione una o más competencias"
                             },
-                            expression: "competenciasId"
-                          }
-                        })
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c("br"),
+                            model: {
+                              value: _vm.competenciasId,
+                              callback: function($$v) {
+                                _vm.competenciasId = $$v
+                              },
+                              expression: "competenciasId"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-md-9" }, [
                       _c("div", { staticClass: "form-group" }, [
-                        _c(
-                          "label",
-                          {
-                            attrs: {
-                              for: "data",
-                              form: "",
-                              action: "/data",
-                              method: "POST",
-                              enctype: "multipart/form-data"
-                            }
-                          },
-                          [_vm._v("Curriculum (*)\n                ")]
-                        ),
+                        _vm._m(10),
                         _vm._v(" "),
                         _c("input", {
+                          staticClass: "form-control",
                           attrs: { type: "file", id: "data", name: "data" },
                           on: { change: _vm.getImage }
                         }),
                         _vm._v(" "),
-                        _c(
-                          "a",
-                          { attrs: { href: _vm.curriculum, target: "_blank" } },
-                          [_vm._v("Ver")]
-                        )
+                        _c("b", [
+                          _c(
+                            "a",
+                            {
+                              attrs: { href: _vm.curriculum, target: "_blank" }
+                            },
+                            [_vm._v("Ver")]
+                          )
+                        ])
                       ])
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "col-md-6" }, [
+                    _c("div", { staticClass: "card-body" }, [
                       _c("h4", [_vm._v("Contacto de Emergencia")]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("label", [_vm._v("Nombre (*)")]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-md-6" }, [
+                      _c("div", { staticClass: "col-md-4" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", [_vm._v("Nombre (*)")]),
+                          _vm._v(" "),
                           _c("input", {
                             directives: [
                               {
@@ -62858,10 +62856,10 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("label", [_vm._v("Telefono 1 (*)")]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-md-6" }, [
+                      _c("div", { staticClass: "col-md-4" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", [_vm._v("Telefono 1 (*)")]),
+                          _vm._v(" "),
                           _c("input", {
                             directives: [
                               {
@@ -62890,10 +62888,10 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("label", [_vm._v("Telefono 2(*)")]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-md-6" }, [
+                      _c("div", { staticClass: "col-md-6" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", [_vm._v("Telefono 2(*)")]),
+                          _vm._v(" "),
                           _c("input", {
                             directives: [
                               {
@@ -62922,10 +62920,10 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("label", [_vm._v("Correo(*)")]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-md-6" }, [
+                      _c("div", { staticClass: "col-md-6" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", [_vm._v("Correo(*)")]),
+                          _vm._v(" "),
                           _c("input", {
                             directives: [
                               {
@@ -62962,7 +62960,10 @@ var render = function() {
                               }
                             }
                           },
-                          [_c("i", { staticClass: "icon-plus" })]
+                          [
+                            _vm._v("Agregar Contacto\n                  "),
+                            _c("i", { staticClass: "icon-plus" })
+                          ]
                         )
                       ])
                     ]),
@@ -63012,7 +63013,7 @@ var render = function() {
                                   "table table-bordered table-striped table-sm"
                               },
                               [
-                                _vm._m(2),
+                                _vm._m(11),
                                 _vm._v(" "),
                                 _vm.arrayDetalle.length
                                   ? _c(
@@ -63080,7 +63081,7 @@ var render = function() {
                                       }),
                                       0
                                     )
-                                  : _c("tbody", [_vm._m(3)])
+                                  : _c("tbody", [_vm._m(12)])
                               ]
                             )
                           ]
@@ -63182,9 +63183,9 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(4),
+                    _vm._m(13),
                     _vm._v(" "),
-                    _vm._m(5)
+                    _vm._m(14)
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group row" }, [
@@ -63244,6 +63245,74 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Opciones")])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("b", [_c("label", [_vm._v("Nombre (*)")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("b", [_c("label", [_vm._v("Apellido (*)")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("b", [_c("label", [_vm._v("Cuil (*)")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("b", [_c("label", [_vm._v("Estado Civil (*)")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("b", [_c("label", [_vm._v("Dirección (*)")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("b", [_c("label", [_vm._v("Fecha de Nacimiento (*)")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("b", [_c("label", [_vm._v("Fecha de de Ingreso (*)")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("b", [_c("label", [_vm._v("Competencias")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("b", [
+      _c(
+        "label",
+        {
+          attrs: {
+            for: "data",
+            form: "",
+            action: "/data",
+            method: "POST",
+            enctype: "multipart/form-data"
+          }
+        },
+        [_vm._v("Currículum (*)\n                ")]
+      )
     ])
   },
   function() {
