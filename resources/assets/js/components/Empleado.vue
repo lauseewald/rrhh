@@ -55,7 +55,6 @@
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Dirección</th>
-                    <th>Fecha de Ingreso</th>
                     <th>Estado</th>
                     <th>Opciones</th>
                   </tr>
@@ -66,7 +65,6 @@
                     <td v-text="empleado.nombre"></td>
                     <td v-text="empleado.apellido"></td>
                     <td v-text="empleado.direccion"></td>
-                    <td v-text="empleado.fechaAlta"></td>
                     <td>
                       <div v-if="empleado.condicion">
                         <span class="badge badge-success">Activo</span>
@@ -175,7 +173,9 @@
                                     </v-select>
                                 </div> -->
               </div>
-
+              <div  class="col-md-12">
+                <h4>Datos del empleado</h4>
+                 </div>
               <div class="col-md-6">
                 <b><label>Nombre (*)</label></b>
                 <input type="text" class="form-control" v-model="nombre" />
@@ -208,10 +208,10 @@
                 
                   <select v-model="estadoCivil"  class="form-control">
                   <option disabled value="">Estado Civil</option>
-                  <option>Soltero</option>
-                  <option>Casado</option>
-                  <option>Divorciado</option>
-                  <option>Viudo</option>
+                  <option>Soltero/a</option>
+                  <option>Casado/a</option>
+                  <option>Divorciado/a</option>
+                  <option>Viudo/a</option>
                 </select>
                 </div>
               </div>
@@ -229,6 +229,7 @@
                     type="date"
                     class="form-control"
                     v-model="fechaNacimiento"
+                    name="fechaNacimiento" id="fechaNacimiento" v-on:blur="validarNacimiento"
                   />
                 </div>
               </div>
@@ -268,9 +269,10 @@
                   <b><a :href="curriculum" target="_blank">Ver</a></b>
                 </div>
               </div>
-              <div class="card-body">
+              <div  class="col-md-12">
                 <h4>Contacto de Emergencia</h4>
-                  <div class="col-md-4">
+                 </div>
+                  <div class="col-md-6">
                 <div class="form-group">
               
                   <label>Nombre (*)</label>
@@ -282,7 +284,7 @@
                   />
                 </div>
                 </div>
-                 <div class="col-md-4">
+                 <div class="col-md-6">
                 <div class="form-group">
                
                   <label>Telefono 1 (*)</label>
@@ -323,17 +325,19 @@
                       maxlength="100"
                     />
                   </div>
-                  
+                
                 </div>
                 <div class="col-md-4">
-                  <button
+                  <div class="form-group">
+                  <button 
                     @click="agregarDetalle()"
                     class="btn btn-success form-control btnagregar"
                   >Agregar Contacto
                     <i class="icon-plus"></i>
                   </button>
                 </div>
-              </div>
+                 </div>
+             
 
               <div class="col-md-12">
                 <div v-show="errorEmpleado" class="form-group row div-error">
@@ -346,6 +350,7 @@
                   </div>
                 </div>
               </div>
+              <br>
               <div class="col-md-9">
                 <div class="form-group">
                   <div class="table-responsive col-md-9">
@@ -636,7 +641,7 @@ export default {
       fileReader.onload = (event) => {
         this.curriculum = event.target.result;
       };
-      console.log(this.curriculum);
+      console.log(this.event.target.files[0]);
     },
 
     // listarIncidencia (search,loading){
@@ -1061,8 +1066,49 @@ export default {
           console.log(error);
         });
     },
+    
+    validarNacimiento(){
+      var myDate = $('#fechaNacimiento');
+    var today = new Date();
+    var hoy = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1;
+    var yyyy = today.getFullYear();
+    if(dd < 10)
+      dd = '0' + dd;
+
+    if(mm < 10)
+      mm = '0' + mm;
+      var cumpleanos = new Date(this.fechaNacimiento);
+    var edad = hoy.getFullYear() - cumpleanos.getFullYear();
+    var m = hoy.getMonth() - cumpleanos.getMonth();
+    today = yyyy + '-' + mm + '-' + dd;
+    myDate.attr("max", today);
+  
+
+    if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) {
+        edad--;
+    }
+    console.log(edad);
+      var date = myDate.val();
+      if(Date.parse(date)){
+        if(date > today){
+          toastr.error("Te agradecería si nos decis como viajar en el tiempo :)", "Error", {
+            timeOut: 5000,
+          });
+          myDate.val("");
+        }
+        if(edad<18){
+          toastr.error("El empleado no puede ser menor de edad", "Error", {
+            timeOut: 5000,
+          });
+          myDate.val("");
+        }
+      }
+    },
   },
   mounted() {
+    
     this.listarEmpleado(1, this.buscar, this.criterio);
     this.selectIncidencia();
     this.selectCompetencia();

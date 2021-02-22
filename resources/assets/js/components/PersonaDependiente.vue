@@ -14,7 +14,7 @@
             @click="abrirModal('personaDependiente', 'registrar')"
             class="btn btn-secondary"
           >
-            <i class="icon-plus"></i>&nbsp;Nuevo
+            <i class="icon-plus"></i>&nbsp;Nueva
           </button>
         </div>
         <div class="card-body">
@@ -235,14 +235,15 @@
                   >Relacion (*)</label
                 >
                 <div class="col-md-9">
-                  <input
-                    type="text"
-                    v-model="relacion"
-                    class="form-control"
-                    placeholder="Relacion de la persona dependiente"
-                  />
+                  <select  v-model="relacion"  class="form-control">
+                  <option disabled value="">Relación de la persona dependiente</option>
+                  <option>Hijo/a</option>
+                  <option>Esposo/a</option>
+                  <option>Hermano/a</option>
+                </select>
                 </div>
               </div>
+                
               <div class="form-group row">
                 <label class="col-md-3 form-control-label" for="text-input"
                   >Necesidad (*)</label
@@ -259,7 +260,7 @@
 
               <div class="form-group row">
                 <label class="col-md-3 form-control-label" for="text-input"
-                  >Empleados (*)</label
+                  >Empleado (*)</label
                 >
                 <div class="col-md-9">
                   <select class="form-control" v-model="empleado_id">
@@ -577,7 +578,7 @@ import toastr from 'toastr';
                             case 'registrar':
                             {
                                 this.modal = 1;
-                                this.tituloModal = 'Registrar personaDependiente';
+                                this.tituloModal = 'Registrar persona dependiente';
                                 this.nombre='';
                                 this.apellido='';
                                 this.relacion='';
@@ -590,7 +591,7 @@ import toastr from 'toastr';
                             case 'actualizar':
                             {
                                 this.modal=1;
-                                this.tituloModal='Actualizar personaDependiente';
+                                this.tituloModal='Actualizar persona dependiente';
                                 this.tipoAccion=2;
                                 this._id=data['id'];
                                 this.nombre = data['nombre'];

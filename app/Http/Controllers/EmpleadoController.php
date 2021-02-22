@@ -9,6 +9,7 @@ use App\ContactoEmergencia;
 use Exception;
 use Carbon\Carbon; 
 use Illuminate\Support\Facades\DB;
+//use Illuminate\Support\Facades\Storage;
 use PDOException;
 
 class EmpleadoController extends Controller
@@ -76,20 +77,22 @@ class EmpleadoController extends Controller
             
                 try{
                     if (!$request->ajax()) return redirect('/');
-                    $fileName='';
-                    if($request->hasFile($request->curriculum)){
 
+                    //if($request->hasFile($request->curriculum)){
+                        $fileName='';
                         $exploded = explode(',', $request->curriculum);
                         $decoded = base64_decode($exploded[1]);
-                        if(str_contains($exploded[0], 'pdf'))
-                            $extension = 'pdf';
+                        if(str_contains($exploded[0], 'jpeg'))
+                            $extension = 'jpg';
                         else
-                            $extension = 'pdf';
+                            $extension = 'png';
                         $fileName = str_random().'.'.$extension;
                         $path = public_path().'/'.$fileName;
                         file_put_contents($path, $decoded);
-                    }
-                   
+                    //}
+                   //$fileName = $request->file('curriculum')->store('public');
+                   //$url = Storage::url($fileName);
+                  
 
                     $empleado = new Empleado();
                     $empleado->nombre = $request->nombre;
@@ -118,13 +121,14 @@ class EmpleadoController extends Controller
                         $contacto = new ContactoEmergencia();
                         $contacto->empleado_id = $empleado->id;
                         $contacto->nombre = $det['nombre'];
-                        $contacto->telefono1 = $det['tel1'];
-                        $contacto->telefono2 = $det['tel2'];
-                        $contacto->correo = "este es un correo";
+                        $contacto->telefono1 = $det['telefono1'];
+                        $contacto->telefono2 = $det['telefono2'];
+                        $contacto->correo = $det['correo'];
                         $contacto->save();
                     }       
-                } catch (Exception $e){
+                } catch (PDOException $e){
                     //return redirect()->withErrors('Error');
+                    return 'error' + $e;
                 }
                
     }

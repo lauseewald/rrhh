@@ -10,7 +10,7 @@
                     <div class="card-header">
                         <i class="fa fa-align-justify"></i> Incidencias
                         <button type="button" @click="abrirModal('incidencia','registrar')" class="btn btn-secondary">
-                            <i class="icon-plus"></i>&nbsp;Nuevo
+                            <i class="icon-plus"></i>&nbsp;Nueva
                         </button>
                     </div>
                     <div class="card-body">
