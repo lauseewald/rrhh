@@ -200,7 +200,9 @@
                     <thead>
                       <tr>
                         <th>ID</th>
-                        <th>Nombre</th>
+                        <th>Empleado</th>
+                        <th>Inicio Contrato</th>
+                        <th>Fin Contrato</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -209,7 +211,9 @@
                         :key="contratito.id"
                       >
                         <td v-text="contratito.id"></td>
-                        <td v-text="contratito.nombre"></td>
+                        <td v-text="contratito.nombreEmpleado +' '+contratito.apellidoEmpleado+' ('+contratito.empleado_id+')'"></td>
+                        <td v-text="contratito.inicioLaboral2"></td>
+                        <td v-text="contratito.finLaboral2"></td>
                       </tr>
                     </tbody>
                   </table>
@@ -742,7 +746,7 @@ export default {
       buInasistencia: "",
       criDiaNoLaboral: "dia",
       buDiaNoLaboral: "",
-      criContrato: "sincontrato",
+      criContrato: "avencer",
       buContrato: "",
     };
   },

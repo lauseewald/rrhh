@@ -85432,6 +85432,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -85499,7 +85503,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       buInasistencia: "",
       criDiaNoLaboral: "dia",
       buDiaNoLaboral: "",
-      criContrato: "sincontrato",
+      criContrato: "avencer",
       buContrato: ""
     };
   },
@@ -86255,7 +86259,26 @@ var render = function() {
                             _vm._v(" "),
                             _c("td", {
                               domProps: {
-                                textContent: _vm._s(contratito.nombre)
+                                textContent: _vm._s(
+                                  contratito.nombreEmpleado +
+                                    " " +
+                                    contratito.apellidoEmpleado +
+                                    " (" +
+                                    contratito.empleado_id +
+                                    ")"
+                                )
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("td", {
+                              domProps: {
+                                textContent: _vm._s(contratito.inicioLaboral2)
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("td", {
+                              domProps: {
+                                textContent: _vm._s(contratito.finLaboral2)
                               }
                             })
                           ])
@@ -87193,7 +87216,11 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("ID")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Nombre")])
+        _c("th", [_vm._v("Empleado")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Inicio Contrato")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Fin Contrato")])
       ])
     ])
   },

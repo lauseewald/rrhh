@@ -45,7 +45,7 @@ class ContratoController extends Controller
             } elseif ($criterio =='desactivado') {
                 $contratos->where('contratos.condicion', 0);
             }elseif ($criterio =='vigente') {//contrato en curso
-                $contratos->where('contratos.inicioLaboral','<=', Carbon::now()->format('Y-m-d'))->where('contratos.finLaboral','>=', Carbon::now()->format('Y-m-d'));
+                $contratos->where('contratos.actual',1);
             } elseif ($criterio =='terminado') {
                 $contratos->where('contratos.finLaboral','<', Carbon::now());
             }
@@ -104,6 +104,7 @@ class ContratoController extends Controller
             //********************************** */
             $fechaEmision = Carbon::parse($request->input('inicioLaboral'));
             $fechaExpiracion = Carbon::parse($request->input('finLaboral'));
+               
             
             $cantidadDiasRealTrabajo = $fechaExpiracion->diffInDays($fechaEmision)+ 1;
             //cada 7 dias 1 no es Habil y sin contar los feriados
@@ -133,6 +134,13 @@ class ContratoController extends Controller
              $path = public_path().'/'.$fileName;
              file_put_contents($path, $decoded);
 
+            $empleado    = Empleado::find($request->idempleado);
+            $contratoViejo=$empleado->contratos->where('actual',1)->first();
+            if($contratoViejo){
+
+                $contratoViejo->actual=0;
+                $contratoViejo->update();
+            }
 
             $contrato = new Contrato();
             $contrato->nombre = $request->nombre;
@@ -162,12 +170,13 @@ class ContratoController extends Controller
         if (!$request->ajax()) {
             return redirect('/');
         }
- 
+        
+
         $buscar = $request->buscar;
         $criterio = $request->criterio;
         
-        $contratos = Empleado::join('contratos', 'empleados.id', '=', 'contratos.empleado_id');
-        
+        $contratos = Contrato::join('empleados', 'empleados.id', '=', 'contratos.empleado_id')->where('actual',1);
+
 
         if ($criterio =='sincontrato') {   
             $contratos =  $contratos->where('contratos.finLaboral','<',Carbon::now());
@@ -175,18 +184,20 @@ class ContratoController extends Controller
             // $contratos =  $contratos->where('contratos.finLaboral','>',Carbon::now())
             // ->where('contratos.finLaboral','<',Carbon::now()->addMonth());
             $contratos =  $contratos->where('contratos.finLaboral','>=',Carbon::now())
-            ->where('contratos.finLaboral','<',Carbon::now()->addMonth());
+            ->where('contratos.finLaboral','<',Carbon::now()->addMonth()->format('Y-m-d'));
         }elseif ($buscar!=''){
-            $contratos =  $contratos->where('contratos.finLaboral','<',Carbon::now()->addMonth());
-            $contratos= $contratos->where('empleados.'.$criterio, 'like', '%'. $buscar . '%');
+            $contratos =  $contratos->where('contratos.finLaboral','>=',Carbon::now())
+            ->where('contratos.finLaboral','<',Carbon::now()->addMonth()->format('Y-m-d'));
+            $contratos= $contratos->where('contratos.'.$criterio, 'like', '%'. $buscar . '%');
         }      
         // $contratos=$contratos->select('empleados.*',
         // DB::raw("DATE_FORMAT(contratos.finLaboral, '%d/%m/%Y') as finLaboral2"),
         // DB::raw("DATE_FORMAT(contratos.inicioLaboral, '%d/%m/%Y') as inicioLaboral2"))->paginate(3);
-        $contratos=$contratos->select('empleados.*')->groupBy('empleados.id')->paginate(3);
+        // $contratos=$contratos->select('empleados.*')->groupBy('empleados.id')->paginate(3);
+        $contratos=$contratos->select('contratos.*',DB::raw("DATE_FORMAT(contratos.inicioLaboral, '%d/%m/%Y') as inicioLaboral2"),
+        DB::raw("DATE_FORMAT(contratos.finLaboral, '%d/%m/%Y') as finLaboral2"),'empleados.nombre as nombreEmpleado','empleados.apellido as apellidoEmpleado')->paginate(3);
          
 
-         
         return [
             'pagination' => [
                 'total'        => $contratos->total(),
@@ -291,6 +302,15 @@ class ContratoController extends Controller
            
 
             $contrato = Contrato::findOrFail($request->id);
+
+            $empleado    = Empleado::find($request->idempleado);
+            $contratoViejo=$empleado->contratos->where('actual',1)->first();
+            if($contratoViejo){
+
+                $contratoViejo->actual=0;
+                $contratoViejo->update();
+            }
+
             if($request->contrato){
                 $exploded = explode(',', $request->contrato);
                 $decoded = base64_decode($exploded[1]);
@@ -304,6 +324,7 @@ class ContratoController extends Controller
             }else{
                 $fileName= $contrato->contrato;
             }
+            
             $contrato->nombre = $request->nombre;
             $contrato->nombre = $request->nombre;
             $contrato->puesto_id=$request->idpuesto;
@@ -387,7 +408,7 @@ class ContratoController extends Controller
             } elseif ($criterio =='desactivado') {
                 $contratos->where('contratos.condicion', 0);
             }elseif ($criterio =='vigente') {//contrato en curso
-                $contratos->where('contratos.inicioLaboral','<=', Carbon::now()->format('Y-m-d'))->where('contratos.finLaboral','>=', Carbon::now()->format('Y-m-d'));
+                $contratos->where('contratos.actual',1);
             } elseif ($criterio =='terminado') {
                 $contratos->where('contratos.finLaboral','<', Carbon::now());
             }

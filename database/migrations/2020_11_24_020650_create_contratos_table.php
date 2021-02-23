@@ -23,6 +23,8 @@ class CreateContratosTable extends Migration
             $table->integer('cantidadHorasDiarias');
             $table->string('contrato');
             $table->float('salario');
+            //si es el cotrato actual
+            $table->boolean('actual')->default(1);
 
             $table->unsignedinteger('puesto_id')->nullable();
             $table->foreign('puesto_id')->references('id')->on('puestos');
