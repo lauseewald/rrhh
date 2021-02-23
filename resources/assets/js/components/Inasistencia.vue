@@ -12,8 +12,7 @@
           <button
             type="button"
             @click="abrirModal('solicitudInasistencia', 'registrar')"
-            class="btn btn-secondary"
-          >
+            class="btn btn-secondary">
             <i class="icon-plus"></i>&nbsp;Nueva
           </button>
         </div>

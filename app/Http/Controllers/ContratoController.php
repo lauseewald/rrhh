@@ -165,19 +165,21 @@ class ContratoController extends Controller
  
         $buscar = $request->buscar;
         $criterio = $request->criterio;
+        
         $contratos = Empleado::join('contratos', 'empleados.id', '=', 'contratos.empleado_id');
         
+
         if ($criterio =='sincontrato') {   
             $contratos =  $contratos->where('contratos.finLaboral','<',Carbon::now());
         }elseif ($criterio == 'avencer'){
-            $contratos =  $contratos->where('contratos.finLaboral','>',Carbon::now())
-            ->where('contratos.finLaboral','<',Carbon::now()->addMonth(1));
+            // $contratos =  $contratos->where('contratos.finLaboral','>',Carbon::now())
+            // ->where('contratos.finLaboral','<',Carbon::now()->addMonth());
+            $contratos =  $contratos->where('contratos.finLaboral','>=',Carbon::now())
+            ->where('contratos.finLaboral','<',Carbon::now()->addMonth());
         }elseif ($buscar!=''){
-            $contratos =  $contratos->where('contratos.finLaboral','>',Carbon::now())
-            ->where('contratos.finLaboral','<',Carbon::now()->addMonth(1));
+            $contratos =  $contratos->where('contratos.finLaboral','<',Carbon::now()->addMonth());
             $contratos= $contratos->where('empleados.'.$criterio, 'like', '%'. $buscar . '%');
         }      
-       
         // $contratos=$contratos->select('empleados.*',
         // DB::raw("DATE_FORMAT(contratos.finLaboral, '%d/%m/%Y') as finLaboral2"),
         // DB::raw("DATE_FORMAT(contratos.inicioLaboral, '%d/%m/%Y') as inicioLaboral2"))->paginate(3);

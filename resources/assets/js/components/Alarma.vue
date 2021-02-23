@@ -48,6 +48,16 @@
                         >
                           <i class="fa fa-search"></i> Buscar
                         </button>
+                        &nbsp;
+                        <button
+                          type="button"
+                          class="btn btn-primary"
+                          data-toggle="modal"
+                          data-target="#listEmpleadosModal"
+                          @click.prevent="obtenerEmpleadosConLicencia()"
+                        >
+                          empleados en licencias
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -58,6 +68,7 @@
                         <th>Desde</th>
                         <th>Hasta</th>
                         <th>Empleado(id)</th>
+                        <th>Ver</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -78,6 +89,15 @@
                             ' )'
                           "
                         ></td>
+                        <td>
+                          <button
+                            type="button"
+                            @click="verDatos(inasistencia)"
+                            class="btn btn-outline-info btn-sm"
+                          >
+                            <i class="icon-eye"></i>
+                          </button>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -154,7 +174,7 @@
                       <div class="input-group">
                         <select class="form-control col" v-model="criContrato">
                           <option value="sincontrato">Sin Contrato</option>
-                          <option value="avencer">Vencido</option>
+                          <option value="avencer">Proximo vencimiento</option>
                           <option value="nombre">Nombre</option>
                         </select>
                         <input
@@ -492,206 +512,166 @@
 
       <!-- Fin ejemplo de tabla Listado -->
     </div>
-    <!--Inicio del modal agregar/actualizar-->
     <div
       class="modal fade"
       tabindex="-1"
-      :class="{ mostrar: modal }"
+      :class="{ mostrar: modal2 }"
       role="dialog"
-      aria-labelledby="myModalLabel"
       style="display: none"
       aria-hidden="true"
     >
       <div class="modal-dialog modal-primary modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title" v-text="tituloModal"></h4>
+            <h4 class="modal-title">Datos del Empleado</h4>
             <button
               type="button"
               class="close"
-              @click="cerrarModal()"
+              @click="cerrarModalver()"
               aria-label="Close"
             >
               <span aria-hidden="true">×</span>
             </button>
           </div>
           <div class="modal-body">
-            <form
-              id="modal-form"
-              action=""
-              method="post"
-              enctype="multipart/form-data"
-              class="form-horizontal"
-            >
-              <div class="form-group row">
-                <label class="col-md-3 form-control-label" for="text-input"
-                  >ID (*)</label
-                >
-                <div class="col-md-9">
-                  <input
-                    type="text"
-                    v-model="_id"
-                    class="form-control"
-                    placeholder="ID Empleado"
-                    disabled
-                  />
-                </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-md-3 form-control-label" for="text-input"
-                  >Empleado :</label
-                >
-                <div class="col-md-3">
-                  <input
-                    type="text"
-                    v-model="apellido"
-                    class="form-control"
-                    placeholder="Nombre del departamento"
-                    disabled
-                  />
-                </div>
-                <div class="col-md-3">
-                  <input
-                    type="text"
-                    v-model="nombre"
-                    class="form-control"
-                    placeholder="Nombre del departamento"
-                    disabled
-                  />
-                </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-md-3 form-control-label" for="text-input"
-                  >CUIL (*)</label
-                >
-                <div class="col-md-9">
-                  <input
-                    type="text"
-                    v-model="cuil"
-                    class="form-control"
-                    placeholder="ID Empleado"
-                    disabled
-                  />
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <label class="col-md-3 form-control-label" for="text-input"
-                  >Direccion
+            <div class="form-group text-center" v-if="empleado.id">
+              <div class="row">
+                <label
+                  >Empleado: {{ empleado.nombre + empleado.apellido }}
                 </label>
-                <div class="col-md-9">
-                  <input
-                    type="text"
-                    v-model="direccion"
-                    class="form-control"
-                    placeholder="Descripcion del departamento"
-                  />
-                </div>
               </div>
-
-              <div class="form-group row">
-                <label class="col-md-3 form-control-label" for="text-input"
-                  >Fecha Nacimiento
-                </label>
-                <div class="col-md-9">
-                  <input
-                    type="date"
-                    class="form-control"
-                    v-model="fechaNacimiento"
-                  />
-                </div>
+              <div class="row">
+                <p>Motivo:{{ " " + solicitudInasistenciaSelect.motivo }}</p>
               </div>
-              <div class="form-group row">
-                <label class="col-md-3 form-control-label" for="text-input"
-                  >Fecha Ingeso
-                </label>
-                <div class="col-md-9">
-                  <input
-                    type="date"
-                    class="form-control"
-                    v-model="fechaIngreso"
-                  />
-                </div>
+              <hr />
+              <h3>Personas Dependientes</h3>
+              <div class="row">
+                <ul>
+                  <li
+                    v-for="perDep in empleado.persona_dependientes"
+                    :key="perDep.id"
+                  >
+                    <div class="row">
+                      Nombre: {{ " " + perDep.nombre + " " + perDep.apellido }}
+                    </div>
+                    <div class="row">Relacion:{{ " " + perDep.relacion }}</div>
+                    <div class="row">
+                      Necesidad:{{ " " + perDep.necesidad }}
+                    </div>
+                  </li>
+                </ul>
               </div>
-              <div class="form-group row">
-                <label class="col-md-3 form-control-label" for="text-input"
-                  >Competencias
-                </label>
-                <div class="col-md-9">
-                  <div
-                    v-for="comp in competencias"
-                    :key="comp"
-                    v-text="comp"
-                  ></div>
-                </div>
+              <hr />
+              <h3>Otras Responsabilidades</h3>
+              <div class="row">
+                <ul>
+                  <li
+                    v-for="responsabilidad in empleado.responsabilidades"
+                    :key="responsabilidad.id"
+                  >
+                    <div class="row">
+                      Responsabilidad: {{ " " + responsabilidad.nombre }}
+                    </div>
+                    <div class="row">
+                      Descripcion:{{ " " + responsabilidad.descripcion }}
+                    </div>
+                  </li>
+                </ul>
               </div>
-
-              <div class="form-group row">
-                <label class="col-md-3 form-control-label" for="text-input"
-                  >Contacto Emergencia
-                </label>
-                <div class="col-md-9">
-                  <input
-                    type="date"
-                    class="form-control"
-                    v-model="contactoEmergencia"
-                  />
-                </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-md-3 form-control-label" for="text-input"
-                  >Personas a cargo
-                </label>
-                <div class="col-md-9">
-                  <div
-                    v-for="dependiente in personaDependientes"
-                    :key="dependiente"
-                    v-text="dependiente"
-                  ></div>
-                </div>
-              </div>
-
-              <div v-show="errorComponente" class="form-group row div-error">
-                <div class="text-center text-error">
-                  <div
-                    v-for="error in errorMostrarMsjForm"
-                    :key="error"
-                    v-text="error"
-                  ></div>
-                </div>
-              </div>
-            </form>
+            </div>
           </div>
-
           <div class="modal-footer">
             <button
               type="button"
-              class="btn btn-secondary"
-              @click="cerrarModal()"
-            >
-              Cerrar
-            </button>
-            <button
-              type="button"
-              class="btn btn-success"
-              @click="registrarDepartamento()"
+              @click="aprobarSolicitud(solicitudInasistenciaSelect, 1)"
+              class="btn btn-outline-success btn-sm"
             >
               Aprobar
             </button>
+            &nbsp;
             <button
               type="button"
-              class="btn btn-danger"
-              @click="actualizarDepartamento()"
+              @click="aprobarSolicitud(solicitudInasistenciaSelect, 0)"
+              class="btn btn-outline-danger btn-sm"
             >
               Desaprobar
+            </button>
+            &nbsp;
+            <button
+              type="button"
+              class="btn btn-secondary"
+              @click="cerrarModalVer()"
+            >
+              Cerrar
             </button>
           </div>
         </div>
       </div>
-      <!-- /.modal-content -->
     </div>
-    <!-- /.modal-dialog -->
-    <!--Fin del modal-->
+    <div
+      class="modal fade"
+      id="listEmpleadosModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLongTitle"
+      aria-hidden="true"
+      :class="{ mostrar: modalListarEmpleadoLicencia }"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">
+              Empleados en Licencias
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+              @click.prevent="modalListarEmpleadoLicencia = 0"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <ul>
+              <li
+                v-for="empleadoLicencia in arrayEmpleadosLicencia"
+                :key="empleadoLicencia.id"
+              >
+                <h5>
+                  {{
+                    "ID: (" +
+                    empleadoLicencia.id +
+                    ")" +
+                    empleadoLicencia.nombre +
+                    " " +
+                    empleadoLicencia.apellido +
+                    " "
+                  }}<span class="badge badge-success">{{
+                    "Desde: " + empleadoLicencia.desde
+                  }}</span
+                  ><span class="badge badge-success">{{
+                    "Hasta: " + empleadoLicencia.hasta
+                  }}</span>
+                </h5>
+              </li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              @click.prevent="modalListarEmpleadoLicencia = 0"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 </template>
 
@@ -706,13 +686,18 @@ export default {
       arrayInasistencia: [],
       arrayDiaNoLaboral: [],
       arrayContrato: [],
+      arrayEmpleadosLicencia: [],
 
+      solicitudInasistenciaSelect: {},
+      empleado: { id: 0 },
       id: 0,
       nombre: "",
       descripcion: "",
       empresa_id: 0,
 
       modal: 0,
+      modal2: 0,
+      modalListarEmpleadoLicencia: 0,
       tituloModal: "",
       tipoAccion: 0,
       errorComponente: 0,
@@ -868,6 +853,87 @@ export default {
     },
   },
   methods: {
+     aprobarSolicitud(solicitudInasistencia, valor) {
+      let mensaje = "¿Desea Aprobar la Solicitud de Inasistencia?";
+
+      if (!valor) {
+        mensaje = "¿Desea Desaprobar la solicitud de Inasistencia?";
+      }
+      swal({
+        title: mensaje,
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Aceptar!",
+        cancelButtonText: "Cancelar",
+        confirmButtonClass: "btn btn-success",
+        cancelButtonClass: "btn btn-danger",
+        buttonsStyling: false,
+        reverseButtons: true,
+      }).then((result) => {
+        if (result.value) {
+          let me = this;
+
+          axios
+            .put("/solicitudInasistencia/aprobar", {
+              id: solicitudInasistencia.id,
+              aprobado: parseInt(valor),
+            })
+            .then(function (response) {
+              if (valor) {
+                swal("Aprobado!", "Se ha aprobado correctamente.", "success");
+              } else {
+                swal("Desaprobado!", "Se desaprobo la solicitud.", "success");
+              }
+              me.listarInasistencia(1, "", "nombre");
+              me.modal2=0;
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        } else if (
+          // Read more about handling dismissals
+          result.dismiss === swal.DismissReason.cancel
+        ) {
+        }
+      });
+    },
+    obtenerEmpleadosConLicencia() {
+      this.modalListarEmpleadoLicencia = 1;
+      let me = this;
+      var url = "/empleado/enLicencia";
+      axios
+        .get(url)
+        .then(function (response) {
+          let respuesta = response.data;
+          me.arrayEmpleadosLicencia = respuesta.empleados;
+          console.log(respuesta.empleados);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+    verDatos(solicitudInasistencia) {
+      this.modal2 = 1;
+      let me = this;
+      var url = "/getEmpleado?id=" + solicitudInasistencia.empleado_id;
+      axios
+        .get(url)
+        .then(function (response) {
+          var respuesta = response.data;
+          me.empleado = respuesta.empleado;
+          me.solicitudInasistenciaSelect = solicitudInasistencia;
+          console.log(respuesta.empleado);
+        })
+        .catch(function (error) {
+          me.empleado.id = 0;
+          console.log(error);
+        });
+    },
+    cerrarModalVer() {
+      this.modal2 = 0;
+    },
     listarEvento(page, buEvento, criEvento) {
       let me = this;
       var url =
@@ -964,6 +1030,7 @@ export default {
           var respuesta = response.data;
           me.arrayContrato = respuesta.contratos.data;
           me.pagContrato = respuesta.pagination;
+          console.log(response.data);
         })
         .catch(function (error) {
           console.log(error);
