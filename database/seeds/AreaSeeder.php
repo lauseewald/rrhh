@@ -145,139 +145,140 @@ class AreaSeeder extends Seeder
         $evento = new Evento();
         $evento->titulo='Evento 1';
         $evento->descripcion='Un evento';
-        $evento->fecha=Carbon::createFromFormat('Y-m-d','2021-02-25');
+        $evento->fecha=Carbon::createFromFormat('Y-m-d H','2021-02-25 14');
+        $evento->fechaFin=Carbon::createFromFormat('Y-m-d H','2021-02-26 17');
         $evento->departamento_id=$departamento->id;
         $evento->empresa_id=$empresa->id;
         $evento->save();
 
         $evento = new Calendar();
         $evento->event_name='Año Nuevo';
-        $evento->start_date=Carbon::createFromFormat('Y-m-d H','2021-01-01 00');
-        $evento->end_date=Carbon::createFromFormat('Y-m-d H','2021-01-01 00');
+        $evento->start_date=Carbon::createFromFormat('Y-m-d','2021-01-01');
+        $evento->end_date=Carbon::createFromFormat('Y-m-d','2021-01-01');
         $evento->save();
 
         $evento = new Calendar();
         $evento->event_name='Carnaval';
-        $evento->start_date=Carbon::createFromFormat('Y-m-d H:i','2021-02-15 00:00');
-        $evento->end_date=Carbon::createFromFormat('Y-m-d H:i','2021-02-16 23:59');
+        $evento->start_date=Carbon::createFromFormat('Y-m-d','2021-02-15');
+        $evento->end_date=Carbon::createFromFormat('Y-m-d','2021-02-16');
         $evento->save();
 
     
 
         $evento = new Calendar();
         $evento->event_name='Día Internacional de la Mujer';
-        $evento->start_date=Carbon::createFromFormat('Y-m-d H','2021-03-08 00');
-        $evento->end_date=Carbon::createFromFormat('Y-m-d H','2021-03-08 00');
+        $evento->start_date=Carbon::createFromFormat('Y-m-d','2021-03-08');
+        $evento->end_date=Carbon::createFromFormat('Y-m-d','2021-03-08');
         $evento->save();
 
         $evento = new Calendar();
         $evento->event_name='Día la Memoria, Verdad y Justicia';
-        $evento->start_date=Carbon::createFromFormat('Y-m-d H','2021-03-24 00');
-        $evento->end_date=Carbon::createFromFormat('Y-m-d H','2021-03-24 00');
+        $evento->start_date=Carbon::createFromFormat('Y-m-d','2021-03-24');
+        $evento->end_date=Carbon::createFromFormat('Y-m-d','2021-03-24');
         $evento->save();
 
 
         $evento = new Calendar();
         $evento->event_name='Jueves Santo';
-        $evento->start_date=Carbon::createFromFormat('Y-m-d H','2021-04-01 00');
-        $evento->end_date=Carbon::createFromFormat('Y-m-d H','2021-04-01 00');
+        $evento->start_date=Carbon::createFromFormat('Y-m-d','2021-04-01');
+        $evento->end_date=Carbon::createFromFormat('Y-m-d','2021-04-01');
         $evento->save();
 
         $evento = new Calendar();
         $evento->event_name='Viernes Santo';
-        $evento->start_date=Carbon::createFromFormat('Y-m-d H','2021-04-02 00');
-        $evento->end_date=Carbon::createFromFormat('Y-m-d H','2021-04-02 00');
+        $evento->start_date=Carbon::createFromFormat('Y-m-d','2021-04-02');
+        $evento->end_date=Carbon::createFromFormat('Y-m-d','2021-04-02');
         $evento->save();
 
         $evento = new Calendar();
         $evento->event_name='Pascuas Judías';
-        $evento->start_date=Carbon::createFromFormat('Y-m-d H:i','2021-04-03 00:00');
-        $evento->end_date=Carbon::createFromFormat('Y-m-d H:i','2021-04-04 23:59');
+        $evento->start_date=Carbon::createFromFormat('Y-m-d','2021-04-03');
+        $evento->end_date=Carbon::createFromFormat('Y-m-d','2021-04-04');
         $evento->save();
 
         $evento = new Calendar();
         $evento->event_name='Día del Veterano y de los Caídos en la Guerra de Malvinas';
-        $evento->start_date=Carbon::createFromFormat('Y-m-d H','2021-04-02 00');
-        $evento->end_date=Carbon::createFromFormat('Y-m-d H','2021-04-02 00');
+        $evento->start_date=Carbon::createFromFormat('Y-m-d','2021-04-02');
+        $evento->end_date=Carbon::createFromFormat('Y-m-d','2021-04-02');
         $evento->save();
         
         $evento = new Calendar();
         $evento->event_name='Día del Trabajador';
-        $evento->start_date=Carbon::createFromFormat('Y-m-d H','2021-05-01 00');
-        $evento->end_date=Carbon::createFromFormat('Y-m-d H','2021-05-01 00');
+        $evento->start_date=Carbon::createFromFormat('Y-m-d','2021-05-01');
+        $evento->end_date=Carbon::createFromFormat('Y-m-d','2021-05-01');
         $evento->save();
 
         $evento = new Calendar();
         $evento->event_name='Puente Turístico';
-        $evento->start_date=Carbon::createFromFormat('Y-m-d H','2021-05-24 00');
-        $evento->end_date=Carbon::createFromFormat('Y-m-d H','2021-05-24 00');
+        $evento->start_date=Carbon::createFromFormat('Y-m-d','2021-05-24');
+        $evento->end_date=Carbon::createFromFormat('Y-m-d','2021-05-24');
         $evento->save();
 
         $evento = new Calendar();
         $evento->event_name='Día de la Revolucón de Mayo';
-        $evento->start_date=Carbon::createFromFormat('Y-m-d H','2021-05-25 00');
-        $evento->end_date=Carbon::createFromFormat('Y-m-d H','2021-05-25 00');
+        $evento->start_date=Carbon::createFromFormat('Y-m-d','2021-05-25');
+        $evento->end_date=Carbon::createFromFormat('Y-m-d','2021-05-25');
         $evento->save();
 
         $evento = new Calendar();
         $evento->event_name='Paso a la Inmortalidad del General Manuel Belgrano';
-        $evento->start_date=Carbon::createFromFormat('Y-m-d H','2021-06-20 00');
-        $evento->end_date=Carbon::createFromFormat('Y-m-d H','2021-06-20 00');
+        $evento->start_date=Carbon::createFromFormat('Y-m-d','2021-06-20');
+        $evento->end_date=Carbon::createFromFormat('Y-m-d','2021-06-20');
         $evento->save();
 
         $evento = new Calendar();
         $evento->event_name='Paso a la Inmortalidad del General Martín Miguel de Güemes';
-        $evento->start_date=Carbon::createFromFormat('Y-m-d H','2021-06-21 00');
-        $evento->end_date=Carbon::createFromFormat('Y-m-d H','2021-06-21 00');
+        $evento->start_date=Carbon::createFromFormat('Y-m-d','2021-06-21');
+        $evento->end_date=Carbon::createFromFormat('Y-m-d','2021-06-21');
         $evento->save();
 
         $evento = new Calendar();
         $evento->event_name='Día de la Independencia';
-        $evento->start_date=Carbon::createFromFormat('Y-m-d H','2021-07-09 00');
-        $evento->end_date=Carbon::createFromFormat('Y-m-d H','2021-07-09 00');
+        $evento->start_date=Carbon::createFromFormat('Y-m-d','2021-07-09');
+        $evento->end_date=Carbon::createFromFormat('Y-m-d','2021-07-09');
         $evento->save();
 
        
         $evento = new Calendar();
         $evento->event_name='Día del Paso a la Inmortalidad del Gral. José de San Martín';
-        $evento->start_date=Carbon::createFromFormat('Y-m-d H','2021-08-16 00');
-        $evento->end_date=Carbon::createFromFormat('Y-m-d H','2021-08-16 00');
+        $evento->start_date=Carbon::createFromFormat('Y-m-d','2021-08-16');
+        $evento->end_date=Carbon::createFromFormat('Y-m-d','2021-08-16');
         $evento->save();
 
         $evento = new Calendar();
         $evento->event_name='Día del Respeto a la Diversidad Cultural';
-        $evento->start_date=Carbon::createFromFormat('Y-m-d H','2021-10-11 00');
-        $evento->end_date=Carbon::createFromFormat('Y-m-d H','2021-10-11 00');
+        $evento->start_date=Carbon::createFromFormat('Y-m-d','2021-10-11');
+        $evento->end_date=Carbon::createFromFormat('Y-m-d','2021-10-11');
         $evento->save();
 
         $evento = new Calendar();
         $evento->event_name='Puente Turístico';
-        $evento->start_date=Carbon::createFromFormat('Y-m-d H','2021-10-08 00');
-        $evento->end_date=Carbon::createFromFormat('Y-m-d H','2021-10-08 00');
+        $evento->start_date=Carbon::createFromFormat('Y-m-d','2021-10-08');
+        $evento->end_date=Carbon::createFromFormat('Y-m-d','2021-10-08');
         $evento->save();
 
         $evento = new Calendar();
         $evento->event_name='Día de la Soberanía Nacional';
-        $evento->start_date=Carbon::createFromFormat('Y-m-d H','2021-11-20 00');
-        $evento->end_date=Carbon::createFromFormat('Y-m-d H','2021-11-20 00');
+        $evento->start_date=Carbon::createFromFormat('Y-m-d','2021-11-20');
+        $evento->end_date=Carbon::createFromFormat('Y-m-d','2021-11-20');
         $evento->save();
 
         $evento = new Calendar();
         $evento->event_name='Puente Turístico';
-        $evento->start_date=Carbon::createFromFormat('Y-m-d H','2021-11-22 00');
-        $evento->end_date=Carbon::createFromFormat('Y-m-d H','2021-11-22 00');
+        $evento->start_date=Carbon::createFromFormat('Y-m-d','2021-11-22');
+        $evento->end_date=Carbon::createFromFormat('Y-m-d','2021-11-22');
         $evento->save();
 
         $evento = new Calendar();
         $evento->event_name='Inmaculada Concepción de María';
-        $evento->start_date=Carbon::createFromFormat('Y-m-d H','2021-12-08 00');
-        $evento->end_date=Carbon::createFromFormat('Y-m-d H','2021-12-08 00');
+        $evento->start_date=Carbon::createFromFormat('Y-m-d','2021-12-08');
+        $evento->end_date=Carbon::createFromFormat('Y-m-d','2021-12-08');
         $evento->save();
 
         $evento = new Calendar();
         $evento->event_name='Navidad';
-        $evento->start_date=Carbon::createFromFormat('Y-m-d H','2021-12-25 00');
-        $evento->end_date=Carbon::createFromFormat('Y-m-d H','2021-12-25 00');
+        $evento->start_date=Carbon::createFromFormat('Y-m-d','2021-12-25');
+        $evento->end_date=Carbon::createFromFormat('Y-m-d','2021-12-25');
         $evento->save();
 
 

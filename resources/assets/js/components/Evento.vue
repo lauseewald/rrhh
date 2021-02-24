@@ -126,6 +126,20 @@
                                         <input type="time" class="form-control" v-model="hora" >
                                     </div>
                                 </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="text-input">Ingrese la fecha en que finaliza el evento (*)</label>
+                                     <div class="col-md-9">
+                                        <input type="date" class="form-control" v-model="fechaFin" >
+                                    </div>
+                                </div>
+  
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="text-input">Ingrese la hora en que finaliza el evento (*)</label>
+                                     <div class="col-md-9">
+                                        <input type="time" class="form-control" v-model="horaFin" >
+                                    </div>
+                                </div>
   
                                <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="text-input">Ingrese el departamento</label>
@@ -178,8 +192,10 @@ import DatePicker from 'vue2-datepicker';
                 nombre : '',
                 titulo : '',
                 fecha : new Date(),
+                fechaFin : new Date(),
                 descripcion : '',
                 hora: '',
+                 horaFin: '',
                 departamento_id : '',
                 diasMaximo : '',
                 arrayEvento : [],
@@ -280,6 +296,8 @@ import DatePicker from 'vue2-datepicker';
                     'descripcion': this.descripcion,
                     'fecha': this.fecha,
                     'hora': this.hora,
+                    'fechaFin': this.fechaFin,
+                    'horaFin': this.horaFin,
                      'departamento_id': this.departamento_id
                 }).then(function (response) {
                     me.cerrarModal();
@@ -304,6 +322,8 @@ import DatePicker from 'vue2-datepicker';
                     'descripcion': me.descripcion,
                     'fecha': me.fecha,
                      'hora': me.hora,
+                     'fechaFin': me.fechaFin,
+                     'horaFin': me.horaFin,
                      'departamento_id': me.departamento_id,
                     'id': me.id
                 }).then(function (response) {
@@ -401,7 +421,9 @@ import DatePicker from 'vue2-datepicker';
 
                 if (!this.titulo) this.errorMostrarMsjEvento.push("Debe ingresar el titulo del evento");
                 if (!this.fecha) this.errorMostrarMsjEvento.push("Debe ingresar la fecha del evento");
+                if (!this.fechaFin) this.errorMostrarMsjEvento.push("Debe ingresar la fecha en que finaliza el evento");
                 if (!this.hora) this.errorMostrarMsjEvento.push("Debe ingresar la hora del evento");
+                if (!this.horaFin) this.errorMostrarMsjEvento.push("Debe ingresar la hora en que finaliza el evento");
                 if (this.errorMostrarMsjEvento.length) this.errorEvento = 1;
                 return this.errorEvento;
             },
@@ -413,6 +435,8 @@ import DatePicker from 'vue2-datepicker';
                 this.departamento_id='';
                 this.fecha='';
                 this.hora='';
+                 this.fechaFin='';
+                this.horaFin='';
             },
             
             abrirModal(modelo, accion, data = []){
@@ -428,6 +452,8 @@ import DatePicker from 'vue2-datepicker';
                                 this.descripcion='';
                                 this.fecha='';
                                 this.hora='';
+                                 this.fechaFin='';
+                                this.horaFin='';
                                 this.empleado_id= '';
                                 this.tipoAccion = 1;
                                 break;
@@ -441,11 +467,18 @@ import DatePicker from 'vue2-datepicker';
                                 this.titulo = data['titulo'];
                                 this.descripcion= data['descripcion'];
                                 this.fecha= data['fecha'];
+                                 this.fechaFin=data['fechaFin'];
                                 var datetime = this.fecha;
                                 var date =datetime.slice(0,10);
                                 var time = datetime.slice(-8);
+                                var datetime2 = this.fechaFin;
+                                var date2 =datetime2.slice(0,10);
+                                var time2 = datetime2.slice(-8);
                                 this.fecha = date;
                                 this.hora = time;
+                               this.fechaFin = date2;
+                                this.horaFin = time2;
+                                
                                  this.departamento_id= data['departamento_id'];
                                 break;
                             }

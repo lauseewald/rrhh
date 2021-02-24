@@ -18,8 +18,8 @@ class CreateCalendarsTable extends Migration
             
             //$table->string('descripcion')->nullable();
             $table->string('event_name');
-            $table->dateTime('start_date');
-            $table->dateTime('end_date');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->timestamps();
         });
     }

@@ -28,9 +28,27 @@ class EventoController extends Controller
             ->where('eventos.'.$criterio, 'like', '%'. $buscar . '%')
             ->orderBy('titulo', 'desc')->paginate(3);
         }
-         
+       
         return [
-            'pagination' => [
+           'pagination' => [
+                'total'        => $eventos->total(),
+                'current_page' => $eventos->currentPage(),
+                'per_page'     => $eventos->perPage(),
+                'last_page'    => $eventos->lastPage(),
+                'from'         => $eventos->firstItem(),
+                'to'           => $eventos->lastItem(),
+            ],
+            'eventos' => $eventos
+        ];
+    }
+
+    public function eventoHome()
+    {
+        
+        $eventos = Evento::select( 'id', 'fechaFin as end', 'titulo as title', 'fecha as start')
+        ->orderBy('id', 'desc')->paginate(3);
+        return [
+           'pagination' => [
                 'total'        => $eventos->total(),
                 'current_page' => $eventos->currentPage(),
                 'per_page'     => $eventos->perPage(),
@@ -89,10 +107,12 @@ class EventoController extends Controller
                 try{
                     if (!$request->ajax()) return redirect('/');
                     $input = $request->fecha.$request->hora;
+                    $input2 = $request->fechaFin.$request->horaFin;
                     $evento = new Evento();
                     $evento->titulo = $request->titulo;
                     $evento->descripcion = $request->descripcion;
                     $evento->fecha = Carbon::parse($input);
+                    $evento->fechaFin = Carbon::parse($input2);
                     $evento->departamento_id=$request->departamento_id;
                     //$evento->empresa_id=$request->idempresa;
                     $evento->save();
@@ -112,11 +132,13 @@ class EventoController extends Controller
         ];
             $this->validate($request, $rules, $messages);
             try{
-            $input = $request->fecha.$request->hora;    
+            $input = $request->fecha.$request->hora;  
+            $input2 = $request->fechaFin.$request->horaFin;  
             $evento = Evento::findOrFail($request->id);
             $evento->titulo = $request->titulo;
             $evento->descripcion = $request->descripcion;
             $evento->fecha = Carbon::parse($input);
+            $evento->fechaFin = Carbon::parse($input2);
             $evento->departamento_id=$request->departamento_id;
             //$evento->empresa_id=$request->idempresa;
             $evento->save();

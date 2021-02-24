@@ -82,10 +82,10 @@ class EmpleadoController extends Controller
                         $fileName='';
                         $exploded = explode(',', $request->curriculum);
                         $decoded = base64_decode($exploded[1]);
-                        if(str_contains($exploded[0], 'jpeg'))
-                            $extension = 'jpg';
+                        if(str_contains($exploded[0], 'pdf'))
+                            $extension = 'pdf';
                         else
-                            $extension = 'png';
+                            $extension = 'pdf';
                         $fileName = str_random().'.'.$extension;
                         $path = public_path().'/'.$fileName;
                         file_put_contents($path, $decoded);
@@ -165,6 +165,7 @@ class EmpleadoController extends Controller
             $messages = [
                 'nombre.required' => 'Debe ingresar el :attribute .',
                 'apellido.required' => 'Debe ingresar el :attribute .',
+                'estadoCivil.required' => 'Debe ingresar el estado civil .',
             
             ];
             $this->validate($request, $rules, $messages);
@@ -173,11 +174,8 @@ class EmpleadoController extends Controller
                 DB::beginTransaction(); 
 
                 $empleado = Empleado::findOrFail($request->id);
-                $fileName=$empleado->curriculum;
-
-                if(($request->hasFile($request->curriculum))){
-
-                    $exploded = explode(',', $request->curriculum);
+                $fileName='';
+                        $exploded = explode(',', $request->curriculum);
                         $decoded = base64_decode($exploded[1]);
                         if(str_contains($exploded[0], 'pdf'))
                             $extension = 'pdf';
@@ -186,7 +184,6 @@ class EmpleadoController extends Controller
                         $fileName = str_random().'.'.$extension;
                         $path = public_path().'/'.$fileName;
                         file_put_contents($path, $decoded);
-                } 
                 
 
             $empleado->nombre = $request->nombre;

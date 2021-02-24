@@ -4,7 +4,7 @@
       <div class="col-md-8">
         <form @submit.prevent>
           <div class="form-group">
-            <label for="event_name">Nombre del Evento</label>
+            <label for="event_name">Nombre del Día No Laboral</label>
             <input type="text" id="event_name" class="form-control" v-model="newEvent.event_name">
           </div>
           <div class="row">
@@ -20,26 +20,26 @@
               </div>
                
             </div>
-           <div class="col-md-6">
+           <!-- <div class="col-md-6">
               Ingrese la hora del evento (*)
                                      <div class="form-group">
                                         <input type="time" class="form-control" v-model="newEvent.start_time" >
                                     </div>
-                                     </div>
+                                     </div> -->
             <div class="col-md-6">
               <div class="form-group">
                 <label for="end_date">Fecha de Finalización</label>
                 <input type="date" id="end_date" class="form-control" v-model="newEvent.end_date">
               </div>
             </div>
-             <div class="col-md-6">
+             <!-- <div class="col-md-6">
               Ingrese la hora en que finaliza evento (*)
                                      <div class="form-group">
                                         <input type="time" class="form-control" v-model="newEvent.end_time" >
                                     </div>
-                                     </div>
+                                     </div> -->
             <div class="col-md-6 mb-4" v-if="calendarOptions.addingMode">
-              <button class="btn btn-sm btn-primary" @click="addNewEvent">Agregar Evento</button>
+              <button class="btn btn-sm btn-primary" @click="addNewEvent">Agregar Día No Laboral</button>
             </div>
             <template v-else>
               <div class="col-md-6 mb-4">
@@ -129,11 +129,15 @@ export default {
       );
       this.indexToUpdate = id;
       this.newEvent = {
+        id: id,
         event_name: title,
-        start_date: start.slice(0,10),
+       /*  start_date: start.slice(0,10),
         end_date: end.slice(0,10),
         end_time: end.slice(-8),
-        start_time: start.slice(-8),
+        start_time: start.slice(-8), */
+         start_date: start,
+        end_date: end
+       
       };
     },
     updateEvent() {
@@ -164,7 +168,7 @@ export default {
     },
     getEvents() {
       let me = this;
-      console.log("get events");
+      
       axios
         .get("/api/calendar")
         .then(function (response) {

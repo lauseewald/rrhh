@@ -94,6 +94,7 @@ Route::put('/evento/actualizar', 'EventoController@update');
 Route::put('/evento/desactivar', 'EventoController@desactivar');
 Route::put('/evento/activar', 'EventoController@activar');
 Route::get('/evento/alarma', 'EventoController@alarmaEvento');
+Route::get('/evento/home', 'EventoController@eventoHome');
 
 //Departamento
 Route::get('/departamento', 'DepartamentoController@index');

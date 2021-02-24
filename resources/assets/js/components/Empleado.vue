@@ -265,7 +265,7 @@
                     enctype="multipart/form-data"
                     >Currículum (*)
                   </label> </b>
-                  <input class="form-control" type="file" @change="getImage" id="data" name="data" />
+                  <input class="form-control" accept="application/pdf" type="file" @change="getImage" id="data" name="data" />
                   <b><a :href="curriculum" target="_blank">Ver</a></b>
                 </div>
               </div>
@@ -936,7 +936,7 @@ export default {
         this.errorMostrarMsjEmpleado.push(
           "La dirección del empleado no puede estar vacía."
         );
-         if (!this.direccion)
+         if (!this.estadoCivil)
         this.errorMostrarMsjEmpleado.push(
           "La estado civil del empleado no puede estar vacío."
         );

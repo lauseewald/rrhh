@@ -33,6 +33,7 @@ Vue.component('usuario', require('./components/Usuario.vue'));
 Vue.component('alarma', require('./components/Alarma.vue'));
 Vue.component('personadependiente', require('./components/PersonaDependiente.vue'));
 Vue.component('calendario', require('./components/Calendario.vue'));
+Vue.component('inicio', require('./components/Inicio.vue'));
 
 const app = new Vue({
     el: '#app',

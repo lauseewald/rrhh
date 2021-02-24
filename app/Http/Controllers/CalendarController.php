@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Resources\CalendarResource;
 use Symfony\Component\HttpFoundation\Response;
 use Carbon\Carbon;
+use PDOException;
 use Exception;
 use Illuminate\Support\Facades\DB;
 
@@ -56,15 +57,16 @@ class CalendarController extends Controller
             $this->validate($request, $rules, $messages);            
                 try{
                     if (!$request->ajax()) return redirect('/');
-                    $input = $request->start_date.$request->start_time;
-                    $inputEnd = $request->end_date.$request->end_time;
+                    //$input = $request->start_date.$request->start_time;
+                    //$inputEnd = $request->end_date.$request->end_time;
                     $evento = new Calendar();
                     $evento->event_name = $request->event_name;
                     //$evento->descripcion = $request->descripcion;
-                    $evento->start_date = Carbon::parse($input);
-                    $evento->end_date = Carbon::parse($inputEnd);
-                    //$evento->departamento_id=$request->departamento_id;
-                    //$evento->empresa_id=$request->idempresa;
+                   // $evento->start_date = Carbon::parse($input);
+                    //$evento->end_date = Carbon::parse($inputEnd);
+                      $evento->start_date = $request->start_date;
+                    $evento->end_date = $request->end_date;
+                   
                     $evento->save();
                 } catch (Exception $e){
                     return redirect()->withErrors('Error'); 
@@ -118,18 +120,20 @@ class CalendarController extends Controller
             $this->validate($request, $rules, $messages);
             try{
                 $evento = Calendar::findOrFail($request->id);
-                $input = $request->start_date.$request->start_time;
-                $inputEnd = $request->end_date.$request->end_time;
+                //$input = $request->start_date.$request->start_time;
+               // $inputEnd = $request->end_date.$request->end_time;
                 $evento->event_name = $request->event_name;
                 //$evento->descripcion = $request->descripcion;
-                $evento->start_date = Carbon::parse($input);
-                $evento->end_date = Carbon::parse($inputEnd);
+                //$evento->start_date = Carbon::parse($input);
+                //$evento->end_date = Carbon::parse($inputEnd);
+                $evento->start_date = $request->start_date;
+                $evento->end_date = $request->end_date;
             //$evento->empresa_id=$request->idempresa;
             $evento->save();
             
             
-        } catch (Exception $e){
-            //return redirect()->withErrors('Error');
+        } catch (PDOException $e){
+            return 'error' + $e;
         }
     }
 
