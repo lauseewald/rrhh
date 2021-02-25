@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contrato;
-use App\DiaNoLaboral;
+use App\Calendar;
 use App\Empleado;
 use App\TipoContrato;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -110,7 +110,7 @@ class ContratoController extends Controller
             //cada 7 dias 1 no es Habil y sin contar los feriados
             $decimales = explode('.',$cantidadDiasRealTrabajo/7);
             $cantidadDiasRealTrabajo-= $decimales[0] ;
-            $diasNoLaborales= DiaNoLaboral::where('dia','>=',$request->inicioLaboral)->where('dia','<=',$request->finLaboral)->where('condicion',1)->get();
+            $diasNoLaborales= Calendar::where('start_date','>=',$request->inicioLaboral)->where('start_date','<=',$request->finLaboral)->get();
             $contarFeriados=count($diasNoLaborales);
             if($contarFeriados>0){
                 $cantidadDiasRealTrabajo-=$contarFeriados;
@@ -287,7 +287,7 @@ class ContratoController extends Controller
             //cada 7 dias 1 no es Habil y sin contar los feriados
             $decimales = explode('.',$cantidadDiasRealTrabajo/7);
             $cantidadDiasRealTrabajo-= $decimales[0] ;
-            $diasNoLaborales= DiaNoLaboral::where('dia','>=',$request->inicioLaboral)->where('dia','<=',$request->finLaboral)->where('condicion',1)->get();
+            $diasNoLaborales= Calendar::where('start_date','>=',$request->inicioLaboral)->where('start_date','<=',$request->finLaboral)->get();
             $contarFeriados=count($diasNoLaborales);
             if($contarFeriados>0){
                 $cantidadDiasRealTrabajo-=$contarFeriados;
@@ -351,7 +351,7 @@ class ContratoController extends Controller
          //cada 7 dias 1 no es Habil y sin contar los feriados
          $decimales = explode('.',$cantidadDiasRealTrabajo/7);
          $cantidadDiasRealTrabajo-= $decimales[0] ;
-         $diasNoLaborales= DiaNoLaboral::all()->where('dia','>=',$request->inicioLaboral)->where('dia','<=',$request->finLaboral)->where('condicion',1);
+         $diasNoLaborales= Calendar::all()->where('start_date','>=',$request->inicioLaboral)->where('start_date','<=',$request->finLaboral);
 
          $contarFeriados=count($diasNoLaborales);
          if($contarFeriados>0){

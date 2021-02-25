@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 24);
+/******/ 	return __webpack_require__(__webpack_require__.s = 28);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -274,7 +274,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(57)
+var listToStyles = __webpack_require__(61)
 
 /*
 type StyleObject = {
@@ -500,7 +500,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
  */
 /* global define */
 (function (define) {
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(13)], __WEBPACK_AMD_DEFINE_RESULT__ = (function ($) {
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(14)], __WEBPACK_AMD_DEFINE_RESULT__ = (function ($) {
         return (function () {
             var $container;
             var listener;
@@ -956,7 +956,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
         })();
     }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-}(__webpack_require__(60)));
+}(__webpack_require__(64)));
 
 
 /***/ }),
@@ -966,8 +966,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
 "use strict";
 
 
-var bind = __webpack_require__(14);
-var isBuffer = __webpack_require__(32);
+var bind = __webpack_require__(15);
+var isBuffer = __webpack_require__(36);
 
 /*global toString:true*/
 
@@ -1769,10 +1769,10 @@ module.exports = g;
 /* unused harmony export version */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_49", function() { return whenTransitionDone; });
 /* unused harmony export wholeDivideDurations */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__main_css__ = __webpack_require__(148);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__main_css__ = __webpack_require__(150);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__main_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__main_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_tslib__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vdom_js__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vdom_js__ = __webpack_require__(25);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "v", function() { return __WEBPACK_IMPORTED_MODULE_2__vdom_js__["b"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "Z", function() { return __WEBPACK_IMPORTED_MODULE_2__vdom_js__["d"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "_4", function() { return __WEBPACK_IMPORTED_MODULE_2__vdom_js__["e"]; });
@@ -10702,7 +10702,7 @@ var version = '5.5.1'; // important to type it, so .d.ts has generic string
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(4);
-var normalizeHeaderName = __webpack_require__(34);
+var normalizeHeaderName = __webpack_require__(38);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -10718,10 +10718,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(16);
+    adapter = __webpack_require__(17);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(16);
+    adapter = __webpack_require__(17);
   }
   return adapter;
 }
@@ -10796,7 +10796,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)))
 
 /***/ }),
 /* 9 */
@@ -10805,7 +10805,7 @@ module.exports = defaults;
 if (false) {
   module.exports = require('./vue.common.prod.js')
 } else {
-  module.exports = __webpack_require__(48)
+  module.exports = __webpack_require__(52)
 }
 
 
@@ -10897,11 +10897,25 @@ function getWeek(value) {
 
 /***/ }),
 /* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n:root {\n  --fc-daygrid-event-dot-width: 8px;\n}\n.fc .fc-popover {\n    position: fixed;\n    top: 0; /* for when not positioned yet */\n    box-shadow: 0 2px 6px rgba(0,0,0,.15);\n  }\n.fc .fc-popover-header {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    align-items: center;\n    padding: 3px 4px;\n  }\n.fc .fc-popover-title {\n    margin: 0 2px;\n  }\n.fc .fc-popover-close {\n    cursor: pointer;\n    opacity: 0.65;\n    font-size: 1.1em;\n  }\n.fc-theme-standard .fc-popover {\n    border: 1px solid #ddd;\n    border: 1px solid var(--fc-border-color, #ddd);\n    background: #fff;\n    background: var(--fc-page-bg-color, #fff);\n  }\n.fc-theme-standard .fc-popover-header {\n    background: rgba(208, 208, 208, 0.3);\n    background: var(--fc-neutral-bg-color, rgba(208, 208, 208, 0.3));\n  }\n/* help things clear margins of inner content */\n.fc-daygrid-day-frame,\n.fc-daygrid-day-events,\n.fc-daygrid-event-harness { /* for event top/bottom margins */\n}\n.fc-daygrid-day-frame:before, .fc-daygrid-day-events:before, .fc-daygrid-event-harness:before {\n  content: \"\";\n  clear: both;\n  display: table; }\n.fc-daygrid-day-frame:after, .fc-daygrid-day-events:after, .fc-daygrid-event-harness:after {\n  content: \"\";\n  clear: both;\n  display: table; }\n.fc .fc-daygrid-body { /* a <div> that wraps the table */\n    position: relative;\n    z-index: 1; /* container inner z-index's because <tr>s can't do it */\n  }\n.fc .fc-daygrid-day.fc-day-today {\n      background-color: rgba(255, 220, 40, 0.15);\n      background-color: var(--fc-today-bg-color, rgba(255, 220, 40, 0.15));\n    }\n.fc .fc-daygrid-day-frame {\n    position: relative;\n    min-height: 100%; /* seems to work better than `height` because sets height after rows/cells naturally do it */\n  }\n.fc {\n\n  /* cell top */\n\n}\n.fc .fc-daygrid-day-top {\n    display: flex;\n    flex-direction: row-reverse;\n  }\n.fc .fc-day-other .fc-daygrid-day-top {\n    opacity: 0.3;\n  }\n.fc {\n\n  /* day number (within cell top) */\n\n}\n.fc .fc-daygrid-day-number {\n    position: relative;\n    z-index: 4;\n    padding: 4px;\n  }\n.fc {\n\n  /* event container */\n\n}\n.fc .fc-daygrid-day-events {\n    margin-top: 1px; /* needs to be margin, not padding, so that available cell height can be computed */\n  }\n.fc {\n\n  /* positioning for balanced vs natural */\n\n}\n.fc .fc-daygrid-body-balanced .fc-daygrid-day-events {\n      position: absolute;\n      left: 0;\n      right: 0;\n    }\n.fc .fc-daygrid-body-unbalanced .fc-daygrid-day-events {\n      position: relative; /* for containing abs positioned event harnesses */\n      min-height: 2em; /* in addition to being a min-height during natural height, equalizes the heights a little bit */\n    }\n.fc .fc-daygrid-body-natural { /* can coexist with -unbalanced */\n  }\n.fc .fc-daygrid-body-natural .fc-daygrid-day-events {\n      margin-bottom: 1em;\n    }\n.fc {\n\n  /* event harness */\n\n}\n.fc .fc-daygrid-event-harness {\n    position: relative;\n  }\n.fc .fc-daygrid-event-harness-abs {\n    position: absolute;\n    top: 0; /* fallback coords for when cannot yet be computed */\n    left: 0; /* */\n    right: 0; /* */\n  }\n.fc .fc-daygrid-bg-harness {\n    position: absolute;\n    top: 0;\n    bottom: 0;\n  }\n.fc {\n\n  /* bg content */\n\n}\n.fc .fc-daygrid-day-bg .fc-non-business { z-index: 1 }\n.fc .fc-daygrid-day-bg .fc-bg-event { z-index: 2 }\n.fc .fc-daygrid-day-bg .fc-highlight { z-index: 3 }\n.fc {\n\n  /* events */\n\n}\n.fc .fc-daygrid-event {\n    z-index: 6;\n    margin-top: 1px;\n  }\n.fc .fc-daygrid-event.fc-event-mirror {\n    z-index: 7;\n  }\n.fc {\n\n  /* cell bottom (within day-events) */\n\n}\n.fc .fc-daygrid-day-bottom {\n    font-size: .85em;\n    margin: 2px 3px 0;\n  }\n.fc .fc-daygrid-more-link {\n    position: relative;\n    z-index: 4;\n    cursor: pointer;\n  }\n.fc {\n\n  /* week number (within frame) */\n\n}\n.fc .fc-daygrid-week-number {\n    position: absolute;\n    z-index: 5;\n    top: 0;\n    padding: 2px;\n    min-width: 1.5em;\n    text-align: center;\n    background-color: rgba(208, 208, 208, 0.3);\n    background-color: var(--fc-neutral-bg-color, rgba(208, 208, 208, 0.3));\n    color: #808080;\n    color: var(--fc-neutral-text-color, #808080);\n  }\n.fc {\n\n  /* popover */\n\n}\n.fc .fc-more-popover {\n    z-index: 8;\n  }\n.fc .fc-more-popover .fc-popover-body {\n    min-width: 220px;\n    padding: 10px;\n  }\n.fc-direction-ltr .fc-daygrid-event.fc-event-start,\n.fc-direction-rtl .fc-daygrid-event.fc-event-end {\n  margin-left: 2px;\n}\n.fc-direction-ltr .fc-daygrid-event.fc-event-end,\n.fc-direction-rtl .fc-daygrid-event.fc-event-start {\n  margin-right: 2px;\n}\n.fc-direction-ltr .fc-daygrid-week-number {\n    left: 0;\n    border-radius: 0 0 3px 0;\n  }\n.fc-direction-rtl .fc-daygrid-week-number {\n    right: 0;\n    border-radius: 0 0 0 3px;\n  }\n.fc-liquid-hack .fc-daygrid-day-frame {\n    position: static; /* will cause inner absolute stuff to expand to <td> */\n  }\n.fc-daygrid-event { /* make root-level, because will be dragged-and-dropped outside of a component root */\n  position: relative; /* for z-indexes assigned later */\n  white-space: nowrap;\n  border-radius: 3px; /* dot event needs this to when selected */\n  font-size: .85em;\n  font-size: var(--fc-small-font-size, .85em);\n}\n/* --- the rectangle (\"block\") style of event --- */\n.fc-daygrid-block-event .fc-event-time {\n    font-weight: bold;\n  }\n.fc-daygrid-block-event .fc-event-time,\n  .fc-daygrid-block-event .fc-event-title {\n    padding: 1px;\n  }\n/* --- the dot style of event --- */\n.fc-daygrid-dot-event {\n  display: flex;\n  align-items: center;\n  padding: 2px 0\n\n}\n.fc-daygrid-dot-event .fc-event-title {\n    flex-grow: 1;\n    flex-shrink: 1;\n    min-width: 0; /* important for allowing to shrink all the way */\n    overflow: hidden;\n    font-weight: bold;\n  }\n.fc-daygrid-dot-event:hover,\n  .fc-daygrid-dot-event.fc-event-mirror {\n    background: rgba(0, 0, 0, 0.1);\n  }\n.fc-daygrid-dot-event.fc-event-selected:before {\n    /* expand hit area */\n    top: -10px;\n    bottom: -10px;\n  }\n.fc-daygrid-event-dot { /* the actual dot */\n  margin: 0 4px;\n  box-sizing: content-box;\n  width: 0;\n  height: 0;\n  border: 4px solid #3788d8;\n  border: calc(var(--fc-daygrid-event-dot-width, 8px) / 2) solid var(--fc-event-border-color, #3788d8);\n  border-radius: 4px;\n  border-radius: calc(var(--fc-daygrid-event-dot-width, 8px) / 2);\n}\n/* --- spacing between time and title --- */\n.fc-direction-ltr .fc-daygrid-event .fc-event-time {\n    margin-right: 3px;\n  }\n.fc-direction-rtl .fc-daygrid-event .fc-event-time {\n    margin-left: 3px;\n  }\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Calendar; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vdom_js__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vdom_js__ = __webpack_require__(148);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_tslib__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fullcalendar_common__ = __webpack_require__(7);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_2__fullcalendar_common__["_3"]; });
@@ -11033,7 +11047,7 @@ var Calendar = /** @class */ (function (_super) {
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13658,7 +13672,7 @@ Popper.Defaults = Defaults;
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(6)))
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -24537,7 +24551,7 @@ return jQuery;
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24555,7 +24569,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -24745,18 +24759,18 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(4);
-var settle = __webpack_require__(35);
-var buildURL = __webpack_require__(37);
-var parseHeaders = __webpack_require__(38);
-var isURLSameOrigin = __webpack_require__(39);
-var createError = __webpack_require__(17);
+var settle = __webpack_require__(39);
+var buildURL = __webpack_require__(41);
+var parseHeaders = __webpack_require__(42);
+var isURLSameOrigin = __webpack_require__(43);
+var createError = __webpack_require__(18);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -24836,7 +24850,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(40);
+      var cookies = __webpack_require__(44);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -24914,13 +24928,13 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var enhanceError = __webpack_require__(36);
+var enhanceError = __webpack_require__(40);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -24939,7 +24953,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24951,7 +24965,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24977,7 +24991,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -24993,7 +25007,7 @@ var locale = {
 /* harmony default export */ __webpack_exports__["a"] = (locale);
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
@@ -25001,13 +25015,58 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n:root {\n  --fc-daygrid-event-dot-width: 8px;\n}\n.fc .fc-popover {\n    position: fixed;\n    top: 0; /* for when not positioned yet */\n    box-shadow: 0 2px 6px rgba(0,0,0,.15);\n  }\n.fc .fc-popover-header {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    align-items: center;\n    padding: 3px 4px;\n  }\n.fc .fc-popover-title {\n    margin: 0 2px;\n  }\n.fc .fc-popover-close {\n    cursor: pointer;\n    opacity: 0.65;\n    font-size: 1.1em;\n  }\n.fc-theme-standard .fc-popover {\n    border: 1px solid #ddd;\n    border: 1px solid var(--fc-border-color, #ddd);\n    background: #fff;\n    background: var(--fc-page-bg-color, #fff);\n  }\n.fc-theme-standard .fc-popover-header {\n    background: rgba(208, 208, 208, 0.3);\n    background: var(--fc-neutral-bg-color, rgba(208, 208, 208, 0.3));\n  }\n/* help things clear margins of inner content */\n.fc-daygrid-day-frame,\n.fc-daygrid-day-events,\n.fc-daygrid-event-harness { /* for event top/bottom margins */\n}\n.fc-daygrid-day-frame:before, .fc-daygrid-day-events:before, .fc-daygrid-event-harness:before {\n  content: \"\";\n  clear: both;\n  display: table; }\n.fc-daygrid-day-frame:after, .fc-daygrid-day-events:after, .fc-daygrid-event-harness:after {\n  content: \"\";\n  clear: both;\n  display: table; }\n.fc .fc-daygrid-body { /* a <div> that wraps the table */\n    position: relative;\n    z-index: 1; /* container inner z-index's because <tr>s can't do it */\n  }\n.fc .fc-daygrid-day.fc-day-today {\n      background-color: rgba(255, 220, 40, 0.15);\n      background-color: var(--fc-today-bg-color, rgba(255, 220, 40, 0.15));\n    }\n.fc .fc-daygrid-day-frame {\n    position: relative;\n    min-height: 100%; /* seems to work better than `height` because sets height after rows/cells naturally do it */\n  }\n.fc {\n\n  /* cell top */\n\n}\n.fc .fc-daygrid-day-top {\n    display: flex;\n    flex-direction: row-reverse;\n  }\n.fc .fc-day-other .fc-daygrid-day-top {\n    opacity: 0.3;\n  }\n.fc {\n\n  /* day number (within cell top) */\n\n}\n.fc .fc-daygrid-day-number {\n    position: relative;\n    z-index: 4;\n    padding: 4px;\n  }\n.fc {\n\n  /* event container */\n\n}\n.fc .fc-daygrid-day-events {\n    margin-top: 1px; /* needs to be margin, not padding, so that available cell height can be computed */\n  }\n.fc {\n\n  /* positioning for balanced vs natural */\n\n}\n.fc .fc-daygrid-body-balanced .fc-daygrid-day-events {\n      position: absolute;\n      left: 0;\n      right: 0;\n    }\n.fc .fc-daygrid-body-unbalanced .fc-daygrid-day-events {\n      position: relative; /* for containing abs positioned event harnesses */\n      min-height: 2em; /* in addition to being a min-height during natural height, equalizes the heights a little bit */\n    }\n.fc .fc-daygrid-body-natural { /* can coexist with -unbalanced */\n  }\n.fc .fc-daygrid-body-natural .fc-daygrid-day-events {\n      margin-bottom: 1em;\n    }\n.fc {\n\n  /* event harness */\n\n}\n.fc .fc-daygrid-event-harness {\n    position: relative;\n  }\n.fc .fc-daygrid-event-harness-abs {\n    position: absolute;\n    top: 0; /* fallback coords for when cannot yet be computed */\n    left: 0; /* */\n    right: 0; /* */\n  }\n.fc .fc-daygrid-bg-harness {\n    position: absolute;\n    top: 0;\n    bottom: 0;\n  }\n.fc {\n\n  /* bg content */\n\n}\n.fc .fc-daygrid-day-bg .fc-non-business { z-index: 1 }\n.fc .fc-daygrid-day-bg .fc-bg-event { z-index: 2 }\n.fc .fc-daygrid-day-bg .fc-highlight { z-index: 3 }\n.fc {\n\n  /* events */\n\n}\n.fc .fc-daygrid-event {\n    z-index: 6;\n    margin-top: 1px;\n  }\n.fc .fc-daygrid-event.fc-event-mirror {\n    z-index: 7;\n  }\n.fc {\n\n  /* cell bottom (within day-events) */\n\n}\n.fc .fc-daygrid-day-bottom {\n    font-size: .85em;\n    margin: 2px 3px 0;\n  }\n.fc .fc-daygrid-more-link {\n    position: relative;\n    z-index: 4;\n    cursor: pointer;\n  }\n.fc {\n\n  /* week number (within frame) */\n\n}\n.fc .fc-daygrid-week-number {\n    position: absolute;\n    z-index: 5;\n    top: 0;\n    padding: 2px;\n    min-width: 1.5em;\n    text-align: center;\n    background-color: rgba(208, 208, 208, 0.3);\n    background-color: var(--fc-neutral-bg-color, rgba(208, 208, 208, 0.3));\n    color: #808080;\n    color: var(--fc-neutral-text-color, #808080);\n  }\n.fc {\n\n  /* popover */\n\n}\n.fc .fc-more-popover {\n    z-index: 8;\n  }\n.fc .fc-more-popover .fc-popover-body {\n    min-width: 220px;\n    padding: 10px;\n  }\n.fc-direction-ltr .fc-daygrid-event.fc-event-start,\n.fc-direction-rtl .fc-daygrid-event.fc-event-end {\n  margin-left: 2px;\n}\n.fc-direction-ltr .fc-daygrid-event.fc-event-end,\n.fc-direction-rtl .fc-daygrid-event.fc-event-start {\n  margin-right: 2px;\n}\n.fc-direction-ltr .fc-daygrid-week-number {\n    left: 0;\n    border-radius: 0 0 3px 0;\n  }\n.fc-direction-rtl .fc-daygrid-week-number {\n    right: 0;\n    border-radius: 0 0 0 3px;\n  }\n.fc-liquid-hack .fc-daygrid-day-frame {\n    position: static; /* will cause inner absolute stuff to expand to <td> */\n  }\n.fc-daygrid-event { /* make root-level, because will be dragged-and-dropped outside of a component root */\n  position: relative; /* for z-indexes assigned later */\n  white-space: nowrap;\n  border-radius: 3px; /* dot event needs this to when selected */\n  font-size: .85em;\n  font-size: var(--fc-small-font-size, .85em);\n}\n/* --- the rectangle (\"block\") style of event --- */\n.fc-daygrid-block-event .fc-event-time {\n    font-weight: bold;\n  }\n.fc-daygrid-block-event .fc-event-time,\n  .fc-daygrid-block-event .fc-event-title {\n    padding: 1px;\n  }\n/* --- the dot style of event --- */\n.fc-daygrid-dot-event {\n  display: flex;\n  align-items: center;\n  padding: 2px 0\n\n}\n.fc-daygrid-dot-event .fc-event-title {\n    flex-grow: 1;\n    flex-shrink: 1;\n    min-width: 0; /* important for allowing to shrink all the way */\n    overflow: hidden;\n    font-weight: bold;\n  }\n.fc-daygrid-dot-event:hover,\n  .fc-daygrid-dot-event.fc-event-mirror {\n    background: rgba(0, 0, 0, 0.1);\n  }\n.fc-daygrid-dot-event.fc-event-selected:before {\n    /* expand hit area */\n    top: -10px;\n    bottom: -10px;\n  }\n.fc-daygrid-event-dot { /* the actual dot */\n  margin: 0 4px;\n  box-sizing: content-box;\n  width: 0;\n  height: 0;\n  border: 4px solid #3788d8;\n  border: calc(var(--fc-daygrid-event-dot-width, 8px) / 2) solid var(--fc-event-border-color, #3788d8);\n  border-radius: 4px;\n  border-radius: calc(var(--fc-daygrid-event-dot-width, 8px) / 2);\n}\n/* --- spacing between time and title --- */\n.fc-direction-ltr .fc-daygrid-event .fc-event-time {\n    margin-right: 3px;\n  }\n.fc-direction-rtl .fc-daygrid-event .fc-event-time {\n    margin-left: 3px;\n  }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n.fc {\n  direction: ltr;\n  text-align: left;\n}\n\n.fc-rtl {\n  text-align: right;\n}\n\nbody .fc {\n  /* extra precedence to overcome jqui */\n  font-size: 1em;\n}\n\n/* Colors\n--------------------------------------------------------------------------------------------------*/\n.fc-highlight {\n  /* when user is selecting cells */\n  background: #bce8f1;\n  opacity: 0.3;\n}\n\n.fc-bgevent {\n  /* default look for background events */\n  background: #8fdf82;\n  opacity: 0.3;\n}\n\n.fc-nonbusiness {\n  /* default look for non-business-hours areas */\n  /* will inherit .fc-bgevent's styles */\n  background: #d7d7d7;\n}\n\n/* Popover\n--------------------------------------------------------------------------------------------------*/\n.fc-popover {\n  position: absolute;\n  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);\n}\n\n.fc-popover .fc-header {\n  /* TODO: be more consistent with fc-head/fc-body */\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 2px 4px;\n}\n\n.fc-rtl .fc-popover .fc-header {\n  flex-direction: row-reverse;\n}\n\n.fc-popover .fc-header .fc-title {\n  margin: 0 2px;\n}\n\n.fc-popover .fc-header .fc-close {\n  cursor: pointer;\n  opacity: 0.65;\n  font-size: 1.1em;\n}\n\n/* Misc Reusable Components\n--------------------------------------------------------------------------------------------------*/\n.fc-divider {\n  border-style: solid;\n  border-width: 1px;\n}\n\nhr.fc-divider {\n  height: 0;\n  margin: 0;\n  padding: 0 0 2px;\n  /* height is unreliable across browsers, so use padding */\n  border-width: 1px 0;\n}\n\n.fc-bg,\n.fc-bgevent-skeleton,\n.fc-highlight-skeleton,\n.fc-mirror-skeleton {\n  /* these element should always cling to top-left/right corners */\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n}\n\n.fc-bg {\n  bottom: 0;\n  /* strech bg to bottom edge */\n}\n\n.fc-bg table {\n  height: 100%;\n  /* strech bg to bottom edge */\n}\n\n/* Tables\n--------------------------------------------------------------------------------------------------*/\n.fc table {\n  width: 100%;\n  box-sizing: border-box;\n  /* fix scrollbar issue in firefox */\n  table-layout: fixed;\n  border-collapse: collapse;\n  border-spacing: 0;\n  font-size: 1em;\n  /* normalize cross-browser */\n}\n\n.fc th {\n  text-align: center;\n}\n\n.fc th,\n.fc td {\n  border-style: solid;\n  border-width: 1px;\n  padding: 0;\n  vertical-align: top;\n}\n\n.fc td.fc-today {\n  border-style: double;\n  /* overcome neighboring borders */\n}\n\n/* Internal Nav Links\n--------------------------------------------------------------------------------------------------*/\na[data-goto] {\n  cursor: pointer;\n}\n\na[data-goto]:hover {\n  text-decoration: underline;\n}\n\n/* Fake Table Rows\n--------------------------------------------------------------------------------------------------*/\n.fc .fc-row {\n  /* extra precedence to overcome themes forcing a 1px border */\n  /* no visible border by default. but make available if need be (scrollbar width compensation) */\n  border-style: solid;\n  border-width: 0;\n}\n\n.fc-row table {\n  /* don't put left/right border on anything within a fake row.\n     the outer tbody will worry about this */\n  border-left: 0 hidden transparent;\n  border-right: 0 hidden transparent;\n  /* no bottom borders on rows */\n  border-bottom: 0 hidden transparent;\n}\n\n.fc-row:first-child table {\n  border-top: 0 hidden transparent;\n  /* no top border on first row */\n}\n\n/* Day Row (used within the header and the DayGrid)\n--------------------------------------------------------------------------------------------------*/\n.fc-row {\n  position: relative;\n}\n\n.fc-row .fc-bg {\n  z-index: 1;\n}\n\n/* highlighting cells & background event skeleton */\n.fc-row .fc-bgevent-skeleton,\n.fc-row .fc-highlight-skeleton {\n  bottom: 0;\n  /* stretch skeleton to bottom of row */\n}\n\n.fc-row .fc-bgevent-skeleton table,\n.fc-row .fc-highlight-skeleton table {\n  height: 100%;\n  /* stretch skeleton to bottom of row */\n}\n\n.fc-row .fc-highlight-skeleton td,\n.fc-row .fc-bgevent-skeleton td {\n  border-color: transparent;\n}\n\n.fc-row .fc-bgevent-skeleton {\n  z-index: 2;\n}\n\n.fc-row .fc-highlight-skeleton {\n  z-index: 3;\n}\n\n/*\nrow content (which contains day/week numbers and events) as well as \"mirror\" (which contains\ntemporary rendered events).\n*/\n.fc-row .fc-content-skeleton {\n  position: relative;\n  z-index: 4;\n  padding-bottom: 2px;\n  /* matches the space above the events */\n}\n\n.fc-row .fc-mirror-skeleton {\n  z-index: 5;\n}\n\n.fc .fc-row .fc-content-skeleton table,\n.fc .fc-row .fc-content-skeleton td,\n.fc .fc-row .fc-mirror-skeleton td {\n  /* see-through to the background below */\n  /* extra precedence to prevent theme-provided backgrounds */\n  background: none;\n  /* in case <td>s are globally styled */\n  border-color: transparent;\n}\n\n.fc-row .fc-content-skeleton td,\n.fc-row .fc-mirror-skeleton td {\n  /* don't put a border between events and/or the day number */\n  border-bottom: 0;\n}\n\n.fc-row .fc-content-skeleton tbody td,\n.fc-row .fc-mirror-skeleton tbody td {\n  /* don't put a border between event cells */\n  border-top: 0;\n}\n\n/* Scrolling Container\n--------------------------------------------------------------------------------------------------*/\n.fc-scroller {\n  -webkit-overflow-scrolling: touch;\n}\n\n/* TODO: move to timegrid/daygrid */\n.fc-scroller > .fc-day-grid,\n.fc-scroller > .fc-time-grid {\n  position: relative;\n  /* re-scope all positions */\n  width: 100%;\n  /* hack to force re-sizing this inner element when scrollbars appear/disappear */\n}\n\n/* Global Event Styles\n--------------------------------------------------------------------------------------------------*/\n.fc-event {\n  position: relative;\n  /* for resize handle and other inner positioning */\n  display: block;\n  /* make the <a> tag block */\n  font-size: 0.85em;\n  line-height: 1.4;\n  border-radius: 3px;\n  border: 1px solid #3788d8;\n}\n\n.fc-event,\n.fc-event-dot {\n  background-color: #3788d8;\n  /* default BACKGROUND color */\n}\n\n.fc-event,\n.fc-event:hover {\n  color: #fff;\n  /* default TEXT color */\n  text-decoration: none;\n  /* if <a> has an href */\n}\n\n.fc-event[href],\n.fc-event.fc-draggable {\n  cursor: pointer;\n  /* give events with links and draggable events a hand mouse pointer */\n}\n\n.fc-not-allowed,\n.fc-not-allowed .fc-event {\n  /* to override an event's custom cursor */\n  cursor: not-allowed;\n}\n\n.fc-event .fc-content {\n  position: relative;\n  z-index: 2;\n}\n\n/* resizer (cursor AND touch devices) */\n.fc-event .fc-resizer {\n  position: absolute;\n  z-index: 4;\n}\n\n/* resizer (touch devices) */\n.fc-event .fc-resizer {\n  display: none;\n}\n\n.fc-event.fc-allow-mouse-resize .fc-resizer,\n.fc-event.fc-selected .fc-resizer {\n  /* only show when hovering or selected (with touch) */\n  display: block;\n}\n\n/* hit area */\n.fc-event.fc-selected .fc-resizer:before {\n  /* 40x40 touch area */\n  content: \"\";\n  position: absolute;\n  z-index: 9999;\n  /* user of this util can scope within a lower z-index */\n  top: 50%;\n  left: 50%;\n  width: 40px;\n  height: 40px;\n  margin-left: -20px;\n  margin-top: -20px;\n}\n\n/* Event Selection (only for touch devices)\n--------------------------------------------------------------------------------------------------*/\n.fc-event.fc-selected {\n  z-index: 9999 !important;\n  /* overcomes inline z-index */\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);\n}\n\n.fc-event.fc-selected:after {\n  content: \"\";\n  position: absolute;\n  z-index: 1;\n  /* same z-index as fc-bg, behind text */\n  /* overcome the borders */\n  top: -1px;\n  right: -1px;\n  bottom: -1px;\n  left: -1px;\n  /* darkening effect */\n  background: #000;\n  opacity: 0.25;\n}\n\n/* Event Dragging\n--------------------------------------------------------------------------------------------------*/\n.fc-event.fc-dragging.fc-selected {\n  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);\n}\n\n.fc-event.fc-dragging:not(.fc-selected) {\n  opacity: 0.75;\n}\n\n/* Horizontal Events\n--------------------------------------------------------------------------------------------------*/\n/* bigger touch area when selected */\n.fc-h-event.fc-selected:before {\n  content: \"\";\n  position: absolute;\n  z-index: 3;\n  /* below resizers */\n  top: -10px;\n  bottom: -10px;\n  left: 0;\n  right: 0;\n}\n\n/* events that are continuing to/from another week. kill rounded corners and butt up against edge */\n.fc-ltr .fc-h-event.fc-not-start,\n.fc-rtl .fc-h-event.fc-not-end {\n  margin-left: 0;\n  border-left-width: 0;\n  padding-left: 1px;\n  /* replace the border with padding */\n  border-top-left-radius: 0;\n  border-bottom-left-radius: 0;\n}\n\n.fc-ltr .fc-h-event.fc-not-end,\n.fc-rtl .fc-h-event.fc-not-start {\n  margin-right: 0;\n  border-right-width: 0;\n  padding-right: 1px;\n  /* replace the border with padding */\n  border-top-right-radius: 0;\n  border-bottom-right-radius: 0;\n}\n\n/* resizer (cursor AND touch devices) */\n/* left resizer  */\n.fc-ltr .fc-h-event .fc-start-resizer,\n.fc-rtl .fc-h-event .fc-end-resizer {\n  cursor: w-resize;\n  left: -1px;\n  /* overcome border */\n}\n\n/* right resizer */\n.fc-ltr .fc-h-event .fc-end-resizer,\n.fc-rtl .fc-h-event .fc-start-resizer {\n  cursor: e-resize;\n  right: -1px;\n  /* overcome border */\n}\n\n/* resizer (mouse devices) */\n.fc-h-event.fc-allow-mouse-resize .fc-resizer {\n  width: 7px;\n  top: -1px;\n  /* overcome top border */\n  bottom: -1px;\n  /* overcome bottom border */\n}\n\n/* resizer (touch devices) */\n.fc-h-event.fc-selected .fc-resizer {\n  /* 8x8 little dot */\n  border-radius: 4px;\n  border-width: 1px;\n  width: 6px;\n  height: 6px;\n  border-style: solid;\n  border-color: inherit;\n  background: #fff;\n  /* vertically center */\n  top: 50%;\n  margin-top: -4px;\n}\n\n/* left resizer  */\n.fc-ltr .fc-h-event.fc-selected .fc-start-resizer,\n.fc-rtl .fc-h-event.fc-selected .fc-end-resizer {\n  margin-left: -4px;\n  /* centers the 8x8 dot on the left edge */\n}\n\n/* right resizer */\n.fc-ltr .fc-h-event.fc-selected .fc-end-resizer,\n.fc-rtl .fc-h-event.fc-selected .fc-start-resizer {\n  margin-right: -4px;\n  /* centers the 8x8 dot on the right edge */\n}\n\n/* DayGrid events\n----------------------------------------------------------------------------------------------------\nWe use the full \"fc-day-grid-event\" class instead of using descendants because the event won't\nbe a descendant of the grid when it is being dragged.\n*/\n.fc-day-grid-event {\n  margin: 1px 2px 0;\n  /* spacing between events and edges */\n  padding: 0 1px;\n}\n\ntr:first-child > td > .fc-day-grid-event {\n  margin-top: 2px;\n  /* a little bit more space before the first event */\n}\n\n.fc-mirror-skeleton tr:first-child > td > .fc-day-grid-event {\n  margin-top: 0;\n  /* except for mirror skeleton */\n}\n\n.fc-day-grid-event .fc-content {\n  /* force events to be one-line tall */\n  white-space: nowrap;\n  overflow: hidden;\n}\n\n.fc-day-grid-event .fc-time {\n  font-weight: bold;\n}\n\n/* resizer (cursor devices) */\n/* left resizer  */\n.fc-ltr .fc-day-grid-event.fc-allow-mouse-resize .fc-start-resizer,\n.fc-rtl .fc-day-grid-event.fc-allow-mouse-resize .fc-end-resizer {\n  margin-left: -2px;\n  /* to the day cell's edge */\n}\n\n/* right resizer */\n.fc-ltr .fc-day-grid-event.fc-allow-mouse-resize .fc-end-resizer,\n.fc-rtl .fc-day-grid-event.fc-allow-mouse-resize .fc-start-resizer {\n  margin-right: -2px;\n  /* to the day cell's edge */\n}\n\n/* Event Limiting\n--------------------------------------------------------------------------------------------------*/\n/* \"more\" link that represents hidden events */\na.fc-more {\n  margin: 1px 3px;\n  font-size: 0.85em;\n  cursor: pointer;\n  text-decoration: none;\n}\n\na.fc-more:hover {\n  text-decoration: underline;\n}\n\n.fc-limited {\n  /* rows and cells that are hidden because of a \"more\" link */\n  display: none;\n}\n\n/* popover that appears when \"more\" link is clicked */\n.fc-day-grid .fc-row {\n  z-index: 1;\n  /* make the \"more\" popover one higher than this */\n}\n\n.fc-more-popover {\n  z-index: 2;\n  width: 220px;\n}\n\n.fc-more-popover .fc-event-container {\n  padding: 10px;\n}\n\n/* Now Indicator\n--------------------------------------------------------------------------------------------------*/\n.fc-now-indicator {\n  position: absolute;\n  border: 0 solid red;\n}\n\n/* Utilities\n--------------------------------------------------------------------------------------------------*/\n.fc-unselectable {\n  -webkit-user-select: none;\n  -khtml-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  -webkit-touch-callout: none;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n}\n\n/*\nTODO: more distinction between this file and common.css\n*/\n/* Colors\n--------------------------------------------------------------------------------------------------*/\n.fc-unthemed th,\n.fc-unthemed td,\n.fc-unthemed thead,\n.fc-unthemed tbody,\n.fc-unthemed .fc-divider,\n.fc-unthemed .fc-row,\n.fc-unthemed .fc-content,\n.fc-unthemed .fc-popover,\n.fc-unthemed .fc-list-view,\n.fc-unthemed .fc-list-heading td {\n  border-color: #ddd;\n}\n\n.fc-unthemed .fc-popover {\n  background-color: #fff;\n}\n\n.fc-unthemed .fc-divider,\n.fc-unthemed .fc-popover .fc-header,\n.fc-unthemed .fc-list-heading td {\n  background: #eee;\n}\n\n.fc-unthemed td.fc-today {\n  background: #fcf8e3;\n}\n\n.fc-unthemed .fc-disabled-day {\n  background: #d7d7d7;\n  opacity: 0.3;\n}\n\n/* Icons\n--------------------------------------------------------------------------------------------------\nfrom https://feathericons.com/ and built with IcoMoon\n*/\n@font-face {\n  font-family: \"fcicons\";\n  src: url(\"data:application/x-font-ttf;charset=utf-8;base64,AAEAAAALAIAAAwAwT1MvMg8SBfAAAAC8AAAAYGNtYXAXVtKNAAABHAAAAFRnYXNwAAAAEAAAAXAAAAAIZ2x5ZgYydxIAAAF4AAAFNGhlYWQUJ7cIAAAGrAAAADZoaGVhB20DzAAABuQAAAAkaG10eCIABhQAAAcIAAAALGxvY2ED4AU6AAAHNAAAABhtYXhwAA8AjAAAB0wAAAAgbmFtZXsr690AAAdsAAABhnBvc3QAAwAAAAAI9AAAACAAAwPAAZAABQAAApkCzAAAAI8CmQLMAAAB6wAzAQkAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAAAAABAAADpBgPA/8AAQAPAAEAAAAABAAAAAAAAAAAAAAAgAAAAAAADAAAAAwAAABwAAQADAAAAHAADAAEAAAAcAAQAOAAAAAoACAACAAIAAQAg6Qb//f//AAAAAAAg6QD//f//AAH/4xcEAAMAAQAAAAAAAAAAAAAAAQAB//8ADwABAAAAAAAAAAAAAgAANzkBAAAAAAEAAAAAAAAAAAACAAA3OQEAAAAAAQAAAAAAAAAAAAIAADc5AQAAAAABAWIAjQKeAskAEwAAJSc3NjQnJiIHAQYUFwEWMjc2NCcCnuLiDQ0MJAz/AA0NAQAMJAwNDcni4gwjDQwM/wANIwz/AA0NDCMNAAAAAQFiAI0CngLJABMAACUBNjQnASYiBwYUHwEHBhQXFjI3AZ4BAA0N/wAMJAwNDeLiDQ0MJAyNAQAMIw0BAAwMDSMM4uINIwwNDQAAAAIA4gC3Ax4CngATACcAACUnNzY0JyYiDwEGFB8BFjI3NjQnISc3NjQnJiIPAQYUHwEWMjc2NCcB87e3DQ0MIw3VDQ3VDSMMDQ0BK7e3DQ0MJAzVDQ3VDCQMDQ3zuLcMJAwNDdUNIwzWDAwNIwy4twwkDA0N1Q0jDNYMDA0jDAAAAgDiALcDHgKeABMAJwAAJTc2NC8BJiIHBhQfAQcGFBcWMjchNzY0LwEmIgcGFB8BBwYUFxYyNwJJ1Q0N1Q0jDA0Nt7cNDQwjDf7V1Q0N1QwkDA0Nt7cNDQwkDLfWDCMN1Q0NDCQMt7gMIw0MDNYMIw3VDQ0MJAy3uAwjDQwMAAADAFUAAAOrA1UAMwBoAHcAABMiBgcOAQcOAQcOARURFBYXHgEXHgEXHgEzITI2Nz4BNz4BNz4BNRE0JicuAScuAScuASMFITIWFx4BFx4BFx4BFREUBgcOAQcOAQcOASMhIiYnLgEnLgEnLgE1ETQ2Nz4BNz4BNz4BMxMhMjY1NCYjISIGFRQWM9UNGAwLFQkJDgUFBQUFBQ4JCRULDBgNAlYNGAwLFQkJDgUFBQUFBQ4JCRULDBgN/aoCVgQIBAQHAwMFAQIBAQIBBQMDBwQECAT9qgQIBAQHAwMFAQIBAQIBBQMDBwQECASAAVYRGRkR/qoRGRkRA1UFBAUOCQkVDAsZDf2rDRkLDBUJCA4FBQUFBQUOCQgVDAsZDQJVDRkLDBUJCQ4FBAVVAgECBQMCBwQECAX9qwQJAwQHAwMFAQICAgIBBQMDBwQDCQQCVQUIBAQHAgMFAgEC/oAZEhEZGRESGQAAAAADAFUAAAOrA1UAMwBoAIkAABMiBgcOAQcOAQcOARURFBYXHgEXHgEXHgEzITI2Nz4BNz4BNz4BNRE0JicuAScuAScuASMFITIWFx4BFx4BFx4BFREUBgcOAQcOAQcOASMhIiYnLgEnLgEnLgE1ETQ2Nz4BNz4BNz4BMxMzFRQWMzI2PQEzMjY1NCYrATU0JiMiBh0BIyIGFRQWM9UNGAwLFQkJDgUFBQUFBQ4JCRULDBgNAlYNGAwLFQkJDgUFBQUFBQ4JCRULDBgN/aoCVgQIBAQHAwMFAQIBAQIBBQMDBwQECAT9qgQIBAQHAwMFAQIBAQIBBQMDBwQECASAgBkSEhmAERkZEYAZEhIZgBEZGREDVQUEBQ4JCRUMCxkN/asNGQsMFQkIDgUFBQUFBQ4JCBUMCxkNAlUNGQsMFQkJDgUEBVUCAQIFAwIHBAQIBf2rBAkDBAcDAwUBAgICAgEFAwMHBAMJBAJVBQgEBAcCAwUCAQL+gIASGRkSgBkSERmAEhkZEoAZERIZAAABAOIAjQMeAskAIAAAExcHBhQXFjI/ARcWMjc2NC8BNzY0JyYiDwEnJiIHBhQX4uLiDQ0MJAzi4gwkDA0N4uINDQwkDOLiDCQMDQ0CjeLiDSMMDQ3h4Q0NDCMN4uIMIw0MDOLiDAwNIwwAAAABAAAAAQAAa5n0y18PPPUACwQAAAAAANivOVsAAAAA2K85WwAAAAADqwNVAAAACAACAAAAAAAAAAEAAAPA/8AAAAQAAAAAAAOrAAEAAAAAAAAAAAAAAAAAAAALBAAAAAAAAAAAAAAAAgAAAAQAAWIEAAFiBAAA4gQAAOIEAABVBAAAVQQAAOIAAAAAAAoAFAAeAEQAagCqAOoBngJkApoAAQAAAAsAigADAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA4ArgABAAAAAAABAAcAAAABAAAAAAACAAcAYAABAAAAAAADAAcANgABAAAAAAAEAAcAdQABAAAAAAAFAAsAFQABAAAAAAAGAAcASwABAAAAAAAKABoAigADAAEECQABAA4ABwADAAEECQACAA4AZwADAAEECQADAA4APQADAAEECQAEAA4AfAADAAEECQAFABYAIAADAAEECQAGAA4AUgADAAEECQAKADQApGZjaWNvbnMAZgBjAGkAYwBvAG4Ac1ZlcnNpb24gMS4wAFYAZQByAHMAaQBvAG4AIAAxAC4AMGZjaWNvbnMAZgBjAGkAYwBvAG4Ac2ZjaWNvbnMAZgBjAGkAYwBvAG4Ac1JlZ3VsYXIAUgBlAGcAdQBsAGEAcmZjaWNvbnMAZgBjAGkAYwBvAG4Ac0ZvbnQgZ2VuZXJhdGVkIGJ5IEljb01vb24uAEYAbwBuAHQAIABnAGUAbgBlAHIAYQB0AGUAZAAgAGIAeQAgAEkAYwBvAE0AbwBvAG4ALgAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=\") format(\"truetype\");\n  font-weight: normal;\n  font-style: normal;\n}\n.fc-icon {\n  /* use !important to prevent issues with browser extensions that change fonts */\n  font-family: \"fcicons\" !important;\n  speak: none;\n  font-style: normal;\n  font-weight: normal;\n  font-variant: normal;\n  text-transform: none;\n  line-height: 1;\n  /* Better Font Rendering =========== */\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\n.fc-icon-chevron-left:before {\n  content: \"\\E900\";\n}\n\n.fc-icon-chevron-right:before {\n  content: \"\\E901\";\n}\n\n.fc-icon-chevrons-left:before {\n  content: \"\\E902\";\n}\n\n.fc-icon-chevrons-right:before {\n  content: \"\\E903\";\n}\n\n.fc-icon-minus-square:before {\n  content: \"\\E904\";\n}\n\n.fc-icon-plus-square:before {\n  content: \"\\E905\";\n}\n\n.fc-icon-x:before {\n  content: \"\\E906\";\n}\n\n.fc-icon {\n  display: inline-block;\n  width: 1em;\n  height: 1em;\n  text-align: center;\n}\n\n/* Buttons\n--------------------------------------------------------------------------------------------------\nLots taken from Flatly (MIT): https://bootswatch.com/4/flatly/bootstrap.css\n*/\n/* reset */\n.fc-button {\n  border-radius: 0;\n  overflow: visible;\n  text-transform: none;\n  margin: 0;\n  font-family: inherit;\n  font-size: inherit;\n  line-height: inherit;\n}\n\n.fc-button:focus {\n  outline: 1px dotted;\n  outline: 5px auto -webkit-focus-ring-color;\n}\n\n.fc-button {\n  -webkit-appearance: button;\n}\n\n.fc-button:not(:disabled) {\n  cursor: pointer;\n}\n\n.fc-button::-moz-focus-inner {\n  padding: 0;\n  border-style: none;\n}\n\n/* theme */\n.fc-button {\n  display: inline-block;\n  font-weight: 400;\n  color: #212529;\n  text-align: center;\n  vertical-align: middle;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  background-color: transparent;\n  border: 1px solid transparent;\n  padding: 0.4em 0.65em;\n  font-size: 1em;\n  line-height: 1.5;\n  border-radius: 0.25em;\n}\n\n.fc-button:hover {\n  color: #212529;\n  text-decoration: none;\n}\n\n.fc-button:focus {\n  outline: 0;\n  -webkit-box-shadow: 0 0 0 0.2rem rgba(44, 62, 80, 0.25);\n  box-shadow: 0 0 0 0.2rem rgba(44, 62, 80, 0.25);\n}\n\n.fc-button:disabled {\n  opacity: 0.65;\n}\n\n/* \"primary\" coloring */\n.fc-button-primary {\n  color: #fff;\n  background-color: #2C3E50;\n  border-color: #2C3E50;\n}\n\n.fc-button-primary:hover {\n  color: #fff;\n  background-color: #1e2b37;\n  border-color: #1a252f;\n}\n\n.fc-button-primary:focus {\n  -webkit-box-shadow: 0 0 0 0.2rem rgba(76, 91, 106, 0.5);\n  box-shadow: 0 0 0 0.2rem rgba(76, 91, 106, 0.5);\n}\n\n.fc-button-primary:disabled {\n  color: #fff;\n  background-color: #2C3E50;\n  border-color: #2C3E50;\n}\n\n.fc-button-primary:not(:disabled):active,\n.fc-button-primary:not(:disabled).fc-button-active {\n  color: #fff;\n  background-color: #1a252f;\n  border-color: #151e27;\n}\n\n.fc-button-primary:not(:disabled):active:focus,\n.fc-button-primary:not(:disabled).fc-button-active:focus {\n  -webkit-box-shadow: 0 0 0 0.2rem rgba(76, 91, 106, 0.5);\n  box-shadow: 0 0 0 0.2rem rgba(76, 91, 106, 0.5);\n}\n\n/* icons within buttons */\n.fc-button .fc-icon {\n  vertical-align: middle;\n  font-size: 1.5em;\n}\n\n/* Buttons Groups\n--------------------------------------------------------------------------------------------------*/\n.fc-button-group {\n  position: relative;\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  vertical-align: middle;\n}\n\n.fc-button-group > .fc-button {\n  position: relative;\n  -webkit-box-flex: 1;\n  -ms-flex: 1 1 auto;\n  flex: 1 1 auto;\n}\n\n.fc-button-group > .fc-button:hover {\n  z-index: 1;\n}\n\n.fc-button-group > .fc-button:focus,\n.fc-button-group > .fc-button:active,\n.fc-button-group > .fc-button.fc-button-active {\n  z-index: 1;\n}\n\n.fc-button-group > .fc-button:not(:first-child) {\n  margin-left: -1px;\n}\n\n.fc-button-group > .fc-button:not(:last-child) {\n  border-top-right-radius: 0;\n  border-bottom-right-radius: 0;\n}\n\n.fc-button-group > .fc-button:not(:first-child) {\n  border-top-left-radius: 0;\n  border-bottom-left-radius: 0;\n}\n\n/* Popover\n--------------------------------------------------------------------------------------------------*/\n.fc-unthemed .fc-popover {\n  border-width: 1px;\n  border-style: solid;\n}\n\n/* List View\n--------------------------------------------------------------------------------------------------*/\n.fc-unthemed .fc-list-item:hover td {\n  background-color: #f5f5f5;\n}\n\n/* Toolbar\n--------------------------------------------------------------------------------------------------*/\n.fc-toolbar {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n\n.fc-toolbar.fc-header-toolbar {\n  margin-bottom: 1.5em;\n}\n\n.fc-toolbar.fc-footer-toolbar {\n  margin-top: 1.5em;\n}\n\n/* inner content */\n.fc-toolbar > * > :not(:first-child) {\n  margin-left: 0.75em;\n}\n\n.fc-toolbar h2 {\n  font-size: 1.75em;\n  margin: 0;\n}\n\n/* View Structure\n--------------------------------------------------------------------------------------------------*/\n.fc-view-container {\n  position: relative;\n}\n\n/* undo twitter bootstrap's box-sizing rules. normalizes positioning techniques */\n/* don't do this for the toolbar because we'll want bootstrap to style those buttons as some pt */\n.fc-view-container *,\n.fc-view-container *:before,\n.fc-view-container *:after {\n  -webkit-box-sizing: content-box;\n  -moz-box-sizing: content-box;\n  box-sizing: content-box;\n}\n\n.fc-view,\n.fc-view > table {\n  /* so dragged elements can be above the view's main element */\n  position: relative;\n  z-index: 1;\n}\n\n@media print {\n  .fc {\n    max-width: 100% !important;\n  }\n\n  /* Global Event Restyling\n  --------------------------------------------------------------------------------------------------*/\n  .fc-event {\n    background: #fff !important;\n    color: #000 !important;\n    page-break-inside: avoid;\n  }\n\n  .fc-event .fc-resizer {\n    display: none;\n  }\n\n  /* Table & Day-Row Restyling\n  --------------------------------------------------------------------------------------------------*/\n  .fc th,\n.fc td,\n.fc hr,\n.fc thead,\n.fc tbody,\n.fc-row {\n    border-color: #ccc !important;\n    background: #fff !important;\n  }\n\n  /* kill the overlaid, absolutely-positioned components */\n  /* common... */\n  .fc-bg,\n.fc-bgevent-skeleton,\n.fc-highlight-skeleton,\n.fc-mirror-skeleton,\n.fc-bgevent-container,\n.fc-business-container,\n.fc-highlight-container,\n.fc-mirror-container {\n    display: none;\n  }\n\n  /* don't force a min-height on rows (for DayGrid) */\n  .fc tbody .fc-row {\n    height: auto !important;\n    /* undo height that JS set in distributeHeight */\n    min-height: 0 !important;\n    /* undo the min-height from each view's specific stylesheet */\n  }\n\n  .fc tbody .fc-row .fc-content-skeleton {\n    position: static;\n    /* undo .fc-rigid */\n    padding-bottom: 0 !important;\n    /* use a more border-friendly method for this... */\n  }\n\n  .fc tbody .fc-row .fc-content-skeleton tbody tr:last-child td {\n    /* only works in newer browsers */\n    padding-bottom: 1em;\n    /* ...gives space within the skeleton. also ensures min height in a way */\n  }\n\n  .fc tbody .fc-row .fc-content-skeleton table {\n    /* provides a min-height for the row, but only effective for IE, which exaggerates this value,\n       making it look more like 3em. for other browers, it will already be this tall */\n    height: 1em;\n  }\n\n  /* Undo month-view event limiting. Display all events and hide the \"more\" links\n  --------------------------------------------------------------------------------------------------*/\n  .fc-more-cell,\n.fc-more {\n    display: none !important;\n  }\n\n  .fc tr.fc-limited {\n    display: table-row !important;\n  }\n\n  .fc td.fc-limited {\n    display: table-cell !important;\n  }\n\n  .fc-popover {\n    display: none;\n    /* never display the \"more..\" popover in print mode */\n  }\n\n  /* TimeGrid Restyling\n  --------------------------------------------------------------------------------------------------*/\n  /* undo the min-height 100% trick used to fill the container's height */\n  .fc-time-grid {\n    min-height: 0 !important;\n  }\n\n  /* don't display the side axis at all (\"all-day\" and time cells) */\n  .fc-timeGrid-view .fc-axis {\n    display: none;\n  }\n\n  /* don't display the horizontal lines */\n  .fc-slats,\n.fc-time-grid hr {\n    /* this hr is used when height is underused and needs to be filled */\n    display: none !important;\n    /* important overrides inline declaration */\n  }\n\n  /* let the container that holds the events be naturally positioned and create real height */\n  .fc-time-grid .fc-content-skeleton {\n    position: static;\n  }\n\n  /* in case there are no events, we still want some height */\n  .fc-time-grid .fc-content-skeleton table {\n    height: 4em;\n  }\n\n  /* kill the horizontal spacing made by the event container. event margins will be done below */\n  .fc-time-grid .fc-event-container {\n    margin: 0 !important;\n  }\n\n  /* TimeGrid *Event* Restyling\n  --------------------------------------------------------------------------------------------------*/\n  /* naturally position events, vertically stacking them */\n  .fc-time-grid .fc-event {\n    position: static !important;\n    margin: 3px 2px !important;\n  }\n\n  /* for events that continue to a future day, give the bottom border back */\n  .fc-time-grid .fc-event.fc-not-end {\n    border-bottom-width: 1px !important;\n  }\n\n  /* indicate the event continues via \"...\" text */\n  .fc-time-grid .fc-event.fc-not-end:after {\n    content: \"...\";\n  }\n\n  /* for events that are continuations from previous days, give the top border back */\n  .fc-time-grid .fc-event.fc-not-start {\n    border-top-width: 1px !important;\n  }\n\n  /* indicate the event is a continuation via \"...\" text */\n  .fc-time-grid .fc-event.fc-not-start:before {\n    content: \"...\";\n  }\n\n  /* time */\n  /* undo a previous declaration and let the time text span to a second line */\n  .fc-time-grid .fc-event .fc-time {\n    white-space: normal !important;\n  }\n\n  /* hide the the time that is normally displayed... */\n  .fc-time-grid .fc-event .fc-time span {\n    display: none;\n  }\n\n  /* ...replace it with a more verbose version (includes AM/PM) stored in an html attribute */\n  .fc-time-grid .fc-event .fc-time:after {\n    content: attr(data-full);\n  }\n\n  /* Vertical Scroller & Containers\n  --------------------------------------------------------------------------------------------------*/\n  /* kill the scrollbars and allow natural height */\n  .fc-scroller,\n.fc-day-grid-container,\n.fc-time-grid-container {\n    /* */\n    overflow: visible !important;\n    height: auto !important;\n  }\n\n  /* kill the horizontal border/padding used to compensate for scrollbars */\n  .fc-row {\n    border: 0 !important;\n    margin: 0 !important;\n  }\n\n  /* Button Controls\n  --------------------------------------------------------------------------------------------------*/\n  .fc-button-group,\n.fc button {\n    display: none;\n    /* don't display any button-related controls */\n  }\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 22 */
+/* 23 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export install */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FullCalendar__ = __webpack_require__(147);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fullcalendar_core__ = __webpack_require__(12);
+/* unused harmony namespace reexport */
+
+/*
+Registers the component globally if appropriate.
+This modules exposes the component AND an install function.
+
+Derived from:
+https://vuejs.org/v2/cookbook/packaging-sfc-for-npm.html
+*/
+var installed = false;
+// declare install function executed by Vue.use()
+function install(Vue) {
+    if (!installed) {
+        installed = true;
+        Vue.component('FullCalendar', __WEBPACK_IMPORTED_MODULE_0__FullCalendar__["a" /* default */]);
+    }
+}
+// detect a globally availble version of Vue (eg. in browser via <script> tag)
+var GlobalVue;
+if (typeof globalThis !== 'undefined') {
+    GlobalVue = globalThis.Vue;
+}
+else {
+    GlobalVue = window.Vue;
+}
+// auto-install if possible
+if (GlobalVue) {
+    GlobalVue.use({
+        install: install
+    });
+}
+// to allow use as module (npm/webpack/etc.) export component
+/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0__FullCalendar__["a" /* default */]);
+// so can access any of the utils/types from this lib
+
+//# sourceMappingURL=main.js.map
+
+/***/ }),
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -25053,7 +25112,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(150);
+var	fixUrls = __webpack_require__(152);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -25366,7 +25425,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 23 */
+/* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -25395,14 +25454,3361 @@ var unmountComponentAtNode = FullCalendarVDom.unmountComponentAtNode;
 
 
 /***/ }),
-/* 24 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 26 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = __webpack_require__(25);
+"use strict";
+/* unused harmony export DayGridView */
+/* unused harmony export DayTable */
+/* unused harmony export DayTableSlicer */
+/* unused harmony export Table */
+/* unused harmony export TableView */
+/* unused harmony export buildDayTableModel */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__main_css__ = __webpack_require__(156);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__main_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__main_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_tslib__ = __webpack_require__(5);
+/*!
+FullCalendar v5.5.0
+Docs & License: https://fullcalendar.io/
+(c) 2020 Adam Shaw
+*/
+
+
+
+
+
+/* An abstract class for the daygrid views, as well as month view. Renders one or more rows of day cells.
+----------------------------------------------------------------------------------------------------------------------*/
+// It is a manager for a Table subcomponent, which does most of the heavy lifting.
+// It is responsible for managing width/height.
+var TableView = /** @class */ (function (_super) {
+    Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["b" /* __extends */])(TableView, _super);
+    function TableView() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.headerElRef = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_4" /* createRef */])();
+        return _this;
+    }
+    TableView.prototype.renderSimpleLayout = function (headerRowContent, bodyContent) {
+        var _a = this, props = _a.props, context = _a.context;
+        var sections = [];
+        var stickyHeaderDates = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_21" /* getStickyHeaderDates */])(context.options);
+        if (headerRowContent) {
+            sections.push({
+                type: 'header',
+                key: 'header',
+                isSticky: stickyHeaderDates,
+                chunk: {
+                    elRef: this.headerElRef,
+                    tableClassName: 'fc-col-header',
+                    rowContent: headerRowContent,
+                },
+            });
+        }
+        sections.push({
+            type: 'body',
+            key: 'body',
+            liquid: true,
+            chunk: { content: bodyContent },
+        });
+        return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["F" /* ViewRoot */], { viewSpec: context.viewSpec }, function (rootElRef, classNames) { return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { ref: rootElRef, className: ['fc-daygrid'].concat(classNames).join(' ') },
+            Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["C" /* SimpleScrollGrid */], { liquid: !props.isHeightAuto && !props.forPrint, cols: [] /* TODO: make optional? */, sections: sections }))); }));
+    };
+    TableView.prototype.renderHScrollLayout = function (headerRowContent, bodyContent, colCnt, dayMinWidth) {
+        var ScrollGrid = this.context.pluginHooks.scrollGridImpl;
+        if (!ScrollGrid) {
+            throw new Error('No ScrollGrid implementation');
+        }
+        var _a = this, props = _a.props, context = _a.context;
+        var stickyHeaderDates = !props.forPrint && Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_21" /* getStickyHeaderDates */])(context.options);
+        var stickyFooterScrollbar = !props.forPrint && Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_20" /* getStickyFooterScrollbar */])(context.options);
+        var sections = [];
+        if (headerRowContent) {
+            sections.push({
+                type: 'header',
+                key: 'header',
+                isSticky: stickyHeaderDates,
+                chunks: [{
+                        key: 'main',
+                        elRef: this.headerElRef,
+                        tableClassName: 'fc-col-header',
+                        rowContent: headerRowContent,
+                    }],
+            });
+        }
+        sections.push({
+            type: 'body',
+            key: 'body',
+            liquid: true,
+            chunks: [{
+                    key: 'main',
+                    content: bodyContent,
+                }],
+        });
+        if (stickyFooterScrollbar) {
+            sections.push({
+                type: 'footer',
+                key: 'footer',
+                isSticky: true,
+                chunks: [{
+                        key: 'main',
+                        content: __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_43" /* renderScrollShim */],
+                    }],
+            });
+        }
+        return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["F" /* ViewRoot */], { viewSpec: context.viewSpec }, function (rootElRef, classNames) { return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { ref: rootElRef, className: ['fc-daygrid'].concat(classNames).join(' ') },
+            Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(ScrollGrid, { liquid: !props.isHeightAuto && !props.forPrint, colGroups: [{ cols: [{ span: colCnt, minWidth: dayMinWidth }] }], sections: sections }))); }));
+    };
+    return TableView;
+}(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["i" /* DateComponent */]));
+
+function splitSegsByRow(segs, rowCnt) {
+    var byRow = [];
+    for (var i = 0; i < rowCnt; i += 1) {
+        byRow[i] = [];
+    }
+    for (var _i = 0, segs_1 = segs; _i < segs_1.length; _i++) {
+        var seg = segs_1[_i];
+        byRow[seg.row].push(seg);
+    }
+    return byRow;
+}
+function splitSegsByFirstCol(segs, colCnt) {
+    var byCol = [];
+    for (var i = 0; i < colCnt; i += 1) {
+        byCol[i] = [];
+    }
+    for (var _i = 0, segs_2 = segs; _i < segs_2.length; _i++) {
+        var seg = segs_2[_i];
+        byCol[seg.firstCol].push(seg);
+    }
+    return byCol;
+}
+function splitInteractionByRow(ui, rowCnt) {
+    var byRow = [];
+    if (!ui) {
+        for (var i = 0; i < rowCnt; i += 1) {
+            byRow[i] = null;
+        }
+    }
+    else {
+        for (var i = 0; i < rowCnt; i += 1) {
+            byRow[i] = {
+                affectedInstances: ui.affectedInstances,
+                isEvent: ui.isEvent,
+                segs: [],
+            };
+        }
+        for (var _i = 0, _a = ui.segs; _i < _a.length; _i++) {
+            var seg = _a[_i];
+            byRow[seg.row].segs.push(seg);
+        }
+    }
+    return byRow;
+}
+
+var TableCellTop = /** @class */ (function (_super) {
+    Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["b" /* __extends */])(TableCellTop, _super);
+    function TableCellTop() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    TableCellTop.prototype.render = function () {
+        var props = this.props;
+        var navLinkAttrs = this.context.options.navLinks
+            ? { 'data-navlink': Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["R" /* buildNavLinkData */])(props.date), tabIndex: 0 }
+            : {};
+        return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["k" /* DayCellContent */], { date: props.date, dateProfile: props.dateProfile, todayRange: props.todayRange, showDayNumber: props.showDayNumber, extraHookProps: props.extraHookProps, defaultContent: renderTopInner }, function (innerElRef, innerContent) { return ((innerContent || props.forceDayTop) && (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { className: "fc-daygrid-day-top", ref: innerElRef },
+            Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("a", Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({ className: "fc-daygrid-day-number" }, navLinkAttrs), innerContent || Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["v" /* Fragment */], null, "\u00A0"))))); }));
+    };
+    return TableCellTop;
+}(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["b" /* BaseComponent */]));
+function renderTopInner(props) {
+    return props.dayNumberText;
+}
+
+var DEFAULT_WEEK_NUM_FORMAT = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_2" /* createFormatter */])({ week: 'narrow' });
+var TableCell = /** @class */ (function (_super) {
+    Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["b" /* __extends */])(TableCell, _super);
+    function TableCell() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.handleRootEl = function (el) {
+            _this.rootEl = el;
+            Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_44" /* setRef */])(_this.props.elRef, el);
+        };
+        _this.handleMoreLinkClick = function (ev) {
+            var props = _this.props;
+            if (props.onMoreClick) {
+                var allSegs = props.segsByEachCol;
+                var hiddenSegs = allSegs.filter(function (seg) { return props.segIsHidden[seg.eventRange.instance.instanceId]; });
+                props.onMoreClick({
+                    date: props.date,
+                    allSegs: allSegs,
+                    hiddenSegs: hiddenSegs,
+                    moreCnt: props.moreCnt,
+                    dayEl: _this.rootEl,
+                    ev: ev,
+                });
+            }
+        };
+        return _this;
+    }
+    TableCell.prototype.render = function () {
+        var _this = this;
+        var _a = this.context, options = _a.options, viewApi = _a.viewApi;
+        var props = this.props;
+        var date = props.date, dateProfile = props.dateProfile;
+        var hookProps = {
+            num: props.moreCnt,
+            text: props.buildMoreLinkText(props.moreCnt),
+            view: viewApi,
+        };
+        var navLinkAttrs = options.navLinks
+            ? { 'data-navlink': Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["R" /* buildNavLinkData */])(date, 'week'), tabIndex: 0 }
+            : {};
+        return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["l" /* DayCellRoot */], { date: date, dateProfile: dateProfile, todayRange: props.todayRange, showDayNumber: props.showDayNumber, extraHookProps: props.extraHookProps, elRef: this.handleRootEl }, function (dayElRef, dayClassNames, rootDataAttrs, isDisabled) { return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("td", Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({ ref: dayElRef, className: ['fc-daygrid-day'].concat(dayClassNames, props.extraClassNames || []).join(' ') }, rootDataAttrs, props.extraDataAttrs),
+            Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { className: "fc-daygrid-day-frame fc-scrollgrid-sync-inner", ref: props.innerElRef /* different from hook system! RENAME */ },
+                props.showWeekNumber && (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["G" /* WeekNumberRoot */], { date: date, defaultFormat: DEFAULT_WEEK_NUM_FORMAT }, function (weekElRef, weekClassNames, innerElRef, innerContent) { return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("a", Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({ ref: weekElRef, className: ['fc-daygrid-week-number'].concat(weekClassNames).join(' ') }, navLinkAttrs), innerContent)); })),
+                !isDisabled && (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(TableCellTop, { date: date, dateProfile: dateProfile, showDayNumber: props.showDayNumber, forceDayTop: props.forceDayTop, todayRange: props.todayRange, extraHookProps: props.extraHookProps })),
+                Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { className: "fc-daygrid-day-events", ref: props.fgContentElRef, style: { paddingBottom: props.fgPaddingBottom } },
+                    props.fgContent,
+                    Boolean(props.moreCnt) && (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { className: "fc-daygrid-day-bottom", style: { marginTop: props.moreMarginTop } },
+                        Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["A" /* RenderHook */], { hookProps: hookProps, classNames: options.moreLinkClassNames, content: options.moreLinkContent, defaultContent: renderMoreLinkInner, didMount: options.moreLinkDidMount, willUnmount: options.moreLinkWillUnmount }, function (rootElRef, classNames, innerElRef, innerContent) { return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("a", { ref: rootElRef, className: ['fc-daygrid-more-link'].concat(classNames).join(' '), onClick: _this.handleMoreLinkClick }, innerContent)); })))),
+                Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { className: "fc-daygrid-day-bg" }, props.bgContent)))); }));
+    };
+    return TableCell;
+}(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["i" /* DateComponent */]));
+TableCell.addPropsEquality({
+    onMoreClick: true,
+});
+function renderMoreLinkInner(props) {
+    return props.text;
+}
+
+var DEFAULT_TABLE_EVENT_TIME_FORMAT = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_2" /* createFormatter */])({
+    hour: 'numeric',
+    minute: '2-digit',
+    omitZeroMinute: true,
+    meridiem: 'narrow',
+});
+function hasListItemDisplay(seg) {
+    var display = seg.eventRange.ui.display;
+    return display === 'list-item' || (display === 'auto' &&
+        !seg.eventRange.def.allDay &&
+        seg.firstCol === seg.lastCol && // can't be multi-day
+        seg.isStart && // "
+        seg.isEnd // "
+    );
+}
+
+var TableListItemEvent = /** @class */ (function (_super) {
+    Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["b" /* __extends */])(TableListItemEvent, _super);
+    function TableListItemEvent() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    TableListItemEvent.prototype.render = function () {
+        var _a = this, props = _a.props, context = _a.context;
+        var timeFormat = context.options.eventTimeFormat || DEFAULT_TABLE_EVENT_TIME_FORMAT;
+        var timeText = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["S" /* buildSegTimeText */])(props.seg, timeFormat, context, true, props.defaultDisplayEventEnd);
+        return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["u" /* EventRoot */], { seg: props.seg, timeText: timeText, defaultContent: renderInnerContent, isDragging: props.isDragging, isResizing: false, isDateSelecting: false, isSelected: props.isSelected, isPast: props.isPast, isFuture: props.isFuture, isToday: props.isToday }, function (rootElRef, classNames, innerElRef, innerContent) { return ( // we don't use styles!
+        Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("a", Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({ className: ['fc-daygrid-event', 'fc-daygrid-dot-event'].concat(classNames).join(' '), ref: rootElRef }, getSegAnchorAttrs(props.seg)), innerContent)); }));
+    };
+    return TableListItemEvent;
+}(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["b" /* BaseComponent */]));
+function renderInnerContent(innerProps) {
+    return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["v" /* Fragment */], null,
+        Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { className: "fc-daygrid-event-dot", style: { borderColor: innerProps.borderColor || innerProps.backgroundColor } }),
+        innerProps.timeText && (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { className: "fc-event-time" }, innerProps.timeText)),
+        Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { className: "fc-event-title" }, innerProps.event.title || Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["v" /* Fragment */], null, "\u00A0"))));
+}
+function getSegAnchorAttrs(seg) {
+    var url = seg.eventRange.def.url;
+    return url ? { href: url } : {};
+}
+
+var TableBlockEvent = /** @class */ (function (_super) {
+    Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["b" /* __extends */])(TableBlockEvent, _super);
+    function TableBlockEvent() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    TableBlockEvent.prototype.render = function () {
+        var props = this.props;
+        return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["E" /* StandardEvent */], Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({}, props, { extraClassNames: ['fc-daygrid-event', 'fc-daygrid-block-event', 'fc-h-event'], defaultTimeFormat: DEFAULT_TABLE_EVENT_TIME_FORMAT, defaultDisplayEventEnd: props.defaultDisplayEventEnd, disableResizing: !props.seg.eventRange.def.allDay })));
+    };
+    return TableBlockEvent;
+}(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["b" /* BaseComponent */]));
+
+function computeFgSegPlacement(// for one row. TODO: print mode?
+cellModels, segs, dayMaxEvents, dayMaxEventRows, eventHeights, maxContentHeight, colCnt, eventOrderSpecs) {
+    var colPlacements = []; // if event spans multiple cols, its present in each col
+    var moreCnts = []; // by-col
+    var segIsHidden = {};
+    var segTops = {}; // always populated for each seg
+    var segMarginTops = {}; // simetimes populated for each seg
+    var moreTops = {};
+    var paddingBottoms = {}; // for each cell's inner-wrapper div
+    for (var i = 0; i < colCnt; i += 1) {
+        colPlacements.push([]);
+        moreCnts.push(0);
+    }
+    segs = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_45" /* sortEventSegs */])(segs, eventOrderSpecs);
+    for (var _i = 0, segs_1 = segs; _i < segs_1.length; _i++) {
+        var seg = segs_1[_i];
+        var instanceId = seg.eventRange.instance.instanceId;
+        var eventHeight = eventHeights[instanceId + ':' + seg.firstCol];
+        placeSeg(seg, eventHeight || 0); // will keep colPlacements sorted by top
+    }
+    if (dayMaxEvents === true || dayMaxEventRows === true) {
+        limitByMaxHeight(moreCnts, segIsHidden, colPlacements, maxContentHeight); // populates moreCnts/segIsHidden
+    }
+    else if (typeof dayMaxEvents === 'number') {
+        limitByMaxEvents(moreCnts, segIsHidden, colPlacements, dayMaxEvents); // populates moreCnts/segIsHidden
+    }
+    else if (typeof dayMaxEventRows === 'number') {
+        limitByMaxRows(moreCnts, segIsHidden, colPlacements, dayMaxEventRows); // populates moreCnts/segIsHidden
+    }
+    // computes segTops/segMarginTops/moreTops/paddingBottoms
+    for (var col = 0; col < colCnt; col += 1) {
+        var placements = colPlacements[col];
+        var currentNonAbsBottom = 0;
+        var currentAbsHeight = 0;
+        for (var _a = 0, placements_1 = placements; _a < placements_1.length; _a++) {
+            var placement = placements_1[_a];
+            var seg = placement.seg;
+            if (!segIsHidden[seg.eventRange.instance.instanceId]) {
+                segTops[seg.eventRange.instance.instanceId] = placement.top; // from top of container
+                if (seg.firstCol === seg.lastCol && seg.isStart && seg.isEnd) { // TODO: simpler way? NOT DRY
+                    segMarginTops[seg.eventRange.instance.instanceId] =
+                        placement.top - currentNonAbsBottom; // from previous seg bottom
+                    currentAbsHeight = 0;
+                    currentNonAbsBottom = placement.bottom;
+                }
+                else { // multi-col event, abs positioned
+                    currentAbsHeight = placement.bottom - currentNonAbsBottom;
+                }
+            }
+        }
+        if (currentAbsHeight) {
+            if (moreCnts[col]) {
+                moreTops[col] = currentAbsHeight;
+            }
+            else {
+                paddingBottoms[col] = currentAbsHeight;
+            }
+        }
+    }
+    function placeSeg(seg, segHeight) {
+        if (!tryPlaceSegAt(seg, segHeight, 0)) {
+            for (var col = seg.firstCol; col <= seg.lastCol; col += 1) {
+                for (var _i = 0, _a = colPlacements[col]; _i < _a.length; _i++) { // will repeat multi-day segs!!!!!!! bad!!!!!!
+                    var placement = _a[_i];
+                    if (tryPlaceSegAt(seg, segHeight, placement.bottom)) {
+                        return;
+                    }
+                }
+            }
+        }
+    }
+    function tryPlaceSegAt(seg, segHeight, top) {
+        if (canPlaceSegAt(seg, segHeight, top)) {
+            for (var col = seg.firstCol; col <= seg.lastCol; col += 1) {
+                var placements = colPlacements[col];
+                var insertionIndex = 0;
+                while (insertionIndex < placements.length &&
+                    top >= placements[insertionIndex].top) {
+                    insertionIndex += 1;
+                }
+                placements.splice(insertionIndex, 0, {
+                    seg: seg,
+                    top: top,
+                    bottom: top + segHeight,
+                });
+            }
+            return true;
+        }
+        return false;
+    }
+    function canPlaceSegAt(seg, segHeight, top) {
+        for (var col = seg.firstCol; col <= seg.lastCol; col += 1) {
+            for (var _i = 0, _a = colPlacements[col]; _i < _a.length; _i++) {
+                var placement = _a[_i];
+                if (top < placement.bottom && top + segHeight > placement.top) { // collide?
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    // what does this do!?
+    for (var instanceIdAndFirstCol in eventHeights) {
+        if (!eventHeights[instanceIdAndFirstCol]) {
+            segIsHidden[instanceIdAndFirstCol.split(':')[0]] = true;
+        }
+    }
+    var segsByFirstCol = colPlacements.map(extractFirstColSegs); // operates on the sorted cols
+    var segsByEachCol = colPlacements.map(function (placements, col) {
+        var segsForCols = extractAllColSegs(placements);
+        segsForCols = resliceDaySegs(segsForCols, cellModels[col].date, col);
+        return segsForCols;
+    });
+    return {
+        segsByFirstCol: segsByFirstCol,
+        segsByEachCol: segsByEachCol,
+        segIsHidden: segIsHidden,
+        segTops: segTops,
+        segMarginTops: segMarginTops,
+        moreCnts: moreCnts,
+        moreTops: moreTops,
+        paddingBottoms: paddingBottoms,
+    };
+}
+function extractFirstColSegs(oneColPlacements, col) {
+    var segs = [];
+    for (var _i = 0, oneColPlacements_1 = oneColPlacements; _i < oneColPlacements_1.length; _i++) {
+        var placement = oneColPlacements_1[_i];
+        if (placement.seg.firstCol === col) {
+            segs.push(placement.seg);
+        }
+    }
+    return segs;
+}
+function extractAllColSegs(oneColPlacements) {
+    var segs = [];
+    for (var _i = 0, oneColPlacements_2 = oneColPlacements; _i < oneColPlacements_2.length; _i++) {
+        var placement = oneColPlacements_2[_i];
+        segs.push(placement.seg);
+    }
+    return segs;
+}
+function limitByMaxHeight(hiddenCnts, segIsHidden, colPlacements, maxContentHeight) {
+    limitEvents(hiddenCnts, segIsHidden, colPlacements, true, function (placement) { return placement.bottom <= maxContentHeight; });
+}
+function limitByMaxEvents(hiddenCnts, segIsHidden, colPlacements, dayMaxEvents) {
+    limitEvents(hiddenCnts, segIsHidden, colPlacements, false, function (placement, levelIndex) { return levelIndex < dayMaxEvents; });
+}
+function limitByMaxRows(hiddenCnts, segIsHidden, colPlacements, dayMaxEventRows) {
+    limitEvents(hiddenCnts, segIsHidden, colPlacements, true, function (placement, levelIndex) { return levelIndex < dayMaxEventRows; });
+}
+/*
+populates the given hiddenCnts/segIsHidden, which are supplied empty.
+TODO: return them instead
+*/
+function limitEvents(hiddenCnts, segIsHidden, colPlacements, _moreLinkConsumesLevel, isPlacementInBounds) {
+    var colCnt = hiddenCnts.length;
+    var segIsVisible = {}; // TODO: instead, use segIsHidden with true/false?
+    var visibleColPlacements = []; // will mirror colPlacements
+    for (var col = 0; col < colCnt; col += 1) {
+        visibleColPlacements.push([]);
+    }
+    for (var col = 0; col < colCnt; col += 1) {
+        var placements = colPlacements[col];
+        var level = 0;
+        for (var _i = 0, placements_2 = placements; _i < placements_2.length; _i++) {
+            var placement = placements_2[_i];
+            if (isPlacementInBounds(placement, level)) {
+                recordVisible(placement);
+            }
+            else {
+                recordHidden(placement, level, _moreLinkConsumesLevel);
+            }
+            // only considered a level if the seg had height
+            if (placement.top !== placement.bottom) {
+                level += 1;
+            }
+        }
+    }
+    function recordVisible(placement) {
+        var seg = placement.seg;
+        var instanceId = seg.eventRange.instance.instanceId;
+        if (!segIsVisible[instanceId]) {
+            segIsVisible[instanceId] = true;
+            for (var col = seg.firstCol; col <= seg.lastCol; col += 1) {
+                var destPlacements = visibleColPlacements[col];
+                var newPosition = 0;
+                // insert while keeping top sorted in each column
+                while (newPosition < destPlacements.length &&
+                    placement.top >= destPlacements[newPosition].top) {
+                    newPosition += 1;
+                }
+                destPlacements.splice(newPosition, 0, placement);
+            }
+        }
+    }
+    function recordHidden(placement, currentLevel, moreLinkConsumesLevel) {
+        var seg = placement.seg;
+        var instanceId = seg.eventRange.instance.instanceId;
+        if (!segIsHidden[instanceId]) {
+            segIsHidden[instanceId] = true;
+            for (var col = seg.firstCol; col <= seg.lastCol; col += 1) {
+                hiddenCnts[col] += 1;
+                var hiddenCnt = hiddenCnts[col];
+                if (moreLinkConsumesLevel && hiddenCnt === 1 && currentLevel > 0) {
+                    var doomedLevel = currentLevel - 1;
+                    while (visibleColPlacements[col].length > doomedLevel) {
+                        recordHidden(visibleColPlacements[col].pop(), // removes
+                        visibleColPlacements[col].length, // will execute after the pop. will be the index of the removed placement
+                        false);
+                    }
+                }
+            }
+        }
+    }
+}
+// Given the events within an array of segment objects, reslice them to be in a single day
+function resliceDaySegs(segs, dayDate, colIndex) {
+    var dayStart = dayDate;
+    var dayEnd = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["I" /* addDays */])(dayStart, 1);
+    var dayRange = { start: dayStart, end: dayEnd };
+    var newSegs = [];
+    for (var _i = 0, segs_2 = segs; _i < segs_2.length; _i++) {
+        var seg = segs_2[_i];
+        var eventRange = seg.eventRange;
+        var origRange = eventRange.range;
+        var slicedRange = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_25" /* intersectRanges */])(origRange, dayRange);
+        if (slicedRange) {
+            newSegs.push(Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])(Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({}, seg), { firstCol: colIndex, lastCol: colIndex, eventRange: {
+                    def: eventRange.def,
+                    ui: Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])(Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({}, eventRange.ui), { durationEditable: false }),
+                    instance: eventRange.instance,
+                    range: slicedRange,
+                }, isStart: seg.isStart && slicedRange.start.valueOf() === origRange.start.valueOf(), isEnd: seg.isEnd && slicedRange.end.valueOf() === origRange.end.valueOf() }));
+        }
+    }
+    return newSegs;
+}
+
+var TableRow = /** @class */ (function (_super) {
+    Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["b" /* __extends */])(TableRow, _super);
+    function TableRow() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.cellElRefs = new __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["z" /* RefMap */](); // the <td>
+        _this.frameElRefs = new __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["z" /* RefMap */](); // the fc-daygrid-day-frame
+        _this.fgElRefs = new __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["z" /* RefMap */](); // the fc-daygrid-day-events
+        _this.segHarnessRefs = new __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["z" /* RefMap */](); // indexed by "instanceId:firstCol"
+        _this.rootElRef = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_4" /* createRef */])();
+        _this.state = {
+            framePositions: null,
+            maxContentHeight: null,
+            segHeights: {},
+        };
+        return _this;
+    }
+    TableRow.prototype.render = function () {
+        var _this = this;
+        var _a = this, props = _a.props, state = _a.state, context = _a.context;
+        var colCnt = props.cells.length;
+        var businessHoursByCol = splitSegsByFirstCol(props.businessHourSegs, colCnt);
+        var bgEventSegsByCol = splitSegsByFirstCol(props.bgEventSegs, colCnt);
+        var highlightSegsByCol = splitSegsByFirstCol(this.getHighlightSegs(), colCnt);
+        var mirrorSegsByCol = splitSegsByFirstCol(this.getMirrorSegs(), colCnt);
+        var _b = computeFgSegPlacement(props.cells, props.fgEventSegs, props.dayMaxEvents, props.dayMaxEventRows, state.segHeights, state.maxContentHeight, colCnt, context.options.eventOrder), paddingBottoms = _b.paddingBottoms, segsByFirstCol = _b.segsByFirstCol, segsByEachCol = _b.segsByEachCol, segIsHidden = _b.segIsHidden, segTops = _b.segTops, segMarginTops = _b.segMarginTops, moreCnts = _b.moreCnts, moreTops = _b.moreTops;
+        var selectedInstanceHash = // TODO: messy way to compute this
+         (props.eventDrag && props.eventDrag.affectedInstances) ||
+            (props.eventResize && props.eventResize.affectedInstances) ||
+            {};
+        return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("tr", { ref: this.rootElRef },
+            props.renderIntro && props.renderIntro(),
+            props.cells.map(function (cell, col) {
+                var normalFgNodes = _this.renderFgSegs(segsByFirstCol[col], segIsHidden, segTops, segMarginTops, selectedInstanceHash, props.todayRange);
+                var mirrorFgNodes = _this.renderFgSegs(mirrorSegsByCol[col], {}, segTops, // use same tops as real rendering
+                {}, {}, props.todayRange, Boolean(props.eventDrag), Boolean(props.eventResize), false);
+                return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(TableCell, { key: cell.key, elRef: _this.cellElRefs.createRef(cell.key), innerElRef: _this.frameElRefs.createRef(cell.key) /* FF <td> problem, but okay to use for left/right. TODO: rename prop */, dateProfile: props.dateProfile, date: cell.date, showDayNumber: props.showDayNumbers, showWeekNumber: props.showWeekNumbers && col === 0, forceDayTop: props.showWeekNumbers /* even displaying weeknum for row, not necessarily day */, todayRange: props.todayRange, extraHookProps: cell.extraHookProps, extraDataAttrs: cell.extraDataAttrs, extraClassNames: cell.extraClassNames, moreCnt: moreCnts[col], buildMoreLinkText: props.buildMoreLinkText, onMoreClick: function (arg) {
+                        props.onMoreClick(Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])(Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({}, arg), { fromCol: col }));
+                    }, segIsHidden: segIsHidden, moreMarginTop: moreTops[col] /* rename */, segsByEachCol: segsByEachCol[col], fgPaddingBottom: paddingBottoms[col], fgContentElRef: _this.fgElRefs.createRef(cell.key), fgContent: ( // Fragment scopes the keys
+                    Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["v" /* Fragment */], null,
+                        Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["v" /* Fragment */], null, normalFgNodes),
+                        Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["v" /* Fragment */], null, mirrorFgNodes))), bgContent: ( // Fragment scopes the keys
+                    Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["v" /* Fragment */], null,
+                        _this.renderFillSegs(highlightSegsByCol[col], 'highlight'),
+                        _this.renderFillSegs(businessHoursByCol[col], 'non-business'),
+                        _this.renderFillSegs(bgEventSegsByCol[col], 'bg-event'))) }));
+            })));
+    };
+    TableRow.prototype.componentDidMount = function () {
+        this.updateSizing(true);
+    };
+    TableRow.prototype.componentDidUpdate = function (prevProps, prevState) {
+        var currentProps = this.props;
+        this.updateSizing(!Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_30" /* isPropsEqual */])(prevProps, currentProps));
+    };
+    TableRow.prototype.getHighlightSegs = function () {
+        var props = this.props;
+        if (props.eventDrag && props.eventDrag.segs.length) { // messy check
+            return props.eventDrag.segs;
+        }
+        if (props.eventResize && props.eventResize.segs.length) { // messy check
+            return props.eventResize.segs;
+        }
+        return props.dateSelectionSegs;
+    };
+    TableRow.prototype.getMirrorSegs = function () {
+        var props = this.props;
+        if (props.eventResize && props.eventResize.segs.length) { // messy check
+            return props.eventResize.segs;
+        }
+        return [];
+    };
+    TableRow.prototype.renderFgSegs = function (segs, segIsHidden, // does NOT mean display:hidden
+    segTops, segMarginTops, selectedInstanceHash, todayRange, isDragging, isResizing, isDateSelecting) {
+        var context = this.context;
+        var eventSelection = this.props.eventSelection;
+        var framePositions = this.state.framePositions;
+        var defaultDisplayEventEnd = this.props.cells.length === 1; // colCnt === 1
+        var nodes = [];
+        if (framePositions) {
+            for (var _i = 0, segs_1 = segs; _i < segs_1.length; _i++) {
+                var seg = segs_1[_i];
+                var instanceId = seg.eventRange.instance.instanceId;
+                var isMirror = isDragging || isResizing || isDateSelecting;
+                var isSelected = selectedInstanceHash[instanceId];
+                var isInvisible = segIsHidden[instanceId] || isSelected;
+                // TODO: simpler way? NOT DRY
+                var isAbsolute = segIsHidden[instanceId] || isMirror || seg.firstCol !== seg.lastCol || !seg.isStart || !seg.isEnd;
+                var marginTop = void 0;
+                var top_1 = void 0;
+                var left = void 0;
+                var right = void 0;
+                if (isAbsolute) {
+                    top_1 = segTops[instanceId];
+                    if (context.isRtl) {
+                        right = 0;
+                        left = framePositions.lefts[seg.lastCol] - framePositions.lefts[seg.firstCol];
+                    }
+                    else {
+                        left = 0;
+                        right = framePositions.rights[seg.firstCol] - framePositions.rights[seg.lastCol];
+                    }
+                }
+                else {
+                    marginTop = segMarginTops[instanceId];
+                }
+                /*
+                known bug: events that are force to be list-item but span multiple days still take up space in later columns
+                */
+                nodes.push(Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { className: 'fc-daygrid-event-harness' + (isAbsolute ? ' fc-daygrid-event-harness-abs' : ''), key: instanceId, 
+                    // in print mode when in mult cols, could collide
+                    ref: isMirror ? null : this.segHarnessRefs.createRef(instanceId + ':' + seg.firstCol), style: {
+                        visibility: isInvisible ? 'hidden' : '',
+                        marginTop: marginTop || '',
+                        top: top_1 || '',
+                        left: left || '',
+                        right: right || '',
+                    } }, hasListItemDisplay(seg) ? (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(TableListItemEvent, Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({ seg: seg, isDragging: isDragging, isSelected: instanceId === eventSelection, defaultDisplayEventEnd: defaultDisplayEventEnd }, Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_19" /* getSegMeta */])(seg, todayRange)))) : (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(TableBlockEvent, Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({ seg: seg, isDragging: isDragging, isResizing: isResizing, isDateSelecting: isDateSelecting, isSelected: instanceId === eventSelection, defaultDisplayEventEnd: defaultDisplayEventEnd }, Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_19" /* getSegMeta */])(seg, todayRange))))));
+            }
+        }
+        return nodes;
+    };
+    TableRow.prototype.renderFillSegs = function (segs, fillType) {
+        var isRtl = this.context.isRtl;
+        var todayRange = this.props.todayRange;
+        var framePositions = this.state.framePositions;
+        var nodes = [];
+        if (framePositions) {
+            for (var _i = 0, segs_2 = segs; _i < segs_2.length; _i++) {
+                var seg = segs_2[_i];
+                var leftRightCss = isRtl ? {
+                    right: 0,
+                    left: framePositions.lefts[seg.lastCol] - framePositions.lefts[seg.firstCol],
+                } : {
+                    left: 0,
+                    right: framePositions.rights[seg.firstCol] - framePositions.rights[seg.lastCol],
+                };
+                nodes.push(Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { key: Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Q" /* buildEventRangeKey */])(seg.eventRange), className: "fc-daygrid-bg-harness", style: leftRightCss }, fillType === 'bg-event' ?
+                    Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["c" /* BgEvent */], Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({ seg: seg }, Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_19" /* getSegMeta */])(seg, todayRange))) :
+                    Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_42" /* renderFill */])(fillType)));
+            }
+        }
+        return __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */].apply(void 0, Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["c" /* __spreadArrays */])([__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["v" /* Fragment */], {}], nodes));
+    };
+    TableRow.prototype.updateSizing = function (isExternalSizingChange) {
+        var _a = this, props = _a.props, frameElRefs = _a.frameElRefs;
+        if (props.clientWidth !== null) { // positioning ready?
+            if (isExternalSizingChange) {
+                var frameEls = props.cells.map(function (cell) { return frameElRefs.currentMap[cell.key]; });
+                if (frameEls.length) {
+                    var originEl = this.rootElRef.current;
+                    this.setState({
+                        framePositions: new __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["y" /* PositionCache */](originEl, frameEls, true, // isHorizontal
+                        false),
+                    });
+                }
+            }
+            var limitByContentHeight = props.dayMaxEvents === true || props.dayMaxEventRows === true;
+            this.setState({
+                segHeights: this.computeSegHeights(),
+                maxContentHeight: limitByContentHeight ? this.computeMaxContentHeight() : null,
+            });
+        }
+    };
+    TableRow.prototype.computeSegHeights = function () {
+        return Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_31" /* mapHash */])(this.segHarnessRefs.currentMap, function (eventHarnessEl) { return (eventHarnessEl.getBoundingClientRect().height); });
+    };
+    TableRow.prototype.computeMaxContentHeight = function () {
+        var firstKey = this.props.cells[0].key;
+        var cellEl = this.cellElRefs.currentMap[firstKey];
+        var fcContainerEl = this.fgElRefs.currentMap[firstKey];
+        return cellEl.getBoundingClientRect().bottom - fcContainerEl.getBoundingClientRect().top;
+    };
+    TableRow.prototype.getCellEls = function () {
+        var elMap = this.cellElRefs.currentMap;
+        return this.props.cells.map(function (cell) { return elMap[cell.key]; });
+    };
+    return TableRow;
+}(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["i" /* DateComponent */]));
+TableRow.addPropsEquality({
+    onMoreClick: true,
+});
+TableRow.addStateEquality({
+    segHeights: __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_30" /* isPropsEqual */],
+});
+
+var PADDING_FROM_VIEWPORT = 10;
+var SCROLL_DEBOUNCE = 10;
+var Popover = /** @class */ (function (_super) {
+    Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["b" /* __extends */])(Popover, _super);
+    function Popover() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.repositioner = new __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["p" /* DelayedRunner */](_this.updateSize.bind(_this));
+        _this.handleRootEl = function (el) {
+            _this.rootEl = el;
+            if (_this.props.elRef) {
+                Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_44" /* setRef */])(_this.props.elRef, el);
+            }
+        };
+        // Triggered when the user clicks *anywhere* in the document, for the autoHide feature
+        _this.handleDocumentMousedown = function (ev) {
+            var onClose = _this.props.onClose;
+            // only hide the popover if the click happened outside the popover
+            if (onClose && !_this.rootEl.contains(ev.target)) {
+                onClose();
+            }
+        };
+        _this.handleDocumentScroll = function () {
+            _this.repositioner.request(SCROLL_DEBOUNCE);
+        };
+        _this.handleCloseClick = function () {
+            var onClose = _this.props.onClose;
+            if (onClose) {
+                onClose();
+            }
+        };
+        return _this;
+    }
+    Popover.prototype.render = function () {
+        var theme = this.context.theme;
+        var props = this.props;
+        var classNames = [
+            'fc-popover',
+            theme.getClass('popover'),
+        ].concat(props.extraClassNames || []);
+        return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({ className: classNames.join(' ') }, props.extraAttrs, { ref: this.handleRootEl }),
+            Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { className: 'fc-popover-header ' + theme.getClass('popoverHeader') },
+                Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("span", { className: "fc-popover-title" }, props.title),
+                Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("span", { className: 'fc-popover-close ' + theme.getIconClass('close'), onClick: this.handleCloseClick })),
+            Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { className: 'fc-popover-body ' + theme.getClass('popoverContent') }, props.children)));
+    };
+    Popover.prototype.componentDidMount = function () {
+        document.addEventListener('mousedown', this.handleDocumentMousedown);
+        document.addEventListener('scroll', this.handleDocumentScroll);
+        this.updateSize();
+    };
+    Popover.prototype.componentWillUnmount = function () {
+        document.removeEventListener('mousedown', this.handleDocumentMousedown);
+        document.removeEventListener('scroll', this.handleDocumentScroll);
+    };
+    // TODO: adjust on window resize
+    /*
+    NOTE: the popover is position:fixed, so coordinates are relative to the viewport
+    NOTE: the PARENT calls this as well, on window resize. we would have wanted to use the repositioner,
+          but need to ensure that all other components have updated size first (for alignmentEl)
+    */
+    Popover.prototype.updateSize = function () {
+        var _a = this.props, alignmentEl = _a.alignmentEl, topAlignmentEl = _a.topAlignmentEl;
+        var rootEl = this.rootEl;
+        if (!rootEl) {
+            return; // not sure why this was null, but we shouldn't let external components call updateSize() anyway
+        }
+        var dims = rootEl.getBoundingClientRect(); // only used for width,height
+        var alignment = alignmentEl.getBoundingClientRect();
+        var top = topAlignmentEl ? topAlignmentEl.getBoundingClientRect().top : alignment.top;
+        top = Math.min(top, window.innerHeight - dims.height - PADDING_FROM_VIEWPORT);
+        top = Math.max(top, PADDING_FROM_VIEWPORT);
+        var left;
+        if (this.context.isRtl) {
+            left = alignment.right - dims.width;
+        }
+        else {
+            left = alignment.left;
+        }
+        left = Math.min(left, window.innerWidth - dims.width - PADDING_FROM_VIEWPORT);
+        left = Math.max(left, PADDING_FROM_VIEWPORT);
+        Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["N" /* applyStyle */])(rootEl, { top: top, left: left });
+    };
+    return Popover;
+}(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["b" /* BaseComponent */]));
+
+var MorePopover = /** @class */ (function (_super) {
+    Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["b" /* __extends */])(MorePopover, _super);
+    function MorePopover() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.rootElRef = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_4" /* createRef */])();
+        return _this;
+    }
+    MorePopover.prototype.render = function () {
+        var _a = this.context, options = _a.options, dateEnv = _a.dateEnv;
+        var props = this.props;
+        var date = props.date, hiddenInstances = props.hiddenInstances, todayRange = props.todayRange, dateProfile = props.dateProfile, selectedInstanceId = props.selectedInstanceId;
+        var title = dateEnv.format(date, options.dayPopoverFormat);
+        return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["l" /* DayCellRoot */], { date: date, dateProfile: dateProfile, todayRange: todayRange, elRef: this.rootElRef }, function (rootElRef, dayClassNames, dataAttrs) { return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(Popover, { elRef: rootElRef, title: title, extraClassNames: ['fc-more-popover'].concat(dayClassNames), extraAttrs: dataAttrs, onClose: props.onCloseClick, alignmentEl: props.alignmentEl, topAlignmentEl: props.topAlignmentEl },
+            Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["k" /* DayCellContent */], { date: date, dateProfile: dateProfile, todayRange: todayRange }, function (innerElRef, innerContent) { return (innerContent &&
+                Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { className: "fc-more-popover-misc", ref: innerElRef }, innerContent)); }),
+            props.segs.map(function (seg) {
+                var instanceId = seg.eventRange.instance.instanceId;
+                return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { className: "fc-daygrid-event-harness", key: instanceId, style: {
+                        visibility: hiddenInstances[instanceId] ? 'hidden' : '',
+                    } }, hasListItemDisplay(seg) ? (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(TableListItemEvent, Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({ seg: seg, isDragging: false, isSelected: instanceId === selectedInstanceId, defaultDisplayEventEnd: false }, Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_19" /* getSegMeta */])(seg, todayRange)))) : (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(TableBlockEvent, Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({ seg: seg, isDragging: false, isResizing: false, isDateSelecting: false, isSelected: instanceId === selectedInstanceId, defaultDisplayEventEnd: false }, Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_19" /* getSegMeta */])(seg, todayRange))))));
+            }))); }));
+    };
+    MorePopover.prototype.positionToHit = function (positionLeft, positionTop, originEl) {
+        var rootEl = this.rootElRef.current;
+        if (!originEl || !rootEl) { // why?
+            return null;
+        }
+        var originRect = originEl.getBoundingClientRect();
+        var elRect = rootEl.getBoundingClientRect();
+        var newOriginLeft = elRect.left - originRect.left;
+        var newOriginTop = elRect.top - originRect.top;
+        var localLeft = positionLeft - newOriginLeft;
+        var localTop = positionTop - newOriginTop;
+        var date = this.props.date;
+        if ( // ugly way to detect intersection
+        localLeft >= 0 && localLeft < elRect.width &&
+            localTop >= 0 && localTop < elRect.height) {
+            return {
+                dateSpan: {
+                    allDay: true,
+                    range: { start: date, end: Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["I" /* addDays */])(date, 1) },
+                },
+                dayEl: rootEl,
+                relativeRect: {
+                    left: newOriginLeft,
+                    top: newOriginTop,
+                    right: elRect.width,
+                    bottom: elRect.height,
+                },
+                layer: 1,
+            };
+        }
+        return null;
+    };
+    return MorePopover;
+}(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["i" /* DateComponent */]));
+
+var Table = /** @class */ (function (_super) {
+    Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["b" /* __extends */])(Table, _super);
+    function Table() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.splitBusinessHourSegs = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_32" /* memoize */])(splitSegsByRow);
+        _this.splitBgEventSegs = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_32" /* memoize */])(splitSegsByRow);
+        _this.splitFgEventSegs = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_32" /* memoize */])(splitSegsByRow);
+        _this.splitDateSelectionSegs = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_32" /* memoize */])(splitSegsByRow);
+        _this.splitEventDrag = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_32" /* memoize */])(splitInteractionByRow);
+        _this.splitEventResize = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_32" /* memoize */])(splitInteractionByRow);
+        _this.buildBuildMoreLinkText = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_32" /* memoize */])(buildBuildMoreLinkText);
+        _this.morePopoverRef = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_4" /* createRef */])();
+        _this.rowRefs = new __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["z" /* RefMap */]();
+        _this.state = {
+            morePopoverState: null,
+        };
+        _this.handleRootEl = function (rootEl) {
+            _this.rootEl = rootEl;
+            Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_44" /* setRef */])(_this.props.elRef, rootEl);
+        };
+        // TODO: bad names "more link click" versus "more click"
+        _this.handleMoreLinkClick = function (arg) {
+            var context = _this.context;
+            var dateEnv = context.dateEnv;
+            var clickOption = context.options.moreLinkClick;
+            function segForPublic(seg) {
+                var _a = seg.eventRange, def = _a.def, instance = _a.instance, range = _a.range;
+                return {
+                    event: new __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["t" /* EventApi */](context, def, instance),
+                    start: dateEnv.toDate(range.start),
+                    end: dateEnv.toDate(range.end),
+                    isStart: seg.isStart,
+                    isEnd: seg.isEnd,
+                };
+            }
+            if (typeof clickOption === 'function') {
+                clickOption = clickOption({
+                    date: dateEnv.toDate(arg.date),
+                    allDay: true,
+                    allSegs: arg.allSegs.map(segForPublic),
+                    hiddenSegs: arg.hiddenSegs.map(segForPublic),
+                    jsEvent: arg.ev,
+                    view: context.viewApi,
+                }); // hack to handle void
+            }
+            if (!clickOption || clickOption === 'popover') {
+                _this.setState({
+                    morePopoverState: Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])(Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({}, arg), { currentFgEventSegs: _this.props.fgEventSegs, fromRow: arg.fromRow, fromCol: arg.fromCol }),
+                });
+            }
+            else if (typeof clickOption === 'string') { // a view name
+                context.calendarApi.zoomTo(arg.date, clickOption);
+            }
+        };
+        _this.handleMorePopoverClose = function () {
+            _this.setState({
+                morePopoverState: null,
+            });
+        };
+        return _this;
+    }
+    Table.prototype.render = function () {
+        var _this = this;
+        var props = this.props;
+        var dateProfile = props.dateProfile, dayMaxEventRows = props.dayMaxEventRows, dayMaxEvents = props.dayMaxEvents, expandRows = props.expandRows;
+        var morePopoverState = this.state.morePopoverState;
+        var rowCnt = props.cells.length;
+        var businessHourSegsByRow = this.splitBusinessHourSegs(props.businessHourSegs, rowCnt);
+        var bgEventSegsByRow = this.splitBgEventSegs(props.bgEventSegs, rowCnt);
+        var fgEventSegsByRow = this.splitFgEventSegs(props.fgEventSegs, rowCnt);
+        var dateSelectionSegsByRow = this.splitDateSelectionSegs(props.dateSelectionSegs, rowCnt);
+        var eventDragByRow = this.splitEventDrag(props.eventDrag, rowCnt);
+        var eventResizeByRow = this.splitEventResize(props.eventResize, rowCnt);
+        var buildMoreLinkText = this.buildBuildMoreLinkText(this.context.options.moreLinkText);
+        var limitViaBalanced = dayMaxEvents === true || dayMaxEventRows === true;
+        // if rows can't expand to fill fixed height, can't do balanced-height event limit
+        // TODO: best place to normalize these options?
+        if (limitViaBalanced && !expandRows) {
+            limitViaBalanced = false;
+            dayMaxEventRows = null;
+            dayMaxEvents = null;
+        }
+        var classNames = [
+            'fc-daygrid-body',
+            limitViaBalanced ? 'fc-daygrid-body-balanced' : 'fc-daygrid-body-unbalanced',
+            expandRows ? '' : 'fc-daygrid-body-natural',
+        ];
+        return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { className: classNames.join(' '), ref: this.handleRootEl, style: {
+                // these props are important to give this wrapper correct dimensions for interactions
+                // TODO: if we set it here, can we avoid giving to inner tables?
+                width: props.clientWidth,
+                minWidth: props.tableMinWidth,
+            } },
+            Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["x" /* NowTimer */], { unit: "day" }, function (nowDate, todayRange) { return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["v" /* Fragment */], null,
+                Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("table", { className: "fc-scrollgrid-sync-table", style: {
+                        width: props.clientWidth,
+                        minWidth: props.tableMinWidth,
+                        height: expandRows ? props.clientHeight : '',
+                    } },
+                    props.colGroupNode,
+                    Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("tbody", null, props.cells.map(function (cells, row) { return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(TableRow, { ref: _this.rowRefs.createRef(row), key: cells.length
+                            ? cells[0].date.toISOString() /* best? or put key on cell? or use diff formatter? */
+                            : row // in case there are no cells (like when resource view is loading)
+                        , showDayNumbers: rowCnt > 1, showWeekNumbers: props.showWeekNumbers, todayRange: todayRange, dateProfile: dateProfile, cells: cells, renderIntro: props.renderRowIntro, businessHourSegs: businessHourSegsByRow[row], eventSelection: props.eventSelection, bgEventSegs: bgEventSegsByRow[row].filter(isSegAllDay) /* hack */, fgEventSegs: fgEventSegsByRow[row], dateSelectionSegs: dateSelectionSegsByRow[row], eventDrag: eventDragByRow[row], eventResize: eventResizeByRow[row], dayMaxEvents: dayMaxEvents, dayMaxEventRows: dayMaxEventRows, clientWidth: props.clientWidth, clientHeight: props.clientHeight, buildMoreLinkText: buildMoreLinkText, onMoreClick: function (arg) {
+                            _this.handleMoreLinkClick(Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])(Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({}, arg), { fromRow: row }));
+                        } })); }))),
+                (!props.forPrint && morePopoverState && morePopoverState.currentFgEventSegs === props.fgEventSegs) && (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(MorePopover, { ref: _this.morePopoverRef, date: morePopoverState.date, dateProfile: dateProfile, segs: morePopoverState.allSegs, alignmentEl: morePopoverState.dayEl, topAlignmentEl: rowCnt === 1 ? props.headerAlignElRef.current : null, onCloseClick: _this.handleMorePopoverClose, selectedInstanceId: props.eventSelection, hiddenInstances: // yuck
+                    (props.eventDrag ? props.eventDrag.affectedInstances : null) ||
+                        (props.eventResize ? props.eventResize.affectedInstances : null) ||
+                        {}, todayRange: todayRange })))); })));
+    };
+    // Hit System
+    // ----------------------------------------------------------------------------------------------------
+    Table.prototype.prepareHits = function () {
+        this.rowPositions = new __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["y" /* PositionCache */](this.rootEl, this.rowRefs.collect().map(function (rowObj) { return rowObj.getCellEls()[0]; }), // first cell el in each row. TODO: not optimal
+        false, true);
+        this.colPositions = new __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["y" /* PositionCache */](this.rootEl, this.rowRefs.currentMap[0].getCellEls(), // cell els in first row
+        true, // horizontal
+        false);
+    };
+    Table.prototype.positionToHit = function (leftPosition, topPosition) {
+        var morePopover = this.morePopoverRef.current;
+        var morePopoverHit = morePopover ? morePopover.positionToHit(leftPosition, topPosition, this.rootEl) : null;
+        var morePopoverState = this.state.morePopoverState;
+        if (morePopoverHit) {
+            return Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({ row: morePopoverState.fromRow, col: morePopoverState.fromCol }, morePopoverHit);
+        }
+        var _a = this, colPositions = _a.colPositions, rowPositions = _a.rowPositions;
+        var col = colPositions.leftToIndex(leftPosition);
+        var row = rowPositions.topToIndex(topPosition);
+        if (row != null && col != null) {
+            return {
+                row: row,
+                col: col,
+                dateSpan: {
+                    range: this.getCellRange(row, col),
+                    allDay: true,
+                },
+                dayEl: this.getCellEl(row, col),
+                relativeRect: {
+                    left: colPositions.lefts[col],
+                    right: colPositions.rights[col],
+                    top: rowPositions.tops[row],
+                    bottom: rowPositions.bottoms[row],
+                },
+            };
+        }
+        return null;
+    };
+    Table.prototype.getCellEl = function (row, col) {
+        return this.rowRefs.currentMap[row].getCellEls()[col]; // TODO: not optimal
+    };
+    Table.prototype.getCellRange = function (row, col) {
+        var start = this.props.cells[row][col].date;
+        var end = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["I" /* addDays */])(start, 1);
+        return { start: start, end: end };
+    };
+    return Table;
+}(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["i" /* DateComponent */]));
+function buildBuildMoreLinkText(moreLinkTextInput) {
+    if (typeof moreLinkTextInput === 'function') {
+        return moreLinkTextInput;
+    }
+    return function (num) { return "+" + num + " " + moreLinkTextInput; };
+}
+function isSegAllDay(seg) {
+    return seg.eventRange.def.allDay;
+}
+
+var DayTableSlicer = /** @class */ (function (_super) {
+    Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["b" /* __extends */])(DayTableSlicer, _super);
+    function DayTableSlicer() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.forceDayIfListItem = true;
+        return _this;
+    }
+    DayTableSlicer.prototype.sliceRange = function (dateRange, dayTableModel) {
+        return dayTableModel.sliceRange(dateRange);
+    };
+    return DayTableSlicer;
+}(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["D" /* Slicer */]));
+
+var DayTable = /** @class */ (function (_super) {
+    Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["b" /* __extends */])(DayTable, _super);
+    function DayTable() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.slicer = new DayTableSlicer();
+        _this.tableRef = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_4" /* createRef */])();
+        _this.handleRootEl = function (rootEl) {
+            if (rootEl) {
+                _this.context.registerInteractiveComponent(_this, { el: rootEl });
+            }
+            else {
+                _this.context.unregisterInteractiveComponent(_this);
+            }
+        };
+        return _this;
+    }
+    DayTable.prototype.render = function () {
+        var _a = this, props = _a.props, context = _a.context;
+        return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(Table, Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({ ref: this.tableRef, elRef: this.handleRootEl }, this.slicer.sliceProps(props, props.dateProfile, props.nextDayThreshold, context, props.dayTableModel), { dateProfile: props.dateProfile, cells: props.dayTableModel.cells, colGroupNode: props.colGroupNode, tableMinWidth: props.tableMinWidth, renderRowIntro: props.renderRowIntro, dayMaxEvents: props.dayMaxEvents, dayMaxEventRows: props.dayMaxEventRows, showWeekNumbers: props.showWeekNumbers, expandRows: props.expandRows, headerAlignElRef: props.headerAlignElRef, clientWidth: props.clientWidth, clientHeight: props.clientHeight, forPrint: props.forPrint })));
+    };
+    DayTable.prototype.prepareHits = function () {
+        this.tableRef.current.prepareHits();
+    };
+    DayTable.prototype.queryHit = function (positionLeft, positionTop) {
+        var rawHit = this.tableRef.current.positionToHit(positionLeft, positionTop);
+        if (rawHit) {
+            return {
+                component: this,
+                dateSpan: rawHit.dateSpan,
+                dayEl: rawHit.dayEl,
+                rect: {
+                    left: rawHit.relativeRect.left,
+                    right: rawHit.relativeRect.right,
+                    top: rawHit.relativeRect.top,
+                    bottom: rawHit.relativeRect.bottom,
+                },
+                layer: 0,
+            };
+        }
+        return null;
+    };
+    return DayTable;
+}(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["i" /* DateComponent */]));
+
+var DayTableView = /** @class */ (function (_super) {
+    Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["b" /* __extends */])(DayTableView, _super);
+    function DayTableView() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.buildDayTableModel = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_32" /* memoize */])(buildDayTableModel);
+        _this.headerRef = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_4" /* createRef */])();
+        _this.tableRef = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_4" /* createRef */])();
+        return _this;
+    }
+    DayTableView.prototype.render = function () {
+        var _this = this;
+        var _a = this.context, options = _a.options, dateProfileGenerator = _a.dateProfileGenerator;
+        var props = this.props;
+        var dayTableModel = this.buildDayTableModel(props.dateProfile, dateProfileGenerator);
+        var headerContent = options.dayHeaders && (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["m" /* DayHeader */], { ref: this.headerRef, dateProfile: props.dateProfile, dates: dayTableModel.headerDates, datesRepDistinctDays: dayTableModel.rowCnt === 1 }));
+        var bodyContent = function (contentArg) { return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(DayTable, { ref: _this.tableRef, dateProfile: props.dateProfile, dayTableModel: dayTableModel, businessHours: props.businessHours, dateSelection: props.dateSelection, eventStore: props.eventStore, eventUiBases: props.eventUiBases, eventSelection: props.eventSelection, eventDrag: props.eventDrag, eventResize: props.eventResize, nextDayThreshold: options.nextDayThreshold, colGroupNode: contentArg.tableColGroupNode, tableMinWidth: contentArg.tableMinWidth, dayMaxEvents: options.dayMaxEvents, dayMaxEventRows: options.dayMaxEventRows, showWeekNumbers: options.weekNumbers, expandRows: !props.isHeightAuto, headerAlignElRef: _this.headerElRef, clientWidth: contentArg.clientWidth, clientHeight: contentArg.clientHeight, forPrint: props.forPrint })); };
+        return options.dayMinWidth
+            ? this.renderHScrollLayout(headerContent, bodyContent, dayTableModel.colCnt, options.dayMinWidth)
+            : this.renderSimpleLayout(headerContent, bodyContent);
+    };
+    return DayTableView;
+}(TableView));
+function buildDayTableModel(dateProfile, dateProfileGenerator) {
+    var daySeries = new __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["n" /* DaySeriesModel */](dateProfile.renderRange, dateProfileGenerator);
+    return new __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["o" /* DayTableModel */](daySeries, /year|month|week/.test(dateProfile.currentRangeUnit));
+}
+
+var TableDateProfileGenerator = /** @class */ (function (_super) {
+    Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["b" /* __extends */])(TableDateProfileGenerator, _super);
+    function TableDateProfileGenerator() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    // Computes the date range that will be rendered.
+    TableDateProfileGenerator.prototype.buildRenderRange = function (currentRange, currentRangeUnit, isRangeAllDay) {
+        var dateEnv = this.props.dateEnv;
+        var renderRange = _super.prototype.buildRenderRange.call(this, currentRange, currentRangeUnit, isRangeAllDay);
+        var start = renderRange.start;
+        var end = renderRange.end;
+        var endOfWeek;
+        // year and month views should be aligned with weeks. this is already done for week
+        if (/^(year|month)$/.test(currentRangeUnit)) {
+            start = dateEnv.startOfWeek(start);
+            // make end-of-week if not already
+            endOfWeek = dateEnv.startOfWeek(end);
+            if (endOfWeek.valueOf() !== end.valueOf()) {
+                end = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["J" /* addWeeks */])(endOfWeek, 1);
+            }
+        }
+        // ensure 6 weeks
+        if (this.props.monthMode &&
+            this.props.fixedWeekCount) {
+            var rowCnt = Math.ceil(// could be partial weeks due to hiddenDays
+            Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_7" /* diffWeeks */])(start, end));
+            end = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["J" /* addWeeks */])(end, 6 - rowCnt);
+        }
+        return { start: start, end: end };
+    };
+    return TableDateProfileGenerator;
+}(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["j" /* DateProfileGenerator */]));
+
+var OPTION_REFINERS = {
+    moreLinkClick: __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_22" /* identity */],
+    moreLinkClassNames: __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_22" /* identity */],
+    moreLinkContent: __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_22" /* identity */],
+    moreLinkDidMount: __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_22" /* identity */],
+    moreLinkWillUnmount: __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_22" /* identity */],
+};
+
+var main = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_3" /* createPlugin */])({
+    initialView: 'dayGridMonth',
+    optionRefiners: OPTION_REFINERS,
+    views: {
+        dayGrid: {
+            component: DayTableView,
+            dateProfileGeneratorClass: TableDateProfileGenerator,
+        },
+        dayGridDay: {
+            type: 'dayGrid',
+            duration: { days: 1 },
+        },
+        dayGridWeek: {
+            type: 'dayGrid',
+            duration: { weeks: 1 },
+        },
+        dayGridMonth: {
+            type: 'dayGrid',
+            duration: { months: 1 },
+            monthMode: true,
+            fixedWeekCount: true,
+        },
+    },
+});
+
+/* harmony default export */ __webpack_exports__["a"] = (main);
+
+//# sourceMappingURL=main.js.map
 
 
 /***/ }),
-/* 25 */
+/* 27 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export Draggable */
+/* unused harmony export FeaturefulElementDragging */
+/* unused harmony export PointerDragging */
+/* unused harmony export ThirdPartyDraggable */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_tslib__ = __webpack_require__(5);
+/*!
+FullCalendar v5.5.0
+Docs & License: https://fullcalendar.io/
+(c) 2020 Adam Shaw
+*/
+
+
+
+__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["W" /* config */].touchMouseIgnoreWait = 500;
+var ignoreMouseDepth = 0;
+var listenerCnt = 0;
+var isWindowTouchMoveCancelled = false;
+/*
+Uses a "pointer" abstraction, which monitors UI events for both mouse and touch.
+Tracks when the pointer "drags" on a certain element, meaning down+move+up.
+
+Also, tracks if there was touch-scrolling.
+Also, can prevent touch-scrolling from happening.
+Also, can fire pointermove events when scrolling happens underneath, even when no real pointer movement.
+
+emits:
+- pointerdown
+- pointermove
+- pointerup
+*/
+var PointerDragging = /** @class */ (function () {
+    function PointerDragging(containerEl) {
+        var _this = this;
+        this.subjectEl = null;
+        // options that can be directly assigned by caller
+        this.selector = ''; // will cause subjectEl in all emitted events to be this element
+        this.handleSelector = '';
+        this.shouldIgnoreMove = false;
+        this.shouldWatchScroll = true; // for simulating pointermove on scroll
+        // internal states
+        this.isDragging = false;
+        this.isTouchDragging = false;
+        this.wasTouchScroll = false;
+        // Mouse
+        // ----------------------------------------------------------------------------------------------------
+        this.handleMouseDown = function (ev) {
+            if (!_this.shouldIgnoreMouse() &&
+                isPrimaryMouseButton(ev) &&
+                _this.tryStart(ev)) {
+                var pev = _this.createEventFromMouse(ev, true);
+                _this.emitter.trigger('pointerdown', pev);
+                _this.initScrollWatch(pev);
+                if (!_this.shouldIgnoreMove) {
+                    document.addEventListener('mousemove', _this.handleMouseMove);
+                }
+                document.addEventListener('mouseup', _this.handleMouseUp);
+            }
+        };
+        this.handleMouseMove = function (ev) {
+            var pev = _this.createEventFromMouse(ev);
+            _this.recordCoords(pev);
+            _this.emitter.trigger('pointermove', pev);
+        };
+        this.handleMouseUp = function (ev) {
+            document.removeEventListener('mousemove', _this.handleMouseMove);
+            document.removeEventListener('mouseup', _this.handleMouseUp);
+            _this.emitter.trigger('pointerup', _this.createEventFromMouse(ev));
+            _this.cleanup(); // call last so that pointerup has access to props
+        };
+        // Touch
+        // ----------------------------------------------------------------------------------------------------
+        this.handleTouchStart = function (ev) {
+            if (_this.tryStart(ev)) {
+                _this.isTouchDragging = true;
+                var pev = _this.createEventFromTouch(ev, true);
+                _this.emitter.trigger('pointerdown', pev);
+                _this.initScrollWatch(pev);
+                // unlike mouse, need to attach to target, not document
+                // https://stackoverflow.com/a/45760014
+                var targetEl = ev.target;
+                if (!_this.shouldIgnoreMove) {
+                    targetEl.addEventListener('touchmove', _this.handleTouchMove);
+                }
+                targetEl.addEventListener('touchend', _this.handleTouchEnd);
+                targetEl.addEventListener('touchcancel', _this.handleTouchEnd); // treat it as a touch end
+                // attach a handler to get called when ANY scroll action happens on the page.
+                // this was impossible to do with normal on/off because 'scroll' doesn't bubble.
+                // http://stackoverflow.com/a/32954565/96342
+                window.addEventListener('scroll', _this.handleTouchScroll, true);
+            }
+        };
+        this.handleTouchMove = function (ev) {
+            var pev = _this.createEventFromTouch(ev);
+            _this.recordCoords(pev);
+            _this.emitter.trigger('pointermove', pev);
+        };
+        this.handleTouchEnd = function (ev) {
+            if (_this.isDragging) { // done to guard against touchend followed by touchcancel
+                var targetEl = ev.target;
+                targetEl.removeEventListener('touchmove', _this.handleTouchMove);
+                targetEl.removeEventListener('touchend', _this.handleTouchEnd);
+                targetEl.removeEventListener('touchcancel', _this.handleTouchEnd);
+                window.removeEventListener('scroll', _this.handleTouchScroll, true); // useCaptured=true
+                _this.emitter.trigger('pointerup', _this.createEventFromTouch(ev));
+                _this.cleanup(); // call last so that pointerup has access to props
+                _this.isTouchDragging = false;
+                startIgnoringMouse();
+            }
+        };
+        this.handleTouchScroll = function () {
+            _this.wasTouchScroll = true;
+        };
+        this.handleScroll = function (ev) {
+            if (!_this.shouldIgnoreMove) {
+                var pageX = (window.pageXOffset - _this.prevScrollX) + _this.prevPageX;
+                var pageY = (window.pageYOffset - _this.prevScrollY) + _this.prevPageY;
+                _this.emitter.trigger('pointermove', {
+                    origEvent: ev,
+                    isTouch: _this.isTouchDragging,
+                    subjectEl: _this.subjectEl,
+                    pageX: pageX,
+                    pageY: pageY,
+                    deltaX: pageX - _this.origPageX,
+                    deltaY: pageY - _this.origPageY,
+                });
+            }
+        };
+        this.containerEl = containerEl;
+        this.emitter = new __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["s" /* Emitter */]();
+        containerEl.addEventListener('mousedown', this.handleMouseDown);
+        containerEl.addEventListener('touchstart', this.handleTouchStart, { passive: true });
+        listenerCreated();
+    }
+    PointerDragging.prototype.destroy = function () {
+        this.containerEl.removeEventListener('mousedown', this.handleMouseDown);
+        this.containerEl.removeEventListener('touchstart', this.handleTouchStart, { passive: true });
+        listenerDestroyed();
+    };
+    PointerDragging.prototype.tryStart = function (ev) {
+        var subjectEl = this.querySubjectEl(ev);
+        var downEl = ev.target;
+        if (subjectEl &&
+            (!this.handleSelector || Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_9" /* elementClosest */])(downEl, this.handleSelector))) {
+            this.subjectEl = subjectEl;
+            this.isDragging = true; // do this first so cancelTouchScroll will work
+            this.wasTouchScroll = false;
+            return true;
+        }
+        return false;
+    };
+    PointerDragging.prototype.cleanup = function () {
+        isWindowTouchMoveCancelled = false;
+        this.isDragging = false;
+        this.subjectEl = null;
+        // keep wasTouchScroll around for later access
+        this.destroyScrollWatch();
+    };
+    PointerDragging.prototype.querySubjectEl = function (ev) {
+        if (this.selector) {
+            return Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_9" /* elementClosest */])(ev.target, this.selector);
+        }
+        return this.containerEl;
+    };
+    PointerDragging.prototype.shouldIgnoreMouse = function () {
+        return ignoreMouseDepth || this.isTouchDragging;
+    };
+    // can be called by user of this class, to cancel touch-based scrolling for the current drag
+    PointerDragging.prototype.cancelTouchScroll = function () {
+        if (this.isDragging) {
+            isWindowTouchMoveCancelled = true;
+        }
+    };
+    // Scrolling that simulates pointermoves
+    // ----------------------------------------------------------------------------------------------------
+    PointerDragging.prototype.initScrollWatch = function (ev) {
+        if (this.shouldWatchScroll) {
+            this.recordCoords(ev);
+            window.addEventListener('scroll', this.handleScroll, true); // useCapture=true
+        }
+    };
+    PointerDragging.prototype.recordCoords = function (ev) {
+        if (this.shouldWatchScroll) {
+            this.prevPageX = ev.pageX;
+            this.prevPageY = ev.pageY;
+            this.prevScrollX = window.pageXOffset;
+            this.prevScrollY = window.pageYOffset;
+        }
+    };
+    PointerDragging.prototype.destroyScrollWatch = function () {
+        if (this.shouldWatchScroll) {
+            window.removeEventListener('scroll', this.handleScroll, true); // useCaptured=true
+        }
+    };
+    // Event Normalization
+    // ----------------------------------------------------------------------------------------------------
+    PointerDragging.prototype.createEventFromMouse = function (ev, isFirst) {
+        var deltaX = 0;
+        var deltaY = 0;
+        // TODO: repeat code
+        if (isFirst) {
+            this.origPageX = ev.pageX;
+            this.origPageY = ev.pageY;
+        }
+        else {
+            deltaX = ev.pageX - this.origPageX;
+            deltaY = ev.pageY - this.origPageY;
+        }
+        return {
+            origEvent: ev,
+            isTouch: false,
+            subjectEl: this.subjectEl,
+            pageX: ev.pageX,
+            pageY: ev.pageY,
+            deltaX: deltaX,
+            deltaY: deltaY,
+        };
+    };
+    PointerDragging.prototype.createEventFromTouch = function (ev, isFirst) {
+        var touches = ev.touches;
+        var pageX;
+        var pageY;
+        var deltaX = 0;
+        var deltaY = 0;
+        // if touch coords available, prefer,
+        // because FF would give bad ev.pageX ev.pageY
+        if (touches && touches.length) {
+            pageX = touches[0].pageX;
+            pageY = touches[0].pageY;
+        }
+        else {
+            pageX = ev.pageX;
+            pageY = ev.pageY;
+        }
+        // TODO: repeat code
+        if (isFirst) {
+            this.origPageX = pageX;
+            this.origPageY = pageY;
+        }
+        else {
+            deltaX = pageX - this.origPageX;
+            deltaY = pageY - this.origPageY;
+        }
+        return {
+            origEvent: ev,
+            isTouch: true,
+            subjectEl: this.subjectEl,
+            pageX: pageX,
+            pageY: pageY,
+            deltaX: deltaX,
+            deltaY: deltaY,
+        };
+    };
+    return PointerDragging;
+}());
+// Returns a boolean whether this was a left mouse click and no ctrl key (which means right click on Mac)
+function isPrimaryMouseButton(ev) {
+    return ev.button === 0 && !ev.ctrlKey;
+}
+// Ignoring fake mouse events generated by touch
+// ----------------------------------------------------------------------------------------------------
+function startIgnoringMouse() {
+    ignoreMouseDepth += 1;
+    setTimeout(function () {
+        ignoreMouseDepth -= 1;
+    }, __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["W" /* config */].touchMouseIgnoreWait);
+}
+// We want to attach touchmove as early as possible for Safari
+// ----------------------------------------------------------------------------------------------------
+function listenerCreated() {
+    listenerCnt += 1;
+    if (listenerCnt === 1) {
+        window.addEventListener('touchmove', onWindowTouchMove, { passive: false });
+    }
+}
+function listenerDestroyed() {
+    listenerCnt -= 1;
+    if (!listenerCnt) {
+        window.removeEventListener('touchmove', onWindowTouchMove, { passive: false });
+    }
+}
+function onWindowTouchMove(ev) {
+    if (isWindowTouchMoveCancelled) {
+        ev.preventDefault();
+    }
+}
+
+/*
+An effect in which an element follows the movement of a pointer across the screen.
+The moving element is a clone of some other element.
+Must call start + handleMove + stop.
+*/
+var ElementMirror = /** @class */ (function () {
+    function ElementMirror() {
+        this.isVisible = false; // must be explicitly enabled
+        this.sourceEl = null;
+        this.mirrorEl = null;
+        this.sourceElRect = null; // screen coords relative to viewport
+        // options that can be set directly by caller
+        this.parentNode = document.body;
+        this.zIndex = 9999;
+        this.revertDuration = 0;
+    }
+    ElementMirror.prototype.start = function (sourceEl, pageX, pageY) {
+        this.sourceEl = sourceEl;
+        this.sourceElRect = this.sourceEl.getBoundingClientRect();
+        this.origScreenX = pageX - window.pageXOffset;
+        this.origScreenY = pageY - window.pageYOffset;
+        this.deltaX = 0;
+        this.deltaY = 0;
+        this.updateElPosition();
+    };
+    ElementMirror.prototype.handleMove = function (pageX, pageY) {
+        this.deltaX = (pageX - window.pageXOffset) - this.origScreenX;
+        this.deltaY = (pageY - window.pageYOffset) - this.origScreenY;
+        this.updateElPosition();
+    };
+    // can be called before start
+    ElementMirror.prototype.setIsVisible = function (bool) {
+        if (bool) {
+            if (!this.isVisible) {
+                if (this.mirrorEl) {
+                    this.mirrorEl.style.display = '';
+                }
+                this.isVisible = bool; // needs to happen before updateElPosition
+                this.updateElPosition(); // because was not updating the position while invisible
+            }
+        }
+        else if (this.isVisible) {
+            if (this.mirrorEl) {
+                this.mirrorEl.style.display = 'none';
+            }
+            this.isVisible = bool;
+        }
+    };
+    // always async
+    ElementMirror.prototype.stop = function (needsRevertAnimation, callback) {
+        var _this = this;
+        var done = function () {
+            _this.cleanup();
+            callback();
+        };
+        if (needsRevertAnimation &&
+            this.mirrorEl &&
+            this.isVisible &&
+            this.revertDuration && // if 0, transition won't work
+            (this.deltaX || this.deltaY) // if same coords, transition won't work
+        ) {
+            this.doRevertAnimation(done, this.revertDuration);
+        }
+        else {
+            setTimeout(done, 0);
+        }
+    };
+    ElementMirror.prototype.doRevertAnimation = function (callback, revertDuration) {
+        var mirrorEl = this.mirrorEl;
+        var finalSourceElRect = this.sourceEl.getBoundingClientRect(); // because autoscrolling might have happened
+        mirrorEl.style.transition =
+            'top ' + revertDuration + 'ms,' +
+                'left ' + revertDuration + 'ms';
+        Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["N" /* applyStyle */])(mirrorEl, {
+            left: finalSourceElRect.left,
+            top: finalSourceElRect.top,
+        });
+        Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_49" /* whenTransitionDone */])(mirrorEl, function () {
+            mirrorEl.style.transition = '';
+            callback();
+        });
+    };
+    ElementMirror.prototype.cleanup = function () {
+        if (this.mirrorEl) {
+            Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_40" /* removeElement */])(this.mirrorEl);
+            this.mirrorEl = null;
+        }
+        this.sourceEl = null;
+    };
+    ElementMirror.prototype.updateElPosition = function () {
+        if (this.sourceEl && this.isVisible) {
+            Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["N" /* applyStyle */])(this.getMirrorEl(), {
+                left: this.sourceElRect.left + this.deltaX,
+                top: this.sourceElRect.top + this.deltaY,
+            });
+        }
+    };
+    ElementMirror.prototype.getMirrorEl = function () {
+        var sourceElRect = this.sourceElRect;
+        var mirrorEl = this.mirrorEl;
+        if (!mirrorEl) {
+            mirrorEl = this.mirrorEl = this.sourceEl.cloneNode(true); // cloneChildren=true
+            // we don't want long taps or any mouse interaction causing selection/menus.
+            // would use preventSelection(), but that prevents selectstart, causing problems.
+            mirrorEl.classList.add('fc-unselectable');
+            mirrorEl.classList.add('fc-event-dragging');
+            Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["N" /* applyStyle */])(mirrorEl, {
+                position: 'fixed',
+                zIndex: this.zIndex,
+                visibility: '',
+                boxSizing: 'border-box',
+                width: sourceElRect.right - sourceElRect.left,
+                height: sourceElRect.bottom - sourceElRect.top,
+                right: 'auto',
+                bottom: 'auto',
+                margin: 0,
+            });
+            this.parentNode.appendChild(mirrorEl);
+        }
+        return mirrorEl;
+    };
+    return ElementMirror;
+}());
+
+/*
+Is a cache for a given element's scroll information (all the info that ScrollController stores)
+in addition the "client rectangle" of the element.. the area within the scrollbars.
+
+The cache can be in one of two modes:
+- doesListening:false - ignores when the container is scrolled by someone else
+- doesListening:true - watch for scrolling and update the cache
+*/
+var ScrollGeomCache = /** @class */ (function (_super) {
+    Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["b" /* __extends */])(ScrollGeomCache, _super);
+    function ScrollGeomCache(scrollController, doesListening) {
+        var _this = _super.call(this) || this;
+        _this.handleScroll = function () {
+            _this.scrollTop = _this.scrollController.getScrollTop();
+            _this.scrollLeft = _this.scrollController.getScrollLeft();
+            _this.handleScrollChange();
+        };
+        _this.scrollController = scrollController;
+        _this.doesListening = doesListening;
+        _this.scrollTop = _this.origScrollTop = scrollController.getScrollTop();
+        _this.scrollLeft = _this.origScrollLeft = scrollController.getScrollLeft();
+        _this.scrollWidth = scrollController.getScrollWidth();
+        _this.scrollHeight = scrollController.getScrollHeight();
+        _this.clientWidth = scrollController.getClientWidth();
+        _this.clientHeight = scrollController.getClientHeight();
+        _this.clientRect = _this.computeClientRect(); // do last in case it needs cached values
+        if (_this.doesListening) {
+            _this.getEventTarget().addEventListener('scroll', _this.handleScroll);
+        }
+        return _this;
+    }
+    ScrollGeomCache.prototype.destroy = function () {
+        if (this.doesListening) {
+            this.getEventTarget().removeEventListener('scroll', this.handleScroll);
+        }
+    };
+    ScrollGeomCache.prototype.getScrollTop = function () {
+        return this.scrollTop;
+    };
+    ScrollGeomCache.prototype.getScrollLeft = function () {
+        return this.scrollLeft;
+    };
+    ScrollGeomCache.prototype.setScrollTop = function (top) {
+        this.scrollController.setScrollTop(top);
+        if (!this.doesListening) {
+            // we are not relying on the element to normalize out-of-bounds scroll values
+            // so we need to sanitize ourselves
+            this.scrollTop = Math.max(Math.min(top, this.getMaxScrollTop()), 0);
+            this.handleScrollChange();
+        }
+    };
+    ScrollGeomCache.prototype.setScrollLeft = function (top) {
+        this.scrollController.setScrollLeft(top);
+        if (!this.doesListening) {
+            // we are not relying on the element to normalize out-of-bounds scroll values
+            // so we need to sanitize ourselves
+            this.scrollLeft = Math.max(Math.min(top, this.getMaxScrollLeft()), 0);
+            this.handleScrollChange();
+        }
+    };
+    ScrollGeomCache.prototype.getClientWidth = function () {
+        return this.clientWidth;
+    };
+    ScrollGeomCache.prototype.getClientHeight = function () {
+        return this.clientHeight;
+    };
+    ScrollGeomCache.prototype.getScrollWidth = function () {
+        return this.scrollWidth;
+    };
+    ScrollGeomCache.prototype.getScrollHeight = function () {
+        return this.scrollHeight;
+    };
+    ScrollGeomCache.prototype.handleScrollChange = function () {
+    };
+    return ScrollGeomCache;
+}(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["B" /* ScrollController */]));
+
+var ElementScrollGeomCache = /** @class */ (function (_super) {
+    Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["b" /* __extends */])(ElementScrollGeomCache, _super);
+    function ElementScrollGeomCache(el, doesListening) {
+        return _super.call(this, new __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["r" /* ElementScrollController */](el), doesListening) || this;
+    }
+    ElementScrollGeomCache.prototype.getEventTarget = function () {
+        return this.scrollController.el;
+    };
+    ElementScrollGeomCache.prototype.computeClientRect = function () {
+        return Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["U" /* computeInnerRect */])(this.scrollController.el);
+    };
+    return ElementScrollGeomCache;
+}(ScrollGeomCache));
+
+var WindowScrollGeomCache = /** @class */ (function (_super) {
+    Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["b" /* __extends */])(WindowScrollGeomCache, _super);
+    function WindowScrollGeomCache(doesListening) {
+        return _super.call(this, new __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["H" /* WindowScrollController */](), doesListening) || this;
+    }
+    WindowScrollGeomCache.prototype.getEventTarget = function () {
+        return window;
+    };
+    WindowScrollGeomCache.prototype.computeClientRect = function () {
+        return {
+            left: this.scrollLeft,
+            right: this.scrollLeft + this.clientWidth,
+            top: this.scrollTop,
+            bottom: this.scrollTop + this.clientHeight,
+        };
+    };
+    // the window is the only scroll object that changes it's rectangle relative
+    // to the document's topleft as it scrolls
+    WindowScrollGeomCache.prototype.handleScrollChange = function () {
+        this.clientRect = this.computeClientRect();
+    };
+    return WindowScrollGeomCache;
+}(ScrollGeomCache));
+
+// If available we are using native "performance" API instead of "Date"
+// Read more about it on MDN:
+// https://developer.mozilla.org/en-US/docs/Web/API/Performance
+var getTime = typeof performance === 'function' ? performance.now : Date.now;
+/*
+For a pointer interaction, automatically scrolls certain scroll containers when the pointer
+approaches the edge.
+
+The caller must call start + handleMove + stop.
+*/
+var AutoScroller = /** @class */ (function () {
+    function AutoScroller() {
+        var _this = this;
+        // options that can be set by caller
+        this.isEnabled = true;
+        this.scrollQuery = [window, '.fc-scroller'];
+        this.edgeThreshold = 50; // pixels
+        this.maxVelocity = 300; // pixels per second
+        // internal state
+        this.pointerScreenX = null;
+        this.pointerScreenY = null;
+        this.isAnimating = false;
+        this.scrollCaches = null;
+        // protect against the initial pointerdown being too close to an edge and starting the scroll
+        this.everMovedUp = false;
+        this.everMovedDown = false;
+        this.everMovedLeft = false;
+        this.everMovedRight = false;
+        this.animate = function () {
+            if (_this.isAnimating) { // wasn't cancelled between animation calls
+                var edge = _this.computeBestEdge(_this.pointerScreenX + window.pageXOffset, _this.pointerScreenY + window.pageYOffset);
+                if (edge) {
+                    var now = getTime();
+                    _this.handleSide(edge, (now - _this.msSinceRequest) / 1000);
+                    _this.requestAnimation(now);
+                }
+                else {
+                    _this.isAnimating = false; // will stop animation
+                }
+            }
+        };
+    }
+    AutoScroller.prototype.start = function (pageX, pageY) {
+        if (this.isEnabled) {
+            this.scrollCaches = this.buildCaches();
+            this.pointerScreenX = null;
+            this.pointerScreenY = null;
+            this.everMovedUp = false;
+            this.everMovedDown = false;
+            this.everMovedLeft = false;
+            this.everMovedRight = false;
+            this.handleMove(pageX, pageY);
+        }
+    };
+    AutoScroller.prototype.handleMove = function (pageX, pageY) {
+        if (this.isEnabled) {
+            var pointerScreenX = pageX - window.pageXOffset;
+            var pointerScreenY = pageY - window.pageYOffset;
+            var yDelta = this.pointerScreenY === null ? 0 : pointerScreenY - this.pointerScreenY;
+            var xDelta = this.pointerScreenX === null ? 0 : pointerScreenX - this.pointerScreenX;
+            if (yDelta < 0) {
+                this.everMovedUp = true;
+            }
+            else if (yDelta > 0) {
+                this.everMovedDown = true;
+            }
+            if (xDelta < 0) {
+                this.everMovedLeft = true;
+            }
+            else if (xDelta > 0) {
+                this.everMovedRight = true;
+            }
+            this.pointerScreenX = pointerScreenX;
+            this.pointerScreenY = pointerScreenY;
+            if (!this.isAnimating) {
+                this.isAnimating = true;
+                this.requestAnimation(getTime());
+            }
+        }
+    };
+    AutoScroller.prototype.stop = function () {
+        if (this.isEnabled) {
+            this.isAnimating = false; // will stop animation
+            for (var _i = 0, _a = this.scrollCaches; _i < _a.length; _i++) {
+                var scrollCache = _a[_i];
+                scrollCache.destroy();
+            }
+            this.scrollCaches = null;
+        }
+    };
+    AutoScroller.prototype.requestAnimation = function (now) {
+        this.msSinceRequest = now;
+        requestAnimationFrame(this.animate);
+    };
+    AutoScroller.prototype.handleSide = function (edge, seconds) {
+        var scrollCache = edge.scrollCache;
+        var edgeThreshold = this.edgeThreshold;
+        var invDistance = edgeThreshold - edge.distance;
+        var velocity = // the closer to the edge, the faster we scroll
+         ((invDistance * invDistance) / (edgeThreshold * edgeThreshold)) * // quadratic
+            this.maxVelocity * seconds;
+        var sign = 1;
+        switch (edge.name) {
+            case 'left':
+                sign = -1;
+            // falls through
+            case 'right':
+                scrollCache.setScrollLeft(scrollCache.getScrollLeft() + velocity * sign);
+                break;
+            case 'top':
+                sign = -1;
+            // falls through
+            case 'bottom':
+                scrollCache.setScrollTop(scrollCache.getScrollTop() + velocity * sign);
+                break;
+        }
+    };
+    // left/top are relative to document topleft
+    AutoScroller.prototype.computeBestEdge = function (left, top) {
+        var edgeThreshold = this.edgeThreshold;
+        var bestSide = null;
+        for (var _i = 0, _a = this.scrollCaches; _i < _a.length; _i++) {
+            var scrollCache = _a[_i];
+            var rect = scrollCache.clientRect;
+            var leftDist = left - rect.left;
+            var rightDist = rect.right - left;
+            var topDist = top - rect.top;
+            var bottomDist = rect.bottom - top;
+            // completely within the rect?
+            if (leftDist >= 0 && rightDist >= 0 && topDist >= 0 && bottomDist >= 0) {
+                if (topDist <= edgeThreshold && this.everMovedUp && scrollCache.canScrollUp() &&
+                    (!bestSide || bestSide.distance > topDist)) {
+                    bestSide = { scrollCache: scrollCache, name: 'top', distance: topDist };
+                }
+                if (bottomDist <= edgeThreshold && this.everMovedDown && scrollCache.canScrollDown() &&
+                    (!bestSide || bestSide.distance > bottomDist)) {
+                    bestSide = { scrollCache: scrollCache, name: 'bottom', distance: bottomDist };
+                }
+                if (leftDist <= edgeThreshold && this.everMovedLeft && scrollCache.canScrollLeft() &&
+                    (!bestSide || bestSide.distance > leftDist)) {
+                    bestSide = { scrollCache: scrollCache, name: 'left', distance: leftDist };
+                }
+                if (rightDist <= edgeThreshold && this.everMovedRight && scrollCache.canScrollRight() &&
+                    (!bestSide || bestSide.distance > rightDist)) {
+                    bestSide = { scrollCache: scrollCache, name: 'right', distance: rightDist };
+                }
+            }
+        }
+        return bestSide;
+    };
+    AutoScroller.prototype.buildCaches = function () {
+        return this.queryScrollEls().map(function (el) {
+            if (el === window) {
+                return new WindowScrollGeomCache(false); // false = don't listen to user-generated scrolls
+            }
+            return new ElementScrollGeomCache(el, false); // false = don't listen to user-generated scrolls
+        });
+    };
+    AutoScroller.prototype.queryScrollEls = function () {
+        var els = [];
+        for (var _i = 0, _a = this.scrollQuery; _i < _a.length; _i++) {
+            var query = _a[_i];
+            if (typeof query === 'object') {
+                els.push(query);
+            }
+            else {
+                els.push.apply(els, Array.prototype.slice.call(document.querySelectorAll(query)));
+            }
+        }
+        return els;
+    };
+    return AutoScroller;
+}());
+
+/*
+Monitors dragging on an element. Has a number of high-level features:
+- minimum distance required before dragging
+- minimum wait time ("delay") before dragging
+- a mirror element that follows the pointer
+*/
+var FeaturefulElementDragging = /** @class */ (function (_super) {
+    Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["b" /* __extends */])(FeaturefulElementDragging, _super);
+    function FeaturefulElementDragging(containerEl, selector) {
+        var _this = _super.call(this, containerEl) || this;
+        // options that can be directly set by caller
+        // the caller can also set the PointerDragging's options as well
+        _this.delay = null;
+        _this.minDistance = 0;
+        _this.touchScrollAllowed = true; // prevents drag from starting and blocks scrolling during drag
+        _this.mirrorNeedsRevert = false;
+        _this.isInteracting = false; // is the user validly moving the pointer? lasts until pointerup
+        _this.isDragging = false; // is it INTENTFULLY dragging? lasts until after revert animation
+        _this.isDelayEnded = false;
+        _this.isDistanceSurpassed = false;
+        _this.delayTimeoutId = null;
+        _this.onPointerDown = function (ev) {
+            if (!_this.isDragging) { // so new drag doesn't happen while revert animation is going
+                _this.isInteracting = true;
+                _this.isDelayEnded = false;
+                _this.isDistanceSurpassed = false;
+                Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_37" /* preventSelection */])(document.body);
+                Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_36" /* preventContextMenu */])(document.body);
+                // prevent links from being visited if there's an eventual drag.
+                // also prevents selection in older browsers (maybe?).
+                // not necessary for touch, besides, browser would complain about passiveness.
+                if (!ev.isTouch) {
+                    ev.origEvent.preventDefault();
+                }
+                _this.emitter.trigger('pointerdown', ev);
+                if (_this.isInteracting && // not destroyed via pointerdown handler
+                    !_this.pointer.shouldIgnoreMove) {
+                    // actions related to initiating dragstart+dragmove+dragend...
+                    _this.mirror.setIsVisible(false); // reset. caller must set-visible
+                    _this.mirror.start(ev.subjectEl, ev.pageX, ev.pageY); // must happen on first pointer down
+                    _this.startDelay(ev);
+                    if (!_this.minDistance) {
+                        _this.handleDistanceSurpassed(ev);
+                    }
+                }
+            }
+        };
+        _this.onPointerMove = function (ev) {
+            if (_this.isInteracting) {
+                _this.emitter.trigger('pointermove', ev);
+                if (!_this.isDistanceSurpassed) {
+                    var minDistance = _this.minDistance;
+                    var distanceSq = void 0; // current distance from the origin, squared
+                    var deltaX = ev.deltaX, deltaY = ev.deltaY;
+                    distanceSq = deltaX * deltaX + deltaY * deltaY;
+                    if (distanceSq >= minDistance * minDistance) { // use pythagorean theorem
+                        _this.handleDistanceSurpassed(ev);
+                    }
+                }
+                if (_this.isDragging) {
+                    // a real pointer move? (not one simulated by scrolling)
+                    if (ev.origEvent.type !== 'scroll') {
+                        _this.mirror.handleMove(ev.pageX, ev.pageY);
+                        _this.autoScroller.handleMove(ev.pageX, ev.pageY);
+                    }
+                    _this.emitter.trigger('dragmove', ev);
+                }
+            }
+        };
+        _this.onPointerUp = function (ev) {
+            if (_this.isInteracting) {
+                _this.isInteracting = false;
+                Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["L" /* allowSelection */])(document.body);
+                Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["K" /* allowContextMenu */])(document.body);
+                _this.emitter.trigger('pointerup', ev); // can potentially set mirrorNeedsRevert
+                if (_this.isDragging) {
+                    _this.autoScroller.stop();
+                    _this.tryStopDrag(ev); // which will stop the mirror
+                }
+                if (_this.delayTimeoutId) {
+                    clearTimeout(_this.delayTimeoutId);
+                    _this.delayTimeoutId = null;
+                }
+            }
+        };
+        var pointer = _this.pointer = new PointerDragging(containerEl);
+        pointer.emitter.on('pointerdown', _this.onPointerDown);
+        pointer.emitter.on('pointermove', _this.onPointerMove);
+        pointer.emitter.on('pointerup', _this.onPointerUp);
+        if (selector) {
+            pointer.selector = selector;
+        }
+        _this.mirror = new ElementMirror();
+        _this.autoScroller = new AutoScroller();
+        return _this;
+    }
+    FeaturefulElementDragging.prototype.destroy = function () {
+        this.pointer.destroy();
+        // HACK: simulate a pointer-up to end the current drag
+        // TODO: fire 'dragend' directly and stop interaction. discourage use of pointerup event (b/c might not fire)
+        this.onPointerUp({});
+    };
+    FeaturefulElementDragging.prototype.startDelay = function (ev) {
+        var _this = this;
+        if (typeof this.delay === 'number') {
+            this.delayTimeoutId = setTimeout(function () {
+                _this.delayTimeoutId = null;
+                _this.handleDelayEnd(ev);
+            }, this.delay); // not assignable to number!
+        }
+        else {
+            this.handleDelayEnd(ev);
+        }
+    };
+    FeaturefulElementDragging.prototype.handleDelayEnd = function (ev) {
+        this.isDelayEnded = true;
+        this.tryStartDrag(ev);
+    };
+    FeaturefulElementDragging.prototype.handleDistanceSurpassed = function (ev) {
+        this.isDistanceSurpassed = true;
+        this.tryStartDrag(ev);
+    };
+    FeaturefulElementDragging.prototype.tryStartDrag = function (ev) {
+        if (this.isDelayEnded && this.isDistanceSurpassed) {
+            if (!this.pointer.wasTouchScroll || this.touchScrollAllowed) {
+                this.isDragging = true;
+                this.mirrorNeedsRevert = false;
+                this.autoScroller.start(ev.pageX, ev.pageY);
+                this.emitter.trigger('dragstart', ev);
+                if (this.touchScrollAllowed === false) {
+                    this.pointer.cancelTouchScroll();
+                }
+            }
+        }
+    };
+    FeaturefulElementDragging.prototype.tryStopDrag = function (ev) {
+        // .stop() is ALWAYS asynchronous, which we NEED because we want all pointerup events
+        // that come from the document to fire beforehand. much more convenient this way.
+        this.mirror.stop(this.mirrorNeedsRevert, this.stopDrag.bind(this, ev));
+    };
+    FeaturefulElementDragging.prototype.stopDrag = function (ev) {
+        this.isDragging = false;
+        this.emitter.trigger('dragend', ev);
+    };
+    // fill in the implementations...
+    FeaturefulElementDragging.prototype.setIgnoreMove = function (bool) {
+        this.pointer.shouldIgnoreMove = bool;
+    };
+    FeaturefulElementDragging.prototype.setMirrorIsVisible = function (bool) {
+        this.mirror.setIsVisible(bool);
+    };
+    FeaturefulElementDragging.prototype.setMirrorNeedsRevert = function (bool) {
+        this.mirrorNeedsRevert = bool;
+    };
+    FeaturefulElementDragging.prototype.setAutoScrollEnabled = function (bool) {
+        this.autoScroller.isEnabled = bool;
+    };
+    return FeaturefulElementDragging;
+}(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["q" /* ElementDragging */]));
+
+/*
+When this class is instantiated, it records the offset of an element (relative to the document topleft),
+and continues to monitor scrolling, updating the cached coordinates if it needs to.
+Does not access the DOM after instantiation, so highly performant.
+
+Also keeps track of all scrolling/overflow:hidden containers that are parents of the given element
+and an determine if a given point is inside the combined clipping rectangle.
+*/
+var OffsetTracker = /** @class */ (function () {
+    function OffsetTracker(el) {
+        this.origRect = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["V" /* computeRect */])(el);
+        // will work fine for divs that have overflow:hidden
+        this.scrollCaches = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_14" /* getClippingParents */])(el).map(function (scrollEl) { return new ElementScrollGeomCache(scrollEl, true); });
+    }
+    OffsetTracker.prototype.destroy = function () {
+        for (var _i = 0, _a = this.scrollCaches; _i < _a.length; _i++) {
+            var scrollCache = _a[_i];
+            scrollCache.destroy();
+        }
+    };
+    OffsetTracker.prototype.computeLeft = function () {
+        var left = this.origRect.left;
+        for (var _i = 0, _a = this.scrollCaches; _i < _a.length; _i++) {
+            var scrollCache = _a[_i];
+            left += scrollCache.origScrollLeft - scrollCache.getScrollLeft();
+        }
+        return left;
+    };
+    OffsetTracker.prototype.computeTop = function () {
+        var top = this.origRect.top;
+        for (var _i = 0, _a = this.scrollCaches; _i < _a.length; _i++) {
+            var scrollCache = _a[_i];
+            top += scrollCache.origScrollTop - scrollCache.getScrollTop();
+        }
+        return top;
+    };
+    OffsetTracker.prototype.isWithinClipping = function (pageX, pageY) {
+        var point = { left: pageX, top: pageY };
+        for (var _i = 0, _a = this.scrollCaches; _i < _a.length; _i++) {
+            var scrollCache = _a[_i];
+            if (!isIgnoredClipping(scrollCache.getEventTarget()) &&
+                !Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_35" /* pointInsideRect */])(point, scrollCache.clientRect)) {
+                return false;
+            }
+        }
+        return true;
+    };
+    return OffsetTracker;
+}());
+// certain clipping containers should never constrain interactions, like <html> and <body>
+// https://github.com/fullcalendar/fullcalendar/issues/3615
+function isIgnoredClipping(node) {
+    var tagName = node.tagName;
+    return tagName === 'HTML' || tagName === 'BODY';
+}
+
+/*
+Tracks movement over multiple droppable areas (aka "hits")
+that exist in one or more DateComponents.
+Relies on an existing draggable.
+
+emits:
+- pointerdown
+- dragstart
+- hitchange - fires initially, even if not over a hit
+- pointerup
+- (hitchange - again, to null, if ended over a hit)
+- dragend
+*/
+var HitDragging = /** @class */ (function () {
+    function HitDragging(dragging, droppableStore) {
+        var _this = this;
+        // options that can be set by caller
+        this.useSubjectCenter = false;
+        this.requireInitial = true; // if doesn't start out on a hit, won't emit any events
+        this.initialHit = null;
+        this.movingHit = null;
+        this.finalHit = null; // won't ever be populated if shouldIgnoreMove
+        this.handlePointerDown = function (ev) {
+            var dragging = _this.dragging;
+            _this.initialHit = null;
+            _this.movingHit = null;
+            _this.finalHit = null;
+            _this.prepareHits();
+            _this.processFirstCoord(ev);
+            if (_this.initialHit || !_this.requireInitial) {
+                dragging.setIgnoreMove(false);
+                // TODO: fire this before computing processFirstCoord, so listeners can cancel. this gets fired by almost every handler :(
+                _this.emitter.trigger('pointerdown', ev);
+            }
+            else {
+                dragging.setIgnoreMove(true);
+            }
+        };
+        this.handleDragStart = function (ev) {
+            _this.emitter.trigger('dragstart', ev);
+            _this.handleMove(ev, true); // force = fire even if initially null
+        };
+        this.handleDragMove = function (ev) {
+            _this.emitter.trigger('dragmove', ev);
+            _this.handleMove(ev);
+        };
+        this.handlePointerUp = function (ev) {
+            _this.releaseHits();
+            _this.emitter.trigger('pointerup', ev);
+        };
+        this.handleDragEnd = function (ev) {
+            if (_this.movingHit) {
+                _this.emitter.trigger('hitupdate', null, true, ev);
+            }
+            _this.finalHit = _this.movingHit;
+            _this.movingHit = null;
+            _this.emitter.trigger('dragend', ev);
+        };
+        this.droppableStore = droppableStore;
+        dragging.emitter.on('pointerdown', this.handlePointerDown);
+        dragging.emitter.on('dragstart', this.handleDragStart);
+        dragging.emitter.on('dragmove', this.handleDragMove);
+        dragging.emitter.on('pointerup', this.handlePointerUp);
+        dragging.emitter.on('dragend', this.handleDragEnd);
+        this.dragging = dragging;
+        this.emitter = new __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["s" /* Emitter */]();
+    }
+    // sets initialHit
+    // sets coordAdjust
+    HitDragging.prototype.processFirstCoord = function (ev) {
+        var origPoint = { left: ev.pageX, top: ev.pageY };
+        var adjustedPoint = origPoint;
+        var subjectEl = ev.subjectEl;
+        var subjectRect;
+        if (subjectEl !== document) {
+            subjectRect = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["V" /* computeRect */])(subjectEl);
+            adjustedPoint = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["X" /* constrainPoint */])(adjustedPoint, subjectRect);
+        }
+        var initialHit = this.initialHit = this.queryHitForOffset(adjustedPoint.left, adjustedPoint.top);
+        if (initialHit) {
+            if (this.useSubjectCenter && subjectRect) {
+                var slicedSubjectRect = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_26" /* intersectRects */])(subjectRect, initialHit.rect);
+                if (slicedSubjectRect) {
+                    adjustedPoint = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_17" /* getRectCenter */])(slicedSubjectRect);
+                }
+            }
+            this.coordAdjust = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_6" /* diffPoints */])(adjustedPoint, origPoint);
+        }
+        else {
+            this.coordAdjust = { left: 0, top: 0 };
+        }
+    };
+    HitDragging.prototype.handleMove = function (ev, forceHandle) {
+        var hit = this.queryHitForOffset(ev.pageX + this.coordAdjust.left, ev.pageY + this.coordAdjust.top);
+        if (forceHandle || !isHitsEqual(this.movingHit, hit)) {
+            this.movingHit = hit;
+            this.emitter.trigger('hitupdate', hit, false, ev);
+        }
+    };
+    HitDragging.prototype.prepareHits = function () {
+        this.offsetTrackers = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_31" /* mapHash */])(this.droppableStore, function (interactionSettings) {
+            interactionSettings.component.prepareHits();
+            return new OffsetTracker(interactionSettings.el);
+        });
+    };
+    HitDragging.prototype.releaseHits = function () {
+        var offsetTrackers = this.offsetTrackers;
+        for (var id in offsetTrackers) {
+            offsetTrackers[id].destroy();
+        }
+        this.offsetTrackers = {};
+    };
+    HitDragging.prototype.queryHitForOffset = function (offsetLeft, offsetTop) {
+        var _a = this, droppableStore = _a.droppableStore, offsetTrackers = _a.offsetTrackers;
+        var bestHit = null;
+        for (var id in droppableStore) {
+            var component = droppableStore[id].component;
+            var offsetTracker = offsetTrackers[id];
+            if (offsetTracker && // wasn't destroyed mid-drag
+                offsetTracker.isWithinClipping(offsetLeft, offsetTop)) {
+                var originLeft = offsetTracker.computeLeft();
+                var originTop = offsetTracker.computeTop();
+                var positionLeft = offsetLeft - originLeft;
+                var positionTop = offsetTop - originTop;
+                var origRect = offsetTracker.origRect;
+                var width = origRect.right - origRect.left;
+                var height = origRect.bottom - origRect.top;
+                if (
+                // must be within the element's bounds
+                positionLeft >= 0 && positionLeft < width &&
+                    positionTop >= 0 && positionTop < height) {
+                    var hit = component.queryHit(positionLeft, positionTop, width, height);
+                    var dateProfile = component.context.getCurrentData().dateProfile;
+                    if (hit &&
+                        (
+                        // make sure the hit is within activeRange, meaning it's not a deal cell
+                        Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_38" /* rangeContainsRange */])(dateProfile.activeRange, hit.dateSpan.range)) &&
+                        (!bestHit || hit.layer > bestHit.layer)) {
+                        // TODO: better way to re-orient rectangle
+                        hit.rect.left += originLeft;
+                        hit.rect.right += originLeft;
+                        hit.rect.top += originTop;
+                        hit.rect.bottom += originTop;
+                        bestHit = hit;
+                    }
+                }
+            }
+        }
+        return bestHit;
+    };
+    return HitDragging;
+}());
+function isHitsEqual(hit0, hit1) {
+    if (!hit0 && !hit1) {
+        return true;
+    }
+    if (Boolean(hit0) !== Boolean(hit1)) {
+        return false;
+    }
+    return Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_28" /* isDateSpansEqual */])(hit0.dateSpan, hit1.dateSpan);
+}
+
+function buildDatePointApiWithContext(dateSpan, context) {
+    var props = {};
+    for (var _i = 0, _a = context.pluginHooks.datePointTransforms; _i < _a.length; _i++) {
+        var transform = _a[_i];
+        Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])(props, transform(dateSpan, context));
+    }
+    Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])(props, buildDatePointApi(dateSpan, context.dateEnv));
+    return props;
+}
+function buildDatePointApi(span, dateEnv) {
+    return {
+        date: dateEnv.toDate(span.range.start),
+        dateStr: dateEnv.formatIso(span.range.start, { omitTime: span.allDay }),
+        allDay: span.allDay,
+    };
+}
+
+/*
+Monitors when the user clicks on a specific date/time of a component.
+A pointerdown+pointerup on the same "hit" constitutes a click.
+*/
+var DateClicking = /** @class */ (function (_super) {
+    Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["b" /* __extends */])(DateClicking, _super);
+    function DateClicking(settings) {
+        var _this = _super.call(this, settings) || this;
+        _this.handlePointerDown = function (pev) {
+            var dragging = _this.dragging;
+            var downEl = pev.origEvent.target;
+            // do this in pointerdown (not dragend) because DOM might be mutated by the time dragend is fired
+            dragging.setIgnoreMove(!_this.component.isValidDateDownEl(downEl));
+        };
+        // won't even fire if moving was ignored
+        _this.handleDragEnd = function (ev) {
+            var component = _this.component;
+            var pointer = _this.dragging.pointer;
+            if (!pointer.wasTouchScroll) {
+                var _a = _this.hitDragging, initialHit = _a.initialHit, finalHit = _a.finalHit;
+                if (initialHit && finalHit && isHitsEqual(initialHit, finalHit)) {
+                    var context = component.context;
+                    var arg = Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])(Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])({}, buildDatePointApiWithContext(initialHit.dateSpan, context)), { dayEl: initialHit.dayEl, jsEvent: ev.origEvent, view: context.viewApi || context.calendarApi.view });
+                    context.emitter.trigger('dateClick', arg);
+                }
+            }
+        };
+        // we DO want to watch pointer moves because otherwise finalHit won't get populated
+        _this.dragging = new FeaturefulElementDragging(settings.el);
+        _this.dragging.autoScroller.isEnabled = false;
+        var hitDragging = _this.hitDragging = new HitDragging(_this.dragging, Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_24" /* interactionSettingsToStore */])(settings));
+        hitDragging.emitter.on('pointerdown', _this.handlePointerDown);
+        hitDragging.emitter.on('dragend', _this.handleDragEnd);
+        return _this;
+    }
+    DateClicking.prototype.destroy = function () {
+        this.dragging.destroy();
+    };
+    return DateClicking;
+}(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["w" /* Interaction */]));
+
+/*
+Tracks when the user selects a portion of time of a component,
+constituted by a drag over date cells, with a possible delay at the beginning of the drag.
+*/
+var DateSelecting = /** @class */ (function (_super) {
+    Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["b" /* __extends */])(DateSelecting, _super);
+    function DateSelecting(settings) {
+        var _this = _super.call(this, settings) || this;
+        _this.dragSelection = null;
+        _this.handlePointerDown = function (ev) {
+            var _a = _this, component = _a.component, dragging = _a.dragging;
+            var options = component.context.options;
+            var canSelect = options.selectable &&
+                component.isValidDateDownEl(ev.origEvent.target);
+            // don't bother to watch expensive moves if component won't do selection
+            dragging.setIgnoreMove(!canSelect);
+            // if touch, require user to hold down
+            dragging.delay = ev.isTouch ? getComponentTouchDelay(component) : null;
+        };
+        _this.handleDragStart = function (ev) {
+            _this.component.context.calendarApi.unselect(ev); // unselect previous selections
+        };
+        _this.handleHitUpdate = function (hit, isFinal) {
+            var context = _this.component.context;
+            var dragSelection = null;
+            var isInvalid = false;
+            if (hit) {
+                dragSelection = joinHitsIntoSelection(_this.hitDragging.initialHit, hit, context.pluginHooks.dateSelectionTransformers);
+                if (!dragSelection || !_this.component.isDateSelectionValid(dragSelection)) {
+                    isInvalid = true;
+                    dragSelection = null;
+                }
+            }
+            if (dragSelection) {
+                context.dispatch({ type: 'SELECT_DATES', selection: dragSelection });
+            }
+            else if (!isFinal) { // only unselect if moved away while dragging
+                context.dispatch({ type: 'UNSELECT_DATES' });
+            }
+            if (!isInvalid) {
+                Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_11" /* enableCursor */])();
+            }
+            else {
+                Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_8" /* disableCursor */])();
+            }
+            if (!isFinal) {
+                _this.dragSelection = dragSelection; // only clear if moved away from all hits while dragging
+            }
+        };
+        _this.handlePointerUp = function (pev) {
+            if (_this.dragSelection) {
+                // selection is already rendered, so just need to report selection
+                Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_47" /* triggerDateSelect */])(_this.dragSelection, pev, _this.component.context);
+                _this.dragSelection = null;
+            }
+        };
+        var component = settings.component;
+        var options = component.context.options;
+        var dragging = _this.dragging = new FeaturefulElementDragging(settings.el);
+        dragging.touchScrollAllowed = false;
+        dragging.minDistance = options.selectMinDistance || 0;
+        dragging.autoScroller.isEnabled = options.dragScroll;
+        var hitDragging = _this.hitDragging = new HitDragging(_this.dragging, Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_24" /* interactionSettingsToStore */])(settings));
+        hitDragging.emitter.on('pointerdown', _this.handlePointerDown);
+        hitDragging.emitter.on('dragstart', _this.handleDragStart);
+        hitDragging.emitter.on('hitupdate', _this.handleHitUpdate);
+        hitDragging.emitter.on('pointerup', _this.handlePointerUp);
+        return _this;
+    }
+    DateSelecting.prototype.destroy = function () {
+        this.dragging.destroy();
+    };
+    return DateSelecting;
+}(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["w" /* Interaction */]));
+function getComponentTouchDelay(component) {
+    var options = component.context.options;
+    var delay = options.selectLongPressDelay;
+    if (delay == null) {
+        delay = options.longPressDelay;
+    }
+    return delay;
+}
+function joinHitsIntoSelection(hit0, hit1, dateSelectionTransformers) {
+    var dateSpan0 = hit0.dateSpan;
+    var dateSpan1 = hit1.dateSpan;
+    var ms = [
+        dateSpan0.range.start,
+        dateSpan0.range.end,
+        dateSpan1.range.start,
+        dateSpan1.range.end,
+    ];
+    ms.sort(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["T" /* compareNumbers */]);
+    var props = {};
+    for (var _i = 0, dateSelectionTransformers_1 = dateSelectionTransformers; _i < dateSelectionTransformers_1.length; _i++) {
+        var transformer = dateSelectionTransformers_1[_i];
+        var res = transformer(hit0, hit1);
+        if (res === false) {
+            return null;
+        }
+        if (res) {
+            Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])(props, res);
+        }
+    }
+    props.range = { start: ms[0], end: ms[3] };
+    props.allDay = dateSpan0.allDay;
+    return props;
+}
+
+var EventDragging = /** @class */ (function (_super) {
+    Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["b" /* __extends */])(EventDragging, _super);
+    function EventDragging(settings) {
+        var _this = _super.call(this, settings) || this;
+        // internal state
+        _this.subjectEl = null;
+        _this.subjectSeg = null; // the seg being selected/dragged
+        _this.isDragging = false;
+        _this.eventRange = null;
+        _this.relevantEvents = null; // the events being dragged
+        _this.receivingContext = null;
+        _this.validMutation = null;
+        _this.mutatedRelevantEvents = null;
+        _this.handlePointerDown = function (ev) {
+            var origTarget = ev.origEvent.target;
+            var _a = _this, component = _a.component, dragging = _a.dragging;
+            var mirror = dragging.mirror;
+            var options = component.context.options;
+            var initialContext = component.context;
+            _this.subjectEl = ev.subjectEl;
+            var subjectSeg = _this.subjectSeg = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_16" /* getElSeg */])(ev.subjectEl);
+            var eventRange = _this.eventRange = subjectSeg.eventRange;
+            var eventInstanceId = eventRange.instance.instanceId;
+            _this.relevantEvents = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_18" /* getRelevantEvents */])(initialContext.getCurrentData().eventStore, eventInstanceId);
+            dragging.minDistance = ev.isTouch ? 0 : options.eventDragMinDistance;
+            dragging.delay =
+                // only do a touch delay if touch and this event hasn't been selected yet
+                (ev.isTouch && eventInstanceId !== component.props.eventSelection) ?
+                    getComponentTouchDelay$1(component) :
+                    null;
+            if (options.fixedMirrorParent) {
+                mirror.parentNode = options.fixedMirrorParent;
+            }
+            else {
+                mirror.parentNode = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_9" /* elementClosest */])(origTarget, '.fc');
+            }
+            mirror.revertDuration = options.dragRevertDuration;
+            var isValid = component.isValidSegDownEl(origTarget) &&
+                !Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_9" /* elementClosest */])(origTarget, '.fc-event-resizer'); // NOT on a resizer
+            dragging.setIgnoreMove(!isValid);
+            // disable dragging for elements that are resizable (ie, selectable)
+            // but are not draggable
+            _this.isDragging = isValid &&
+                ev.subjectEl.classList.contains('fc-event-draggable');
+        };
+        _this.handleDragStart = function (ev) {
+            var initialContext = _this.component.context;
+            var eventRange = _this.eventRange;
+            var eventInstanceId = eventRange.instance.instanceId;
+            if (ev.isTouch) {
+                // need to select a different event?
+                if (eventInstanceId !== _this.component.props.eventSelection) {
+                    initialContext.dispatch({ type: 'SELECT_EVENT', eventInstanceId: eventInstanceId });
+                }
+            }
+            else {
+                // if now using mouse, but was previous touch interaction, clear selected event
+                initialContext.dispatch({ type: 'UNSELECT_EVENT' });
+            }
+            if (_this.isDragging) {
+                initialContext.calendarApi.unselect(ev); // unselect *date* selection
+                initialContext.emitter.trigger('eventDragStart', {
+                    el: _this.subjectEl,
+                    event: new __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["t" /* EventApi */](initialContext, eventRange.def, eventRange.instance),
+                    jsEvent: ev.origEvent,
+                    view: initialContext.viewApi,
+                });
+            }
+        };
+        _this.handleHitUpdate = function (hit, isFinal) {
+            if (!_this.isDragging) {
+                return;
+            }
+            var relevantEvents = _this.relevantEvents;
+            var initialHit = _this.hitDragging.initialHit;
+            var initialContext = _this.component.context;
+            // states based on new hit
+            var receivingContext = null;
+            var mutation = null;
+            var mutatedRelevantEvents = null;
+            var isInvalid = false;
+            var interaction = {
+                affectedEvents: relevantEvents,
+                mutatedEvents: Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_0" /* createEmptyEventStore */])(),
+                isEvent: true,
+            };
+            if (hit) {
+                var receivingComponent = hit.component;
+                receivingContext = receivingComponent.context;
+                var receivingOptions = receivingContext.options;
+                if (initialContext === receivingContext ||
+                    (receivingOptions.editable && receivingOptions.droppable)) {
+                    mutation = computeEventMutation(initialHit, hit, receivingContext.getCurrentData().pluginHooks.eventDragMutationMassagers);
+                    if (mutation) {
+                        mutatedRelevantEvents = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["M" /* applyMutationToEventStore */])(relevantEvents, receivingContext.getCurrentData().eventUiBases, mutation, receivingContext);
+                        interaction.mutatedEvents = mutatedRelevantEvents;
+                        if (!receivingComponent.isInteractionValid(interaction)) {
+                            isInvalid = true;
+                            mutation = null;
+                            mutatedRelevantEvents = null;
+                            interaction.mutatedEvents = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_0" /* createEmptyEventStore */])();
+                        }
+                    }
+                }
+                else {
+                    receivingContext = null;
+                }
+            }
+            _this.displayDrag(receivingContext, interaction);
+            if (!isInvalid) {
+                Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_11" /* enableCursor */])();
+            }
+            else {
+                Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_8" /* disableCursor */])();
+            }
+            if (!isFinal) {
+                if (initialContext === receivingContext && // TODO: write test for this
+                    isHitsEqual(initialHit, hit)) {
+                    mutation = null;
+                }
+                _this.dragging.setMirrorNeedsRevert(!mutation);
+                // render the mirror if no already-rendered mirror
+                // TODO: wish we could somehow wait for dispatch to guarantee render
+                _this.dragging.setMirrorIsVisible(!hit || !document.querySelector('.fc-event-mirror'));
+                // assign states based on new hit
+                _this.receivingContext = receivingContext;
+                _this.validMutation = mutation;
+                _this.mutatedRelevantEvents = mutatedRelevantEvents;
+            }
+        };
+        _this.handlePointerUp = function () {
+            if (!_this.isDragging) {
+                _this.cleanup(); // because handleDragEnd won't fire
+            }
+        };
+        _this.handleDragEnd = function (ev) {
+            if (_this.isDragging) {
+                var initialContext_1 = _this.component.context;
+                var initialView = initialContext_1.viewApi;
+                var _a = _this, receivingContext_1 = _a.receivingContext, validMutation = _a.validMutation;
+                var eventDef = _this.eventRange.def;
+                var eventInstance = _this.eventRange.instance;
+                var eventApi = new __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["t" /* EventApi */](initialContext_1, eventDef, eventInstance);
+                var relevantEvents_1 = _this.relevantEvents;
+                var mutatedRelevantEvents_1 = _this.mutatedRelevantEvents;
+                var finalHit = _this.hitDragging.finalHit;
+                _this.clearDrag(); // must happen after revert animation
+                initialContext_1.emitter.trigger('eventDragStop', {
+                    el: _this.subjectEl,
+                    event: eventApi,
+                    jsEvent: ev.origEvent,
+                    view: initialView,
+                });
+                if (validMutation) {
+                    // dropped within same calendar
+                    if (receivingContext_1 === initialContext_1) {
+                        var updatedEventApi = new __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["t" /* EventApi */](initialContext_1, mutatedRelevantEvents_1.defs[eventDef.defId], eventInstance ? mutatedRelevantEvents_1.instances[eventInstance.instanceId] : null);
+                        initialContext_1.dispatch({
+                            type: 'MERGE_EVENTS',
+                            eventStore: mutatedRelevantEvents_1,
+                        });
+                        var eventChangeArg = {
+                            oldEvent: eventApi,
+                            event: updatedEventApi,
+                            relatedEvents: Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["P" /* buildEventApis */])(mutatedRelevantEvents_1, initialContext_1, eventInstance),
+                            revert: function () {
+                                initialContext_1.dispatch({
+                                    type: 'MERGE_EVENTS',
+                                    eventStore: relevantEvents_1,
+                                });
+                            },
+                        };
+                        var transformed = {};
+                        for (var _i = 0, _b = initialContext_1.getCurrentData().pluginHooks.eventDropTransformers; _i < _b.length; _i++) {
+                            var transformer = _b[_i];
+                            Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])(transformed, transformer(validMutation, initialContext_1));
+                        }
+                        initialContext_1.emitter.trigger('eventDrop', Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])(Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])(Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])({}, eventChangeArg), transformed), { el: ev.subjectEl, delta: validMutation.datesDelta, jsEvent: ev.origEvent, view: initialView }));
+                        initialContext_1.emitter.trigger('eventChange', eventChangeArg);
+                        // dropped in different calendar
+                    }
+                    else if (receivingContext_1) {
+                        var eventRemoveArg = {
+                            event: eventApi,
+                            relatedEvents: Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["P" /* buildEventApis */])(relevantEvents_1, initialContext_1, eventInstance),
+                            revert: function () {
+                                initialContext_1.dispatch({
+                                    type: 'MERGE_EVENTS',
+                                    eventStore: relevantEvents_1,
+                                });
+                            },
+                        };
+                        initialContext_1.emitter.trigger('eventLeave', Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])(Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])({}, eventRemoveArg), { draggedEl: ev.subjectEl, view: initialView }));
+                        initialContext_1.dispatch({
+                            type: 'REMOVE_EVENTS',
+                            eventStore: relevantEvents_1,
+                        });
+                        initialContext_1.emitter.trigger('eventRemove', eventRemoveArg);
+                        var addedEventDef = mutatedRelevantEvents_1.defs[eventDef.defId];
+                        var addedEventInstance = mutatedRelevantEvents_1.instances[eventInstance.instanceId];
+                        var addedEventApi = new __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["t" /* EventApi */](receivingContext_1, addedEventDef, addedEventInstance);
+                        receivingContext_1.dispatch({
+                            type: 'MERGE_EVENTS',
+                            eventStore: mutatedRelevantEvents_1,
+                        });
+                        var eventAddArg = {
+                            event: addedEventApi,
+                            relatedEvents: Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["P" /* buildEventApis */])(mutatedRelevantEvents_1, receivingContext_1, addedEventInstance),
+                            revert: function () {
+                                receivingContext_1.dispatch({
+                                    type: 'REMOVE_EVENTS',
+                                    eventStore: mutatedRelevantEvents_1,
+                                });
+                            },
+                        };
+                        receivingContext_1.emitter.trigger('eventAdd', eventAddArg);
+                        if (ev.isTouch) {
+                            receivingContext_1.dispatch({
+                                type: 'SELECT_EVENT',
+                                eventInstanceId: eventInstance.instanceId,
+                            });
+                        }
+                        receivingContext_1.emitter.trigger('drop', Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])(Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])({}, buildDatePointApiWithContext(finalHit.dateSpan, receivingContext_1)), { draggedEl: ev.subjectEl, jsEvent: ev.origEvent, view: finalHit.component.context.viewApi }));
+                        receivingContext_1.emitter.trigger('eventReceive', Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])(Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])({}, eventAddArg), { draggedEl: ev.subjectEl, view: finalHit.component.context.viewApi }));
+                    }
+                }
+                else {
+                    initialContext_1.emitter.trigger('_noEventDrop');
+                }
+            }
+            _this.cleanup();
+        };
+        var component = _this.component;
+        var options = component.context.options;
+        var dragging = _this.dragging = new FeaturefulElementDragging(settings.el);
+        dragging.pointer.selector = EventDragging.SELECTOR;
+        dragging.touchScrollAllowed = false;
+        dragging.autoScroller.isEnabled = options.dragScroll;
+        var hitDragging = _this.hitDragging = new HitDragging(_this.dragging, __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_23" /* interactionSettingsStore */]);
+        hitDragging.useSubjectCenter = settings.useEventCenter;
+        hitDragging.emitter.on('pointerdown', _this.handlePointerDown);
+        hitDragging.emitter.on('dragstart', _this.handleDragStart);
+        hitDragging.emitter.on('hitupdate', _this.handleHitUpdate);
+        hitDragging.emitter.on('pointerup', _this.handlePointerUp);
+        hitDragging.emitter.on('dragend', _this.handleDragEnd);
+        return _this;
+    }
+    EventDragging.prototype.destroy = function () {
+        this.dragging.destroy();
+    };
+    // render a drag state on the next receivingCalendar
+    EventDragging.prototype.displayDrag = function (nextContext, state) {
+        var initialContext = this.component.context;
+        var prevContext = this.receivingContext;
+        // does the previous calendar need to be cleared?
+        if (prevContext && prevContext !== nextContext) {
+            // does the initial calendar need to be cleared?
+            // if so, don't clear all the way. we still need to to hide the affectedEvents
+            if (prevContext === initialContext) {
+                prevContext.dispatch({
+                    type: 'SET_EVENT_DRAG',
+                    state: {
+                        affectedEvents: state.affectedEvents,
+                        mutatedEvents: Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_0" /* createEmptyEventStore */])(),
+                        isEvent: true,
+                    },
+                });
+                // completely clear the old calendar if it wasn't the initial
+            }
+            else {
+                prevContext.dispatch({ type: 'UNSET_EVENT_DRAG' });
+            }
+        }
+        if (nextContext) {
+            nextContext.dispatch({ type: 'SET_EVENT_DRAG', state: state });
+        }
+    };
+    EventDragging.prototype.clearDrag = function () {
+        var initialCalendar = this.component.context;
+        var receivingContext = this.receivingContext;
+        if (receivingContext) {
+            receivingContext.dispatch({ type: 'UNSET_EVENT_DRAG' });
+        }
+        // the initial calendar might have an dummy drag state from displayDrag
+        if (initialCalendar !== receivingContext) {
+            initialCalendar.dispatch({ type: 'UNSET_EVENT_DRAG' });
+        }
+    };
+    EventDragging.prototype.cleanup = function () {
+        this.subjectSeg = null;
+        this.isDragging = false;
+        this.eventRange = null;
+        this.relevantEvents = null;
+        this.receivingContext = null;
+        this.validMutation = null;
+        this.mutatedRelevantEvents = null;
+    };
+    // TODO: test this in IE11
+    // QUESTION: why do we need it on the resizable???
+    EventDragging.SELECTOR = '.fc-event-draggable, .fc-event-resizable';
+    return EventDragging;
+}(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["w" /* Interaction */]));
+function computeEventMutation(hit0, hit1, massagers) {
+    var dateSpan0 = hit0.dateSpan;
+    var dateSpan1 = hit1.dateSpan;
+    var date0 = dateSpan0.range.start;
+    var date1 = dateSpan1.range.start;
+    var standardProps = {};
+    if (dateSpan0.allDay !== dateSpan1.allDay) {
+        standardProps.allDay = dateSpan1.allDay;
+        standardProps.hasEnd = hit1.component.context.options.allDayMaintainDuration;
+        if (dateSpan1.allDay) {
+            // means date1 is already start-of-day,
+            // but date0 needs to be converted
+            date0 = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_46" /* startOfDay */])(date0);
+        }
+    }
+    var delta = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_5" /* diffDates */])(date0, date1, hit0.component.context.dateEnv, hit0.component === hit1.component ?
+        hit0.component.largeUnit :
+        null);
+    if (delta.milliseconds) { // has hours/minutes/seconds
+        standardProps.allDay = false;
+    }
+    var mutation = {
+        datesDelta: delta,
+        standardProps: standardProps,
+    };
+    for (var _i = 0, massagers_1 = massagers; _i < massagers_1.length; _i++) {
+        var massager = massagers_1[_i];
+        massager(mutation, hit0, hit1);
+    }
+    return mutation;
+}
+function getComponentTouchDelay$1(component) {
+    var options = component.context.options;
+    var delay = options.eventLongPressDelay;
+    if (delay == null) {
+        delay = options.longPressDelay;
+    }
+    return delay;
+}
+
+var EventResizing = /** @class */ (function (_super) {
+    Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["b" /* __extends */])(EventResizing, _super);
+    function EventResizing(settings) {
+        var _this = _super.call(this, settings) || this;
+        // internal state
+        _this.draggingSegEl = null;
+        _this.draggingSeg = null; // TODO: rename to resizingSeg? subjectSeg?
+        _this.eventRange = null;
+        _this.relevantEvents = null;
+        _this.validMutation = null;
+        _this.mutatedRelevantEvents = null;
+        _this.handlePointerDown = function (ev) {
+            var component = _this.component;
+            var segEl = _this.querySegEl(ev);
+            var seg = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_16" /* getElSeg */])(segEl);
+            var eventRange = _this.eventRange = seg.eventRange;
+            _this.dragging.minDistance = component.context.options.eventDragMinDistance;
+            // if touch, need to be working with a selected event
+            _this.dragging.setIgnoreMove(!_this.component.isValidSegDownEl(ev.origEvent.target) ||
+                (ev.isTouch && _this.component.props.eventSelection !== eventRange.instance.instanceId));
+        };
+        _this.handleDragStart = function (ev) {
+            var context = _this.component.context;
+            var eventRange = _this.eventRange;
+            _this.relevantEvents = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_18" /* getRelevantEvents */])(context.getCurrentData().eventStore, _this.eventRange.instance.instanceId);
+            var segEl = _this.querySegEl(ev);
+            _this.draggingSegEl = segEl;
+            _this.draggingSeg = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_16" /* getElSeg */])(segEl);
+            context.calendarApi.unselect();
+            context.emitter.trigger('eventResizeStart', {
+                el: segEl,
+                event: new __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["t" /* EventApi */](context, eventRange.def, eventRange.instance),
+                jsEvent: ev.origEvent,
+                view: context.viewApi,
+            });
+        };
+        _this.handleHitUpdate = function (hit, isFinal, ev) {
+            var context = _this.component.context;
+            var relevantEvents = _this.relevantEvents;
+            var initialHit = _this.hitDragging.initialHit;
+            var eventInstance = _this.eventRange.instance;
+            var mutation = null;
+            var mutatedRelevantEvents = null;
+            var isInvalid = false;
+            var interaction = {
+                affectedEvents: relevantEvents,
+                mutatedEvents: Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_0" /* createEmptyEventStore */])(),
+                isEvent: true,
+            };
+            if (hit) {
+                mutation = computeMutation(initialHit, hit, ev.subjectEl.classList.contains('fc-event-resizer-start'), eventInstance.range, context.pluginHooks.eventResizeJoinTransforms);
+            }
+            if (mutation) {
+                mutatedRelevantEvents = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["M" /* applyMutationToEventStore */])(relevantEvents, context.getCurrentData().eventUiBases, mutation, context);
+                interaction.mutatedEvents = mutatedRelevantEvents;
+                if (!_this.component.isInteractionValid(interaction)) {
+                    isInvalid = true;
+                    mutation = null;
+                    mutatedRelevantEvents = null;
+                    interaction.mutatedEvents = null;
+                }
+            }
+            if (mutatedRelevantEvents) {
+                context.dispatch({
+                    type: 'SET_EVENT_RESIZE',
+                    state: interaction,
+                });
+            }
+            else {
+                context.dispatch({ type: 'UNSET_EVENT_RESIZE' });
+            }
+            if (!isInvalid) {
+                Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_11" /* enableCursor */])();
+            }
+            else {
+                Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_8" /* disableCursor */])();
+            }
+            if (!isFinal) {
+                if (mutation && isHitsEqual(initialHit, hit)) {
+                    mutation = null;
+                }
+                _this.validMutation = mutation;
+                _this.mutatedRelevantEvents = mutatedRelevantEvents;
+            }
+        };
+        _this.handleDragEnd = function (ev) {
+            var context = _this.component.context;
+            var eventDef = _this.eventRange.def;
+            var eventInstance = _this.eventRange.instance;
+            var eventApi = new __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["t" /* EventApi */](context, eventDef, eventInstance);
+            var relevantEvents = _this.relevantEvents;
+            var mutatedRelevantEvents = _this.mutatedRelevantEvents;
+            context.emitter.trigger('eventResizeStop', {
+                el: _this.draggingSegEl,
+                event: eventApi,
+                jsEvent: ev.origEvent,
+                view: context.viewApi,
+            });
+            if (_this.validMutation) {
+                var updatedEventApi = new __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["t" /* EventApi */](context, mutatedRelevantEvents.defs[eventDef.defId], eventInstance ? mutatedRelevantEvents.instances[eventInstance.instanceId] : null);
+                context.dispatch({
+                    type: 'MERGE_EVENTS',
+                    eventStore: mutatedRelevantEvents,
+                });
+                var eventChangeArg = {
+                    oldEvent: eventApi,
+                    event: updatedEventApi,
+                    relatedEvents: Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["P" /* buildEventApis */])(mutatedRelevantEvents, context, eventInstance),
+                    revert: function () {
+                        context.dispatch({
+                            type: 'MERGE_EVENTS',
+                            eventStore: relevantEvents,
+                        });
+                    },
+                };
+                context.emitter.trigger('eventResize', Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])(Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])({}, eventChangeArg), { el: _this.draggingSegEl, startDelta: _this.validMutation.startDelta || Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["Y" /* createDuration */])(0), endDelta: _this.validMutation.endDelta || Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["Y" /* createDuration */])(0), jsEvent: ev.origEvent, view: context.viewApi }));
+                context.emitter.trigger('eventChange', eventChangeArg);
+            }
+            else {
+                context.emitter.trigger('_noEventResize');
+            }
+            // reset all internal state
+            _this.draggingSeg = null;
+            _this.relevantEvents = null;
+            _this.validMutation = null;
+            // okay to keep eventInstance around. useful to set it in handlePointerDown
+        };
+        var component = settings.component;
+        var dragging = _this.dragging = new FeaturefulElementDragging(settings.el);
+        dragging.pointer.selector = '.fc-event-resizer';
+        dragging.touchScrollAllowed = false;
+        dragging.autoScroller.isEnabled = component.context.options.dragScroll;
+        var hitDragging = _this.hitDragging = new HitDragging(_this.dragging, Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_24" /* interactionSettingsToStore */])(settings));
+        hitDragging.emitter.on('pointerdown', _this.handlePointerDown);
+        hitDragging.emitter.on('dragstart', _this.handleDragStart);
+        hitDragging.emitter.on('hitupdate', _this.handleHitUpdate);
+        hitDragging.emitter.on('dragend', _this.handleDragEnd);
+        return _this;
+    }
+    EventResizing.prototype.destroy = function () {
+        this.dragging.destroy();
+    };
+    EventResizing.prototype.querySegEl = function (ev) {
+        return Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_9" /* elementClosest */])(ev.subjectEl, '.fc-event');
+    };
+    return EventResizing;
+}(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["w" /* Interaction */]));
+function computeMutation(hit0, hit1, isFromStart, instanceRange, transforms) {
+    var dateEnv = hit0.component.context.dateEnv;
+    var date0 = hit0.dateSpan.range.start;
+    var date1 = hit1.dateSpan.range.start;
+    var delta = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_5" /* diffDates */])(date0, date1, dateEnv, hit0.component.largeUnit);
+    var props = {};
+    for (var _i = 0, transforms_1 = transforms; _i < transforms_1.length; _i++) {
+        var transform = transforms_1[_i];
+        var res = transform(hit0, hit1);
+        if (res === false) {
+            return null;
+        }
+        if (res) {
+            Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])(props, res);
+        }
+    }
+    if (isFromStart) {
+        if (dateEnv.add(instanceRange.start, delta) < instanceRange.end) {
+            props.startDelta = delta;
+            return props;
+        }
+    }
+    else if (dateEnv.add(instanceRange.end, delta) > instanceRange.start) {
+        props.endDelta = delta;
+        return props;
+    }
+    return null;
+}
+
+var UnselectAuto = /** @class */ (function () {
+    function UnselectAuto(context) {
+        var _this = this;
+        this.context = context;
+        this.isRecentPointerDateSelect = false; // wish we could use a selector to detect date selection, but uses hit system
+        this.matchesCancel = false;
+        this.matchesEvent = false;
+        this.onSelect = function (selectInfo) {
+            if (selectInfo.jsEvent) {
+                _this.isRecentPointerDateSelect = true;
+            }
+        };
+        this.onDocumentPointerDown = function (pev) {
+            var unselectCancel = _this.context.options.unselectCancel;
+            var downEl = pev.origEvent.target;
+            _this.matchesCancel = !!Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_9" /* elementClosest */])(downEl, unselectCancel);
+            _this.matchesEvent = !!Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_9" /* elementClosest */])(downEl, EventDragging.SELECTOR); // interaction started on an event?
+        };
+        this.onDocumentPointerUp = function (pev) {
+            var context = _this.context;
+            var documentPointer = _this.documentPointer;
+            var calendarState = context.getCurrentData();
+            // touch-scrolling should never unfocus any type of selection
+            if (!documentPointer.wasTouchScroll) {
+                if (calendarState.dateSelection && // an existing date selection?
+                    !_this.isRecentPointerDateSelect // a new pointer-initiated date selection since last onDocumentPointerUp?
+                ) {
+                    var unselectAuto = context.options.unselectAuto;
+                    if (unselectAuto && (!unselectAuto || !_this.matchesCancel)) {
+                        context.calendarApi.unselect(pev);
+                    }
+                }
+                if (calendarState.eventSelection && // an existing event selected?
+                    !_this.matchesEvent // interaction DIDN'T start on an event
+                ) {
+                    context.dispatch({ type: 'UNSELECT_EVENT' });
+                }
+            }
+            _this.isRecentPointerDateSelect = false;
+        };
+        var documentPointer = this.documentPointer = new PointerDragging(document);
+        documentPointer.shouldIgnoreMove = true;
+        documentPointer.shouldWatchScroll = false;
+        documentPointer.emitter.on('pointerdown', this.onDocumentPointerDown);
+        documentPointer.emitter.on('pointerup', this.onDocumentPointerUp);
+        /*
+        TODO: better way to know about whether there was a selection with the pointer
+        */
+        context.emitter.on('select', this.onSelect);
+    }
+    UnselectAuto.prototype.destroy = function () {
+        this.context.emitter.off('select', this.onSelect);
+        this.documentPointer.destroy();
+    };
+    return UnselectAuto;
+}());
+
+var OPTION_REFINERS = {
+    fixedMirrorParent: __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_22" /* identity */],
+};
+var LISTENER_REFINERS = {
+    dateClick: __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_22" /* identity */],
+    eventDragStart: __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_22" /* identity */],
+    eventDragStop: __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_22" /* identity */],
+    eventDrop: __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_22" /* identity */],
+    eventResizeStart: __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_22" /* identity */],
+    eventResizeStop: __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_22" /* identity */],
+    eventResize: __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_22" /* identity */],
+    drop: __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_22" /* identity */],
+    eventReceive: __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_22" /* identity */],
+    eventLeave: __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_22" /* identity */],
+};
+
+/*
+Given an already instantiated draggable object for one-or-more elements,
+Interprets any dragging as an attempt to drag an events that lives outside
+of a calendar onto a calendar.
+*/
+var ExternalElementDragging = /** @class */ (function () {
+    function ExternalElementDragging(dragging, suppliedDragMeta) {
+        var _this = this;
+        this.receivingContext = null;
+        this.droppableEvent = null; // will exist for all drags, even if create:false
+        this.suppliedDragMeta = null;
+        this.dragMeta = null;
+        this.handleDragStart = function (ev) {
+            _this.dragMeta = _this.buildDragMeta(ev.subjectEl);
+        };
+        this.handleHitUpdate = function (hit, isFinal, ev) {
+            var dragging = _this.hitDragging.dragging;
+            var receivingContext = null;
+            var droppableEvent = null;
+            var isInvalid = false;
+            var interaction = {
+                affectedEvents: Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_0" /* createEmptyEventStore */])(),
+                mutatedEvents: Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_0" /* createEmptyEventStore */])(),
+                isEvent: _this.dragMeta.create,
+            };
+            if (hit) {
+                receivingContext = hit.component.context;
+                if (_this.canDropElOnCalendar(ev.subjectEl, receivingContext)) {
+                    droppableEvent = computeEventForDateSpan(hit.dateSpan, _this.dragMeta, receivingContext);
+                    interaction.mutatedEvents = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_12" /* eventTupleToStore */])(droppableEvent);
+                    isInvalid = !Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_29" /* isInteractionValid */])(interaction, receivingContext);
+                    if (isInvalid) {
+                        interaction.mutatedEvents = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_0" /* createEmptyEventStore */])();
+                        droppableEvent = null;
+                    }
+                }
+            }
+            _this.displayDrag(receivingContext, interaction);
+            // show mirror if no already-rendered mirror element OR if we are shutting down the mirror (?)
+            // TODO: wish we could somehow wait for dispatch to guarantee render
+            dragging.setMirrorIsVisible(isFinal || !droppableEvent || !document.querySelector('.fc-event-mirror'));
+            if (!isInvalid) {
+                Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_11" /* enableCursor */])();
+            }
+            else {
+                Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_8" /* disableCursor */])();
+            }
+            if (!isFinal) {
+                dragging.setMirrorNeedsRevert(!droppableEvent);
+                _this.receivingContext = receivingContext;
+                _this.droppableEvent = droppableEvent;
+            }
+        };
+        this.handleDragEnd = function (pev) {
+            var _a = _this, receivingContext = _a.receivingContext, droppableEvent = _a.droppableEvent;
+            _this.clearDrag();
+            if (receivingContext && droppableEvent) {
+                var finalHit = _this.hitDragging.finalHit;
+                var finalView = finalHit.component.context.viewApi;
+                var dragMeta = _this.dragMeta;
+                receivingContext.emitter.trigger('drop', Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])(Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])({}, buildDatePointApiWithContext(finalHit.dateSpan, receivingContext)), { draggedEl: pev.subjectEl, jsEvent: pev.origEvent, view: finalView }));
+                if (dragMeta.create) {
+                    var addingEvents_1 = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_12" /* eventTupleToStore */])(droppableEvent);
+                    receivingContext.dispatch({
+                        type: 'MERGE_EVENTS',
+                        eventStore: addingEvents_1,
+                    });
+                    if (pev.isTouch) {
+                        receivingContext.dispatch({
+                            type: 'SELECT_EVENT',
+                            eventInstanceId: droppableEvent.instance.instanceId,
+                        });
+                    }
+                    // signal that an external event landed
+                    receivingContext.emitter.trigger('eventReceive', {
+                        event: new __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["t" /* EventApi */](receivingContext, droppableEvent.def, droppableEvent.instance),
+                        relatedEvents: [],
+                        revert: function () {
+                            receivingContext.dispatch({
+                                type: 'REMOVE_EVENTS',
+                                eventStore: addingEvents_1,
+                            });
+                        },
+                        draggedEl: pev.subjectEl,
+                        view: finalView,
+                    });
+                }
+            }
+            _this.receivingContext = null;
+            _this.droppableEvent = null;
+        };
+        var hitDragging = this.hitDragging = new HitDragging(dragging, __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_23" /* interactionSettingsStore */]);
+        hitDragging.requireInitial = false; // will start outside of a component
+        hitDragging.emitter.on('dragstart', this.handleDragStart);
+        hitDragging.emitter.on('hitupdate', this.handleHitUpdate);
+        hitDragging.emitter.on('dragend', this.handleDragEnd);
+        this.suppliedDragMeta = suppliedDragMeta;
+    }
+    ExternalElementDragging.prototype.buildDragMeta = function (subjectEl) {
+        if (typeof this.suppliedDragMeta === 'object') {
+            return Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_33" /* parseDragMeta */])(this.suppliedDragMeta);
+        }
+        if (typeof this.suppliedDragMeta === 'function') {
+            return Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_33" /* parseDragMeta */])(this.suppliedDragMeta(subjectEl));
+        }
+        return getDragMetaFromEl(subjectEl);
+    };
+    ExternalElementDragging.prototype.displayDrag = function (nextContext, state) {
+        var prevContext = this.receivingContext;
+        if (prevContext && prevContext !== nextContext) {
+            prevContext.dispatch({ type: 'UNSET_EVENT_DRAG' });
+        }
+        if (nextContext) {
+            nextContext.dispatch({ type: 'SET_EVENT_DRAG', state: state });
+        }
+    };
+    ExternalElementDragging.prototype.clearDrag = function () {
+        if (this.receivingContext) {
+            this.receivingContext.dispatch({ type: 'UNSET_EVENT_DRAG' });
+        }
+    };
+    ExternalElementDragging.prototype.canDropElOnCalendar = function (el, receivingContext) {
+        var dropAccept = receivingContext.options.dropAccept;
+        if (typeof dropAccept === 'function') {
+            return dropAccept.call(receivingContext.calendarApi, el);
+        }
+        if (typeof dropAccept === 'string' && dropAccept) {
+            return Boolean(Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_10" /* elementMatches */])(el, dropAccept));
+        }
+        return true;
+    };
+    return ExternalElementDragging;
+}());
+// Utils for computing event store from the DragMeta
+// ----------------------------------------------------------------------------------------------------
+function computeEventForDateSpan(dateSpan, dragMeta, context) {
+    var defProps = Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])({}, dragMeta.leftoverProps);
+    for (var _i = 0, _a = context.pluginHooks.externalDefTransforms; _i < _a.length; _i++) {
+        var transform = _a[_i];
+        Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])(defProps, transform(dateSpan, dragMeta));
+    }
+    var _b = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_39" /* refineEventDef */])(defProps, context), refined = _b.refined, extra = _b.extra;
+    var def = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_34" /* parseEventDef */])(refined, extra, dragMeta.sourceId, dateSpan.allDay, context.options.forceEventDuration || Boolean(dragMeta.duration), // hasEnd
+    context);
+    var start = dateSpan.range.start;
+    // only rely on time info if drop zone is all-day,
+    // otherwise, we already know the time
+    if (dateSpan.allDay && dragMeta.startTime) {
+        start = context.dateEnv.add(start, dragMeta.startTime);
+    }
+    var end = dragMeta.duration ?
+        context.dateEnv.add(start, dragMeta.duration) :
+        Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_15" /* getDefaultEventEnd */])(dateSpan.allDay, start, context);
+    var instance = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_1" /* createEventInstance */])(def.defId, { start: start, end: end });
+    return { def: def, instance: instance };
+}
+// Utils for extracting data from element
+// ----------------------------------------------------------------------------------------------------
+function getDragMetaFromEl(el) {
+    var str = getEmbeddedElData(el, 'event');
+    var obj = str ?
+        JSON.parse(str) :
+        { create: false }; // if no embedded data, assume no event creation
+    return Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_33" /* parseDragMeta */])(obj);
+}
+__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["W" /* config */].dataAttrPrefix = '';
+function getEmbeddedElData(el, name) {
+    var prefix = __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["W" /* config */].dataAttrPrefix;
+    var prefixedName = (prefix ? prefix + '-' : '') + name;
+    return el.getAttribute('data-' + prefixedName) || '';
+}
+
+/*
+Makes an element (that is *external* to any calendar) draggable.
+Can pass in data that determines how an event will be created when dropped onto a calendar.
+Leverages FullCalendar's internal drag-n-drop functionality WITHOUT a third-party drag system.
+*/
+var ExternalDraggable = /** @class */ (function () {
+    function ExternalDraggable(el, settings) {
+        var _this = this;
+        if (settings === void 0) { settings = {}; }
+        this.handlePointerDown = function (ev) {
+            var dragging = _this.dragging;
+            var _a = _this.settings, minDistance = _a.minDistance, longPressDelay = _a.longPressDelay;
+            dragging.minDistance =
+                minDistance != null ?
+                    minDistance :
+                    (ev.isTouch ? 0 : __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["a" /* BASE_OPTION_DEFAULTS */].eventDragMinDistance);
+            dragging.delay =
+                ev.isTouch ? // TODO: eventually read eventLongPressDelay instead vvv
+                    (longPressDelay != null ? longPressDelay : __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["a" /* BASE_OPTION_DEFAULTS */].longPressDelay) :
+                    0;
+        };
+        this.handleDragStart = function (ev) {
+            if (ev.isTouch &&
+                _this.dragging.delay &&
+                ev.subjectEl.classList.contains('fc-event')) {
+                _this.dragging.mirror.getMirrorEl().classList.add('fc-event-selected');
+            }
+        };
+        this.settings = settings;
+        var dragging = this.dragging = new FeaturefulElementDragging(el);
+        dragging.touchScrollAllowed = false;
+        if (settings.itemSelector != null) {
+            dragging.pointer.selector = settings.itemSelector;
+        }
+        if (settings.appendTo != null) {
+            dragging.mirror.parentNode = settings.appendTo; // TODO: write tests
+        }
+        dragging.emitter.on('pointerdown', this.handlePointerDown);
+        dragging.emitter.on('dragstart', this.handleDragStart);
+        new ExternalElementDragging(dragging, settings.eventData); // eslint-disable-line no-new
+    }
+    ExternalDraggable.prototype.destroy = function () {
+        this.dragging.destroy();
+    };
+    return ExternalDraggable;
+}());
+
+/*
+Detects when a *THIRD-PARTY* drag-n-drop system interacts with elements.
+The third-party system is responsible for drawing the visuals effects of the drag.
+This class simply monitors for pointer movements and fires events.
+It also has the ability to hide the moving element (the "mirror") during the drag.
+*/
+var InferredElementDragging = /** @class */ (function (_super) {
+    Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["b" /* __extends */])(InferredElementDragging, _super);
+    function InferredElementDragging(containerEl) {
+        var _this = _super.call(this, containerEl) || this;
+        _this.shouldIgnoreMove = false;
+        _this.mirrorSelector = '';
+        _this.currentMirrorEl = null;
+        _this.handlePointerDown = function (ev) {
+            _this.emitter.trigger('pointerdown', ev);
+            if (!_this.shouldIgnoreMove) {
+                // fire dragstart right away. does not support delay or min-distance
+                _this.emitter.trigger('dragstart', ev);
+            }
+        };
+        _this.handlePointerMove = function (ev) {
+            if (!_this.shouldIgnoreMove) {
+                _this.emitter.trigger('dragmove', ev);
+            }
+        };
+        _this.handlePointerUp = function (ev) {
+            _this.emitter.trigger('pointerup', ev);
+            if (!_this.shouldIgnoreMove) {
+                // fire dragend right away. does not support a revert animation
+                _this.emitter.trigger('dragend', ev);
+            }
+        };
+        var pointer = _this.pointer = new PointerDragging(containerEl);
+        pointer.emitter.on('pointerdown', _this.handlePointerDown);
+        pointer.emitter.on('pointermove', _this.handlePointerMove);
+        pointer.emitter.on('pointerup', _this.handlePointerUp);
+        return _this;
+    }
+    InferredElementDragging.prototype.destroy = function () {
+        this.pointer.destroy();
+    };
+    InferredElementDragging.prototype.setIgnoreMove = function (bool) {
+        this.shouldIgnoreMove = bool;
+    };
+    InferredElementDragging.prototype.setMirrorIsVisible = function (bool) {
+        if (bool) {
+            // restore a previously hidden element.
+            // use the reference in case the selector class has already been removed.
+            if (this.currentMirrorEl) {
+                this.currentMirrorEl.style.visibility = '';
+                this.currentMirrorEl = null;
+            }
+        }
+        else {
+            var mirrorEl = this.mirrorSelector ?
+                document.querySelector(this.mirrorSelector) :
+                null;
+            if (mirrorEl) {
+                this.currentMirrorEl = mirrorEl;
+                mirrorEl.style.visibility = 'hidden';
+            }
+        }
+    };
+    return InferredElementDragging;
+}(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["q" /* ElementDragging */]));
+
+/*
+Bridges third-party drag-n-drop systems with FullCalendar.
+Must be instantiated and destroyed by caller.
+*/
+var ThirdPartyDraggable = /** @class */ (function () {
+    function ThirdPartyDraggable(containerOrSettings, settings) {
+        var containerEl = document;
+        if (
+        // wish we could just test instanceof EventTarget, but doesn't work in IE11
+        containerOrSettings === document ||
+            containerOrSettings instanceof Element) {
+            containerEl = containerOrSettings;
+            settings = settings || {};
+        }
+        else {
+            settings = (containerOrSettings || {});
+        }
+        var dragging = this.dragging = new InferredElementDragging(containerEl);
+        if (typeof settings.itemSelector === 'string') {
+            dragging.pointer.selector = settings.itemSelector;
+        }
+        else if (containerEl === document) {
+            dragging.pointer.selector = '[data-event]';
+        }
+        if (typeof settings.mirrorSelector === 'string') {
+            dragging.mirrorSelector = settings.mirrorSelector;
+        }
+        new ExternalElementDragging(dragging, settings.eventData); // eslint-disable-line no-new
+    }
+    ThirdPartyDraggable.prototype.destroy = function () {
+        this.dragging.destroy();
+    };
+    return ThirdPartyDraggable;
+}());
+
+var main = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_3" /* createPlugin */])({
+    componentInteractions: [DateClicking, DateSelecting, EventDragging, EventResizing],
+    calendarInteractions: [UnselectAuto],
+    elementDraggingImpl: FeaturefulElementDragging,
+    optionRefiners: OPTION_REFINERS,
+    listenerRefiners: LISTENER_REFINERS,
+});
+
+/* harmony default export */ __webpack_exports__["a"] = (main);
+
+//# sourceMappingURL=main.js.map
+
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(29);
+
+
+/***/ }),
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -25412,7 +28818,7 @@ module.exports = __webpack_require__(25);
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-__webpack_require__(26);
+__webpack_require__(30);
 
 window.Vue = __webpack_require__(9);
 
@@ -25422,24 +28828,24 @@ window.Vue = __webpack_require__(9);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', __webpack_require__(51));
-Vue.component('empleado', __webpack_require__(54));
-Vue.component('incidencia', __webpack_require__(62));
-Vue.component('puesto', __webpack_require__(67));
-Vue.component('contrato', __webpack_require__(72));
-Vue.component('evento', __webpack_require__(77));
-Vue.component('departamento', __webpack_require__(86));
-Vue.component('areal', __webpack_require__(91));
-Vue.component('empresa', __webpack_require__(96));
-Vue.component('dianolaboral', __webpack_require__(101));
-Vue.component('inasistencia', __webpack_require__(106));
-Vue.component('competencia1', __webpack_require__(111));
-Vue.component('empleadoreporte2', __webpack_require__(116));
-Vue.component('tipocontrato1', __webpack_require__(119));
-Vue.component('usuario', __webpack_require__(124));
-Vue.component('alarma', __webpack_require__(129));
-Vue.component('personadependiente', __webpack_require__(134));
-Vue.component('calendario', __webpack_require__(139));
+Vue.component('example-component', __webpack_require__(55));
+Vue.component('empleado', __webpack_require__(58));
+Vue.component('incidencia', __webpack_require__(66));
+Vue.component('puesto', __webpack_require__(71));
+Vue.component('contrato', __webpack_require__(76));
+Vue.component('evento', __webpack_require__(81));
+Vue.component('departamento', __webpack_require__(90));
+Vue.component('areal', __webpack_require__(95));
+Vue.component('empresa', __webpack_require__(100));
+Vue.component('dianolaboral', __webpack_require__(105));
+Vue.component('inasistencia', __webpack_require__(110));
+Vue.component('competencia1', __webpack_require__(115));
+Vue.component('empleadoreporte2', __webpack_require__(120));
+Vue.component('tipocontrato1', __webpack_require__(123));
+Vue.component('usuario', __webpack_require__(128));
+Vue.component('alarma', __webpack_require__(133));
+Vue.component('personadependiente', __webpack_require__(138));
+Vue.component('calendario', __webpack_require__(143));
 Vue.component('inicio', __webpack_require__(158));
 
 var app = new Vue({
@@ -25450,12 +28856,12 @@ var app = new Vue({
 });
 
 /***/ }),
-/* 26 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-window._ = __webpack_require__(27);
-window.Popper = __webpack_require__(12).default;
+window._ = __webpack_require__(31);
+window.Popper = __webpack_require__(13).default;
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -25466,7 +28872,7 @@ window.Popper = __webpack_require__(12).default;
 try {
   //window.$ = window.jQuery = require('jquery');
 
-  __webpack_require__(29);
+  __webpack_require__(33);
 } catch (e) {}
 
 /**
@@ -25475,7 +28881,7 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = __webpack_require__(30);
+window.axios = __webpack_require__(34);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -25511,7 +28917,7 @@ if (token) {
 // });
 
 /***/ }),
-/* 27 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -42677,10 +46083,10 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(28)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(32)(module)))
 
 /***/ }),
-/* 28 */
+/* 32 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -42708,7 +46114,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 29 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -42717,7 +46123,7 @@ module.exports = function(module) {
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-   true ? factory(exports, __webpack_require__(13), __webpack_require__(12)) :
+   true ? factory(exports, __webpack_require__(14), __webpack_require__(13)) :
   typeof define === 'function' && define.amd ? define(['exports', 'jquery', 'popper.js'], factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.bootstrap = {}, global.jQuery, global.Popper));
 }(this, (function (exports, $, Popper) { 'use strict';
@@ -47132,21 +50538,21 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 30 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(31);
+module.exports = __webpack_require__(35);
 
 /***/ }),
-/* 31 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(4);
-var bind = __webpack_require__(14);
-var Axios = __webpack_require__(33);
+var bind = __webpack_require__(15);
+var Axios = __webpack_require__(37);
 var defaults = __webpack_require__(8);
 
 /**
@@ -47180,15 +50586,15 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(19);
-axios.CancelToken = __webpack_require__(46);
-axios.isCancel = __webpack_require__(18);
+axios.Cancel = __webpack_require__(20);
+axios.CancelToken = __webpack_require__(50);
+axios.isCancel = __webpack_require__(19);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(47);
+axios.spread = __webpack_require__(51);
 
 module.exports = axios;
 
@@ -47197,7 +50603,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 32 */
+/* 36 */
 /***/ (function(module, exports) {
 
 /*!
@@ -47214,7 +50620,7 @@ module.exports = function isBuffer (obj) {
 
 
 /***/ }),
-/* 33 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47222,8 +50628,8 @@ module.exports = function isBuffer (obj) {
 
 var defaults = __webpack_require__(8);
 var utils = __webpack_require__(4);
-var InterceptorManager = __webpack_require__(41);
-var dispatchRequest = __webpack_require__(42);
+var InterceptorManager = __webpack_require__(45);
+var dispatchRequest = __webpack_require__(46);
 
 /**
  * Create a new instance of Axios
@@ -47300,7 +50706,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 34 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47319,13 +50725,13 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 35 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var createError = __webpack_require__(17);
+var createError = __webpack_require__(18);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -47352,7 +50758,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 36 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47380,7 +50786,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 37 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47453,7 +50859,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 38 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47513,7 +50919,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 39 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47588,7 +50994,7 @@ module.exports = (
 
 
 /***/ }),
-/* 40 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47648,7 +51054,7 @@ module.exports = (
 
 
 /***/ }),
-/* 41 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47707,18 +51113,18 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 42 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(4);
-var transformData = __webpack_require__(43);
-var isCancel = __webpack_require__(18);
+var transformData = __webpack_require__(47);
+var isCancel = __webpack_require__(19);
 var defaults = __webpack_require__(8);
-var isAbsoluteURL = __webpack_require__(44);
-var combineURLs = __webpack_require__(45);
+var isAbsoluteURL = __webpack_require__(48);
+var combineURLs = __webpack_require__(49);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -47800,7 +51206,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 43 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47827,7 +51233,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 44 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47848,7 +51254,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 45 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47869,13 +51275,13 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 46 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var Cancel = __webpack_require__(19);
+var Cancel = __webpack_require__(20);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -47933,7 +51339,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 47 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47967,7 +51373,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 48 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59931,10 +63337,10 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(49).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(53).setImmediate))
 
 /***/ }),
-/* 49 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
@@ -59990,7 +63396,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(50);
+__webpack_require__(54);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -60004,7 +63410,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ }),
-/* 50 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -60194,18 +63600,18 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(15)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(16)))
 
 /***/ }),
-/* 51 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(52)
+var __vue_script__ = __webpack_require__(56)
 /* template */
-var __vue_template__ = __webpack_require__(53)
+var __vue_template__ = __webpack_require__(57)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -60244,7 +63650,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 52 */
+/* 56 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -60464,7 +63870,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 53 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -61043,19 +64449,19 @@ if (false) {
 }
 
 /***/ }),
-/* 54 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(55)
+  __webpack_require__(59)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(58)
+var __vue_script__ = __webpack_require__(62)
 /* template */
-var __vue_template__ = __webpack_require__(61)
+var __vue_template__ = __webpack_require__(65)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -61094,13 +64500,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 55 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(56);
+var content = __webpack_require__(60);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -61120,7 +64526,7 @@ if(false) {
 }
 
 /***/ }),
-/* 56 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
@@ -61134,7 +64540,7 @@ exports.push([module.i, "\n.modal-content {\r\n  width: 100% !important;\r\n  po
 
 
 /***/ }),
-/* 57 */
+/* 61 */
 /***/ (function(module, exports) {
 
 /**
@@ -61167,12 +64573,12 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 58 */
+/* 62 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_multiselect__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_multiselect__ = __webpack_require__(63);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_multiselect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_multiselect__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_toastr__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_toastr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_toastr__);
@@ -61804,7 +65210,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       fileReader.onload = function (event) {
         _this.curriculum = event.target.result;
       };
-      console.log(this.event.target.files[0]);
     },
 
 
@@ -62033,8 +65438,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       if (!this.cuil) this.errorMostrarMsjEmpleado.push("El cuil del empleado no puede estar vacío.");
       if (!this.direccion) this.errorMostrarMsjEmpleado.push("La dirección del empleado no puede estar vacía.");
       if (!this.estadoCivil) this.errorMostrarMsjEmpleado.push("La estado civil del empleado no puede estar vacío.");
+      if (!this.fechaNacimiento) this.errorMostrarMsjEmpleado.push("Debe ingresar la fecha de nacimiento.");
       if (!this.fechaAlta) this.errorMostrarMsjEmpleado.push("La fecha de ingreso del empleado no puede estar vacía.");
-      if (!this.curriculum) this.errorMostrarMsjEmpleado.push("El curriculum del empleado no puede estar vacío.");
+      if (this.fechaAlta < this.fechaNacimiento) this.errorMostrarMsjEmpleado.push("La fecha de nacimiento debe ser menor a la fecha en que se dio de alta el empleado.");
+      if (!this.curriculum) this.errorMostrarMsjEmpleado.push("Debe cargar el archivo curriculum del empleado.");
       if (this.errorMostrarMsjEmpleado.length) this.errorEmpleado = 1;
 
       return this.errorEmpleado;
@@ -62131,7 +65538,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       me.fechaNacimiento = data["fechaNacimiento"];
       me.fechaAlta = data["fechaAlta"];
       me.fechaBaja = data["fechaBaja"];
-      me.curriculum = data["curriculum"];
+      this.curriculum = data["curriculum"];
       var url = "/empleado/findCompetencias?id=" + data["id"];
       axios.get(url).then(function (response) {
         var respuesta = response.data;
@@ -62194,13 +65601,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 59 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 !function(t,e){ true?module.exports=e():"function"==typeof define&&define.amd?define([],e):"object"==typeof exports?exports.VueMultiselect=e():t.VueMultiselect=e()}(this,function(){return function(t){function e(i){if(n[i])return n[i].exports;var r=n[i]={i:i,l:!1,exports:{}};return t[i].call(r.exports,r,r.exports,e),r.l=!0,r.exports}var n={};return e.m=t,e.c=n,e.i=function(t){return t},e.d=function(t,n,i){e.o(t,n)||Object.defineProperty(t,n,{configurable:!1,enumerable:!0,get:i})},e.n=function(t){var n=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(n,"a",n),n},e.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},e.p="/",e(e.s=60)}([function(t,e){var n=t.exports="undefined"!=typeof window&&window.Math==Math?window:"undefined"!=typeof self&&self.Math==Math?self:Function("return this")();"number"==typeof __g&&(__g=n)},function(t,e,n){var i=n(49)("wks"),r=n(30),o=n(0).Symbol,s="function"==typeof o;(t.exports=function(t){return i[t]||(i[t]=s&&o[t]||(s?o:r)("Symbol."+t))}).store=i},function(t,e,n){var i=n(5);t.exports=function(t){if(!i(t))throw TypeError(t+" is not an object!");return t}},function(t,e,n){var i=n(0),r=n(10),o=n(8),s=n(6),u=n(11),a=function(t,e,n){var l,c,f,p,h=t&a.F,d=t&a.G,v=t&a.S,g=t&a.P,y=t&a.B,m=d?i:v?i[e]||(i[e]={}):(i[e]||{}).prototype,b=d?r:r[e]||(r[e]={}),_=b.prototype||(b.prototype={});d&&(n=e);for(l in n)c=!h&&m&&void 0!==m[l],f=(c?m:n)[l],p=y&&c?u(f,i):g&&"function"==typeof f?u(Function.call,f):f,m&&s(m,l,f,t&a.U),b[l]!=f&&o(b,l,p),g&&_[l]!=f&&(_[l]=f)};i.core=r,a.F=1,a.G=2,a.S=4,a.P=8,a.B=16,a.W=32,a.U=64,a.R=128,t.exports=a},function(t,e,n){t.exports=!n(7)(function(){return 7!=Object.defineProperty({},"a",{get:function(){return 7}}).a})},function(t,e){t.exports=function(t){return"object"==typeof t?null!==t:"function"==typeof t}},function(t,e,n){var i=n(0),r=n(8),o=n(12),s=n(30)("src"),u=Function.toString,a=(""+u).split("toString");n(10).inspectSource=function(t){return u.call(t)},(t.exports=function(t,e,n,u){var l="function"==typeof n;l&&(o(n,"name")||r(n,"name",e)),t[e]!==n&&(l&&(o(n,s)||r(n,s,t[e]?""+t[e]:a.join(String(e)))),t===i?t[e]=n:u?t[e]?t[e]=n:r(t,e,n):(delete t[e],r(t,e,n)))})(Function.prototype,"toString",function(){return"function"==typeof this&&this[s]||u.call(this)})},function(t,e){t.exports=function(t){try{return!!t()}catch(t){return!0}}},function(t,e,n){var i=n(13),r=n(25);t.exports=n(4)?function(t,e,n){return i.f(t,e,r(1,n))}:function(t,e,n){return t[e]=n,t}},function(t,e){var n={}.toString;t.exports=function(t){return n.call(t).slice(8,-1)}},function(t,e){var n=t.exports={version:"2.5.7"};"number"==typeof __e&&(__e=n)},function(t,e,n){var i=n(14);t.exports=function(t,e,n){if(i(t),void 0===e)return t;switch(n){case 1:return function(n){return t.call(e,n)};case 2:return function(n,i){return t.call(e,n,i)};case 3:return function(n,i,r){return t.call(e,n,i,r)}}return function(){return t.apply(e,arguments)}}},function(t,e){var n={}.hasOwnProperty;t.exports=function(t,e){return n.call(t,e)}},function(t,e,n){var i=n(2),r=n(41),o=n(29),s=Object.defineProperty;e.f=n(4)?Object.defineProperty:function(t,e,n){if(i(t),e=o(e,!0),i(n),r)try{return s(t,e,n)}catch(t){}if("get"in n||"set"in n)throw TypeError("Accessors not supported!");return"value"in n&&(t[e]=n.value),t}},function(t,e){t.exports=function(t){if("function"!=typeof t)throw TypeError(t+" is not a function!");return t}},function(t,e){t.exports={}},function(t,e){t.exports=function(t){if(void 0==t)throw TypeError("Can't call method on  "+t);return t}},function(t,e,n){"use strict";var i=n(7);t.exports=function(t,e){return!!t&&i(function(){e?t.call(null,function(){},1):t.call(null)})}},function(t,e,n){var i=n(23),r=n(16);t.exports=function(t){return i(r(t))}},function(t,e,n){var i=n(53),r=Math.min;t.exports=function(t){return t>0?r(i(t),9007199254740991):0}},function(t,e,n){var i=n(11),r=n(23),o=n(28),s=n(19),u=n(64);t.exports=function(t,e){var n=1==t,a=2==t,l=3==t,c=4==t,f=6==t,p=5==t||f,h=e||u;return function(e,u,d){for(var v,g,y=o(e),m=r(y),b=i(u,d,3),_=s(m.length),x=0,w=n?h(e,_):a?h(e,0):void 0;_>x;x++)if((p||x in m)&&(v=m[x],g=b(v,x,y),t))if(n)w[x]=g;else if(g)switch(t){case 3:return!0;case 5:return v;case 6:return x;case 2:w.push(v)}else if(c)return!1;return f?-1:l||c?c:w}}},function(t,e,n){var i=n(5),r=n(0).document,o=i(r)&&i(r.createElement);t.exports=function(t){return o?r.createElement(t):{}}},function(t,e){t.exports="constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf".split(",")},function(t,e,n){var i=n(9);t.exports=Object("z").propertyIsEnumerable(0)?Object:function(t){return"String"==i(t)?t.split(""):Object(t)}},function(t,e){t.exports=!1},function(t,e){t.exports=function(t,e){return{enumerable:!(1&t),configurable:!(2&t),writable:!(4&t),value:e}}},function(t,e,n){var i=n(13).f,r=n(12),o=n(1)("toStringTag");t.exports=function(t,e,n){t&&!r(t=n?t:t.prototype,o)&&i(t,o,{configurable:!0,value:e})}},function(t,e,n){var i=n(49)("keys"),r=n(30);t.exports=function(t){return i[t]||(i[t]=r(t))}},function(t,e,n){var i=n(16);t.exports=function(t){return Object(i(t))}},function(t,e,n){var i=n(5);t.exports=function(t,e){if(!i(t))return t;var n,r;if(e&&"function"==typeof(n=t.toString)&&!i(r=n.call(t)))return r;if("function"==typeof(n=t.valueOf)&&!i(r=n.call(t)))return r;if(!e&&"function"==typeof(n=t.toString)&&!i(r=n.call(t)))return r;throw TypeError("Can't convert object to primitive value")}},function(t,e){var n=0,i=Math.random();t.exports=function(t){return"Symbol(".concat(void 0===t?"":t,")_",(++n+i).toString(36))}},function(t,e,n){"use strict";var i=n(0),r=n(12),o=n(9),s=n(67),u=n(29),a=n(7),l=n(77).f,c=n(45).f,f=n(13).f,p=n(51).trim,h=i.Number,d=h,v=h.prototype,g="Number"==o(n(44)(v)),y="trim"in String.prototype,m=function(t){var e=u(t,!1);if("string"==typeof e&&e.length>2){e=y?e.trim():p(e,3);var n,i,r,o=e.charCodeAt(0);if(43===o||45===o){if(88===(n=e.charCodeAt(2))||120===n)return NaN}else if(48===o){switch(e.charCodeAt(1)){case 66:case 98:i=2,r=49;break;case 79:case 111:i=8,r=55;break;default:return+e}for(var s,a=e.slice(2),l=0,c=a.length;l<c;l++)if((s=a.charCodeAt(l))<48||s>r)return NaN;return parseInt(a,i)}}return+e};if(!h(" 0o1")||!h("0b1")||h("+0x1")){h=function(t){var e=arguments.length<1?0:t,n=this;return n instanceof h&&(g?a(function(){v.valueOf.call(n)}):"Number"!=o(n))?s(new d(m(e)),n,h):m(e)};for(var b,_=n(4)?l(d):"MAX_VALUE,MIN_VALUE,NaN,NEGATIVE_INFINITY,POSITIVE_INFINITY,EPSILON,isFinite,isInteger,isNaN,isSafeInteger,MAX_SAFE_INTEGER,MIN_SAFE_INTEGER,parseFloat,parseInt,isInteger".split(","),x=0;_.length>x;x++)r(d,b=_[x])&&!r(h,b)&&f(h,b,c(d,b));h.prototype=v,v.constructor=h,n(6)(i,"Number",h)}},function(t,e,n){"use strict";function i(t){return 0!==t&&(!(!Array.isArray(t)||0!==t.length)||!t)}function r(t){return function(){return!t.apply(void 0,arguments)}}function o(t,e){return void 0===t&&(t="undefined"),null===t&&(t="null"),!1===t&&(t="false"),-1!==t.toString().toLowerCase().indexOf(e.trim())}function s(t,e,n,i){return t.filter(function(t){return o(i(t,n),e)})}function u(t){return t.filter(function(t){return!t.$isLabel})}function a(t,e){return function(n){return n.reduce(function(n,i){return i[t]&&i[t].length?(n.push({$groupLabel:i[e],$isLabel:!0}),n.concat(i[t])):n},[])}}function l(t,e,i,r,o){return function(u){return u.map(function(u){var a;if(!u[i])return console.warn("Options passed to vue-multiselect do not contain groups, despite the config."),[];var l=s(u[i],t,e,o);return l.length?(a={},n.i(d.a)(a,r,u[r]),n.i(d.a)(a,i,l),a):[]})}}var c=n(59),f=n(54),p=(n.n(f),n(95)),h=(n.n(p),n(31)),d=(n.n(h),n(58)),v=n(91),g=(n.n(v),n(98)),y=(n.n(g),n(92)),m=(n.n(y),n(88)),b=(n.n(m),n(97)),_=(n.n(b),n(89)),x=(n.n(_),n(96)),w=(n.n(x),n(93)),S=(n.n(w),n(90)),O=(n.n(S),function(){for(var t=arguments.length,e=new Array(t),n=0;n<t;n++)e[n]=arguments[n];return function(t){return e.reduce(function(t,e){return e(t)},t)}});e.a={data:function(){return{search:"",isOpen:!1,preferredOpenDirection:"below",optimizedHeight:this.maxHeight}},props:{internalSearch:{type:Boolean,default:!0},options:{type:Array,required:!0},multiple:{type:Boolean,default:!1},value:{type:null,default:function(){return[]}},trackBy:{type:String},label:{type:String},searchable:{type:Boolean,default:!0},clearOnSelect:{type:Boolean,default:!0},hideSelected:{type:Boolean,default:!1},placeholder:{type:String,default:"Select option"},allowEmpty:{type:Boolean,default:!0},resetAfter:{type:Boolean,default:!1},closeOnSelect:{type:Boolean,default:!0},customLabel:{type:Function,default:function(t,e){return i(t)?"":e?t[e]:t}},taggable:{type:Boolean,default:!1},tagPlaceholder:{type:String,default:"Press enter to create a tag"},tagPosition:{type:String,default:"top"},max:{type:[Number,Boolean],default:!1},id:{default:null},optionsLimit:{type:Number,default:1e3},groupValues:{type:String},groupLabel:{type:String},groupSelect:{type:Boolean,default:!1},blockKeys:{type:Array,default:function(){return[]}},preserveSearch:{type:Boolean,default:!1},preselectFirst:{type:Boolean,default:!1}},mounted:function(){!this.multiple&&this.max&&console.warn("[Vue-Multiselect warn]: Max prop should not be used when prop Multiple equals false."),this.preselectFirst&&!this.internalValue.length&&this.options.length&&this.select(this.filteredOptions[0])},computed:{internalValue:function(){return this.value||0===this.value?Array.isArray(this.value)?this.value:[this.value]:[]},filteredOptions:function(){var t=this.search||"",e=t.toLowerCase().trim(),n=this.options.concat();return n=this.internalSearch?this.groupValues?this.filterAndFlat(n,e,this.label):s(n,e,this.label,this.customLabel):this.groupValues?a(this.groupValues,this.groupLabel)(n):n,n=this.hideSelected?n.filter(r(this.isSelected)):n,this.taggable&&e.length&&!this.isExistingOption(e)&&("bottom"===this.tagPosition?n.push({isTag:!0,label:t}):n.unshift({isTag:!0,label:t})),n.slice(0,this.optionsLimit)},valueKeys:function(){var t=this;return this.trackBy?this.internalValue.map(function(e){return e[t.trackBy]}):this.internalValue},optionKeys:function(){var t=this;return(this.groupValues?this.flatAndStrip(this.options):this.options).map(function(e){return t.customLabel(e,t.label).toString().toLowerCase()})},currentOptionLabel:function(){return this.multiple?this.searchable?"":this.placeholder:this.internalValue.length?this.getOptionLabel(this.internalValue[0]):this.searchable?"":this.placeholder}},watch:{internalValue:function(){this.resetAfter&&this.internalValue.length&&(this.search="",this.$emit("input",this.multiple?[]:null))},search:function(){this.$emit("search-change",this.search,this.id)}},methods:{getValue:function(){return this.multiple?this.internalValue:0===this.internalValue.length?null:this.internalValue[0]},filterAndFlat:function(t,e,n){return O(l(e,n,this.groupValues,this.groupLabel,this.customLabel),a(this.groupValues,this.groupLabel))(t)},flatAndStrip:function(t){return O(a(this.groupValues,this.groupLabel),u)(t)},updateSearch:function(t){this.search=t},isExistingOption:function(t){return!!this.options&&this.optionKeys.indexOf(t)>-1},isSelected:function(t){var e=this.trackBy?t[this.trackBy]:t;return this.valueKeys.indexOf(e)>-1},isOptionDisabled:function(t){return!!t.$isDisabled},getOptionLabel:function(t){if(i(t))return"";if(t.isTag)return t.label;if(t.$isLabel)return t.$groupLabel;var e=this.customLabel(t,this.label);return i(e)?"":e},select:function(t,e){if(t.$isLabel&&this.groupSelect)return void this.selectGroup(t);if(!(-1!==this.blockKeys.indexOf(e)||this.disabled||t.$isDisabled||t.$isLabel)&&(!this.max||!this.multiple||this.internalValue.length!==this.max)&&("Tab"!==e||this.pointerDirty)){if(t.isTag)this.$emit("tag",t.label,this.id),this.search="",this.closeOnSelect&&!this.multiple&&this.deactivate();else{if(this.isSelected(t))return void("Tab"!==e&&this.removeElement(t));this.$emit("select",t,this.id),this.multiple?this.$emit("input",this.internalValue.concat([t]),this.id):this.$emit("input",t,this.id),this.clearOnSelect&&(this.search="")}this.closeOnSelect&&this.deactivate()}},selectGroup:function(t){var e=this,n=this.options.find(function(n){return n[e.groupLabel]===t.$groupLabel});if(n)if(this.wholeGroupSelected(n)){this.$emit("remove",n[this.groupValues],this.id);var i=this.internalValue.filter(function(t){return-1===n[e.groupValues].indexOf(t)});this.$emit("input",i,this.id)}else{var r=n[this.groupValues].filter(function(t){return!(e.isOptionDisabled(t)||e.isSelected(t))});this.$emit("select",r,this.id),this.$emit("input",this.internalValue.concat(r),this.id)}},wholeGroupSelected:function(t){var e=this;return t[this.groupValues].every(function(t){return e.isSelected(t)||e.isOptionDisabled(t)})},wholeGroupDisabled:function(t){return t[this.groupValues].every(this.isOptionDisabled)},removeElement:function(t){var e=!(arguments.length>1&&void 0!==arguments[1])||arguments[1];if(!this.disabled&&!t.$isDisabled){if(!this.allowEmpty&&this.internalValue.length<=1)return void this.deactivate();var i="object"===n.i(c.a)(t)?this.valueKeys.indexOf(t[this.trackBy]):this.valueKeys.indexOf(t);if(this.$emit("remove",t,this.id),this.multiple){var r=this.internalValue.slice(0,i).concat(this.internalValue.slice(i+1));this.$emit("input",r,this.id)}else this.$emit("input",null,this.id);this.closeOnSelect&&e&&this.deactivate()}},removeLastElement:function(){-1===this.blockKeys.indexOf("Delete")&&0===this.search.length&&Array.isArray(this.internalValue)&&this.internalValue.length&&this.removeElement(this.internalValue[this.internalValue.length-1],!1)},activate:function(){var t=this;this.isOpen||this.disabled||(this.adjustPosition(),this.groupValues&&0===this.pointer&&this.filteredOptions.length&&(this.pointer=1),this.isOpen=!0,this.searchable?(this.preserveSearch||(this.search=""),this.$nextTick(function(){return t.$refs.search.focus()})):this.$el.focus(),this.$emit("open",this.id))},deactivate:function(){this.isOpen&&(this.isOpen=!1,this.searchable?this.$refs.search.blur():this.$el.blur(),this.preserveSearch||(this.search=""),this.$emit("close",this.getValue(),this.id))},toggle:function(){this.isOpen?this.deactivate():this.activate()},adjustPosition:function(){if("undefined"!=typeof window){var t=this.$el.getBoundingClientRect().top,e=window.innerHeight-this.$el.getBoundingClientRect().bottom;e>this.maxHeight||e>t||"below"===this.openDirection||"bottom"===this.openDirection?(this.preferredOpenDirection="below",this.optimizedHeight=Math.min(e-40,this.maxHeight)):(this.preferredOpenDirection="above",this.optimizedHeight=Math.min(t-40,this.maxHeight))}}}}},function(t,e,n){"use strict";var i=n(54),r=(n.n(i),n(31));n.n(r);e.a={data:function(){return{pointer:0,pointerDirty:!1}},props:{showPointer:{type:Boolean,default:!0},optionHeight:{type:Number,default:40}},computed:{pointerPosition:function(){return this.pointer*this.optionHeight},visibleElements:function(){return this.optimizedHeight/this.optionHeight}},watch:{filteredOptions:function(){this.pointerAdjust()},isOpen:function(){this.pointerDirty=!1}},methods:{optionHighlight:function(t,e){return{"multiselect__option--highlight":t===this.pointer&&this.showPointer,"multiselect__option--selected":this.isSelected(e)}},groupHighlight:function(t,e){var n=this;if(!this.groupSelect)return["multiselect__option--group","multiselect__option--disabled"];var i=this.options.find(function(t){return t[n.groupLabel]===e.$groupLabel});return i&&!this.wholeGroupDisabled(i)?["multiselect__option--group",{"multiselect__option--highlight":t===this.pointer&&this.showPointer},{"multiselect__option--group-selected":this.wholeGroupSelected(i)}]:"multiselect__option--disabled"},addPointerElement:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"Enter",e=t.key;this.filteredOptions.length>0&&this.select(this.filteredOptions[this.pointer],e),this.pointerReset()},pointerForward:function(){this.pointer<this.filteredOptions.length-1&&(this.pointer++,this.$refs.list.scrollTop<=this.pointerPosition-(this.visibleElements-1)*this.optionHeight&&(this.$refs.list.scrollTop=this.pointerPosition-(this.visibleElements-1)*this.optionHeight),this.filteredOptions[this.pointer]&&this.filteredOptions[this.pointer].$isLabel&&!this.groupSelect&&this.pointerForward()),this.pointerDirty=!0},pointerBackward:function(){this.pointer>0?(this.pointer--,this.$refs.list.scrollTop>=this.pointerPosition&&(this.$refs.list.scrollTop=this.pointerPosition),this.filteredOptions[this.pointer]&&this.filteredOptions[this.pointer].$isLabel&&!this.groupSelect&&this.pointerBackward()):this.filteredOptions[this.pointer]&&this.filteredOptions[0].$isLabel&&!this.groupSelect&&this.pointerForward(),this.pointerDirty=!0},pointerReset:function(){this.closeOnSelect&&(this.pointer=0,this.$refs.list&&(this.$refs.list.scrollTop=0))},pointerAdjust:function(){this.pointer>=this.filteredOptions.length-1&&(this.pointer=this.filteredOptions.length?this.filteredOptions.length-1:0),this.filteredOptions.length>0&&this.filteredOptions[this.pointer].$isLabel&&!this.groupSelect&&this.pointerForward()},pointerSet:function(t){this.pointer=t,this.pointerDirty=!0}}}},function(t,e,n){"use strict";var i=n(36),r=n(74),o=n(15),s=n(18);t.exports=n(72)(Array,"Array",function(t,e){this._t=s(t),this._i=0,this._k=e},function(){var t=this._t,e=this._k,n=this._i++;return!t||n>=t.length?(this._t=void 0,r(1)):"keys"==e?r(0,n):"values"==e?r(0,t[n]):r(0,[n,t[n]])},"values"),o.Arguments=o.Array,i("keys"),i("values"),i("entries")},function(t,e,n){"use strict";var i=n(31),r=(n.n(i),n(32)),o=n(33);e.a={name:"vue-multiselect",mixins:[r.a,o.a],props:{name:{type:String,default:""},selectLabel:{type:String,default:"Press enter to select"},selectGroupLabel:{type:String,default:"Press enter to select group"},selectedLabel:{type:String,default:"Selected"},deselectLabel:{type:String,default:"Press enter to remove"},deselectGroupLabel:{type:String,default:"Press enter to deselect group"},showLabels:{type:Boolean,default:!0},limit:{type:Number,default:99999},maxHeight:{type:Number,default:300},limitText:{type:Function,default:function(t){return"and ".concat(t," more")}},loading:{type:Boolean,default:!1},disabled:{type:Boolean,default:!1},openDirection:{type:String,default:""},showNoOptions:{type:Boolean,default:!0},showNoResults:{type:Boolean,default:!0},tabindex:{type:Number,default:0}},computed:{isSingleLabelVisible:function(){return(this.singleValue||0===this.singleValue)&&(!this.isOpen||!this.searchable)&&!this.visibleValues.length},isPlaceholderVisible:function(){return!(this.internalValue.length||this.searchable&&this.isOpen)},visibleValues:function(){return this.multiple?this.internalValue.slice(0,this.limit):[]},singleValue:function(){return this.internalValue[0]},deselectLabelText:function(){return this.showLabels?this.deselectLabel:""},deselectGroupLabelText:function(){return this.showLabels?this.deselectGroupLabel:""},selectLabelText:function(){return this.showLabels?this.selectLabel:""},selectGroupLabelText:function(){return this.showLabels?this.selectGroupLabel:""},selectedLabelText:function(){return this.showLabels?this.selectedLabel:""},inputStyle:function(){if(this.searchable||this.multiple&&this.value&&this.value.length)return this.isOpen?{width:"100%"}:{width:"0",position:"absolute",padding:"0"}},contentStyle:function(){return this.options.length?{display:"inline-block"}:{display:"block"}},isAbove:function(){return"above"===this.openDirection||"top"===this.openDirection||"below"!==this.openDirection&&"bottom"!==this.openDirection&&"above"===this.preferredOpenDirection},showSearchInput:function(){return this.searchable&&(!this.hasSingleSelectedSlot||!this.visibleSingleValue&&0!==this.visibleSingleValue||this.isOpen)}}}},function(t,e,n){var i=n(1)("unscopables"),r=Array.prototype;void 0==r[i]&&n(8)(r,i,{}),t.exports=function(t){r[i][t]=!0}},function(t,e,n){var i=n(18),r=n(19),o=n(85);t.exports=function(t){return function(e,n,s){var u,a=i(e),l=r(a.length),c=o(s,l);if(t&&n!=n){for(;l>c;)if((u=a[c++])!=u)return!0}else for(;l>c;c++)if((t||c in a)&&a[c]===n)return t||c||0;return!t&&-1}}},function(t,e,n){var i=n(9),r=n(1)("toStringTag"),o="Arguments"==i(function(){return arguments}()),s=function(t,e){try{return t[e]}catch(t){}};t.exports=function(t){var e,n,u;return void 0===t?"Undefined":null===t?"Null":"string"==typeof(n=s(e=Object(t),r))?n:o?i(e):"Object"==(u=i(e))&&"function"==typeof e.callee?"Arguments":u}},function(t,e,n){"use strict";var i=n(2);t.exports=function(){var t=i(this),e="";return t.global&&(e+="g"),t.ignoreCase&&(e+="i"),t.multiline&&(e+="m"),t.unicode&&(e+="u"),t.sticky&&(e+="y"),e}},function(t,e,n){var i=n(0).document;t.exports=i&&i.documentElement},function(t,e,n){t.exports=!n(4)&&!n(7)(function(){return 7!=Object.defineProperty(n(21)("div"),"a",{get:function(){return 7}}).a})},function(t,e,n){var i=n(9);t.exports=Array.isArray||function(t){return"Array"==i(t)}},function(t,e,n){"use strict";function i(t){var e,n;this.promise=new t(function(t,i){if(void 0!==e||void 0!==n)throw TypeError("Bad Promise constructor");e=t,n=i}),this.resolve=r(e),this.reject=r(n)}var r=n(14);t.exports.f=function(t){return new i(t)}},function(t,e,n){var i=n(2),r=n(76),o=n(22),s=n(27)("IE_PROTO"),u=function(){},a=function(){var t,e=n(21)("iframe"),i=o.length;for(e.style.display="none",n(40).appendChild(e),e.src="javascript:",t=e.contentWindow.document,t.open(),t.write("<script>document.F=Object<\/script>"),t.close(),a=t.F;i--;)delete a.prototype[o[i]];return a()};t.exports=Object.create||function(t,e){var n;return null!==t?(u.prototype=i(t),n=new u,u.prototype=null,n[s]=t):n=a(),void 0===e?n:r(n,e)}},function(t,e,n){var i=n(79),r=n(25),o=n(18),s=n(29),u=n(12),a=n(41),l=Object.getOwnPropertyDescriptor;e.f=n(4)?l:function(t,e){if(t=o(t),e=s(e,!0),a)try{return l(t,e)}catch(t){}if(u(t,e))return r(!i.f.call(t,e),t[e])}},function(t,e,n){var i=n(12),r=n(18),o=n(37)(!1),s=n(27)("IE_PROTO");t.exports=function(t,e){var n,u=r(t),a=0,l=[];for(n in u)n!=s&&i(u,n)&&l.push(n);for(;e.length>a;)i(u,n=e[a++])&&(~o(l,n)||l.push(n));return l}},function(t,e,n){var i=n(46),r=n(22);t.exports=Object.keys||function(t){return i(t,r)}},function(t,e,n){var i=n(2),r=n(5),o=n(43);t.exports=function(t,e){if(i(t),r(e)&&e.constructor===t)return e;var n=o.f(t);return(0,n.resolve)(e),n.promise}},function(t,e,n){var i=n(10),r=n(0),o=r["__core-js_shared__"]||(r["__core-js_shared__"]={});(t.exports=function(t,e){return o[t]||(o[t]=void 0!==e?e:{})})("versions",[]).push({version:i.version,mode:n(24)?"pure":"global",copyright:"© 2018 Denis Pushkarev (zloirock.ru)"})},function(t,e,n){var i=n(2),r=n(14),o=n(1)("species");t.exports=function(t,e){var n,s=i(t).constructor;return void 0===s||void 0==(n=i(s)[o])?e:r(n)}},function(t,e,n){var i=n(3),r=n(16),o=n(7),s=n(84),u="["+s+"]",a="​",l=RegExp("^"+u+u+"*"),c=RegExp(u+u+"*$"),f=function(t,e,n){var r={},u=o(function(){return!!s[t]()||a[t]()!=a}),l=r[t]=u?e(p):s[t];n&&(r[n]=l),i(i.P+i.F*u,"String",r)},p=f.trim=function(t,e){return t=String(r(t)),1&e&&(t=t.replace(l,"")),2&e&&(t=t.replace(c,"")),t};t.exports=f},function(t,e,n){var i,r,o,s=n(11),u=n(68),a=n(40),l=n(21),c=n(0),f=c.process,p=c.setImmediate,h=c.clearImmediate,d=c.MessageChannel,v=c.Dispatch,g=0,y={},m=function(){var t=+this;if(y.hasOwnProperty(t)){var e=y[t];delete y[t],e()}},b=function(t){m.call(t.data)};p&&h||(p=function(t){for(var e=[],n=1;arguments.length>n;)e.push(arguments[n++]);return y[++g]=function(){u("function"==typeof t?t:Function(t),e)},i(g),g},h=function(t){delete y[t]},"process"==n(9)(f)?i=function(t){f.nextTick(s(m,t,1))}:v&&v.now?i=function(t){v.now(s(m,t,1))}:d?(r=new d,o=r.port2,r.port1.onmessage=b,i=s(o.postMessage,o,1)):c.addEventListener&&"function"==typeof postMessage&&!c.importScripts?(i=function(t){c.postMessage(t+"","*")},c.addEventListener("message",b,!1)):i="onreadystatechange"in l("script")?function(t){a.appendChild(l("script")).onreadystatechange=function(){a.removeChild(this),m.call(t)}}:function(t){setTimeout(s(m,t,1),0)}),t.exports={set:p,clear:h}},function(t,e){var n=Math.ceil,i=Math.floor;t.exports=function(t){return isNaN(t=+t)?0:(t>0?i:n)(t)}},function(t,e,n){"use strict";var i=n(3),r=n(20)(5),o=!0;"find"in[]&&Array(1).find(function(){o=!1}),i(i.P+i.F*o,"Array",{find:function(t){return r(this,t,arguments.length>1?arguments[1]:void 0)}}),n(36)("find")},function(t,e,n){"use strict";var i,r,o,s,u=n(24),a=n(0),l=n(11),c=n(38),f=n(3),p=n(5),h=n(14),d=n(61),v=n(66),g=n(50),y=n(52).set,m=n(75)(),b=n(43),_=n(80),x=n(86),w=n(48),S=a.TypeError,O=a.process,L=O&&O.versions,k=L&&L.v8||"",P=a.Promise,T="process"==c(O),V=function(){},E=r=b.f,A=!!function(){try{var t=P.resolve(1),e=(t.constructor={})[n(1)("species")]=function(t){t(V,V)};return(T||"function"==typeof PromiseRejectionEvent)&&t.then(V)instanceof e&&0!==k.indexOf("6.6")&&-1===x.indexOf("Chrome/66")}catch(t){}}(),C=function(t){var e;return!(!p(t)||"function"!=typeof(e=t.then))&&e},D=function(t,e){if(!t._n){t._n=!0;var n=t._c;m(function(){for(var i=t._v,r=1==t._s,o=0;n.length>o;)!function(e){var n,o,s,u=r?e.ok:e.fail,a=e.resolve,l=e.reject,c=e.domain;try{u?(r||(2==t._h&&$(t),t._h=1),!0===u?n=i:(c&&c.enter(),n=u(i),c&&(c.exit(),s=!0)),n===e.promise?l(S("Promise-chain cycle")):(o=C(n))?o.call(n,a,l):a(n)):l(i)}catch(t){c&&!s&&c.exit(),l(t)}}(n[o++]);t._c=[],t._n=!1,e&&!t._h&&j(t)})}},j=function(t){y.call(a,function(){var e,n,i,r=t._v,o=N(t);if(o&&(e=_(function(){T?O.emit("unhandledRejection",r,t):(n=a.onunhandledrejection)?n({promise:t,reason:r}):(i=a.console)&&i.error&&i.error("Unhandled promise rejection",r)}),t._h=T||N(t)?2:1),t._a=void 0,o&&e.e)throw e.v})},N=function(t){return 1!==t._h&&0===(t._a||t._c).length},$=function(t){y.call(a,function(){var e;T?O.emit("rejectionHandled",t):(e=a.onrejectionhandled)&&e({promise:t,reason:t._v})})},F=function(t){var e=this;e._d||(e._d=!0,e=e._w||e,e._v=t,e._s=2,e._a||(e._a=e._c.slice()),D(e,!0))},M=function(t){var e,n=this;if(!n._d){n._d=!0,n=n._w||n;try{if(n===t)throw S("Promise can't be resolved itself");(e=C(t))?m(function(){var i={_w:n,_d:!1};try{e.call(t,l(M,i,1),l(F,i,1))}catch(t){F.call(i,t)}}):(n._v=t,n._s=1,D(n,!1))}catch(t){F.call({_w:n,_d:!1},t)}}};A||(P=function(t){d(this,P,"Promise","_h"),h(t),i.call(this);try{t(l(M,this,1),l(F,this,1))}catch(t){F.call(this,t)}},i=function(t){this._c=[],this._a=void 0,this._s=0,this._d=!1,this._v=void 0,this._h=0,this._n=!1},i.prototype=n(81)(P.prototype,{then:function(t,e){var n=E(g(this,P));return n.ok="function"!=typeof t||t,n.fail="function"==typeof e&&e,n.domain=T?O.domain:void 0,this._c.push(n),this._a&&this._a.push(n),this._s&&D(this,!1),n.promise},catch:function(t){return this.then(void 0,t)}}),o=function(){var t=new i;this.promise=t,this.resolve=l(M,t,1),this.reject=l(F,t,1)},b.f=E=function(t){return t===P||t===s?new o(t):r(t)}),f(f.G+f.W+f.F*!A,{Promise:P}),n(26)(P,"Promise"),n(83)("Promise"),s=n(10).Promise,f(f.S+f.F*!A,"Promise",{reject:function(t){var e=E(this);return(0,e.reject)(t),e.promise}}),f(f.S+f.F*(u||!A),"Promise",{resolve:function(t){return w(u&&this===s?P:this,t)}}),f(f.S+f.F*!(A&&n(73)(function(t){P.all(t).catch(V)})),"Promise",{all:function(t){var e=this,n=E(e),i=n.resolve,r=n.reject,o=_(function(){var n=[],o=0,s=1;v(t,!1,function(t){var u=o++,a=!1;n.push(void 0),s++,e.resolve(t).then(function(t){a||(a=!0,n[u]=t,--s||i(n))},r)}),--s||i(n)});return o.e&&r(o.v),n.promise},race:function(t){var e=this,n=E(e),i=n.reject,r=_(function(){v(t,!1,function(t){e.resolve(t).then(n.resolve,i)})});return r.e&&i(r.v),n.promise}})},function(t,e,n){"use strict";var i=n(3),r=n(10),o=n(0),s=n(50),u=n(48);i(i.P+i.R,"Promise",{finally:function(t){var e=s(this,r.Promise||o.Promise),n="function"==typeof t;return this.then(n?function(n){return u(e,t()).then(function(){return n})}:t,n?function(n){return u(e,t()).then(function(){throw n})}:t)}})},function(t,e,n){"use strict";function i(t){n(99)}var r=n(35),o=n(101),s=n(100),u=i,a=s(r.a,o.a,!1,u,null,null);e.a=a.exports},function(t,e,n){"use strict";function i(t,e,n){return e in t?Object.defineProperty(t,e,{value:n,enumerable:!0,configurable:!0,writable:!0}):t[e]=n,t}e.a=i},function(t,e,n){"use strict";function i(t){return(i="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t})(t)}function r(t){return(r="function"==typeof Symbol&&"symbol"===i(Symbol.iterator)?function(t){return i(t)}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":i(t)})(t)}e.a=r},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var i=n(34),r=(n.n(i),n(55)),o=(n.n(r),n(56)),s=(n.n(o),n(57)),u=n(32),a=n(33);n.d(e,"Multiselect",function(){return s.a}),n.d(e,"multiselectMixin",function(){return u.a}),n.d(e,"pointerMixin",function(){return a.a}),e.default=s.a},function(t,e){t.exports=function(t,e,n,i){if(!(t instanceof e)||void 0!==i&&i in t)throw TypeError(n+": incorrect invocation!");return t}},function(t,e,n){var i=n(14),r=n(28),o=n(23),s=n(19);t.exports=function(t,e,n,u,a){i(e);var l=r(t),c=o(l),f=s(l.length),p=a?f-1:0,h=a?-1:1;if(n<2)for(;;){if(p in c){u=c[p],p+=h;break}if(p+=h,a?p<0:f<=p)throw TypeError("Reduce of empty array with no initial value")}for(;a?p>=0:f>p;p+=h)p in c&&(u=e(u,c[p],p,l));return u}},function(t,e,n){var i=n(5),r=n(42),o=n(1)("species");t.exports=function(t){var e;return r(t)&&(e=t.constructor,"function"!=typeof e||e!==Array&&!r(e.prototype)||(e=void 0),i(e)&&null===(e=e[o])&&(e=void 0)),void 0===e?Array:e}},function(t,e,n){var i=n(63);t.exports=function(t,e){return new(i(t))(e)}},function(t,e,n){"use strict";var i=n(8),r=n(6),o=n(7),s=n(16),u=n(1);t.exports=function(t,e,n){var a=u(t),l=n(s,a,""[t]),c=l[0],f=l[1];o(function(){var e={};return e[a]=function(){return 7},7!=""[t](e)})&&(r(String.prototype,t,c),i(RegExp.prototype,a,2==e?function(t,e){return f.call(t,this,e)}:function(t){return f.call(t,this)}))}},function(t,e,n){var i=n(11),r=n(70),o=n(69),s=n(2),u=n(19),a=n(87),l={},c={},e=t.exports=function(t,e,n,f,p){var h,d,v,g,y=p?function(){return t}:a(t),m=i(n,f,e?2:1),b=0;if("function"!=typeof y)throw TypeError(t+" is not iterable!");if(o(y)){for(h=u(t.length);h>b;b++)if((g=e?m(s(d=t[b])[0],d[1]):m(t[b]))===l||g===c)return g}else for(v=y.call(t);!(d=v.next()).done;)if((g=r(v,m,d.value,e))===l||g===c)return g};e.BREAK=l,e.RETURN=c},function(t,e,n){var i=n(5),r=n(82).set;t.exports=function(t,e,n){var o,s=e.constructor;return s!==n&&"function"==typeof s&&(o=s.prototype)!==n.prototype&&i(o)&&r&&r(t,o),t}},function(t,e){t.exports=function(t,e,n){var i=void 0===n;switch(e.length){case 0:return i?t():t.call(n);case 1:return i?t(e[0]):t.call(n,e[0]);case 2:return i?t(e[0],e[1]):t.call(n,e[0],e[1]);case 3:return i?t(e[0],e[1],e[2]):t.call(n,e[0],e[1],e[2]);case 4:return i?t(e[0],e[1],e[2],e[3]):t.call(n,e[0],e[1],e[2],e[3])}return t.apply(n,e)}},function(t,e,n){var i=n(15),r=n(1)("iterator"),o=Array.prototype;t.exports=function(t){return void 0!==t&&(i.Array===t||o[r]===t)}},function(t,e,n){var i=n(2);t.exports=function(t,e,n,r){try{return r?e(i(n)[0],n[1]):e(n)}catch(e){var o=t.return;throw void 0!==o&&i(o.call(t)),e}}},function(t,e,n){"use strict";var i=n(44),r=n(25),o=n(26),s={};n(8)(s,n(1)("iterator"),function(){return this}),t.exports=function(t,e,n){t.prototype=i(s,{next:r(1,n)}),o(t,e+" Iterator")}},function(t,e,n){"use strict";var i=n(24),r=n(3),o=n(6),s=n(8),u=n(15),a=n(71),l=n(26),c=n(78),f=n(1)("iterator"),p=!([].keys&&"next"in[].keys()),h=function(){return this};t.exports=function(t,e,n,d,v,g,y){a(n,e,d);var m,b,_,x=function(t){if(!p&&t in L)return L[t];switch(t){case"keys":case"values":return function(){return new n(this,t)}}return function(){return new n(this,t)}},w=e+" Iterator",S="values"==v,O=!1,L=t.prototype,k=L[f]||L["@@iterator"]||v&&L[v],P=k||x(v),T=v?S?x("entries"):P:void 0,V="Array"==e?L.entries||k:k;if(V&&(_=c(V.call(new t)))!==Object.prototype&&_.next&&(l(_,w,!0),i||"function"==typeof _[f]||s(_,f,h)),S&&k&&"values"!==k.name&&(O=!0,P=function(){return k.call(this)}),i&&!y||!p&&!O&&L[f]||s(L,f,P),u[e]=P,u[w]=h,v)if(m={values:S?P:x("values"),keys:g?P:x("keys"),entries:T},y)for(b in m)b in L||o(L,b,m[b]);else r(r.P+r.F*(p||O),e,m);return m}},function(t,e,n){var i=n(1)("iterator"),r=!1;try{var o=[7][i]();o.return=function(){r=!0},Array.from(o,function(){throw 2})}catch(t){}t.exports=function(t,e){if(!e&&!r)return!1;var n=!1;try{var o=[7],s=o[i]();s.next=function(){return{done:n=!0}},o[i]=function(){return s},t(o)}catch(t){}return n}},function(t,e){t.exports=function(t,e){return{value:e,done:!!t}}},function(t,e,n){var i=n(0),r=n(52).set,o=i.MutationObserver||i.WebKitMutationObserver,s=i.process,u=i.Promise,a="process"==n(9)(s);t.exports=function(){var t,e,n,l=function(){var i,r;for(a&&(i=s.domain)&&i.exit();t;){r=t.fn,t=t.next;try{r()}catch(i){throw t?n():e=void 0,i}}e=void 0,i&&i.enter()};if(a)n=function(){s.nextTick(l)};else if(!o||i.navigator&&i.navigator.standalone)if(u&&u.resolve){var c=u.resolve(void 0);n=function(){c.then(l)}}else n=function(){r.call(i,l)};else{var f=!0,p=document.createTextNode("");new o(l).observe(p,{characterData:!0}),n=function(){p.data=f=!f}}return function(i){var r={fn:i,next:void 0};e&&(e.next=r),t||(t=r,n()),e=r}}},function(t,e,n){var i=n(13),r=n(2),o=n(47);t.exports=n(4)?Object.defineProperties:function(t,e){r(t);for(var n,s=o(e),u=s.length,a=0;u>a;)i.f(t,n=s[a++],e[n]);return t}},function(t,e,n){var i=n(46),r=n(22).concat("length","prototype");e.f=Object.getOwnPropertyNames||function(t){return i(t,r)}},function(t,e,n){var i=n(12),r=n(28),o=n(27)("IE_PROTO"),s=Object.prototype;t.exports=Object.getPrototypeOf||function(t){return t=r(t),i(t,o)?t[o]:"function"==typeof t.constructor&&t instanceof t.constructor?t.constructor.prototype:t instanceof Object?s:null}},function(t,e){e.f={}.propertyIsEnumerable},function(t,e){t.exports=function(t){try{return{e:!1,v:t()}}catch(t){return{e:!0,v:t}}}},function(t,e,n){var i=n(6);t.exports=function(t,e,n){for(var r in e)i(t,r,e[r],n);return t}},function(t,e,n){var i=n(5),r=n(2),o=function(t,e){if(r(t),!i(e)&&null!==e)throw TypeError(e+": can't set as prototype!")};t.exports={set:Object.setPrototypeOf||("__proto__"in{}?function(t,e,i){try{i=n(11)(Function.call,n(45).f(Object.prototype,"__proto__").set,2),i(t,[]),e=!(t instanceof Array)}catch(t){e=!0}return function(t,n){return o(t,n),e?t.__proto__=n:i(t,n),t}}({},!1):void 0),check:o}},function(t,e,n){"use strict";var i=n(0),r=n(13),o=n(4),s=n(1)("species");t.exports=function(t){var e=i[t];o&&e&&!e[s]&&r.f(e,s,{configurable:!0,get:function(){return this}})}},function(t,e){t.exports="\t\n\v\f\r   ᠎             　\u2028\u2029\ufeff"},function(t,e,n){var i=n(53),r=Math.max,o=Math.min;t.exports=function(t,e){return t=i(t),t<0?r(t+e,0):o(t,e)}},function(t,e,n){var i=n(0),r=i.navigator;t.exports=r&&r.userAgent||""},function(t,e,n){var i=n(38),r=n(1)("iterator"),o=n(15);t.exports=n(10).getIteratorMethod=function(t){if(void 0!=t)return t[r]||t["@@iterator"]||o[i(t)]}},function(t,e,n){"use strict";var i=n(3),r=n(20)(2);i(i.P+i.F*!n(17)([].filter,!0),"Array",{filter:function(t){return r(this,t,arguments[1])}})},function(t,e,n){"use strict";var i=n(3),r=n(37)(!1),o=[].indexOf,s=!!o&&1/[1].indexOf(1,-0)<0;i(i.P+i.F*(s||!n(17)(o)),"Array",{indexOf:function(t){return s?o.apply(this,arguments)||0:r(this,t,arguments[1])}})},function(t,e,n){var i=n(3);i(i.S,"Array",{isArray:n(42)})},function(t,e,n){"use strict";var i=n(3),r=n(20)(1);i(i.P+i.F*!n(17)([].map,!0),"Array",{map:function(t){return r(this,t,arguments[1])}})},function(t,e,n){"use strict";var i=n(3),r=n(62);i(i.P+i.F*!n(17)([].reduce,!0),"Array",{reduce:function(t){return r(this,t,arguments.length,arguments[1],!1)}})},function(t,e,n){var i=Date.prototype,r=i.toString,o=i.getTime;new Date(NaN)+""!="Invalid Date"&&n(6)(i,"toString",function(){var t=o.call(this);return t===t?r.call(this):"Invalid Date"})},function(t,e,n){n(4)&&"g"!=/./g.flags&&n(13).f(RegExp.prototype,"flags",{configurable:!0,get:n(39)})},function(t,e,n){n(65)("search",1,function(t,e,n){return[function(n){"use strict";var i=t(this),r=void 0==n?void 0:n[e];return void 0!==r?r.call(n,i):new RegExp(n)[e](String(i))},n]})},function(t,e,n){"use strict";n(94);var i=n(2),r=n(39),o=n(4),s=/./.toString,u=function(t){n(6)(RegExp.prototype,"toString",t,!0)};n(7)(function(){return"/a/b"!=s.call({source:"a",flags:"b"})})?u(function(){var t=i(this);return"/".concat(t.source,"/","flags"in t?t.flags:!o&&t instanceof RegExp?r.call(t):void 0)}):"toString"!=s.name&&u(function(){return s.call(this)})},function(t,e,n){"use strict";n(51)("trim",function(t){return function(){return t(this,3)}})},function(t,e,n){for(var i=n(34),r=n(47),o=n(6),s=n(0),u=n(8),a=n(15),l=n(1),c=l("iterator"),f=l("toStringTag"),p=a.Array,h={CSSRuleList:!0,CSSStyleDeclaration:!1,CSSValueList:!1,ClientRectList:!1,DOMRectList:!1,DOMStringList:!1,DOMTokenList:!0,DataTransferItemList:!1,FileList:!1,HTMLAllCollection:!1,HTMLCollection:!1,HTMLFormElement:!1,HTMLSelectElement:!1,MediaList:!0,MimeTypeArray:!1,NamedNodeMap:!1,NodeList:!0,PaintRequestList:!1,Plugin:!1,PluginArray:!1,SVGLengthList:!1,SVGNumberList:!1,SVGPathSegList:!1,SVGPointList:!1,SVGStringList:!1,SVGTransformList:!1,SourceBufferList:!1,StyleSheetList:!0,TextTrackCueList:!1,TextTrackList:!1,TouchList:!1},d=r(h),v=0;v<d.length;v++){var g,y=d[v],m=h[y],b=s[y],_=b&&b.prototype;if(_&&(_[c]||u(_,c,p),_[f]||u(_,f,y),a[y]=p,m))for(g in i)_[g]||o(_,g,i[g],!0)}},function(t,e){},function(t,e){t.exports=function(t,e,n,i,r,o){var s,u=t=t||{},a=typeof t.default;"object"!==a&&"function"!==a||(s=t,u=t.default);var l="function"==typeof u?u.options:u;e&&(l.render=e.render,l.staticRenderFns=e.staticRenderFns,l._compiled=!0),n&&(l.functional=!0),r&&(l._scopeId=r);var c;if(o?(c=function(t){t=t||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext,t||"undefined"==typeof __VUE_SSR_CONTEXT__||(t=__VUE_SSR_CONTEXT__),i&&i.call(this,t),t&&t._registeredComponents&&t._registeredComponents.add(o)},l._ssrRegister=c):i&&(c=i),c){var f=l.functional,p=f?l.render:l.beforeCreate;f?(l._injectStyles=c,l.render=function(t,e){return c.call(e),p(t,e)}):l.beforeCreate=p?[].concat(p,c):[c]}return{esModule:s,exports:u,options:l}}},function(t,e,n){"use strict";var i=function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("div",{staticClass:"multiselect",class:{"multiselect--active":t.isOpen,"multiselect--disabled":t.disabled,"multiselect--above":t.isAbove},attrs:{tabindex:t.searchable?-1:t.tabindex},on:{focus:function(e){t.activate()},blur:function(e){!t.searchable&&t.deactivate()},keydown:[function(e){return"button"in e||!t._k(e.keyCode,"down",40,e.key,["Down","ArrowDown"])?e.target!==e.currentTarget?null:(e.preventDefault(),void t.pointerForward()):null},function(e){return"button"in e||!t._k(e.keyCode,"up",38,e.key,["Up","ArrowUp"])?e.target!==e.currentTarget?null:(e.preventDefault(),void t.pointerBackward()):null}],keypress:function(e){return"button"in e||!t._k(e.keyCode,"enter",13,e.key,"Enter")||!t._k(e.keyCode,"tab",9,e.key,"Tab")?(e.stopPropagation(),e.target!==e.currentTarget?null:void t.addPointerElement(e)):null},keyup:function(e){if(!("button"in e)&&t._k(e.keyCode,"esc",27,e.key,"Escape"))return null;t.deactivate()}}},[t._t("caret",[n("div",{staticClass:"multiselect__select",on:{mousedown:function(e){e.preventDefault(),e.stopPropagation(),t.toggle()}}})],{toggle:t.toggle}),t._v(" "),t._t("clear",null,{search:t.search}),t._v(" "),n("div",{ref:"tags",staticClass:"multiselect__tags"},[t._t("selection",[n("div",{directives:[{name:"show",rawName:"v-show",value:t.visibleValues.length>0,expression:"visibleValues.length > 0"}],staticClass:"multiselect__tags-wrap"},[t._l(t.visibleValues,function(e,i){return[t._t("tag",[n("span",{key:i,staticClass:"multiselect__tag"},[n("span",{domProps:{textContent:t._s(t.getOptionLabel(e))}}),t._v(" "),n("i",{staticClass:"multiselect__tag-icon",attrs:{"aria-hidden":"true",tabindex:"1"},on:{keypress:function(n){if(!("button"in n)&&t._k(n.keyCode,"enter",13,n.key,"Enter"))return null;n.preventDefault(),t.removeElement(e)},mousedown:function(n){n.preventDefault(),t.removeElement(e)}}})])],{option:e,search:t.search,remove:t.removeElement})]})],2),t._v(" "),t.internalValue&&t.internalValue.length>t.limit?[t._t("limit",[n("strong",{staticClass:"multiselect__strong",domProps:{textContent:t._s(t.limitText(t.internalValue.length-t.limit))}})])]:t._e()],{search:t.search,remove:t.removeElement,values:t.visibleValues,isOpen:t.isOpen}),t._v(" "),n("transition",{attrs:{name:"multiselect__loading"}},[t._t("loading",[n("div",{directives:[{name:"show",rawName:"v-show",value:t.loading,expression:"loading"}],staticClass:"multiselect__spinner"})])],2),t._v(" "),t.searchable?n("input",{ref:"search",staticClass:"multiselect__input",style:t.inputStyle,attrs:{name:t.name,id:t.id,type:"text",autocomplete:"nope",placeholder:t.placeholder,disabled:t.disabled,tabindex:t.tabindex},domProps:{value:t.search},on:{input:function(e){t.updateSearch(e.target.value)},focus:function(e){e.preventDefault(),t.activate()},blur:function(e){e.preventDefault(),t.deactivate()},keyup:function(e){if(!("button"in e)&&t._k(e.keyCode,"esc",27,e.key,"Escape"))return null;t.deactivate()},keydown:[function(e){if(!("button"in e)&&t._k(e.keyCode,"down",40,e.key,["Down","ArrowDown"]))return null;e.preventDefault(),t.pointerForward()},function(e){if(!("button"in e)&&t._k(e.keyCode,"up",38,e.key,["Up","ArrowUp"]))return null;e.preventDefault(),t.pointerBackward()},function(e){if(!("button"in e)&&t._k(e.keyCode,"delete",[8,46],e.key,["Backspace","Delete"]))return null;e.stopPropagation(),t.removeLastElement()}],keypress:function(e){return"button"in e||!t._k(e.keyCode,"enter",13,e.key,"Enter")?(e.preventDefault(),e.stopPropagation(),e.target!==e.currentTarget?null:void t.addPointerElement(e)):null}}}):t._e(),t._v(" "),t.isSingleLabelVisible?n("span",{staticClass:"multiselect__single",on:{mousedown:function(e){return e.preventDefault(),t.toggle(e)}}},[t._t("singleLabel",[[t._v(t._s(t.currentOptionLabel))]],{option:t.singleValue})],2):t._e(),t._v(" "),t.isPlaceholderVisible?n("span",{staticClass:"multiselect__placeholder",on:{mousedown:function(e){return e.preventDefault(),t.toggle(e)}}},[t._t("placeholder",[t._v("\n          "+t._s(t.placeholder)+"\n        ")])],2):t._e()],2),t._v(" "),n("transition",{attrs:{name:"multiselect"}},[n("div",{directives:[{name:"show",rawName:"v-show",value:t.isOpen,expression:"isOpen"}],ref:"list",staticClass:"multiselect__content-wrapper",style:{maxHeight:t.optimizedHeight+"px"},attrs:{tabindex:"-1"},on:{focus:t.activate,mousedown:function(t){t.preventDefault()}}},[n("ul",{staticClass:"multiselect__content",style:t.contentStyle},[t._t("beforeList"),t._v(" "),t.multiple&&t.max===t.internalValue.length?n("li",[n("span",{staticClass:"multiselect__option"},[t._t("maxElements",[t._v("Maximum of "+t._s(t.max)+" options selected. First remove a selected option to select another.")])],2)]):t._e(),t._v(" "),!t.max||t.internalValue.length<t.max?t._l(t.filteredOptions,function(e,i){return n("li",{key:i,staticClass:"multiselect__element"},[e&&(e.$isLabel||e.$isDisabled)?t._e():n("span",{staticClass:"multiselect__option",class:t.optionHighlight(i,e),attrs:{"data-select":e&&e.isTag?t.tagPlaceholder:t.selectLabelText,"data-selected":t.selectedLabelText,"data-deselect":t.deselectLabelText},on:{click:function(n){n.stopPropagation(),t.select(e)},mouseenter:function(e){if(e.target!==e.currentTarget)return null;t.pointerSet(i)}}},[t._t("option",[n("span",[t._v(t._s(t.getOptionLabel(e)))])],{option:e,search:t.search})],2),t._v(" "),e&&(e.$isLabel||e.$isDisabled)?n("span",{staticClass:"multiselect__option",class:t.groupHighlight(i,e),attrs:{"data-select":t.groupSelect&&t.selectGroupLabelText,"data-deselect":t.groupSelect&&t.deselectGroupLabelText},on:{mouseenter:function(e){if(e.target!==e.currentTarget)return null;t.groupSelect&&t.pointerSet(i)},mousedown:function(n){n.preventDefault(),t.selectGroup(e)}}},[t._t("option",[n("span",[t._v(t._s(t.getOptionLabel(e)))])],{option:e,search:t.search})],2):t._e()])}):t._e(),t._v(" "),n("li",{directives:[{name:"show",rawName:"v-show",value:t.showNoResults&&0===t.filteredOptions.length&&t.search&&!t.loading,expression:"showNoResults && (filteredOptions.length === 0 && search && !loading)"}]},[n("span",{staticClass:"multiselect__option"},[t._t("noResult",[t._v("No elements found. Consider changing the search query.")],{search:t.search})],2)]),t._v(" "),n("li",{directives:[{name:"show",rawName:"v-show",value:t.showNoOptions&&0===t.options.length&&!t.search&&!t.loading,expression:"showNoOptions && (options.length === 0 && !search && !loading)"}]},[n("span",{staticClass:"multiselect__option"},[t._t("noOptions",[t._v("List is empty.")])],2)]),t._v(" "),t._t("afterList")],2)])])],2)},r=[],o={render:i,staticRenderFns:r};e.a=o}])});
 
 /***/ }),
-/* 60 */
+/* 64 */
 /***/ (function(module, exports) {
 
 module.exports = function() {
@@ -62209,7 +65616,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 61 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -62718,7 +66125,9 @@ var render = function() {
                               [_vm._v("Estado Civil")]
                             ),
                             _vm._v(" "),
-                            _c("option", [_vm._v("Soltero/a")]),
+                            _c("option", { attrs: { value: "Soltero/a" } }, [
+                              _vm._v("Soltero/a")
+                            ]),
                             _vm._v(" "),
                             _c("option", [_vm._v("Casado/a")]),
                             _vm._v(" "),
@@ -63441,19 +66850,19 @@ if (false) {
 }
 
 /***/ }),
-/* 62 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(63)
+  __webpack_require__(67)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(65)
+var __vue_script__ = __webpack_require__(69)
 /* template */
-var __vue_template__ = __webpack_require__(66)
+var __vue_template__ = __webpack_require__(70)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -63492,13 +66901,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 63 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(64);
+var content = __webpack_require__(68);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -63518,7 +66927,7 @@ if(false) {
 }
 
 /***/ }),
-/* 64 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
@@ -63532,7 +66941,7 @@ exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    pos
 
 
 /***/ }),
-/* 65 */
+/* 69 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -63930,7 +67339,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 66 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -64549,19 +67958,19 @@ if (false) {
 }
 
 /***/ }),
-/* 67 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(68)
+  __webpack_require__(72)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(70)
+var __vue_script__ = __webpack_require__(74)
 /* template */
-var __vue_template__ = __webpack_require__(71)
+var __vue_template__ = __webpack_require__(75)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -64600,13 +68009,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 68 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(69);
+var content = __webpack_require__(73);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -64626,7 +68035,7 @@ if(false) {
 }
 
 /***/ }),
-/* 69 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
@@ -64640,7 +68049,7 @@ exports.push([module.i, "\n.modal-content {\r\n  width: 100% !important;\r\n  po
 
 
 /***/ }),
-/* 70 */
+/* 74 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65190,7 +68599,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 71 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -65858,19 +69267,19 @@ if (false) {
 }
 
 /***/ }),
-/* 72 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(73)
+  __webpack_require__(77)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(75)
+var __vue_script__ = __webpack_require__(79)
 /* template */
-var __vue_template__ = __webpack_require__(76)
+var __vue_template__ = __webpack_require__(80)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -65909,13 +69318,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 73 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(74);
+var content = __webpack_require__(78);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -65935,7 +69344,7 @@ if(false) {
 }
 
 /***/ }),
-/* 74 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
@@ -65949,7 +69358,7 @@ exports.push([module.i, "\n.modal-content {\r\n  width: 100% !important;\r\n  po
 
 
 /***/ }),
-/* 75 */
+/* 79 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66761,7 +70170,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 76 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -67672,7 +71081,12 @@ var render = function() {
                       _vm._v(" "),
                       _c("div", { staticClass: "col-md-9" }, [
                         _c("input", {
-                          attrs: { type: "file", id: "data", name: "data" },
+                          attrs: {
+                            type: "file",
+                            accept: "application/pdf",
+                            id: "data",
+                            name: "data"
+                          },
                           on: { change: _vm.getImage }
                         }),
                         _vm._v(" "),
@@ -67819,19 +71233,19 @@ if (false) {
 }
 
 /***/ }),
-/* 77 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(78)
+  __webpack_require__(82)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(80)
+var __vue_script__ = __webpack_require__(84)
 /* template */
-var __vue_template__ = __webpack_require__(85)
+var __vue_template__ = __webpack_require__(89)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -67870,13 +71284,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 78 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(79);
+var content = __webpack_require__(83);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -67896,7 +71310,7 @@ if(false) {
 }
 
 /***/ }),
-/* 79 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
@@ -67910,14 +71324,14 @@ exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    pos
 
 
 /***/ }),
-/* 80 */
+/* 84 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_toastr__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_toastr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_toastr__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue2_datepicker__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue2_datepicker__ = __webpack_require__(85);
 //
 //
 //
@@ -68395,11 +71809,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 81 */
+/* 85 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_date_format_parse__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_date_format_parse__ = __webpack_require__(86);
 
 
 function _typeof(obj) {
@@ -72183,13 +75597,13 @@ _extends(DatePicker, {
 
 
 /***/ }),
-/* 82 */
+/* 86 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__format__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__format__ = __webpack_require__(87);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__format__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__parse__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__parse__ = __webpack_require__(88);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_1__parse__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util__ = __webpack_require__(10);
 /* unused harmony reexport isDate */
@@ -72201,12 +75615,12 @@ _extends(DatePicker, {
 
 
 /***/ }),
-/* 83 */
+/* 87 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__locale_en__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__locale_en__ = __webpack_require__(21);
 
 
 var REGEX_FORMAT = /\[([^\]]+)]|YYYY|YY?|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|m{1,2}|s{1,2}|Z{1,2}|S{1,3}|w{1,2}|x|X|a|A/g;
@@ -72406,12 +75820,12 @@ function format(val, str) {
 /* harmony default export */ __webpack_exports__["a"] = (format);
 
 /***/ }),
-/* 84 */
+/* 88 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = parse;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__locale_en__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__locale_en__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util__ = __webpack_require__(10);
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
@@ -72746,7 +76160,7 @@ function parse(str, format) {
 }
 
 /***/ }),
-/* 85 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -73523,19 +76937,19 @@ if (false) {
 }
 
 /***/ }),
-/* 86 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(87)
+  __webpack_require__(91)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(89)
+var __vue_script__ = __webpack_require__(93)
 /* template */
-var __vue_template__ = __webpack_require__(90)
+var __vue_template__ = __webpack_require__(94)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -73574,13 +76988,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 87 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(88);
+var content = __webpack_require__(92);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -73600,7 +77014,7 @@ if(false) {
 }
 
 /***/ }),
-/* 88 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
@@ -73614,7 +77028,7 @@ exports.push([module.i, "\n.modal-content {\r\n  width: 100% !important;\r\n  po
 
 
 /***/ }),
-/* 89 */
+/* 93 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -74144,7 +77558,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 90 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -74768,19 +78182,19 @@ if (false) {
 }
 
 /***/ }),
-/* 91 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(92)
+  __webpack_require__(96)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(94)
+var __vue_script__ = __webpack_require__(98)
 /* template */
-var __vue_template__ = __webpack_require__(95)
+var __vue_template__ = __webpack_require__(99)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -74819,13 +78233,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 92 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(93);
+var content = __webpack_require__(97);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -74845,7 +78259,7 @@ if(false) {
 }
 
 /***/ }),
-/* 93 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
@@ -74859,7 +78273,7 @@ exports.push([module.i, "\n.modal-content {\r\n  width: 100% !important;\r\n  po
 
 
 /***/ }),
-/* 94 */
+/* 98 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -75372,7 +78786,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 95 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -75931,19 +79345,19 @@ if (false) {
 }
 
 /***/ }),
-/* 96 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(97)
+  __webpack_require__(101)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(99)
+var __vue_script__ = __webpack_require__(103)
 /* template */
-var __vue_template__ = __webpack_require__(100)
+var __vue_template__ = __webpack_require__(104)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -75982,13 +79396,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 97 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(98);
+var content = __webpack_require__(102);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -76008,7 +79422,7 @@ if(false) {
 }
 
 /***/ }),
-/* 98 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
@@ -76022,7 +79436,7 @@ exports.push([module.i, "\n.modal-content {\r\n  width: 100% !important;\r\n  po
 
 
 /***/ }),
-/* 99 */
+/* 103 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -76573,7 +79987,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 100 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -77246,19 +80660,19 @@ if (false) {
 }
 
 /***/ }),
-/* 101 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(102)
+  __webpack_require__(106)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(104)
+var __vue_script__ = __webpack_require__(108)
 /* template */
-var __vue_template__ = __webpack_require__(105)
+var __vue_template__ = __webpack_require__(109)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -77297,13 +80711,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 102 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(103);
+var content = __webpack_require__(107);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -77323,7 +80737,7 @@ if(false) {
 }
 
 /***/ }),
-/* 103 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
@@ -77337,7 +80751,7 @@ exports.push([module.i, "\n.modal-content {\r\n  width: 100% !important;\r\n  po
 
 
 /***/ }),
-/* 104 */
+/* 108 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -77871,7 +81285,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 105 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -78489,19 +81903,19 @@ if (false) {
 }
 
 /***/ }),
-/* 106 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(107)
+  __webpack_require__(111)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(109)
+var __vue_script__ = __webpack_require__(113)
 /* template */
-var __vue_template__ = __webpack_require__(110)
+var __vue_template__ = __webpack_require__(114)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -78540,13 +81954,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 107 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(108);
+var content = __webpack_require__(112);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -78566,7 +81980,7 @@ if(false) {
 }
 
 /***/ }),
-/* 108 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
@@ -78580,7 +81994,7 @@ exports.push([module.i, "\n.modal-content {\r\n  width: 100% !important;\r\n  po
 
 
 /***/ }),
-/* 109 */
+/* 113 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -79476,7 +82890,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 110 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -80629,19 +84043,19 @@ if (false) {
 }
 
 /***/ }),
-/* 111 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(112)
+  __webpack_require__(116)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(114)
+var __vue_script__ = __webpack_require__(118)
 /* template */
-var __vue_template__ = __webpack_require__(115)
+var __vue_template__ = __webpack_require__(119)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -80680,13 +84094,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 112 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(113);
+var content = __webpack_require__(117);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -80706,7 +84120,7 @@ if(false) {
 }
 
 /***/ }),
-/* 113 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
@@ -80720,7 +84134,7 @@ exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    pos
 
 
 /***/ }),
-/* 114 */
+/* 118 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -81084,7 +84498,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 115 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -81609,15 +85023,15 @@ if (false) {
 }
 
 /***/ }),
-/* 116 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(117)
+var __vue_script__ = __webpack_require__(121)
 /* template */
-var __vue_template__ = __webpack_require__(118)
+var __vue_template__ = __webpack_require__(122)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -81656,7 +85070,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 117 */
+/* 121 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -81967,7 +85381,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 118 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -82082,19 +85496,19 @@ if (false) {
 }
 
 /***/ }),
-/* 119 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(120)
+  __webpack_require__(124)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(122)
+var __vue_script__ = __webpack_require__(126)
 /* template */
-var __vue_template__ = __webpack_require__(123)
+var __vue_template__ = __webpack_require__(127)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -82133,13 +85547,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 120 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(121);
+var content = __webpack_require__(125);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -82159,7 +85573,7 @@ if(false) {
 }
 
 /***/ }),
-/* 121 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
@@ -82173,7 +85587,7 @@ exports.push([module.i, "\n.modal-content {\r\n  width: 100% !important;\r\n  po
 
 
 /***/ }),
-/* 122 */
+/* 126 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -82696,7 +86110,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 123 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -83365,19 +86779,19 @@ if (false) {
 }
 
 /***/ }),
-/* 124 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(125)
+  __webpack_require__(129)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(127)
+var __vue_script__ = __webpack_require__(131)
 /* template */
-var __vue_template__ = __webpack_require__(128)
+var __vue_template__ = __webpack_require__(132)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -83416,13 +86830,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 125 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(126);
+var content = __webpack_require__(130);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -83442,7 +86856,7 @@ if(false) {
 }
 
 /***/ }),
-/* 126 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
@@ -83456,7 +86870,7 @@ exports.push([module.i, "\n.modal-content {\r\n  width: 100% !important;\r\n  po
 
 
 /***/ }),
-/* 127 */
+/* 131 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -84047,7 +87461,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 128 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -84774,19 +88188,19 @@ if (false) {
 }
 
 /***/ }),
-/* 129 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(130)
+  __webpack_require__(134)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(132)
+var __vue_script__ = __webpack_require__(136)
 /* template */
-var __vue_template__ = __webpack_require__(133)
+var __vue_template__ = __webpack_require__(137)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -84825,13 +88239,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 130 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(131);
+var content = __webpack_require__(135);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -84851,7 +88265,7 @@ if(false) {
 }
 
 /***/ }),
-/* 131 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
@@ -84865,7 +88279,7 @@ exports.push([module.i, "\n.modal-content {\r\n  width: 100% !important;\r\n  po
 
 
 /***/ }),
-/* 132 */
+/* 136 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -85932,7 +89346,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 133 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -86492,490 +89906,6 @@ var render = function() {
                 ])
               ])
             ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col" }, [
-              _c("div", { staticClass: "card" }, [
-                _c("div", { staticClass: "card-header" }, [
-                  _vm._v("Dias No Laborales Proximos")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "card-body" }, [
-                  _c("div", { staticClass: "form-group row" }, [
-                    _c("div", { staticClass: "col" }, [
-                      _c("div", { staticClass: "input-group" }, [
-                        _c(
-                          "select",
-                          {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.criDiaNoLaboral,
-                                expression: "criDiaNoLaboral"
-                              }
-                            ],
-                            staticClass: "form-control col",
-                            on: {
-                              change: function($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function(o) {
-                                    return o.selected
-                                  })
-                                  .map(function(o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
-                                _vm.criDiaNoLaboral = $event.target.multiple
-                                  ? $$selectedVal
-                                  : $$selectedVal[0]
-                              }
-                            }
-                          },
-                          [
-                            _c("option", { attrs: { value: "dia" } }, [
-                              _vm._v("Dia")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.buDiaNoLaboral,
-                              expression: "buDiaNoLaboral"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: { type: "text", placeholder: "Buscar dia" },
-                          domProps: { value: _vm.buDiaNoLaboral },
-                          on: {
-                            keyup: function($event) {
-                              if (
-                                !$event.type.indexOf("key") &&
-                                _vm._k(
-                                  $event.keyCode,
-                                  "enter",
-                                  13,
-                                  $event.key,
-                                  "Enter"
-                                )
-                              ) {
-                                return null
-                              }
-                              return _vm.listarDiaNoLaboral(
-                                1,
-                                _vm.buDiaNoLaboral,
-                                _vm.criDiaNoLaboral
-                              )
-                            },
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.buDiaNoLaboral = $event.target.value
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-primary",
-                            attrs: { type: "submit" },
-                            on: {
-                              click: function($event) {
-                                return _vm.listarDiaNoLaboral(
-                                  1,
-                                  _vm.buDiaNoLaboral,
-                                  _vm.criDiaNoLaboral
-                                )
-                              }
-                            }
-                          },
-                          [
-                            _c("i", { staticClass: "fa fa-search" }),
-                            _vm._v(" Buscar\n                      ")
-                          ]
-                        )
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "table",
-                    {
-                      staticClass: "table table-bordered table-striped table-sm"
-                    },
-                    [
-                      _vm._m(3),
-                      _vm._v(" "),
-                      _c(
-                        "tbody",
-                        _vm._l(_vm.arrayDiaNoLaboral, function(diaNoLaboral) {
-                          return _c("tr", { key: diaNoLaboral.id }, [
-                            _c("td", {
-                              domProps: { textContent: _vm._s(diaNoLaboral.id) }
-                            }),
-                            _vm._v(" "),
-                            _c("td", {
-                              domProps: {
-                                textContent: _vm._s(diaNoLaboral.dia2)
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("td", {
-                              domProps: {
-                                textContent: _vm._s(
-                                  diaNoLaboral.nombreEmpresa +
-                                    " ( " +
-                                    diaNoLaboral.empresa_id +
-                                    " )"
-                                )
-                              }
-                            })
-                          ])
-                        }),
-                        0
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("nav", [
-                    _c(
-                      "ul",
-                      { staticClass: "pagination" },
-                      [
-                        _vm.pagDiaNoLaboral.current_page > 1
-                          ? _c("li", { staticClass: "page-item" }, [
-                              _c(
-                                "a",
-                                {
-                                  staticClass: "page-link",
-                                  attrs: { href: "#" },
-                                  on: {
-                                    click: function($event) {
-                                      $event.preventDefault()
-                                      return _vm.cambiarPaginaDiaNoLaboral(
-                                        _vm.pagDiaNoLaboral.current_page - 1,
-                                        _vm.buDiaNoLaboral,
-                                        _vm.criDiaNoLaboral
-                                      )
-                                    }
-                                  }
-                                },
-                                [_vm._v("Ant")]
-                              )
-                            ])
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _vm._l(_vm.pagesNumberDiaNoLaboral, function(page) {
-                          return _c(
-                            "li",
-                            {
-                              key: page,
-                              staticClass: "page-item",
-                              class: [
-                                page == _vm.isActivedDiaNoLaboral
-                                  ? "active"
-                                  : ""
-                              ]
-                            },
-                            [
-                              _c("a", {
-                                staticClass: "page-link",
-                                attrs: { href: "#" },
-                                domProps: { textContent: _vm._s(page) },
-                                on: {
-                                  click: function($event) {
-                                    $event.preventDefault()
-                                    return _vm.cambiarPaginaDiaNoLaboral(
-                                      page,
-                                      _vm.buDiaNoLaboral,
-                                      _vm.criDiaNoLaboral
-                                    )
-                                  }
-                                }
-                              })
-                            ]
-                          )
-                        }),
-                        _vm._v(" "),
-                        _vm.pagDiaNoLaboral.current_page <
-                        _vm.pagDiaNoLaboral.last_page
-                          ? _c("li", { staticClass: "page-item" }, [
-                              _c(
-                                "a",
-                                {
-                                  staticClass: "page-link",
-                                  attrs: { href: "#" },
-                                  on: {
-                                    click: function($event) {
-                                      $event.preventDefault()
-                                      return _vm.cambiarPaginaDiaNoLaboral(
-                                        _vm.pagDiaNoLaboral.current_page + 1,
-                                        _vm.buDiaNoLaboral,
-                                        _vm.criDiaNoLaboral
-                                      )
-                                    }
-                                  }
-                                },
-                                [_vm._v("Sig")]
-                              )
-                            ])
-                          : _vm._e()
-                      ],
-                      2
-                    )
-                  ])
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col" }, [
-              _c("div", { staticClass: "card" }, [
-                _c("div", { staticClass: "card-header" }, [
-                  _vm._v("Eventos Proximos")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "card-body" }, [
-                  _c("div", { staticClass: "form-group row" }, [
-                    _c("div", { staticClass: "col" }, [
-                      _c("div", { staticClass: "input-group" }, [
-                        _c(
-                          "select",
-                          {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.criEvento,
-                                expression: "criEvento"
-                              }
-                            ],
-                            staticClass: "form-control col",
-                            on: {
-                              change: function($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function(o) {
-                                    return o.selected
-                                  })
-                                  .map(function(o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
-                                _vm.criEvento = $event.target.multiple
-                                  ? $$selectedVal
-                                  : $$selectedVal[0]
-                              }
-                            }
-                          },
-                          [
-                            _c("option", { attrs: { value: "titulo" } }, [
-                              _vm._v("Título")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.buEvento,
-                              expression: "buEvento"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            placeholder: "Texto a buEvento"
-                          },
-                          domProps: { value: _vm.buEvento },
-                          on: {
-                            keyup: function($event) {
-                              if (
-                                !$event.type.indexOf("key") &&
-                                _vm._k(
-                                  $event.keyCode,
-                                  "enter",
-                                  13,
-                                  $event.key,
-                                  "Enter"
-                                )
-                              ) {
-                                return null
-                              }
-                              return _vm.listarEvento(
-                                1,
-                                _vm.buEvento,
-                                _vm.criEvento
-                              )
-                            },
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.buEvento = $event.target.value
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-primary",
-                            attrs: { type: "submit" },
-                            on: {
-                              click: function($event) {
-                                return _vm.listarEvento(
-                                  1,
-                                  _vm.buEvento,
-                                  _vm.criEvento
-                                )
-                              }
-                            }
-                          },
-                          [
-                            _c("i", { staticClass: "fa fa-search" }),
-                            _vm._v(" Buscar\n                      ")
-                          ]
-                        )
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "table",
-                    {
-                      staticClass: "table table-bordered table-striped table-sm"
-                    },
-                    [
-                      _vm._m(4),
-                      _vm._v(" "),
-                      _c(
-                        "tbody",
-                        _vm._l(_vm.arrayEvento, function(evento) {
-                          return _c("tr", { key: evento.id }, [
-                            _c("td", {
-                              domProps: { textContent: _vm._s(evento.id) }
-                            }),
-                            _vm._v(" "),
-                            _c("td", {
-                              domProps: { textContent: _vm._s(evento.titulo) }
-                            }),
-                            _vm._v(" "),
-                            _c("td", {
-                              domProps: { textContent: _vm._s(evento.fecha2) }
-                            }),
-                            _vm._v(" "),
-                            _c("td", {
-                              domProps: {
-                                textContent: _vm._s(
-                                  evento.nombreDepartamento +
-                                    " ( " +
-                                    evento.departamento_id +
-                                    " )"
-                                )
-                              }
-                            })
-                          ])
-                        }),
-                        0
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("nav", [
-                    _c(
-                      "ul",
-                      { staticClass: "pagination" },
-                      [
-                        _vm.pagEvento.current_page > 1
-                          ? _c("li", { staticClass: "page-item" }, [
-                              _c(
-                                "a",
-                                {
-                                  staticClass: "page-link",
-                                  attrs: { href: "#" },
-                                  on: {
-                                    click: function($event) {
-                                      $event.preventDefault()
-                                      return _vm.cambiarPaginaEvento(
-                                        _vm.pagEvento.current_page - 1,
-                                        _vm.buEvento,
-                                        _vm.criEvento
-                                      )
-                                    }
-                                  }
-                                },
-                                [_vm._v("Ant")]
-                              )
-                            ])
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _vm._l(_vm.pagesNumberEvento, function(page) {
-                          return _c(
-                            "li",
-                            {
-                              key: page,
-                              staticClass: "page-item",
-                              class: [
-                                page == _vm.isActivedEvento ? "active" : ""
-                              ]
-                            },
-                            [
-                              _c("a", {
-                                staticClass: "page-link",
-                                attrs: { href: "#" },
-                                domProps: { textContent: _vm._s(page) },
-                                on: {
-                                  click: function($event) {
-                                    $event.preventDefault()
-                                    return _vm.cambiarPaginaEvento(
-                                      page,
-                                      _vm.buEvento,
-                                      _vm.criEvento
-                                    )
-                                  }
-                                }
-                              })
-                            ]
-                          )
-                        }),
-                        _vm._v(" "),
-                        _vm.pagEvento.current_page < _vm.pagEvento.last_page
-                          ? _c("li", { staticClass: "page-item" }, [
-                              _c(
-                                "a",
-                                {
-                                  staticClass: "page-link",
-                                  attrs: { href: "#" },
-                                  on: {
-                                    click: function($event) {
-                                      $event.preventDefault()
-                                      return _vm.cambiarPaginaEvento(
-                                        _vm.pagEvento.current_page + 1,
-                                        _vm.buEvento,
-                                        _vm.criEvento
-                                      )
-                                    }
-                                  }
-                                },
-                                [_vm._v("Sig")]
-                              )
-                            ])
-                          : _vm._e()
-                      ],
-                      2
-                    )
-                  ])
-                ])
-              ])
-            ])
           ])
         ])
       ])
@@ -87340,36 +90270,6 @@ var staticRenderFns = [
         _c("th", [_vm._v("Fin Contrato")])
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("ID")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Dia")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Empresa(id)")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("ID")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Título")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Fecha")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Departamento(id)")])
-      ])
-    ])
   }
 ]
 render._withStripped = true
@@ -87382,19 +90282,19 @@ if (false) {
 }
 
 /***/ }),
-/* 134 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(135)
+  __webpack_require__(139)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(137)
+var __vue_script__ = __webpack_require__(141)
 /* template */
-var __vue_template__ = __webpack_require__(138)
+var __vue_template__ = __webpack_require__(142)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -87433,13 +90333,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 135 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(136);
+var content = __webpack_require__(140);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -87459,7 +90359,7 @@ if(false) {
 }
 
 /***/ }),
-/* 136 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
@@ -87473,7 +90373,7 @@ exports.push([module.i, "\n.modal-content {\r\n  width: 100% !important;\r\n  po
 
 
 /***/ }),
-/* 137 */
+/* 141 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -88078,7 +90978,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 138 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -88897,17 +91797,17 @@ if (false) {
 }
 
 /***/ }),
-/* 139 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(140)
+  __webpack_require__(144)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(143)
+var __vue_script__ = __webpack_require__(146)
 /* template */
 var __vue_template__ = __webpack_require__(157)
 /* template functional */
@@ -88948,13 +91848,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 140 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(141);
+var content = __webpack_require__(145);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -88974,13 +91874,13 @@ if(false) {
 }
 
 /***/ }),
-/* 141 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
 // imports
-exports.i(__webpack_require__(142), "");
-exports.i(__webpack_require__(21), "");
+exports.i(__webpack_require__(22), "");
+exports.i(__webpack_require__(11), "");
 
 // module
 exports.push([module.i, "\n.fc-title {\r\n  color: #fff;\n}\n.fc-title:hover {\r\n  cursor: pointer;\n}\r\n", ""]);
@@ -88989,28 +91889,14 @@ exports.push([module.i, "\n.fc-title {\r\n  color: #fff;\n}\n.fc-title:hover {\r
 
 
 /***/ }),
-/* 142 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(0)(false);
-// imports
-
-
-// module
-exports.push([module.i, "@charset \"UTF-8\";\n.fc {\n  direction: ltr;\n  text-align: left;\n}\n\n.fc-rtl {\n  text-align: right;\n}\n\nbody .fc {\n  /* extra precedence to overcome jqui */\n  font-size: 1em;\n}\n\n/* Colors\n--------------------------------------------------------------------------------------------------*/\n.fc-highlight {\n  /* when user is selecting cells */\n  background: #bce8f1;\n  opacity: 0.3;\n}\n\n.fc-bgevent {\n  /* default look for background events */\n  background: #8fdf82;\n  opacity: 0.3;\n}\n\n.fc-nonbusiness {\n  /* default look for non-business-hours areas */\n  /* will inherit .fc-bgevent's styles */\n  background: #d7d7d7;\n}\n\n/* Popover\n--------------------------------------------------------------------------------------------------*/\n.fc-popover {\n  position: absolute;\n  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);\n}\n\n.fc-popover .fc-header {\n  /* TODO: be more consistent with fc-head/fc-body */\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 2px 4px;\n}\n\n.fc-rtl .fc-popover .fc-header {\n  flex-direction: row-reverse;\n}\n\n.fc-popover .fc-header .fc-title {\n  margin: 0 2px;\n}\n\n.fc-popover .fc-header .fc-close {\n  cursor: pointer;\n  opacity: 0.65;\n  font-size: 1.1em;\n}\n\n/* Misc Reusable Components\n--------------------------------------------------------------------------------------------------*/\n.fc-divider {\n  border-style: solid;\n  border-width: 1px;\n}\n\nhr.fc-divider {\n  height: 0;\n  margin: 0;\n  padding: 0 0 2px;\n  /* height is unreliable across browsers, so use padding */\n  border-width: 1px 0;\n}\n\n.fc-bg,\n.fc-bgevent-skeleton,\n.fc-highlight-skeleton,\n.fc-mirror-skeleton {\n  /* these element should always cling to top-left/right corners */\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n}\n\n.fc-bg {\n  bottom: 0;\n  /* strech bg to bottom edge */\n}\n\n.fc-bg table {\n  height: 100%;\n  /* strech bg to bottom edge */\n}\n\n/* Tables\n--------------------------------------------------------------------------------------------------*/\n.fc table {\n  width: 100%;\n  box-sizing: border-box;\n  /* fix scrollbar issue in firefox */\n  table-layout: fixed;\n  border-collapse: collapse;\n  border-spacing: 0;\n  font-size: 1em;\n  /* normalize cross-browser */\n}\n\n.fc th {\n  text-align: center;\n}\n\n.fc th,\n.fc td {\n  border-style: solid;\n  border-width: 1px;\n  padding: 0;\n  vertical-align: top;\n}\n\n.fc td.fc-today {\n  border-style: double;\n  /* overcome neighboring borders */\n}\n\n/* Internal Nav Links\n--------------------------------------------------------------------------------------------------*/\na[data-goto] {\n  cursor: pointer;\n}\n\na[data-goto]:hover {\n  text-decoration: underline;\n}\n\n/* Fake Table Rows\n--------------------------------------------------------------------------------------------------*/\n.fc .fc-row {\n  /* extra precedence to overcome themes forcing a 1px border */\n  /* no visible border by default. but make available if need be (scrollbar width compensation) */\n  border-style: solid;\n  border-width: 0;\n}\n\n.fc-row table {\n  /* don't put left/right border on anything within a fake row.\n     the outer tbody will worry about this */\n  border-left: 0 hidden transparent;\n  border-right: 0 hidden transparent;\n  /* no bottom borders on rows */\n  border-bottom: 0 hidden transparent;\n}\n\n.fc-row:first-child table {\n  border-top: 0 hidden transparent;\n  /* no top border on first row */\n}\n\n/* Day Row (used within the header and the DayGrid)\n--------------------------------------------------------------------------------------------------*/\n.fc-row {\n  position: relative;\n}\n\n.fc-row .fc-bg {\n  z-index: 1;\n}\n\n/* highlighting cells & background event skeleton */\n.fc-row .fc-bgevent-skeleton,\n.fc-row .fc-highlight-skeleton {\n  bottom: 0;\n  /* stretch skeleton to bottom of row */\n}\n\n.fc-row .fc-bgevent-skeleton table,\n.fc-row .fc-highlight-skeleton table {\n  height: 100%;\n  /* stretch skeleton to bottom of row */\n}\n\n.fc-row .fc-highlight-skeleton td,\n.fc-row .fc-bgevent-skeleton td {\n  border-color: transparent;\n}\n\n.fc-row .fc-bgevent-skeleton {\n  z-index: 2;\n}\n\n.fc-row .fc-highlight-skeleton {\n  z-index: 3;\n}\n\n/*\nrow content (which contains day/week numbers and events) as well as \"mirror\" (which contains\ntemporary rendered events).\n*/\n.fc-row .fc-content-skeleton {\n  position: relative;\n  z-index: 4;\n  padding-bottom: 2px;\n  /* matches the space above the events */\n}\n\n.fc-row .fc-mirror-skeleton {\n  z-index: 5;\n}\n\n.fc .fc-row .fc-content-skeleton table,\n.fc .fc-row .fc-content-skeleton td,\n.fc .fc-row .fc-mirror-skeleton td {\n  /* see-through to the background below */\n  /* extra precedence to prevent theme-provided backgrounds */\n  background: none;\n  /* in case <td>s are globally styled */\n  border-color: transparent;\n}\n\n.fc-row .fc-content-skeleton td,\n.fc-row .fc-mirror-skeleton td {\n  /* don't put a border between events and/or the day number */\n  border-bottom: 0;\n}\n\n.fc-row .fc-content-skeleton tbody td,\n.fc-row .fc-mirror-skeleton tbody td {\n  /* don't put a border between event cells */\n  border-top: 0;\n}\n\n/* Scrolling Container\n--------------------------------------------------------------------------------------------------*/\n.fc-scroller {\n  -webkit-overflow-scrolling: touch;\n}\n\n/* TODO: move to timegrid/daygrid */\n.fc-scroller > .fc-day-grid,\n.fc-scroller > .fc-time-grid {\n  position: relative;\n  /* re-scope all positions */\n  width: 100%;\n  /* hack to force re-sizing this inner element when scrollbars appear/disappear */\n}\n\n/* Global Event Styles\n--------------------------------------------------------------------------------------------------*/\n.fc-event {\n  position: relative;\n  /* for resize handle and other inner positioning */\n  display: block;\n  /* make the <a> tag block */\n  font-size: 0.85em;\n  line-height: 1.4;\n  border-radius: 3px;\n  border: 1px solid #3788d8;\n}\n\n.fc-event,\n.fc-event-dot {\n  background-color: #3788d8;\n  /* default BACKGROUND color */\n}\n\n.fc-event,\n.fc-event:hover {\n  color: #fff;\n  /* default TEXT color */\n  text-decoration: none;\n  /* if <a> has an href */\n}\n\n.fc-event[href],\n.fc-event.fc-draggable {\n  cursor: pointer;\n  /* give events with links and draggable events a hand mouse pointer */\n}\n\n.fc-not-allowed,\n.fc-not-allowed .fc-event {\n  /* to override an event's custom cursor */\n  cursor: not-allowed;\n}\n\n.fc-event .fc-content {\n  position: relative;\n  z-index: 2;\n}\n\n/* resizer (cursor AND touch devices) */\n.fc-event .fc-resizer {\n  position: absolute;\n  z-index: 4;\n}\n\n/* resizer (touch devices) */\n.fc-event .fc-resizer {\n  display: none;\n}\n\n.fc-event.fc-allow-mouse-resize .fc-resizer,\n.fc-event.fc-selected .fc-resizer {\n  /* only show when hovering or selected (with touch) */\n  display: block;\n}\n\n/* hit area */\n.fc-event.fc-selected .fc-resizer:before {\n  /* 40x40 touch area */\n  content: \"\";\n  position: absolute;\n  z-index: 9999;\n  /* user of this util can scope within a lower z-index */\n  top: 50%;\n  left: 50%;\n  width: 40px;\n  height: 40px;\n  margin-left: -20px;\n  margin-top: -20px;\n}\n\n/* Event Selection (only for touch devices)\n--------------------------------------------------------------------------------------------------*/\n.fc-event.fc-selected {\n  z-index: 9999 !important;\n  /* overcomes inline z-index */\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);\n}\n\n.fc-event.fc-selected:after {\n  content: \"\";\n  position: absolute;\n  z-index: 1;\n  /* same z-index as fc-bg, behind text */\n  /* overcome the borders */\n  top: -1px;\n  right: -1px;\n  bottom: -1px;\n  left: -1px;\n  /* darkening effect */\n  background: #000;\n  opacity: 0.25;\n}\n\n/* Event Dragging\n--------------------------------------------------------------------------------------------------*/\n.fc-event.fc-dragging.fc-selected {\n  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);\n}\n\n.fc-event.fc-dragging:not(.fc-selected) {\n  opacity: 0.75;\n}\n\n/* Horizontal Events\n--------------------------------------------------------------------------------------------------*/\n/* bigger touch area when selected */\n.fc-h-event.fc-selected:before {\n  content: \"\";\n  position: absolute;\n  z-index: 3;\n  /* below resizers */\n  top: -10px;\n  bottom: -10px;\n  left: 0;\n  right: 0;\n}\n\n/* events that are continuing to/from another week. kill rounded corners and butt up against edge */\n.fc-ltr .fc-h-event.fc-not-start,\n.fc-rtl .fc-h-event.fc-not-end {\n  margin-left: 0;\n  border-left-width: 0;\n  padding-left: 1px;\n  /* replace the border with padding */\n  border-top-left-radius: 0;\n  border-bottom-left-radius: 0;\n}\n\n.fc-ltr .fc-h-event.fc-not-end,\n.fc-rtl .fc-h-event.fc-not-start {\n  margin-right: 0;\n  border-right-width: 0;\n  padding-right: 1px;\n  /* replace the border with padding */\n  border-top-right-radius: 0;\n  border-bottom-right-radius: 0;\n}\n\n/* resizer (cursor AND touch devices) */\n/* left resizer  */\n.fc-ltr .fc-h-event .fc-start-resizer,\n.fc-rtl .fc-h-event .fc-end-resizer {\n  cursor: w-resize;\n  left: -1px;\n  /* overcome border */\n}\n\n/* right resizer */\n.fc-ltr .fc-h-event .fc-end-resizer,\n.fc-rtl .fc-h-event .fc-start-resizer {\n  cursor: e-resize;\n  right: -1px;\n  /* overcome border */\n}\n\n/* resizer (mouse devices) */\n.fc-h-event.fc-allow-mouse-resize .fc-resizer {\n  width: 7px;\n  top: -1px;\n  /* overcome top border */\n  bottom: -1px;\n  /* overcome bottom border */\n}\n\n/* resizer (touch devices) */\n.fc-h-event.fc-selected .fc-resizer {\n  /* 8x8 little dot */\n  border-radius: 4px;\n  border-width: 1px;\n  width: 6px;\n  height: 6px;\n  border-style: solid;\n  border-color: inherit;\n  background: #fff;\n  /* vertically center */\n  top: 50%;\n  margin-top: -4px;\n}\n\n/* left resizer  */\n.fc-ltr .fc-h-event.fc-selected .fc-start-resizer,\n.fc-rtl .fc-h-event.fc-selected .fc-end-resizer {\n  margin-left: -4px;\n  /* centers the 8x8 dot on the left edge */\n}\n\n/* right resizer */\n.fc-ltr .fc-h-event.fc-selected .fc-end-resizer,\n.fc-rtl .fc-h-event.fc-selected .fc-start-resizer {\n  margin-right: -4px;\n  /* centers the 8x8 dot on the right edge */\n}\n\n/* DayGrid events\n----------------------------------------------------------------------------------------------------\nWe use the full \"fc-day-grid-event\" class instead of using descendants because the event won't\nbe a descendant of the grid when it is being dragged.\n*/\n.fc-day-grid-event {\n  margin: 1px 2px 0;\n  /* spacing between events and edges */\n  padding: 0 1px;\n}\n\ntr:first-child > td > .fc-day-grid-event {\n  margin-top: 2px;\n  /* a little bit more space before the first event */\n}\n\n.fc-mirror-skeleton tr:first-child > td > .fc-day-grid-event {\n  margin-top: 0;\n  /* except for mirror skeleton */\n}\n\n.fc-day-grid-event .fc-content {\n  /* force events to be one-line tall */\n  white-space: nowrap;\n  overflow: hidden;\n}\n\n.fc-day-grid-event .fc-time {\n  font-weight: bold;\n}\n\n/* resizer (cursor devices) */\n/* left resizer  */\n.fc-ltr .fc-day-grid-event.fc-allow-mouse-resize .fc-start-resizer,\n.fc-rtl .fc-day-grid-event.fc-allow-mouse-resize .fc-end-resizer {\n  margin-left: -2px;\n  /* to the day cell's edge */\n}\n\n/* right resizer */\n.fc-ltr .fc-day-grid-event.fc-allow-mouse-resize .fc-end-resizer,\n.fc-rtl .fc-day-grid-event.fc-allow-mouse-resize .fc-start-resizer {\n  margin-right: -2px;\n  /* to the day cell's edge */\n}\n\n/* Event Limiting\n--------------------------------------------------------------------------------------------------*/\n/* \"more\" link that represents hidden events */\na.fc-more {\n  margin: 1px 3px;\n  font-size: 0.85em;\n  cursor: pointer;\n  text-decoration: none;\n}\n\na.fc-more:hover {\n  text-decoration: underline;\n}\n\n.fc-limited {\n  /* rows and cells that are hidden because of a \"more\" link */\n  display: none;\n}\n\n/* popover that appears when \"more\" link is clicked */\n.fc-day-grid .fc-row {\n  z-index: 1;\n  /* make the \"more\" popover one higher than this */\n}\n\n.fc-more-popover {\n  z-index: 2;\n  width: 220px;\n}\n\n.fc-more-popover .fc-event-container {\n  padding: 10px;\n}\n\n/* Now Indicator\n--------------------------------------------------------------------------------------------------*/\n.fc-now-indicator {\n  position: absolute;\n  border: 0 solid red;\n}\n\n/* Utilities\n--------------------------------------------------------------------------------------------------*/\n.fc-unselectable {\n  -webkit-user-select: none;\n  -khtml-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  -webkit-touch-callout: none;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n}\n\n/*\nTODO: more distinction between this file and common.css\n*/\n/* Colors\n--------------------------------------------------------------------------------------------------*/\n.fc-unthemed th,\n.fc-unthemed td,\n.fc-unthemed thead,\n.fc-unthemed tbody,\n.fc-unthemed .fc-divider,\n.fc-unthemed .fc-row,\n.fc-unthemed .fc-content,\n.fc-unthemed .fc-popover,\n.fc-unthemed .fc-list-view,\n.fc-unthemed .fc-list-heading td {\n  border-color: #ddd;\n}\n\n.fc-unthemed .fc-popover {\n  background-color: #fff;\n}\n\n.fc-unthemed .fc-divider,\n.fc-unthemed .fc-popover .fc-header,\n.fc-unthemed .fc-list-heading td {\n  background: #eee;\n}\n\n.fc-unthemed td.fc-today {\n  background: #fcf8e3;\n}\n\n.fc-unthemed .fc-disabled-day {\n  background: #d7d7d7;\n  opacity: 0.3;\n}\n\n/* Icons\n--------------------------------------------------------------------------------------------------\nfrom https://feathericons.com/ and built with IcoMoon\n*/\n@font-face {\n  font-family: \"fcicons\";\n  src: url(\"data:application/x-font-ttf;charset=utf-8;base64,AAEAAAALAIAAAwAwT1MvMg8SBfAAAAC8AAAAYGNtYXAXVtKNAAABHAAAAFRnYXNwAAAAEAAAAXAAAAAIZ2x5ZgYydxIAAAF4AAAFNGhlYWQUJ7cIAAAGrAAAADZoaGVhB20DzAAABuQAAAAkaG10eCIABhQAAAcIAAAALGxvY2ED4AU6AAAHNAAAABhtYXhwAA8AjAAAB0wAAAAgbmFtZXsr690AAAdsAAABhnBvc3QAAwAAAAAI9AAAACAAAwPAAZAABQAAApkCzAAAAI8CmQLMAAAB6wAzAQkAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAAAAABAAADpBgPA/8AAQAPAAEAAAAABAAAAAAAAAAAAAAAgAAAAAAADAAAAAwAAABwAAQADAAAAHAADAAEAAAAcAAQAOAAAAAoACAACAAIAAQAg6Qb//f//AAAAAAAg6QD//f//AAH/4xcEAAMAAQAAAAAAAAAAAAAAAQAB//8ADwABAAAAAAAAAAAAAgAANzkBAAAAAAEAAAAAAAAAAAACAAA3OQEAAAAAAQAAAAAAAAAAAAIAADc5AQAAAAABAWIAjQKeAskAEwAAJSc3NjQnJiIHAQYUFwEWMjc2NCcCnuLiDQ0MJAz/AA0NAQAMJAwNDcni4gwjDQwM/wANIwz/AA0NDCMNAAAAAQFiAI0CngLJABMAACUBNjQnASYiBwYUHwEHBhQXFjI3AZ4BAA0N/wAMJAwNDeLiDQ0MJAyNAQAMIw0BAAwMDSMM4uINIwwNDQAAAAIA4gC3Ax4CngATACcAACUnNzY0JyYiDwEGFB8BFjI3NjQnISc3NjQnJiIPAQYUHwEWMjc2NCcB87e3DQ0MIw3VDQ3VDSMMDQ0BK7e3DQ0MJAzVDQ3VDCQMDQ3zuLcMJAwNDdUNIwzWDAwNIwy4twwkDA0N1Q0jDNYMDA0jDAAAAgDiALcDHgKeABMAJwAAJTc2NC8BJiIHBhQfAQcGFBcWMjchNzY0LwEmIgcGFB8BBwYUFxYyNwJJ1Q0N1Q0jDA0Nt7cNDQwjDf7V1Q0N1QwkDA0Nt7cNDQwkDLfWDCMN1Q0NDCQMt7gMIw0MDNYMIw3VDQ0MJAy3uAwjDQwMAAADAFUAAAOrA1UAMwBoAHcAABMiBgcOAQcOAQcOARURFBYXHgEXHgEXHgEzITI2Nz4BNz4BNz4BNRE0JicuAScuAScuASMFITIWFx4BFx4BFx4BFREUBgcOAQcOAQcOASMhIiYnLgEnLgEnLgE1ETQ2Nz4BNz4BNz4BMxMhMjY1NCYjISIGFRQWM9UNGAwLFQkJDgUFBQUFBQ4JCRULDBgNAlYNGAwLFQkJDgUFBQUFBQ4JCRULDBgN/aoCVgQIBAQHAwMFAQIBAQIBBQMDBwQECAT9qgQIBAQHAwMFAQIBAQIBBQMDBwQECASAAVYRGRkR/qoRGRkRA1UFBAUOCQkVDAsZDf2rDRkLDBUJCA4FBQUFBQUOCQgVDAsZDQJVDRkLDBUJCQ4FBAVVAgECBQMCBwQECAX9qwQJAwQHAwMFAQICAgIBBQMDBwQDCQQCVQUIBAQHAgMFAgEC/oAZEhEZGRESGQAAAAADAFUAAAOrA1UAMwBoAIkAABMiBgcOAQcOAQcOARURFBYXHgEXHgEXHgEzITI2Nz4BNz4BNz4BNRE0JicuAScuAScuASMFITIWFx4BFx4BFx4BFREUBgcOAQcOAQcOASMhIiYnLgEnLgEnLgE1ETQ2Nz4BNz4BNz4BMxMzFRQWMzI2PQEzMjY1NCYrATU0JiMiBh0BIyIGFRQWM9UNGAwLFQkJDgUFBQUFBQ4JCRULDBgNAlYNGAwLFQkJDgUFBQUFBQ4JCRULDBgN/aoCVgQIBAQHAwMFAQIBAQIBBQMDBwQECAT9qgQIBAQHAwMFAQIBAQIBBQMDBwQECASAgBkSEhmAERkZEYAZEhIZgBEZGREDVQUEBQ4JCRUMCxkN/asNGQsMFQkIDgUFBQUFBQ4JCBUMCxkNAlUNGQsMFQkJDgUEBVUCAQIFAwIHBAQIBf2rBAkDBAcDAwUBAgICAgEFAwMHBAMJBAJVBQgEBAcCAwUCAQL+gIASGRkSgBkSERmAEhkZEoAZERIZAAABAOIAjQMeAskAIAAAExcHBhQXFjI/ARcWMjc2NC8BNzY0JyYiDwEnJiIHBhQX4uLiDQ0MJAzi4gwkDA0N4uINDQwkDOLiDCQMDQ0CjeLiDSMMDQ3h4Q0NDCMN4uIMIw0MDOLiDAwNIwwAAAABAAAAAQAAa5n0y18PPPUACwQAAAAAANivOVsAAAAA2K85WwAAAAADqwNVAAAACAACAAAAAAAAAAEAAAPA/8AAAAQAAAAAAAOrAAEAAAAAAAAAAAAAAAAAAAALBAAAAAAAAAAAAAAAAgAAAAQAAWIEAAFiBAAA4gQAAOIEAABVBAAAVQQAAOIAAAAAAAoAFAAeAEQAagCqAOoBngJkApoAAQAAAAsAigADAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA4ArgABAAAAAAABAAcAAAABAAAAAAACAAcAYAABAAAAAAADAAcANgABAAAAAAAEAAcAdQABAAAAAAAFAAsAFQABAAAAAAAGAAcASwABAAAAAAAKABoAigADAAEECQABAA4ABwADAAEECQACAA4AZwADAAEECQADAA4APQADAAEECQAEAA4AfAADAAEECQAFABYAIAADAAEECQAGAA4AUgADAAEECQAKADQApGZjaWNvbnMAZgBjAGkAYwBvAG4Ac1ZlcnNpb24gMS4wAFYAZQByAHMAaQBvAG4AIAAxAC4AMGZjaWNvbnMAZgBjAGkAYwBvAG4Ac2ZjaWNvbnMAZgBjAGkAYwBvAG4Ac1JlZ3VsYXIAUgBlAGcAdQBsAGEAcmZjaWNvbnMAZgBjAGkAYwBvAG4Ac0ZvbnQgZ2VuZXJhdGVkIGJ5IEljb01vb24uAEYAbwBuAHQAIABnAGUAbgBlAHIAYQB0AGUAZAAgAGIAeQAgAEkAYwBvAE0AbwBvAG4ALgAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=\") format(\"truetype\");\n  font-weight: normal;\n  font-style: normal;\n}\n.fc-icon {\n  /* use !important to prevent issues with browser extensions that change fonts */\n  font-family: \"fcicons\" !important;\n  speak: none;\n  font-style: normal;\n  font-weight: normal;\n  font-variant: normal;\n  text-transform: none;\n  line-height: 1;\n  /* Better Font Rendering =========== */\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\n.fc-icon-chevron-left:before {\n  content: \"\\E900\";\n}\n\n.fc-icon-chevron-right:before {\n  content: \"\\E901\";\n}\n\n.fc-icon-chevrons-left:before {\n  content: \"\\E902\";\n}\n\n.fc-icon-chevrons-right:before {\n  content: \"\\E903\";\n}\n\n.fc-icon-minus-square:before {\n  content: \"\\E904\";\n}\n\n.fc-icon-plus-square:before {\n  content: \"\\E905\";\n}\n\n.fc-icon-x:before {\n  content: \"\\E906\";\n}\n\n.fc-icon {\n  display: inline-block;\n  width: 1em;\n  height: 1em;\n  text-align: center;\n}\n\n/* Buttons\n--------------------------------------------------------------------------------------------------\nLots taken from Flatly (MIT): https://bootswatch.com/4/flatly/bootstrap.css\n*/\n/* reset */\n.fc-button {\n  border-radius: 0;\n  overflow: visible;\n  text-transform: none;\n  margin: 0;\n  font-family: inherit;\n  font-size: inherit;\n  line-height: inherit;\n}\n\n.fc-button:focus {\n  outline: 1px dotted;\n  outline: 5px auto -webkit-focus-ring-color;\n}\n\n.fc-button {\n  -webkit-appearance: button;\n}\n\n.fc-button:not(:disabled) {\n  cursor: pointer;\n}\n\n.fc-button::-moz-focus-inner {\n  padding: 0;\n  border-style: none;\n}\n\n/* theme */\n.fc-button {\n  display: inline-block;\n  font-weight: 400;\n  color: #212529;\n  text-align: center;\n  vertical-align: middle;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  background-color: transparent;\n  border: 1px solid transparent;\n  padding: 0.4em 0.65em;\n  font-size: 1em;\n  line-height: 1.5;\n  border-radius: 0.25em;\n}\n\n.fc-button:hover {\n  color: #212529;\n  text-decoration: none;\n}\n\n.fc-button:focus {\n  outline: 0;\n  -webkit-box-shadow: 0 0 0 0.2rem rgba(44, 62, 80, 0.25);\n  box-shadow: 0 0 0 0.2rem rgba(44, 62, 80, 0.25);\n}\n\n.fc-button:disabled {\n  opacity: 0.65;\n}\n\n/* \"primary\" coloring */\n.fc-button-primary {\n  color: #fff;\n  background-color: #2C3E50;\n  border-color: #2C3E50;\n}\n\n.fc-button-primary:hover {\n  color: #fff;\n  background-color: #1e2b37;\n  border-color: #1a252f;\n}\n\n.fc-button-primary:focus {\n  -webkit-box-shadow: 0 0 0 0.2rem rgba(76, 91, 106, 0.5);\n  box-shadow: 0 0 0 0.2rem rgba(76, 91, 106, 0.5);\n}\n\n.fc-button-primary:disabled {\n  color: #fff;\n  background-color: #2C3E50;\n  border-color: #2C3E50;\n}\n\n.fc-button-primary:not(:disabled):active,\n.fc-button-primary:not(:disabled).fc-button-active {\n  color: #fff;\n  background-color: #1a252f;\n  border-color: #151e27;\n}\n\n.fc-button-primary:not(:disabled):active:focus,\n.fc-button-primary:not(:disabled).fc-button-active:focus {\n  -webkit-box-shadow: 0 0 0 0.2rem rgba(76, 91, 106, 0.5);\n  box-shadow: 0 0 0 0.2rem rgba(76, 91, 106, 0.5);\n}\n\n/* icons within buttons */\n.fc-button .fc-icon {\n  vertical-align: middle;\n  font-size: 1.5em;\n}\n\n/* Buttons Groups\n--------------------------------------------------------------------------------------------------*/\n.fc-button-group {\n  position: relative;\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  vertical-align: middle;\n}\n\n.fc-button-group > .fc-button {\n  position: relative;\n  -webkit-box-flex: 1;\n  -ms-flex: 1 1 auto;\n  flex: 1 1 auto;\n}\n\n.fc-button-group > .fc-button:hover {\n  z-index: 1;\n}\n\n.fc-button-group > .fc-button:focus,\n.fc-button-group > .fc-button:active,\n.fc-button-group > .fc-button.fc-button-active {\n  z-index: 1;\n}\n\n.fc-button-group > .fc-button:not(:first-child) {\n  margin-left: -1px;\n}\n\n.fc-button-group > .fc-button:not(:last-child) {\n  border-top-right-radius: 0;\n  border-bottom-right-radius: 0;\n}\n\n.fc-button-group > .fc-button:not(:first-child) {\n  border-top-left-radius: 0;\n  border-bottom-left-radius: 0;\n}\n\n/* Popover\n--------------------------------------------------------------------------------------------------*/\n.fc-unthemed .fc-popover {\n  border-width: 1px;\n  border-style: solid;\n}\n\n/* List View\n--------------------------------------------------------------------------------------------------*/\n.fc-unthemed .fc-list-item:hover td {\n  background-color: #f5f5f5;\n}\n\n/* Toolbar\n--------------------------------------------------------------------------------------------------*/\n.fc-toolbar {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n\n.fc-toolbar.fc-header-toolbar {\n  margin-bottom: 1.5em;\n}\n\n.fc-toolbar.fc-footer-toolbar {\n  margin-top: 1.5em;\n}\n\n/* inner content */\n.fc-toolbar > * > :not(:first-child) {\n  margin-left: 0.75em;\n}\n\n.fc-toolbar h2 {\n  font-size: 1.75em;\n  margin: 0;\n}\n\n/* View Structure\n--------------------------------------------------------------------------------------------------*/\n.fc-view-container {\n  position: relative;\n}\n\n/* undo twitter bootstrap's box-sizing rules. normalizes positioning techniques */\n/* don't do this for the toolbar because we'll want bootstrap to style those buttons as some pt */\n.fc-view-container *,\n.fc-view-container *:before,\n.fc-view-container *:after {\n  -webkit-box-sizing: content-box;\n  -moz-box-sizing: content-box;\n  box-sizing: content-box;\n}\n\n.fc-view,\n.fc-view > table {\n  /* so dragged elements can be above the view's main element */\n  position: relative;\n  z-index: 1;\n}\n\n@media print {\n  .fc {\n    max-width: 100% !important;\n  }\n\n  /* Global Event Restyling\n  --------------------------------------------------------------------------------------------------*/\n  .fc-event {\n    background: #fff !important;\n    color: #000 !important;\n    page-break-inside: avoid;\n  }\n\n  .fc-event .fc-resizer {\n    display: none;\n  }\n\n  /* Table & Day-Row Restyling\n  --------------------------------------------------------------------------------------------------*/\n  .fc th,\n.fc td,\n.fc hr,\n.fc thead,\n.fc tbody,\n.fc-row {\n    border-color: #ccc !important;\n    background: #fff !important;\n  }\n\n  /* kill the overlaid, absolutely-positioned components */\n  /* common... */\n  .fc-bg,\n.fc-bgevent-skeleton,\n.fc-highlight-skeleton,\n.fc-mirror-skeleton,\n.fc-bgevent-container,\n.fc-business-container,\n.fc-highlight-container,\n.fc-mirror-container {\n    display: none;\n  }\n\n  /* don't force a min-height on rows (for DayGrid) */\n  .fc tbody .fc-row {\n    height: auto !important;\n    /* undo height that JS set in distributeHeight */\n    min-height: 0 !important;\n    /* undo the min-height from each view's specific stylesheet */\n  }\n\n  .fc tbody .fc-row .fc-content-skeleton {\n    position: static;\n    /* undo .fc-rigid */\n    padding-bottom: 0 !important;\n    /* use a more border-friendly method for this... */\n  }\n\n  .fc tbody .fc-row .fc-content-skeleton tbody tr:last-child td {\n    /* only works in newer browsers */\n    padding-bottom: 1em;\n    /* ...gives space within the skeleton. also ensures min height in a way */\n  }\n\n  .fc tbody .fc-row .fc-content-skeleton table {\n    /* provides a min-height for the row, but only effective for IE, which exaggerates this value,\n       making it look more like 3em. for other browers, it will already be this tall */\n    height: 1em;\n  }\n\n  /* Undo month-view event limiting. Display all events and hide the \"more\" links\n  --------------------------------------------------------------------------------------------------*/\n  .fc-more-cell,\n.fc-more {\n    display: none !important;\n  }\n\n  .fc tr.fc-limited {\n    display: table-row !important;\n  }\n\n  .fc td.fc-limited {\n    display: table-cell !important;\n  }\n\n  .fc-popover {\n    display: none;\n    /* never display the \"more..\" popover in print mode */\n  }\n\n  /* TimeGrid Restyling\n  --------------------------------------------------------------------------------------------------*/\n  /* undo the min-height 100% trick used to fill the container's height */\n  .fc-time-grid {\n    min-height: 0 !important;\n  }\n\n  /* don't display the side axis at all (\"all-day\" and time cells) */\n  .fc-timeGrid-view .fc-axis {\n    display: none;\n  }\n\n  /* don't display the horizontal lines */\n  .fc-slats,\n.fc-time-grid hr {\n    /* this hr is used when height is underused and needs to be filled */\n    display: none !important;\n    /* important overrides inline declaration */\n  }\n\n  /* let the container that holds the events be naturally positioned and create real height */\n  .fc-time-grid .fc-content-skeleton {\n    position: static;\n  }\n\n  /* in case there are no events, we still want some height */\n  .fc-time-grid .fc-content-skeleton table {\n    height: 4em;\n  }\n\n  /* kill the horizontal spacing made by the event container. event margins will be done below */\n  .fc-time-grid .fc-event-container {\n    margin: 0 !important;\n  }\n\n  /* TimeGrid *Event* Restyling\n  --------------------------------------------------------------------------------------------------*/\n  /* naturally position events, vertically stacking them */\n  .fc-time-grid .fc-event {\n    position: static !important;\n    margin: 3px 2px !important;\n  }\n\n  /* for events that continue to a future day, give the bottom border back */\n  .fc-time-grid .fc-event.fc-not-end {\n    border-bottom-width: 1px !important;\n  }\n\n  /* indicate the event continues via \"...\" text */\n  .fc-time-grid .fc-event.fc-not-end:after {\n    content: \"...\";\n  }\n\n  /* for events that are continuations from previous days, give the top border back */\n  .fc-time-grid .fc-event.fc-not-start {\n    border-top-width: 1px !important;\n  }\n\n  /* indicate the event is a continuation via \"...\" text */\n  .fc-time-grid .fc-event.fc-not-start:before {\n    content: \"...\";\n  }\n\n  /* time */\n  /* undo a previous declaration and let the time text span to a second line */\n  .fc-time-grid .fc-event .fc-time {\n    white-space: normal !important;\n  }\n\n  /* hide the the time that is normally displayed... */\n  .fc-time-grid .fc-event .fc-time span {\n    display: none;\n  }\n\n  /* ...replace it with a more verbose version (includes AM/PM) stored in an html attribute */\n  .fc-time-grid .fc-event .fc-time:after {\n    content: attr(data-full);\n  }\n\n  /* Vertical Scroller & Containers\n  --------------------------------------------------------------------------------------------------*/\n  /* kill the scrollbars and allow natural height */\n  .fc-scroller,\n.fc-day-grid-container,\n.fc-time-grid-container {\n    /* */\n    overflow: visible !important;\n    height: auto !important;\n  }\n\n  /* kill the horizontal border/padding used to compensate for scrollbars */\n  .fc-row {\n    border: 0 !important;\n    margin: 0 !important;\n  }\n\n  /* Button Controls\n  --------------------------------------------------------------------------------------------------*/\n  .fc-button-group,\n.fc button {\n    display: none;\n    /* don't display any button-related controls */\n  }\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 143 */
+/* 146 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__fullcalendar_vue__ = __webpack_require__(144);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fullcalendar_daygrid__ = __webpack_require__(154);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fullcalendar_interaction__ = __webpack_require__(156);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__fullcalendar_vue__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fullcalendar_daygrid__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fullcalendar_interaction__ = __webpack_require__(27);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -89217,62 +92103,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 });
 
 /***/ }),
-/* 144 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export install */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FullCalendar__ = __webpack_require__(145);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fullcalendar_core__ = __webpack_require__(11);
-/* unused harmony namespace reexport */
-
-/*
-Registers the component globally if appropriate.
-This modules exposes the component AND an install function.
-
-Derived from:
-https://vuejs.org/v2/cookbook/packaging-sfc-for-npm.html
-*/
-var installed = false;
-// declare install function executed by Vue.use()
-function install(Vue) {
-    if (!installed) {
-        installed = true;
-        Vue.component('FullCalendar', __WEBPACK_IMPORTED_MODULE_0__FullCalendar__["a" /* default */]);
-    }
-}
-// detect a globally availble version of Vue (eg. in browser via <script> tag)
-var GlobalVue;
-if (typeof globalThis !== 'undefined') {
-    GlobalVue = globalThis.Vue;
-}
-else {
-    GlobalVue = window.Vue;
-}
-// auto-install if possible
-if (GlobalVue) {
-    GlobalVue.use({
-        install: install
-    });
-}
-// to allow use as module (npm/webpack/etc.) export component
-/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0__FullCalendar__["a" /* default */]);
-// so can access any of the utils/types from this lib
-
-//# sourceMappingURL=main.js.map
-
-/***/ }),
-/* 145 */
+/* 147 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fullcalendar_core__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__options__ = __webpack_require__(151);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils__ = __webpack_require__(152);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__custom_content_type__ = __webpack_require__(153);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fullcalendar_core__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__options__ = __webpack_require__(153);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils__ = __webpack_require__(154);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__custom_content_type__ = __webpack_require__(155);
 
 
 
@@ -89368,12 +92209,12 @@ function buildWatchers() {
 //# sourceMappingURL=FullCalendar.js.map
 
 /***/ }),
-/* 146 */
+/* 148 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_preact__ = __webpack_require__(147);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_preact__ = __webpack_require__(149);
 
 
 
@@ -89454,7 +92295,7 @@ function unmountComponentAtNode(node) {
 
 
 /***/ }),
-/* 147 */
+/* 149 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -89475,13 +92316,13 @@ var n,l,u,i,t,r,o={},f=[],e=/acit|ex(?:s|g|n|p|$)|rph|grid|ows|mnc|ntw|ine[ch]|z
 
 
 /***/ }),
-/* 148 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(149);
+var content = __webpack_require__(151);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -89489,7 +92330,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(22)(content, options);
+var update = __webpack_require__(24)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -89506,7 +92347,7 @@ if(false) {
 }
 
 /***/ }),
-/* 149 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
@@ -89520,7 +92361,7 @@ exports.push([module.i, "\n/* classes attached to <body> */\n\n.fc-not-allowed,\
 
 
 /***/ }),
-/* 150 */
+/* 152 */
 /***/ (function(module, exports) {
 
 
@@ -89615,7 +92456,7 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 151 */
+/* 153 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -89630,7 +92471,7 @@ var OPTION_IS_COMPLEX = {
 //# sourceMappingURL=options.js.map
 
 /***/ }),
-/* 152 */
+/* 154 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -89665,7 +92506,7 @@ function mapHash(input, func) {
 //# sourceMappingURL=utils.js.map
 
 /***/ }),
-/* 153 */
+/* 155 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -89673,7 +92514,7 @@ function mapHash(input, func) {
 /* harmony export (immutable) */ __webpack_exports__["a"] = createVueContentTypePlugin;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fullcalendar_core__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fullcalendar_core__ = __webpack_require__(12);
 
 
 /*
@@ -89741,1187 +92582,13 @@ function initVue(initialContent, parent) {
 //# sourceMappingURL=custom-content-type.js.map
 
 /***/ }),
-/* 154 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export DayGridView */
-/* unused harmony export DayTable */
-/* unused harmony export DayTableSlicer */
-/* unused harmony export Table */
-/* unused harmony export TableView */
-/* unused harmony export buildDayTableModel */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__main_css__ = __webpack_require__(155);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__main_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__main_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_tslib__ = __webpack_require__(5);
-/*!
-FullCalendar v5.5.0
-Docs & License: https://fullcalendar.io/
-(c) 2020 Adam Shaw
-*/
-
-
-
-
-
-/* An abstract class for the daygrid views, as well as month view. Renders one or more rows of day cells.
-----------------------------------------------------------------------------------------------------------------------*/
-// It is a manager for a Table subcomponent, which does most of the heavy lifting.
-// It is responsible for managing width/height.
-var TableView = /** @class */ (function (_super) {
-    Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["b" /* __extends */])(TableView, _super);
-    function TableView() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.headerElRef = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_4" /* createRef */])();
-        return _this;
-    }
-    TableView.prototype.renderSimpleLayout = function (headerRowContent, bodyContent) {
-        var _a = this, props = _a.props, context = _a.context;
-        var sections = [];
-        var stickyHeaderDates = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_21" /* getStickyHeaderDates */])(context.options);
-        if (headerRowContent) {
-            sections.push({
-                type: 'header',
-                key: 'header',
-                isSticky: stickyHeaderDates,
-                chunk: {
-                    elRef: this.headerElRef,
-                    tableClassName: 'fc-col-header',
-                    rowContent: headerRowContent,
-                },
-            });
-        }
-        sections.push({
-            type: 'body',
-            key: 'body',
-            liquid: true,
-            chunk: { content: bodyContent },
-        });
-        return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["F" /* ViewRoot */], { viewSpec: context.viewSpec }, function (rootElRef, classNames) { return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { ref: rootElRef, className: ['fc-daygrid'].concat(classNames).join(' ') },
-            Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["C" /* SimpleScrollGrid */], { liquid: !props.isHeightAuto && !props.forPrint, cols: [] /* TODO: make optional? */, sections: sections }))); }));
-    };
-    TableView.prototype.renderHScrollLayout = function (headerRowContent, bodyContent, colCnt, dayMinWidth) {
-        var ScrollGrid = this.context.pluginHooks.scrollGridImpl;
-        if (!ScrollGrid) {
-            throw new Error('No ScrollGrid implementation');
-        }
-        var _a = this, props = _a.props, context = _a.context;
-        var stickyHeaderDates = !props.forPrint && Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_21" /* getStickyHeaderDates */])(context.options);
-        var stickyFooterScrollbar = !props.forPrint && Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_20" /* getStickyFooterScrollbar */])(context.options);
-        var sections = [];
-        if (headerRowContent) {
-            sections.push({
-                type: 'header',
-                key: 'header',
-                isSticky: stickyHeaderDates,
-                chunks: [{
-                        key: 'main',
-                        elRef: this.headerElRef,
-                        tableClassName: 'fc-col-header',
-                        rowContent: headerRowContent,
-                    }],
-            });
-        }
-        sections.push({
-            type: 'body',
-            key: 'body',
-            liquid: true,
-            chunks: [{
-                    key: 'main',
-                    content: bodyContent,
-                }],
-        });
-        if (stickyFooterScrollbar) {
-            sections.push({
-                type: 'footer',
-                key: 'footer',
-                isSticky: true,
-                chunks: [{
-                        key: 'main',
-                        content: __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_43" /* renderScrollShim */],
-                    }],
-            });
-        }
-        return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["F" /* ViewRoot */], { viewSpec: context.viewSpec }, function (rootElRef, classNames) { return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { ref: rootElRef, className: ['fc-daygrid'].concat(classNames).join(' ') },
-            Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(ScrollGrid, { liquid: !props.isHeightAuto && !props.forPrint, colGroups: [{ cols: [{ span: colCnt, minWidth: dayMinWidth }] }], sections: sections }))); }));
-    };
-    return TableView;
-}(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["i" /* DateComponent */]));
-
-function splitSegsByRow(segs, rowCnt) {
-    var byRow = [];
-    for (var i = 0; i < rowCnt; i += 1) {
-        byRow[i] = [];
-    }
-    for (var _i = 0, segs_1 = segs; _i < segs_1.length; _i++) {
-        var seg = segs_1[_i];
-        byRow[seg.row].push(seg);
-    }
-    return byRow;
-}
-function splitSegsByFirstCol(segs, colCnt) {
-    var byCol = [];
-    for (var i = 0; i < colCnt; i += 1) {
-        byCol[i] = [];
-    }
-    for (var _i = 0, segs_2 = segs; _i < segs_2.length; _i++) {
-        var seg = segs_2[_i];
-        byCol[seg.firstCol].push(seg);
-    }
-    return byCol;
-}
-function splitInteractionByRow(ui, rowCnt) {
-    var byRow = [];
-    if (!ui) {
-        for (var i = 0; i < rowCnt; i += 1) {
-            byRow[i] = null;
-        }
-    }
-    else {
-        for (var i = 0; i < rowCnt; i += 1) {
-            byRow[i] = {
-                affectedInstances: ui.affectedInstances,
-                isEvent: ui.isEvent,
-                segs: [],
-            };
-        }
-        for (var _i = 0, _a = ui.segs; _i < _a.length; _i++) {
-            var seg = _a[_i];
-            byRow[seg.row].segs.push(seg);
-        }
-    }
-    return byRow;
-}
-
-var TableCellTop = /** @class */ (function (_super) {
-    Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["b" /* __extends */])(TableCellTop, _super);
-    function TableCellTop() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    TableCellTop.prototype.render = function () {
-        var props = this.props;
-        var navLinkAttrs = this.context.options.navLinks
-            ? { 'data-navlink': Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["R" /* buildNavLinkData */])(props.date), tabIndex: 0 }
-            : {};
-        return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["k" /* DayCellContent */], { date: props.date, dateProfile: props.dateProfile, todayRange: props.todayRange, showDayNumber: props.showDayNumber, extraHookProps: props.extraHookProps, defaultContent: renderTopInner }, function (innerElRef, innerContent) { return ((innerContent || props.forceDayTop) && (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { className: "fc-daygrid-day-top", ref: innerElRef },
-            Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("a", Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({ className: "fc-daygrid-day-number" }, navLinkAttrs), innerContent || Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["v" /* Fragment */], null, "\u00A0"))))); }));
-    };
-    return TableCellTop;
-}(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["b" /* BaseComponent */]));
-function renderTopInner(props) {
-    return props.dayNumberText;
-}
-
-var DEFAULT_WEEK_NUM_FORMAT = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_2" /* createFormatter */])({ week: 'narrow' });
-var TableCell = /** @class */ (function (_super) {
-    Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["b" /* __extends */])(TableCell, _super);
-    function TableCell() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.handleRootEl = function (el) {
-            _this.rootEl = el;
-            Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_44" /* setRef */])(_this.props.elRef, el);
-        };
-        _this.handleMoreLinkClick = function (ev) {
-            var props = _this.props;
-            if (props.onMoreClick) {
-                var allSegs = props.segsByEachCol;
-                var hiddenSegs = allSegs.filter(function (seg) { return props.segIsHidden[seg.eventRange.instance.instanceId]; });
-                props.onMoreClick({
-                    date: props.date,
-                    allSegs: allSegs,
-                    hiddenSegs: hiddenSegs,
-                    moreCnt: props.moreCnt,
-                    dayEl: _this.rootEl,
-                    ev: ev,
-                });
-            }
-        };
-        return _this;
-    }
-    TableCell.prototype.render = function () {
-        var _this = this;
-        var _a = this.context, options = _a.options, viewApi = _a.viewApi;
-        var props = this.props;
-        var date = props.date, dateProfile = props.dateProfile;
-        var hookProps = {
-            num: props.moreCnt,
-            text: props.buildMoreLinkText(props.moreCnt),
-            view: viewApi,
-        };
-        var navLinkAttrs = options.navLinks
-            ? { 'data-navlink': Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["R" /* buildNavLinkData */])(date, 'week'), tabIndex: 0 }
-            : {};
-        return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["l" /* DayCellRoot */], { date: date, dateProfile: dateProfile, todayRange: props.todayRange, showDayNumber: props.showDayNumber, extraHookProps: props.extraHookProps, elRef: this.handleRootEl }, function (dayElRef, dayClassNames, rootDataAttrs, isDisabled) { return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("td", Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({ ref: dayElRef, className: ['fc-daygrid-day'].concat(dayClassNames, props.extraClassNames || []).join(' ') }, rootDataAttrs, props.extraDataAttrs),
-            Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { className: "fc-daygrid-day-frame fc-scrollgrid-sync-inner", ref: props.innerElRef /* different from hook system! RENAME */ },
-                props.showWeekNumber && (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["G" /* WeekNumberRoot */], { date: date, defaultFormat: DEFAULT_WEEK_NUM_FORMAT }, function (weekElRef, weekClassNames, innerElRef, innerContent) { return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("a", Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({ ref: weekElRef, className: ['fc-daygrid-week-number'].concat(weekClassNames).join(' ') }, navLinkAttrs), innerContent)); })),
-                !isDisabled && (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(TableCellTop, { date: date, dateProfile: dateProfile, showDayNumber: props.showDayNumber, forceDayTop: props.forceDayTop, todayRange: props.todayRange, extraHookProps: props.extraHookProps })),
-                Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { className: "fc-daygrid-day-events", ref: props.fgContentElRef, style: { paddingBottom: props.fgPaddingBottom } },
-                    props.fgContent,
-                    Boolean(props.moreCnt) && (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { className: "fc-daygrid-day-bottom", style: { marginTop: props.moreMarginTop } },
-                        Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["A" /* RenderHook */], { hookProps: hookProps, classNames: options.moreLinkClassNames, content: options.moreLinkContent, defaultContent: renderMoreLinkInner, didMount: options.moreLinkDidMount, willUnmount: options.moreLinkWillUnmount }, function (rootElRef, classNames, innerElRef, innerContent) { return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("a", { ref: rootElRef, className: ['fc-daygrid-more-link'].concat(classNames).join(' '), onClick: _this.handleMoreLinkClick }, innerContent)); })))),
-                Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { className: "fc-daygrid-day-bg" }, props.bgContent)))); }));
-    };
-    return TableCell;
-}(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["i" /* DateComponent */]));
-TableCell.addPropsEquality({
-    onMoreClick: true,
-});
-function renderMoreLinkInner(props) {
-    return props.text;
-}
-
-var DEFAULT_TABLE_EVENT_TIME_FORMAT = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_2" /* createFormatter */])({
-    hour: 'numeric',
-    minute: '2-digit',
-    omitZeroMinute: true,
-    meridiem: 'narrow',
-});
-function hasListItemDisplay(seg) {
-    var display = seg.eventRange.ui.display;
-    return display === 'list-item' || (display === 'auto' &&
-        !seg.eventRange.def.allDay &&
-        seg.firstCol === seg.lastCol && // can't be multi-day
-        seg.isStart && // "
-        seg.isEnd // "
-    );
-}
-
-var TableListItemEvent = /** @class */ (function (_super) {
-    Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["b" /* __extends */])(TableListItemEvent, _super);
-    function TableListItemEvent() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    TableListItemEvent.prototype.render = function () {
-        var _a = this, props = _a.props, context = _a.context;
-        var timeFormat = context.options.eventTimeFormat || DEFAULT_TABLE_EVENT_TIME_FORMAT;
-        var timeText = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["S" /* buildSegTimeText */])(props.seg, timeFormat, context, true, props.defaultDisplayEventEnd);
-        return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["u" /* EventRoot */], { seg: props.seg, timeText: timeText, defaultContent: renderInnerContent, isDragging: props.isDragging, isResizing: false, isDateSelecting: false, isSelected: props.isSelected, isPast: props.isPast, isFuture: props.isFuture, isToday: props.isToday }, function (rootElRef, classNames, innerElRef, innerContent) { return ( // we don't use styles!
-        Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("a", Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({ className: ['fc-daygrid-event', 'fc-daygrid-dot-event'].concat(classNames).join(' '), ref: rootElRef }, getSegAnchorAttrs(props.seg)), innerContent)); }));
-    };
-    return TableListItemEvent;
-}(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["b" /* BaseComponent */]));
-function renderInnerContent(innerProps) {
-    return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["v" /* Fragment */], null,
-        Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { className: "fc-daygrid-event-dot", style: { borderColor: innerProps.borderColor || innerProps.backgroundColor } }),
-        innerProps.timeText && (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { className: "fc-event-time" }, innerProps.timeText)),
-        Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { className: "fc-event-title" }, innerProps.event.title || Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["v" /* Fragment */], null, "\u00A0"))));
-}
-function getSegAnchorAttrs(seg) {
-    var url = seg.eventRange.def.url;
-    return url ? { href: url } : {};
-}
-
-var TableBlockEvent = /** @class */ (function (_super) {
-    Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["b" /* __extends */])(TableBlockEvent, _super);
-    function TableBlockEvent() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    TableBlockEvent.prototype.render = function () {
-        var props = this.props;
-        return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["E" /* StandardEvent */], Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({}, props, { extraClassNames: ['fc-daygrid-event', 'fc-daygrid-block-event', 'fc-h-event'], defaultTimeFormat: DEFAULT_TABLE_EVENT_TIME_FORMAT, defaultDisplayEventEnd: props.defaultDisplayEventEnd, disableResizing: !props.seg.eventRange.def.allDay })));
-    };
-    return TableBlockEvent;
-}(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["b" /* BaseComponent */]));
-
-function computeFgSegPlacement(// for one row. TODO: print mode?
-cellModels, segs, dayMaxEvents, dayMaxEventRows, eventHeights, maxContentHeight, colCnt, eventOrderSpecs) {
-    var colPlacements = []; // if event spans multiple cols, its present in each col
-    var moreCnts = []; // by-col
-    var segIsHidden = {};
-    var segTops = {}; // always populated for each seg
-    var segMarginTops = {}; // simetimes populated for each seg
-    var moreTops = {};
-    var paddingBottoms = {}; // for each cell's inner-wrapper div
-    for (var i = 0; i < colCnt; i += 1) {
-        colPlacements.push([]);
-        moreCnts.push(0);
-    }
-    segs = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_45" /* sortEventSegs */])(segs, eventOrderSpecs);
-    for (var _i = 0, segs_1 = segs; _i < segs_1.length; _i++) {
-        var seg = segs_1[_i];
-        var instanceId = seg.eventRange.instance.instanceId;
-        var eventHeight = eventHeights[instanceId + ':' + seg.firstCol];
-        placeSeg(seg, eventHeight || 0); // will keep colPlacements sorted by top
-    }
-    if (dayMaxEvents === true || dayMaxEventRows === true) {
-        limitByMaxHeight(moreCnts, segIsHidden, colPlacements, maxContentHeight); // populates moreCnts/segIsHidden
-    }
-    else if (typeof dayMaxEvents === 'number') {
-        limitByMaxEvents(moreCnts, segIsHidden, colPlacements, dayMaxEvents); // populates moreCnts/segIsHidden
-    }
-    else if (typeof dayMaxEventRows === 'number') {
-        limitByMaxRows(moreCnts, segIsHidden, colPlacements, dayMaxEventRows); // populates moreCnts/segIsHidden
-    }
-    // computes segTops/segMarginTops/moreTops/paddingBottoms
-    for (var col = 0; col < colCnt; col += 1) {
-        var placements = colPlacements[col];
-        var currentNonAbsBottom = 0;
-        var currentAbsHeight = 0;
-        for (var _a = 0, placements_1 = placements; _a < placements_1.length; _a++) {
-            var placement = placements_1[_a];
-            var seg = placement.seg;
-            if (!segIsHidden[seg.eventRange.instance.instanceId]) {
-                segTops[seg.eventRange.instance.instanceId] = placement.top; // from top of container
-                if (seg.firstCol === seg.lastCol && seg.isStart && seg.isEnd) { // TODO: simpler way? NOT DRY
-                    segMarginTops[seg.eventRange.instance.instanceId] =
-                        placement.top - currentNonAbsBottom; // from previous seg bottom
-                    currentAbsHeight = 0;
-                    currentNonAbsBottom = placement.bottom;
-                }
-                else { // multi-col event, abs positioned
-                    currentAbsHeight = placement.bottom - currentNonAbsBottom;
-                }
-            }
-        }
-        if (currentAbsHeight) {
-            if (moreCnts[col]) {
-                moreTops[col] = currentAbsHeight;
-            }
-            else {
-                paddingBottoms[col] = currentAbsHeight;
-            }
-        }
-    }
-    function placeSeg(seg, segHeight) {
-        if (!tryPlaceSegAt(seg, segHeight, 0)) {
-            for (var col = seg.firstCol; col <= seg.lastCol; col += 1) {
-                for (var _i = 0, _a = colPlacements[col]; _i < _a.length; _i++) { // will repeat multi-day segs!!!!!!! bad!!!!!!
-                    var placement = _a[_i];
-                    if (tryPlaceSegAt(seg, segHeight, placement.bottom)) {
-                        return;
-                    }
-                }
-            }
-        }
-    }
-    function tryPlaceSegAt(seg, segHeight, top) {
-        if (canPlaceSegAt(seg, segHeight, top)) {
-            for (var col = seg.firstCol; col <= seg.lastCol; col += 1) {
-                var placements = colPlacements[col];
-                var insertionIndex = 0;
-                while (insertionIndex < placements.length &&
-                    top >= placements[insertionIndex].top) {
-                    insertionIndex += 1;
-                }
-                placements.splice(insertionIndex, 0, {
-                    seg: seg,
-                    top: top,
-                    bottom: top + segHeight,
-                });
-            }
-            return true;
-        }
-        return false;
-    }
-    function canPlaceSegAt(seg, segHeight, top) {
-        for (var col = seg.firstCol; col <= seg.lastCol; col += 1) {
-            for (var _i = 0, _a = colPlacements[col]; _i < _a.length; _i++) {
-                var placement = _a[_i];
-                if (top < placement.bottom && top + segHeight > placement.top) { // collide?
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-    // what does this do!?
-    for (var instanceIdAndFirstCol in eventHeights) {
-        if (!eventHeights[instanceIdAndFirstCol]) {
-            segIsHidden[instanceIdAndFirstCol.split(':')[0]] = true;
-        }
-    }
-    var segsByFirstCol = colPlacements.map(extractFirstColSegs); // operates on the sorted cols
-    var segsByEachCol = colPlacements.map(function (placements, col) {
-        var segsForCols = extractAllColSegs(placements);
-        segsForCols = resliceDaySegs(segsForCols, cellModels[col].date, col);
-        return segsForCols;
-    });
-    return {
-        segsByFirstCol: segsByFirstCol,
-        segsByEachCol: segsByEachCol,
-        segIsHidden: segIsHidden,
-        segTops: segTops,
-        segMarginTops: segMarginTops,
-        moreCnts: moreCnts,
-        moreTops: moreTops,
-        paddingBottoms: paddingBottoms,
-    };
-}
-function extractFirstColSegs(oneColPlacements, col) {
-    var segs = [];
-    for (var _i = 0, oneColPlacements_1 = oneColPlacements; _i < oneColPlacements_1.length; _i++) {
-        var placement = oneColPlacements_1[_i];
-        if (placement.seg.firstCol === col) {
-            segs.push(placement.seg);
-        }
-    }
-    return segs;
-}
-function extractAllColSegs(oneColPlacements) {
-    var segs = [];
-    for (var _i = 0, oneColPlacements_2 = oneColPlacements; _i < oneColPlacements_2.length; _i++) {
-        var placement = oneColPlacements_2[_i];
-        segs.push(placement.seg);
-    }
-    return segs;
-}
-function limitByMaxHeight(hiddenCnts, segIsHidden, colPlacements, maxContentHeight) {
-    limitEvents(hiddenCnts, segIsHidden, colPlacements, true, function (placement) { return placement.bottom <= maxContentHeight; });
-}
-function limitByMaxEvents(hiddenCnts, segIsHidden, colPlacements, dayMaxEvents) {
-    limitEvents(hiddenCnts, segIsHidden, colPlacements, false, function (placement, levelIndex) { return levelIndex < dayMaxEvents; });
-}
-function limitByMaxRows(hiddenCnts, segIsHidden, colPlacements, dayMaxEventRows) {
-    limitEvents(hiddenCnts, segIsHidden, colPlacements, true, function (placement, levelIndex) { return levelIndex < dayMaxEventRows; });
-}
-/*
-populates the given hiddenCnts/segIsHidden, which are supplied empty.
-TODO: return them instead
-*/
-function limitEvents(hiddenCnts, segIsHidden, colPlacements, _moreLinkConsumesLevel, isPlacementInBounds) {
-    var colCnt = hiddenCnts.length;
-    var segIsVisible = {}; // TODO: instead, use segIsHidden with true/false?
-    var visibleColPlacements = []; // will mirror colPlacements
-    for (var col = 0; col < colCnt; col += 1) {
-        visibleColPlacements.push([]);
-    }
-    for (var col = 0; col < colCnt; col += 1) {
-        var placements = colPlacements[col];
-        var level = 0;
-        for (var _i = 0, placements_2 = placements; _i < placements_2.length; _i++) {
-            var placement = placements_2[_i];
-            if (isPlacementInBounds(placement, level)) {
-                recordVisible(placement);
-            }
-            else {
-                recordHidden(placement, level, _moreLinkConsumesLevel);
-            }
-            // only considered a level if the seg had height
-            if (placement.top !== placement.bottom) {
-                level += 1;
-            }
-        }
-    }
-    function recordVisible(placement) {
-        var seg = placement.seg;
-        var instanceId = seg.eventRange.instance.instanceId;
-        if (!segIsVisible[instanceId]) {
-            segIsVisible[instanceId] = true;
-            for (var col = seg.firstCol; col <= seg.lastCol; col += 1) {
-                var destPlacements = visibleColPlacements[col];
-                var newPosition = 0;
-                // insert while keeping top sorted in each column
-                while (newPosition < destPlacements.length &&
-                    placement.top >= destPlacements[newPosition].top) {
-                    newPosition += 1;
-                }
-                destPlacements.splice(newPosition, 0, placement);
-            }
-        }
-    }
-    function recordHidden(placement, currentLevel, moreLinkConsumesLevel) {
-        var seg = placement.seg;
-        var instanceId = seg.eventRange.instance.instanceId;
-        if (!segIsHidden[instanceId]) {
-            segIsHidden[instanceId] = true;
-            for (var col = seg.firstCol; col <= seg.lastCol; col += 1) {
-                hiddenCnts[col] += 1;
-                var hiddenCnt = hiddenCnts[col];
-                if (moreLinkConsumesLevel && hiddenCnt === 1 && currentLevel > 0) {
-                    var doomedLevel = currentLevel - 1;
-                    while (visibleColPlacements[col].length > doomedLevel) {
-                        recordHidden(visibleColPlacements[col].pop(), // removes
-                        visibleColPlacements[col].length, // will execute after the pop. will be the index of the removed placement
-                        false);
-                    }
-                }
-            }
-        }
-    }
-}
-// Given the events within an array of segment objects, reslice them to be in a single day
-function resliceDaySegs(segs, dayDate, colIndex) {
-    var dayStart = dayDate;
-    var dayEnd = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["I" /* addDays */])(dayStart, 1);
-    var dayRange = { start: dayStart, end: dayEnd };
-    var newSegs = [];
-    for (var _i = 0, segs_2 = segs; _i < segs_2.length; _i++) {
-        var seg = segs_2[_i];
-        var eventRange = seg.eventRange;
-        var origRange = eventRange.range;
-        var slicedRange = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_25" /* intersectRanges */])(origRange, dayRange);
-        if (slicedRange) {
-            newSegs.push(Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])(Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({}, seg), { firstCol: colIndex, lastCol: colIndex, eventRange: {
-                    def: eventRange.def,
-                    ui: Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])(Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({}, eventRange.ui), { durationEditable: false }),
-                    instance: eventRange.instance,
-                    range: slicedRange,
-                }, isStart: seg.isStart && slicedRange.start.valueOf() === origRange.start.valueOf(), isEnd: seg.isEnd && slicedRange.end.valueOf() === origRange.end.valueOf() }));
-        }
-    }
-    return newSegs;
-}
-
-var TableRow = /** @class */ (function (_super) {
-    Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["b" /* __extends */])(TableRow, _super);
-    function TableRow() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.cellElRefs = new __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["z" /* RefMap */](); // the <td>
-        _this.frameElRefs = new __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["z" /* RefMap */](); // the fc-daygrid-day-frame
-        _this.fgElRefs = new __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["z" /* RefMap */](); // the fc-daygrid-day-events
-        _this.segHarnessRefs = new __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["z" /* RefMap */](); // indexed by "instanceId:firstCol"
-        _this.rootElRef = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_4" /* createRef */])();
-        _this.state = {
-            framePositions: null,
-            maxContentHeight: null,
-            segHeights: {},
-        };
-        return _this;
-    }
-    TableRow.prototype.render = function () {
-        var _this = this;
-        var _a = this, props = _a.props, state = _a.state, context = _a.context;
-        var colCnt = props.cells.length;
-        var businessHoursByCol = splitSegsByFirstCol(props.businessHourSegs, colCnt);
-        var bgEventSegsByCol = splitSegsByFirstCol(props.bgEventSegs, colCnt);
-        var highlightSegsByCol = splitSegsByFirstCol(this.getHighlightSegs(), colCnt);
-        var mirrorSegsByCol = splitSegsByFirstCol(this.getMirrorSegs(), colCnt);
-        var _b = computeFgSegPlacement(props.cells, props.fgEventSegs, props.dayMaxEvents, props.dayMaxEventRows, state.segHeights, state.maxContentHeight, colCnt, context.options.eventOrder), paddingBottoms = _b.paddingBottoms, segsByFirstCol = _b.segsByFirstCol, segsByEachCol = _b.segsByEachCol, segIsHidden = _b.segIsHidden, segTops = _b.segTops, segMarginTops = _b.segMarginTops, moreCnts = _b.moreCnts, moreTops = _b.moreTops;
-        var selectedInstanceHash = // TODO: messy way to compute this
-         (props.eventDrag && props.eventDrag.affectedInstances) ||
-            (props.eventResize && props.eventResize.affectedInstances) ||
-            {};
-        return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("tr", { ref: this.rootElRef },
-            props.renderIntro && props.renderIntro(),
-            props.cells.map(function (cell, col) {
-                var normalFgNodes = _this.renderFgSegs(segsByFirstCol[col], segIsHidden, segTops, segMarginTops, selectedInstanceHash, props.todayRange);
-                var mirrorFgNodes = _this.renderFgSegs(mirrorSegsByCol[col], {}, segTops, // use same tops as real rendering
-                {}, {}, props.todayRange, Boolean(props.eventDrag), Boolean(props.eventResize), false);
-                return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(TableCell, { key: cell.key, elRef: _this.cellElRefs.createRef(cell.key), innerElRef: _this.frameElRefs.createRef(cell.key) /* FF <td> problem, but okay to use for left/right. TODO: rename prop */, dateProfile: props.dateProfile, date: cell.date, showDayNumber: props.showDayNumbers, showWeekNumber: props.showWeekNumbers && col === 0, forceDayTop: props.showWeekNumbers /* even displaying weeknum for row, not necessarily day */, todayRange: props.todayRange, extraHookProps: cell.extraHookProps, extraDataAttrs: cell.extraDataAttrs, extraClassNames: cell.extraClassNames, moreCnt: moreCnts[col], buildMoreLinkText: props.buildMoreLinkText, onMoreClick: function (arg) {
-                        props.onMoreClick(Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])(Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({}, arg), { fromCol: col }));
-                    }, segIsHidden: segIsHidden, moreMarginTop: moreTops[col] /* rename */, segsByEachCol: segsByEachCol[col], fgPaddingBottom: paddingBottoms[col], fgContentElRef: _this.fgElRefs.createRef(cell.key), fgContent: ( // Fragment scopes the keys
-                    Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["v" /* Fragment */], null,
-                        Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["v" /* Fragment */], null, normalFgNodes),
-                        Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["v" /* Fragment */], null, mirrorFgNodes))), bgContent: ( // Fragment scopes the keys
-                    Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["v" /* Fragment */], null,
-                        _this.renderFillSegs(highlightSegsByCol[col], 'highlight'),
-                        _this.renderFillSegs(businessHoursByCol[col], 'non-business'),
-                        _this.renderFillSegs(bgEventSegsByCol[col], 'bg-event'))) }));
-            })));
-    };
-    TableRow.prototype.componentDidMount = function () {
-        this.updateSizing(true);
-    };
-    TableRow.prototype.componentDidUpdate = function (prevProps, prevState) {
-        var currentProps = this.props;
-        this.updateSizing(!Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_30" /* isPropsEqual */])(prevProps, currentProps));
-    };
-    TableRow.prototype.getHighlightSegs = function () {
-        var props = this.props;
-        if (props.eventDrag && props.eventDrag.segs.length) { // messy check
-            return props.eventDrag.segs;
-        }
-        if (props.eventResize && props.eventResize.segs.length) { // messy check
-            return props.eventResize.segs;
-        }
-        return props.dateSelectionSegs;
-    };
-    TableRow.prototype.getMirrorSegs = function () {
-        var props = this.props;
-        if (props.eventResize && props.eventResize.segs.length) { // messy check
-            return props.eventResize.segs;
-        }
-        return [];
-    };
-    TableRow.prototype.renderFgSegs = function (segs, segIsHidden, // does NOT mean display:hidden
-    segTops, segMarginTops, selectedInstanceHash, todayRange, isDragging, isResizing, isDateSelecting) {
-        var context = this.context;
-        var eventSelection = this.props.eventSelection;
-        var framePositions = this.state.framePositions;
-        var defaultDisplayEventEnd = this.props.cells.length === 1; // colCnt === 1
-        var nodes = [];
-        if (framePositions) {
-            for (var _i = 0, segs_1 = segs; _i < segs_1.length; _i++) {
-                var seg = segs_1[_i];
-                var instanceId = seg.eventRange.instance.instanceId;
-                var isMirror = isDragging || isResizing || isDateSelecting;
-                var isSelected = selectedInstanceHash[instanceId];
-                var isInvisible = segIsHidden[instanceId] || isSelected;
-                // TODO: simpler way? NOT DRY
-                var isAbsolute = segIsHidden[instanceId] || isMirror || seg.firstCol !== seg.lastCol || !seg.isStart || !seg.isEnd;
-                var marginTop = void 0;
-                var top_1 = void 0;
-                var left = void 0;
-                var right = void 0;
-                if (isAbsolute) {
-                    top_1 = segTops[instanceId];
-                    if (context.isRtl) {
-                        right = 0;
-                        left = framePositions.lefts[seg.lastCol] - framePositions.lefts[seg.firstCol];
-                    }
-                    else {
-                        left = 0;
-                        right = framePositions.rights[seg.firstCol] - framePositions.rights[seg.lastCol];
-                    }
-                }
-                else {
-                    marginTop = segMarginTops[instanceId];
-                }
-                /*
-                known bug: events that are force to be list-item but span multiple days still take up space in later columns
-                */
-                nodes.push(Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { className: 'fc-daygrid-event-harness' + (isAbsolute ? ' fc-daygrid-event-harness-abs' : ''), key: instanceId, 
-                    // in print mode when in mult cols, could collide
-                    ref: isMirror ? null : this.segHarnessRefs.createRef(instanceId + ':' + seg.firstCol), style: {
-                        visibility: isInvisible ? 'hidden' : '',
-                        marginTop: marginTop || '',
-                        top: top_1 || '',
-                        left: left || '',
-                        right: right || '',
-                    } }, hasListItemDisplay(seg) ? (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(TableListItemEvent, Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({ seg: seg, isDragging: isDragging, isSelected: instanceId === eventSelection, defaultDisplayEventEnd: defaultDisplayEventEnd }, Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_19" /* getSegMeta */])(seg, todayRange)))) : (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(TableBlockEvent, Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({ seg: seg, isDragging: isDragging, isResizing: isResizing, isDateSelecting: isDateSelecting, isSelected: instanceId === eventSelection, defaultDisplayEventEnd: defaultDisplayEventEnd }, Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_19" /* getSegMeta */])(seg, todayRange))))));
-            }
-        }
-        return nodes;
-    };
-    TableRow.prototype.renderFillSegs = function (segs, fillType) {
-        var isRtl = this.context.isRtl;
-        var todayRange = this.props.todayRange;
-        var framePositions = this.state.framePositions;
-        var nodes = [];
-        if (framePositions) {
-            for (var _i = 0, segs_2 = segs; _i < segs_2.length; _i++) {
-                var seg = segs_2[_i];
-                var leftRightCss = isRtl ? {
-                    right: 0,
-                    left: framePositions.lefts[seg.lastCol] - framePositions.lefts[seg.firstCol],
-                } : {
-                    left: 0,
-                    right: framePositions.rights[seg.firstCol] - framePositions.rights[seg.lastCol],
-                };
-                nodes.push(Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { key: Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Q" /* buildEventRangeKey */])(seg.eventRange), className: "fc-daygrid-bg-harness", style: leftRightCss }, fillType === 'bg-event' ?
-                    Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["c" /* BgEvent */], Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({ seg: seg }, Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_19" /* getSegMeta */])(seg, todayRange))) :
-                    Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_42" /* renderFill */])(fillType)));
-            }
-        }
-        return __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */].apply(void 0, Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["c" /* __spreadArrays */])([__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["v" /* Fragment */], {}], nodes));
-    };
-    TableRow.prototype.updateSizing = function (isExternalSizingChange) {
-        var _a = this, props = _a.props, frameElRefs = _a.frameElRefs;
-        if (props.clientWidth !== null) { // positioning ready?
-            if (isExternalSizingChange) {
-                var frameEls = props.cells.map(function (cell) { return frameElRefs.currentMap[cell.key]; });
-                if (frameEls.length) {
-                    var originEl = this.rootElRef.current;
-                    this.setState({
-                        framePositions: new __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["y" /* PositionCache */](originEl, frameEls, true, // isHorizontal
-                        false),
-                    });
-                }
-            }
-            var limitByContentHeight = props.dayMaxEvents === true || props.dayMaxEventRows === true;
-            this.setState({
-                segHeights: this.computeSegHeights(),
-                maxContentHeight: limitByContentHeight ? this.computeMaxContentHeight() : null,
-            });
-        }
-    };
-    TableRow.prototype.computeSegHeights = function () {
-        return Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_31" /* mapHash */])(this.segHarnessRefs.currentMap, function (eventHarnessEl) { return (eventHarnessEl.getBoundingClientRect().height); });
-    };
-    TableRow.prototype.computeMaxContentHeight = function () {
-        var firstKey = this.props.cells[0].key;
-        var cellEl = this.cellElRefs.currentMap[firstKey];
-        var fcContainerEl = this.fgElRefs.currentMap[firstKey];
-        return cellEl.getBoundingClientRect().bottom - fcContainerEl.getBoundingClientRect().top;
-    };
-    TableRow.prototype.getCellEls = function () {
-        var elMap = this.cellElRefs.currentMap;
-        return this.props.cells.map(function (cell) { return elMap[cell.key]; });
-    };
-    return TableRow;
-}(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["i" /* DateComponent */]));
-TableRow.addPropsEquality({
-    onMoreClick: true,
-});
-TableRow.addStateEquality({
-    segHeights: __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_30" /* isPropsEqual */],
-});
-
-var PADDING_FROM_VIEWPORT = 10;
-var SCROLL_DEBOUNCE = 10;
-var Popover = /** @class */ (function (_super) {
-    Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["b" /* __extends */])(Popover, _super);
-    function Popover() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.repositioner = new __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["p" /* DelayedRunner */](_this.updateSize.bind(_this));
-        _this.handleRootEl = function (el) {
-            _this.rootEl = el;
-            if (_this.props.elRef) {
-                Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_44" /* setRef */])(_this.props.elRef, el);
-            }
-        };
-        // Triggered when the user clicks *anywhere* in the document, for the autoHide feature
-        _this.handleDocumentMousedown = function (ev) {
-            var onClose = _this.props.onClose;
-            // only hide the popover if the click happened outside the popover
-            if (onClose && !_this.rootEl.contains(ev.target)) {
-                onClose();
-            }
-        };
-        _this.handleDocumentScroll = function () {
-            _this.repositioner.request(SCROLL_DEBOUNCE);
-        };
-        _this.handleCloseClick = function () {
-            var onClose = _this.props.onClose;
-            if (onClose) {
-                onClose();
-            }
-        };
-        return _this;
-    }
-    Popover.prototype.render = function () {
-        var theme = this.context.theme;
-        var props = this.props;
-        var classNames = [
-            'fc-popover',
-            theme.getClass('popover'),
-        ].concat(props.extraClassNames || []);
-        return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({ className: classNames.join(' ') }, props.extraAttrs, { ref: this.handleRootEl }),
-            Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { className: 'fc-popover-header ' + theme.getClass('popoverHeader') },
-                Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("span", { className: "fc-popover-title" }, props.title),
-                Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("span", { className: 'fc-popover-close ' + theme.getIconClass('close'), onClick: this.handleCloseClick })),
-            Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { className: 'fc-popover-body ' + theme.getClass('popoverContent') }, props.children)));
-    };
-    Popover.prototype.componentDidMount = function () {
-        document.addEventListener('mousedown', this.handleDocumentMousedown);
-        document.addEventListener('scroll', this.handleDocumentScroll);
-        this.updateSize();
-    };
-    Popover.prototype.componentWillUnmount = function () {
-        document.removeEventListener('mousedown', this.handleDocumentMousedown);
-        document.removeEventListener('scroll', this.handleDocumentScroll);
-    };
-    // TODO: adjust on window resize
-    /*
-    NOTE: the popover is position:fixed, so coordinates are relative to the viewport
-    NOTE: the PARENT calls this as well, on window resize. we would have wanted to use the repositioner,
-          but need to ensure that all other components have updated size first (for alignmentEl)
-    */
-    Popover.prototype.updateSize = function () {
-        var _a = this.props, alignmentEl = _a.alignmentEl, topAlignmentEl = _a.topAlignmentEl;
-        var rootEl = this.rootEl;
-        if (!rootEl) {
-            return; // not sure why this was null, but we shouldn't let external components call updateSize() anyway
-        }
-        var dims = rootEl.getBoundingClientRect(); // only used for width,height
-        var alignment = alignmentEl.getBoundingClientRect();
-        var top = topAlignmentEl ? topAlignmentEl.getBoundingClientRect().top : alignment.top;
-        top = Math.min(top, window.innerHeight - dims.height - PADDING_FROM_VIEWPORT);
-        top = Math.max(top, PADDING_FROM_VIEWPORT);
-        var left;
-        if (this.context.isRtl) {
-            left = alignment.right - dims.width;
-        }
-        else {
-            left = alignment.left;
-        }
-        left = Math.min(left, window.innerWidth - dims.width - PADDING_FROM_VIEWPORT);
-        left = Math.max(left, PADDING_FROM_VIEWPORT);
-        Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["N" /* applyStyle */])(rootEl, { top: top, left: left });
-    };
-    return Popover;
-}(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["b" /* BaseComponent */]));
-
-var MorePopover = /** @class */ (function (_super) {
-    Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["b" /* __extends */])(MorePopover, _super);
-    function MorePopover() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.rootElRef = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_4" /* createRef */])();
-        return _this;
-    }
-    MorePopover.prototype.render = function () {
-        var _a = this.context, options = _a.options, dateEnv = _a.dateEnv;
-        var props = this.props;
-        var date = props.date, hiddenInstances = props.hiddenInstances, todayRange = props.todayRange, dateProfile = props.dateProfile, selectedInstanceId = props.selectedInstanceId;
-        var title = dateEnv.format(date, options.dayPopoverFormat);
-        return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["l" /* DayCellRoot */], { date: date, dateProfile: dateProfile, todayRange: todayRange, elRef: this.rootElRef }, function (rootElRef, dayClassNames, dataAttrs) { return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(Popover, { elRef: rootElRef, title: title, extraClassNames: ['fc-more-popover'].concat(dayClassNames), extraAttrs: dataAttrs, onClose: props.onCloseClick, alignmentEl: props.alignmentEl, topAlignmentEl: props.topAlignmentEl },
-            Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["k" /* DayCellContent */], { date: date, dateProfile: dateProfile, todayRange: todayRange }, function (innerElRef, innerContent) { return (innerContent &&
-                Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { className: "fc-more-popover-misc", ref: innerElRef }, innerContent)); }),
-            props.segs.map(function (seg) {
-                var instanceId = seg.eventRange.instance.instanceId;
-                return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { className: "fc-daygrid-event-harness", key: instanceId, style: {
-                        visibility: hiddenInstances[instanceId] ? 'hidden' : '',
-                    } }, hasListItemDisplay(seg) ? (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(TableListItemEvent, Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({ seg: seg, isDragging: false, isSelected: instanceId === selectedInstanceId, defaultDisplayEventEnd: false }, Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_19" /* getSegMeta */])(seg, todayRange)))) : (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(TableBlockEvent, Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({ seg: seg, isDragging: false, isResizing: false, isDateSelecting: false, isSelected: instanceId === selectedInstanceId, defaultDisplayEventEnd: false }, Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_19" /* getSegMeta */])(seg, todayRange))))));
-            }))); }));
-    };
-    MorePopover.prototype.positionToHit = function (positionLeft, positionTop, originEl) {
-        var rootEl = this.rootElRef.current;
-        if (!originEl || !rootEl) { // why?
-            return null;
-        }
-        var originRect = originEl.getBoundingClientRect();
-        var elRect = rootEl.getBoundingClientRect();
-        var newOriginLeft = elRect.left - originRect.left;
-        var newOriginTop = elRect.top - originRect.top;
-        var localLeft = positionLeft - newOriginLeft;
-        var localTop = positionTop - newOriginTop;
-        var date = this.props.date;
-        if ( // ugly way to detect intersection
-        localLeft >= 0 && localLeft < elRect.width &&
-            localTop >= 0 && localTop < elRect.height) {
-            return {
-                dateSpan: {
-                    allDay: true,
-                    range: { start: date, end: Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["I" /* addDays */])(date, 1) },
-                },
-                dayEl: rootEl,
-                relativeRect: {
-                    left: newOriginLeft,
-                    top: newOriginTop,
-                    right: elRect.width,
-                    bottom: elRect.height,
-                },
-                layer: 1,
-            };
-        }
-        return null;
-    };
-    return MorePopover;
-}(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["i" /* DateComponent */]));
-
-var Table = /** @class */ (function (_super) {
-    Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["b" /* __extends */])(Table, _super);
-    function Table() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.splitBusinessHourSegs = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_32" /* memoize */])(splitSegsByRow);
-        _this.splitBgEventSegs = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_32" /* memoize */])(splitSegsByRow);
-        _this.splitFgEventSegs = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_32" /* memoize */])(splitSegsByRow);
-        _this.splitDateSelectionSegs = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_32" /* memoize */])(splitSegsByRow);
-        _this.splitEventDrag = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_32" /* memoize */])(splitInteractionByRow);
-        _this.splitEventResize = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_32" /* memoize */])(splitInteractionByRow);
-        _this.buildBuildMoreLinkText = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_32" /* memoize */])(buildBuildMoreLinkText);
-        _this.morePopoverRef = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_4" /* createRef */])();
-        _this.rowRefs = new __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["z" /* RefMap */]();
-        _this.state = {
-            morePopoverState: null,
-        };
-        _this.handleRootEl = function (rootEl) {
-            _this.rootEl = rootEl;
-            Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_44" /* setRef */])(_this.props.elRef, rootEl);
-        };
-        // TODO: bad names "more link click" versus "more click"
-        _this.handleMoreLinkClick = function (arg) {
-            var context = _this.context;
-            var dateEnv = context.dateEnv;
-            var clickOption = context.options.moreLinkClick;
-            function segForPublic(seg) {
-                var _a = seg.eventRange, def = _a.def, instance = _a.instance, range = _a.range;
-                return {
-                    event: new __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["t" /* EventApi */](context, def, instance),
-                    start: dateEnv.toDate(range.start),
-                    end: dateEnv.toDate(range.end),
-                    isStart: seg.isStart,
-                    isEnd: seg.isEnd,
-                };
-            }
-            if (typeof clickOption === 'function') {
-                clickOption = clickOption({
-                    date: dateEnv.toDate(arg.date),
-                    allDay: true,
-                    allSegs: arg.allSegs.map(segForPublic),
-                    hiddenSegs: arg.hiddenSegs.map(segForPublic),
-                    jsEvent: arg.ev,
-                    view: context.viewApi,
-                }); // hack to handle void
-            }
-            if (!clickOption || clickOption === 'popover') {
-                _this.setState({
-                    morePopoverState: Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])(Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({}, arg), { currentFgEventSegs: _this.props.fgEventSegs, fromRow: arg.fromRow, fromCol: arg.fromCol }),
-                });
-            }
-            else if (typeof clickOption === 'string') { // a view name
-                context.calendarApi.zoomTo(arg.date, clickOption);
-            }
-        };
-        _this.handleMorePopoverClose = function () {
-            _this.setState({
-                morePopoverState: null,
-            });
-        };
-        return _this;
-    }
-    Table.prototype.render = function () {
-        var _this = this;
-        var props = this.props;
-        var dateProfile = props.dateProfile, dayMaxEventRows = props.dayMaxEventRows, dayMaxEvents = props.dayMaxEvents, expandRows = props.expandRows;
-        var morePopoverState = this.state.morePopoverState;
-        var rowCnt = props.cells.length;
-        var businessHourSegsByRow = this.splitBusinessHourSegs(props.businessHourSegs, rowCnt);
-        var bgEventSegsByRow = this.splitBgEventSegs(props.bgEventSegs, rowCnt);
-        var fgEventSegsByRow = this.splitFgEventSegs(props.fgEventSegs, rowCnt);
-        var dateSelectionSegsByRow = this.splitDateSelectionSegs(props.dateSelectionSegs, rowCnt);
-        var eventDragByRow = this.splitEventDrag(props.eventDrag, rowCnt);
-        var eventResizeByRow = this.splitEventResize(props.eventResize, rowCnt);
-        var buildMoreLinkText = this.buildBuildMoreLinkText(this.context.options.moreLinkText);
-        var limitViaBalanced = dayMaxEvents === true || dayMaxEventRows === true;
-        // if rows can't expand to fill fixed height, can't do balanced-height event limit
-        // TODO: best place to normalize these options?
-        if (limitViaBalanced && !expandRows) {
-            limitViaBalanced = false;
-            dayMaxEventRows = null;
-            dayMaxEvents = null;
-        }
-        var classNames = [
-            'fc-daygrid-body',
-            limitViaBalanced ? 'fc-daygrid-body-balanced' : 'fc-daygrid-body-unbalanced',
-            expandRows ? '' : 'fc-daygrid-body-natural',
-        ];
-        return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("div", { className: classNames.join(' '), ref: this.handleRootEl, style: {
-                // these props are important to give this wrapper correct dimensions for interactions
-                // TODO: if we set it here, can we avoid giving to inner tables?
-                width: props.clientWidth,
-                minWidth: props.tableMinWidth,
-            } },
-            Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["x" /* NowTimer */], { unit: "day" }, function (nowDate, todayRange) { return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["v" /* Fragment */], null,
-                Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("table", { className: "fc-scrollgrid-sync-table", style: {
-                        width: props.clientWidth,
-                        minWidth: props.tableMinWidth,
-                        height: expandRows ? props.clientHeight : '',
-                    } },
-                    props.colGroupNode,
-                    Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])("tbody", null, props.cells.map(function (cells, row) { return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(TableRow, { ref: _this.rowRefs.createRef(row), key: cells.length
-                            ? cells[0].date.toISOString() /* best? or put key on cell? or use diff formatter? */
-                            : row // in case there are no cells (like when resource view is loading)
-                        , showDayNumbers: rowCnt > 1, showWeekNumbers: props.showWeekNumbers, todayRange: todayRange, dateProfile: dateProfile, cells: cells, renderIntro: props.renderRowIntro, businessHourSegs: businessHourSegsByRow[row], eventSelection: props.eventSelection, bgEventSegs: bgEventSegsByRow[row].filter(isSegAllDay) /* hack */, fgEventSegs: fgEventSegsByRow[row], dateSelectionSegs: dateSelectionSegsByRow[row], eventDrag: eventDragByRow[row], eventResize: eventResizeByRow[row], dayMaxEvents: dayMaxEvents, dayMaxEventRows: dayMaxEventRows, clientWidth: props.clientWidth, clientHeight: props.clientHeight, buildMoreLinkText: buildMoreLinkText, onMoreClick: function (arg) {
-                            _this.handleMoreLinkClick(Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])(Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({}, arg), { fromRow: row }));
-                        } })); }))),
-                (!props.forPrint && morePopoverState && morePopoverState.currentFgEventSegs === props.fgEventSegs) && (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(MorePopover, { ref: _this.morePopoverRef, date: morePopoverState.date, dateProfile: dateProfile, segs: morePopoverState.allSegs, alignmentEl: morePopoverState.dayEl, topAlignmentEl: rowCnt === 1 ? props.headerAlignElRef.current : null, onCloseClick: _this.handleMorePopoverClose, selectedInstanceId: props.eventSelection, hiddenInstances: // yuck
-                    (props.eventDrag ? props.eventDrag.affectedInstances : null) ||
-                        (props.eventResize ? props.eventResize.affectedInstances : null) ||
-                        {}, todayRange: todayRange })))); })));
-    };
-    // Hit System
-    // ----------------------------------------------------------------------------------------------------
-    Table.prototype.prepareHits = function () {
-        this.rowPositions = new __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["y" /* PositionCache */](this.rootEl, this.rowRefs.collect().map(function (rowObj) { return rowObj.getCellEls()[0]; }), // first cell el in each row. TODO: not optimal
-        false, true);
-        this.colPositions = new __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["y" /* PositionCache */](this.rootEl, this.rowRefs.currentMap[0].getCellEls(), // cell els in first row
-        true, // horizontal
-        false);
-    };
-    Table.prototype.positionToHit = function (leftPosition, topPosition) {
-        var morePopover = this.morePopoverRef.current;
-        var morePopoverHit = morePopover ? morePopover.positionToHit(leftPosition, topPosition, this.rootEl) : null;
-        var morePopoverState = this.state.morePopoverState;
-        if (morePopoverHit) {
-            return Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({ row: morePopoverState.fromRow, col: morePopoverState.fromCol }, morePopoverHit);
-        }
-        var _a = this, colPositions = _a.colPositions, rowPositions = _a.rowPositions;
-        var col = colPositions.leftToIndex(leftPosition);
-        var row = rowPositions.topToIndex(topPosition);
-        if (row != null && col != null) {
-            return {
-                row: row,
-                col: col,
-                dateSpan: {
-                    range: this.getCellRange(row, col),
-                    allDay: true,
-                },
-                dayEl: this.getCellEl(row, col),
-                relativeRect: {
-                    left: colPositions.lefts[col],
-                    right: colPositions.rights[col],
-                    top: rowPositions.tops[row],
-                    bottom: rowPositions.bottoms[row],
-                },
-            };
-        }
-        return null;
-    };
-    Table.prototype.getCellEl = function (row, col) {
-        return this.rowRefs.currentMap[row].getCellEls()[col]; // TODO: not optimal
-    };
-    Table.prototype.getCellRange = function (row, col) {
-        var start = this.props.cells[row][col].date;
-        var end = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["I" /* addDays */])(start, 1);
-        return { start: start, end: end };
-    };
-    return Table;
-}(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["i" /* DateComponent */]));
-function buildBuildMoreLinkText(moreLinkTextInput) {
-    if (typeof moreLinkTextInput === 'function') {
-        return moreLinkTextInput;
-    }
-    return function (num) { return "+" + num + " " + moreLinkTextInput; };
-}
-function isSegAllDay(seg) {
-    return seg.eventRange.def.allDay;
-}
-
-var DayTableSlicer = /** @class */ (function (_super) {
-    Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["b" /* __extends */])(DayTableSlicer, _super);
-    function DayTableSlicer() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.forceDayIfListItem = true;
-        return _this;
-    }
-    DayTableSlicer.prototype.sliceRange = function (dateRange, dayTableModel) {
-        return dayTableModel.sliceRange(dateRange);
-    };
-    return DayTableSlicer;
-}(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["D" /* Slicer */]));
-
-var DayTable = /** @class */ (function (_super) {
-    Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["b" /* __extends */])(DayTable, _super);
-    function DayTable() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.slicer = new DayTableSlicer();
-        _this.tableRef = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_4" /* createRef */])();
-        _this.handleRootEl = function (rootEl) {
-            if (rootEl) {
-                _this.context.registerInteractiveComponent(_this, { el: rootEl });
-            }
-            else {
-                _this.context.unregisterInteractiveComponent(_this);
-            }
-        };
-        return _this;
-    }
-    DayTable.prototype.render = function () {
-        var _a = this, props = _a.props, context = _a.context;
-        return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(Table, Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["a" /* __assign */])({ ref: this.tableRef, elRef: this.handleRootEl }, this.slicer.sliceProps(props, props.dateProfile, props.nextDayThreshold, context, props.dayTableModel), { dateProfile: props.dateProfile, cells: props.dayTableModel.cells, colGroupNode: props.colGroupNode, tableMinWidth: props.tableMinWidth, renderRowIntro: props.renderRowIntro, dayMaxEvents: props.dayMaxEvents, dayMaxEventRows: props.dayMaxEventRows, showWeekNumbers: props.showWeekNumbers, expandRows: props.expandRows, headerAlignElRef: props.headerAlignElRef, clientWidth: props.clientWidth, clientHeight: props.clientHeight, forPrint: props.forPrint })));
-    };
-    DayTable.prototype.prepareHits = function () {
-        this.tableRef.current.prepareHits();
-    };
-    DayTable.prototype.queryHit = function (positionLeft, positionTop) {
-        var rawHit = this.tableRef.current.positionToHit(positionLeft, positionTop);
-        if (rawHit) {
-            return {
-                component: this,
-                dateSpan: rawHit.dateSpan,
-                dayEl: rawHit.dayEl,
-                rect: {
-                    left: rawHit.relativeRect.left,
-                    right: rawHit.relativeRect.right,
-                    top: rawHit.relativeRect.top,
-                    bottom: rawHit.relativeRect.bottom,
-                },
-                layer: 0,
-            };
-        }
-        return null;
-    };
-    return DayTable;
-}(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["i" /* DateComponent */]));
-
-var DayTableView = /** @class */ (function (_super) {
-    Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["b" /* __extends */])(DayTableView, _super);
-    function DayTableView() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.buildDayTableModel = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_32" /* memoize */])(buildDayTableModel);
-        _this.headerRef = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_4" /* createRef */])();
-        _this.tableRef = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_4" /* createRef */])();
-        return _this;
-    }
-    DayTableView.prototype.render = function () {
-        var _this = this;
-        var _a = this.context, options = _a.options, dateProfileGenerator = _a.dateProfileGenerator;
-        var props = this.props;
-        var dayTableModel = this.buildDayTableModel(props.dateProfile, dateProfileGenerator);
-        var headerContent = options.dayHeaders && (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["m" /* DayHeader */], { ref: this.headerRef, dateProfile: props.dateProfile, dates: dayTableModel.headerDates, datesRepDistinctDays: dayTableModel.rowCnt === 1 }));
-        var bodyContent = function (contentArg) { return (Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["Z" /* createElement */])(DayTable, { ref: _this.tableRef, dateProfile: props.dateProfile, dayTableModel: dayTableModel, businessHours: props.businessHours, dateSelection: props.dateSelection, eventStore: props.eventStore, eventUiBases: props.eventUiBases, eventSelection: props.eventSelection, eventDrag: props.eventDrag, eventResize: props.eventResize, nextDayThreshold: options.nextDayThreshold, colGroupNode: contentArg.tableColGroupNode, tableMinWidth: contentArg.tableMinWidth, dayMaxEvents: options.dayMaxEvents, dayMaxEventRows: options.dayMaxEventRows, showWeekNumbers: options.weekNumbers, expandRows: !props.isHeightAuto, headerAlignElRef: _this.headerElRef, clientWidth: contentArg.clientWidth, clientHeight: contentArg.clientHeight, forPrint: props.forPrint })); };
-        return options.dayMinWidth
-            ? this.renderHScrollLayout(headerContent, bodyContent, dayTableModel.colCnt, options.dayMinWidth)
-            : this.renderSimpleLayout(headerContent, bodyContent);
-    };
-    return DayTableView;
-}(TableView));
-function buildDayTableModel(dateProfile, dateProfileGenerator) {
-    var daySeries = new __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["n" /* DaySeriesModel */](dateProfile.renderRange, dateProfileGenerator);
-    return new __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["o" /* DayTableModel */](daySeries, /year|month|week/.test(dateProfile.currentRangeUnit));
-}
-
-var TableDateProfileGenerator = /** @class */ (function (_super) {
-    Object(__WEBPACK_IMPORTED_MODULE_2_tslib__["b" /* __extends */])(TableDateProfileGenerator, _super);
-    function TableDateProfileGenerator() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    // Computes the date range that will be rendered.
-    TableDateProfileGenerator.prototype.buildRenderRange = function (currentRange, currentRangeUnit, isRangeAllDay) {
-        var dateEnv = this.props.dateEnv;
-        var renderRange = _super.prototype.buildRenderRange.call(this, currentRange, currentRangeUnit, isRangeAllDay);
-        var start = renderRange.start;
-        var end = renderRange.end;
-        var endOfWeek;
-        // year and month views should be aligned with weeks. this is already done for week
-        if (/^(year|month)$/.test(currentRangeUnit)) {
-            start = dateEnv.startOfWeek(start);
-            // make end-of-week if not already
-            endOfWeek = dateEnv.startOfWeek(end);
-            if (endOfWeek.valueOf() !== end.valueOf()) {
-                end = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["J" /* addWeeks */])(endOfWeek, 1);
-            }
-        }
-        // ensure 6 weeks
-        if (this.props.monthMode &&
-            this.props.fixedWeekCount) {
-            var rowCnt = Math.ceil(// could be partial weeks due to hiddenDays
-            Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_7" /* diffWeeks */])(start, end));
-            end = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["J" /* addWeeks */])(end, 6 - rowCnt);
-        }
-        return { start: start, end: end };
-    };
-    return TableDateProfileGenerator;
-}(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["j" /* DateProfileGenerator */]));
-
-var OPTION_REFINERS = {
-    moreLinkClick: __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_22" /* identity */],
-    moreLinkClassNames: __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_22" /* identity */],
-    moreLinkContent: __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_22" /* identity */],
-    moreLinkDidMount: __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_22" /* identity */],
-    moreLinkWillUnmount: __WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_22" /* identity */],
-};
-
-var main = Object(__WEBPACK_IMPORTED_MODULE_1__fullcalendar_common__["_3" /* createPlugin */])({
-    initialView: 'dayGridMonth',
-    optionRefiners: OPTION_REFINERS,
-    views: {
-        dayGrid: {
-            component: DayTableView,
-            dateProfileGeneratorClass: TableDateProfileGenerator,
-        },
-        dayGridDay: {
-            type: 'dayGrid',
-            duration: { days: 1 },
-        },
-        dayGridWeek: {
-            type: 'dayGrid',
-            duration: { weeks: 1 },
-        },
-        dayGridMonth: {
-            type: 'dayGrid',
-            duration: { months: 1 },
-            monthMode: true,
-            fixedWeekCount: true,
-        },
-    },
-});
-
-/* harmony default export */ __webpack_exports__["a"] = (main);
-
-//# sourceMappingURL=main.js.map
-
-
-/***/ }),
-/* 155 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(21);
+var content = __webpack_require__(11);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -90929,7 +92596,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(22)(content, options);
+var update = __webpack_require__(24)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -90944,2179 +92611,6 @@ if(false) {
 	// When the module is disposed, remove the <style> tags
 	module.hot.dispose(function() { update(); });
 }
-
-/***/ }),
-/* 156 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export Draggable */
-/* unused harmony export FeaturefulElementDragging */
-/* unused harmony export PointerDragging */
-/* unused harmony export ThirdPartyDraggable */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_tslib__ = __webpack_require__(5);
-/*!
-FullCalendar v5.5.0
-Docs & License: https://fullcalendar.io/
-(c) 2020 Adam Shaw
-*/
-
-
-
-__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["W" /* config */].touchMouseIgnoreWait = 500;
-var ignoreMouseDepth = 0;
-var listenerCnt = 0;
-var isWindowTouchMoveCancelled = false;
-/*
-Uses a "pointer" abstraction, which monitors UI events for both mouse and touch.
-Tracks when the pointer "drags" on a certain element, meaning down+move+up.
-
-Also, tracks if there was touch-scrolling.
-Also, can prevent touch-scrolling from happening.
-Also, can fire pointermove events when scrolling happens underneath, even when no real pointer movement.
-
-emits:
-- pointerdown
-- pointermove
-- pointerup
-*/
-var PointerDragging = /** @class */ (function () {
-    function PointerDragging(containerEl) {
-        var _this = this;
-        this.subjectEl = null;
-        // options that can be directly assigned by caller
-        this.selector = ''; // will cause subjectEl in all emitted events to be this element
-        this.handleSelector = '';
-        this.shouldIgnoreMove = false;
-        this.shouldWatchScroll = true; // for simulating pointermove on scroll
-        // internal states
-        this.isDragging = false;
-        this.isTouchDragging = false;
-        this.wasTouchScroll = false;
-        // Mouse
-        // ----------------------------------------------------------------------------------------------------
-        this.handleMouseDown = function (ev) {
-            if (!_this.shouldIgnoreMouse() &&
-                isPrimaryMouseButton(ev) &&
-                _this.tryStart(ev)) {
-                var pev = _this.createEventFromMouse(ev, true);
-                _this.emitter.trigger('pointerdown', pev);
-                _this.initScrollWatch(pev);
-                if (!_this.shouldIgnoreMove) {
-                    document.addEventListener('mousemove', _this.handleMouseMove);
-                }
-                document.addEventListener('mouseup', _this.handleMouseUp);
-            }
-        };
-        this.handleMouseMove = function (ev) {
-            var pev = _this.createEventFromMouse(ev);
-            _this.recordCoords(pev);
-            _this.emitter.trigger('pointermove', pev);
-        };
-        this.handleMouseUp = function (ev) {
-            document.removeEventListener('mousemove', _this.handleMouseMove);
-            document.removeEventListener('mouseup', _this.handleMouseUp);
-            _this.emitter.trigger('pointerup', _this.createEventFromMouse(ev));
-            _this.cleanup(); // call last so that pointerup has access to props
-        };
-        // Touch
-        // ----------------------------------------------------------------------------------------------------
-        this.handleTouchStart = function (ev) {
-            if (_this.tryStart(ev)) {
-                _this.isTouchDragging = true;
-                var pev = _this.createEventFromTouch(ev, true);
-                _this.emitter.trigger('pointerdown', pev);
-                _this.initScrollWatch(pev);
-                // unlike mouse, need to attach to target, not document
-                // https://stackoverflow.com/a/45760014
-                var targetEl = ev.target;
-                if (!_this.shouldIgnoreMove) {
-                    targetEl.addEventListener('touchmove', _this.handleTouchMove);
-                }
-                targetEl.addEventListener('touchend', _this.handleTouchEnd);
-                targetEl.addEventListener('touchcancel', _this.handleTouchEnd); // treat it as a touch end
-                // attach a handler to get called when ANY scroll action happens on the page.
-                // this was impossible to do with normal on/off because 'scroll' doesn't bubble.
-                // http://stackoverflow.com/a/32954565/96342
-                window.addEventListener('scroll', _this.handleTouchScroll, true);
-            }
-        };
-        this.handleTouchMove = function (ev) {
-            var pev = _this.createEventFromTouch(ev);
-            _this.recordCoords(pev);
-            _this.emitter.trigger('pointermove', pev);
-        };
-        this.handleTouchEnd = function (ev) {
-            if (_this.isDragging) { // done to guard against touchend followed by touchcancel
-                var targetEl = ev.target;
-                targetEl.removeEventListener('touchmove', _this.handleTouchMove);
-                targetEl.removeEventListener('touchend', _this.handleTouchEnd);
-                targetEl.removeEventListener('touchcancel', _this.handleTouchEnd);
-                window.removeEventListener('scroll', _this.handleTouchScroll, true); // useCaptured=true
-                _this.emitter.trigger('pointerup', _this.createEventFromTouch(ev));
-                _this.cleanup(); // call last so that pointerup has access to props
-                _this.isTouchDragging = false;
-                startIgnoringMouse();
-            }
-        };
-        this.handleTouchScroll = function () {
-            _this.wasTouchScroll = true;
-        };
-        this.handleScroll = function (ev) {
-            if (!_this.shouldIgnoreMove) {
-                var pageX = (window.pageXOffset - _this.prevScrollX) + _this.prevPageX;
-                var pageY = (window.pageYOffset - _this.prevScrollY) + _this.prevPageY;
-                _this.emitter.trigger('pointermove', {
-                    origEvent: ev,
-                    isTouch: _this.isTouchDragging,
-                    subjectEl: _this.subjectEl,
-                    pageX: pageX,
-                    pageY: pageY,
-                    deltaX: pageX - _this.origPageX,
-                    deltaY: pageY - _this.origPageY,
-                });
-            }
-        };
-        this.containerEl = containerEl;
-        this.emitter = new __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["s" /* Emitter */]();
-        containerEl.addEventListener('mousedown', this.handleMouseDown);
-        containerEl.addEventListener('touchstart', this.handleTouchStart, { passive: true });
-        listenerCreated();
-    }
-    PointerDragging.prototype.destroy = function () {
-        this.containerEl.removeEventListener('mousedown', this.handleMouseDown);
-        this.containerEl.removeEventListener('touchstart', this.handleTouchStart, { passive: true });
-        listenerDestroyed();
-    };
-    PointerDragging.prototype.tryStart = function (ev) {
-        var subjectEl = this.querySubjectEl(ev);
-        var downEl = ev.target;
-        if (subjectEl &&
-            (!this.handleSelector || Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_9" /* elementClosest */])(downEl, this.handleSelector))) {
-            this.subjectEl = subjectEl;
-            this.isDragging = true; // do this first so cancelTouchScroll will work
-            this.wasTouchScroll = false;
-            return true;
-        }
-        return false;
-    };
-    PointerDragging.prototype.cleanup = function () {
-        isWindowTouchMoveCancelled = false;
-        this.isDragging = false;
-        this.subjectEl = null;
-        // keep wasTouchScroll around for later access
-        this.destroyScrollWatch();
-    };
-    PointerDragging.prototype.querySubjectEl = function (ev) {
-        if (this.selector) {
-            return Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_9" /* elementClosest */])(ev.target, this.selector);
-        }
-        return this.containerEl;
-    };
-    PointerDragging.prototype.shouldIgnoreMouse = function () {
-        return ignoreMouseDepth || this.isTouchDragging;
-    };
-    // can be called by user of this class, to cancel touch-based scrolling for the current drag
-    PointerDragging.prototype.cancelTouchScroll = function () {
-        if (this.isDragging) {
-            isWindowTouchMoveCancelled = true;
-        }
-    };
-    // Scrolling that simulates pointermoves
-    // ----------------------------------------------------------------------------------------------------
-    PointerDragging.prototype.initScrollWatch = function (ev) {
-        if (this.shouldWatchScroll) {
-            this.recordCoords(ev);
-            window.addEventListener('scroll', this.handleScroll, true); // useCapture=true
-        }
-    };
-    PointerDragging.prototype.recordCoords = function (ev) {
-        if (this.shouldWatchScroll) {
-            this.prevPageX = ev.pageX;
-            this.prevPageY = ev.pageY;
-            this.prevScrollX = window.pageXOffset;
-            this.prevScrollY = window.pageYOffset;
-        }
-    };
-    PointerDragging.prototype.destroyScrollWatch = function () {
-        if (this.shouldWatchScroll) {
-            window.removeEventListener('scroll', this.handleScroll, true); // useCaptured=true
-        }
-    };
-    // Event Normalization
-    // ----------------------------------------------------------------------------------------------------
-    PointerDragging.prototype.createEventFromMouse = function (ev, isFirst) {
-        var deltaX = 0;
-        var deltaY = 0;
-        // TODO: repeat code
-        if (isFirst) {
-            this.origPageX = ev.pageX;
-            this.origPageY = ev.pageY;
-        }
-        else {
-            deltaX = ev.pageX - this.origPageX;
-            deltaY = ev.pageY - this.origPageY;
-        }
-        return {
-            origEvent: ev,
-            isTouch: false,
-            subjectEl: this.subjectEl,
-            pageX: ev.pageX,
-            pageY: ev.pageY,
-            deltaX: deltaX,
-            deltaY: deltaY,
-        };
-    };
-    PointerDragging.prototype.createEventFromTouch = function (ev, isFirst) {
-        var touches = ev.touches;
-        var pageX;
-        var pageY;
-        var deltaX = 0;
-        var deltaY = 0;
-        // if touch coords available, prefer,
-        // because FF would give bad ev.pageX ev.pageY
-        if (touches && touches.length) {
-            pageX = touches[0].pageX;
-            pageY = touches[0].pageY;
-        }
-        else {
-            pageX = ev.pageX;
-            pageY = ev.pageY;
-        }
-        // TODO: repeat code
-        if (isFirst) {
-            this.origPageX = pageX;
-            this.origPageY = pageY;
-        }
-        else {
-            deltaX = pageX - this.origPageX;
-            deltaY = pageY - this.origPageY;
-        }
-        return {
-            origEvent: ev,
-            isTouch: true,
-            subjectEl: this.subjectEl,
-            pageX: pageX,
-            pageY: pageY,
-            deltaX: deltaX,
-            deltaY: deltaY,
-        };
-    };
-    return PointerDragging;
-}());
-// Returns a boolean whether this was a left mouse click and no ctrl key (which means right click on Mac)
-function isPrimaryMouseButton(ev) {
-    return ev.button === 0 && !ev.ctrlKey;
-}
-// Ignoring fake mouse events generated by touch
-// ----------------------------------------------------------------------------------------------------
-function startIgnoringMouse() {
-    ignoreMouseDepth += 1;
-    setTimeout(function () {
-        ignoreMouseDepth -= 1;
-    }, __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["W" /* config */].touchMouseIgnoreWait);
-}
-// We want to attach touchmove as early as possible for Safari
-// ----------------------------------------------------------------------------------------------------
-function listenerCreated() {
-    listenerCnt += 1;
-    if (listenerCnt === 1) {
-        window.addEventListener('touchmove', onWindowTouchMove, { passive: false });
-    }
-}
-function listenerDestroyed() {
-    listenerCnt -= 1;
-    if (!listenerCnt) {
-        window.removeEventListener('touchmove', onWindowTouchMove, { passive: false });
-    }
-}
-function onWindowTouchMove(ev) {
-    if (isWindowTouchMoveCancelled) {
-        ev.preventDefault();
-    }
-}
-
-/*
-An effect in which an element follows the movement of a pointer across the screen.
-The moving element is a clone of some other element.
-Must call start + handleMove + stop.
-*/
-var ElementMirror = /** @class */ (function () {
-    function ElementMirror() {
-        this.isVisible = false; // must be explicitly enabled
-        this.sourceEl = null;
-        this.mirrorEl = null;
-        this.sourceElRect = null; // screen coords relative to viewport
-        // options that can be set directly by caller
-        this.parentNode = document.body;
-        this.zIndex = 9999;
-        this.revertDuration = 0;
-    }
-    ElementMirror.prototype.start = function (sourceEl, pageX, pageY) {
-        this.sourceEl = sourceEl;
-        this.sourceElRect = this.sourceEl.getBoundingClientRect();
-        this.origScreenX = pageX - window.pageXOffset;
-        this.origScreenY = pageY - window.pageYOffset;
-        this.deltaX = 0;
-        this.deltaY = 0;
-        this.updateElPosition();
-    };
-    ElementMirror.prototype.handleMove = function (pageX, pageY) {
-        this.deltaX = (pageX - window.pageXOffset) - this.origScreenX;
-        this.deltaY = (pageY - window.pageYOffset) - this.origScreenY;
-        this.updateElPosition();
-    };
-    // can be called before start
-    ElementMirror.prototype.setIsVisible = function (bool) {
-        if (bool) {
-            if (!this.isVisible) {
-                if (this.mirrorEl) {
-                    this.mirrorEl.style.display = '';
-                }
-                this.isVisible = bool; // needs to happen before updateElPosition
-                this.updateElPosition(); // because was not updating the position while invisible
-            }
-        }
-        else if (this.isVisible) {
-            if (this.mirrorEl) {
-                this.mirrorEl.style.display = 'none';
-            }
-            this.isVisible = bool;
-        }
-    };
-    // always async
-    ElementMirror.prototype.stop = function (needsRevertAnimation, callback) {
-        var _this = this;
-        var done = function () {
-            _this.cleanup();
-            callback();
-        };
-        if (needsRevertAnimation &&
-            this.mirrorEl &&
-            this.isVisible &&
-            this.revertDuration && // if 0, transition won't work
-            (this.deltaX || this.deltaY) // if same coords, transition won't work
-        ) {
-            this.doRevertAnimation(done, this.revertDuration);
-        }
-        else {
-            setTimeout(done, 0);
-        }
-    };
-    ElementMirror.prototype.doRevertAnimation = function (callback, revertDuration) {
-        var mirrorEl = this.mirrorEl;
-        var finalSourceElRect = this.sourceEl.getBoundingClientRect(); // because autoscrolling might have happened
-        mirrorEl.style.transition =
-            'top ' + revertDuration + 'ms,' +
-                'left ' + revertDuration + 'ms';
-        Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["N" /* applyStyle */])(mirrorEl, {
-            left: finalSourceElRect.left,
-            top: finalSourceElRect.top,
-        });
-        Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_49" /* whenTransitionDone */])(mirrorEl, function () {
-            mirrorEl.style.transition = '';
-            callback();
-        });
-    };
-    ElementMirror.prototype.cleanup = function () {
-        if (this.mirrorEl) {
-            Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_40" /* removeElement */])(this.mirrorEl);
-            this.mirrorEl = null;
-        }
-        this.sourceEl = null;
-    };
-    ElementMirror.prototype.updateElPosition = function () {
-        if (this.sourceEl && this.isVisible) {
-            Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["N" /* applyStyle */])(this.getMirrorEl(), {
-                left: this.sourceElRect.left + this.deltaX,
-                top: this.sourceElRect.top + this.deltaY,
-            });
-        }
-    };
-    ElementMirror.prototype.getMirrorEl = function () {
-        var sourceElRect = this.sourceElRect;
-        var mirrorEl = this.mirrorEl;
-        if (!mirrorEl) {
-            mirrorEl = this.mirrorEl = this.sourceEl.cloneNode(true); // cloneChildren=true
-            // we don't want long taps or any mouse interaction causing selection/menus.
-            // would use preventSelection(), but that prevents selectstart, causing problems.
-            mirrorEl.classList.add('fc-unselectable');
-            mirrorEl.classList.add('fc-event-dragging');
-            Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["N" /* applyStyle */])(mirrorEl, {
-                position: 'fixed',
-                zIndex: this.zIndex,
-                visibility: '',
-                boxSizing: 'border-box',
-                width: sourceElRect.right - sourceElRect.left,
-                height: sourceElRect.bottom - sourceElRect.top,
-                right: 'auto',
-                bottom: 'auto',
-                margin: 0,
-            });
-            this.parentNode.appendChild(mirrorEl);
-        }
-        return mirrorEl;
-    };
-    return ElementMirror;
-}());
-
-/*
-Is a cache for a given element's scroll information (all the info that ScrollController stores)
-in addition the "client rectangle" of the element.. the area within the scrollbars.
-
-The cache can be in one of two modes:
-- doesListening:false - ignores when the container is scrolled by someone else
-- doesListening:true - watch for scrolling and update the cache
-*/
-var ScrollGeomCache = /** @class */ (function (_super) {
-    Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["b" /* __extends */])(ScrollGeomCache, _super);
-    function ScrollGeomCache(scrollController, doesListening) {
-        var _this = _super.call(this) || this;
-        _this.handleScroll = function () {
-            _this.scrollTop = _this.scrollController.getScrollTop();
-            _this.scrollLeft = _this.scrollController.getScrollLeft();
-            _this.handleScrollChange();
-        };
-        _this.scrollController = scrollController;
-        _this.doesListening = doesListening;
-        _this.scrollTop = _this.origScrollTop = scrollController.getScrollTop();
-        _this.scrollLeft = _this.origScrollLeft = scrollController.getScrollLeft();
-        _this.scrollWidth = scrollController.getScrollWidth();
-        _this.scrollHeight = scrollController.getScrollHeight();
-        _this.clientWidth = scrollController.getClientWidth();
-        _this.clientHeight = scrollController.getClientHeight();
-        _this.clientRect = _this.computeClientRect(); // do last in case it needs cached values
-        if (_this.doesListening) {
-            _this.getEventTarget().addEventListener('scroll', _this.handleScroll);
-        }
-        return _this;
-    }
-    ScrollGeomCache.prototype.destroy = function () {
-        if (this.doesListening) {
-            this.getEventTarget().removeEventListener('scroll', this.handleScroll);
-        }
-    };
-    ScrollGeomCache.prototype.getScrollTop = function () {
-        return this.scrollTop;
-    };
-    ScrollGeomCache.prototype.getScrollLeft = function () {
-        return this.scrollLeft;
-    };
-    ScrollGeomCache.prototype.setScrollTop = function (top) {
-        this.scrollController.setScrollTop(top);
-        if (!this.doesListening) {
-            // we are not relying on the element to normalize out-of-bounds scroll values
-            // so we need to sanitize ourselves
-            this.scrollTop = Math.max(Math.min(top, this.getMaxScrollTop()), 0);
-            this.handleScrollChange();
-        }
-    };
-    ScrollGeomCache.prototype.setScrollLeft = function (top) {
-        this.scrollController.setScrollLeft(top);
-        if (!this.doesListening) {
-            // we are not relying on the element to normalize out-of-bounds scroll values
-            // so we need to sanitize ourselves
-            this.scrollLeft = Math.max(Math.min(top, this.getMaxScrollLeft()), 0);
-            this.handleScrollChange();
-        }
-    };
-    ScrollGeomCache.prototype.getClientWidth = function () {
-        return this.clientWidth;
-    };
-    ScrollGeomCache.prototype.getClientHeight = function () {
-        return this.clientHeight;
-    };
-    ScrollGeomCache.prototype.getScrollWidth = function () {
-        return this.scrollWidth;
-    };
-    ScrollGeomCache.prototype.getScrollHeight = function () {
-        return this.scrollHeight;
-    };
-    ScrollGeomCache.prototype.handleScrollChange = function () {
-    };
-    return ScrollGeomCache;
-}(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["B" /* ScrollController */]));
-
-var ElementScrollGeomCache = /** @class */ (function (_super) {
-    Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["b" /* __extends */])(ElementScrollGeomCache, _super);
-    function ElementScrollGeomCache(el, doesListening) {
-        return _super.call(this, new __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["r" /* ElementScrollController */](el), doesListening) || this;
-    }
-    ElementScrollGeomCache.prototype.getEventTarget = function () {
-        return this.scrollController.el;
-    };
-    ElementScrollGeomCache.prototype.computeClientRect = function () {
-        return Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["U" /* computeInnerRect */])(this.scrollController.el);
-    };
-    return ElementScrollGeomCache;
-}(ScrollGeomCache));
-
-var WindowScrollGeomCache = /** @class */ (function (_super) {
-    Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["b" /* __extends */])(WindowScrollGeomCache, _super);
-    function WindowScrollGeomCache(doesListening) {
-        return _super.call(this, new __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["H" /* WindowScrollController */](), doesListening) || this;
-    }
-    WindowScrollGeomCache.prototype.getEventTarget = function () {
-        return window;
-    };
-    WindowScrollGeomCache.prototype.computeClientRect = function () {
-        return {
-            left: this.scrollLeft,
-            right: this.scrollLeft + this.clientWidth,
-            top: this.scrollTop,
-            bottom: this.scrollTop + this.clientHeight,
-        };
-    };
-    // the window is the only scroll object that changes it's rectangle relative
-    // to the document's topleft as it scrolls
-    WindowScrollGeomCache.prototype.handleScrollChange = function () {
-        this.clientRect = this.computeClientRect();
-    };
-    return WindowScrollGeomCache;
-}(ScrollGeomCache));
-
-// If available we are using native "performance" API instead of "Date"
-// Read more about it on MDN:
-// https://developer.mozilla.org/en-US/docs/Web/API/Performance
-var getTime = typeof performance === 'function' ? performance.now : Date.now;
-/*
-For a pointer interaction, automatically scrolls certain scroll containers when the pointer
-approaches the edge.
-
-The caller must call start + handleMove + stop.
-*/
-var AutoScroller = /** @class */ (function () {
-    function AutoScroller() {
-        var _this = this;
-        // options that can be set by caller
-        this.isEnabled = true;
-        this.scrollQuery = [window, '.fc-scroller'];
-        this.edgeThreshold = 50; // pixels
-        this.maxVelocity = 300; // pixels per second
-        // internal state
-        this.pointerScreenX = null;
-        this.pointerScreenY = null;
-        this.isAnimating = false;
-        this.scrollCaches = null;
-        // protect against the initial pointerdown being too close to an edge and starting the scroll
-        this.everMovedUp = false;
-        this.everMovedDown = false;
-        this.everMovedLeft = false;
-        this.everMovedRight = false;
-        this.animate = function () {
-            if (_this.isAnimating) { // wasn't cancelled between animation calls
-                var edge = _this.computeBestEdge(_this.pointerScreenX + window.pageXOffset, _this.pointerScreenY + window.pageYOffset);
-                if (edge) {
-                    var now = getTime();
-                    _this.handleSide(edge, (now - _this.msSinceRequest) / 1000);
-                    _this.requestAnimation(now);
-                }
-                else {
-                    _this.isAnimating = false; // will stop animation
-                }
-            }
-        };
-    }
-    AutoScroller.prototype.start = function (pageX, pageY) {
-        if (this.isEnabled) {
-            this.scrollCaches = this.buildCaches();
-            this.pointerScreenX = null;
-            this.pointerScreenY = null;
-            this.everMovedUp = false;
-            this.everMovedDown = false;
-            this.everMovedLeft = false;
-            this.everMovedRight = false;
-            this.handleMove(pageX, pageY);
-        }
-    };
-    AutoScroller.prototype.handleMove = function (pageX, pageY) {
-        if (this.isEnabled) {
-            var pointerScreenX = pageX - window.pageXOffset;
-            var pointerScreenY = pageY - window.pageYOffset;
-            var yDelta = this.pointerScreenY === null ? 0 : pointerScreenY - this.pointerScreenY;
-            var xDelta = this.pointerScreenX === null ? 0 : pointerScreenX - this.pointerScreenX;
-            if (yDelta < 0) {
-                this.everMovedUp = true;
-            }
-            else if (yDelta > 0) {
-                this.everMovedDown = true;
-            }
-            if (xDelta < 0) {
-                this.everMovedLeft = true;
-            }
-            else if (xDelta > 0) {
-                this.everMovedRight = true;
-            }
-            this.pointerScreenX = pointerScreenX;
-            this.pointerScreenY = pointerScreenY;
-            if (!this.isAnimating) {
-                this.isAnimating = true;
-                this.requestAnimation(getTime());
-            }
-        }
-    };
-    AutoScroller.prototype.stop = function () {
-        if (this.isEnabled) {
-            this.isAnimating = false; // will stop animation
-            for (var _i = 0, _a = this.scrollCaches; _i < _a.length; _i++) {
-                var scrollCache = _a[_i];
-                scrollCache.destroy();
-            }
-            this.scrollCaches = null;
-        }
-    };
-    AutoScroller.prototype.requestAnimation = function (now) {
-        this.msSinceRequest = now;
-        requestAnimationFrame(this.animate);
-    };
-    AutoScroller.prototype.handleSide = function (edge, seconds) {
-        var scrollCache = edge.scrollCache;
-        var edgeThreshold = this.edgeThreshold;
-        var invDistance = edgeThreshold - edge.distance;
-        var velocity = // the closer to the edge, the faster we scroll
-         ((invDistance * invDistance) / (edgeThreshold * edgeThreshold)) * // quadratic
-            this.maxVelocity * seconds;
-        var sign = 1;
-        switch (edge.name) {
-            case 'left':
-                sign = -1;
-            // falls through
-            case 'right':
-                scrollCache.setScrollLeft(scrollCache.getScrollLeft() + velocity * sign);
-                break;
-            case 'top':
-                sign = -1;
-            // falls through
-            case 'bottom':
-                scrollCache.setScrollTop(scrollCache.getScrollTop() + velocity * sign);
-                break;
-        }
-    };
-    // left/top are relative to document topleft
-    AutoScroller.prototype.computeBestEdge = function (left, top) {
-        var edgeThreshold = this.edgeThreshold;
-        var bestSide = null;
-        for (var _i = 0, _a = this.scrollCaches; _i < _a.length; _i++) {
-            var scrollCache = _a[_i];
-            var rect = scrollCache.clientRect;
-            var leftDist = left - rect.left;
-            var rightDist = rect.right - left;
-            var topDist = top - rect.top;
-            var bottomDist = rect.bottom - top;
-            // completely within the rect?
-            if (leftDist >= 0 && rightDist >= 0 && topDist >= 0 && bottomDist >= 0) {
-                if (topDist <= edgeThreshold && this.everMovedUp && scrollCache.canScrollUp() &&
-                    (!bestSide || bestSide.distance > topDist)) {
-                    bestSide = { scrollCache: scrollCache, name: 'top', distance: topDist };
-                }
-                if (bottomDist <= edgeThreshold && this.everMovedDown && scrollCache.canScrollDown() &&
-                    (!bestSide || bestSide.distance > bottomDist)) {
-                    bestSide = { scrollCache: scrollCache, name: 'bottom', distance: bottomDist };
-                }
-                if (leftDist <= edgeThreshold && this.everMovedLeft && scrollCache.canScrollLeft() &&
-                    (!bestSide || bestSide.distance > leftDist)) {
-                    bestSide = { scrollCache: scrollCache, name: 'left', distance: leftDist };
-                }
-                if (rightDist <= edgeThreshold && this.everMovedRight && scrollCache.canScrollRight() &&
-                    (!bestSide || bestSide.distance > rightDist)) {
-                    bestSide = { scrollCache: scrollCache, name: 'right', distance: rightDist };
-                }
-            }
-        }
-        return bestSide;
-    };
-    AutoScroller.prototype.buildCaches = function () {
-        return this.queryScrollEls().map(function (el) {
-            if (el === window) {
-                return new WindowScrollGeomCache(false); // false = don't listen to user-generated scrolls
-            }
-            return new ElementScrollGeomCache(el, false); // false = don't listen to user-generated scrolls
-        });
-    };
-    AutoScroller.prototype.queryScrollEls = function () {
-        var els = [];
-        for (var _i = 0, _a = this.scrollQuery; _i < _a.length; _i++) {
-            var query = _a[_i];
-            if (typeof query === 'object') {
-                els.push(query);
-            }
-            else {
-                els.push.apply(els, Array.prototype.slice.call(document.querySelectorAll(query)));
-            }
-        }
-        return els;
-    };
-    return AutoScroller;
-}());
-
-/*
-Monitors dragging on an element. Has a number of high-level features:
-- minimum distance required before dragging
-- minimum wait time ("delay") before dragging
-- a mirror element that follows the pointer
-*/
-var FeaturefulElementDragging = /** @class */ (function (_super) {
-    Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["b" /* __extends */])(FeaturefulElementDragging, _super);
-    function FeaturefulElementDragging(containerEl, selector) {
-        var _this = _super.call(this, containerEl) || this;
-        // options that can be directly set by caller
-        // the caller can also set the PointerDragging's options as well
-        _this.delay = null;
-        _this.minDistance = 0;
-        _this.touchScrollAllowed = true; // prevents drag from starting and blocks scrolling during drag
-        _this.mirrorNeedsRevert = false;
-        _this.isInteracting = false; // is the user validly moving the pointer? lasts until pointerup
-        _this.isDragging = false; // is it INTENTFULLY dragging? lasts until after revert animation
-        _this.isDelayEnded = false;
-        _this.isDistanceSurpassed = false;
-        _this.delayTimeoutId = null;
-        _this.onPointerDown = function (ev) {
-            if (!_this.isDragging) { // so new drag doesn't happen while revert animation is going
-                _this.isInteracting = true;
-                _this.isDelayEnded = false;
-                _this.isDistanceSurpassed = false;
-                Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_37" /* preventSelection */])(document.body);
-                Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_36" /* preventContextMenu */])(document.body);
-                // prevent links from being visited if there's an eventual drag.
-                // also prevents selection in older browsers (maybe?).
-                // not necessary for touch, besides, browser would complain about passiveness.
-                if (!ev.isTouch) {
-                    ev.origEvent.preventDefault();
-                }
-                _this.emitter.trigger('pointerdown', ev);
-                if (_this.isInteracting && // not destroyed via pointerdown handler
-                    !_this.pointer.shouldIgnoreMove) {
-                    // actions related to initiating dragstart+dragmove+dragend...
-                    _this.mirror.setIsVisible(false); // reset. caller must set-visible
-                    _this.mirror.start(ev.subjectEl, ev.pageX, ev.pageY); // must happen on first pointer down
-                    _this.startDelay(ev);
-                    if (!_this.minDistance) {
-                        _this.handleDistanceSurpassed(ev);
-                    }
-                }
-            }
-        };
-        _this.onPointerMove = function (ev) {
-            if (_this.isInteracting) {
-                _this.emitter.trigger('pointermove', ev);
-                if (!_this.isDistanceSurpassed) {
-                    var minDistance = _this.minDistance;
-                    var distanceSq = void 0; // current distance from the origin, squared
-                    var deltaX = ev.deltaX, deltaY = ev.deltaY;
-                    distanceSq = deltaX * deltaX + deltaY * deltaY;
-                    if (distanceSq >= minDistance * minDistance) { // use pythagorean theorem
-                        _this.handleDistanceSurpassed(ev);
-                    }
-                }
-                if (_this.isDragging) {
-                    // a real pointer move? (not one simulated by scrolling)
-                    if (ev.origEvent.type !== 'scroll') {
-                        _this.mirror.handleMove(ev.pageX, ev.pageY);
-                        _this.autoScroller.handleMove(ev.pageX, ev.pageY);
-                    }
-                    _this.emitter.trigger('dragmove', ev);
-                }
-            }
-        };
-        _this.onPointerUp = function (ev) {
-            if (_this.isInteracting) {
-                _this.isInteracting = false;
-                Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["L" /* allowSelection */])(document.body);
-                Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["K" /* allowContextMenu */])(document.body);
-                _this.emitter.trigger('pointerup', ev); // can potentially set mirrorNeedsRevert
-                if (_this.isDragging) {
-                    _this.autoScroller.stop();
-                    _this.tryStopDrag(ev); // which will stop the mirror
-                }
-                if (_this.delayTimeoutId) {
-                    clearTimeout(_this.delayTimeoutId);
-                    _this.delayTimeoutId = null;
-                }
-            }
-        };
-        var pointer = _this.pointer = new PointerDragging(containerEl);
-        pointer.emitter.on('pointerdown', _this.onPointerDown);
-        pointer.emitter.on('pointermove', _this.onPointerMove);
-        pointer.emitter.on('pointerup', _this.onPointerUp);
-        if (selector) {
-            pointer.selector = selector;
-        }
-        _this.mirror = new ElementMirror();
-        _this.autoScroller = new AutoScroller();
-        return _this;
-    }
-    FeaturefulElementDragging.prototype.destroy = function () {
-        this.pointer.destroy();
-        // HACK: simulate a pointer-up to end the current drag
-        // TODO: fire 'dragend' directly and stop interaction. discourage use of pointerup event (b/c might not fire)
-        this.onPointerUp({});
-    };
-    FeaturefulElementDragging.prototype.startDelay = function (ev) {
-        var _this = this;
-        if (typeof this.delay === 'number') {
-            this.delayTimeoutId = setTimeout(function () {
-                _this.delayTimeoutId = null;
-                _this.handleDelayEnd(ev);
-            }, this.delay); // not assignable to number!
-        }
-        else {
-            this.handleDelayEnd(ev);
-        }
-    };
-    FeaturefulElementDragging.prototype.handleDelayEnd = function (ev) {
-        this.isDelayEnded = true;
-        this.tryStartDrag(ev);
-    };
-    FeaturefulElementDragging.prototype.handleDistanceSurpassed = function (ev) {
-        this.isDistanceSurpassed = true;
-        this.tryStartDrag(ev);
-    };
-    FeaturefulElementDragging.prototype.tryStartDrag = function (ev) {
-        if (this.isDelayEnded && this.isDistanceSurpassed) {
-            if (!this.pointer.wasTouchScroll || this.touchScrollAllowed) {
-                this.isDragging = true;
-                this.mirrorNeedsRevert = false;
-                this.autoScroller.start(ev.pageX, ev.pageY);
-                this.emitter.trigger('dragstart', ev);
-                if (this.touchScrollAllowed === false) {
-                    this.pointer.cancelTouchScroll();
-                }
-            }
-        }
-    };
-    FeaturefulElementDragging.prototype.tryStopDrag = function (ev) {
-        // .stop() is ALWAYS asynchronous, which we NEED because we want all pointerup events
-        // that come from the document to fire beforehand. much more convenient this way.
-        this.mirror.stop(this.mirrorNeedsRevert, this.stopDrag.bind(this, ev));
-    };
-    FeaturefulElementDragging.prototype.stopDrag = function (ev) {
-        this.isDragging = false;
-        this.emitter.trigger('dragend', ev);
-    };
-    // fill in the implementations...
-    FeaturefulElementDragging.prototype.setIgnoreMove = function (bool) {
-        this.pointer.shouldIgnoreMove = bool;
-    };
-    FeaturefulElementDragging.prototype.setMirrorIsVisible = function (bool) {
-        this.mirror.setIsVisible(bool);
-    };
-    FeaturefulElementDragging.prototype.setMirrorNeedsRevert = function (bool) {
-        this.mirrorNeedsRevert = bool;
-    };
-    FeaturefulElementDragging.prototype.setAutoScrollEnabled = function (bool) {
-        this.autoScroller.isEnabled = bool;
-    };
-    return FeaturefulElementDragging;
-}(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["q" /* ElementDragging */]));
-
-/*
-When this class is instantiated, it records the offset of an element (relative to the document topleft),
-and continues to monitor scrolling, updating the cached coordinates if it needs to.
-Does not access the DOM after instantiation, so highly performant.
-
-Also keeps track of all scrolling/overflow:hidden containers that are parents of the given element
-and an determine if a given point is inside the combined clipping rectangle.
-*/
-var OffsetTracker = /** @class */ (function () {
-    function OffsetTracker(el) {
-        this.origRect = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["V" /* computeRect */])(el);
-        // will work fine for divs that have overflow:hidden
-        this.scrollCaches = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_14" /* getClippingParents */])(el).map(function (scrollEl) { return new ElementScrollGeomCache(scrollEl, true); });
-    }
-    OffsetTracker.prototype.destroy = function () {
-        for (var _i = 0, _a = this.scrollCaches; _i < _a.length; _i++) {
-            var scrollCache = _a[_i];
-            scrollCache.destroy();
-        }
-    };
-    OffsetTracker.prototype.computeLeft = function () {
-        var left = this.origRect.left;
-        for (var _i = 0, _a = this.scrollCaches; _i < _a.length; _i++) {
-            var scrollCache = _a[_i];
-            left += scrollCache.origScrollLeft - scrollCache.getScrollLeft();
-        }
-        return left;
-    };
-    OffsetTracker.prototype.computeTop = function () {
-        var top = this.origRect.top;
-        for (var _i = 0, _a = this.scrollCaches; _i < _a.length; _i++) {
-            var scrollCache = _a[_i];
-            top += scrollCache.origScrollTop - scrollCache.getScrollTop();
-        }
-        return top;
-    };
-    OffsetTracker.prototype.isWithinClipping = function (pageX, pageY) {
-        var point = { left: pageX, top: pageY };
-        for (var _i = 0, _a = this.scrollCaches; _i < _a.length; _i++) {
-            var scrollCache = _a[_i];
-            if (!isIgnoredClipping(scrollCache.getEventTarget()) &&
-                !Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_35" /* pointInsideRect */])(point, scrollCache.clientRect)) {
-                return false;
-            }
-        }
-        return true;
-    };
-    return OffsetTracker;
-}());
-// certain clipping containers should never constrain interactions, like <html> and <body>
-// https://github.com/fullcalendar/fullcalendar/issues/3615
-function isIgnoredClipping(node) {
-    var tagName = node.tagName;
-    return tagName === 'HTML' || tagName === 'BODY';
-}
-
-/*
-Tracks movement over multiple droppable areas (aka "hits")
-that exist in one or more DateComponents.
-Relies on an existing draggable.
-
-emits:
-- pointerdown
-- dragstart
-- hitchange - fires initially, even if not over a hit
-- pointerup
-- (hitchange - again, to null, if ended over a hit)
-- dragend
-*/
-var HitDragging = /** @class */ (function () {
-    function HitDragging(dragging, droppableStore) {
-        var _this = this;
-        // options that can be set by caller
-        this.useSubjectCenter = false;
-        this.requireInitial = true; // if doesn't start out on a hit, won't emit any events
-        this.initialHit = null;
-        this.movingHit = null;
-        this.finalHit = null; // won't ever be populated if shouldIgnoreMove
-        this.handlePointerDown = function (ev) {
-            var dragging = _this.dragging;
-            _this.initialHit = null;
-            _this.movingHit = null;
-            _this.finalHit = null;
-            _this.prepareHits();
-            _this.processFirstCoord(ev);
-            if (_this.initialHit || !_this.requireInitial) {
-                dragging.setIgnoreMove(false);
-                // TODO: fire this before computing processFirstCoord, so listeners can cancel. this gets fired by almost every handler :(
-                _this.emitter.trigger('pointerdown', ev);
-            }
-            else {
-                dragging.setIgnoreMove(true);
-            }
-        };
-        this.handleDragStart = function (ev) {
-            _this.emitter.trigger('dragstart', ev);
-            _this.handleMove(ev, true); // force = fire even if initially null
-        };
-        this.handleDragMove = function (ev) {
-            _this.emitter.trigger('dragmove', ev);
-            _this.handleMove(ev);
-        };
-        this.handlePointerUp = function (ev) {
-            _this.releaseHits();
-            _this.emitter.trigger('pointerup', ev);
-        };
-        this.handleDragEnd = function (ev) {
-            if (_this.movingHit) {
-                _this.emitter.trigger('hitupdate', null, true, ev);
-            }
-            _this.finalHit = _this.movingHit;
-            _this.movingHit = null;
-            _this.emitter.trigger('dragend', ev);
-        };
-        this.droppableStore = droppableStore;
-        dragging.emitter.on('pointerdown', this.handlePointerDown);
-        dragging.emitter.on('dragstart', this.handleDragStart);
-        dragging.emitter.on('dragmove', this.handleDragMove);
-        dragging.emitter.on('pointerup', this.handlePointerUp);
-        dragging.emitter.on('dragend', this.handleDragEnd);
-        this.dragging = dragging;
-        this.emitter = new __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["s" /* Emitter */]();
-    }
-    // sets initialHit
-    // sets coordAdjust
-    HitDragging.prototype.processFirstCoord = function (ev) {
-        var origPoint = { left: ev.pageX, top: ev.pageY };
-        var adjustedPoint = origPoint;
-        var subjectEl = ev.subjectEl;
-        var subjectRect;
-        if (subjectEl !== document) {
-            subjectRect = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["V" /* computeRect */])(subjectEl);
-            adjustedPoint = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["X" /* constrainPoint */])(adjustedPoint, subjectRect);
-        }
-        var initialHit = this.initialHit = this.queryHitForOffset(adjustedPoint.left, adjustedPoint.top);
-        if (initialHit) {
-            if (this.useSubjectCenter && subjectRect) {
-                var slicedSubjectRect = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_26" /* intersectRects */])(subjectRect, initialHit.rect);
-                if (slicedSubjectRect) {
-                    adjustedPoint = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_17" /* getRectCenter */])(slicedSubjectRect);
-                }
-            }
-            this.coordAdjust = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_6" /* diffPoints */])(adjustedPoint, origPoint);
-        }
-        else {
-            this.coordAdjust = { left: 0, top: 0 };
-        }
-    };
-    HitDragging.prototype.handleMove = function (ev, forceHandle) {
-        var hit = this.queryHitForOffset(ev.pageX + this.coordAdjust.left, ev.pageY + this.coordAdjust.top);
-        if (forceHandle || !isHitsEqual(this.movingHit, hit)) {
-            this.movingHit = hit;
-            this.emitter.trigger('hitupdate', hit, false, ev);
-        }
-    };
-    HitDragging.prototype.prepareHits = function () {
-        this.offsetTrackers = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_31" /* mapHash */])(this.droppableStore, function (interactionSettings) {
-            interactionSettings.component.prepareHits();
-            return new OffsetTracker(interactionSettings.el);
-        });
-    };
-    HitDragging.prototype.releaseHits = function () {
-        var offsetTrackers = this.offsetTrackers;
-        for (var id in offsetTrackers) {
-            offsetTrackers[id].destroy();
-        }
-        this.offsetTrackers = {};
-    };
-    HitDragging.prototype.queryHitForOffset = function (offsetLeft, offsetTop) {
-        var _a = this, droppableStore = _a.droppableStore, offsetTrackers = _a.offsetTrackers;
-        var bestHit = null;
-        for (var id in droppableStore) {
-            var component = droppableStore[id].component;
-            var offsetTracker = offsetTrackers[id];
-            if (offsetTracker && // wasn't destroyed mid-drag
-                offsetTracker.isWithinClipping(offsetLeft, offsetTop)) {
-                var originLeft = offsetTracker.computeLeft();
-                var originTop = offsetTracker.computeTop();
-                var positionLeft = offsetLeft - originLeft;
-                var positionTop = offsetTop - originTop;
-                var origRect = offsetTracker.origRect;
-                var width = origRect.right - origRect.left;
-                var height = origRect.bottom - origRect.top;
-                if (
-                // must be within the element's bounds
-                positionLeft >= 0 && positionLeft < width &&
-                    positionTop >= 0 && positionTop < height) {
-                    var hit = component.queryHit(positionLeft, positionTop, width, height);
-                    var dateProfile = component.context.getCurrentData().dateProfile;
-                    if (hit &&
-                        (
-                        // make sure the hit is within activeRange, meaning it's not a deal cell
-                        Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_38" /* rangeContainsRange */])(dateProfile.activeRange, hit.dateSpan.range)) &&
-                        (!bestHit || hit.layer > bestHit.layer)) {
-                        // TODO: better way to re-orient rectangle
-                        hit.rect.left += originLeft;
-                        hit.rect.right += originLeft;
-                        hit.rect.top += originTop;
-                        hit.rect.bottom += originTop;
-                        bestHit = hit;
-                    }
-                }
-            }
-        }
-        return bestHit;
-    };
-    return HitDragging;
-}());
-function isHitsEqual(hit0, hit1) {
-    if (!hit0 && !hit1) {
-        return true;
-    }
-    if (Boolean(hit0) !== Boolean(hit1)) {
-        return false;
-    }
-    return Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_28" /* isDateSpansEqual */])(hit0.dateSpan, hit1.dateSpan);
-}
-
-function buildDatePointApiWithContext(dateSpan, context) {
-    var props = {};
-    for (var _i = 0, _a = context.pluginHooks.datePointTransforms; _i < _a.length; _i++) {
-        var transform = _a[_i];
-        Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])(props, transform(dateSpan, context));
-    }
-    Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])(props, buildDatePointApi(dateSpan, context.dateEnv));
-    return props;
-}
-function buildDatePointApi(span, dateEnv) {
-    return {
-        date: dateEnv.toDate(span.range.start),
-        dateStr: dateEnv.formatIso(span.range.start, { omitTime: span.allDay }),
-        allDay: span.allDay,
-    };
-}
-
-/*
-Monitors when the user clicks on a specific date/time of a component.
-A pointerdown+pointerup on the same "hit" constitutes a click.
-*/
-var DateClicking = /** @class */ (function (_super) {
-    Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["b" /* __extends */])(DateClicking, _super);
-    function DateClicking(settings) {
-        var _this = _super.call(this, settings) || this;
-        _this.handlePointerDown = function (pev) {
-            var dragging = _this.dragging;
-            var downEl = pev.origEvent.target;
-            // do this in pointerdown (not dragend) because DOM might be mutated by the time dragend is fired
-            dragging.setIgnoreMove(!_this.component.isValidDateDownEl(downEl));
-        };
-        // won't even fire if moving was ignored
-        _this.handleDragEnd = function (ev) {
-            var component = _this.component;
-            var pointer = _this.dragging.pointer;
-            if (!pointer.wasTouchScroll) {
-                var _a = _this.hitDragging, initialHit = _a.initialHit, finalHit = _a.finalHit;
-                if (initialHit && finalHit && isHitsEqual(initialHit, finalHit)) {
-                    var context = component.context;
-                    var arg = Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])(Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])({}, buildDatePointApiWithContext(initialHit.dateSpan, context)), { dayEl: initialHit.dayEl, jsEvent: ev.origEvent, view: context.viewApi || context.calendarApi.view });
-                    context.emitter.trigger('dateClick', arg);
-                }
-            }
-        };
-        // we DO want to watch pointer moves because otherwise finalHit won't get populated
-        _this.dragging = new FeaturefulElementDragging(settings.el);
-        _this.dragging.autoScroller.isEnabled = false;
-        var hitDragging = _this.hitDragging = new HitDragging(_this.dragging, Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_24" /* interactionSettingsToStore */])(settings));
-        hitDragging.emitter.on('pointerdown', _this.handlePointerDown);
-        hitDragging.emitter.on('dragend', _this.handleDragEnd);
-        return _this;
-    }
-    DateClicking.prototype.destroy = function () {
-        this.dragging.destroy();
-    };
-    return DateClicking;
-}(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["w" /* Interaction */]));
-
-/*
-Tracks when the user selects a portion of time of a component,
-constituted by a drag over date cells, with a possible delay at the beginning of the drag.
-*/
-var DateSelecting = /** @class */ (function (_super) {
-    Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["b" /* __extends */])(DateSelecting, _super);
-    function DateSelecting(settings) {
-        var _this = _super.call(this, settings) || this;
-        _this.dragSelection = null;
-        _this.handlePointerDown = function (ev) {
-            var _a = _this, component = _a.component, dragging = _a.dragging;
-            var options = component.context.options;
-            var canSelect = options.selectable &&
-                component.isValidDateDownEl(ev.origEvent.target);
-            // don't bother to watch expensive moves if component won't do selection
-            dragging.setIgnoreMove(!canSelect);
-            // if touch, require user to hold down
-            dragging.delay = ev.isTouch ? getComponentTouchDelay(component) : null;
-        };
-        _this.handleDragStart = function (ev) {
-            _this.component.context.calendarApi.unselect(ev); // unselect previous selections
-        };
-        _this.handleHitUpdate = function (hit, isFinal) {
-            var context = _this.component.context;
-            var dragSelection = null;
-            var isInvalid = false;
-            if (hit) {
-                dragSelection = joinHitsIntoSelection(_this.hitDragging.initialHit, hit, context.pluginHooks.dateSelectionTransformers);
-                if (!dragSelection || !_this.component.isDateSelectionValid(dragSelection)) {
-                    isInvalid = true;
-                    dragSelection = null;
-                }
-            }
-            if (dragSelection) {
-                context.dispatch({ type: 'SELECT_DATES', selection: dragSelection });
-            }
-            else if (!isFinal) { // only unselect if moved away while dragging
-                context.dispatch({ type: 'UNSELECT_DATES' });
-            }
-            if (!isInvalid) {
-                Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_11" /* enableCursor */])();
-            }
-            else {
-                Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_8" /* disableCursor */])();
-            }
-            if (!isFinal) {
-                _this.dragSelection = dragSelection; // only clear if moved away from all hits while dragging
-            }
-        };
-        _this.handlePointerUp = function (pev) {
-            if (_this.dragSelection) {
-                // selection is already rendered, so just need to report selection
-                Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_47" /* triggerDateSelect */])(_this.dragSelection, pev, _this.component.context);
-                _this.dragSelection = null;
-            }
-        };
-        var component = settings.component;
-        var options = component.context.options;
-        var dragging = _this.dragging = new FeaturefulElementDragging(settings.el);
-        dragging.touchScrollAllowed = false;
-        dragging.minDistance = options.selectMinDistance || 0;
-        dragging.autoScroller.isEnabled = options.dragScroll;
-        var hitDragging = _this.hitDragging = new HitDragging(_this.dragging, Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_24" /* interactionSettingsToStore */])(settings));
-        hitDragging.emitter.on('pointerdown', _this.handlePointerDown);
-        hitDragging.emitter.on('dragstart', _this.handleDragStart);
-        hitDragging.emitter.on('hitupdate', _this.handleHitUpdate);
-        hitDragging.emitter.on('pointerup', _this.handlePointerUp);
-        return _this;
-    }
-    DateSelecting.prototype.destroy = function () {
-        this.dragging.destroy();
-    };
-    return DateSelecting;
-}(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["w" /* Interaction */]));
-function getComponentTouchDelay(component) {
-    var options = component.context.options;
-    var delay = options.selectLongPressDelay;
-    if (delay == null) {
-        delay = options.longPressDelay;
-    }
-    return delay;
-}
-function joinHitsIntoSelection(hit0, hit1, dateSelectionTransformers) {
-    var dateSpan0 = hit0.dateSpan;
-    var dateSpan1 = hit1.dateSpan;
-    var ms = [
-        dateSpan0.range.start,
-        dateSpan0.range.end,
-        dateSpan1.range.start,
-        dateSpan1.range.end,
-    ];
-    ms.sort(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["T" /* compareNumbers */]);
-    var props = {};
-    for (var _i = 0, dateSelectionTransformers_1 = dateSelectionTransformers; _i < dateSelectionTransformers_1.length; _i++) {
-        var transformer = dateSelectionTransformers_1[_i];
-        var res = transformer(hit0, hit1);
-        if (res === false) {
-            return null;
-        }
-        if (res) {
-            Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])(props, res);
-        }
-    }
-    props.range = { start: ms[0], end: ms[3] };
-    props.allDay = dateSpan0.allDay;
-    return props;
-}
-
-var EventDragging = /** @class */ (function (_super) {
-    Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["b" /* __extends */])(EventDragging, _super);
-    function EventDragging(settings) {
-        var _this = _super.call(this, settings) || this;
-        // internal state
-        _this.subjectEl = null;
-        _this.subjectSeg = null; // the seg being selected/dragged
-        _this.isDragging = false;
-        _this.eventRange = null;
-        _this.relevantEvents = null; // the events being dragged
-        _this.receivingContext = null;
-        _this.validMutation = null;
-        _this.mutatedRelevantEvents = null;
-        _this.handlePointerDown = function (ev) {
-            var origTarget = ev.origEvent.target;
-            var _a = _this, component = _a.component, dragging = _a.dragging;
-            var mirror = dragging.mirror;
-            var options = component.context.options;
-            var initialContext = component.context;
-            _this.subjectEl = ev.subjectEl;
-            var subjectSeg = _this.subjectSeg = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_16" /* getElSeg */])(ev.subjectEl);
-            var eventRange = _this.eventRange = subjectSeg.eventRange;
-            var eventInstanceId = eventRange.instance.instanceId;
-            _this.relevantEvents = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_18" /* getRelevantEvents */])(initialContext.getCurrentData().eventStore, eventInstanceId);
-            dragging.minDistance = ev.isTouch ? 0 : options.eventDragMinDistance;
-            dragging.delay =
-                // only do a touch delay if touch and this event hasn't been selected yet
-                (ev.isTouch && eventInstanceId !== component.props.eventSelection) ?
-                    getComponentTouchDelay$1(component) :
-                    null;
-            if (options.fixedMirrorParent) {
-                mirror.parentNode = options.fixedMirrorParent;
-            }
-            else {
-                mirror.parentNode = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_9" /* elementClosest */])(origTarget, '.fc');
-            }
-            mirror.revertDuration = options.dragRevertDuration;
-            var isValid = component.isValidSegDownEl(origTarget) &&
-                !Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_9" /* elementClosest */])(origTarget, '.fc-event-resizer'); // NOT on a resizer
-            dragging.setIgnoreMove(!isValid);
-            // disable dragging for elements that are resizable (ie, selectable)
-            // but are not draggable
-            _this.isDragging = isValid &&
-                ev.subjectEl.classList.contains('fc-event-draggable');
-        };
-        _this.handleDragStart = function (ev) {
-            var initialContext = _this.component.context;
-            var eventRange = _this.eventRange;
-            var eventInstanceId = eventRange.instance.instanceId;
-            if (ev.isTouch) {
-                // need to select a different event?
-                if (eventInstanceId !== _this.component.props.eventSelection) {
-                    initialContext.dispatch({ type: 'SELECT_EVENT', eventInstanceId: eventInstanceId });
-                }
-            }
-            else {
-                // if now using mouse, but was previous touch interaction, clear selected event
-                initialContext.dispatch({ type: 'UNSELECT_EVENT' });
-            }
-            if (_this.isDragging) {
-                initialContext.calendarApi.unselect(ev); // unselect *date* selection
-                initialContext.emitter.trigger('eventDragStart', {
-                    el: _this.subjectEl,
-                    event: new __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["t" /* EventApi */](initialContext, eventRange.def, eventRange.instance),
-                    jsEvent: ev.origEvent,
-                    view: initialContext.viewApi,
-                });
-            }
-        };
-        _this.handleHitUpdate = function (hit, isFinal) {
-            if (!_this.isDragging) {
-                return;
-            }
-            var relevantEvents = _this.relevantEvents;
-            var initialHit = _this.hitDragging.initialHit;
-            var initialContext = _this.component.context;
-            // states based on new hit
-            var receivingContext = null;
-            var mutation = null;
-            var mutatedRelevantEvents = null;
-            var isInvalid = false;
-            var interaction = {
-                affectedEvents: relevantEvents,
-                mutatedEvents: Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_0" /* createEmptyEventStore */])(),
-                isEvent: true,
-            };
-            if (hit) {
-                var receivingComponent = hit.component;
-                receivingContext = receivingComponent.context;
-                var receivingOptions = receivingContext.options;
-                if (initialContext === receivingContext ||
-                    (receivingOptions.editable && receivingOptions.droppable)) {
-                    mutation = computeEventMutation(initialHit, hit, receivingContext.getCurrentData().pluginHooks.eventDragMutationMassagers);
-                    if (mutation) {
-                        mutatedRelevantEvents = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["M" /* applyMutationToEventStore */])(relevantEvents, receivingContext.getCurrentData().eventUiBases, mutation, receivingContext);
-                        interaction.mutatedEvents = mutatedRelevantEvents;
-                        if (!receivingComponent.isInteractionValid(interaction)) {
-                            isInvalid = true;
-                            mutation = null;
-                            mutatedRelevantEvents = null;
-                            interaction.mutatedEvents = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_0" /* createEmptyEventStore */])();
-                        }
-                    }
-                }
-                else {
-                    receivingContext = null;
-                }
-            }
-            _this.displayDrag(receivingContext, interaction);
-            if (!isInvalid) {
-                Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_11" /* enableCursor */])();
-            }
-            else {
-                Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_8" /* disableCursor */])();
-            }
-            if (!isFinal) {
-                if (initialContext === receivingContext && // TODO: write test for this
-                    isHitsEqual(initialHit, hit)) {
-                    mutation = null;
-                }
-                _this.dragging.setMirrorNeedsRevert(!mutation);
-                // render the mirror if no already-rendered mirror
-                // TODO: wish we could somehow wait for dispatch to guarantee render
-                _this.dragging.setMirrorIsVisible(!hit || !document.querySelector('.fc-event-mirror'));
-                // assign states based on new hit
-                _this.receivingContext = receivingContext;
-                _this.validMutation = mutation;
-                _this.mutatedRelevantEvents = mutatedRelevantEvents;
-            }
-        };
-        _this.handlePointerUp = function () {
-            if (!_this.isDragging) {
-                _this.cleanup(); // because handleDragEnd won't fire
-            }
-        };
-        _this.handleDragEnd = function (ev) {
-            if (_this.isDragging) {
-                var initialContext_1 = _this.component.context;
-                var initialView = initialContext_1.viewApi;
-                var _a = _this, receivingContext_1 = _a.receivingContext, validMutation = _a.validMutation;
-                var eventDef = _this.eventRange.def;
-                var eventInstance = _this.eventRange.instance;
-                var eventApi = new __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["t" /* EventApi */](initialContext_1, eventDef, eventInstance);
-                var relevantEvents_1 = _this.relevantEvents;
-                var mutatedRelevantEvents_1 = _this.mutatedRelevantEvents;
-                var finalHit = _this.hitDragging.finalHit;
-                _this.clearDrag(); // must happen after revert animation
-                initialContext_1.emitter.trigger('eventDragStop', {
-                    el: _this.subjectEl,
-                    event: eventApi,
-                    jsEvent: ev.origEvent,
-                    view: initialView,
-                });
-                if (validMutation) {
-                    // dropped within same calendar
-                    if (receivingContext_1 === initialContext_1) {
-                        var updatedEventApi = new __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["t" /* EventApi */](initialContext_1, mutatedRelevantEvents_1.defs[eventDef.defId], eventInstance ? mutatedRelevantEvents_1.instances[eventInstance.instanceId] : null);
-                        initialContext_1.dispatch({
-                            type: 'MERGE_EVENTS',
-                            eventStore: mutatedRelevantEvents_1,
-                        });
-                        var eventChangeArg = {
-                            oldEvent: eventApi,
-                            event: updatedEventApi,
-                            relatedEvents: Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["P" /* buildEventApis */])(mutatedRelevantEvents_1, initialContext_1, eventInstance),
-                            revert: function () {
-                                initialContext_1.dispatch({
-                                    type: 'MERGE_EVENTS',
-                                    eventStore: relevantEvents_1,
-                                });
-                            },
-                        };
-                        var transformed = {};
-                        for (var _i = 0, _b = initialContext_1.getCurrentData().pluginHooks.eventDropTransformers; _i < _b.length; _i++) {
-                            var transformer = _b[_i];
-                            Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])(transformed, transformer(validMutation, initialContext_1));
-                        }
-                        initialContext_1.emitter.trigger('eventDrop', Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])(Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])(Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])({}, eventChangeArg), transformed), { el: ev.subjectEl, delta: validMutation.datesDelta, jsEvent: ev.origEvent, view: initialView }));
-                        initialContext_1.emitter.trigger('eventChange', eventChangeArg);
-                        // dropped in different calendar
-                    }
-                    else if (receivingContext_1) {
-                        var eventRemoveArg = {
-                            event: eventApi,
-                            relatedEvents: Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["P" /* buildEventApis */])(relevantEvents_1, initialContext_1, eventInstance),
-                            revert: function () {
-                                initialContext_1.dispatch({
-                                    type: 'MERGE_EVENTS',
-                                    eventStore: relevantEvents_1,
-                                });
-                            },
-                        };
-                        initialContext_1.emitter.trigger('eventLeave', Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])(Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])({}, eventRemoveArg), { draggedEl: ev.subjectEl, view: initialView }));
-                        initialContext_1.dispatch({
-                            type: 'REMOVE_EVENTS',
-                            eventStore: relevantEvents_1,
-                        });
-                        initialContext_1.emitter.trigger('eventRemove', eventRemoveArg);
-                        var addedEventDef = mutatedRelevantEvents_1.defs[eventDef.defId];
-                        var addedEventInstance = mutatedRelevantEvents_1.instances[eventInstance.instanceId];
-                        var addedEventApi = new __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["t" /* EventApi */](receivingContext_1, addedEventDef, addedEventInstance);
-                        receivingContext_1.dispatch({
-                            type: 'MERGE_EVENTS',
-                            eventStore: mutatedRelevantEvents_1,
-                        });
-                        var eventAddArg = {
-                            event: addedEventApi,
-                            relatedEvents: Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["P" /* buildEventApis */])(mutatedRelevantEvents_1, receivingContext_1, addedEventInstance),
-                            revert: function () {
-                                receivingContext_1.dispatch({
-                                    type: 'REMOVE_EVENTS',
-                                    eventStore: mutatedRelevantEvents_1,
-                                });
-                            },
-                        };
-                        receivingContext_1.emitter.trigger('eventAdd', eventAddArg);
-                        if (ev.isTouch) {
-                            receivingContext_1.dispatch({
-                                type: 'SELECT_EVENT',
-                                eventInstanceId: eventInstance.instanceId,
-                            });
-                        }
-                        receivingContext_1.emitter.trigger('drop', Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])(Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])({}, buildDatePointApiWithContext(finalHit.dateSpan, receivingContext_1)), { draggedEl: ev.subjectEl, jsEvent: ev.origEvent, view: finalHit.component.context.viewApi }));
-                        receivingContext_1.emitter.trigger('eventReceive', Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])(Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])({}, eventAddArg), { draggedEl: ev.subjectEl, view: finalHit.component.context.viewApi }));
-                    }
-                }
-                else {
-                    initialContext_1.emitter.trigger('_noEventDrop');
-                }
-            }
-            _this.cleanup();
-        };
-        var component = _this.component;
-        var options = component.context.options;
-        var dragging = _this.dragging = new FeaturefulElementDragging(settings.el);
-        dragging.pointer.selector = EventDragging.SELECTOR;
-        dragging.touchScrollAllowed = false;
-        dragging.autoScroller.isEnabled = options.dragScroll;
-        var hitDragging = _this.hitDragging = new HitDragging(_this.dragging, __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_23" /* interactionSettingsStore */]);
-        hitDragging.useSubjectCenter = settings.useEventCenter;
-        hitDragging.emitter.on('pointerdown', _this.handlePointerDown);
-        hitDragging.emitter.on('dragstart', _this.handleDragStart);
-        hitDragging.emitter.on('hitupdate', _this.handleHitUpdate);
-        hitDragging.emitter.on('pointerup', _this.handlePointerUp);
-        hitDragging.emitter.on('dragend', _this.handleDragEnd);
-        return _this;
-    }
-    EventDragging.prototype.destroy = function () {
-        this.dragging.destroy();
-    };
-    // render a drag state on the next receivingCalendar
-    EventDragging.prototype.displayDrag = function (nextContext, state) {
-        var initialContext = this.component.context;
-        var prevContext = this.receivingContext;
-        // does the previous calendar need to be cleared?
-        if (prevContext && prevContext !== nextContext) {
-            // does the initial calendar need to be cleared?
-            // if so, don't clear all the way. we still need to to hide the affectedEvents
-            if (prevContext === initialContext) {
-                prevContext.dispatch({
-                    type: 'SET_EVENT_DRAG',
-                    state: {
-                        affectedEvents: state.affectedEvents,
-                        mutatedEvents: Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_0" /* createEmptyEventStore */])(),
-                        isEvent: true,
-                    },
-                });
-                // completely clear the old calendar if it wasn't the initial
-            }
-            else {
-                prevContext.dispatch({ type: 'UNSET_EVENT_DRAG' });
-            }
-        }
-        if (nextContext) {
-            nextContext.dispatch({ type: 'SET_EVENT_DRAG', state: state });
-        }
-    };
-    EventDragging.prototype.clearDrag = function () {
-        var initialCalendar = this.component.context;
-        var receivingContext = this.receivingContext;
-        if (receivingContext) {
-            receivingContext.dispatch({ type: 'UNSET_EVENT_DRAG' });
-        }
-        // the initial calendar might have an dummy drag state from displayDrag
-        if (initialCalendar !== receivingContext) {
-            initialCalendar.dispatch({ type: 'UNSET_EVENT_DRAG' });
-        }
-    };
-    EventDragging.prototype.cleanup = function () {
-        this.subjectSeg = null;
-        this.isDragging = false;
-        this.eventRange = null;
-        this.relevantEvents = null;
-        this.receivingContext = null;
-        this.validMutation = null;
-        this.mutatedRelevantEvents = null;
-    };
-    // TODO: test this in IE11
-    // QUESTION: why do we need it on the resizable???
-    EventDragging.SELECTOR = '.fc-event-draggable, .fc-event-resizable';
-    return EventDragging;
-}(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["w" /* Interaction */]));
-function computeEventMutation(hit0, hit1, massagers) {
-    var dateSpan0 = hit0.dateSpan;
-    var dateSpan1 = hit1.dateSpan;
-    var date0 = dateSpan0.range.start;
-    var date1 = dateSpan1.range.start;
-    var standardProps = {};
-    if (dateSpan0.allDay !== dateSpan1.allDay) {
-        standardProps.allDay = dateSpan1.allDay;
-        standardProps.hasEnd = hit1.component.context.options.allDayMaintainDuration;
-        if (dateSpan1.allDay) {
-            // means date1 is already start-of-day,
-            // but date0 needs to be converted
-            date0 = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_46" /* startOfDay */])(date0);
-        }
-    }
-    var delta = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_5" /* diffDates */])(date0, date1, hit0.component.context.dateEnv, hit0.component === hit1.component ?
-        hit0.component.largeUnit :
-        null);
-    if (delta.milliseconds) { // has hours/minutes/seconds
-        standardProps.allDay = false;
-    }
-    var mutation = {
-        datesDelta: delta,
-        standardProps: standardProps,
-    };
-    for (var _i = 0, massagers_1 = massagers; _i < massagers_1.length; _i++) {
-        var massager = massagers_1[_i];
-        massager(mutation, hit0, hit1);
-    }
-    return mutation;
-}
-function getComponentTouchDelay$1(component) {
-    var options = component.context.options;
-    var delay = options.eventLongPressDelay;
-    if (delay == null) {
-        delay = options.longPressDelay;
-    }
-    return delay;
-}
-
-var EventResizing = /** @class */ (function (_super) {
-    Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["b" /* __extends */])(EventResizing, _super);
-    function EventResizing(settings) {
-        var _this = _super.call(this, settings) || this;
-        // internal state
-        _this.draggingSegEl = null;
-        _this.draggingSeg = null; // TODO: rename to resizingSeg? subjectSeg?
-        _this.eventRange = null;
-        _this.relevantEvents = null;
-        _this.validMutation = null;
-        _this.mutatedRelevantEvents = null;
-        _this.handlePointerDown = function (ev) {
-            var component = _this.component;
-            var segEl = _this.querySegEl(ev);
-            var seg = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_16" /* getElSeg */])(segEl);
-            var eventRange = _this.eventRange = seg.eventRange;
-            _this.dragging.minDistance = component.context.options.eventDragMinDistance;
-            // if touch, need to be working with a selected event
-            _this.dragging.setIgnoreMove(!_this.component.isValidSegDownEl(ev.origEvent.target) ||
-                (ev.isTouch && _this.component.props.eventSelection !== eventRange.instance.instanceId));
-        };
-        _this.handleDragStart = function (ev) {
-            var context = _this.component.context;
-            var eventRange = _this.eventRange;
-            _this.relevantEvents = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_18" /* getRelevantEvents */])(context.getCurrentData().eventStore, _this.eventRange.instance.instanceId);
-            var segEl = _this.querySegEl(ev);
-            _this.draggingSegEl = segEl;
-            _this.draggingSeg = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_16" /* getElSeg */])(segEl);
-            context.calendarApi.unselect();
-            context.emitter.trigger('eventResizeStart', {
-                el: segEl,
-                event: new __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["t" /* EventApi */](context, eventRange.def, eventRange.instance),
-                jsEvent: ev.origEvent,
-                view: context.viewApi,
-            });
-        };
-        _this.handleHitUpdate = function (hit, isFinal, ev) {
-            var context = _this.component.context;
-            var relevantEvents = _this.relevantEvents;
-            var initialHit = _this.hitDragging.initialHit;
-            var eventInstance = _this.eventRange.instance;
-            var mutation = null;
-            var mutatedRelevantEvents = null;
-            var isInvalid = false;
-            var interaction = {
-                affectedEvents: relevantEvents,
-                mutatedEvents: Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_0" /* createEmptyEventStore */])(),
-                isEvent: true,
-            };
-            if (hit) {
-                mutation = computeMutation(initialHit, hit, ev.subjectEl.classList.contains('fc-event-resizer-start'), eventInstance.range, context.pluginHooks.eventResizeJoinTransforms);
-            }
-            if (mutation) {
-                mutatedRelevantEvents = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["M" /* applyMutationToEventStore */])(relevantEvents, context.getCurrentData().eventUiBases, mutation, context);
-                interaction.mutatedEvents = mutatedRelevantEvents;
-                if (!_this.component.isInteractionValid(interaction)) {
-                    isInvalid = true;
-                    mutation = null;
-                    mutatedRelevantEvents = null;
-                    interaction.mutatedEvents = null;
-                }
-            }
-            if (mutatedRelevantEvents) {
-                context.dispatch({
-                    type: 'SET_EVENT_RESIZE',
-                    state: interaction,
-                });
-            }
-            else {
-                context.dispatch({ type: 'UNSET_EVENT_RESIZE' });
-            }
-            if (!isInvalid) {
-                Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_11" /* enableCursor */])();
-            }
-            else {
-                Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_8" /* disableCursor */])();
-            }
-            if (!isFinal) {
-                if (mutation && isHitsEqual(initialHit, hit)) {
-                    mutation = null;
-                }
-                _this.validMutation = mutation;
-                _this.mutatedRelevantEvents = mutatedRelevantEvents;
-            }
-        };
-        _this.handleDragEnd = function (ev) {
-            var context = _this.component.context;
-            var eventDef = _this.eventRange.def;
-            var eventInstance = _this.eventRange.instance;
-            var eventApi = new __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["t" /* EventApi */](context, eventDef, eventInstance);
-            var relevantEvents = _this.relevantEvents;
-            var mutatedRelevantEvents = _this.mutatedRelevantEvents;
-            context.emitter.trigger('eventResizeStop', {
-                el: _this.draggingSegEl,
-                event: eventApi,
-                jsEvent: ev.origEvent,
-                view: context.viewApi,
-            });
-            if (_this.validMutation) {
-                var updatedEventApi = new __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["t" /* EventApi */](context, mutatedRelevantEvents.defs[eventDef.defId], eventInstance ? mutatedRelevantEvents.instances[eventInstance.instanceId] : null);
-                context.dispatch({
-                    type: 'MERGE_EVENTS',
-                    eventStore: mutatedRelevantEvents,
-                });
-                var eventChangeArg = {
-                    oldEvent: eventApi,
-                    event: updatedEventApi,
-                    relatedEvents: Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["P" /* buildEventApis */])(mutatedRelevantEvents, context, eventInstance),
-                    revert: function () {
-                        context.dispatch({
-                            type: 'MERGE_EVENTS',
-                            eventStore: relevantEvents,
-                        });
-                    },
-                };
-                context.emitter.trigger('eventResize', Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])(Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])({}, eventChangeArg), { el: _this.draggingSegEl, startDelta: _this.validMutation.startDelta || Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["Y" /* createDuration */])(0), endDelta: _this.validMutation.endDelta || Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["Y" /* createDuration */])(0), jsEvent: ev.origEvent, view: context.viewApi }));
-                context.emitter.trigger('eventChange', eventChangeArg);
-            }
-            else {
-                context.emitter.trigger('_noEventResize');
-            }
-            // reset all internal state
-            _this.draggingSeg = null;
-            _this.relevantEvents = null;
-            _this.validMutation = null;
-            // okay to keep eventInstance around. useful to set it in handlePointerDown
-        };
-        var component = settings.component;
-        var dragging = _this.dragging = new FeaturefulElementDragging(settings.el);
-        dragging.pointer.selector = '.fc-event-resizer';
-        dragging.touchScrollAllowed = false;
-        dragging.autoScroller.isEnabled = component.context.options.dragScroll;
-        var hitDragging = _this.hitDragging = new HitDragging(_this.dragging, Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_24" /* interactionSettingsToStore */])(settings));
-        hitDragging.emitter.on('pointerdown', _this.handlePointerDown);
-        hitDragging.emitter.on('dragstart', _this.handleDragStart);
-        hitDragging.emitter.on('hitupdate', _this.handleHitUpdate);
-        hitDragging.emitter.on('dragend', _this.handleDragEnd);
-        return _this;
-    }
-    EventResizing.prototype.destroy = function () {
-        this.dragging.destroy();
-    };
-    EventResizing.prototype.querySegEl = function (ev) {
-        return Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_9" /* elementClosest */])(ev.subjectEl, '.fc-event');
-    };
-    return EventResizing;
-}(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["w" /* Interaction */]));
-function computeMutation(hit0, hit1, isFromStart, instanceRange, transforms) {
-    var dateEnv = hit0.component.context.dateEnv;
-    var date0 = hit0.dateSpan.range.start;
-    var date1 = hit1.dateSpan.range.start;
-    var delta = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_5" /* diffDates */])(date0, date1, dateEnv, hit0.component.largeUnit);
-    var props = {};
-    for (var _i = 0, transforms_1 = transforms; _i < transforms_1.length; _i++) {
-        var transform = transforms_1[_i];
-        var res = transform(hit0, hit1);
-        if (res === false) {
-            return null;
-        }
-        if (res) {
-            Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])(props, res);
-        }
-    }
-    if (isFromStart) {
-        if (dateEnv.add(instanceRange.start, delta) < instanceRange.end) {
-            props.startDelta = delta;
-            return props;
-        }
-    }
-    else if (dateEnv.add(instanceRange.end, delta) > instanceRange.start) {
-        props.endDelta = delta;
-        return props;
-    }
-    return null;
-}
-
-var UnselectAuto = /** @class */ (function () {
-    function UnselectAuto(context) {
-        var _this = this;
-        this.context = context;
-        this.isRecentPointerDateSelect = false; // wish we could use a selector to detect date selection, but uses hit system
-        this.matchesCancel = false;
-        this.matchesEvent = false;
-        this.onSelect = function (selectInfo) {
-            if (selectInfo.jsEvent) {
-                _this.isRecentPointerDateSelect = true;
-            }
-        };
-        this.onDocumentPointerDown = function (pev) {
-            var unselectCancel = _this.context.options.unselectCancel;
-            var downEl = pev.origEvent.target;
-            _this.matchesCancel = !!Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_9" /* elementClosest */])(downEl, unselectCancel);
-            _this.matchesEvent = !!Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_9" /* elementClosest */])(downEl, EventDragging.SELECTOR); // interaction started on an event?
-        };
-        this.onDocumentPointerUp = function (pev) {
-            var context = _this.context;
-            var documentPointer = _this.documentPointer;
-            var calendarState = context.getCurrentData();
-            // touch-scrolling should never unfocus any type of selection
-            if (!documentPointer.wasTouchScroll) {
-                if (calendarState.dateSelection && // an existing date selection?
-                    !_this.isRecentPointerDateSelect // a new pointer-initiated date selection since last onDocumentPointerUp?
-                ) {
-                    var unselectAuto = context.options.unselectAuto;
-                    if (unselectAuto && (!unselectAuto || !_this.matchesCancel)) {
-                        context.calendarApi.unselect(pev);
-                    }
-                }
-                if (calendarState.eventSelection && // an existing event selected?
-                    !_this.matchesEvent // interaction DIDN'T start on an event
-                ) {
-                    context.dispatch({ type: 'UNSELECT_EVENT' });
-                }
-            }
-            _this.isRecentPointerDateSelect = false;
-        };
-        var documentPointer = this.documentPointer = new PointerDragging(document);
-        documentPointer.shouldIgnoreMove = true;
-        documentPointer.shouldWatchScroll = false;
-        documentPointer.emitter.on('pointerdown', this.onDocumentPointerDown);
-        documentPointer.emitter.on('pointerup', this.onDocumentPointerUp);
-        /*
-        TODO: better way to know about whether there was a selection with the pointer
-        */
-        context.emitter.on('select', this.onSelect);
-    }
-    UnselectAuto.prototype.destroy = function () {
-        this.context.emitter.off('select', this.onSelect);
-        this.documentPointer.destroy();
-    };
-    return UnselectAuto;
-}());
-
-var OPTION_REFINERS = {
-    fixedMirrorParent: __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_22" /* identity */],
-};
-var LISTENER_REFINERS = {
-    dateClick: __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_22" /* identity */],
-    eventDragStart: __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_22" /* identity */],
-    eventDragStop: __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_22" /* identity */],
-    eventDrop: __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_22" /* identity */],
-    eventResizeStart: __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_22" /* identity */],
-    eventResizeStop: __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_22" /* identity */],
-    eventResize: __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_22" /* identity */],
-    drop: __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_22" /* identity */],
-    eventReceive: __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_22" /* identity */],
-    eventLeave: __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_22" /* identity */],
-};
-
-/*
-Given an already instantiated draggable object for one-or-more elements,
-Interprets any dragging as an attempt to drag an events that lives outside
-of a calendar onto a calendar.
-*/
-var ExternalElementDragging = /** @class */ (function () {
-    function ExternalElementDragging(dragging, suppliedDragMeta) {
-        var _this = this;
-        this.receivingContext = null;
-        this.droppableEvent = null; // will exist for all drags, even if create:false
-        this.suppliedDragMeta = null;
-        this.dragMeta = null;
-        this.handleDragStart = function (ev) {
-            _this.dragMeta = _this.buildDragMeta(ev.subjectEl);
-        };
-        this.handleHitUpdate = function (hit, isFinal, ev) {
-            var dragging = _this.hitDragging.dragging;
-            var receivingContext = null;
-            var droppableEvent = null;
-            var isInvalid = false;
-            var interaction = {
-                affectedEvents: Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_0" /* createEmptyEventStore */])(),
-                mutatedEvents: Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_0" /* createEmptyEventStore */])(),
-                isEvent: _this.dragMeta.create,
-            };
-            if (hit) {
-                receivingContext = hit.component.context;
-                if (_this.canDropElOnCalendar(ev.subjectEl, receivingContext)) {
-                    droppableEvent = computeEventForDateSpan(hit.dateSpan, _this.dragMeta, receivingContext);
-                    interaction.mutatedEvents = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_12" /* eventTupleToStore */])(droppableEvent);
-                    isInvalid = !Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_29" /* isInteractionValid */])(interaction, receivingContext);
-                    if (isInvalid) {
-                        interaction.mutatedEvents = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_0" /* createEmptyEventStore */])();
-                        droppableEvent = null;
-                    }
-                }
-            }
-            _this.displayDrag(receivingContext, interaction);
-            // show mirror if no already-rendered mirror element OR if we are shutting down the mirror (?)
-            // TODO: wish we could somehow wait for dispatch to guarantee render
-            dragging.setMirrorIsVisible(isFinal || !droppableEvent || !document.querySelector('.fc-event-mirror'));
-            if (!isInvalid) {
-                Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_11" /* enableCursor */])();
-            }
-            else {
-                Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_8" /* disableCursor */])();
-            }
-            if (!isFinal) {
-                dragging.setMirrorNeedsRevert(!droppableEvent);
-                _this.receivingContext = receivingContext;
-                _this.droppableEvent = droppableEvent;
-            }
-        };
-        this.handleDragEnd = function (pev) {
-            var _a = _this, receivingContext = _a.receivingContext, droppableEvent = _a.droppableEvent;
-            _this.clearDrag();
-            if (receivingContext && droppableEvent) {
-                var finalHit = _this.hitDragging.finalHit;
-                var finalView = finalHit.component.context.viewApi;
-                var dragMeta = _this.dragMeta;
-                receivingContext.emitter.trigger('drop', Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])(Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])({}, buildDatePointApiWithContext(finalHit.dateSpan, receivingContext)), { draggedEl: pev.subjectEl, jsEvent: pev.origEvent, view: finalView }));
-                if (dragMeta.create) {
-                    var addingEvents_1 = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_12" /* eventTupleToStore */])(droppableEvent);
-                    receivingContext.dispatch({
-                        type: 'MERGE_EVENTS',
-                        eventStore: addingEvents_1,
-                    });
-                    if (pev.isTouch) {
-                        receivingContext.dispatch({
-                            type: 'SELECT_EVENT',
-                            eventInstanceId: droppableEvent.instance.instanceId,
-                        });
-                    }
-                    // signal that an external event landed
-                    receivingContext.emitter.trigger('eventReceive', {
-                        event: new __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["t" /* EventApi */](receivingContext, droppableEvent.def, droppableEvent.instance),
-                        relatedEvents: [],
-                        revert: function () {
-                            receivingContext.dispatch({
-                                type: 'REMOVE_EVENTS',
-                                eventStore: addingEvents_1,
-                            });
-                        },
-                        draggedEl: pev.subjectEl,
-                        view: finalView,
-                    });
-                }
-            }
-            _this.receivingContext = null;
-            _this.droppableEvent = null;
-        };
-        var hitDragging = this.hitDragging = new HitDragging(dragging, __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_23" /* interactionSettingsStore */]);
-        hitDragging.requireInitial = false; // will start outside of a component
-        hitDragging.emitter.on('dragstart', this.handleDragStart);
-        hitDragging.emitter.on('hitupdate', this.handleHitUpdate);
-        hitDragging.emitter.on('dragend', this.handleDragEnd);
-        this.suppliedDragMeta = suppliedDragMeta;
-    }
-    ExternalElementDragging.prototype.buildDragMeta = function (subjectEl) {
-        if (typeof this.suppliedDragMeta === 'object') {
-            return Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_33" /* parseDragMeta */])(this.suppliedDragMeta);
-        }
-        if (typeof this.suppliedDragMeta === 'function') {
-            return Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_33" /* parseDragMeta */])(this.suppliedDragMeta(subjectEl));
-        }
-        return getDragMetaFromEl(subjectEl);
-    };
-    ExternalElementDragging.prototype.displayDrag = function (nextContext, state) {
-        var prevContext = this.receivingContext;
-        if (prevContext && prevContext !== nextContext) {
-            prevContext.dispatch({ type: 'UNSET_EVENT_DRAG' });
-        }
-        if (nextContext) {
-            nextContext.dispatch({ type: 'SET_EVENT_DRAG', state: state });
-        }
-    };
-    ExternalElementDragging.prototype.clearDrag = function () {
-        if (this.receivingContext) {
-            this.receivingContext.dispatch({ type: 'UNSET_EVENT_DRAG' });
-        }
-    };
-    ExternalElementDragging.prototype.canDropElOnCalendar = function (el, receivingContext) {
-        var dropAccept = receivingContext.options.dropAccept;
-        if (typeof dropAccept === 'function') {
-            return dropAccept.call(receivingContext.calendarApi, el);
-        }
-        if (typeof dropAccept === 'string' && dropAccept) {
-            return Boolean(Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_10" /* elementMatches */])(el, dropAccept));
-        }
-        return true;
-    };
-    return ExternalElementDragging;
-}());
-// Utils for computing event store from the DragMeta
-// ----------------------------------------------------------------------------------------------------
-function computeEventForDateSpan(dateSpan, dragMeta, context) {
-    var defProps = Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])({}, dragMeta.leftoverProps);
-    for (var _i = 0, _a = context.pluginHooks.externalDefTransforms; _i < _a.length; _i++) {
-        var transform = _a[_i];
-        Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["a" /* __assign */])(defProps, transform(dateSpan, dragMeta));
-    }
-    var _b = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_39" /* refineEventDef */])(defProps, context), refined = _b.refined, extra = _b.extra;
-    var def = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_34" /* parseEventDef */])(refined, extra, dragMeta.sourceId, dateSpan.allDay, context.options.forceEventDuration || Boolean(dragMeta.duration), // hasEnd
-    context);
-    var start = dateSpan.range.start;
-    // only rely on time info if drop zone is all-day,
-    // otherwise, we already know the time
-    if (dateSpan.allDay && dragMeta.startTime) {
-        start = context.dateEnv.add(start, dragMeta.startTime);
-    }
-    var end = dragMeta.duration ?
-        context.dateEnv.add(start, dragMeta.duration) :
-        Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_15" /* getDefaultEventEnd */])(dateSpan.allDay, start, context);
-    var instance = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_1" /* createEventInstance */])(def.defId, { start: start, end: end });
-    return { def: def, instance: instance };
-}
-// Utils for extracting data from element
-// ----------------------------------------------------------------------------------------------------
-function getDragMetaFromEl(el) {
-    var str = getEmbeddedElData(el, 'event');
-    var obj = str ?
-        JSON.parse(str) :
-        { create: false }; // if no embedded data, assume no event creation
-    return Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_33" /* parseDragMeta */])(obj);
-}
-__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["W" /* config */].dataAttrPrefix = '';
-function getEmbeddedElData(el, name) {
-    var prefix = __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["W" /* config */].dataAttrPrefix;
-    var prefixedName = (prefix ? prefix + '-' : '') + name;
-    return el.getAttribute('data-' + prefixedName) || '';
-}
-
-/*
-Makes an element (that is *external* to any calendar) draggable.
-Can pass in data that determines how an event will be created when dropped onto a calendar.
-Leverages FullCalendar's internal drag-n-drop functionality WITHOUT a third-party drag system.
-*/
-var ExternalDraggable = /** @class */ (function () {
-    function ExternalDraggable(el, settings) {
-        var _this = this;
-        if (settings === void 0) { settings = {}; }
-        this.handlePointerDown = function (ev) {
-            var dragging = _this.dragging;
-            var _a = _this.settings, minDistance = _a.minDistance, longPressDelay = _a.longPressDelay;
-            dragging.minDistance =
-                minDistance != null ?
-                    minDistance :
-                    (ev.isTouch ? 0 : __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["a" /* BASE_OPTION_DEFAULTS */].eventDragMinDistance);
-            dragging.delay =
-                ev.isTouch ? // TODO: eventually read eventLongPressDelay instead vvv
-                    (longPressDelay != null ? longPressDelay : __WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["a" /* BASE_OPTION_DEFAULTS */].longPressDelay) :
-                    0;
-        };
-        this.handleDragStart = function (ev) {
-            if (ev.isTouch &&
-                _this.dragging.delay &&
-                ev.subjectEl.classList.contains('fc-event')) {
-                _this.dragging.mirror.getMirrorEl().classList.add('fc-event-selected');
-            }
-        };
-        this.settings = settings;
-        var dragging = this.dragging = new FeaturefulElementDragging(el);
-        dragging.touchScrollAllowed = false;
-        if (settings.itemSelector != null) {
-            dragging.pointer.selector = settings.itemSelector;
-        }
-        if (settings.appendTo != null) {
-            dragging.mirror.parentNode = settings.appendTo; // TODO: write tests
-        }
-        dragging.emitter.on('pointerdown', this.handlePointerDown);
-        dragging.emitter.on('dragstart', this.handleDragStart);
-        new ExternalElementDragging(dragging, settings.eventData); // eslint-disable-line no-new
-    }
-    ExternalDraggable.prototype.destroy = function () {
-        this.dragging.destroy();
-    };
-    return ExternalDraggable;
-}());
-
-/*
-Detects when a *THIRD-PARTY* drag-n-drop system interacts with elements.
-The third-party system is responsible for drawing the visuals effects of the drag.
-This class simply monitors for pointer movements and fires events.
-It also has the ability to hide the moving element (the "mirror") during the drag.
-*/
-var InferredElementDragging = /** @class */ (function (_super) {
-    Object(__WEBPACK_IMPORTED_MODULE_1_tslib__["b" /* __extends */])(InferredElementDragging, _super);
-    function InferredElementDragging(containerEl) {
-        var _this = _super.call(this, containerEl) || this;
-        _this.shouldIgnoreMove = false;
-        _this.mirrorSelector = '';
-        _this.currentMirrorEl = null;
-        _this.handlePointerDown = function (ev) {
-            _this.emitter.trigger('pointerdown', ev);
-            if (!_this.shouldIgnoreMove) {
-                // fire dragstart right away. does not support delay or min-distance
-                _this.emitter.trigger('dragstart', ev);
-            }
-        };
-        _this.handlePointerMove = function (ev) {
-            if (!_this.shouldIgnoreMove) {
-                _this.emitter.trigger('dragmove', ev);
-            }
-        };
-        _this.handlePointerUp = function (ev) {
-            _this.emitter.trigger('pointerup', ev);
-            if (!_this.shouldIgnoreMove) {
-                // fire dragend right away. does not support a revert animation
-                _this.emitter.trigger('dragend', ev);
-            }
-        };
-        var pointer = _this.pointer = new PointerDragging(containerEl);
-        pointer.emitter.on('pointerdown', _this.handlePointerDown);
-        pointer.emitter.on('pointermove', _this.handlePointerMove);
-        pointer.emitter.on('pointerup', _this.handlePointerUp);
-        return _this;
-    }
-    InferredElementDragging.prototype.destroy = function () {
-        this.pointer.destroy();
-    };
-    InferredElementDragging.prototype.setIgnoreMove = function (bool) {
-        this.shouldIgnoreMove = bool;
-    };
-    InferredElementDragging.prototype.setMirrorIsVisible = function (bool) {
-        if (bool) {
-            // restore a previously hidden element.
-            // use the reference in case the selector class has already been removed.
-            if (this.currentMirrorEl) {
-                this.currentMirrorEl.style.visibility = '';
-                this.currentMirrorEl = null;
-            }
-        }
-        else {
-            var mirrorEl = this.mirrorSelector ?
-                document.querySelector(this.mirrorSelector) :
-                null;
-            if (mirrorEl) {
-                this.currentMirrorEl = mirrorEl;
-                mirrorEl.style.visibility = 'hidden';
-            }
-        }
-    };
-    return InferredElementDragging;
-}(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["q" /* ElementDragging */]));
-
-/*
-Bridges third-party drag-n-drop systems with FullCalendar.
-Must be instantiated and destroyed by caller.
-*/
-var ThirdPartyDraggable = /** @class */ (function () {
-    function ThirdPartyDraggable(containerOrSettings, settings) {
-        var containerEl = document;
-        if (
-        // wish we could just test instanceof EventTarget, but doesn't work in IE11
-        containerOrSettings === document ||
-            containerOrSettings instanceof Element) {
-            containerEl = containerOrSettings;
-            settings = settings || {};
-        }
-        else {
-            settings = (containerOrSettings || {});
-        }
-        var dragging = this.dragging = new InferredElementDragging(containerEl);
-        if (typeof settings.itemSelector === 'string') {
-            dragging.pointer.selector = settings.itemSelector;
-        }
-        else if (containerEl === document) {
-            dragging.pointer.selector = '[data-event]';
-        }
-        if (typeof settings.mirrorSelector === 'string') {
-            dragging.mirrorSelector = settings.mirrorSelector;
-        }
-        new ExternalElementDragging(dragging, settings.eventData); // eslint-disable-line no-new
-    }
-    ThirdPartyDraggable.prototype.destroy = function () {
-        this.dragging.destroy();
-    };
-    return ThirdPartyDraggable;
-}());
-
-var main = Object(__WEBPACK_IMPORTED_MODULE_0__fullcalendar_common__["_3" /* createPlugin */])({
-    componentInteractions: [DateClicking, DateSelecting, EventDragging, EventResizing],
-    calendarInteractions: [UnselectAuto],
-    elementDraggingImpl: FeaturefulElementDragging,
-    optionRefiners: OPTION_REFINERS,
-    listenerRefiners: LISTENER_REFINERS,
-});
-
-/* harmony default export */ __webpack_exports__["a"] = (main);
-
-//# sourceMappingURL=main.js.map
-
 
 /***/ }),
 /* 157 */
@@ -93394,8 +92888,8 @@ if(false) {
 
 exports = module.exports = __webpack_require__(0)(false);
 // imports
-exports.i(__webpack_require__(142), "");
-exports.i(__webpack_require__(21), "");
+exports.i(__webpack_require__(22), "");
+exports.i(__webpack_require__(11), "");
 
 // module
 exports.push([module.i, "\n.fc-title {\r\n  color: #fff;\n}\n.fc-title:hover {\r\n  cursor: pointer;\n}\r\n", ""]);
@@ -93409,9 +92903,9 @@ exports.push([module.i, "\n.fc-title {\r\n  color: #fff;\n}\n.fc-title:hover {\r
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__fullcalendar_vue__ = __webpack_require__(144);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fullcalendar_daygrid__ = __webpack_require__(154);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fullcalendar_interaction__ = __webpack_require__(156);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__fullcalendar_vue__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fullcalendar_daygrid__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fullcalendar_interaction__ = __webpack_require__(27);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\DiaNoLaboral;
+use App\Calendar;
 use App\Incidencia;
 use App\SolicitudInasistencia;
 use Carbon\Carbon;
@@ -126,7 +126,7 @@ class SolicitudInasistenciaController extends Controller
             //cada 7 dias 1 no es Habil y sin contar los feriados
             $decimales = explode('.',$diasDiferencia/7);
             $diasDiferencia-= $decimales[0] ;
-            $diasNoLaborales= DiaNoLaboral::where('dia','>=',$request->desde)->where('dia','<=',$request->hasta)->where('condicion',1)->get();
+            $diasNoLaborales= Calendar::where('start_date','>=',$request->desde)->where('start_date','<=',$request->hasta)->get();
             $contarFeriados=count($diasNoLaborales);
             if($contarFeriados>0){
                 $diasDiferencia-=$contarFeriados;

@@ -208,7 +208,7 @@
                 
                   <select v-model="estadoCivil"  class="form-control">
                   <option disabled value="">Estado Civil</option>
-                  <option>Soltero/a</option>
+                  <option value="Soltero/a">Soltero/a</option>
                   <option>Casado/a</option>
                   <option>Divorciado/a</option>
                   <option>Viudo/a</option>
@@ -641,7 +641,8 @@ export default {
       fileReader.onload = (event) => {
         this.curriculum = event.target.result;
       };
-      console.log(this.event.target.files[0]);
+      
+
     },
 
     // listarIncidencia (search,loading){
@@ -940,13 +941,21 @@ export default {
         this.errorMostrarMsjEmpleado.push(
           "La estado civil del empleado no puede estar vacío."
         );
+        if (!this.fechaNacimiento)
+        this.errorMostrarMsjEmpleado.push(
+          "Debe ingresar la fecha de nacimiento."
+        );
       if (!this.fechaAlta)
         this.errorMostrarMsjEmpleado.push(
           "La fecha de ingreso del empleado no puede estar vacía."
         );
+        if (this.fechaAlta < this.fechaNacimiento)
+        this.errorMostrarMsjEmpleado.push(
+          "La fecha de nacimiento debe ser menor a la fecha en que se dio de alta el empleado."
+        );
       if (!this.curriculum)
         this.errorMostrarMsjEmpleado.push(
-          "El curriculum del empleado no puede estar vacío."
+          "Debe cargar el archivo curriculum del empleado."
         );
       if (this.errorMostrarMsjEmpleado.length) this.errorEmpleado = 1;
 
@@ -1043,7 +1052,7 @@ export default {
       me.fechaNacimiento = data["fechaNacimiento"];
       me.fechaAlta = data["fechaAlta"];
       me.fechaBaja = data["fechaBaja"];
-      me.curriculum = data["curriculum"];
+      this.curriculum = data["curriculum"];
       var url = "/empleado/findCompetencias?id=" + data["id"];
       axios
         .get(url)

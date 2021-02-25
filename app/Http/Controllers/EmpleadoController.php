@@ -31,7 +31,7 @@ class EmpleadoController extends Controller
             $empleados= $empleados->where('empleados.'.$criterio, 'like', '%'. $buscar . '%');
         }
         
-        $empleados=$empleados->orderBy('nombre', 'desc')->paginate(3);
+        $empleados=$empleados->orderBy('empleados.nombre', 'desc')->paginate(3);
        
         return [
             'pagination' => [
@@ -166,6 +166,7 @@ class EmpleadoController extends Controller
                 'nombre.required' => 'Debe ingresar el :attribute .',
                 'apellido.required' => 'Debe ingresar el :attribute .',
                 'estadoCivil.required' => 'Debe ingresar el estado civil .',
+                'curriculum.required' => 'Debe ingresar el curriculum .',
             
             ];
             $this->validate($request, $rules, $messages);

@@ -373,7 +373,7 @@
                   >Contrato (*)
                 </label>
                 <div class="col-md-9">
-                  <input type="file" @change="getImage" id="data" name="data" />
+                  <input type="file" accept="application/pdf" @change="getImage" id="data" name="data" />
                   <a :href="contrato" target="_blank">Ver</a>
                 </div>
               </div>

@@ -271,7 +271,7 @@
               </div>
             </div>
           </div>
-          <div class="row">
+          <!-- <div class="row">
             <div class="col">
               <div class="card">
                 <div class="card-header">Dias No Laborales Proximos</div>
@@ -508,7 +508,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
 
