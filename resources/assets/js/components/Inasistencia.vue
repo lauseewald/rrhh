@@ -511,6 +511,8 @@
 </template>
 
 <script>
+  let user=(document.head.querySelector('meta[name="user"]'));
+
 import toastr from "toastr";
 export default {
   data() {
@@ -549,6 +551,9 @@ export default {
     };
   },
   computed: {
+    user(){
+      return JSON.parse(user.content);
+    },
     isActived: function () {
       return this.pagination.current_page;
     },
@@ -918,6 +923,7 @@ export default {
     this.listarTabla(1, this.buscar, this.criterio);
     this.selectEmpleado();
     this.selectIncidencia();
+
   },
 };
 </script>

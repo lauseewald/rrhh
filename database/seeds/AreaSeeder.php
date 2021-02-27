@@ -69,6 +69,17 @@ class AreaSeeder extends Seeder
         $empleado->direccion='Belgrano 10000';
         $empleado->estadoCivil='Soltera';
         $empleado->save();
+        
+        $empleado2 = new Empleado();
+        $empleado2->nombre='Agus';
+        $empleado2->apellido='Britez';
+        $empleado2->cuil='27377048844';
+        $empleado2->fechaNacimiento= Carbon::createFromFormat('Y-m-d', '1990-01-12');
+        $empleado2->fechaBaja= null;
+        $empleado2->fechaAlta= Carbon::createFromFormat('Y-m-d','2010-11-22');
+        $empleado2->direccion='Belgrano 10000';
+        $empleado2->estadoCivil='Soltero';
+        $empleado2->save();
 
         $dependiente = new PersonaDependiente();
         $dependiente->nombre='Rafael';
@@ -134,6 +145,15 @@ class AreaSeeder extends Seeder
         $user->empleado_id=$empleado->id;
         $user->rol_id=$rol1->id;
         $user->password = bcrypt('root');
+        $user->save();
+
+        $user = new User();
+        $user->usuario='empleado';
+        $user->email='empleado@empleado.com';
+        $user->empresa_id=$empresa->id;
+        $user->empleado_id=$empleado2->id;
+        $user->rol_id=$rol2->id;
+        $user->password = bcrypt('empleado');
         $user->save();
         
         $diaNoLaboral = new DiaNoLaboral();

@@ -11,6 +11,7 @@
     <link rel="shortcut icon" href="img/Unam-Logo.jpg">
     <title>Sistema de nóminas de empleados</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="user" content="{{ Auth::user() }}">
     <script src="https://unpkg.com/vue-select@latest"></script>
     {{-- <link rel="stylesheet" href="https://unpkg.com/vue-select@latest/dist/vue-select.css"> --}}
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"> --}}

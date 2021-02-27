@@ -1,5 +1,6 @@
 @extends('principal')
 @section('contenido')
+
 <template v-if="menu==0">
     <inicio></inicio>
 </template>
