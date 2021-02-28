@@ -79,7 +79,7 @@ class EmpleadoController extends Controller
                     if (!$request->ajax()) return redirect('/');
 
                     //if($request->hasFile($request->curriculum)){
-                        $fileName='';
+                        //$fileName='';
                         $exploded = explode(',', $request->curriculum);
                         $decoded = base64_decode($exploded[1]);
                         if(str_contains($exploded[0], 'pdf'))
@@ -89,6 +89,8 @@ class EmpleadoController extends Controller
                         $fileName = str_random().'.'.$extension;
                         $path = public_path().'/'.$fileName;
                         file_put_contents($path, $decoded);
+
+                        
                     //}
                    //$fileName = $request->file('curriculum')->store('public');
                    //$url = Storage::url($fileName);
@@ -175,16 +177,19 @@ class EmpleadoController extends Controller
                 DB::beginTransaction(); 
 
                 $empleado = Empleado::findOrFail($request->id);
-                $fileName='';
-                        $exploded = explode(',', $request->curriculum);
-                        $decoded = base64_decode($exploded[1]);
-                        if(str_contains($exploded[0], 'pdf'))
-                            $extension = 'pdf';
-                        else
-                            $extension = 'pdf';
-                        $fileName = str_random().'.'.$extension;
-                        $path = public_path().'/'.$fileName;
-                        file_put_contents($path, $decoded);
+                if($request->hasFile($request->curriculum)){
+                    $exploded = explode(',', $request->curriculum);
+                    $decoded = base64_decode($exploded[1]);
+                    if(str_contains($exploded[0], 'pdf'))
+                        $extension = 'pdf';
+                    else
+                        $extension = 'pdf';
+                    $fileName = str_random().'.'.$extension;
+                    $path = public_path().'/'.$fileName;
+                    file_put_contents($path, $decoded);
+                }else{
+                    $fileName= $empleado->curriculum;
+                }
                 
 
             $empleado->nombre = $request->nombre;

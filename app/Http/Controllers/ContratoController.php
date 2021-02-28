@@ -311,7 +311,7 @@ class ContratoController extends Controller
                 $contratoViejo->update();
             }
 
-            if($request->contrato){
+            if($request->hasFile($request->contrato)){
                 $exploded = explode(',', $request->contrato);
                 $decoded = base64_decode($exploded[1]);
                 if(str_contains($exploded[0], 'pdf'))

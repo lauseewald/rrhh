@@ -31,11 +31,35 @@ class AreaSeeder extends Seeder
      */
     public function run()
     {
-        $nuevaArea = new Area();
+        /* $nuevaArea = new Area();
         $nuevaArea->nombre='Centro de Operaciones';
         $nuevaArea->descripcion='Area Principal';
         $nuevaArea->empresa_id=null;
+        $nuevaArea->save(); */
+
+        $nuevaArea = new Area();
+        $nuevaArea->nombre='Dirección';
+        $nuevaArea->descripcion='Controla todas las áreas de trabajo que se encuentran en la empresa.';
+        $nuevaArea->empresa_id=null;
         $nuevaArea->save();
+
+        $nuevaArea2 = new Area();
+        $nuevaArea2->nombre='Administración';
+        $nuevaArea2->descripcion='Relacionada con el funcionamiento de la empresa';
+        $nuevaArea2->empresa_id=null;
+        $nuevaArea2->save();
+
+        $nuevaArea3 = new Area();
+        $nuevaArea3->nombre='Contabiliad y Finanzas';
+        $nuevaArea3->descripcion='Tendrá en cuenta todos los movimientos de dinero, tanto dentro como fuera de la empresa, que también en algunas veces pueden estar almacenadas en bancos o en una caja fuerte.';
+        $nuevaArea3->empresa_id=null;
+        $nuevaArea3->save();
+
+        $nuevaArea4 = new Area();
+        $nuevaArea4->nombre='Tecnologías de la información';
+        $nuevaArea4->descripcion='Es el área responsable de desarrollar la estructura tecnológica, el hardware, el software y las redes de computadoras dentro de la organización.';
+        $nuevaArea4->empresa_id=null;
+        $nuevaArea4->save();
         
         $nuevaCompetencia = new Competencia();
         $nuevaCompetencia->nombre='Liderazgo';
@@ -67,7 +91,7 @@ class AreaSeeder extends Seeder
         $empleado->fechaBaja= null;
         $empleado->fechaAlta= Carbon::createFromFormat('Y-m-d','1990-11-22');
         $empleado->direccion='Belgrano 10000';
-        $empleado->estadoCivil='Soltera';
+        $empleado->estadoCivil='Soltero/a';
         $empleado->save();
         
         $empleado2 = new Empleado();
@@ -78,14 +102,14 @@ class AreaSeeder extends Seeder
         $empleado2->fechaBaja= null;
         $empleado2->fechaAlta= Carbon::createFromFormat('Y-m-d','2010-11-22');
         $empleado2->direccion='Belgrano 10000';
-        $empleado2->estadoCivil='Soltero';
+        $empleado2->estadoCivil='Soltero/a';
         $empleado2->save();
 
         $dependiente = new PersonaDependiente();
         $dependiente->nombre='Rafael';
         $dependiente->apellido='Robert';
         $dependiente->dni='50.123.313';
-        $dependiente->relacion='Hermano';
+        $dependiente->relacion='Hermano/a';
         $dependiente->necesidad='Discapacidad';
         $dependiente->empleado_id=$empleado->id;
         $dependiente->save();
@@ -303,9 +327,15 @@ class AreaSeeder extends Seeder
 
 
         $incidencia = new Incidencia();
-        $incidencia->nombre='Incidencia 1';
+        $incidencia->nombre='Vacaciones';
         $incidencia->diasMaximo=30;
         $incidencia->diasMinimo=10;
+        $incidencia->save();
+
+        $incidencia = new Incidencia();
+        $incidencia->nombre='Licencia';
+        $incidencia->diasMaximo=30;
+        $incidencia->diasMinimo=1;
         $incidencia->save();
         
         $solicitudesInasistencias = new SolicitudInasistencia();

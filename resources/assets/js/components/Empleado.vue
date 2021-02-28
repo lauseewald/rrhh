@@ -209,9 +209,9 @@
                   <select v-model="estadoCivil"  class="form-control">
                   <option disabled value="">Estado Civil</option>
                   <option value="Soltero/a">Soltero/a</option>
-                  <option>Casado/a</option>
-                  <option>Divorciado/a</option>
-                  <option>Viudo/a</option>
+                  <option value="Casado/a" >Casado/a</option>
+                  <option value="Divorciado/a" >Divorciado/a</option>
+                  <option value="Viudo/a">Viudo/a</option>
                 </select>
                 </div>
               </div>

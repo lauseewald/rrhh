@@ -237,9 +237,9 @@
                 <div class="col-md-9">
                   <select  v-model="relacion"  class="form-control">
                   <option disabled value="">Relación de la persona dependiente</option>
-                  <option>Hijo/a</option>
-                  <option>Esposo/a</option>
-                  <option>Hermano/a</option>
+                  <option value="Hijo/a" >Hijo/a</option>
+                  <option value="Esposo/a" >Esposo/a</option>
+                  <option value="Hermano/a">Hermano/a</option>
                 </select>
                 </div>
               </div>
