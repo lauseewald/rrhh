@@ -665,6 +665,7 @@ export default {
           id: this.contrato_id,
         })
         .then(function (response) {
+          console.log(response);
           me.cerrarModal();
           me.listarTabla(1, "", "nombre");
           toastr.success("Se ha actualizado con exito", "Actualizado", {

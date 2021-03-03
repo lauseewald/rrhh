@@ -133,31 +133,32 @@ class ContratoController extends Controller
              $fileName = str_random().'.'.$extension;
              $path = public_path().'/'.$fileName;
              file_put_contents($path, $decoded);
+             $empleado    = Empleado::find($request->idempleado);
+             $contratoViejo=$empleado->contratos->where('actual',1)->first();
+             if($contratoViejo){
 
-            $empleado    = Empleado::find($request->idempleado);
-            $contratoViejo=$empleado->contratos->where('actual',1)->first();
-            if($contratoViejo){
-
-                $contratoViejo->actual=0;
-                $contratoViejo->update();
-            }
-
-            $contrato = new Contrato();
-            $contrato->nombre = $request->nombre;
-            $contrato->descripcion = $request->descripcion;
-            $contrato->inicioLaboral= $request->inicioLaboral;
-            $contrato->finLaboral= $request->finLaboral;
-            // $contrato->inicioLaboral= Carbon::now();
-            // $contrato->finLaboral= Carbon::now();
-            $contrato->cantidadHorasDiarias= intval($request->cantidadHorasDiarias);
-            $contrato->salario= floatval($request->salario);
-            //$contrato->contrato = '';
-             $contrato->contrato=$fileName;
-            $contrato->puesto_id=($request->idpuesto);
-            $contrato->empleado_id=($request->idempleado);
-            $contrato->tipoContrato_id=($request->idtipocontrato);
-            
-            $contrato->save();
+                 $contratoViejo->actual=0;
+                 $contratoViejo->update();
+                }
+                
+                $contrato = new Contrato();
+                $contrato->nombre = $request->nombre;
+         
+                $contrato->descripcion = $request->descripcion ;
+                $contrato->inicioLaboral= $request->inicioLaboral;
+                $contrato->finLaboral= $request->finLaboral;
+                // $contrato->inicioLaboral= Carbon::now();
+                // $contrato->finLaboral= Carbon::now();
+                $contrato->cantidadHorasDiarias= intval($request->cantidadHorasDiarias);
+                $contrato->salario= floatval($request->salario);
+                //$contrato->contrato = '';
+                $contrato->contrato=$fileName;
+                $contrato->puesto_id=($request->idpuesto);
+                $contrato->empleado_id=($request->idempleado);
+                $contrato->tipoContrato_id=($request->idtipocontrato);
+                
+                $contrato->save();
+                return 0;
 
            
         } catch (Exception $e) {
@@ -280,8 +281,8 @@ class ContratoController extends Controller
              //A continiacion se calcula si la cantidad de dias seleccionado respeta la cantidad de dias
             //definido en el TIPO de CONTRATO
             //********************************** */
-            $fechaEmision = Carbon::parse($request->input('inicioLaboral'));
-            $fechaExpiracion = Carbon::parse($request->input('finLaboral'));
+            $fechaEmision = Carbon::parse($request->inicioLaboral);
+            $fechaExpiracion = Carbon::parse($request->finLaboral);
             
             $cantidadDiasRealTrabajo = $fechaExpiracion->diffInDays($fechaEmision)+ 1;
             //cada 7 dias 1 no es Habil y sin contar los feriados
@@ -297,18 +298,20 @@ class ContratoController extends Controller
             
             if(($tipoContrato->diasMaximo < $cantidadDiasRealTrabajo) || ($cantidadDiasRealTrabajo < $tipoContrato->diasMinimo)){
                 return ['Error','Los dias de los Tipos de contrato '. strtoupper($tipoContrato->nombre) .' tienen que ser mayor a '.$tipoContrato->diasMinimo.' dias y menor a '.$tipoContrato->diasMaximo.' dias'];
+           
             }
             //****************************************************************** */
            
 
             $contrato = Contrato::findOrFail($request->id);
-
+            return $request->id;
+            
             $empleado    = Empleado::find($request->idempleado);
             $contratoViejo=$empleado->contratos->where('actual',1)->first();
             if($contratoViejo){
 
                 $contratoViejo->actual=0;
-                $contratoViejo->update();
+                $contratoViejo->save();
             }
 
             if($request->hasFile($request->contrato)){
@@ -324,22 +327,23 @@ class ContratoController extends Controller
             }else{
                 $fileName= $contrato->contrato;
             }
-            
             $contrato->nombre = $request->nombre;
-            $contrato->nombre = $request->nombre;
-            $contrato->puesto_id=$request->idpuesto;
-            $contrato->empleado_id=$request->idempleado;
+            $contrato->descripcion = $request->descripcion;
+            $contrato->puesto_id=($request->idpuesto);
+            $contrato->empleado_id=($request->idempleado);
             $contrato->tipoContrato_id=($request->idTipoContrato);
-            $contrato->cantidadHorasLaborales=$request->cantidadHorasLaborales;
-            $contrato->salario=$request->salario;
+            $contrato->cantidadHorasDiarias=($request->cantidadHorasDiarias);
+            $contrato->salario=($request->salario);
             $contrato->inicioLaboral= $request->inicioLaboral;
             $contrato->finLaboral= $request->finLaboral;
             $contrato->contrato=$fileName;
+            // return 0;
             $contrato->save();
         } catch (Exception $e) {
-            //return redirect()->withErrors('Error');
+            return redirect()->withErrors('Error',[$e]);
         }
     }
+    
     public function calculadorDias(Request $request)
     {
          //********************************** */
