@@ -37,28 +37,36 @@ class AreaSeeder extends Seeder
         $nuevaArea->empresa_id=null;
         $nuevaArea->save(); */
 
+        $empresa = new Empresa();
+        $empresa->nombre='Angaus Producciones ';
+        $empresa->razonSocial='Sociedad Anonima';
+        $empresa->cuit='30707831320';
+        $empresa->direccion='Avellaneda 893';
+        $empresa->inicioActividad=Carbon::createFromFormat('Y-m-d','1990-02-25');
+        $empresa->save();
+
         $nuevaArea = new Area();
         $nuevaArea->nombre='Dirección';
         $nuevaArea->descripcion='Controla todas las áreas de trabajo que se encuentran en la empresa.';
-        $nuevaArea->empresa_id=null;
+        $nuevaArea->empresa_id=$empresa->id;
         $nuevaArea->save();
 
         $nuevaArea2 = new Area();
         $nuevaArea2->nombre='Administración';
         $nuevaArea2->descripcion='Relacionada con el funcionamiento de la empresa';
-        $nuevaArea2->empresa_id=null;
+        $nuevaArea2->empresa_id=$empresa->id;
         $nuevaArea2->save();
 
         $nuevaArea3 = new Area();
-        $nuevaArea3->nombre='Contabiliad y Finanzas';
+        $nuevaArea3->nombre='Contabilidad y Finanzas';
         $nuevaArea3->descripcion='Tendrá en cuenta todos los movimientos de dinero, tanto dentro como fuera de la empresa, que también en algunas veces pueden estar almacenadas en bancos o en una caja fuerte.';
-        $nuevaArea3->empresa_id=null;
+        $nuevaArea3->empresa_id=$empresa->id;
         $nuevaArea3->save();
 
         $nuevaArea4 = new Area();
         $nuevaArea4->nombre='Tecnologías de la información';
         $nuevaArea4->descripcion='Es el área responsable de desarrollar la estructura tecnológica, el hardware, el software y las redes de computadoras dentro de la organización.';
-        $nuevaArea4->empresa_id=null;
+        $nuevaArea4->empresa_id=$empresa->id;
         $nuevaArea4->save();
         
         $nuevaCompetencia = new Competencia();
@@ -80,8 +88,32 @@ class AreaSeeder extends Seeder
         $departamento = new Departamento();
         $departamento->nombre='Desarrollo de Software';
         $departamento->descripcion='Programacion, analisis, diseño, etc';
-        $departamento->area_id=$nuevaArea->id;
+        $departamento->area_id=$nuevaArea4->id;
         $departamento->save();
+
+        $departamento2 = new Departamento();
+        $departamento2->nombre='Recursos Humanos';
+        $departamento2->descripcion='Gestion administrativa del personal';
+        $departamento2->area_id=$nuevaArea2->id;
+        $departamento2->save();
+
+        $departamento3 = new Departamento();
+        $departamento3->nombre='Compras';
+        $departamento3->descripcion='La principal función del departamento de compras es adquirir buenas materias primas, a buen precio, siempre y cuando es necesario, sin roturas de stock.';
+        $departamento3->area_id=$nuevaArea3->id;
+        $departamento3->save();
+
+        $departamento4 = new Departamento();
+        $departamento4->nombre='Comercial';
+        $departamento4->descripcion='Debe asegurarse de que estén bien definidos los objetivos empresariales, departamentales e individuales.';
+        $departamento4->area_id=$nuevaArea2->id;
+        $departamento4->save();
+
+        $departamento5 = new Departamento();
+        $departamento5->nombre='Dirección General';
+        $departamento5->descripcion='Direccion general';
+        $departamento5->area_id=$nuevaArea->id;
+        $departamento5->save();
         
         $empleado = new Empleado();
         $empleado->nombre='Ana';
@@ -115,11 +147,53 @@ class AreaSeeder extends Seeder
         $dependiente->save();
 
         $puesto = new Puesto();
-        $puesto->nombre='Programacion';
-        $puesto->descripcion='Programacion';
-        $puesto->sueldoBasico=16000.0;
-        $puesto->departamento_id=$departamento->id;
+        $puesto->nombre='CEO (Chief Executive Officer)';
+        $puesto->descripcion='Estos ejecutivos son los máximos responsables de la gestión y dirección administrativa de una empresa. ';
+        $puesto->sueldoBasico=120000.00;
+        $puesto->departamento_id=$departamento5->id;
         $puesto->save();
+
+        $puesto2 = new Puesto();
+        $puesto2->nombre='Gerente de operaciones';
+        $puesto2->descripcion='se encarga de supervisar el funcionamiento del sistema de creación y distribución de los productos de la empresa';
+        $puesto2->sueldoBasico=70000.00;
+        $puesto2->departamento_id=$departamento4->id;
+        $puesto2->save();
+
+        $puesto3 = new Puesto();
+        $puesto3->nombre='Gerente Comercial';
+        $puesto3->descripcion='es referirse específicamente al responsables de las ventas de una empresa';
+        $puesto3->sueldoBasico=70000.00;
+        $puesto3->departamento_id=$departamento4->id;
+        $puesto3->save();
+
+        $puesto4 = new Puesto();
+        $puesto4->nombre='Gerente de TI';
+        $puesto4->descripcion='Los administradores de TI determinan las necesidades tecnológicas de la empresa y planifican cómo satisfacer esas necesidades: desde el desarrollo de la infraestructura hasta la coordinación de actualizaciones de software.';
+        $puesto4->sueldoBasico=70000.00;
+        $puesto4->departamento_id=$departamento->id;
+        $puesto4->save();
+
+        $puesto4 = new Puesto();
+        $puesto4->nombre='Programador Junior Full Stack';
+        $puesto4->descripcion='Desarrollador de back y frond end.';
+        $puesto4->sueldoBasico=50000.00;
+        $puesto4->departamento_id=$departamento->id;
+        $puesto4->save();
+
+        $puesto4 = new Puesto();
+        $puesto4->nombre='Gerente de Recursos Humanos';
+        $puesto4->descripcion='Los responsables de la gestión de personas determinan cuánto se paga a los empleados, cómo aumentan y se distribuyen bonos y salarios,  eligen los planes de salud y jubilación de la compañía. ';
+        $puesto4->sueldoBasico=70000.00;
+        $puesto4->departamento_id=$departamento2->id;
+        $puesto4->save();
+
+        $puesto4 = new Puesto();
+        $puesto4->nombre='Encargado del deposito';
+        $puesto4->descripcion='Control de stock ';
+        $puesto4->sueldoBasico=70000.00;
+        $puesto4->departamento_id=$departamento3->id;
+        $puesto4->save();
 
         $tipoContrato = new TipoContrato();
         $tipoContrato->nombre='Prueba';
@@ -127,7 +201,18 @@ class AreaSeeder extends Seeder
         $tipoContrato->diasMinimo=30;
         $tipoContrato->save();
 
-       
+        $tipoContrato2 = new TipoContrato();
+        $tipoContrato2->nombre='Por Tiempo Parcial';
+        $tipoContrato2->diasMaximo=180;
+        $tipoContrato2->diasMinimo=30;
+        $tipoContrato2->save();
+
+        $tipoContrato3 = new TipoContrato();
+        $tipoContrato3->nombre='Indeterminación del Plazo';
+        $tipoContrato3->diasMaximo=30;
+        $tipoContrato3->diasMinimo=30;
+        $tipoContrato3->save();
+
         
         $contrato = new Contrato();
         $contrato->nombre='Trabajo';
@@ -152,15 +237,8 @@ class AreaSeeder extends Seeder
         $rol2->descripcion='...';
         $rol2->save();
         
-        $empresa = new Empresa();
-        $empresa->nombre='Angaus Producciones ';
-        $empresa->razonSocial='Sociedad Anonima';
-        $empresa->cuit='30707831320';
-        $empresa->direccion='Debajo del puente';
-        $empresa->inicioActividad=Carbon::createFromFormat('Y-m-d','1990-02-25');
-        $empresa->save();
-        $nuevaArea->empresa_id=$empresa->id;
-        $nuevaArea->update();
+        
+        
 
         $user = new User();
         $user->usuario='root';
@@ -208,7 +286,6 @@ class AreaSeeder extends Seeder
         $evento->save();
 
     
-
         $evento = new Calendar();
         $evento->event_name='Día Internacional de la Mujer';
         $evento->start_date=Carbon::createFromFormat('Y-m-d','2021-03-08');
@@ -332,11 +409,11 @@ class AreaSeeder extends Seeder
         $incidencia->diasMinimo=10;
         $incidencia->save();
 
-        $incidencia = new Incidencia();
-        $incidencia->nombre='Licencia';
-        $incidencia->diasMaximo=30;
-        $incidencia->diasMinimo=1;
-        $incidencia->save();
+        $incidencia2 = new Incidencia();
+        $incidencia2->nombre='Licencia';
+        $incidencia2->diasMaximo=30;
+        $incidencia2->diasMinimo=1;
+        $incidencia2->save();
         
         $solicitudesInasistencias = new SolicitudInasistencia();
         $solicitudesInasistencias->desde=Carbon::createFromFormat('Y-m-d','2020-03-10');

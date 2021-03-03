@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PDOException;
 
 class ContratoController extends Controller
 {
@@ -304,7 +305,7 @@ class ContratoController extends Controller
            
 
             $contrato = Contrato::findOrFail($request->id);
-            return $request->id;
+            //return $request->id;
             
             $empleado    = Empleado::find($request->idempleado);
             $contratoViejo=$empleado->contratos->where('actual',1)->first();
@@ -331,16 +332,19 @@ class ContratoController extends Controller
             $contrato->descripcion = $request->descripcion;
             $contrato->puesto_id=($request->idpuesto);
             $contrato->empleado_id=($request->idempleado);
-            $contrato->tipoContrato_id=($request->idTipoContrato);
-            $contrato->cantidadHorasDiarias=($request->cantidadHorasDiarias);
-            $contrato->salario=($request->salario);
+            //$contrato->tipoContrato_id=($request->idTipoContrato);
+            $contrato->cantidadHorasDiarias=intval($request->cantidadHorasDiarias);
+            $contrato->salario=floatval($request->salario);
             $contrato->inicioLaboral= $request->inicioLaboral;
             $contrato->finLaboral= $request->finLaboral;
             $contrato->contrato=$fileName;
+            $contrato->descripcion = $request->descripcion ;
+                $contrato->tipoContrato_id=($request->idtipocontrato);
             // return 0;
             $contrato->save();
-        } catch (Exception $e) {
-            return redirect()->withErrors('Error',[$e]);
+        } catch (PDOException $e) {
+            //return redirect()->withErrors('Error',[$e]);
+            return 'error' + $e;
         }
     }
     
