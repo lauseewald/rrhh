@@ -669,9 +669,9 @@
               data-dismiss="modal"
               @click.prevent="modalListarEmpleadoLicencia = 0"
             >
-              Close
+              Cerrar
             </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            
           </div>
         </div>
       </div>

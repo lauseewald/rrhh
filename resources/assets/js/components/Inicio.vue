@@ -110,10 +110,10 @@ export default {
       this.indexToUpdate = id;
       this.newEvent = {
         event_name: title,
-        start_date: start.slice(0, 10),
-        end_date: end.slice(0, 10),
-        end_time: end.slice(-8),
-        start_time: start.slice(-8),
+        start_date: start,
+        end_date: end
+        //end_time: end.slice(-8),
+        //start_time: start.slice(-8),
       };
     },
     updateEvent() {
@@ -159,9 +159,9 @@ export default {
         .get("/api/calendar")
         .then(function (response) {
           let respuesta = response.data;
-          me.calendarOptions.events = respuesta.data;
+          var events = respuesta.data;
 
-          me.calendarOptions.events = me.calendarOptions.events.concat(
+          me.calendarOptions.events = events.concat(
             me.arrayEvento
           );
           console.log(me.calendarOptions.events);

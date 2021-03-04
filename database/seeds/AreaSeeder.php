@@ -118,10 +118,10 @@ class AreaSeeder extends Seeder
         $empleado = new Empleado();
         $empleado->nombre='Ana';
         $empleado->apellido='Rafaela';
-        $empleado->cuil='27377048844';
+        $empleado->cuil='27236150610';
         $empleado->fechaNacimiento= Carbon::createFromFormat('Y-m-d', '1980-01-12');
         $empleado->fechaBaja= null;
-        $empleado->fechaAlta= Carbon::createFromFormat('Y-m-d','1990-11-22');
+        $empleado->fechaAlta= Carbon::createFromFormat('Y-m-d','2000-11-22');
         $empleado->direccion='Belgrano 10000';
         $empleado->estadoCivil='Soltero/a';
         $empleado->save();
@@ -129,7 +129,7 @@ class AreaSeeder extends Seeder
         $empleado2 = new Empleado();
         $empleado2->nombre='Agus';
         $empleado2->apellido='Britez';
-        $empleado2->cuil='27377048844';
+        $empleado2->cuil='20026162522';
         $empleado2->fechaNacimiento= Carbon::createFromFormat('Y-m-d', '1990-01-12');
         $empleado2->fechaBaja= null;
         $empleado2->fechaAlta= Carbon::createFromFormat('Y-m-d','2010-11-22');
@@ -140,7 +140,7 @@ class AreaSeeder extends Seeder
         $dependiente = new PersonaDependiente();
         $dependiente->nombre='Rafael';
         $dependiente->apellido='Robert';
-        $dependiente->dni='50.123.313';
+        $dependiente->dni='50123313';
         $dependiente->relacion='Hermano/a';
         $dependiente->necesidad='Discapacidad';
         $dependiente->empleado_id=$empleado->id;
@@ -265,13 +265,23 @@ class AreaSeeder extends Seeder
         $diaNoLaboral->save();
 
         $evento = new Evento();
-        $evento->titulo='Evento 1';
-        $evento->descripcion='Un evento';
+        $evento->titulo='Reunión Scrum';
+        $evento->descripcion='Un evento para....';
         $evento->fecha=Carbon::createFromFormat('Y-m-d H','2021-02-25 14');
         $evento->fechaFin=Carbon::createFromFormat('Y-m-d H','2021-02-26 17');
         $evento->departamento_id=$departamento->id;
         $evento->empresa_id=$empresa->id;
         $evento->save();
+
+        $evento = new Evento();
+        $evento->titulo='Capacitación nuevo sistema';
+        $evento->descripcion='Un evento para capacitar a los empleados....';
+        $evento->fecha=Carbon::createFromFormat('Y-m-d H','2021-03-04 14');
+        $evento->fechaFin=Carbon::createFromFormat('Y-m-d H','2021-03-04 16');
+        $evento->departamento_id=$departamento->id;
+        $evento->empresa_id=$empresa->id;
+        $evento->save();
+
 
         $evento = new Calendar();
         $evento->event_name='Año Nuevo';

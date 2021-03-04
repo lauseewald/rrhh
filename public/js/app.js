@@ -82518,6 +82518,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var _user = document.head.querySelector('meta[name="user"]');
 
@@ -83042,30 +83060,32 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "col" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: {
-                    type: "button",
-                    "data-toggle": "modal",
-                    "data-target": "#listEmpleadosModal"
-                  },
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      return _vm.obtenerEmpleadosConLicencia()
-                    }
-                  }
-                },
-                [
-                  _vm._v(
-                    "\n              Ver Empleados con licencias\n            "
+            _vm.user.rol.nombre == "Administrador"
+              ? _c("div", { staticClass: "col" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      attrs: {
+                        type: "button",
+                        "data-toggle": "modal",
+                        "data-target": "#listEmpleadosModal"
+                      },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.obtenerEmpleadosConLicencia()
+                        }
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n              Ver Empleados con licencias\n            "
+                      )
+                    ]
                   )
-                ]
-              )
-            ])
+                ])
+              : _vm._e()
           ]),
           _vm._v(" "),
           _c(
@@ -83149,7 +83169,7 @@ var render = function() {
                           "button",
                           {
                             staticClass: "btn btn-warning btn-sm",
-                            attrs: { type: "button" },
+                            attrs: { title: "Editar", type: "button" },
                             on: {
                               click: function($event) {
                                 return _vm.abrirModal(
@@ -83162,97 +83182,114 @@ var render = function() {
                           },
                           [_c("i", { staticClass: "icon-pencil" })]
                         ),
-                        _vm._v("\n                 \n                "),
+                        _vm._v("\n                 \n\n                "),
                         solicitudInasistencia.condicion
                           ? [
-                              _c(
+                              _vm.user.rol.nombre == "Administrador"
+                                ? _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-danger btn-sm",
+                                      attrs: {
+                                        title: "Desactivar",
+                                        type: "button"
+                                      },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.desactivarSolicitudInasistencia(
+                                            solicitudInasistencia.id
+                                          )
+                                        }
+                                      }
+                                    },
+                                    [_c("i", { staticClass: "icon-trash" })]
+                                  )
+                                : _vm._e()
+                            ]
+                          : [
+                              _vm.user.rol.nombre == "Administrador"
+                                ? _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-info btn-sm",
+                                      attrs: {
+                                        title: "Activar",
+                                        type: "button"
+                                      },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.activarSolicitudInasistencia(
+                                            solicitudInasistencia.id
+                                          )
+                                        }
+                                      }
+                                    },
+                                    [_c("i", { staticClass: "icon-check" })]
+                                  )
+                                : _vm._e()
+                            ],
+                        _vm._v("\n                 \n                "),
+                        [
+                          _vm.user.rol.nombre == "Administrador"
+                            ? _c(
                                 "button",
                                 {
-                                  staticClass: "btn btn-danger btn-sm",
-                                  attrs: { type: "button" },
+                                  staticClass: "btn btn-outline-info btn-sm",
+                                  attrs: { title: "Ver", type: "button" },
                                   on: {
                                     click: function($event) {
-                                      return _vm.desactivarSolicitudInasistencia(
-                                        solicitudInasistencia.id
+                                      return _vm.verDatos(solicitudInasistencia)
+                                    }
+                                  }
+                                },
+                                [_c("i", { staticClass: "icon-eye" })]
+                              )
+                            : _vm._e()
+                        ],
+                        _vm._v("\n                 \n                "),
+                        [
+                          _vm.user.rol.nombre == "Administrador" &&
+                          solicitudInasistencia.aprobado
+                            ? _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-outline-info btn-sm",
+                                  attrs: {
+                                    type: "button",
+                                    title: "Desaprobar"
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.aprobarSolicitud(
+                                        solicitudInasistencia,
+                                        0
                                       )
                                     }
                                   }
                                 },
-                                [_c("i", { staticClass: "icon-trash" })]
+                                [_c("i", { staticClass: "icon-close" })]
                               )
-                            ]
-                          : [
-                              _c(
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.user.rol.nombre == "Administrador" &&
+                          !solicitudInasistencia.aprobado
+                            ? _c(
                                 "button",
                                 {
-                                  staticClass: "btn btn-info btn-sm",
-                                  attrs: { type: "button" },
+                                  staticClass: "btn btn-outline-info btn-sm",
+                                  attrs: { type: "button", title: "Aprobar" },
                                   on: {
                                     click: function($event) {
-                                      return _vm.activarSolicitudInasistencia(
-                                        solicitudInasistencia.id
+                                      return _vm.aprobarSolicitud(
+                                        solicitudInasistencia,
+                                        1
                                       )
                                     }
                                   }
                                 },
                                 [_c("i", { staticClass: "icon-check" })]
                               )
-                            ],
-                        _vm._v("\n                 \n                "),
-                        [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-outline-info btn-sm",
-                              attrs: { type: "button" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.verDatos(solicitudInasistencia)
-                                }
-                              }
-                            },
-                            [_c("i", { staticClass: "icon-eye" })]
-                          )
-                        ],
-                        _vm._v("\n                 \n                "),
-                        [
-                          solicitudInasistencia.aprobado
-                            ? _c("div", [
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass: "btn btn-outline-info btn-sm",
-                                    attrs: { type: "button" },
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.aprobarSolicitud(
-                                          solicitudInasistencia,
-                                          0
-                                        )
-                                      }
-                                    }
-                                  },
-                                  [_c("i", { staticClass: "icon-close" })]
-                                )
-                              ])
-                            : _c("div", [
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass: "btn btn-outline-info btn-sm",
-                                    attrs: { type: "button" },
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.aprobarSolicitud(
-                                          solicitudInasistencia,
-                                          1
-                                        )
-                                      }
-                                    }
-                                  },
-                                  [_c("i", { staticClass: "icon-check" })]
-                                )
-                              ])
+                            : _vm._e()
                         ]
                       ],
                       2
@@ -90221,13 +90258,7 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v("\n            Close\n          ")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  { staticClass: "btn btn-primary", attrs: { type: "button" } },
-                  [_vm._v("Save changes")]
+                  [_vm._v("\n            Cerrar\n          ")]
                 )
               ])
             ])
@@ -93048,10 +93079,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       this.indexToUpdate = id;
       this.newEvent = {
         event_name: title,
-        start_date: start.slice(0, 10),
-        end_date: end.slice(0, 10),
-        end_time: end.slice(-8),
-        start_time: start.slice(-8)
+        start_date: start,
+        end_date: end
+        //end_time: end.slice(-8),
+        //start_time: start.slice(-8),
       };
     },
     updateEvent: function updateEvent() {
@@ -93088,9 +93119,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       });
       axios.get("/api/calendar").then(function (response) {
         var respuesta = response.data;
-        me.calendarOptions.events = respuesta.data;
+        var events = respuesta.data;
 
-        me.calendarOptions.events = me.calendarOptions.events.concat(me.arrayEvento);
+        me.calendarOptions.events = events.concat(me.arrayEvento);
         console.log(me.calendarOptions.events);
       })
       //.then(resp => (this.events = resp.data.data))

@@ -11,6 +11,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PhpParser\Node\Expr\Include_;
+use PDOException;
 
 class SolicitudInasistenciaController extends Controller
 {
@@ -154,8 +155,9 @@ class SolicitudInasistenciaController extends Controller
            
             $solicitudInasistencia->save();
 
-        } catch (Exception $e) {
-            return redirect()->withErrors('Error');
+        } catch (PDOException $e) {
+            //return redirect()->withErrors('Error');
+            return 'error' + $e;
         }
     }
 
@@ -204,7 +206,7 @@ class SolicitudInasistenciaController extends Controller
             //cada 7 dias 1 no es Habil y sin contar los feriados
             $decimales = explode('.',$diasDiferencia/7);
             $diasDiferencia-= $decimales[0] ;
-            $diasNoLaborales= DiaNoLaboral::where('dia','>=',$request->desde)->where('dia','<=',$request->hasta)->where('condicion',1)->get();
+            $diasNoLaborales= Calendar::where('start_date','>=',$request->desde)->where('start_date','<=',$request->hasta)->get();
             $contarFeriados=count($diasNoLaborales);
             if($contarFeriados>0){
                 $diasDiferencia-=$contarFeriados;
@@ -220,7 +222,14 @@ class SolicitudInasistenciaController extends Controller
             $solicitudInasistencia->hasta = $request->hasta;
             $solicitudInasistencia->motivo = $request->motivo;
             $solicitudInasistencia->incidencia_id=($request->incidencia_id);
-            $solicitudInasistencia->empleado_id=($request->empleado_id);
+           // $solicitudInasistencia->empleado_id=($request->empleado_id);
+           if ($request->empleado_id==null){
+                $iduser = \Auth::user()->id;
+                $solicitante = $this->ObtenerUsuario($iduser);
+                $solicitudInasistencia->empleado_id=($solicitante);
+            } else {
+                    $solicitudInasistencia->empleado_id=($request->empleado_id);
+                }
             $solicitudInasistencia->save();
 
         } catch (Exception $e) {
@@ -252,9 +261,9 @@ class SolicitudInasistenciaController extends Controller
     {
         
         $operario = User::where('id', '=', $iduser)
-        ->select('id', 'usuario')
+        ->select('id', 'usuario', 'empleado_id')
         ->orderBy('id', 'asc')->take(1)->get();
-        $operario = $operario[0]['usuario'];
+        $operario = $operario[0]['empleado_id'];
         return $operario;
     }
 }
