@@ -252,7 +252,7 @@
               enctype="multipart/form-data"
               class="form-horizontal"
             >
-              <div class="col form-group form-group">
+              <div class="col form-group form-group" v-if="user.rol_id==1">
                 <label class="form-control-label" for="text-input"
                   >Empleados (*)</label
                 >
@@ -525,7 +525,7 @@ export default {
       motivo: "",
       empleado_id: 0,
       incidencia_id: 0,
-
+      //usuario:'',
       empleado: { id: 0 },
 
       modal: 0,
@@ -551,6 +551,7 @@ export default {
   computed: {
     user(){
       return JSON.parse(user.content);
+      console.log(user.content);
     },
     isActived: function () {
       return this.pagination.current_page;
@@ -829,8 +830,8 @@ export default {
       if (!this.hasta) this.errorMostrarMsjForm.push("Debe ingresar una fecha");
       if (!this.motivo)
         this.errorMostrarMsjForm.push("Debe ingresar una motivo");
-      if (this.empleado_id <= 0)
-        this.errorMostrarMsjForm.push("Debe seleccionar un empleado");
+      /*if (this.empleado_id <= 0)
+        this.errorMostrarMsjForm.push("Debe seleccionar un empleado");*/
       if (this.incidencia_id <= 0)
         this.errorMostrarMsjForm.push("Debe seleccionar una incidencia");
       if (this.errorMostrarMsjForm.length) this.errorComponente = 1;
@@ -921,7 +922,6 @@ export default {
     this.listarTabla(1, this.buscar, this.criterio);
     this.selectEmpleado();
     this.selectIncidencia();
-
   },
 };
 </script>

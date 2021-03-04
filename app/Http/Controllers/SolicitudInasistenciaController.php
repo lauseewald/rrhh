@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Calendar;
+use App\User;
 use App\Incidencia;
 use App\SolicitudInasistencia;
 use Carbon\Carbon;
@@ -143,7 +144,14 @@ class SolicitudInasistenciaController extends Controller
             $solicitudInasistencia->hasta = $request->hasta;
             $solicitudInasistencia->motivo = $request->motivo;
             $solicitudInasistencia->incidencia_id=($request->incidencia_id);
-            $solicitudInasistencia->empleado_id=($request->empleado_id);
+            if ($request->empleado_id==null){
+                $iduser = \Auth::user()->id;
+                $solicitante = $this->ObtenerUsuario($iduser);
+                $solicitudInasistencia->empleado_id=($solicitante);
+            } else {
+                $solicitudInasistencia->empleado_id=($request->empleado_id);
+            }
+           
             $solicitudInasistencia->save();
 
         } catch (Exception $e) {
@@ -238,5 +246,15 @@ class SolicitudInasistenciaController extends Controller
         $solicitudInasistencia = SolicitudInasistencia::findOrFail($request->id);
         $solicitudInasistencia->condicion = '1';
         $solicitudInasistencia->save();
+    }
+
+    public function ObtenerUsuario($iduser)
+    {
+        
+        $operario = User::where('id', '=', $iduser)
+        ->select('id', 'usuario')
+        ->orderBy('id', 'asc')->take(1)->get();
+        $operario = $operario[0]['usuario'];
+        return $operario;
     }
 }

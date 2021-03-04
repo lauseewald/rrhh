@@ -82518,8 +82518,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 var _user = document.head.querySelector('meta[name="user"]');
 
@@ -82537,7 +82535,7 @@ var _user = document.head.querySelector('meta[name="user"]');
       motivo: "",
       empleado_id: 0,
       incidencia_id: 0,
-
+      //usuario:'',
       empleado: { id: 0 },
 
       modal: 0,
@@ -82564,6 +82562,7 @@ var _user = document.head.querySelector('meta[name="user"]');
   computed: {
     user: function user() {
       return JSON.parse(_user.content);
+      console.log(_user.content);
     },
 
     isActived: function isActived() {
@@ -82811,7 +82810,8 @@ var _user = document.head.querySelector('meta[name="user"]');
       if (!this.desde) this.errorMostrarMsjForm.push("Debe ingresar una fecha");
       if (!this.hasta) this.errorMostrarMsjForm.push("Debe ingresar una fecha");
       if (!this.motivo) this.errorMostrarMsjForm.push("Debe ingresar una motivo");
-      if (this.empleado_id <= 0) this.errorMostrarMsjForm.push("Debe seleccionar un empleado");
+      /*if (this.empleado_id <= 0)
+        this.errorMostrarMsjForm.push("Debe seleccionar un empleado");*/
       if (this.incidencia_id <= 0) this.errorMostrarMsjForm.push("Debe seleccionar una incidencia");
       if (this.errorMostrarMsjForm.length) this.errorComponente = 1;
       return this.errorComponente;
@@ -83410,68 +83410,75 @@ var render = function() {
                     }
                   },
                   [
-                    _c("div", { staticClass: "col form-group form-group" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "form-control-label",
-                          attrs: { for: "text-input" }
-                        },
-                        [_vm._v("Empleados (*)")]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-3" }),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.empleado_id,
-                              expression: "empleado_id"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
+                    _vm.user.rol_id == 1
+                      ? _c(
+                          "div",
+                          { staticClass: "col form-group form-group" },
+                          [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "form-control-label",
+                                attrs: { for: "text-input" }
+                              },
+                              [_vm._v("Empleados (*)")]
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "col-3" }),
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.empleado_id,
+                                    expression: "empleado_id"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.empleado_id = $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  }
+                                }
+                              },
+                              [
+                                _c(
+                                  "option",
+                                  { attrs: { value: "0", disabled: "" } },
+                                  [_vm._v("Seleccione")]
+                                ),
+                                _vm._v(" "),
+                                _vm._l(_vm.arrayEmpleados, function(empleado) {
+                                  return _c("option", {
+                                    key: empleado.id,
+                                    domProps: {
+                                      value: empleado.id,
+                                      textContent: _vm._s(empleado.nombre)
+                                    }
+                                  })
                                 })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.empleado_id = $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            }
-                          }
-                        },
-                        [
-                          _c(
-                            "option",
-                            { attrs: { value: "0", disabled: "" } },
-                            [_vm._v("Seleccione")]
-                          ),
-                          _vm._v(" "),
-                          _vm._l(_vm.arrayEmpleados, function(empleado) {
-                            return _c("option", {
-                              key: empleado.id,
-                              domProps: {
-                                value: empleado.id,
-                                textContent: _vm._s(empleado.nombre)
-                              }
-                            })
-                          })
-                        ],
-                        2
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-3" })
-                    ]),
+                              ],
+                              2
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "col-3" })
+                          ]
+                        )
+                      : _vm._e(),
                     _vm._v(" "),
                     _c("div", { staticClass: "col form-group" }, [
                       _c(
@@ -83993,15 +84000,6 @@ var render = function() {
                       }
                     },
                     [_vm._v("\n              Close\n            ")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-primary",
-                      attrs: { type: "button" }
-                    },
-                    [_vm._v("\n              Save changes\n            ")]
                   )
                 ])
               ])
