@@ -289,7 +289,7 @@ class ContratoController extends Controller
             //cada 7 dias 1 no es Habil y sin contar los feriados
             $decimales = explode('.',$cantidadDiasRealTrabajo/7);
             $cantidadDiasRealTrabajo-= $decimales[0] ;
-            $diasNoLaborales= Calendar::where('start_date','>=',$request->inicioLaboral)->where('start_date','<=',$request->finLaboral)->get();
+            $diasNoLaborales= Calendar::where('start_date','>=',$request->inicioLaboral)->where('end_date','<=',$request->finLaboral)->get();
             $contarFeriados=count($diasNoLaborales);
             if($contarFeriados>0){
                 $cantidadDiasRealTrabajo-=$contarFeriados;
@@ -297,10 +297,11 @@ class ContratoController extends Controller
             
             $tipoContrato=  TipoContrato::findOrFail($request->idtipocontrato);
             
-            if(($tipoContrato->diasMaximo < $cantidadDiasRealTrabajo) || ($cantidadDiasRealTrabajo < $tipoContrato->diasMinimo)){
-                return ['Error','Los dias de los Tipos de contrato '. strtoupper($tipoContrato->nombre) .' tienen que ser mayor a '.$tipoContrato->diasMinimo.' dias y menor a '.$tipoContrato->diasMaximo.' dias'];
+            // if(($tipoContrato->diasMaximo < $cantidadDiasRealTrabajo) || ($cantidadDiasRealTrabajo < $tipoContrato->diasMinimo)){
+                // return redirect()->withErrors('Error');
+                // return ['Error','Los dias de los Tipos de contrato '. strtoupper($tipoContrato->nombre) .' tienen que ser mayor a '.$tipoContrato->diasMinimo.' dias y menor a '.$tipoContrato->diasMaximo.' dias'];
            
-            }
+            // }
             //****************************************************************** */
            
 
@@ -343,8 +344,8 @@ class ContratoController extends Controller
             // return 0;
             $contrato->save();
         } catch (PDOException $e) {
-            //return redirect()->withErrors('Error',[$e]);
-            return 'error' + $e;
+            return redirect()->withErrors('Error',[$e]);
+            // return 'error' + $e;
         }
     }
     
