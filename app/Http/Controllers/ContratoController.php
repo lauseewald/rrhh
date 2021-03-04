@@ -41,20 +41,21 @@ class ContratoController extends Controller
             );
             
         
-            if ($criterio =='activo') {   
-                $contratos->where('contratos.condicion', 1);
-            } elseif ($criterio =='desactivado') {
-                $contratos->where('contratos.condicion', 0);
-            }elseif ($criterio =='vigente') {//contrato en curso
-                $contratos->where('contratos.actual',1);
-            } elseif ($criterio =='terminado') {
-                $contratos->where('contratos.finLaboral','<', Carbon::now());
-            }
-            elseif ($buscar!=''){
-                $contratos->where('contratos.'.$criterio, 'like', '%'. $buscar . '%');
-            } 
+        if ($criterio =='activo') {
+            $contratos->where('contratos.condicion', 1);
+        } elseif ($criterio =='desactivado') {
+            $contratos->where('contratos.condicion', 0);
+        } elseif ($criterio =='vigente') {//contrato en curso
+            $contratos->where('contratos.actual', 1);
+        } elseif ($criterio =='terminado') {
+            $contratos->where('contratos.finLaboral', '<', Carbon::now());
+        } elseif ($criterio =='tipoContrato') {
+            $contratos->where('tipo_Contratos.id', $request->tipoContrato_id_filtro);
+        } elseif ($buscar!='') {
+            $contratos->where('contratos.'.$criterio, 'like', '%'. $buscar . '%');
+        }
          
-        $contratos= $contratos->orderBy('contratos.nombre', 'desc')->paginate(3); 
+        $contratos= $contratos->orderBy('contratos.nombre', 'desc')->paginate(3);
          
         return [
             'pagination' => [
@@ -99,7 +100,9 @@ class ContratoController extends Controller
             ];
         $this->validate($request, $rules, $messages);
         try {
-            if (!$request->ajax()) return redirect('/');
+            if (!$request->ajax()) {
+                return redirect('/');
+            }
             //A continiacion se calcula si la cantidad de dias seleccionado respeta la cantidad de dias
             //definido en el TIPO de CONTRATO
             //********************************** */
@@ -109,59 +112,57 @@ class ContratoController extends Controller
             
             $cantidadDiasRealTrabajo = $fechaExpiracion->diffInDays($fechaEmision)+ 1;
             //cada 7 dias 1 no es Habil y sin contar los feriados
-            $decimales = explode('.',$cantidadDiasRealTrabajo/7);
+            $decimales = explode('.', $cantidadDiasRealTrabajo/7);
             $cantidadDiasRealTrabajo-= $decimales[0] ;
-            $diasNoLaborales= Calendar::where('start_date','>=',$request->inicioLaboral)->where('start_date','<=',$request->finLaboral)->get();
+            $diasNoLaborales= Calendar::where('start_date', '>=', $request->inicioLaboral)->where('start_date', '<=', $request->finLaboral)->get();
             $contarFeriados=count($diasNoLaborales);
-            if($contarFeriados>0){
+            if ($contarFeriados>0) {
                 $cantidadDiasRealTrabajo-=$contarFeriados;
             }
             
             $tipoContrato=  TipoContrato::findOrFail($request->idtipocontrato);
             
-            if(($tipoContrato->diasMaximo < $cantidadDiasRealTrabajo) || ($cantidadDiasRealTrabajo < $tipoContrato->diasMinimo)){
+            if (($tipoContrato->diasMaximo < $cantidadDiasRealTrabajo) || ($cantidadDiasRealTrabajo < $tipoContrato->diasMinimo)) {
                 return ['Error','Los dias de los Tipos de contrato '. strtoupper($tipoContrato->nombre) .' tienen que ser mayor a '.$tipoContrato->diasMinimo.' dias y menor a '.$tipoContrato->diasMaximo.' dias'];
             }
             //****************************************************************** */
             
 
-             $exploded = explode(',', $request->contrato);
-             $decoded = base64_decode($exploded[1]);
-             if(str_contains($exploded[0], 'pdf'))
-                 $extension = 'pdf';
-             else
-                 $extension = 'pdf';
-             $fileName = str_random().'.'.$extension;
-             $path = public_path().'/'.$fileName;
-             file_put_contents($path, $decoded);
-             $empleado    = Empleado::find($request->idempleado);
-             $contratoViejo=$empleado->contratos->where('actual',1)->first();
-             if($contratoViejo){
-
-                 $contratoViejo->actual=0;
-                 $contratoViejo->update();
-                }
+            $exploded = explode(',', $request->contrato);
+            $decoded = base64_decode($exploded[1]);
+            if (str_contains($exploded[0], 'pdf')) {
+                $extension = 'pdf';
+            } else {
+                $extension = 'pdf';
+            }
+            $fileName = str_random().'.'.$extension;
+            $path = public_path().'/'.$fileName;
+            file_put_contents($path, $decoded);
+            $empleado    = Empleado::find($request->idempleado);
+            $contratoViejo=$empleado->contratos->where('actual', 1)->first();
+            if ($contratoViejo) {
+                $contratoViejo->actual=0;
+                $contratoViejo->update();
+            }
                 
-                $contrato = new Contrato();
-                $contrato->nombre = $request->nombre;
+            $contrato = new Contrato();
+            $contrato->nombre = $request->nombre;
          
-                $contrato->descripcion = $request->descripcion ;
-                $contrato->inicioLaboral= $request->inicioLaboral;
-                $contrato->finLaboral= $request->finLaboral;
-                // $contrato->inicioLaboral= Carbon::now();
-                // $contrato->finLaboral= Carbon::now();
-                $contrato->cantidadHorasDiarias= intval($request->cantidadHorasDiarias);
-                $contrato->salario= floatval($request->salario);
-                //$contrato->contrato = '';
-                $contrato->contrato=$fileName;
-                $contrato->puesto_id=($request->idpuesto);
-                $contrato->empleado_id=($request->idempleado);
-                $contrato->tipoContrato_id=($request->idtipocontrato);
+            $contrato->descripcion = $request->descripcion ;
+            $contrato->inicioLaboral= $request->inicioLaboral;
+            $contrato->finLaboral= $request->finLaboral;
+            // $contrato->inicioLaboral= Carbon::now();
+            // $contrato->finLaboral= Carbon::now();
+            $contrato->cantidadHorasDiarias= intval($request->cantidadHorasDiarias);
+            $contrato->salario= floatval($request->salario);
+            //$contrato->contrato = '';
+            $contrato->contrato=$fileName;
+            $contrato->puesto_id=($request->idpuesto);
+            $contrato->empleado_id=($request->idempleado);
+            $contrato->tipoContrato_id=($request->idtipocontrato);
                 
-                $contrato->save();
-                return 0;
-
-           
+            $contrato->save();
+            return 0;
         } catch (Exception $e) {
             return redirect()->withErrors('Error');
         }
@@ -177,27 +178,32 @@ class ContratoController extends Controller
         $buscar = $request->buscar;
         $criterio = $request->criterio;
         
-        $contratos = Contrato::join('empleados', 'empleados.id', '=', 'contratos.empleado_id')->where('actual',1);
+        $contratos = Contrato::join('empleados', 'empleados.id', '=', 'contratos.empleado_id')->where('actual', 1);
 
 
-        if ($criterio =='sincontrato') {   
-            $contratos =  $contratos->where('contratos.finLaboral','<',Carbon::now());
-        }elseif ($criterio == 'avencer'){
+        if ($criterio =='sincontrato') {
+            $contratos =  $contratos->where('contratos.finLaboral', '<', Carbon::now());
+        } elseif ($criterio == 'avencer') {
             // $contratos =  $contratos->where('contratos.finLaboral','>',Carbon::now())
             // ->where('contratos.finLaboral','<',Carbon::now()->addMonth());
-            $contratos =  $contratos->where('contratos.finLaboral','>=',Carbon::now())
-            ->where('contratos.finLaboral','<',Carbon::now()->addMonth()->format('Y-m-d'));
-        }elseif ($buscar!=''){
-            $contratos =  $contratos->where('contratos.finLaboral','>=',Carbon::now())
-            ->where('contratos.finLaboral','<',Carbon::now()->addMonth()->format('Y-m-d'));
+            $contratos =  $contratos->where('contratos.finLaboral', '>=', Carbon::now())
+            ->where('contratos.finLaboral', '<', Carbon::now()->addMonth()->format('Y-m-d'));
+        } elseif ($buscar!='') {
+            $contratos =  $contratos->where('contratos.finLaboral', '>=', Carbon::now())
+            ->where('contratos.finLaboral', '<', Carbon::now()->addMonth()->format('Y-m-d'));
             $contratos= $contratos->where('contratos.'.$criterio, 'like', '%'. $buscar . '%');
-        }      
+        }
         // $contratos=$contratos->select('empleados.*',
         // DB::raw("DATE_FORMAT(contratos.finLaboral, '%d/%m/%Y') as finLaboral2"),
         // DB::raw("DATE_FORMAT(contratos.inicioLaboral, '%d/%m/%Y') as inicioLaboral2"))->paginate(3);
         // $contratos=$contratos->select('empleados.*')->groupBy('empleados.id')->paginate(3);
-        $contratos=$contratos->select('contratos.*',DB::raw("DATE_FORMAT(contratos.inicioLaboral, '%d/%m/%Y') as inicioLaboral2"),
-        DB::raw("DATE_FORMAT(contratos.finLaboral, '%d/%m/%Y') as finLaboral2"),'empleados.nombre as nombreEmpleado','empleados.apellido as apellidoEmpleado')->paginate(3);
+        $contratos=$contratos->select(
+            'contratos.*',
+            DB::raw("DATE_FORMAT(contratos.inicioLaboral, '%d/%m/%Y') as inicioLaboral2"),
+            DB::raw("DATE_FORMAT(contratos.finLaboral, '%d/%m/%Y') as finLaboral2"),
+            'empleados.nombre as nombreEmpleado',
+            'empleados.apellido as apellidoEmpleado'
+        )->paginate(3);
          
 
         return [
@@ -211,7 +217,6 @@ class ContratoController extends Controller
             ],
             'contratos' => $contratos
         ];
-        
     }
 
     public function selectContrato(Request $request)
@@ -287,19 +292,19 @@ class ContratoController extends Controller
             
             $cantidadDiasRealTrabajo = $fechaExpiracion->diffInDays($fechaEmision)+ 1;
             //cada 7 dias 1 no es Habil y sin contar los feriados
-            $decimales = explode('.',$cantidadDiasRealTrabajo/7);
+            $decimales = explode('.', $cantidadDiasRealTrabajo/7);
             $cantidadDiasRealTrabajo-= $decimales[0] ;
-            $diasNoLaborales= Calendar::where('start_date','>=',$request->inicioLaboral)->where('end_date','<=',$request->finLaboral)->get();
+            $diasNoLaborales= Calendar::where('start_date', '>=', $request->inicioLaboral)->where('end_date', '<=', $request->finLaboral)->get();
             $contarFeriados=count($diasNoLaborales);
-            if($contarFeriados>0){
+            if ($contarFeriados>0) {
                 $cantidadDiasRealTrabajo-=$contarFeriados;
             }
             
             $tipoContrato=  TipoContrato::findOrFail($request->idtipocontrato);
             
             // if(($tipoContrato->diasMaximo < $cantidadDiasRealTrabajo) || ($cantidadDiasRealTrabajo < $tipoContrato->diasMinimo)){
-                // return redirect()->withErrors('Error');
-                // return ['Error','Los dias de los Tipos de contrato '. strtoupper($tipoContrato->nombre) .' tienen que ser mayor a '.$tipoContrato->diasMinimo.' dias y menor a '.$tipoContrato->diasMaximo.' dias'];
+            // return redirect()->withErrors('Error');
+            // return ['Error','Los dias de los Tipos de contrato '. strtoupper($tipoContrato->nombre) .' tienen que ser mayor a '.$tipoContrato->diasMinimo.' dias y menor a '.$tipoContrato->diasMaximo.' dias'];
            
             // }
             //****************************************************************** */
@@ -309,24 +314,24 @@ class ContratoController extends Controller
             //return $request->id;
             
             $empleado    = Empleado::find($request->idempleado);
-            $contratoViejo=$empleado->contratos->where('actual',1)->first();
-            if($contratoViejo){
-
+            $contratoViejo=$empleado->contratos->where('actual', 1)->first();
+            if ($contratoViejo) {
                 $contratoViejo->actual=0;
                 $contratoViejo->save();
             }
 
-            if($request->hasFile($request->contrato)){
+            if ($request->hasFile($request->contrato)) {
                 $exploded = explode(',', $request->contrato);
                 $decoded = base64_decode($exploded[1]);
-                if(str_contains($exploded[0], 'pdf'))
+                if (str_contains($exploded[0], 'pdf')) {
                     $extension = 'pdf';
-                else
+                } else {
                     $extension = 'pdf';
+                }
                 $fileName = str_random().'.'.$extension;
                 $path = public_path().'/'.$fileName;
                 file_put_contents($path, $decoded);
-            }else{
+            } else {
                 $fileName= $contrato->contrato;
             }
             $contrato->nombre = $request->nombre;
@@ -340,34 +345,34 @@ class ContratoController extends Controller
             $contrato->finLaboral= $request->finLaboral;
             $contrato->contrato=$fileName;
             $contrato->descripcion = $request->descripcion ;
-                $contrato->tipoContrato_id=($request->idtipocontrato);
+            $contrato->tipoContrato_id=($request->idtipocontrato);
             // return 0;
             $contrato->save();
         } catch (PDOException $e) {
-            return redirect()->withErrors('Error',[$e]);
+            return redirect()->withErrors('Error', [$e]);
             // return 'error' + $e;
         }
     }
     
     public function calculadorDias(Request $request)
     {
-         //********************************** */
-          $fechaEmision = Carbon::parse($request->inicioLaboral);
-          $fechaExpiracion = Carbon::parse($request->finLaboral);
+        //********************************** */
+        $fechaEmision = Carbon::parse($request->inicioLaboral);
+        $fechaExpiracion = Carbon::parse($request->finLaboral);
          
-         $cantidadDiasRealTrabajo = $fechaExpiracion->diffInDays($fechaEmision)+ 1;
+        $cantidadDiasRealTrabajo = $fechaExpiracion->diffInDays($fechaEmision)+ 1;
 
-         //cada 7 dias 1 no es Habil y sin contar los feriados
-         $decimales = explode('.',$cantidadDiasRealTrabajo/7);
-         $cantidadDiasRealTrabajo-= $decimales[0] ;
-         $diasNoLaborales= Calendar::all()->where('start_date','>=',$request->inicioLaboral)->where('start_date','<=',$request->finLaboral);
+        //cada 7 dias 1 no es Habil y sin contar los feriados
+        $decimales = explode('.', $cantidadDiasRealTrabajo/7);
+        $cantidadDiasRealTrabajo-= $decimales[0] ;
+        $diasNoLaborales= Calendar::all()->where('start_date', '>=', $request->inicioLaboral)->where('start_date', '<=', $request->finLaboral);
 
-         $contarFeriados=count($diasNoLaborales);
-         if($contarFeriados>0){
-             $cantidadDiasRealTrabajo-=$contarFeriados;
-         }
-         return $cantidadDiasRealTrabajo;
-         //****************************************************************** */
+        $contarFeriados=count($diasNoLaborales);
+        if ($contarFeriados>0) {
+            $cantidadDiasRealTrabajo-=$contarFeriados;
+        }
+        return $cantidadDiasRealTrabajo;
+        //****************************************************************** */
     }
 
     public function desactivar(Request $request)
@@ -402,28 +407,30 @@ class ContratoController extends Controller
 
     public function pdfContrato(Request $request)
     {
-        $contratos = Contrato::join('tipo_contratos','contratos.tipoContrato_id','=','tipo_contratos.id')
-        ->join('empleados','contratos.empleado_id','=','empleados.id')
-        ->select('contratos.*','tipo_contratos.nombre as nombreTipoContrato','empleados.nombre as nombreEmpleado','empleados.apellido as apellidoEmpleado');
+        $contratos = Contrato::join('tipo_contratos', 'contratos.tipoContrato_id', '=', 'tipo_contratos.id')
+        ->join('empleados', 'contratos.empleado_id', '=', 'empleados.id')
+        ->select('contratos.*', 'tipo_contratos.nombre as nombreTipoContrato', 'empleados.nombre as nombreEmpleado', 'empleados.apellido as apellidoEmpleado');
             
         
         //anido las consultas segun los filtros
         $buscar = $request->buscar;
         $criterio = $request->criterio;
 
-        
-            if ($criterio =='activo') {   
-                $contratos->where('contratos.condicion', 1);
-            } elseif ($criterio =='desactivado') {
-                $contratos->where('contratos.condicion', 0);
-            }elseif ($criterio =='vigente') {//contrato en curso
-                $contratos->where('contratos.actual',1);
-            } elseif ($criterio =='terminado') {
-                $contratos->where('contratos.finLaboral','<', Carbon::now());
-            }
-            elseif ($buscar!=''){
-                $contratos->where('contratos.'.$criterio, 'like', '%'. $buscar . '%');
-            } 
+        if ($criterio =='activo') {
+            $contratos->where('contratos.condicion', 1);
+        } elseif ($criterio =='desactivado') {
+            $contratos->where('contratos.condicion', 0);
+        } elseif ($criterio =='vigente') {//contrato en curso
+            $contratos->where('contratos.actual', 1);
+        } elseif ($criterio =='terminado') {
+            $contratos->where('contratos.finLaboral', '<', Carbon::now());
+        } elseif ($criterio =='tipoContrato') {
+            $criterio='Tipo de Contrato';
+            $contratos->where('tipo_Contratos.id', $request->tipoContrato_id_filtro);
+        } elseif ($buscar!='') {
+            $contratos->where('contratos.'.$criterio, 'like', '%'. $buscar . '%');
+        }
+         
          
         $contratos= $contratos->orderBy('nombre', 'desc')->get();
         $buscar= $buscar ? ucfirst($buscar): 'Sin Busqueda';
@@ -433,7 +440,7 @@ class ContratoController extends Controller
         // $count = 1;
         $now= Carbon::now();
         
-         $pdf = PDF::loadView('pdf.contrato', ['contratos' => $contratos, 'buscar' => $buscar, 'criterio' => $criterio, 'now' => $now, 'count' => $count]);
+        $pdf = PDF::loadView('pdf.contrato', ['contratos' => $contratos, 'buscar' => $buscar, 'criterio' => $criterio, 'now' => $now, 'count' => $count]);
         
         $dom_pdf = $pdf->getDomPDF();
         $canvas = $dom_pdf->get_canvas();
