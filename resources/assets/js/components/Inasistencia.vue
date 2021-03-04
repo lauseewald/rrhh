@@ -12,7 +12,8 @@
           <button
             type="button"
             @click="abrirModal('solicitudInasistencia', 'registrar')"
-            class="btn btn-secondary">
+            class="btn btn-secondary"
+          >
             <i class="icon-plus"></i>&nbsp;Nueva
           </button>
         </div>
@@ -118,8 +119,10 @@
                     <i class="icon-pencil"></i>
                   </button>
                   &nbsp;
+
                   <template v-if="solicitudInasistencia.condicion">
                     <button
+                      v-if="user.rol.nombre == 'Administrador'"
                       type="button"
                       class="btn btn-danger btn-sm"
                       @click="
@@ -133,6 +136,7 @@
                   </template>
                   <template v-else>
                     <button
+                      v-if="user.rol.nombre == 'Administrador'"
                       type="button"
                       class="btn btn-info btn-sm"
                       @click="
@@ -145,6 +149,7 @@
                   &nbsp;
                   <template>
                     <button
+                      v-if="user.rol.nombre == 'Administrador'"
                       type="button"
                       @click="verDatos(solicitudInasistencia)"
                       class="btn btn-outline-info btn-sm"
@@ -156,6 +161,7 @@
                   <template>
                     <div v-if="solicitudInasistencia.aprobado">
                       <button
+                        v-if="user.rol.nombre == 'Administrador'"
                         type="button"
                         @click="aprobarSolicitud(solicitudInasistencia, 0)"
                         class="btn btn-outline-info btn-sm"
@@ -165,6 +171,7 @@
                     </div>
                     <div v-else>
                       <button
+                        v-if="user.rol.nombre == 'Administrador'"
                         type="button"
                         @click="aprobarSolicitud(solicitudInasistencia, 1)"
                         class="btn btn-outline-info btn-sm"
@@ -474,8 +481,11 @@
                   v-for="empleadoLicencia in arrayEmpleadosLicencia"
                   :key="empleadoLicencia.id"
                 >
-                  <h5 >
-                    {{'ID: ('+empleadoLicencia.id+')'+
+                  <h5>
+                    {{
+                      "ID: (" +
+                      empleadoLicencia.id +
+                      ")" +
                       empleadoLicencia.nombre +
                       " " +
                       empleadoLicencia.apellido +
@@ -499,7 +509,6 @@
               >
                 Close
               </button>
-              
             </div>
           </div>
         </div>
@@ -509,7 +518,7 @@
 </template>
 
 <script>
-  let user=(document.head.querySelector('meta[name="user"]'));
+let user = document.head.querySelector('meta[name="user"]');
 
 import toastr from "toastr";
 export default {
@@ -549,7 +558,7 @@ export default {
     };
   },
   computed: {
-    user(){
+    user() {
       return JSON.parse(user.content);
     },
     isActived: function () {
@@ -921,7 +930,6 @@ export default {
     this.listarTabla(1, this.buscar, this.criterio);
     this.selectEmpleado();
     this.selectIncidencia();
-
   },
 };
 </script>
