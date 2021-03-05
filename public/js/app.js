@@ -69961,10 +69961,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     calculadorDias: function calculadorDias() {
       var me = this;
       me.otroMensaje = [];
+      if (me.idTipoContrato == 0) {
+        __WEBPACK_IMPORTED_MODULE_0_toastr___default.a.error("Debe seleccionar el tipo de contrato", "Error", { timeOut: 5000 });
+        return 'error';
+      }
       if (this.inicioLaboral != "" && this.finLaboral != "") {
+        if (this.inicioLaboral > this.finLaboral) {
+          me.otroMensaje = [];
+          me.otroMensaje.push("La fecha de inicio tiene que ser menor a la fecha de finalizacion de contrato");
+          return;
+        }
         axios.post("/contrato/calculadorDias", {
           inicioLaboral: me.inicioLaboral,
-          finLaboral: me.finLaboral
+          finLaboral: me.finLaboral,
+          tipoContrato_id: me.idTipoContrato
         }).then(function (response) {
           console.log(response);
           me.otroMensaje.push(response.data);
@@ -70116,6 +70126,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       if (!this.idempleado) this.errorMostrarMsjForm.push("Debe seleccionar un empleado");
       if (!this.inicioLaboral) this.errorMostrarMsjForm.push("Debe seleccionar una fecha inicial");
       if (!this.finLaboral) this.errorMostrarMsjForm.push("Debe seleccionar una fecha final del contrato");
+      if (this.inicioLaboral > this.finLaboral) {
+        this.errorMostrarMsjForm.push("La fecha de inicio tiene que ser menor a la fecha de finalizacion de contrato");
+        return;
+      }
       if (!this.contrato) this.errorMostrarMsjForm.push("Debe subir el archivo del contrato");
       if (this.finLaboral < this.inicioLaboral) this.errorMostrarMsjForm.push("El inicio laboral debe ser igual o mas grande que el final del contrato");
       if (this.errorMostrarMsjForm.length) this.errorComponente = 1;
@@ -70138,6 +70152,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     abrirModal: function abrirModal(modelo, accion) {
       var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
 
+      this.otroMensaje = [];
       switch (modelo) {
         case "contrato":
           {
@@ -85998,6 +86013,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -86007,6 +86027,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       nombre: "",
       diasMaximo: 0,
       diasMinimo: 0,
+      indeterminado: 0,
       arrayTipoContrato: [],
       modal: 0,
       tituloModal: "",
@@ -86082,7 +86103,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       axios.post("/tipoContrato/registrar", {
         nombre: this.nombre,
         diasMaximo: this.diasMaximo,
-        diasMinimo: this.diasMinimo
+        diasMinimo: this.diasMinimo,
+        indeterminado: this.indeterminado
       }).then(function (response) {
         me.cerrarModal();
         me.listarTipoContrato(1, "", "nombre");
@@ -86733,6 +86755,49 @@ var render = function() {
                           }
                         })
                       ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c("label", [_vm._v("Contrato Indeterminado")]),
+                      _vm._v("\n                \n              "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.indeterminado,
+                            expression: "indeterminado"
+                          }
+                        ],
+                        attrs: { type: "checkbox" },
+                        domProps: {
+                          checked: Array.isArray(_vm.indeterminado)
+                            ? _vm._i(_vm.indeterminado, null) > -1
+                            : _vm.indeterminado
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.indeterminado,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = null,
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 &&
+                                  (_vm.indeterminado = $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  (_vm.indeterminado = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
+                            } else {
+                              _vm.indeterminado = $$c
+                            }
+                          }
+                        }
+                      })
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group row" }, [

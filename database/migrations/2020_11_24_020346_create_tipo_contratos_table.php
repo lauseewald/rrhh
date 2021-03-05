@@ -17,6 +17,7 @@ class CreateTipoContratosTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->integer('diasMaximo');
+            //si es null es indeterminado
             $table->integer('diasMinimo');
             $table->boolean('condicion')->default(1);
             $table->timestamps();

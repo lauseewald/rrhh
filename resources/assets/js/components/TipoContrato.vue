@@ -222,6 +222,11 @@
                 </div>
               </div>
               <div class="form-group row">
+                <label >Contrato Indeterminado</label>
+                &nbsp;&nbsp;
+                <input type="checkbox"  v-model="indeterminado" />
+              </div>
+              <div class="form-group row">
                 <label class="col-md-3 form-control-label" for="text-input"
                   >Dias Maximos (*)</label
                 >
@@ -289,6 +294,7 @@ export default {
       nombre: "",
       diasMaximo: 0,
       diasMinimo: 0,
+      indeterminado: 0,
       arrayTipoContrato: [],
       modal: 0,
       tituloModal: "",
@@ -374,6 +380,7 @@ export default {
           nombre: this.nombre,
           diasMaximo: this.diasMaximo,
           diasMinimo: this.diasMinimo,
+          indeterminado: this.indeterminado,
         })
         .then(function (response) {
           me.cerrarModal();
@@ -486,10 +493,22 @@ export default {
       this.errorCompetencia = 0;
       this.errorMostrarMsjCompetencia = [];
 
-      if (!this.nombre) this.errorMostrarMsjCompetencia.push("Debe ingresar el nombre del tipo de contrato");
-      if (this.diasMaximo<=0) this.errorMostrarMsjCompetencia.push("Debe ingresar un dia Maximo mayor a 0");
-      if (this.diasMinimo<=0) this.errorMostrarMsjCompetencia.push("Debe ingresar un dia Minimo mayor a 0");
-      if (this.diasMinimo >= this.diasMaximo ) this.errorMostrarMsjCompetencia.push("El dias minimos debe ser menor a dias maximos");
+      if (!this.nombre)
+        this.errorMostrarMsjCompetencia.push(
+          "Debe ingresar el nombre del tipo de contrato"
+        );
+      if (this.diasMaximo <= 0)
+        this.errorMostrarMsjCompetencia.push(
+          "Debe ingresar un dia Maximo mayor a 0"
+        );
+      if (this.diasMinimo <= 0)
+        this.errorMostrarMsjCompetencia.push(
+          "Debe ingresar un dia Minimo mayor a 0"
+        );
+      if (this.diasMinimo >= this.diasMaximo)
+        this.errorMostrarMsjCompetencia.push(
+          "El dias minimos debe ser menor a dias maximos"
+        );
 
       if (this.errorMostrarMsjCompetencia.length) this.errorCompetencia = 1;
       return this.errorCompetencia;

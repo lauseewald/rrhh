@@ -121,9 +121,17 @@ class ContratoController extends Controller
             }
             
             $tipoContrato=  TipoContrato::findOrFail($request->idtipocontrato);
+
+            $fechaFinContrato= null;
+            if(($tipoContrato->diasMaximo ==0) && ($tipoContrato->diasMinimo > 0)){
+                //es un contrato indeterminado
             
-            if (($tipoContrato->diasMaximo < $cantidadDiasRealTrabajo) || ($cantidadDiasRealTrabajo < $tipoContrato->diasMinimo)) {
-                return ['Error','Los dias de los Tipos de contrato '. strtoupper($tipoContrato->nombre) .' tienen que ser mayor a '.$tipoContrato->diasMinimo.' dias y menor a '.$tipoContrato->diasMaximo.' dias'];
+            }else{
+                $fechaFinContrato=$request->finLaboral;
+
+                if (($tipoContrato->diasMaximo < $cantidadDiasRealTrabajo) || ($cantidadDiasRealTrabajo < $tipoContrato->diasMinimo)) {
+                    return ['Error','Los dias de los Tipos de contrato '. strtoupper($tipoContrato->nombre) .' tienen que ser mayor a '.$tipoContrato->diasMinimo.' dias y menor a '.$tipoContrato->diasMaximo.' dias'];
+                }
             }
             //****************************************************************** */
             
@@ -142,6 +150,7 @@ class ContratoController extends Controller
             $contratoViejo=$empleado->contratos->where('actual', 1)->first();
             if ($contratoViejo) {
                 $contratoViejo->actual=0;
+                $contratoViejo->condicion=0;
                 $contratoViejo->update();
             }
                 
@@ -150,7 +159,7 @@ class ContratoController extends Controller
          
             $contrato->descripcion = $request->descripcion ;
             $contrato->inicioLaboral= $request->inicioLaboral;
-            $contrato->finLaboral= $request->finLaboral;
+            $contrato->finLaboral= $fechaFinContrato;
             // $contrato->inicioLaboral= Carbon::now();
             // $contrato->finLaboral= Carbon::now();
             $contrato->cantidadHorasDiarias= intval($request->cantidadHorasDiarias);
@@ -287,26 +296,30 @@ class ContratoController extends Controller
              //A continiacion se calcula si la cantidad de dias seleccionado respeta la cantidad de dias
             //definido en el TIPO de CONTRATO
             //********************************** */
-            $fechaEmision = Carbon::parse($request->inicioLaboral);
-            $fechaExpiracion = Carbon::parse($request->finLaboral);
+            $fechaEmision = Carbon::parse($request->input('inicioLaboral'));
+            $fechaExpiracion = Carbon::parse($request->input('finLaboral'));
+               
             
             $cantidadDiasRealTrabajo = $fechaExpiracion->diffInDays($fechaEmision)+ 1;
             //cada 7 dias 1 no es Habil y sin contar los feriados
             $decimales = explode('.', $cantidadDiasRealTrabajo/7);
             $cantidadDiasRealTrabajo-= $decimales[0] ;
-            $diasNoLaborales= Calendar::where('start_date', '>=', $request->inicioLaboral)->where('end_date', '<=', $request->finLaboral)->get();
+            $diasNoLaborales= Calendar::where('start_date', '>=', $request->inicioLaboral)->where('start_date', '<=', $request->finLaboral)->get();
             $contarFeriados=count($diasNoLaborales);
             if ($contarFeriados>0) {
                 $cantidadDiasRealTrabajo-=$contarFeriados;
             }
             
             $tipoContrato=  TipoContrato::findOrFail($request->idtipocontrato);
+
+            $fechaFinContrato= null;
+            if(($tipoContrato->diasMaximo ==0) && ($tipoContrato->diasMinimo > 0)){
+                //es un contrato indeterminado
             
-            // if(($tipoContrato->diasMaximo < $cantidadDiasRealTrabajo) || ($cantidadDiasRealTrabajo < $tipoContrato->diasMinimo)){
-            // return redirect()->withErrors('Error');
-            // return ['Error','Los dias de los Tipos de contrato '. strtoupper($tipoContrato->nombre) .' tienen que ser mayor a '.$tipoContrato->diasMinimo.' dias y menor a '.$tipoContrato->diasMaximo.' dias'];
-           
-            // }
+            }else{
+                $fechaFinContrato=$request->finLaboral;
+
+            }
             //****************************************************************** */
            
 
@@ -317,6 +330,7 @@ class ContratoController extends Controller
             $contratoViejo=$empleado->contratos->where('actual', 1)->first();
             if ($contratoViejo) {
                 $contratoViejo->actual=0;
+                $contratoViejo->condicion=0;
                 $contratoViejo->save();
             }
 
@@ -342,7 +356,8 @@ class ContratoController extends Controller
             $contrato->cantidadHorasDiarias=intval($request->cantidadHorasDiarias);
             $contrato->salario=floatval($request->salario);
             $contrato->inicioLaboral= $request->inicioLaboral;
-            $contrato->finLaboral= $request->finLaboral;
+            // $contrato->finLaboral= $request->finLaboral;
+            $contrato->finLaboral= $fechaFinContrato;
             $contrato->contrato=$fileName;
             $contrato->descripcion = $request->descripcion ;
             $contrato->tipoContrato_id=($request->idtipocontrato);
@@ -359,7 +374,11 @@ class ContratoController extends Controller
         //********************************** */
         $fechaEmision = Carbon::parse($request->inicioLaboral);
         $fechaExpiracion = Carbon::parse($request->finLaboral);
-         
+        $tipoContrato = TipoContrato::findOrFail($request->tipoContrato_id);
+
+        if($tipoContrato->diasMaximo == 0 && $tipoContrato->diasMinimo > 0){
+            return 'contrato indeterminado';
+        }
         $cantidadDiasRealTrabajo = $fechaExpiracion->diffInDays($fechaEmision)+ 1;
 
         //cada 7 dias 1 no es Habil y sin contar los feriados
@@ -380,7 +399,16 @@ class ContratoController extends Controller
         if (!$request->ajax()) {
             return redirect('/');
         }
+
         $contrato = Contrato::findOrFail($request->id);
+        $empleado    = Empleado::find($contrato->empleado_id);
+        $contratoViejo=$empleado->contratos->where('actual', 1)->first();
+        if ($contratoViejo) {
+            $contratoViejo->actual=0;
+            $contratoViejo->condicion=0;
+            $contratoViejo->save();
+        }
+
         $contrato->condicion = '0';
         $contrato->save();
     }
@@ -391,6 +419,14 @@ class ContratoController extends Controller
             return redirect('/');
         }
         $contrato = Contrato::findOrFail($request->id);
+        $empleado    = Empleado::find($contrato->empleado_id);
+        $contratoViejo=$empleado->contratos->where('actual', 1)->first();
+        if ($contratoViejo) {
+            $contratoViejo->actual=0;
+            $contratoViejo->condicion=0;
+            $contratoViejo->save();
+        }
+        $contrato->actual=1;
         $contrato->condicion = '1';
         $contrato->save();
     }

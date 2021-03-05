@@ -22,7 +22,7 @@ class EmpleadoController extends Controller
         $buscar = $request->buscar;
         $criterio = $request->criterio;
 
-        $empleados = Empleado::select('*');
+        $empleados = Empleado::join('solicitudes_inasistencias', 'empleados.id', '=', 'solicitudes_inasistencias.empleado_id');
         if ($criterio=='enlicencia')  {
             $empleados= $empleados->where('solicitudes_inasistencias.desde','<=',Carbon::now())->where('solicitudes_inasistencias.hasta','>=',Carbon::now())->where('aprobado',true);
         }elseif($criterio=='trabajando'){
@@ -31,7 +31,7 @@ class EmpleadoController extends Controller
             $empleados= $empleados->where('empleados.'.$criterio, 'like', '%'. $buscar . '%');
         }
         
-        $empleados=$empleados->orderBy('empleados.nombre', 'desc')->paginate(3);
+        $empleados=$empleados->select('empleados.*')->orderBy('empleados.nombre', 'desc')->paginate(3);
        
         return [
             'pagination' => [

@@ -54,11 +54,13 @@ class TipoContratoController extends Controller
             ];
             $this->validate($request, $rules, $messages);            
                 try{
-                    if (!$request->ajax()) return redirect('/');
                     $tipoContrato = new TipoContrato();
-                    $tipoContrato->nombre = $request->nombre;
                     $tipoContrato->diasMaximo = $request->diasMaximo;
+                    if($request->indeterminado){
+                        $tipoContrato->diasMaximo=0;
+                    }
                     $tipoContrato->diasMinimo = $request->diasMinimo;
+                    $tipoContrato->nombre = $request->nombre;
                     $tipoContrato->save();
                 } catch (Exception $e){
                     //return redirect()->withErrors('Error'); 

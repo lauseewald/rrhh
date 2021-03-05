@@ -619,11 +619,21 @@ export default {
     calculadorDias() {
       let me = this;
       me.otroMensaje = [];
+      if(me.idTipoContrato==0){
+      toastr.error("Debe seleccionar el tipo de contrato", "Error", { timeOut: 5000 });
+      return 'error';
+      }
       if (this.inicioLaboral != "" && this.finLaboral != "") {
+        if(this.inicioLaboral > this.finLaboral){
+          me.otroMensaje=[];
+          me.otroMensaje.push("La fecha de inicio tiene que ser menor a la fecha de finalizacion de contrato");
+          return;
+        }
         axios
           .post("/contrato/calculadorDias", {
             inicioLaboral: me.inicioLaboral,
             finLaboral: me.finLaboral,
+            tipoContrato_id: me.idTipoContrato,
           })
           .then(function (response) {
             console.log(response);
@@ -809,6 +819,10 @@ export default {
         this.errorMostrarMsjForm.push(
           "Debe seleccionar una fecha final del contrato"
         );
+      if(this.inicioLaboral > this.finLaboral){
+          this.errorMostrarMsjForm.push("La fecha de inicio tiene que ser menor a la fecha de finalizacion de contrato");
+          return;
+        }  
       if (!this.contrato)
         this.errorMostrarMsjForm.push("Debe subir el archivo del contrato");
       if (this.finLaboral < this.inicioLaboral)
@@ -834,6 +848,7 @@ export default {
     },
 
     abrirModal(modelo, accion, data = []) {
+      this.otroMensaje=[];
       switch (modelo) {
         case "contrato": {
           switch (accion) {
