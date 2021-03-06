@@ -62,8 +62,8 @@ export default {
       newEvent: {
         event_name: "",
         start_date: "",
-        start_time: "",
-        end_time: "",
+        //start_time: "",
+        //end_time: "",
         end_date: "",
       },
 
@@ -110,8 +110,8 @@ export default {
       this.indexToUpdate = id;
       this.newEvent = {
         event_name: title,
-        start_date: start,
-        end_date: end
+        start_date: start.split('-').reverse().join('/'),
+        end_date: end.split('-').reverse().join('/')
         //end_time: end.slice(-8),
         //start_time: start.slice(-8),
       };
