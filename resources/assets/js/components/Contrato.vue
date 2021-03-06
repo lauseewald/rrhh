@@ -32,9 +32,11 @@
                     <option value="desactivado">Desativado</option>
                     <option value="vigente">Vigente</option>
                     <option value="terminado">Terminado</option>
+                    <option value="tipoContrato">Tipo de Contrato</option>
                     <option value="empleado_id">ID Empleado</option>
                   </select>
                   <input
+                    v-if="criterio != 'tipoContrato'"
                     name="buscar"
                     type="text"
                     v-model="buscar"
@@ -42,6 +44,22 @@
                     class="form-control"
                     placeholder="Texto a buscar"
                   />
+                  <select
+                  name="tipoContrato_id_filtro"
+                    class="form-control col-md-3"
+                    v-model="tipoContrato_id_filtro"
+                    v-if="criterio == 'tipoContrato'"
+                  >
+                    <option value="0" disabled>Seleccione</option>
+                    <option
+                      v-for="tipoContrato in arrayTipoContrato"
+                      :key="tipoContrato.id"
+                      :value="tipoContrato.id"
+                      v-text="
+                        tipoContrato.nombre
+                      "
+                    ></option>
+                  </select>
                   <button
                     type="button"
                     @click="listarTabla(1, buscar, criterio)"
@@ -83,7 +101,12 @@
               <tr v-for="contrato in arrayContrato" :key="contrato.id">
                 <td
                   v-text="
-                    contrato.apellidoEmpleado + ' ' + contrato.nombreEmpleado+ ' ('+contrato.empleado_id+')'
+                    contrato.apellidoEmpleado +
+                    ' ' +
+                    contrato.nombreEmpleado +
+                    ' (' +
+                    contrato.empleado_id +
+                    ')'
                   "
                 ></td>
                 <td v-text="contrato.nombre"></td>
@@ -373,7 +396,13 @@
                   >Contrato (*)
                 </label>
                 <div class="col-md-9">
-                  <input type="file" accept="application/pdf" @change="getImage" id="data" name="data" />
+                  <input
+                    type="file"
+                    accept="application/pdf"
+                    @change="getImage"
+                    id="data"
+                    name="data"
+                  />
                   <a :href="contrato" target="_blank">Ver</a>
                 </div>
               </div>
@@ -435,6 +464,7 @@ export default {
       arrayEmpleado: [],
       arrayContrato: [],
       arrayTipoContrato: [],
+      tipoContrato_id_filtro:0,
       cantidadHorasDiarias: 0,
       salario: 0.0,
       inicioLaboral: "",
@@ -502,7 +532,9 @@ export default {
         "&buscar=" +
         buscar +
         "&criterio=" +
-        criterio;
+        criterio +
+        "&tipoContrato_id_filtro="+
+        me.tipoContrato_id_filtro;
       axios
         .get(url)
         .then(function (response) {
@@ -586,12 +618,22 @@ export default {
     },
     calculadorDias() {
       let me = this;
-      me.otroMensaje=[];
+      me.otroMensaje = [];
+      if(me.idTipoContrato==0){
+      toastr.error("Debe seleccionar el tipo de contrato", "Error", { timeOut: 5000 });
+      return 'error';
+      }
       if (this.inicioLaboral != "" && this.finLaboral != "") {
+        if(this.inicioLaboral > this.finLaboral){
+          me.otroMensaje=[];
+          me.otroMensaje.push("La fecha de inicio tiene que ser menor a la fecha de finalizacion de contrato");
+          return;
+        }
         axios
           .post("/contrato/calculadorDias", {
             inicioLaboral: me.inicioLaboral,
-            finLaboral: me.finLaboral
+            finLaboral: me.finLaboral,
+            tipoContrato_id: me.idTipoContrato,
           })
           .then(function (response) {
             console.log(response);
@@ -604,8 +646,8 @@ export default {
               timeOut: 5000,
             });
           });
-      }else{
-              me.otroMensaje.push('Seleccione la fecha de inicio y fin laboral');
+      } else {
+        me.otroMensaje.push("Seleccione la fecha de inicio y fin laboral");
       }
     },
     registrarContrato() {
@@ -777,6 +819,10 @@ export default {
         this.errorMostrarMsjForm.push(
           "Debe seleccionar una fecha final del contrato"
         );
+      if(this.inicioLaboral > this.finLaboral){
+          this.errorMostrarMsjForm.push("La fecha de inicio tiene que ser menor a la fecha de finalizacion de contrato");
+          return;
+        }  
       if (!this.contrato)
         this.errorMostrarMsjForm.push("Debe subir el archivo del contrato");
       if (this.finLaboral < this.inicioLaboral)
@@ -802,6 +848,7 @@ export default {
     },
 
     abrirModal(modelo, accion, data = []) {
+      this.otroMensaje=[];
       switch (modelo) {
         case "contrato": {
           switch (accion) {

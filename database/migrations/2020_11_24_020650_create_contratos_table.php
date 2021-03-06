@@ -18,7 +18,7 @@ class CreateContratosTable extends Migration
             $table->string('nombre');
             $table->string('descripcion');
             $table->date('inicioLaboral');
-            $table->date('finLaboral');
+            $table->date('finLaboral')->nullable();
             //maxima
             $table->integer('cantidadHorasDiarias');
             $table->string('contrato');

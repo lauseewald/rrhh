@@ -125,7 +125,7 @@
             </div>
             <div id="datos">
                 <p id="encabezado">
-                    <b>Sistema de Produccion</b><br>José Simon 1368, Puerto Rico - Misiones, Argentina<br>Telefono:(+54)3764414563<br>Email:simon.cia@gmail.com
+                    <b>Sistemas de Recursos Humanos</b><br>
                 </p>
             </div>
         
