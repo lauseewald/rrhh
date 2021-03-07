@@ -26,6 +26,7 @@ class SolicitudInasistenciaController extends Controller
         $solicitudInasistencias = SolicitudInasistencia::join('empleados', 'empleados.id', '=', 'solicitudes_inasistencias.empleado_id')
         ->join('incidencias', 'incidencias.id', '=', 'solicitudes_inasistencias.incidencia_id')
         ->select('solicitudes_inasistencias.*','incidencias.nombre as nombreIncidencia','empleados.nombre as nombreEmpleado','empleados.apellido as apellidoEmpleado',
+        'solicitudes_inasistencias.created_at',  'solicitudes_inasistencias.updated_at',
         DB::raw("DATE_FORMAT(solicitudes_inasistencias.desde, '%d/%m/%Y') as desde2"),DB::raw("DATE_FORMAT(solicitudes_inasistencias.hasta, '%d/%m/%Y') as hasta2"));
         
         if ($criterio=='aprobado') {

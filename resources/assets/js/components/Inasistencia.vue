@@ -1,9 +1,7 @@
 <template>
   <main class="main">
     <!-- Breadcrumb -->
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="/">Escritorio</a></li>
-    </ol>
+    
     <div class="container-fluid">
       <!-- Ejemplo de tabla Listado -->
       <div class="card">
@@ -166,7 +164,7 @@
                     
                       <button
                       
-                        v-if="user.rol.nombre == 'Administrador' && solicitudInasistencia.aprobado"
+                        v-if="user.rol.nombre == 'Administrador' && solicitudInasistencia.aprobado || solicitudInasistencia.created_at ==solicitudInasistencia.updated_at"
                         type="button"
                         title="Desaprobar"
                         @click="aprobarSolicitud(solicitudInasistencia, 0)"
@@ -178,7 +176,6 @@
                    
                    
                       <button
-                     
                         v-if="user.rol.nombre == 'Administrador' && !solicitudInasistencia.aprobado"
                         type="button"
                          title="Aprobar"

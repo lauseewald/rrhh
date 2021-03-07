@@ -108,13 +108,41 @@ export default {
         (event) => event.id === +arg.event.id
       );
       this.indexToUpdate = id;
-      this.newEvent = {
-        event_name: title,
-        start_date: start.split('-').reverse().join('/'),
-        end_date: end.split('-').reverse().join('/')
-        //end_time: end.slice(-8),
-        //start_time: start.slice(-8),
-      };
+      if (start.length < 11) {
+        this.newEvent = {
+          event_name: title,
+          start_date: start.split("-").reverse().join("/"),
+          end_date: end.split("-").reverse().join("/"),
+          //end_time: end.slice(-8),
+          //start_time: start.slice(-8),
+        };
+      } else {
+        var date_arr = start.split(" ");
+        var date_aar2 = date_arr[0].split("-");
+        var new_date =
+          date_aar2[2] +
+          "-" +
+          date_aar2[1] +
+          "-" +
+          date_aar2[0] +
+          " " +
+          date_arr[1];
+        var date_end = end.split(" ");
+        var date_aar3 = date_end[0].split("-");
+        var new_dateEnd =
+          date_aar3[2] +
+          "-" +
+          date_aar3[1] +
+          "-" +
+          date_aar3[0] +
+          " " +
+          date_end[1];
+        this.newEvent = {
+          event_name: title,
+          start_date: new_date,
+          end_date: new_dateEnd,
+        };
+      }
     },
     updateEvent() {
       axios
@@ -161,10 +189,11 @@ export default {
           let respuesta = response.data;
           var events = respuesta.data;
 
-          me.calendarOptions.events = events.concat(
-            me.arrayEvento
-          );
+          me.calendarOptions.events = events.concat(me.arrayEvento);
           console.log(me.calendarOptions.events);
+          for (var i = 0; i < me.calendarOptions.events.length; i++) {
+            me.calendarOptions.events[i].id = i;
+          }
         })
         //.then(resp => (this.events = resp.data.data))
 

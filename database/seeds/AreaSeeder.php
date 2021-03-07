@@ -122,7 +122,7 @@ class AreaSeeder extends Seeder
         $empleado->fechaNacimiento= Carbon::createFromFormat('Y-m-d', '1980-01-12');
         $empleado->fechaBaja= null;
         $empleado->fechaAlta= Carbon::createFromFormat('Y-m-d','2000-11-22');
-        $empleado->direccion='Belgrano 10000';
+        $empleado->direccion='Bolivar 6358';
         $empleado->estadoCivil='Soltero/a';
         $empleado->save();
         
@@ -133,9 +133,43 @@ class AreaSeeder extends Seeder
         $empleado2->fechaNacimiento= Carbon::createFromFormat('Y-m-d', '1990-01-12');
         $empleado2->fechaBaja= null;
         $empleado2->fechaAlta= Carbon::createFromFormat('Y-m-d','2010-11-22');
-        $empleado2->direccion='Belgrano 10000';
+        $empleado2->direccion='Belgrano 589';
         $empleado2->estadoCivil='Soltero/a';
         $empleado2->save();
+
+        $empleado3 = new Empleado();
+        $empleado3->nombre='Antonio';
+        $empleado3->apellido='Ramirez';
+        $empleado3->cuil='20163652634';
+        $empleado3->fechaNacimiento= Carbon::createFromFormat('Y-m-d', '1992-05-25');
+        $empleado3->fechaBaja= null;
+        $empleado3->fechaAlta= Carbon::createFromFormat('Y-m-d','2002-08-01');
+        $empleado3->direccion='Avenida Las Heras 85';
+        $empleado3->estadoCivil='Viudo/a';
+        $empleado3->save();
+
+        $empleado4 = new Empleado();
+        $empleado4->nombre='Julieta';
+        $empleado4->apellido='Perez';
+        $empleado4->cuil='27389229135';
+        $empleado4->fechaNacimiento= Carbon::createFromFormat('Y-m-d', '1982-04-03');
+        $empleado4->fechaBaja= null;
+        $empleado4->fechaAlta= Carbon::createFromFormat('Y-m-d','2017-02-01');
+        $empleado4->direccion='Calle Junin 1420';
+        $empleado4->estadoCivil='Casado/a';
+        $empleado4->save();
+        
+
+        $empleado5 = new Empleado();
+        $empleado5->nombre='Rosalia';
+        $empleado5->apellido='Gonzalez';
+        $empleado5->cuil='27313126319';
+        $empleado5->fechaNacimiento= Carbon::createFromFormat('Y-m-d', '1980-07-14');
+        $empleado5->fechaBaja= null;
+        $empleado5->fechaAlta= Carbon::createFromFormat('Y-m-d','2020-05-01');
+        $empleado5->direccion='Calle Ayacuho 2520';
+        $empleado5->estadoCivil='Casado/a';
+        $empleado5->save();
 
         $dependiente = new PersonaDependiente();
         $dependiente->nombre='Rafael';

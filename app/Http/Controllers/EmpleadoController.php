@@ -410,7 +410,9 @@ public function __invoke(Request $request){
               $empleadosin = Empleado::join('solicitudes_inasistencias','empleados.id','=','solicitudes_inasistencias.empleado_id')
               ->select('cuil')
               ->where('empleados.condicion', '=', 1)
+              ->where('solicitudes_inasistencias.aprobado', '=', 1)
               ->whereDate('solicitudes_inasistencias.hasta', '>=', $hoy)
+              ->whereDate('solicitudes_inasistencias.desde', '<=', $hoy)
             ->orderBy('empleados.nombre', 'desc')->get();
 
         $activos = count($empleados);

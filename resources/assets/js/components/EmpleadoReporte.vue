@@ -1,9 +1,7 @@
 <template>
 <main class="main">
     <!-- Breadcrumb -->
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="/">Escritorio</a></li>
-    </ol>
+    
     <div class="container-fluid">
         <div class="card">
             <div class="card-header">
@@ -188,10 +186,11 @@
                             data: me.varCantidadArea,
                             backgroundColor: 'rgba(255, 99, 132, 0.2)',
                             borderColor: 'rgba(255, 99, 132, 0.2)',
-                            borderWidth: 1
+                            //borderWidth: 1,
+                            barThickness: 100,
                         }]
                     },
-                    options: {
+                    /*options: {
                         scales: {
                             yAxes: [{
                                 ticks: {
@@ -199,7 +198,7 @@
                                 }
                             }]
                         }
-                    }
+                    }*/
                 });
             },
             loadDepartamentos(){
@@ -240,7 +239,7 @@
                     me.varNombreActivos.push(x.nombre);
                     me.varCantidadActivos.push(x.cantidad);
                 });*/
-                me.varNombreActivos = ["Activos","Activos con Incidencias"];
+                me.varNombreActivos = ["Activos","Activos con Licencias"];
                 me.varCantidadActivos = [me.activos, me.activosIn];
                 me.varActivos=document.getElementById('activos').getContext('2d');
                 console.log(me.varNombreActivos);

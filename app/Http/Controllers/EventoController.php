@@ -45,7 +45,7 @@ class EventoController extends Controller
     public function eventoHome()
     {
         
-        $eventos = Evento::select( 'id', 'fechaFin as end', 'titulo as title', 'fecha as start')
+        $eventos = Evento::select( 'id', 'fechaFin as end', 'titulo as title', 'fecha as start', 'descripcion')
         ->orderBy('id', 'desc')->paginate(3);
         return [
            'pagination' => [

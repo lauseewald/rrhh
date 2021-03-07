@@ -56,7 +56,7 @@
                           data-target="#listEmpleadosModal"
                           @click.prevent="obtenerEmpleadosConLicencia()"
                         >
-                          empleados en licencias
+                          Empleados con licencias
                         </button>
                       </div>
                     </div>
@@ -539,49 +539,58 @@
           </div>
           <div class="modal-body">
             <div class="form-group text-center" v-if="empleado.id">
-              <div class="row">
-                <label
-                  >Empleado: {{ empleado.nombre + empleado.apellido }}
-                </label>
-              </div>
-              <div class="row">
-                <p>Motivo:{{ " " + solicitudInasistenciaSelect.motivo }}</p>
-              </div>
+
+              <div class="form-group ">
+                <label class="col-md-3 form-control-label" for="text-input"
+                  ><b>Empleado</b> </label
+                >
+                <br>
+                {{ empleado.nombre +" " + empleado.apellido }}
+                </div>
+              <div class="form-group ">
+                <label class="col-md-6 form-control-label" for="text-input"
+                  ><b>Motivo</b> </label
+                >
+                <br>
+                {{ solicitudInasistenciaSelect.motivo }}
+                </div>
+              
               <hr />
               <h3>Personas Dependientes</h3>
-              <div class="row">
+             
                 <ul>
                   <li
                     v-for="perDep in empleado.persona_dependientes"
                     :key="perDep.id"
                   >
-                    <div class="row">
-                      Nombre: {{ " " + perDep.nombre + " " + perDep.apellido }}
-                    </div>
-                    <div class="row">Relacion:{{ " " + perDep.relacion }}</div>
-                    <div class="row">
-                      Necesidad:{{ " " + perDep.necesidad }}
-                    </div>
+                  <div class="form-group ">
+                <label class="col-md-3 form-control-label" for="text-input"
+                  ><b>Nombre</b> </label
+                >
+                <br>
+               {{ " " + perDep.nombre + " " + perDep.apellido }}
+                </div>
+                    <div class="form-group ">
+                <label class="col-md-3 form-control-label" for="text-input"
+                  ><b>Relación</b> </label
+                >
+                <br>
+              {{ " " + perDep.relacion }}
+                </div>
+                   <div class="form-group ">
+                <label class="col-md-3 form-control-label" for="text-input"
+                  ><b>Necesidad</b> </label
+                >
+                <br>
+             {{ " " + perDep.necesidad }}
+                </div>
+                  
+                   
                   </li>
                 </ul>
-              </div>
+              
               <hr />
-              <h3>Otras Responsabilidades</h3>
-              <div class="row">
-                <ul>
-                  <li
-                    v-for="responsabilidad in empleado.responsabilidades"
-                    :key="responsabilidad.id"
-                  >
-                    <div class="row">
-                      Responsabilidad: {{ " " + responsabilidad.nombre }}
-                    </div>
-                    <div class="row">
-                      Descripcion:{{ " " + responsabilidad.descripcion }}
-                    </div>
-                  </li>
-                </ul>
-              </div>
+              
             </div>
           </div>
           <div class="modal-footer">
