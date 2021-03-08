@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\PersonaDependiente;
 use Exception;
 use Illuminate\Http\Request;
+use App\User;
 
 class PersonaDependienteController extends Controller
 {
@@ -16,7 +17,10 @@ class PersonaDependienteController extends Controller
  
         $buscar = $request->buscar;
         $criterio = $request->criterio;
-         
+        $rol = \Auth::user()->rol_id;
+        if ($rol==1){
+
+
         if ($buscar=='') {
             $personaDependientes = PersonaDependiente::join('empleados','empleados.id','=','persona_dependientes.empleado_id')
             ->select('persona_dependientes.*','empleados.apellido as apellidoEmpleado','empleados.nombre as nombreEmpleado')
@@ -27,7 +31,22 @@ class PersonaDependienteController extends Controller
             ->where($criterio, 'like', '%'. $buscar . '%')
             ->orderBy('apellido', 'desc')->paginate(3);
         }
-         
+        } else {
+            $iduser = \Auth::user()->id;
+            $solicitante = $this->ObtenerUsuario($iduser);
+            if ($buscar=='') {
+                $personaDependientes = PersonaDependiente::join('empleados','empleados.id','=','persona_dependientes.empleado_id')
+                ->select('persona_dependientes.*','empleados.apellido as apellidoEmpleado','empleados.nombre as nombreEmpleado')
+                ->where('empleados.id', $solicitante)
+                ->orderBy('apellido', 'desc')->paginate(3);
+            } else {
+                $personaDependientes = PersonaDependiente::join('empleados','empleados.id','=','persona_dependientes.empleado_id')
+                ->select('persona_dependientes.*','empleados.apellido as apellidoEmpleado','empleados.nombre as nombreEmpleado')
+                ->where($criterio, 'like', '%'. $buscar . '%')
+                ->where('empleados.id', $solicitante)
+                ->orderBy('apellido', 'desc')->paginate(3);
+            }
+        }
         return [
             'pagination' => [
                 'total'        => $personaDependientes->total(),
@@ -132,5 +151,15 @@ class PersonaDependienteController extends Controller
         $personaDependiente = PersonaDependiente::findOrFail($request->id);
         $personaDependiente->condicion = '1';
         $personaDependiente->save();
+    }
+
+    public function ObtenerUsuario($iduser)
+    {
+        
+        $operario = User::where('id', '=', $iduser)
+        ->select('id', 'usuario', 'empleado_id')
+        ->orderBy('id', 'asc')->take(1)->get();
+        $operario = $operario[0]['empleado_id'];
+        return $operario;
     }
 }

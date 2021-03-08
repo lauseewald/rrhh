@@ -92,7 +92,9 @@
             <li class="nav-item nav-dropdown">
                 <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-bag"></i> Empleados</a>
                 <ul class="nav-dropdown-items">
-                   
+                    <li @click="menu=1" class="nav-item">
+                        <a class="nav-link" href="#"><i class="icon-people-carry"></i> Empleados</a>
+                    </li>
                     <li @click="menu='personadependiente2'" class="nav-item">
                         <a class="nav-link" href="#"><i class="icon-people-carry"></i> P. Dependientes</a>
                     </li>
@@ -116,15 +118,7 @@
             </li>
 
          
-            <li class="nav-item nav-dropdown">
-                <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-people"></i> Acceso</a>
-                <ul class="nav-dropdown-items">
-                    <li @click="menu='usuarios'" class="nav-item">
-                        <a class="nav-link" href="i#"><i class="icon-user"></i> Usuarios</a>
-                    </li>
-                    
-                </ul>
-            </li>
+           
           
             @endif
             <li @click="menu='alarma2'" class="nav-item">

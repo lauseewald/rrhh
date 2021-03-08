@@ -7,6 +7,7 @@ use App\Empleado;
 use App\CompetenciaEmpleado;
 use App\ContactoEmergencia;
 use Exception;
+use App\User;
 use Carbon\Carbon; 
 use Illuminate\Support\Facades\DB;
 //use Illuminate\Support\Facades\Storage;
@@ -21,17 +22,40 @@ class EmpleadoController extends Controller
  
         $buscar = $request->buscar;
         $criterio = $request->criterio;
-
-        $empleados = Empleado::join('solicitudes_inasistencias', 'empleados.id', '=', 'solicitudes_inasistencias.empleado_id');
-        if ($criterio=='enlicencia')  {
-            $empleados= $empleados->where('solicitudes_inasistencias.desde','<=',Carbon::now())->where('solicitudes_inasistencias.hasta','>=',Carbon::now())->where('aprobado',true);
-        }elseif($criterio=='trabajando'){
-            $empleados= $empleados->where('solicitudes_inasistencias.desde','>',Carbon::now())->Where('solicitudes_inasistencias.hasta','<',Carbon::now())->orWhere('aprobado',false);
-        }elseif($buscar!=''){
-            $empleados= $empleados->where('empleados.'.$criterio, 'like', '%'. $buscar . '%');
+        $rol = \Auth::user()->rol_id;
+        //return $rol;
+        if ($rol=='1'){
+            $empleados = Empleado::select('empleados.*');
+            if ($criterio=='enlicencia')  {
+                $empleados= Empleado::join('solicitudes_inasistencias', 'empleados.id', '=', 'solicitudes_inasistencias.empleado_id')
+                ->where('solicitudes_inasistencias.desde','<=',Carbon::now())->where('solicitudes_inasistencias.hasta','>=',Carbon::now())->where('aprobado',true);
+            }elseif($criterio=='trabajando'){
+                $empleados= Empleado::join('solicitudes_inasistencias', 'empleados.id', '=', 'solicitudes_inasistencias.empleado_id')
+                ->where('solicitudes_inasistencias.desde','>',Carbon::now())->Where('solicitudes_inasistencias.hasta','<',Carbon::now())->orWhere('aprobado',false);
+            }elseif($buscar!=''){
+                $empleados= $empleados->where('empleados.'.$criterio, 'like', '%'. $buscar . '%');
+            }
+           
+            $empleados=$empleados->select('empleados.*')->orderBy('empleados.nombre', 'desc')->paginate(3);
+            ///return $empleados;
+        } else {
+            //return 'else';
+            $iduser = \Auth::user()->id;
+            $solicitante = $this->ObtenerUsuario($iduser);
+            $empleados = Empleado::select('empleados.*')->where('empleados.id', $solicitante);
+            if ($criterio=='enlicencia')  {
+                $empleados= Empleado::join('solicitudes_inasistencias', 'empleados.id', '=', 'solicitudes_inasistencias.empleado_id')
+                ->where('solicitudes_inasistencias.desde','<=',Carbon::now())->where('solicitudes_inasistencias.hasta','>=',Carbon::now())->where('aprobado',true)->where('empleados.id', $solicitante);
+            }elseif($criterio=='trabajando'){
+                $empleados= Empleado::join('solicitudes_inasistencias', 'empleados.id', '=', 'solicitudes_inasistencias.empleado_id')
+                ->where('solicitudes_inasistencias.desde','>',Carbon::now())->Where('solicitudes_inasistencias.hasta','<',Carbon::now())->orWhere('aprobado',false)->where('empleados.id', $solicitante);
+            }elseif($buscar!=''){
+                $empleados= $empleados->where('empleados.'.$criterio, 'like', '%'. $buscar . '%');
+            }
+            
+            $empleados=$empleados->select('empleados.*')->orderBy('empleados.nombre', 'desc')->paginate(3);
         }
-        
-        $empleados=$empleados->select('empleados.*')->orderBy('empleados.nombre', 'desc')->paginate(3);
+       
        
         return [
             'pagination' => [
@@ -420,5 +444,15 @@ public function __invoke(Request $request){
 
         return ['empleadosArea'=>$empleadosArea,'empleadosDepartamento'=>$empleadosDepartamento,
         'empleadosPuesto'=>$empleadosPuesto, 'activos'=>$activos, 'activosIn'=>$activosIn]; 
+    }
+
+    public function ObtenerUsuario($iduser)
+    {
+        
+        $operario = User::where('id', '=', $iduser)
+        ->select('id', 'usuario', 'empleado_id')
+        ->orderBy('id', 'asc')->take(1)->get();
+        $operario = $operario[0]['empleado_id'];
+        return $operario;
     }
 }

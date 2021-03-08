@@ -208,4 +208,14 @@ class UserController extends Controller
         $empresa = $empresa[0]['id'];
         return $empresa;
     }
+
+    public function ObtenerUsuario($iduser)
+    {
+        
+        $operario = User::where('id', '=', $iduser)
+        ->select('id', 'usuario', 'empleado_id')
+        ->orderBy('id', 'asc')->take(1)->get();
+        $operario = $operario[0]['empleado_id'];
+        return $operario;
+    }
 }
