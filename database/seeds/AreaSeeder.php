@@ -230,7 +230,7 @@ class AreaSeeder extends Seeder
         $puesto4->save();
 
         $tipoContrato = new TipoContrato();
-        $tipoContrato->nombre='Prueba';
+        $tipoContrato->nombre='A Prueba';
         $tipoContrato->diasMaximo=90;
         $tipoContrato->diasMinimo=30;
         $tipoContrato->save();
@@ -243,9 +243,16 @@ class AreaSeeder extends Seeder
 
         $tipoContrato3 = new TipoContrato();
         $tipoContrato3->nombre='Indeterminación del Plazo';
-        $tipoContrato3->diasMaximo=30;
+        $tipoContrato3->diasMaximo=0;
         $tipoContrato3->diasMinimo=30;
         $tipoContrato3->save();
+
+        $tipoContrato3 = new TipoContrato();
+        $tipoContrato3->nombre='Plazo Fijo';
+        $tipoContrato3->diasMaximo=180;
+        $tipoContrato3->diasMinimo=30;
+        $tipoContrato3->save();
+
 
         
         $contrato = new Contrato();
@@ -449,15 +456,42 @@ class AreaSeeder extends Seeder
 
         $incidencia = new Incidencia();
         $incidencia->nombre='Vacaciones';
-        $incidencia->diasMaximo=30;
-        $incidencia->diasMinimo=10;
+        $incidencia->diasMaximo=40;
+        $incidencia->diasMinimo=6;
         $incidencia->save();
 
         $incidencia2 = new Incidencia();
-        $incidencia2->nombre='Licencia';
+        $incidencia2->nombre='Licencia Mensual';
         $incidencia2->diasMaximo=30;
         $incidencia2->diasMinimo=1;
         $incidencia2->save();
+        
+
+        $incidencia2 = new Incidencia();
+        $incidencia2->nombre='Nacimiento de Hijo';
+        $incidencia2->diasMaximo=2;
+        $incidencia2->diasMinimo=1;
+        $incidencia2->save();
+
+        $incidencia2 = new Incidencia();
+        $incidencia2->nombre='Matrimonio';
+        $incidencia2->diasMaximo=10;
+        $incidencia2->diasMinimo=1;
+        $incidencia2->save();
+
+        $incidencia2 = new Incidencia();
+        $incidencia2->nombre='Fallecimiento familiar';
+        $incidencia2->diasMaximo=3;
+        $incidencia2->diasMinimo=1;
+        $incidencia2->save();
+
+        $incidencia2 = new Incidencia();
+        $incidencia2->nombre='Examen';
+        $incidencia2->diasMaximo=2;
+        $incidencia2->diasMinimo=1;
+        $incidencia2->save();
+
+
         
         $solicitudesInasistencias = new SolicitudInasistencia();
         $solicitudesInasistencias->desde=Carbon::createFromFormat('Y-m-d','2020-03-10');

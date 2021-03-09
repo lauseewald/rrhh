@@ -211,7 +211,16 @@
                         :key="contratito.id"
                       >
                         <td v-text="contratito.id"></td>
-                        <td v-text="contratito.nombreEmpleado +' '+contratito.apellidoEmpleado+' ('+contratito.empleado_id+')'"></td>
+                        <td
+                          v-text="
+                            contratito.nombreEmpleado +
+                            ' ' +
+                            contratito.apellidoEmpleado +
+                            ' (' +
+                            contratito.empleado_id +
+                            ')'
+                          "
+                        ></td>
                         <td v-text="contratito.inicioLaboral2"></td>
                         <td v-text="contratito.finLaboral2"></td>
                       </tr>
@@ -539,58 +548,61 @@
           </div>
           <div class="modal-body">
             <div class="form-group text-center" v-if="empleado.id">
+              <div class="form-group">
+                <label class="form-control-label" for="text-input"
+                  ><b>Empleado: </b>
+                </label>
 
-              <div class="form-group ">
-                <label class="col-md-3 form-control-label" for="text-input"
-                  ><b>Empleado</b> </label
-                >
-                <br>
-                {{ empleado.nombre +" " + empleado.apellido }}
-                </div>
-              <div class="form-group ">
-                <label class="col-md-6 form-control-label" for="text-input"
-                  ><b>Motivo</b> </label
-                >
-                <br>
+                {{ empleado.nombre + " " + empleado.apellido }}
+              </div>
+              <div class="form-group">
+                <label class="form-control-label" for="text-input"
+                  ><b>Antiguedad: </b>
+                </label>
+
+                {{ empleado.antiguedadCalculada }}
+              </div>
+              <div class="form-group">
+                <label class="form-control-label" for="text-input"
+                  ><b>Motivo: </b>
+                </label>
+                <br />
                 {{ solicitudInasistenciaSelect.motivo }}
-                </div>
-              
+              </div>
+
               <hr />
               <h3>Personas Dependientes</h3>
-             
-                <ul>
-                  <li
-                    v-for="perDep in empleado.persona_dependientes"
-                    :key="perDep.id"
-                  >
-                  <div class="form-group ">
-                <label class="col-md-3 form-control-label" for="text-input"
-                  ><b>Nombre</b> </label
+
+              <ul>
+                <li
+                  v-for="perDep in empleado.persona_dependientes"
+                  :key="perDep.id"
                 >
-                <br>
-               {{ " " + perDep.nombre + " " + perDep.apellido }}
-                </div>
-                    <div class="form-group ">
-                <label class="col-md-3 form-control-label" for="text-input"
-                  ><b>Relación</b> </label
-                >
-                <br>
-              {{ " " + perDep.relacion }}
-                </div>
-                   <div class="form-group ">
-                <label class="col-md-3 form-control-label" for="text-input"
-                  ><b>Necesidad</b> </label
-                >
-                <br>
-             {{ " " + perDep.necesidad }}
-                </div>
-                  
-                   
-                  </li>
-                </ul>
-              
+                  <div class="form-group">
+                    <label class="col-md-3 form-control-label" for="text-input"
+                      ><b>Nombre</b>
+                    </label>
+                    <br />
+                    {{ " " + perDep.nombre + " " + perDep.apellido }}
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-3 form-control-label" for="text-input"
+                      ><b>Relación</b>
+                    </label>
+                    <br />
+                    {{ " " + perDep.relacion }}
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-3 form-control-label" for="text-input"
+                      ><b>Necesidad</b>
+                    </label>
+                    <br />
+                    {{ " " + perDep.necesidad }}
+                  </div>
+                </li>
+              </ul>
+
               <hr />
-              
             </div>
           </div>
           <div class="modal-footer">
@@ -680,7 +692,6 @@
             >
               Cerrar
             </button>
-            
           </div>
         </div>
       </div>
@@ -866,7 +877,7 @@ export default {
     },
   },
   methods: {
-     aprobarSolicitud(solicitudInasistencia, valor) {
+    aprobarSolicitud(solicitudInasistencia, valor) {
       let mensaje = "¿Desea Aprobar la Solicitud de Inasistencia?";
 
       if (!valor) {
@@ -900,7 +911,7 @@ export default {
                 swal("Desaprobado!", "Se desaprobo la solicitud.", "success");
               }
               me.listarInasistencia(1, "", "nombre");
-              me.modal2=0;
+              me.modal2 = 0;
             })
             .catch(function (error) {
               console.log(error);

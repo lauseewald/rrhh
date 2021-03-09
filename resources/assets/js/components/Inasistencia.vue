@@ -1,7 +1,7 @@
 <template>
   <main class="main">
     <!-- Breadcrumb -->
-    
+
     <div class="container-fluid">
       <!-- Ejemplo de tabla Listado -->
       <div class="card">
@@ -43,7 +43,7 @@
                 </button>
               </div>
             </div>
-            <div class="col"  v-if="user.rol.nombre == 'Administrador'">
+            <div class="col" v-if="user.rol.nombre == 'Administrador'">
               <button
                 type="button"
                 class="btn btn-primary"
@@ -104,7 +104,7 @@
                 </td> -->
                 <td>
                   <button
-                   title="Editar"
+                    title="Editar"
                     type="button"
                     @click="
                       abrirModal(
@@ -121,7 +121,7 @@
 
                   <template v-if="solicitudInasistencia.condicion">
                     <button
-                    title="Desactivar"
+                      title="Desactivar"
                       v-if="user.rol.nombre == 'Administrador'"
                       type="button"
                       class="btn btn-danger btn-sm"
@@ -136,7 +136,7 @@
                   </template>
                   <template v-else>
                     <button
-                    title="Activar"
+                      title="Activar"
                       v-if="user.rol.nombre == 'Administrador'"
                       type="button"
                       class="btn btn-info btn-sm"
@@ -150,7 +150,7 @@
                   &nbsp;
                   <template>
                     <button
-                    title="Ver"
+                      title="Ver"
                       v-if="user.rol.nombre == 'Administrador'"
                       type="button"
                       @click="verDatos(solicitudInasistencia)"
@@ -161,30 +161,26 @@
                   </template>
                   &nbsp;
                   <template>
-                    
-                      <button
-                      
-                        v-if="user.rol.nombre == 'Administrador' && solicitudInasistencia.aprobado || solicitudInasistencia.created_at ==solicitudInasistencia.updated_at"
-                        type="button"
-                        title="Desaprobar"
-                        @click="aprobarSolicitud(solicitudInasistencia, 0)"
-                        class="btn btn-outline-info btn-sm"
-                      >
-                        <i class="icon-close"></i>
-                      </button>
-                    
-                   
-                   
-                      <button
-                        v-if="user.rol.nombre == 'Administrador' && !solicitudInasistencia.aprobado"
-                        type="button"
-                         title="Aprobar"
-                        @click="aprobarSolicitud(solicitudInasistencia, 1)"
-                        class="btn btn-outline-info btn-sm"
-                      >
-                        <i class="icon-check"></i>
-                      </button>
-                    
+                    <button
+                      v-if="user.rol.nombre == 'Administrador'"
+                      type="button"
+                      title="Desaprobar"
+                      @click="aprobarSolicitud(solicitudInasistencia, 0)"
+                      class="btn btn-outline-info btn-sm"
+                    >
+                      <i class="icon-close"></i>
+                    </button>
+                  </template>
+                  <template>
+                    <button
+                      v-if="user.rol.nombre == 'Administrador'"
+                      type="button"
+                      title="Aprobar"
+                      @click="aprobarSolicitud(solicitudInasistencia, 1)"
+                      class="btn btn-outline-info btn-sm"
+                    >
+                      <i class="icon-check"></i>
+                    </button>
                   </template>
                 </td>
               </tr>
@@ -265,7 +261,7 @@
               enctype="multipart/form-data"
               class="form-horizontal"
             >
-              <div class="col form-group form-group" v-if="user.rol_id==1">
+              <div class="col form-group form-group" v-if="user.rol_id == 1">
                 <label class="form-control-label" for="text-input"
                   >Empleados (*)</label
                 >
@@ -423,22 +419,6 @@
                 </ul>
               </div>
               <hr />
-              <h3>Otras Responsabilidades</h3>
-              <div class="row">
-                <ul>
-                  <li
-                    v-for="responsabilidad in empleado.responsabilidades"
-                    :key="responsabilidad.id"
-                  >
-                    <div class="row">
-                      Responsabilidad: {{ " " + responsabilidad.nombre }}
-                    </div>
-                    <div class="row">
-                      Descripcion:{{ " " + responsabilidad.descripcion }}
-                    </div>
-                  </li>
-                </ul>
-              </div>
             </div>
           </div>
           <div class="modal-footer">
