@@ -88926,6 +88926,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -88938,6 +88946,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       arrayDiaNoLaboral: [],
       arrayContrato: [],
       arrayEmpleadosLicencia: [],
+      arrayEmpleado: [],
+      idempleado: 0,
+      idempleadoContrato: 0,
 
       solicitudInasistenciaSelect: {},
       empleado: { id: 0 },
@@ -88989,7 +89000,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       offset: 3,
       criEvento: "titulo",
       buEvento: "",
-      criInasistencia: "desde",
+      criInasistencia: "todos",
       buInasistencia: "",
       criDiaNoLaboral: "dia",
       buDiaNoLaboral: "",
@@ -89138,7 +89149,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             } else {
               swal("Desaprobado!", "Se desaprobo la solicitud.", "success");
             }
-            me.listarInasistencia(1, "", "nombre");
+            me.listarInasistencia(1, "", "todos");
             me.modal2 = 0;
           }).catch(function (error) {
             console.log(error);
@@ -89177,6 +89188,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     cerrarModalVer: function cerrarModalVer() {
       this.modal2 = 0;
     },
+    selectEmpleado: function selectEmpleado() {
+      var me = this;
+      //loading(true)
+      var url = "/empleado/selectEmpleado";
+      axios.get(url).then(function (response) {
+        var respuesta = response.data;
+        //q: search
+        me.arrayEmpleado = respuesta.empleados;
+        console.log("select Empleado");
+        //loading(false)
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
     listarEvento: function listarEvento(page, buEvento, criEvento) {
       var me = this;
       var url = "/evento/alarma?page=" + page + "&buscar=" + buEvento + "&criterio=" + criEvento;
@@ -89197,7 +89222,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     listarInasistencia: function listarInasistencia(page, buInasistencia, criInasistencia) {
       var me = this;
-      var url = "/solicitudInasistencia/alarma?page=" + page + "&buscar=" + buInasistencia + "&criterio=" + criInasistencia;
+      var url = "/solicitudInasistencia/alarma?page=" + page + "&buscar=" + buInasistencia + "&criterio=" + criInasistencia + "&idempleado=" + this.idempleado;
       axios.get(url).then(function (response) {
         var respuesta = response.data;
         me.arrayInasistencia = respuesta.solicitudInasistencias.data;
@@ -89233,7 +89258,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     listarContrato: function listarContrato(page, buContrato, criContrato) {
       var me = this;
-      var url = "/contrato/alarma?page=" + page + "&buscar=" + buContrato + "&criterio=" + criContrato;
+      var url = "/contrato/alarma?page=" + page + "&buscar=" + buContrato + "&criterio=" + criContrato + "&idempleado=" + me.idempleadoContrato;
       axios.get(url).then(function (response) {
         var respuesta = response.data;
         me.arrayContrato = respuesta.contratos.data;
@@ -89301,6 +89326,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     this.listarInasistencia(1, this.buInasistencia, this.criInasistencia);
     this.listarDiaNoLaboral(1, this.buDiaNoLaboral, this.criDiaNoLaboral);
     this.listarContrato(1, this.buContrato, this.criContrato);
+    this.selectEmpleado();
   }
 });
 
@@ -89360,55 +89386,70 @@ var render = function() {
                             }
                           },
                           [
-                            _c("option", { attrs: { value: "desde" } }, [
-                              _vm._v("Desde")
+                            _c("option", { attrs: { value: "empleado" } }, [
+                              _vm._v("Empleado")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "todos" } }, [
+                              _vm._v("Todos")
                             ])
                           ]
                         ),
                         _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.buInasistencia,
-                              expression: "buInasistencia"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            placeholder: "Texto en Solicitud de Inasistencia"
-                          },
-                          domProps: { value: _vm.buInasistencia },
-                          on: {
-                            keyup: function($event) {
-                              if (
-                                !$event.type.indexOf("key") &&
-                                _vm._k(
-                                  $event.keyCode,
-                                  "enter",
-                                  13,
-                                  $event.key,
-                                  "Enter"
-                                )
-                              ) {
-                                return null
-                              }
-                              return _vm.listarInasistencia(
-                                1,
-                                _vm.buInasistencia,
-                                _vm.criInasistencia
-                              )
-                            },
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.buInasistencia = $event.target.value
-                            }
-                          }
-                        }),
+                        _vm.criInasistencia == "empleado"
+                          ? _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.idempleado,
+                                    expression: "idempleado"
+                                  }
+                                ],
+                                staticClass: "form-control col",
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.idempleado = $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  }
+                                }
+                              },
+                              [
+                                _c(
+                                  "option",
+                                  { attrs: { value: "0", disabled: "" } },
+                                  [_vm._v("Seleccione")]
+                                ),
+                                _vm._v(" "),
+                                _vm._l(_vm.arrayEmpleado, function(empleado) {
+                                  return _c("option", {
+                                    key: empleado.id,
+                                    domProps: {
+                                      value: empleado.id,
+                                      textContent: _vm._s(
+                                        empleado.apellido +
+                                          " " +
+                                          empleado.nombre
+                                      )
+                                    }
+                                  })
+                                })
+                              ],
+                              2
+                            )
+                          : _vm._e(),
                         _vm._v(" "),
                         _c(
                           "button",
@@ -89660,52 +89701,67 @@ var render = function() {
                               _vm._v("Proximo vencimiento")
                             ]),
                             _vm._v(" "),
-                            _c("option", { attrs: { value: "nombre" } }, [
-                              _vm._v("Nombre")
+                            _c("option", { attrs: { value: "empleado" } }, [
+                              _vm._v("Empleado")
                             ])
                           ]
                         ),
                         _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.buContrato,
-                              expression: "buContrato"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: { type: "text", placeholder: "Buscar dia" },
-                          domProps: { value: _vm.buContrato },
-                          on: {
-                            keyup: function($event) {
-                              if (
-                                !$event.type.indexOf("key") &&
-                                _vm._k(
-                                  $event.keyCode,
-                                  "enter",
-                                  13,
-                                  $event.key,
-                                  "Enter"
-                                )
-                              ) {
-                                return null
-                              }
-                              return _vm.listarContrato(
-                                1,
-                                _vm.buContrato,
-                                _vm.criContrato
-                              )
-                            },
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.buContrato = $event.target.value
-                            }
-                          }
-                        }),
+                        _vm.criContrato == "empleado"
+                          ? _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.idempleadoContrato,
+                                    expression: "idempleadoContrato"
+                                  }
+                                ],
+                                staticClass: "form-control col",
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.idempleadoContrato = $event.target
+                                      .multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  }
+                                }
+                              },
+                              [
+                                _c(
+                                  "option",
+                                  { attrs: { value: "0", disabled: "" } },
+                                  [_vm._v("Seleccione")]
+                                ),
+                                _vm._v(" "),
+                                _vm._l(_vm.arrayEmpleado, function(empleado) {
+                                  return _c("option", {
+                                    key: empleado.id,
+                                    domProps: {
+                                      value: empleado.id,
+                                      textContent: _vm._s(
+                                        empleado.apellido +
+                                          " " +
+                                          empleado.nombre
+                                      )
+                                    }
+                                  })
+                                })
+                              ],
+                              2
+                            )
+                          : _vm._e(),
                         _vm._v(" "),
                         _c(
                           "button",
