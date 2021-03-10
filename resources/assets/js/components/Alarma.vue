@@ -20,21 +20,24 @@
                           class="form-control col"
                           v-model="criInasistencia"
                         >
-                          <option value="desde">Desde</option>
+                          <option value="empleado">Empleado</option>
+                          <option value="todos">Todos</option>
                         </select>
-                        <input
-                          type="text"
-                          v-model="buInasistencia"
-                          @keyup.enter="
-                            listarInasistencia(
-                              1,
-                              buInasistencia,
-                              criInasistencia
-                            )
-                          "
-                          class="form-control"
-                          placeholder="Texto en Solicitud de Inasistencia"
-                        />
+
+                        <select
+                          class="form-control col"
+                          v-model="idempleado"
+                          v-if="criInasistencia == 'empleado'"
+                        >
+                          <option value="0" disabled>Seleccione</option>
+                          <option
+                            v-for="empleado in arrayEmpleado"
+                            :key="empleado.id"
+                            :value="empleado.id"
+                            v-text="empleado.apellido + ' ' + empleado.nombre"
+                          ></option>
+                        </select>
+
                         <button
                           type="submit"
                           @click="
@@ -175,17 +178,22 @@
                         <select class="form-control col" v-model="criContrato">
                           <option value="sincontrato">Sin Contrato</option>
                           <option value="avencer">Proximo vencimiento</option>
-                          <option value="nombre">Nombre</option>
+                          <option value="empleado">Empleado</option>
                         </select>
-                        <input
-                          type="text"
-                          v-model="buContrato"
-                          @keyup.enter="
-                            listarContrato(1, buContrato, criContrato)
-                          "
-                          class="form-control"
-                          placeholder="Buscar dia"
-                        />
+                        <select
+                          v-if="criContrato == 'empleado'"
+                          class="form-control col"
+                          v-model="idempleadoContrato"
+                        >
+                          <option value="0" disabled>Seleccione</option>
+                          <option
+                            v-for="empleado in arrayEmpleado"
+                            :key="empleado.id"
+                            :value="empleado.id"
+                            v-text="empleado.apellido + ' ' + empleado.nombre"
+                          ></option>
+                        </select>
+
                         <button
                           type="submit"
                           @click="listarContrato(1, buContrato, criContrato)"
@@ -711,6 +719,9 @@ export default {
       arrayDiaNoLaboral: [],
       arrayContrato: [],
       arrayEmpleadosLicencia: [],
+      arrayEmpleado: [],
+      idempleado: 0,
+      idempleadoContrato: 0,
 
       solicitudInasistenciaSelect: {},
       empleado: { id: 0 },
@@ -762,7 +773,7 @@ export default {
       offset: 3,
       criEvento: "titulo",
       buEvento: "",
-      criInasistencia: "desde",
+      criInasistencia: "todos",
       buInasistencia: "",
       criDiaNoLaboral: "dia",
       buDiaNoLaboral: "",
@@ -910,7 +921,7 @@ export default {
               } else {
                 swal("Desaprobado!", "Se desaprobo la solicitud.", "success");
               }
-              me.listarInasistencia(1, "", "nombre");
+              me.listarInasistencia(1, "", "todos");
               me.modal2 = 0;
             })
             .catch(function (error) {
@@ -958,6 +969,23 @@ export default {
     cerrarModalVer() {
       this.modal2 = 0;
     },
+    selectEmpleado() {
+      let me = this;
+      //loading(true)
+      var url = "/empleado/selectEmpleado";
+      axios
+        .get(url)
+        .then(function (response) {
+          let respuesta = response.data;
+          //q: search
+          me.arrayEmpleado = respuesta.empleados;
+          console.log("select Empleado");
+          //loading(false)
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
     listarEvento(page, buEvento, criEvento) {
       let me = this;
       var url =
@@ -993,7 +1021,9 @@ export default {
         "&buscar=" +
         buInasistencia +
         "&criterio=" +
-        criInasistencia;
+        criInasistencia +
+        "&idempleado=" +
+        this.idempleado;
       axios
         .get(url)
         .then(function (response) {
@@ -1047,7 +1077,9 @@ export default {
         "&buscar=" +
         buContrato +
         "&criterio=" +
-        criContrato;
+        criContrato +
+        "&idempleado=" +
+        me.idempleadoContrato;
       axios
         .get(url)
         .then(function (response) {
@@ -1115,6 +1147,7 @@ export default {
     this.listarInasistencia(1, this.buInasistencia, this.criInasistencia);
     this.listarDiaNoLaboral(1, this.buDiaNoLaboral, this.criDiaNoLaboral);
     this.listarContrato(1, this.buContrato, this.criContrato);
+    this.selectEmpleado();
   },
 };
 </script>

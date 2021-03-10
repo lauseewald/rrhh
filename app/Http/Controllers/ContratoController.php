@@ -123,10 +123,9 @@ class ContratoController extends Controller
             $tipoContrato=  TipoContrato::findOrFail($request->idtipocontrato);
 
             $fechaFinContrato= null;
-            if(($tipoContrato->diasMaximo ==0) && ($tipoContrato->diasMinimo > 0)){
+            if (($tipoContrato->diasMaximo ==0) && ($tipoContrato->diasMinimo > 0)) {
                 //es un contrato indeterminado
-            
-            }else{
+            } else {
                 $fechaFinContrato=$request->finLaboral;
 
                 if (($tipoContrato->diasMaximo < $cantidadDiasRealTrabajo) || ($cantidadDiasRealTrabajo < $tipoContrato->diasMinimo)) {
@@ -197,6 +196,8 @@ class ContratoController extends Controller
             // ->where('contratos.finLaboral','<',Carbon::now()->addMonth());
             $contratos =  $contratos->where('contratos.finLaboral', '>=', Carbon::now())
             ->where('contratos.finLaboral', '<', Carbon::now()->addMonth()->format('Y-m-d'));
+        } elseif ($criterio == 'empleado') {
+            $contratos =  $contratos->where('contratos.empleado_id', $request->idempleado);
         } elseif ($buscar!='') {
             $contratos =  $contratos->where('contratos.finLaboral', '>=', Carbon::now())
             ->where('contratos.finLaboral', '<', Carbon::now()->addMonth()->format('Y-m-d'));
@@ -214,7 +215,7 @@ class ContratoController extends Controller
             'empleados.apellido as apellidoEmpleado'
         )->paginate(3);
          
-
+      
         return [
             'pagination' => [
                 'total'        => $contratos->total(),
@@ -313,12 +314,10 @@ class ContratoController extends Controller
             $tipoContrato=  TipoContrato::findOrFail($request->idtipocontrato);
 
             $fechaFinContrato= null;
-            if(($tipoContrato->diasMaximo ==0) && ($tipoContrato->diasMinimo > 0)){
+            if (($tipoContrato->diasMaximo ==0) && ($tipoContrato->diasMinimo > 0)) {
                 //es un contrato indeterminado
-            
-            }else{
+            } else {
                 $fechaFinContrato=$request->finLaboral;
-
             }
             //****************************************************************** */
            
@@ -376,7 +375,7 @@ class ContratoController extends Controller
         $fechaExpiracion = Carbon::parse($request->finLaboral);
         $tipoContrato = TipoContrato::findOrFail($request->tipoContrato_id);
 
-        if($tipoContrato->diasMaximo == 0 && $tipoContrato->diasMinimo > 0){
+        if ($tipoContrato->diasMaximo == 0 && $tipoContrato->diasMinimo > 0) {
             return 'contrato indeterminado';
         }
         $cantidadDiasRealTrabajo = $fechaExpiracion->diffInDays($fechaEmision)+ 1;
