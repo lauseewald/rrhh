@@ -162,7 +162,7 @@
                   &nbsp;
                   <template>
                     <button
-                      v-if="user.rol.nombre == 'Administrador'"
+                      v-if="user.rol.nombre == 'Administrador'  && solicitudInasistencia.aprobado==null || solicitudInasistencia.aprobado==true"
                       type="button"
                       title="Desaprobar"
                       @click="aprobarSolicitud(solicitudInasistencia, 0)"
@@ -173,7 +173,7 @@
                   </template>
                   <template>
                     <button
-                      v-if="user.rol.nombre == 'Administrador'"
+                      v-if="user.rol.nombre == 'Administrador' && solicitudInasistencia.aprobado==null || solicitudInasistencia.aprobado==false "
                       type="button"
                       title="Aprobar"
                       @click="aprobarSolicitud(solicitudInasistencia, 1)"
@@ -823,6 +823,15 @@ export default {
       this.errorMostrarMsjForm = [];
       if (!this.desde) this.errorMostrarMsjForm.push("Debe ingresar una fecha");
       if (!this.hasta) this.errorMostrarMsjForm.push("Debe ingresar una fecha");
+      if(this.desde > this.hasta){
+          this.errorMostrarMsjForm.push("La fecha de inicio  de la inasistencia tiene que ser menor a la fecha de finalizacion");
+          //return;
+        }  
+      var dia = new Date();
+        var comparar = new Date(this.desde);
+        if(comparar < dia){
+          this.errorMostrarMsjForm.push("La fecha desde tiene que ser mayor a la fecha actual");        
+        }  
       if (!this.motivo)
         this.errorMostrarMsjForm.push("Debe ingresar una motivo");
       /*if (this.empleado_id <= 0)

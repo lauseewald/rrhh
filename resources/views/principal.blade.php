@@ -69,7 +69,7 @@
 
 
     <footer class="app-footer">
-        <span>UNaM &copy; 2020</span>
+        <span>UNaM &copy; 2021</span>
         <span class="ml-auto">Desarrollado por Britez & Seewald</a></span>
     </footer>
 

@@ -186,11 +186,11 @@
                             data: me.varCantidadArea,
                             backgroundColor: 'rgba(255, 99, 132, 0.2)',
                             borderColor: 'rgba(255, 99, 132, 0.2)',
-                            //borderWidth: 1,
-                            barThickness: 100,
+                            borderWidth: 1,
+                            //barThickness: 100,
                         }]
                     },
-                    /*options: {
+                    options: {
                         scales: {
                             yAxes: [{
                                 ticks: {
@@ -198,7 +198,7 @@
                                 }
                             }]
                         }
-                    }*/
+                    }
                 });
             },
             loadDepartamentos(){

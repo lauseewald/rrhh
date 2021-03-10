@@ -422,6 +422,15 @@ import DatePicker from 'vue2-datepicker';
                 if (!this.fechaFin) this.errorMostrarMsjEvento.push("Debe ingresar la fecha en que finaliza el evento");
                 if (!this.hora) this.errorMostrarMsjEvento.push("Debe ingresar la hora del evento");
                 if (!this.horaFin) this.errorMostrarMsjEvento.push("Debe ingresar la hora en que finaliza el evento");
+                if(this.fecha > this.fechaFin){
+                    this.errorMostrarMsjEvento.push("La fecha de inicio  del evento tiene que ser menor a la fecha de finalizacion");
+                    //return;
+                    }  
+                var dia = new Date();
+                    var comparar = new Date(this.fecha);
+                    if(comparar < dia){
+                    this.errorMostrarMsjEvento.push("La fecha de inicio del evento tiene que ser mayor a la fecha actual");        
+                    }  
                 if (this.errorMostrarMsjEvento.length) this.errorEvento = 1;
                 return this.errorEvento;
             },

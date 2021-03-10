@@ -69,24 +69,7 @@
                     <i class="icon-pencil"></i>
                   </button>
                   &nbsp;
-                  <template v-if="empresa.condicion">
-                    <button
-                      type="button"
-                      class="btn btn-danger btn-sm"
-                      @click="desactivarEmpresa(empresa.id)"
-                    >
-                      <i class="icon-trash"></i>
-                    </button>
-                  </template>
-                  <template v-else>
-                    <button
-                      type="button"
-                      class="btn btn-info btn-sm"
-                      @click="activarEmpresa(empresa.id)"
-                    >
-                      <i class="icon-check"></i>
-                    </button>
-                  </template>
+                  
                 </td>
               </tr>
             </tbody>

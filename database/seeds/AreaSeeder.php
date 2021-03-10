@@ -171,6 +171,17 @@ class AreaSeeder extends Seeder
         $empleado5->estadoCivil='Casado/a';
         $empleado5->save();
 
+        $empleado6 = new Empleado();
+        $empleado6->nombre='Vanina';
+        $empleado6->apellido='Benitez';
+        $empleado6->cuil='27325256665';
+        $empleado6->fechaNacimiento= Carbon::createFromFormat('Y-m-d', '1995-04-03');
+        $empleado6->fechaBaja= null;
+        $empleado6->fechaAlta= Carbon::createFromFormat('Y-m-d','2019-02-01');
+        $empleado6->direccion='San Martin 1420';
+        $empleado6->estadoCivil='Soltero/a';
+        $empleado6->save();
+
         $dependiente = new PersonaDependiente();
         $dependiente->nombre='Rafael';
         $dependiente->apellido='Robert';
@@ -179,6 +190,15 @@ class AreaSeeder extends Seeder
         $dependiente->necesidad='Discapacidad';
         $dependiente->empleado_id=$empleado->id;
         $dependiente->save();
+
+        $dependiente2 = new PersonaDependiente();
+        $dependiente2->nombre='Rocio';
+        $dependiente2->apellido='Avellaneda';
+        $dependiente2->dni='21456888';
+        $dependiente2->relacion='Esposo/a';
+        $dependiente2->necesidad='Obra Social';
+        $dependiente2->empleado_id=$empleado3->id;
+        $dependiente2->save();
 
         $puesto = new Puesto();
         $puesto->nombre='CEO (Chief Executive Officer)';
@@ -244,14 +264,14 @@ class AreaSeeder extends Seeder
         $tipoContrato3 = new TipoContrato();
         $tipoContrato3->nombre='Indeterminación del Plazo';
         $tipoContrato3->diasMaximo=0;
-        $tipoContrato3->diasMinimo=30;
+        $tipoContrato3->diasMinimo=1;
         $tipoContrato3->save();
 
-        $tipoContrato3 = new TipoContrato();
-        $tipoContrato3->nombre='Plazo Fijo';
-        $tipoContrato3->diasMaximo=180;
-        $tipoContrato3->diasMinimo=30;
-        $tipoContrato3->save();
+        $tipoContrato4 = new TipoContrato();
+        $tipoContrato4->nombre='Plazo Fijo';
+        $tipoContrato4->diasMaximo=365;
+        $tipoContrato4->diasMinimo=30;
+        $tipoContrato4->save();
 
 
         
@@ -259,13 +279,65 @@ class AreaSeeder extends Seeder
         $contrato->nombre='Trabajo';
         $contrato->descripcion='Es un contrato de trabajo';
         $contrato->salario=17000.0;
-        $contrato->inicioLaboral=Carbon::createFromFormat('Y-m-d','2005-11-22');
-        $contrato->finLaboral=Carbon::createFromFormat('Y-m-d','2025-11-22');
+        $contrato->inicioLaboral=Carbon::createFromFormat('Y-m-d','2020-11-22');
+        $contrato->finLaboral=Carbon::createFromFormat('Y-m-d','2021-11-22');
         $contrato->cantidadHorasDiarias=8;
         $contrato->contrato='ubicacion';
         $contrato->puesto_id=$puesto->id;
         $contrato->empleado_id=$empleado->id;
+        $contrato->tipoContrato_id=$tipoContrato4->id;
+        $contrato->save();
+
+        $contrato = new Contrato();
+        $contrato->nombre='Trabajo';
+        $contrato->descripcion='Es un contrato de trabajo';
+        $contrato->salario=17000.0;
+        $contrato->inicioLaboral=Carbon::createFromFormat('Y-m-d','2021-12-01');
+        $contrato->finLaboral=Carbon::createFromFormat('Y-m-d','2021-03-01');
+        $contrato->cantidadHorasDiarias=8;
+        $contrato->contrato='ubicacion';
+        $contrato->puesto_id=$puesto2->id;
+        $contrato->empleado_id=$empleado2->id;
         $contrato->tipoContrato_id=$tipoContrato->id;
+        $contrato->save();
+
+        $contrato = new Contrato();
+        $contrato->nombre='Trabajo';
+        $contrato->descripcion='Es un contrato de trabajo';
+        $contrato->salario=17000.0;
+        $contrato->inicioLaboral=Carbon::createFromFormat('Y-m-d','2021-01-01');
+        $contrato->finLaboral=Carbon::createFromFormat('Y-m-d','2021-03-31');
+        $contrato->cantidadHorasDiarias=8;
+        $contrato->contrato='ubicacion';
+        $contrato->puesto_id=$puesto2->id;
+        $contrato->empleado_id=$empleado3->id;
+        $contrato->tipoContrato_id=$tipoContrato2->id;
+        $contrato->save();
+
+        $contrato = new Contrato();
+        $contrato->nombre='Trabajo';
+        $contrato->descripcion='Es un contrato de trabajo';
+        $contrato->salario=17000.0;
+        $contrato->inicioLaboral=Carbon::createFromFormat('Y-m-d','2020-05-01');
+        $contrato->finLaboral=Carbon::createFromFormat('Y-m-d','2021-04-01');
+        $contrato->cantidadHorasDiarias=8;
+        $contrato->contrato='ubicacion';
+        $contrato->puesto_id=$puesto3->id;
+        $contrato->empleado_id=$empleado4->id;
+        $contrato->tipoContrato_id=$tipoContrato4->id;
+        $contrato->save();
+
+        $contrato = new Contrato();
+        $contrato->nombre='Trabajo';
+        $contrato->descripcion='Es un contrato de trabajo';
+        $contrato->salario=17000.0;
+        $contrato->inicioLaboral=Carbon::createFromFormat('Y-m-d','2021-01-01');
+        $contrato->finLaboral=Carbon::createFromFormat('Y-m-d','2021-12-31');
+        $contrato->cantidadHorasDiarias=8;
+        $contrato->contrato='ubicacion';
+        $contrato->puesto_id=$puesto3->id;
+        $contrato->empleado_id=$empleado5->id;
+        $contrato->tipoContrato_id=$tipoContrato4->id;
         $contrato->save();
         
         $rol1 = new Rol();
@@ -467,38 +539,87 @@ class AreaSeeder extends Seeder
         $incidencia2->save();
         
 
-        $incidencia2 = new Incidencia();
-        $incidencia2->nombre='Nacimiento de Hijo';
-        $incidencia2->diasMaximo=2;
-        $incidencia2->diasMinimo=1;
-        $incidencia2->save();
+        $incidencia3 = new Incidencia();
+        $incidencia3->nombre='Nacimiento de Hijo';
+        $incidencia3->diasMaximo=2;
+        $incidencia3->diasMinimo=1;
+        $incidencia3->save();
 
-        $incidencia2 = new Incidencia();
-        $incidencia2->nombre='Matrimonio';
-        $incidencia2->diasMaximo=10;
-        $incidencia2->diasMinimo=1;
-        $incidencia2->save();
+        $incidencia4 = new Incidencia();
+        $incidencia4->nombre='Matrimonio';
+        $incidencia4->diasMaximo=10;
+        $incidencia4->diasMinimo=1;
+        $incidencia4->save();
 
-        $incidencia2 = new Incidencia();
-        $incidencia2->nombre='Fallecimiento familiar';
-        $incidencia2->diasMaximo=3;
-        $incidencia2->diasMinimo=1;
-        $incidencia2->save();
+        $incidencia5 = new Incidencia();
+        $incidencia5->nombre='Fallecimiento familiar';
+        $incidencia5->diasMaximo=3;
+        $incidencia5->diasMinimo=1;
+        $incidencia5->save();
 
-        $incidencia2 = new Incidencia();
-        $incidencia2->nombre='Examen';
-        $incidencia2->diasMaximo=2;
-        $incidencia2->diasMinimo=1;
-        $incidencia2->save();
+        $incidencia6 = new Incidencia();
+        $incidencia6->nombre='Examen';
+        $incidencia6->diasMaximo=2;
+        $incidencia6->diasMinimo=1;
+        $incidencia6->save();
 
 
         
         $solicitudesInasistencias = new SolicitudInasistencia();
-        $solicitudesInasistencias->desde=Carbon::createFromFormat('Y-m-d','2020-03-10');
-        $solicitudesInasistencias->hasta=Carbon::createFromFormat('Y-m-d','2020-04-10');
+        $solicitudesInasistencias->desde=Carbon::createFromFormat('Y-m-d','2021-04-01');
+        $solicitudesInasistencias->hasta=Carbon::createFromFormat('Y-m-d','2021-05-01');
         $solicitudesInasistencias->motivo='vacaciones';
+        //$solicitudesInasistencias->aprobado=1;
         $solicitudesInasistencias->incidencia_id=$incidencia->id;
         $solicitudesInasistencias->empleado_id=$empleado->id;
+        $solicitudesInasistencias->save();
+
+        $solicitudesInasistencias = new SolicitudInasistencia();
+        $solicitudesInasistencias->desde=Carbon::createFromFormat('Y-m-d','2021-03-21');
+        $solicitudesInasistencias->hasta=Carbon::createFromFormat('Y-m-d','2021-03-05');
+        $solicitudesInasistencias->motivo='vacaciones';
+        $solicitudesInasistencias->aprobado=1;
+        $solicitudesInasistencias->updated_at=Carbon::createFromFormat('Y-m-d','2021-02-21');
+        $solicitudesInasistencias->incidencia_id=$incidencia->id;
+        $solicitudesInasistencias->empleado_id=$empleado5->id;
+        $solicitudesInasistencias->save();
+
+        $solicitudesInasistencias = new SolicitudInasistencia();
+        $solicitudesInasistencias->desde=Carbon::createFromFormat('Y-m-d','2021-03-10');
+        $solicitudesInasistencias->hasta=Carbon::createFromFormat('Y-m-d','2021-04-10');
+        $solicitudesInasistencias->motivo='vacaciones';
+        $solicitudesInasistencias->aprobado=0;
+        $solicitudesInasistencias->updated_at=Carbon::createFromFormat('Y-m-d','2020-02-21');
+        $solicitudesInasistencias->incidencia_id=$incidencia->id;
+        $solicitudesInasistencias->empleado_id=$empleado3->id;
+        $solicitudesInasistencias->save();
+
+        $solicitudesInasistencias = new SolicitudInasistencia();
+        $solicitudesInasistencias->desde=Carbon::createFromFormat('Y-m-d','2021-03-01');
+        $solicitudesInasistencias->hasta=Carbon::createFromFormat('Y-m-d','2021-04-01');
+        $solicitudesInasistencias->motivo='cuidado a un familiar';
+        $solicitudesInasistencias->aprobado=1;
+        $solicitudesInasistencias->updated_at=Carbon::createFromFormat('Y-m-d','2021-02-21');
+        $solicitudesInasistencias->incidencia_id=$incidencia2->id;
+        $solicitudesInasistencias->empleado_id=$empleado2->id;
+        $solicitudesInasistencias->save();
+
+        $solicitudesInasistencias = new SolicitudInasistencia();
+        $solicitudesInasistencias->desde=Carbon::createFromFormat('Y-m-d','2021-03-04');
+        $solicitudesInasistencias->hasta=Carbon::createFromFormat('Y-m-d','2021-03-05');
+        $solicitudesInasistencias->motivo='nacimiento';
+        $solicitudesInasistencias->aprobado=1;
+        $solicitudesInasistencias->updated_at=Carbon::createFromFormat('Y-m-d','2021-02-21');
+        $solicitudesInasistencias->incidencia_id=$incidencia3->id;
+        $solicitudesInasistencias->empleado_id=$empleado3->id;
+        $solicitudesInasistencias->save();
+
+        $solicitudesInasistencias = new SolicitudInasistencia();
+        $solicitudesInasistencias->desde=Carbon::createFromFormat('Y-m-d','2021-05-01');
+        $solicitudesInasistencias->hasta=Carbon::createFromFormat('Y-m-d','2021-05-02');
+        $solicitudesInasistencias->motivo='vacaciones';
+        $solicitudesInasistencias->incidencia_id=$incidencia6->id;
+        $solicitudesInasistencias->empleado_id=$empleado4->id;
         $solicitudesInasistencias->save();
 
         //relacion many to many

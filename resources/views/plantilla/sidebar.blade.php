@@ -78,15 +78,18 @@
                 </ul>
             </li>
             <li class="nav-item nav-dropdown">
-                <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-pie-chart"></i> Reportes</a>
+                <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-pie-chart"></i> Graficos</a>
                 <ul class="nav-dropdown-items">
                     <li @click="menu='reporteEmpleado'" class="nav-item">
-                        <a class="nav-link" href="i#"><i class="icon-chart"></i> Empleado Reporte</a>
+                        <a class="nav-link" href="i#"><i class="icon-chart"></i> Empleados</a>
                     </li>
                     
                 </ul>
             </li>
-           
+            <li @click="menu='alarma2'" class="nav-item">
+                <a class="nav-link" href="main.html"><i class="icon-book-open"></i> Alarma <span
+                        class="badge badge-danger">!</span></a>
+            </li>
             @endif
             @if (Auth::user()->rol->nombre == 'Empleado')
             <li class="nav-item nav-dropdown">
@@ -121,10 +124,7 @@
            
           
             @endif
-            <li @click="menu='alarma2'" class="nav-item">
-                <a class="nav-link" href="main.html"><i class="icon-book-open"></i> Alarma <span
-                        class="badge badge-danger">!</span></a>
-            </li>
+           
             
             
         </ul>

@@ -819,7 +819,12 @@ export default {
         );
       if(this.inicioLaboral > this.finLaboral){
           this.errorMostrarMsjForm.push("La fecha de inicio tiene que ser menor a la fecha de finalizacion de contrato");
-          return;
+          //return;
+        }  
+        var dia = new Date();
+        var comparar = new Date(this.inicioLaboral);
+        if(comparar < dia){
+          this.errorMostrarMsjForm.push("La fecha de inicio tiene que ser mayor a la fecha actual");        
         }  
       if (!this.contrato)
         this.errorMostrarMsjForm.push("Debe subir el archivo del contrato");
@@ -853,6 +858,7 @@ export default {
             case "registrar": {
               this.modal = 1;
               this.tituloModal = "Registrar Contrato";
+              this.contrato_id = "";
               this.nombre = "";
               this.descripcion = "";
               this.idpuesto = 0;

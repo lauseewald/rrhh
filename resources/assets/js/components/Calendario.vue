@@ -48,6 +48,15 @@
                 <button class="btn btn-sm btn-secondary" @click="calendarOptions.addingMode = !calendarOptions.addingMode">Cancelar</button>
               </div>
             </template>
+            <div v-show="errorComponente" class="form-group row div-error">
+                <div class="text-center text-error">
+                  <div
+                    v-for="error in errorMostrarMsjForm"
+                    :key="error"
+                    v-text="error"
+                  ></div>
+                </div>
+              </div>
           </div>
         </form>
       </div>
@@ -69,6 +78,8 @@ export default {
   },
   data() {
     return {
+      errorComponente: 0,
+      errorMostrarMsjForm: [],
        calendarOptions: {
        plugins: [dayGridPlugin, interactionPlugin],
         events: "",
@@ -94,6 +105,9 @@ export default {
   },
   methods: {
     addNewEvent() {
+       if (this.validarForm()) {
+        return;
+      }
       axios
         .post("/api/calendar", {
           ...this.newEvent
@@ -141,6 +155,9 @@ export default {
       };
     },
     updateEvent() {
+       if (this.validarForm()) {
+        return;
+      }
       axios
         .put("/api/calendar/" + this.indexToUpdate, {
           ...this.newEvent
@@ -165,6 +182,27 @@ export default {
         .catch(err =>
           console.log("Unable to delete event!", err.response.data)
         );
+    },
+    validarForm() {
+      this.errorComponente = 0;
+      this.errorMostrarMsjForm = [];
+      if (!this.newEvent.event_name)
+        this.errorMostrarMsjForm.push("Debe ingresar el nombre del evento");
+    
+      if (!this.newEvent.start_date)
+        this.errorMostrarMsjForm.push("Debe ingresar la fecha de inicio");
+      if (!this.newEvent.end_date)
+        this.errorMostrarMsjForm.push(
+          "Debe ingresar la fecha de finalizacion"
+        );
+      if(this.newEvent.start_date > this.newEvent.end_date){
+          this.errorMostrarMsjForm.push("La fecha de inicio tiene que ser menor a la fecha de finalizacion de contrato");
+          //return;
+        }  
+       
+     
+      if (this.errorMostrarMsjForm.length) this.errorComponente = 1;
+      return this.errorComponente;
     },
     getEvents() {
       let me = this;
